@@ -1,0 +1,16 @@
+---
+section: trident-concepts
+title: 概念
+entries:
+- title: Astra Trident の概要
+  url: "/trident-concepts/intro.html"
+- title: ONTAP ドライバ
+  url: "/trident-concepts/ontap-drivers.html"
+- title: プロビジョニング
+  url: "/trident-concepts/provisioning.html"
+- title: ボリューム Snapshot
+  url: "/trident-concepts/snapshots.html"
+- title: 仮想ストレージプール
+  url: "/trident-concepts/virtual-storage-pool.html"
+- title: ボリュームアクセスグループ
+  url: "/trident-concepts/vol-access-groups.html"

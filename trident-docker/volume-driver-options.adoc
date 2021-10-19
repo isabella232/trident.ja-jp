@@ -1,0 +1,351 @@
+---
+sidebar: sidebar 
+permalink: trident-docker/volume-driver-options.html 
+keywords: create volumes, astra trident, trident for docker, docker, docker volume, driver options, ontap, element volumes, cloud volumes service on aws, cvs, cloud volumes service on gcp, azure netapp files 
+summary: ストレージドライバにはそれぞれ異なるオプションがあり、ボリュームの作成時に指定することで結果をカスタマイズできます。構成済みのストレージシステムに適用されるオプションについては、以下を参照してください。 
+---
+= ボリュームドライバのオプション
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+ストレージドライバにはそれぞれ異なるオプションがあり、ボリュームの作成時に指定することで結果をカスタマイズできます。構成済みのストレージシステムに適用されるオプションについては、以下を参照してください。
+
+ボリューム作成処理では、これらのオプションを簡単に使用できます。CLI の操作中に '-o' 演算子を使用して ' オプションと値を指定しますこれらは、 JSON 構成ファイルの同等の値よりも優先されます。
+
+
+
+== ONTAP ボリュームのオプション
+
+NFS と iSCSI のどちらの場合も、 volume create オプションには次のオプションがあります。
+
+[cols="2*"]
+|===
+| オプション | 説明 
+
+
+| 「 size 」  a| 
+ボリュームのサイズ。デフォルトは 1GiB です。
+
+
+
+| 「平和のための準備」を参照してください  a| 
+ボリュームをシンプロビジョニングまたはシックプロビジョニングします。デフォルトはシンです。有効な値は 'none( シン・プロビジョニング ) と 'volume( シック・プロビジョニング ) です
+
+
+
+| 「ナプショットポリシー」  a| 
+Snapshot ポリシーが目的の値に設定されます。デフォルトは「 none 」です。つまり、ボリュームに対してスナップショットが自動的に作成されることはありません。ストレージ管理者によって変更されていない限り、「 default 」という名前のポリシーがすべての ONTAP システムに存在し、 6 個の時間単位 Snapshot 、 2 個の日単位 Snapshot 、および 2 個の週単位 Snapshot を作成して保持します。スナップショットに保存されているデータは ' ボリューム内の任意のディレクトリ内の .snapshot ディレクトリに移動してリカバリできます
+
+
+
+| 「スナップショット予約」  a| 
+これにより、 Snapshot リザーブの割合が希望する値に設定されます。デフォルト値は no で、 Snapshot ポリシーを選択した場合は ONTAP によって snapshotReserve が選択されます（通常は 5% ）。 Snapshot ポリシーがない場合は 0% が選択されます。構成ファイルのすべての ONTAP バックエンドに対して snapshotReserve のデフォルト値を設定できます。また、この値は、 ONTAP-NAS-エコノミー を除くすべての ONTAP バックエンドでボリューム作成オプションとして使用できます。
+
+
+
+| 'plitOnClone  a| 
+ボリュームをクローニングすると、そのクローンが原因 ONTAP によって親から即座にスプリットされます。デフォルトは「 false 」です。クローンボリュームのクローニングは、作成直後に親からクローンをスプリットする方法を推奨します。これは、ストレージ効率化の効果がまったくないためです。たとえば、空のデータベースをクローニングすると、時間を大幅に節約できますが、ストレージの節約はほとんどできないため、クローンをすぐに分割することをお勧めします。
+
+
+
+| 「暗号化」  a| 
+これにより、新しいボリュームで NetApp Volume Encryption （ NVE ）がデフォルトで「 false 」に設定されます。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。
+
+
+
+| 階層ポリシー  a| 
+ボリュームに使用する階層化ポリシーを設定します。これにより、アクセス頻度の低いコールドデータをクラウド階層に移動するかどうかが決まります。
+
+|===
+以下は、 NFS * のみ * 用の追加オプションです。
+
+[cols="2*"]
+|===
+| オプション | 説明 
+
+
+| 「 unixPermissions 」  a| 
+これにより、ボリューム自体の権限セットを制御できます。デフォルトでは ' アクセス権は '--rwxr-xr-x' または数値表記 0755 に設定され 'root' は所有者になりますテキスト形式または数値形式のどちらかを使用できます。
+
+
+
+| 「スナップショット方向」  a| 
+これを「 true 」に設定すると、ボリュームにアクセスしているクライアントから「 .snapshot 」ディレクトリを参照できるようになります。デフォルト値は 'false' ですつまり '.snapshot ディレクトリの表示はデフォルトで無効になっています公式の MySQL イメージなどの一部のイメージは '.snapshot ディレクトリが表示されているときに ' 期待どおりに機能しません
+
+
+
+| 「 exportPolicy 」と入力します  a| 
+ボリュームで使用するエクスポートポリシーを設定します。デフォルトは「デフォルト」です。
+
+
+
+| 'ecurityStyle'  a| 
+ボリュームへのアクセスに使用するセキュリティ形式を設定します。デフォルトは「 unix 」です。有効な値は「 unix 」と「 immimixed 」です。
+
+|===
+以下の追加オプションは、 iSCSI * のみ * 用です。
+
+[cols="2*"]
+|===
+| オプション | 説明 
+
+
+| 「 filesystemtype 」です | iSCSI ボリュームのフォーマットに使用するファイルシステムを設定します。デフォルトは「 ext4 」です。有効な値は「 ext3 」、「 ext4 」、「 xfs 」です。 
+
+
+| 「平和の配分」 | これを false に設定すると、 LUN のスペース割り当て機能がオフになります。デフォルト値は「 true 」です。つまり、ボリュームのスペースが不足し、ボリューム内の LUN に書き込みを受け付けられなくなったときに、 ONTAP はホストに通知します。また、このオプションで ONTAP 、ホストでデータが削除された時点での自動スペース再生も有効になります。 
+|===
+
+
+=== 例
+
+以下の例を参照してください。
+
+* 10GiB ボリュームを作成します。
++
+[listing]
+----
+docker volume create -d netapp --name demo -o size=10G -o encryption=true
+----
+* Snapshot を使用して 100GiB のボリュームを作成します。
++
+[listing]
+----
+docker volume create -d netapp --name demo -o size=100G -o snapshotPolicy=default -o snapshotReserve=10
+----
+* setuid ビットが有効になっているボリュームを作成します。
++
+[listing]
+----
+docker volume create -d netapp --name demo -o unixPermissions=4755
+----
+
+
+最小ボリュームサイズは 20MiB です。
+
+スナップショット予約が指定されておらず、スナップショットポリシーが「 none 」の場合、 Trident は 0% のスナップショット予約を使用します。
+
+* Snapshot ポリシーがなく、 Snapshot リザーブがないボリュームを作成します。
++
+[listing]
+----
+docker volume create -d netapp --name my_vol --opt snapshotPolicy=none
+----
+* Snapshot ポリシーがなく、カスタムの Snapshot リザーブが 10% のボリュームを作成します。
++
+[listing]
+----
+docker volume create -d netapp --name my_vol --opt snapshotPolicy=none --opt snapshotReserve=10
+----
+* Snapshot ポリシーを使用し、カスタムの Snapshot リザーブを 10% に設定してボリュームを作成します。
++
+[listing]
+----
+docker volume create -d netapp --name my_vol --opt snapshotPolicy=myPolicy --opt snapshotReserve=10
+----
+* Snapshot ポリシーを設定してボリュームを作成し、 ONTAP のデフォルトの Snapshot リザーブ（通常は 5% ）を受け入れます。
++
+[listing]
+----
+docker volume create -d netapp --name my_vol --opt snapshotPolicy=myPolicy
+----
+
+
+
+
+== Element ソフトウェアのボリュームオプション
+
+Element ソフトウェアのオプションでは、ボリュームに関連付けられているサービス品質（ QoS ）ポリシーのサイズと QoS を指定できます。ボリュームが作成されると '-o type=service_level' という命名法を使用して ' ボリュームに関連付けられた QoS ポリシーが指定されます
+
+Element ドライバを使用して QoS サービスレベルを定義する最初の手順は、少なくとも 1 つのタイプを作成し、構成ファイル内の名前に関連付けられた最小 IOPS 、最大 IOPS 、バースト IOPS を指定することです。
+
+Element ソフトウェアのその他のボリューム作成オプションは次のとおりです。
+
+[cols="2*"]
+|===
+| オプション | 説明 
+
+
+| 「 size 」  a| 
+ボリュームのサイズ。デフォルト値は 1GiB または設定エントリ ... 「 defaults 」： ｛ 「 size 」：「 5G 」 ｝ 。
+
+
+
+| 「ブロックサイズ」  a| 
+512 または 4096 のいずれかを使用します。デフォルトは 512 または config エントリ DefaultBlockSize です。
+
+|===
+
+
+=== 例
+
+QoS 定義を含む次のサンプル構成ファイルを参照してください。
+
+[listing]
+----
+{
+    "...": "..."
+    "Types": [
+        {
+            "Type": "Bronze",
+            "Qos": {
+                "minIOPS": 1000,
+                "maxIOPS": 2000,
+                "burstIOPS": 4000
+            }
+        },
+        {
+            "Type": "Silver",
+            "Qos": {
+                "minIOPS": 4000,
+                "maxIOPS": 6000,
+                "burstIOPS": 8000
+            }
+        },
+        {
+            "Type": "Gold",
+            "Qos": {
+                "minIOPS": 6000,
+                "maxIOPS": 8000,
+                "burstIOPS": 10000
+            }
+        }
+    ]
+}
+----
+上記の構成では、 Bronze 、 Silver 、 Gold の 3 つのポリシー定義を使用します。これらの名前は任意です。
+
+* 10GiB の Gold ボリュームを作成します。
++
+[listing]
+----
+docker volume create -d solidfire --name sfGold -o type=Gold -o size=10G
+----
+* 100GiB Bronze ボリュームを作成します。
++
+[listing]
+----
+docker volume create -d solidfire --name sfBronze -o type=Bronze -o size=100G
+----
+
+
+
+
+== CVS （ Cloud Volumes Service on AWS ）ボリュームのオプション
+
+CVS on AWS ドライバのボリューム作成オプションには次のものがあります。
+
+[cols="2*"]
+|===
+| オプション | 説明 
+
+
+| 「 size 」  a| 
+ボリュームのサイズ。デフォルトは 100GB です。
+
+
+
+| 「サービスレベル」  a| 
+ボリュームの CVS サービスレベル。デフォルトは「 Standard 」です。有効な値は、 standard 、 premium 、 extreme です。
+
+
+
+| 「スナップショット予約」  a| 
+これにより ' スナップショット予約が目的の割合に設定されますデフォルト値は no で、 CVS によって Snapshot リザーブが選択されます（通常は 0% ）。
+
+|===
+
+
+=== 例
+
+* 200GiB ボリュームを作成します。
++
+[listing]
+----
+docker volume create -d netapp --name demo -o size=200G
+----
+* 500GiB のプレミアムボリュームを作成します。
++
+[listing]
+----
+docker volume create -d netapp --name demo -o size=500G -o serviceLevel=premium
+----
+
+
+最小ボリュームサイズは 100GB です。
+
+
+
+== CVS on GCP ボリュームのオプション
+
+GCP 上の CVS ドライバのボリューム作成オプションには、次のものがあります。
+
+[cols="2*"]
+|===
+| オプション | 説明 
+
+
+| 「 size 」  a| 
+ボリュームのサイズ。 CVS パフォーマンスボリュームの場合はデフォルトで 100GiB 、 CVS ボリュームの場合は 300GiB になります。
+
+
+
+| 「サービスレベル」  a| 
+ボリュームの CVS サービスレベル。デフォルトは「 Standard 」です。有効な値は、 standard 、 premium 、 extreme です。
+
+
+
+| 「スナップショット予約」  a| 
+これにより、 Snapshot リザーブの割合が希望する値に設定されます。デフォルト値は no で、 CVS によって Snapshot リザーブが選択されます（通常は 0% ）。
+
+|===
+
+
+=== 例
+
+* 2TiB のボリュームを作成します。
++
+[listing]
+----
+docker volume create -d netapp --name demo -o size=2T
+----
+* 5TiB の Premium ボリュームを作成します。
++
+[listing]
+----
+docker volume create -d netapp --name demo -o size=5T -o serviceLevel=premium
+----
+
+
+CVS パフォーマンスボリュームの場合は最小ボリュームサイズが 100GiB 、 CVS ボリュームの場合は 300GiB です。
+
+
+
+== Azure NetApp Files ボリュームのオプション
+
+Azure NetApp Files ドライバの volume create オプションには、次のものがあります。
+
+[cols="2*"]
+|===
+| オプション | 説明 
+
+
+| 「 size 」  a| 
+ボリュームのサイズ。デフォルトは 100GB です。
+
+|===
+
+
+=== 例
+
+* 200GiB ボリュームを作成します。
++
+[listing]
+----
+docker volume create -d netapp --name demo -o size=200G
+----
+
+
+最小ボリュームサイズは 100GB です。

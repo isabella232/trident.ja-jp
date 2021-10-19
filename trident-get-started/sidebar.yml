@@ -1,0 +1,22 @@
+---
+section: trident-get-started
+title: はじめに
+entries:
+- title: ぜひお試しください
+  url: "/trident-get-started/quickstart.html"
+- title: 要件
+  url: "/trident-get-started/requirements.html"
+- title: 導入の概要
+  url: "/trident-get-started/kubernetes-deploy.html"
+- title: Trident オペレータとともに導入
+  url: "/trident-get-started/kubernetes-deploy-operator.html"
+  entries:
+  - title: Trident オペレータの環境をカスタマイズ
+    url: "/trident-get-started/kubernetes-customize-deploy.html"
+- title: tridentctl を使用して導入します
+  url: "/trident-get-started/kubernetes-deploy-tridentctl.html"
+  entries:
+  - title: tridentctl 展開をカスタマイズします
+    url: "/trident-get-started/kubernetes-customize-deploy-tridentctl.html"
+- title: 次の手順
+  url: "/trident-get-started/kubernetes-postdeployment.html"

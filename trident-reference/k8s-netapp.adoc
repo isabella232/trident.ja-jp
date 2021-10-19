@@ -1,0 +1,80 @@
+---
+sidebar: sidebar 
+permalink: trident-reference/k8s-netapp.html 
+keywords: kubernetes, netapp storage, ontap, cloud columes ontap, santricity, element software, netapp hci, anf, azure netapp files, cloud volumes service for google cloud, cloud volumes service for aws, gcp, aws 
+summary: ネットアップのストレージ製品ポートフォリオは、 Kubernetes クラスタのさまざまな要素と統合され、高度なデータ管理機能を提供して、 Kubernetes 環境の機能、機能、パフォーマンス、可用性を強化します。 
+---
+= ネットアップの製品が Kubernetes と統合されます
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+ネットアップのストレージ製品ポートフォリオは、 Kubernetes クラスタのさまざまな要素と統合され、高度なデータ管理機能を提供して、 Kubernetes 環境の機能、機能、パフォーマンス、可用性を強化します。
+
+
+
+== アストラ
+
+https://docs.netapp.com/us-en/astra/["アストラ"^] Kubernetes 上で実行される大量のデータコンテナ化ワークロードを、パブリッククラウドとオンプレミスの間で簡単に管理、保護、移動できます。Astra は、ネットアップの実績のある拡張可能なストレージポートフォリオから、パブリッククラウドとオンプレミスに提供される Trident を使用して、永続的なコンテナストレージをプロビジョニングし、提供します。また、 Snapshot 、バックアップとリストア、アクティビティログ、アクティブクローニングによるデータ保護、ディザスタ / データリカバリ、データ監査、 Kubernetes ワークロードの移行のユースケースなど、アプリケーションに対応した高度なデータ管理機能も豊富に搭載されています。
+
+
+
+== ONTAP
+
+ONTAP は、あらゆるアプリケーションに高度なデータ管理機能を提供する、ネットアップのマルチプロトコルユニファイドストレージオペレーティングシステムです。ONTAP システムには、オールフラッシュ、ハイブリッド、オール HDD のいずれかの構成が採用されており、自社開発のハードウェア（ FAS と AFF ）、ノーブランド製品（ ONTAP Select ）、クラウドのみ（ Cloud Volumes ONTAP ）など、さまざまな導入モデルが用意されています。
+
+
+NOTE: Trident は、上記の ONTAP 導入モデルをすべてサポートしています。
+
+
+
+== Cloud Volumes ONTAP
+
+http://cloud.netapp.com/ontap-cloud?utm_source=GitHub&utm_campaign=Trident["Cloud Volumes ONTAP"^] は、クラウドで ONTAP データ管理ソフトウェアを実行するソフトウェア型ストレージアプライアンスです。Cloud Volumes ONTAP は、本番ワークロード、ディザスタリカバリ、 DevOps 、ファイル共有、データベース管理に使用できます。ストレージ効率、高可用性、データレプリケーション、データ階層化、アプリケーションの整合性を提供することで、エンタープライズストレージをクラウドに拡張します。
+
+
+
+== NetApp ONTAP 対応の Amazon FSX
+
+https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["NetApp ONTAP 対応の Amazon FSX"^] は、 NetApp ONTAP ストレージ・オペレーティング・システムを搭載したファイル・システムの起動と実行を可能にする、フルマネージドの AWS サービスです。FSX for ONTAP を使用すると、お客様は使い慣れたネットアップの機能、パフォーマンス、管理機能を活用しながら、 AWS にデータを格納する際のシンプルさ、即応性、セキュリティ、拡張性を活用できます。FSX for ONTAP は、 ONTAP のファイルシステム機能と管理 API の多くをサポートしています。
+
+
+
+== Element ソフトウェア
+
+https://www.netapp.com/data-management/element-software/["要素（ Element ）"^] ストレージ管理者は、パフォーマンスを保証し、ストレージの設置面積を合理化することで、ワークロードを統合できます。Element と API を組み合わせることでストレージ管理のあらゆる要素を自動化できるため、ストレージ管理者は少ない労力で多くの作業を行うことができます。
+
+
+
+== NetApp HCI
+
+https://www.netapp.com/virtual-desktop-infrastructure/netapp-hci/["NetApp HCI"^] 日常業務を自動化し、インフラ管理者がより重要な業務に集中できるようにすることで、データセンターの管理と拡張を簡易化します。
+
+NetApp HCI は Trident によって完全にサポートされています。Trident では、コンテナ化されたアプリケーション用のストレージデバイスを、基盤となる NetApp HCI ストレージプラットフォームに直接プロビジョニングして管理できます。
+
+
+
+== SANtricity
+
+ネットアップの E シリーズと EF シリーズのストレージプラットフォームでは、を使用します https://www.netapp.com/us/products/data-management-software/santricity-os.aspx["SANtricity"^] 可用性とパフォーマンスに優れた堅牢なストレージを提供し、あらゆる規模のアプリケーションにストレージサービスを提供できるようにするためのオペレーティングシステム。
+
+Trident では、製品ポートフォリオ全体で SANtricity ボリュームを作成、管理できます。
+
+
+
+== Azure NetApp Files の特長
+
+https://azure.microsoft.com/en-us/services/netapp/["Azure NetApp Files の特長"^] は、ネットアップが提供するエンタープライズクラスの Azure ファイル共有サービスです。要件がきわめて厳しいファイルベースのワークロードも、ネットアップが提供するパフォーマンスと充実のデータ管理機能を使用して、 Azure でネイティブに実行できます。
+
+
+
+== Cloud Volumes Service for AWS
+
+https://cloud.netapp.com/cloud-volumes-service-for-aws?utm_source=GitHub&utm_campaign=Trident["NetApp Cloud Volumes Service for AWS"^] は、 NFS や SMB 経由で NAS ボリュームにオールフラッシュのパフォーマンスを提供する、クラウドネイティブのファイルサービスです。このサービスを使用すると、従来型アプリケーションを含むあらゆるワークロードを AWS クラウドで実行できます。フルマネージドサービスを提供し、ハイパフォーマンス、瞬時のクローニング、データ保護、 Elastic Container Service （ ECS ）インスタンスへのセキュアなアクセスを提供します。
+
+
+
+== Cloud Volumes Service for Google Cloud
+
+https://cloud.netapp.com/cloud-volumes-service-for-gcp?utm_source=GitHub&utm_campaign=Trident["NetApp Cloud Volumes Service for Google Cloud"^] は、 NFS や SMB 経由で NAS ボリュームにオールフラッシュのパフォーマンスを提供する、クラウドネイティブのファイルサービスです。このサービスを使用すると、従来型アプリケーションを含むあらゆるワークロードを GCP クラウドで実行できます。フルマネージドサービスを提供し、一貫したハイパフォーマンス、瞬時のクローニング、データ保護、 Google Compute Engine （ GCE ）インスタンスへのセキュアなアクセスを実現します。

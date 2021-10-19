@@ -1,0 +1,128 @@
+---
+sidebar: sidebar 
+permalink: trident-use/worker-node-prep.html 
+keywords: storage class, manage storage class, storage classes, kubernetes storage classes, worker node, nfs, iscsi, kubernetes clusters 
+summary: Kubernetes クラスタ内のすべてのワーカーノードが、ポッド用にプロビジョニングしたボリュームをマウントできる必要があります。いずれかのバックエンドに ONTAP-NAS 、 ONTAP-NAS-エコノミー 、 ONTAP-NAS-flexgroup ドライバを使用している場合は、ワーカーノードに NFS ツールが必要です。それ以外の場合は iSCSI ツールが必要です。 
+---
+= ワーカーノードを準備します
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Kubernetes クラスタ内のすべてのワーカーノードが、ポッド用にプロビジョニングしたボリュームをマウントできる必要があります。いずれかのバックエンドに「 ONTAP-NAS' 」、「 ONTAP-NAS-Bエコノミー 」、または「 ONTAP-NAS-flexgroup 」ドライバを使用している場合は、ワーカーノードに NFS ツールが必要です。それ以外の場合は iSCSI ツールが必要です。
+
+最新バージョンの RedHat CoreOS には、デフォルトで NFS と iSCSI の両方がインストールされています。
+
+
+WARNING: NFS ツールまたは iSCSI ツールをインストールしたあとは、必ずワーカーノードをリブートしてください。リブートしないと、ボリュームをコンテナに接続できないことがあります。
+
+
+
+== NFS ボリューム
+
+[cols="3*"]
+|===
+| プロトコル | オペレーティングシステム | コマンド 
+
+
+| NFS  a| 
+RHEL/CentOS
+ a| 
+'sudo yum install -y nfs-utils'
+
+
+
+| NFS  a| 
+Ubuntu / Debian
+ a| 
+'UDO apt-get install-y nfs-common
+
+|===
+
+NOTE: ブート時に NFS サービスが開始されていることを確認してください。
+
+
+
+== iSCSI ボリューム
+
+iSCSI ボリュームを使用するときは、次の点に注意してください。
+
+* Kubernetes クラスタ内の各ノードには一意の IQN を割り当てる必要があります。* これは必須の前提条件です * 。
+* RHCOS バージョン 4.5 以降、または RHEL または CentOS バージョン 8.2 以降で「 olidfire-san 」ドライバを使用している場合は、 CHAP 認証アルゴリズムが /etc/iscsi/iscsid.conf で MD5 に設定されていることを確認してください。
+
+
+[listing]
+----
+sudo sed -i 's/^\(node.session.auth.chap_algs\).*/\1 = MD5/' /etc/iscsi/iscsid.conf
+----
+* iSCSI PVS を搭載した RHEL/RedHat CoreOS を実行するワーカーノードを使用する場合は、インラインスペース再生を実行するために、 StorageClass で「 discard 」 mountOption を指定してください。を参照してください https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_file_systems/discarding-unused-blocks_managing-file-systems["RedHat のマニュアル"^]。
+
+
+[cols="3*"]
+|===
+| プロトコル | オペレーティングシステム | コマンド 
+
+
+| iSCSI  a| 
+RHEL/CentOS
+ a| 
+. 次のシステムパッケージをインストールします。
++
+'sudo yum install -y lsscsi iscsi-initiator-utils SG3_utils device-mapper-multipath`
+
+. iscsi-initiator-utils のバージョンが 6.2.0.874-2.el7 以降であることを確認します。
++
+「 rpm -q iscsi-initiator-utils 」のように入力します
+
+. スキャンを手動に設定：
++
+'sudo sed-i'/ ^ \ （ node.session.scan\).*/\1 = manual/ '/etc/iscsi/iscsid.conf
+
+. マルチパスを有効化：
++
+'UDO mpathconf--enable--with _multipathd y
+
+. 「 iscsid 」と「 multipathd 」が実行されていることを確認します。
++
+'sudo systemctl enable -- 現在 iscsid multipathd
+
+. 'iSCSI' を有効にして開始します
++
+'sudo systemctl enable -- 現在の iSCSI
+
+
+
+
+
+| iSCSI  a| 
+Ubuntu / Debian
+ a| 
+. 次のシステムパッケージをインストールします。
++
+'UDO apt-get install-y open-iscsi lsscsi SG3-utils multipath-tools scsitools'
+
+. open-iscsi バージョンが 2.0.874-5ubuntu2.10 以降（ bionic の場合）または 2.0.874-7.1ubuntu6.1 以降（ Focal の場合）であることを確認します。
++
+`d pkg -l open-iscsi`
+
+. スキャンを手動に設定：
++
+'sudo sed-i'/ ^ \ （ node.session.scan\).*/\1 = manual/ '/etc/iscsi/iscsid.conf
+
+. マルチパスを有効化：
++
+'sudo tee//etc/multipath.conf <-' EOF' defaults ｛ user_friendy_names yes find _multipaths yes ｝ EOF sudo systemctl enable -- 今では multipath-tools.service sudo service multipath-tools restart`
+
+. 「 open-iSCSI」 および「マルチパスツール」が有効で実行されていることを確認します。
++
+'sudo systemctl status multipath-tools `sudo systemctl enable -- 現在の open-iscsi.service` 'udo systemctl status open-iscsi'
+
+
+
+|===
+
+NOTE: Ubuntu 18.04 では 'iSCSI デーモンを起動するために 'open-iscsi' を起動する前に 'iscsiadm を持つターゲット・ポートを検出する必要がありますまたは 'iscsid' サービスを 'iscsid' を自動的に開始するように変更することもできます
+
+
+NOTE: ベータ版の自動ワーカーノードの準備の詳細については、を参照してください link:automatic-workernode.html["こちらをご覧ください"^]。

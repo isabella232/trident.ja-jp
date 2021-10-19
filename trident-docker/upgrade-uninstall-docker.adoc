@@ -1,0 +1,100 @@
+---
+sidebar: sidebar 
+permalink: trident-docker/upgrade-uninstall-docker.html 
+keywords: uninstall, astra trident, trident for docker, docker, upgrade trident for docker 
+summary: 使用中のボリュームに影響を与えることなく、 Astra Trident for Docker を安全にアップグレードできます。アップグレード処理中に、プラグインで指示された「 Occker volume 」コマンドが正常に実行されず、プラグインが再度実行されるまでアプリケーションはボリュームをマウントできません。ほとんどの場合、これは秒の問題です。 
+---
+= Astra Trident をアップグレードまたはアンインストールする
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+使用中のボリュームに影響を与えることなく、 Astra Trident for Docker を安全にアップグレードできます。アップグレード処理中に、プラグインで指示された「 Occker volume 」コマンドが正常に実行されず、プラグインが再度実行されるまでアプリケーションはボリュームをマウントできません。ほとんどの場合、これは秒の問題です。
+
+
+
+== アップグレード
+
+Astra Trident for Docker をアップグレードするには、次の手順を実行します。
+
+.手順
+. 既存のボリュームを表示します。
++
+[listing]
+----
+docker volume ls
+DRIVER              VOLUME NAME
+netapp:latest       my_volume
+----
+. プラグインを無効にします。
++
+[listing]
+----
+docker plugin disable -f netapp:latest
+docker plugin ls
+ID                  NAME                DESCRIPTION                          ENABLED
+7067f39a5df5        netapp:latest       nDVP - NetApp Docker Volume Plugin   false
+----
+. プラグインをアップグレードします。
++
+[listing]
+----
+docker plugin upgrade --skip-remote-check --grant-all-permissions netapp:latest netapp/trident-plugin:21.07
+----
++
+
+NOTE: nDVP に代わる、 Astra Trident の 18.01 リリース。NetApp/ndvp-plugin イメージから NetApp/trident-plugin` イメージに直接アップグレードする必要があります。
+
+. プラグインを有効にします。
++
+[listing]
+----
+docker plugin enable netapp:latest
+----
+. プラグインが有効になっていることを確認します。
++
+[listing]
+----
+docker plugin ls
+ID                  NAME                DESCRIPTION                             ENABLED
+7067f39a5df5        netapp:latest       Trident - NetApp Docker Volume Plugin   true
+----
+. ボリュームが表示されることを確認します。
++
+[listing]
+----
+docker volume ls
+DRIVER              VOLUME NAME
+netapp:latest       my_volume
+----
++
+
+IMPORTANT: 古いバージョンの Astra Trident （ 20.10 より前）から Astra Trident 20.10 以降にアップグレードすると、エラーが発生する場合があります。詳細については、を参照してください link:known-issues-docker.html["既知の問題"^]。このエラーが発生した場合は、まずプラグインを無効にしてから、プラグインを削除し、必要な Astra Trident バージョンをインストールします。これには、「 d Occker plugin install NetApp/trident-plugin:20.10 --alias netapp --grant-all -permissions config=config.json 」という追加設定パラメータを渡します
+
+
+
+
+
+== をアンインストールします
+
+Astra Trident for Docker をアンインストールするには、次の手順を実行します。
+
+.手順
+. プラグインで作成されたボリュームをすべて削除します。
+. プラグインを無効にします。
++
+[listing]
+----
+docker plugin disable netapp:latest
+docker plugin ls
+ID                  NAME                DESCRIPTION                          ENABLED
+7067f39a5df5        netapp:latest       nDVP - NetApp Docker Volume Plugin   false
+----
+. プラグインを削除します。
++
+[listing]
+----
+docker plugin rm netapp:latest
+----
+

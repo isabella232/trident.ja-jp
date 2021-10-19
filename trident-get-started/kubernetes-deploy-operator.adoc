@@ -1,0 +1,282 @@
+---
+sidebar: sidebar 
+permalink: trident-get-started/kubernetes-deploy-operator.html 
+keywords: deploy, astra trident, methods, operator, tridentctl, helm 
+summary: Trident のオペレータが、 Astra Trident を導入できます。Trident オペレータは、手動または Helm を使用して導入できます。 
+---
+= Trident オペレータとともに導入
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Trident のオペレータが、 Astra Trident を導入できます。Trident オペレータは、手動または Helm を使用して導入できます。
+
+
+TIP: をまだ理解していない場合は、を参照してください link:../trident-concepts/intro.html["基本概念"^]今こそ、そのための絶好の機会です。
+
+Astra Trident を導入するには、次の前提条件を満たしている必要があります。
+
+* Kubernetes 1.14 以降を実行するサポート対象の Kubernetes クラスタに対するすべての権限が必要です。
+* サポートされているネットアップストレージシステムを利用できるようにしておきます。
+* すべての Kubernetes ワーカーノードからボリュームをマウントできます。
+* 使用する Kubernetes クラスタを管理するために 'kubectl( OpenShift を使用している場合は 'OC) をインストールして構成した Linux ホストがあります
+* 「 KUBECONFIG 」環境変数を、 Kubernetes クラスタ構成を指すように設定しておきます。
+* を有効にしておきます link:requirements.html["Astra Trident に必要な機能ゲート"^]。
+* Kubernetes と Docker Enterprise を併用する場合は、 https://docs.docker.com/ee/ucp/user-access/cli/["CLI へのアクセスを有効にする手順は、ユーザが行ってください"^]。
+
+
+それはすべてですか？最高！それでは始めましょう。
+
+
+
+== Helm を使用して Trident オペレータを導入します
+
+Helm を使用して Trident オペレータを導入するには、以下の手順を実行します。
+
+上記の前提条件に加え、 Helm を使用して Trident Operator を導入するには、次のものが必要です。
+
+* Kubernetes 1.17 以降
+* Helm バージョン 3
+
+
+.手順
+. からインストーラバンドルをダウンロードします https://github.com/netapp/trident/releases["Trident GitHub"] ページインストーラバンドルには 'Helm チャートが用意されています
+. 「 helm install 」コマンドを使用して、展開の名前を指定します。次の例を参照してください。
++
+[listing]
+----
+helm install <name> trident-operator-21.07.1.tgz --namespace <namespace you want to use for Trident>
+----
+
+
+インストール中に設定データを渡すには、次の 2 つの方法があります。
+
+* `--values] ( または '-f`) : オーバーライドを含む YAML ファイルを指定しますこれは複数回指定でき、右端のファイルが優先されます。
+* `--set`: コマンドラインでオーバーライドを指定します
+
+
+たとえば ' デフォルト値の `debug` を変更するには ' 次のように --set` コマンドを実行します
+
+[listing]
+----
+$ helm install <name> trident-operator-21.07.1.tgz --set tridentDebug=true
+----
+Helm チャートの一部である `values] の .yaml ファイルには、キーのリストとデフォルト値が表示されます。
+
+「 helm list 」は、名前、名前空間、グラフ、ステータスなど、インストールに関する詳細を表示します。 アプリケーションのバージョン、リビジョン番号など。
+
+
+
+== Trident オペレータを手動で導入
+
+Trident のオペレータを手動で導入するには、以下の手順を実行します。
+
+
+
+=== ステップ 1 ： Kubernetes クラスタを確認する
+
+まず、 Linux ホストにログインして、 _working _ 、 link:requirements.html["サポートされる Kubernetes クラスタ"^] に必要な権限があることを確認します。
+
+
+NOTE: OpenShift では、以降のすべての例で「 kubectl 」ではなく「 OC 」を使用し、「 OC login-u SYSTEM ： admin 」または「 OC login-u kube-admin 」を実行して最初に「 *system:admin 」としてログインします。
+
+Kubernetes のバージョンが 1.14 以降かどうかを確認するには、次のコマンドを実行します。
+
+[listing]
+----
+kubectl version
+----
+Kubernetes クラスタ管理者の権限があるかどうかを確認するには、次のコマンドを実行します。
+
+[listing]
+----
+kubectl auth can-i '*' '*' --all-namespaces
+----
+Docker Hub のイメージを使用してポッドを起動し、ポッドネットワーク経由でストレージシステムにアクセスできるかどうかを確認するには、次のコマンドを実行します。
+
+[listing]
+----
+kubectl run -i --tty ping --image=busybox --restart=Never --rm -- \
+  ping <management IP>
+----
+
+
+=== 手順 2 ：オペレータをダウンロードして設定します
+
+
+NOTE: 21.01 以降、 Trident Operator はクラスタを対象とします。Trident オペレータを使用して Trident をインストールするには、「 TridentOrchestrator 」カスタムリソース定義（ CRD ）を作成し、その他のリソースを定義する必要があります。Astra Trident をインストールする前に、次の手順を実行してオペレータをセットアップする必要があります。
+
+. の最新バージョンをダウンロードします https://github.com/NetApp/trident/releases/latest["Trident インストーラバンドル"] _Downloads_section から抽出します
++
+[listing]
+----
+wget https://github.com/NetApp/trident/releases/download/v21.04/trident-installer-21.04.tar.gz
+tar -xf trident-installer-21.04.tar.gz
+cd trident-installer
+----
+. 適切な CRD マニフェストを使用して、「 TridentOrchestrator 」 CRD を作成します。次に、後で「 TridentOrchestrator 」カスタムリソースを作成して、オペレータによってインストールをインスタンス化します。
++
+次のコマンドを実行します。
+
++
+[listing]
+----
+kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml
+----
+. 「 TridentOrchestrator 」 CRD が作成されたら、オペレータの展開に必要な次のリソースを作成します。
++
+** オペレータのサービスアカウント
+** ClusterRole および ClusterRoleBinding をサービスアカウントにバインドする
+** 専用の PodSecurityPolicy
+** 演算子自体
++
+Trident インストーラには、これらのリソースを定義するマニフェストが含まれています。デフォルトでは ' 演算子は trident' 名前空間に配置されます'trident' 名前空間が存在しない場合は ' 次のマニフェストを使用して名前空間を作成します
+
++
+[listing]
+----
+$ kubectl apply -f deploy/namespace.yaml
+----
+
+
+. デフォルトの 'trident` 名前空間以外の名前空間に演算子を配備するには '`erviceaccount.yaml 'clusterrolebinding.yaml ' および `operator.yML' マニフェストを更新し 'bundle.yaml を生成する必要があります
++
+次のコマンドを実行して YAML マニフェストを更新し、「 customizization.yaml 」を使用して「 bundle.yaml 」を生成します。
+
++
+[listing]
+----
+kubectl kustomize deploy/ > deploy/bundle.yaml
+----
++
+次のコマンドを実行してリソースを作成し、オペレータを配置します。
+
++
+[listing]
+----
+kubectl create -f deploy/bundle.yaml
+----
+. 展開後にオペレータのステータスを確認するには、次の手順を実行します。
++
+[listing]
+----
+$ kubectl get deployment -n <operator-namespace>
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+trident-operator   1/1     1            1           3m
+
+$ kubectl get pods -n <operator-namespace>
+NAME                              READY   STATUS             RESTARTS   AGE
+trident-operator-54cb664d-lnjxh   1/1     Running            0          3m
+----
+
+
+オペレータによる導入で、クラスタ内のいずれかのワーカーノードで実行されるポッドが正常に作成されます。
+
+
+IMPORTANT: Kubernetes クラスタには、オペレータのインスタンスが * 1 つしか存在しないようにしてください。Trident のオペレータが複数の環境を構築することは避けてください。
+
+
+
+=== 手順 3 ： Trident をインストールする
+
+これで、オペレータを使って Astra Trident をインストールする準備ができました。これには 'TridentOrchestrator を作成する必要がありますTrident インストーラには 'TridentOrchestrator を作成するための定義例が付属していますこれは 'trident' 名前空間にインストールされます
+
+[listing]
+----
+$ kubectl create -f deploy/crds/tridentorchestrator_cr.yaml
+tridentorchestrator.trident.netapp.io/trident created
+
+$ kubectl describe torc trident
+Name:        trident
+Namespace:
+Labels:      <none>
+Annotations: <none>
+API Version: trident.netapp.io/v1
+Kind:        TridentOrchestrator
+...
+Spec:
+  Debug:     true
+  Namespace: trident
+Status:
+  Current Installation Params:
+    IPv6:                      false
+    Autosupport Hostname:
+    Autosupport Image:         netapp/trident-autosupport:21.04
+    Autosupport Proxy:
+    Autosupport Serial Number:
+    Debug:                     true
+    Enable Node Prep:          false
+    Image Pull Secrets:
+    Image Registry:
+    k8sTimeout:           30
+    Kubelet Dir:          /var/lib/kubelet
+    Log Format:           text
+    Silence Autosupport:  false
+    Trident Image:        netapp/trident:21.04.0
+  Message:                  Trident installed  Namespace:                trident
+  Status:                   Installed
+  Version:                  v21.04.0
+Events:
+    Type Reason Age From Message ---- ------ ---- ---- -------Normal
+    Installing 74s trident-operator.netapp.io Installing Trident Normal
+    Installed 67s trident-operator.netapp.io Trident installed
+----
+Trident オペレータは 'TridentOrchestrator 仕様の属性を使用して 'Astra Trident のインストール方法をカスタマイズできますを参照してください link:kubernetes-customize-deploy.html["Trident の導入をカスタマイズ"^]。
+
+「 TridentOrchestrator 」のステータスは、インストールが成功したかどうかを示し、インストールされている Trident のバージョンを表示します。
+
+[cols="2"]
+|===
+| ステータス | 説明 
+
+
+| インストール中です | オペレータは、この「 TridentOrchestrator 」 CR を使用して Astra Trident をインストールしています。 
+
+
+| インストール済み | Astra Trident のインストールが完了しました。 
+
+
+| アンインストール中です | オペレータは 'stra Trident をアンインストールしていますこれは 'pec.uninstall=true だからです 
+
+
+| アンインストール済み | Astra Trident がアンインストールされました。 
+
+
+| 失敗しました | オペレータは Astra Trident をインストール、パッチ適用、更新、またはアンインストールできませんでした。オペレータはこの状態からのリカバリを自動的に試みます。この状態が解消されない場合は、トラブルシューティングが必要です。 
+
+
+| 更新中です | オペレータが既存のインストールを更新しています。 
+
+
+| エラー | 「 TridentOrchestrator 」は使用されません。別のファイルがすでに存在します。 
+|===
+インストール中に 'TridentOrchestrator のステータスが Installing から Installed に変わります「失敗」ステータスが表示され、オペレータが自身で回復できない場合は、オペレータのログを確認する必要があります。を参照してください link:../troubleshooting.html["トラブルシューティング"^] セクション。
+
+Astra Trident のインストールが完了しているかどうかを確認するには、作成したポッドを確認します。
+
+[listing]
+----
+$ kubectl get pod -n trident
+NAME                                READY   STATUS    RESTARTS   AGE
+trident-csi-7d466bf5c7-v4cpw        5/5     Running   0           1m
+trident-csi-mr6zc                   2/2     Running   0           1m
+trident-csi-xrp7w                   2/2     Running   0           1m
+trident-csi-zh2jt                   2/2     Running   0           1m
+trident-operator-766f7b8658-ldzsv   1/1     Running   0           3m
+----
+また 'tridentctl を使用して 'Astra Trident のバージョンを確認することもできます
+
+[listing]
+----
+$ ./tridentctl -n trident version
++----------------+----------------+
+| SERVER VERSION | CLIENT VERSION |
++----------------+----------------+
+| 21.04.0        | 21.04.0        |
++----------------+----------------+
+----
+これで、バックエンドを作成できます。を参照してください link:kubernetes-postdeployment.html["導入後のタスク"^]。
+
+
+TIP: 導入時の問題のトラブルシューティングについては、を参照してください link:../troubleshooting.html["トラブルシューティング"^] セクション。

@@ -1,0 +1,101 @@
+---
+sidebar: sidebar 
+permalink: trident-docker/prereqs-docker.html 
+keywords: deploy, astra trident, docker, trident for docker, nfs, iscsi, protcol, nfs protocol, iscsi protocol, configure host, host config 
+summary: Trident を導入するには、必要なプロトコルをホストにインストールして設定しておく必要があります。 
+---
+= 導入の前提条件
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Trident を導入するには、必要なプロトコルをホストにインストールして設定しておく必要があります。
+
+* の導入がすべてを満たしていることを確認します link:../trident-get-started/requirements.html["要件"^]。
+* サポートされているバージョンの Docker がインストールされていることを確認します。Docker のバージョンが最新でない場合は、 https://docs.docker.com/engine/install/["インストールまたは更新します"^]。
+
+
+[listing]
+----
+docker --version
+----
+* プロトコルの前提条件がホストにインストールされ、設定されていることを確認します。
+
+
+[cols="3*"]
+|===
+| プロトコル | オペレーティングシステム | コマンド 
+
+
+| NFS  a| 
+RHEL/CentOS
+ a| 
+'sudo yum install -y nfs-utils'
+
+
+
+| NFS  a| 
+Ubuntu / Debian
+ a| 
+'UDO apt-get install-y nfs-common
+
+
+
+| iSCSI  a| 
+RHEL/CentOS
+ a| 
+. 次のシステムパッケージをインストールします。
++
+'sudo yum install -y lsscsi iscsi-initiator-utils SG3_utils device-mapper-multipath`
+
+. マルチパスデーモンを開始します。
++
+'UDO mpathconf--enable--with _multipathd y
+
+. 「 iscsid 」と「 multipathd 」が有効で、実行中であることを確認します。
++
+'sudo systemctl enable iscsid multipathd `sudo systemctl start iscsid multipathd
+
+. iSCSI ターゲットを検出します。
++
+'UDO iscsiadm -m discoverydb -t st -p <data_lif_ip>--discover `
+
+. 検出された iSCSI ターゲットにログインします。
++
+'UDO iscsiadm -m node -p <data_lif_ip>-- login
+
+. 'iSCSI' を有効にして開始します
++
+'UDO systemctl enable iscsi `sudo systemctl start iSCSI
+
+
+
+
+
+| iSCSI  a| 
+Ubuntu / Debian
+ a| 
+. 次のシステムパッケージをインストールします。
++
+'UDO apt-get install-y open-iscsi lsscsi SG3-utils multipath-tools scsitools'
+
+. マルチパスを有効化：
++
+'sudo tee//etc/multipath.conf <-'EOF' defaults ｛ user_friendy_names yes find _multipaths yes ｝ EOF sudo service multipath-tools restart`
+
+. 「 iscsid 」と「 multipathd 」が実行されていることを確認します。
++
+'sudo service open-iscsi start sudo service multipath-tools start
+
+. iSCSI ターゲットを検出します。
++
+'UDO iscsiadm -m discoverydb -t st -p <data_lif_ip>--discover `
+
+. 検出された iSCSI ターゲットにログインします。
++
+'UDO iscsiadm -m node -p <data_lif_ip>-- login
+
+
+
+|===

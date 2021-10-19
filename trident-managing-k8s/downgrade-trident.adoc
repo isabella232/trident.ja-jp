@@ -1,0 +1,165 @@
+---
+sidebar: sidebar 
+permalink: trident-managing-k8s/downgrade-trident.html 
+keywords: downgrade, astra trident, methods, operator, tridentctl, helm 
+summary: 旧バージョンの Astra Trident にダウングレードする手順をご確認ください。 
+---
+= Trident をダウングレード
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+旧バージョンの Astra Trident にダウングレードする手順をご確認ください。
+
+次のような理由でダウングレードを検討してください。
+
+* 危機管理計画
+* アップグレードの結果として見つかったバグの即時修正
+* 依存関係の問題、失敗したアップグレード、および不完全なアップグレード
+
+
+
+
+== ダウングレードするタイミング
+
+CRD を使用する Astra Trident リリースに移行する場合は、ダウングレードを検討する必要があります。Astra Trident は現在、ステートを維持するために CRD を使用するため、作成されたすべてのストレージエンティティ（バックエンド、ストレージクラス、 PV 、ボリュームスナップショット）には、「 trident PV 」（以前にインストールされた Astra Trident のバージョンで使用）に書き込まれたデータではなく、関連する CRD オブジェクトがあります。新しく作成された PVS 、バックエンド、およびストレージクラスはすべて CRD オブジェクトとして管理されます。ダウングレードが必要な場合は、 CRD （ 19.07 以降）を使用して実行されている Astra Trident のバージョンに対してのみ実行してください。これは、ダウングレードの実行後に、現在の Astra Trident リリースで実行されたすべての処理が認識されるようにするためです。
+
+
+
+== ダウングレードしない場合
+
+「 etcd」 を使用して状態を維持する Trident のリリース（ 19.04 以前）にダウングレードしないでください。現在の Astra Trident リリースで実行したすべての処理は、ダウングレード後に反映されません。以前のバージョンに戻す場合、新しく作成した PVS は使用できません。バックエンド、 PVS 、ストレージクラス、ボリューム Snapshot （作成 / 更新 / 削除）などのオブジェクトに加えられた変更は、以前のバージョンに戻すと Astra Trident には表示されません。以前のバージョンに戻しても、アップグレードされていないかぎり、以前のリリースを使用してすでに作成された PVS へのアクセスは中断されません。
+
+
+
+== Operator を使用して Astra Trident をインストールする場合のダウングレードプロセス
+
+Trident Operator を使用したインストールでは ' ダウングレード・プロセスは異なり 'tridentctl を使用する必要はありません
+
+Trident オペレータを使用してインストールを完了した場合は、 Astra Trident を次のいずれかにダウングレードできます。
+
+* 名前空間を対象とした演算子（ 20.07-2010 ）を使用してインストールされるバージョン。
+* クラスタを対象とした演算子（ 21.01 以降）を使用してインストールされるバージョン。
+
+
+
+
+=== クラスタを対象とした演算子にダウングレードします
+
+Astra Trident を、クラスタを対象としたオペレータを使用するリリースにダウングレードするには、次の手順に従います。
+
+.手順
+. link:uninstall-trident.html["Astra Trident をアンインストール"^]。** 既存のインストールを完全に削除する場合を除き、 CRD を削除しないでください。 **
+. クラスタを対象とした演算子を削除します。これを行うには、オペレータを配置するために使用するマニフェストが必要です。から入手できます https://github.com/NetApp/trident/blob/stable/v21.07/deploy/bundle.yaml["Trident GitHub repo"^]。必要なブランチに切り替えていることを確認してください。
+. 必要なバージョンの Astra Trident をインストールして、ダウングレードを続行します。目的のリリースのマニュアルに従ってください。
+
+
+
+
+=== 名前空間を対象とした演算子にダウングレードします
+
+このセクションでは、名前空間を対象とした演算子を使用してインストールされる、 20.07 ～ 20.10 の範囲の Astra Trident リリースへのダウングレード手順を要約します。
+
+.手順
+. link:uninstall-trident.html["Astra Trident をアンインストール"^]。** 既存のインストールを完全に削除する場合を除き、 CRD を削除しないでください。 ** 「 tridentオーケストラ 」が削除されていることを確認してください。
++
+[listing]
+----
+#Check to see if there are any tridentorchestrators present
+$ kubectl get torc
+NAME        AGE
+trident     20h
+
+#Looks like there is a tridentorchestrator that needs deleting
+$ kubectl delete torc trident
+tridentorchestrator.trident.netapp.io "trident" deleted
+----
+. クラスタを対象とした演算子を削除します。これを行うには、オペレータを配置するために使用するマニフェストが必要です。このファイルは、から入手できます https://github.com/NetApp/trident/blob/stable/v21.07/deploy/bundle.yaml["Trident GitHub repo"^]。必要なブランチに切り替えていることを確認してください。
+. 「 tridentオーケストラ 」の「 CRD 」を削除します。
++
+[listing]
+----
+#Check to see if ``tridentorchestrators.trident.netapp.io`` CRD is present and delete it.
+$ kubectl get crd tridentorchestrators.trident.netapp.io
+NAME                                     CREATED AT
+tridentorchestrators.trident.netapp.io   2021-01-21T21:11:37Z
+$ kubectl delete crd tridentorchestrators.trident.netapp.io
+customresourcedefinition.apiextensions.k8s.io "tridentorchestrators.trident.netapp.io" deleted
+----
++
+Astra Trident がアンインストールされました。
+
+. 目的のバージョンをインストールしてダウングレードを続行します。目的のリリースのマニュアルに従ってください。
+
+
+
+
+=== Helm を使用してダウングレードしてください
+
+ダウングレードするには 'helm rollback コマンドを使用します次の例を参照してください。
+
+[listing]
+----
+$ helm rollback trident [revision #]
+----
+
+
+== Trident が tridentctl を使用してインストールされている場合のダウングレードプロセス
+
+tridentctl を使用して Astra Trident をインストールした場合、ダウングレードプロセスでは次の手順を実行します。このシーケンスに従って、 Astra Trident 21.07 から 20.07 に移行するためのダウングレードプロセスを順を追って説明します。
+
+
+NOTE: ダウングレードを開始する前に、 Kubernetes クラスタの「 etcd」 のスナップショットを作成する必要があります。これにより、 Astra Trident の CRD の現在の状態をバックアップできます。
+
+.手順
+. Trident が tridentctl を使用してインストールされていることを確認しますAstra Trident のインストール方法がわからない場合は、次の簡単なテストを実行してください。
++
+.. Trident ネームスペースにあるポッドを表示します。
+.. クラスタで実行されている Astra Trident のバージョンを特定します。tridentctl を使用するか、 Trident ポッドで使用されるイメージを見ることができます。
+.. 「 tridentOrchestrator 」、 ( または ) 「 tridentProvisioner` 」、 ( または ) 「 trident-operator-xxxxxxxxx-xxxxx 」という名前のポッドが表示されない場合、 Astra Trident * は「 tridentctl 」を使用してインストールされます。
+
+
+. 既存の tridentctl バイナリを使用して Astra Trident をアンインストールしますこの場合は、 21.07 バイナリを使用してアンインストールします。
++
+[listing]
+----
+$ tridentctl version -n trident
++----------------+----------------+
+| SERVER VERSION | CLIENT VERSION |
++----------------+----------------+
+| 21.07.0        | 21.07.0        |
++----------------+----------------+
+
+$ tridentctl uninstall -n trident
+INFO Deleted Trident deployment.
+INFO Deleted Trident daemonset.
+INFO Deleted Trident service.
+INFO Deleted Trident secret.
+INFO Deleted cluster role binding.
+INFO Deleted cluster role.
+INFO Deleted service account.
+INFO Deleted pod security policy.                  podSecurityPolicy=tridentpods
+INFO The uninstaller did not delete Trident's namespace in case it is going to be reused.
+INFO Trident uninstallation succeeded.
+----
+. これが完了したら、希望するバージョンの Trident バイナリ（この例では 20.07 ）を取得し、 Astra Trident のインストールに使用します。のカスタム YAML を生成できます link:../trident-deploy-k8s/kubernetes-customize-deploy-tridentctl.html["カスタマイズされたインストール"^] 必要に応じて、
++
+[listing]
+----
+$ cd 20.07/trident-installer/
+$ ./tridentctl install -n trident-ns
+INFO Created installer service account.            serviceaccount=trident-installer
+INFO Created installer cluster role.               clusterrole=trident-installer
+INFO Created installer cluster role binding.       clusterrolebinding=trident-installer
+INFO Created installer configmap.                  configmap=trident-installer
+...
+...
+INFO Deleted installer cluster role binding.
+INFO Deleted installer cluster role.
+INFO Deleted installer service account.
+----
++
+ダウングレードプロセスが完了します。
+
+

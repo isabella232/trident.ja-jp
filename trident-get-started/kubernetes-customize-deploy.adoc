@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: trident-get-started/kubernetes-customize-deploy.html 
+keywords: deploy, trident, methods, operator, tridentctl, helm, attributes, customize, tridentorchestrator 
+summary: Trident オペレータは 'TridentOrchestrator 仕様の属性を使用して 'Astra Trident のインストール方法をカスタマイズできます 
+---
+= Trident オペレータの環境をカスタマイズ
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Trident オペレータは 'TridentOrchestrator 仕様の属性を使用して 'Astra Trident のインストール方法をカスタマイズできます
+
+属性のリストについては、次の表を参照してください。
+
+[cols="3"]
+|===
+| パラメータ | 説明 | デフォルト 
+
+
+| 「 namespace 」を参照してください | Astra Trident をインストールするネームスペース | デフォルト 
+
+
+| 「バグ」 | Astra Trident のデバッグを有効にします | いいえ 
+
+
+| 「 IPv6 を使用」 | IPv6 経由の Astra Trident をインストール | いいえ 
+
+
+| k8sTimeout | Kubernetes 処理のタイムアウト | 30 秒 
+
+
+| 'ilenceAutosupport | AutoSupport バンドルをネットアップに自動的に送信しない | いいえ 
+
+
+| enableNodePrep | ワーカーノードの依存関係を自動的に管理（ * beta * ） | いいえ 
+
+
+| 「 autosupportImage 」を参照してください | AutoSupport テレメトリのコンテナイメージ | 「 NetApp/trident-autosupport ： 21.04.0 」 
+
+
+| 「 autosupportProxy 」と入力します | AutoSupport テレメトリを送信するプロキシのアドレス / ポート | "http://proxy.example.com:8888"[] 
+
+
+| uninstall | Astra Trident のアンインストールに使用するフラグ | いいえ 
+
+
+| 「 logFormat 」 | Astra Trident のログ形式が使用 [text 、 JSON] | テキスト（ Text ） 
+
+
+| 「 tridentImage 」のように入力します | インストールする Astra Trident イメージ | 「 NetApp / Trident ： 21.04 」 
+
+
+| 「 imageRegistry 」と入力します | 内部レジストリへのパス。形式は「 <registry fqdn>[:port][/ssubpath]] 」です | "k83.gcr.io/sig-storage (k8s 1.17+) または Qua.io/k8scsi" 
+
+
+| 「 kubeletDir 」を参照してください | ホスト上の kubelet ディレクトリへのパス | 「 /var/lib/kubelet 」 
+
+
+| 「 wippeout 」 | Astra Trident を完全に削除するために削除するリソースのリスト |  
+
+
+| 「 imagePullSecrets 」 | 内部レジストリからイメージをプルするシークレット |  
+|===
+
+IMPORTANT: 「 TridentOrchestrator 」では、どのネームスペース Astra Trident がにインストールされているかを示すために pec.namespace` が指定されています。このパラメータ * は、 Astra Trident のインストール後に更新できません * 。これを実行すると、「 TridentOrchestrator 」のステータスが「 Failed 」に変わります。Astra Trident は、ネームスペース間での移行を意図したものではありません。
+
+
+NOTE: 自動ワーカーノードの前処理は、非本番環境でのみ使用することを目的とした * ベータ機能です。
+
+「 TridentOrchestrator 」を定義するときに上記の属性を使用して、インストールをカスタマイズできます。次に例を示します。
+
+[listing]
+----
+$ cat deploy/crds/tridentorchestrator_cr_imagepullsecrets.yaml
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  tridentImage: netapp/trident:21.04.0
+  imagePullSecrets:
+  - thisisasecret
+----
+「 TridentOrchestrator 」引数で許可される範囲を超えてインストールをカスタマイズする場合は、「 tridentctl 」を使用して必要に応じて変更できるカスタム YAML マニフェストを生成することを検討してください。

@@ -1,0 +1,82 @@
+---
+sidebar: sidebar 
+permalink: trident-rn.html 
+keywords: what's new, new features, enhancements, known issues, resolved issues, troubleshooting 
+summary: ネットアップは、製品やサービスの改善と強化を継続的に行っています。最新バージョンの Astra Trident の機能、拡張機能、バグ修正の一部を以下に示します。 
+---
+= リリースノート
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+リリースノートでは、最新バージョンの Astra Trident の新機能、拡張機能、およびバグ修正に関する情報を提供しています。
+
+
+
+== 新機能
+
+ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能を以下に示します。
+
+
+
+=== Astra Trident 21.07.02
+
+* XFS ボリュームのクローンをソースボリュームと同じノードにマウントできない固定問題です。
+
+
+
+
+==== 拡張機能
+
+* Kubernetes 1.22 のサポートが追加されました。
+* Trident の operator と Helm チャートを Kubernetes 1.22 で使用できるようにしました。
+
+
+を参照してください https://github.com/NetApp/trident/releases["Astra Trident GitHub"^] を参照してください。
+
+
+
+=== Astra Trident 21.07.01
+
+* 画像が異なる固定カスタム YAML インストーラ問題。
+* スナップショット・サイズの固定計算問題。
+
+
+を参照してください https://github.com/NetApp/trident/releases/tag/v21.07.1["Astra Trident GitHub"^] を参照してください。
+
+
+
+=== Astra Trident 21.07
+
+Astra Trident 21.07.0 は * ダウンロードできません * 。バージョン 21.07.0 の「 napshotReserve 」に変更を加えると、 CSI の「 VolumeSnapshots 」が PersistentVolumeClaim の作成に使用できなくなる可能性があります。
+
+すでにバージョン 21.07.0 にアップグレードしている場合は、新しく作成した「 VolumeSnapshots 」（バージョン 21.07.0 でプロビジョニング）を削除して、以前のリリースにダウングレードすることをお勧めします。
+
+を参照してください https://github.com/NetApp/trident/releases/tag/v21.07.0["Astra Trident GitHub"^] を参照してください。
+
+
+
+== 既知の問題
+
+ここでは、本製品の正常な使用を妨げる可能性のある既知の問題について記載します。
+
+* Astra Trident は ' ストレージクラスに fsType が指定されていないボリュームに対して ' ブランクの fsType( `fsType="") を適用するようになりましたKubernetes 1.17 以降を使用する場合、 Trident は NFS ボリュームに空の「 fsType 」を提供できます。iSCSI ボリュームの場合 ' セキュリティコンテキストを使用して fsGroup を実行するときに 'fsType' を StorageClass 上に設定する必要があります
+* 複数の Astra Trident インスタンス間でバックエンドを使用する場合、各バックエンド構成ファイルの ONTAP バックエンドに異なる「 toragePrefix 」値を指定するか、 SolidFire バックエンドに異なる「 tenantname 」を使用する必要があります。Astra Trident は、 Astra Trident の他のインスタンスが作成したボリュームを検出できません。ONTAP または SolidFire バックエンドに既存のボリュームを作成しようとすると成功します。 Astra Trident は、ボリューム作成をべき等の操作として扱います。「 toragePrefix 」または「 tenantname 」が異なる場合は、同じバックエンド上に作成されたボリュームに名前の衝突が発生する可能性があります。
+* Astra Trident をインストールするときに (tridentctl または Trident Operator を使用 ) 、 tridentctl を使用して Astra Trident を管理するときは、「 KUBECONFIG 」環境変数が設定されていることを確認する必要があります。これは 'tridentctl が機能するべき Kubernetes クラスタを示すために必要です複数の Kubernetes 環境で作業する場合は、「 KBECONFIG 」ファイルが正確にソースされていることを確認する必要があります。
+* iSCSI PVS のオンラインスペース再生を実行するには、作業者ノード上の基盤となる OS がボリュームにマウントオプションを渡す必要があります。これは、「 discard 」を必要とする RHEL/RedHat CoreOS インスタンスに当てはまります https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_file_systems/discarding-unused-blocks_managing-file-systems["マウントオプション"^]; discard mountOption がに含まれていることを確認します オンラインブロックの破棄をサポートするため。
+* Kubernetes クラスタごとに複数の Astra Trident インスタンスがある場合、 Astra Trident は他のインスタンスと通信できず、作成した他のボリュームを検出できません。そのため、 1 つのクラスタ内で複数のインスタンスを実行している場合、予期しない動作が発生したり、誤ったりすることがあります。Kubernetes クラスタごとに Trident のインスタンスが 1 つだけ必要です。
+* Trident がオフラインのときに Astra Trident ベースの「 torageClass 」オブジェクトが Kubernetes から削除された場合、 Astra Trident は、対応するストレージクラスをオンラインに戻ってもデータベースから削除しません。これらのストレージクラスは、「 tridentctl 」または REST API を使用して削除してください。
+* 対応する PVC を削除する前に Astra Trident によってプロビジョニングされた PV を削除しても、 Astra Trident は自動的に元のボリュームを削除しません。tridentctl または REST API を使用してボリュームを削除してください。
+* FlexGroup では、プロビジョニング要求ごとに一意のアグリゲートセットがないかぎり、同時に複数の ONTAP をプロビジョニングすることはできません。
+* IPv6 経由で Astra Trident を使用する場合は、バックエンド定義内の角かっこ内に「 managementlif 」と「 datalif 」を指定する必要があります。例えば、「 [fd20 ： 8b1e ： b258 ： 2000 ： f816 ： 3eff ： feec ： 0]`` 」のようになります。
+* OpenShift 4.5 で「 olidfire-san 」ドライバを使用する場合は、基になるワーカーノードが CHAP 認証アルゴリズムとして MD5 を使用していることを確認します。
+
+
+
+
+== 詳細については、こちらをご覧ください
+
+* https://github.com/NetApp/trident["Astra Trident GitHub"^]
+* https://netapp.io/persistent-storage-provisioner-for-kubernetes/["Astra Trident のブログ"^]
+

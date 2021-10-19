@@ -1,0 +1,82 @@
+---
+sidebar:
+  entries:
+  - title: Astra Trident のドキュメント
+    url: "/index.html"
+  - title: リリースノート
+    url: "/trident-rn.html"
+  - section: trident-concepts
+  - section: trident-get-started
+  - section: trident-managing-k8s
+  - section: trident-use
+  - section: trident-docker
+  - title: よくある質問です
+    url: "/faq.html"
+  - title: サポート
+    url: "/get-help.html"
+  - title: トラブルシューティング
+    url: "/troubleshooting.html"
+  - section: trident-reco
+  - section: trident-reference
+  - title: 以前のバージョン
+    url: "/earlier-versions.html"
+  - title: 法的通知
+    url: "/legal.html"
+homepage:
+  tiles:
+  - title: はじめに
+    links:
+    - title: Astra Trident の概要
+      url: "/trident-concepts/intro.html"
+    - title: Astra Trident の要件
+      url: "/trident-get-started/requirements.html"
+    - title: 新機能
+      url: trident-rn.html
+    - title: ぜひお試しください
+      url: "/trident-get-started/quickstart.html"
+    - title: よく寄せられる質問
+      url: "/faq.html"
+  - title: Astra Trident を導入
+    links:
+    - title: Trident オペレータとともに導入
+      url: "/trident-get-started/kubernetes-deploy-operator.html"
+    - title: tridentctl を使用して導入します
+      url: "/trident-get-started/kubernetes-deploy-tridentctl.html"
+    - title: Astra Trident for Docker を導入
+      url: "/trident-docker/deploy-docker.html"
+  - title: Astra Trident をアップグレード
+    links:
+    - title: Trident のオペレータにアップグレード
+      url: "/trident-managing-k8s/upgrade-operator.html"
+    - title: tridentctl を使用してアップグレードします
+      url: "/trident-managing-k8s/upgrade-tridentctl.html"
+  - title: Astra Trident を使用
+    links:
+    - title: バックエンドを設定
+      url: "/trident-use/backends.html"
+    - title: kubectl を使用してバックエンドを作成します
+      url: "/trident-use/backend-kubectl.html"
+    - title: バックエンド管理オプション間を移動します
+      url: "/trident-use/backend_options.html"
+    - title: ストレージクラスを管理する
+      url: "/trident-use/manage-stor-class.html"
+    - title: ボリューム操作を実行する
+      url: "/trident-use/vol-operations.html"
+    - title: Astra Trident を監視
+      url: "/trident-use/monitor-trident.html"
+  - title: デモチュートリアル
+    links:
+    - title: Astra Trident のビデオ
+      url: https://tv.netapp.com/detail/video/5995831475001/using-trident-with-kubernetes
+  - title: ブログコミュニティ
+    links:
+    - title: Astra ブログ
+      url: https://cloud.netapp.com/blog/topic/astra
+    - title: Astra Trident のブログ
+      url: https://netapp.io/persistent-storage-provisioner-for-kubernetes/
+    - title: Kubernetes ハブ
+      url: https://cloud.netapp.com/kubernetes-hub
+    - title: netapp.io のコマンドです
+      url: https://netapp.io/
+    - title: たるみ
+      url: https://netapppub.slack.com/

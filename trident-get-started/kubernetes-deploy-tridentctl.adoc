@@ -1,0 +1,131 @@
+---
+sidebar: sidebar 
+permalink: trident-get-started/kubernetes-deploy-tridentctl.html 
+keywords: deploy, astra trident, methods, tridentctl 
+summary: tridentctl を使用して Astra Trident を導入できます。 
+---
+= <code>tridentctl</code> で展開します
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+tridentctl を使用して Astra Trident を導入できます。
+
+
+TIP: をまだ理解していない場合は、を参照してください link:../trident-concepts/intro.html["基本概念"^]今こそ、そのための絶好の機会です。
+
+
+TIP: 展開をカスタマイズするには、を参照してください link:kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"^]。
+
+Astra Trident を導入するには、次の前提条件を満たしている必要があります。
+
+* サポート対象の Kubernetes クラスタに対するすべての権限が必要です。
+* サポートされているネットアップストレージシステムを利用できるようにしておきます。
+* すべての Kubernetes ワーカーノードからボリュームをマウントできます。
+* 使用する Kubernetes クラスタを管理するために 'kubectl( OpenShift を使用している場合は 'OC) をインストールして構成した Linux ホストがあります
+* 「 KUBECONFIG 」環境変数を、 Kubernetes クラスタ構成を指すように設定しておきます。
+* を有効にしておきます link:requirements.html["Astra Trident に必要な機能ゲート"^]。
+* Kubernetes と Docker Enterprise を併用する場合は、 https://docs.docker.com/ee/ucp/user-access/cli/["CLI へのアクセスを有効にする手順は、ユーザが行ってください"^]。
+
+
+それはすべてですか？最高！それでは始めましょう。
+
+
+TIP: 導入環境のカスタマイズについては、を参照してください link:kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"^]。
+
+
+
+== ステップ 1 ： Kubernetes クラスタを確認する
+
+まず、 Linux ホストにログインして、 _working _ 、 link:requirements.html["サポートされる Kubernetes クラスタ"^] に必要な権限があることを確認します。
+
+
+NOTE: OpenShift では、以降のすべての例で「 kubectl 」の代わりに「 OC 」を使用します。まず、「 OC login-u SYSTEM ： admin 」または「 OC login-u kube-admin 」を実行して、「 admin 」としてログインする必要があります。
+
+Kubernetes のバージョンを確認するには、次のコマンドを実行します。
+
+[listing]
+----
+kubectl version
+----
+Kubernetes クラスタ管理者の権限があるかどうかを確認するには、次のコマンドを実行します。
+
+[listing]
+----
+kubectl auth can-i '*' '*' --all-namespaces
+----
+Docker Hub のイメージを使用してポッドを起動し、ポッドネットワーク経由でストレージシステムにアクセスできるかどうかを確認するには、次のコマンドを実行します。
+
+[listing]
+----
+kubectl run -i --tty ping --image=busybox --restart=Never --rm -- \
+  ping <management IP>
+----
+Kubernetes サーバのバージョンを確認します。このポートは、 Astra Trident のインストール時に使用します。
+
+
+
+== 手順 2 ：インストーラをダウンロードして展開します
+
+
+NOTE: Trident インストーラは Trident ポッドを作成し、そのステートを維持するために使用される CRD オブジェクトを構成し、プロビジョニングやクラスタホストへのボリュームの接続などのアクションを実行する CSI サイドカーを初期化します。
+
+の最新バージョンをダウンロードできます https://github.com/NetApp/trident/releases/latest["Trident インストーラバンドル"^] _Downloads_section から ' 抽出します
+
+たとえば、最新バージョンが 21.07.1 の場合は、次のようになります。
+
+[listing]
+----
+wget https://github.com/NetApp/trident/releases/download/v21.07.1/trident-installer-21.07.1.tar.gz
+tar -xf trident-installer-21.07.1.tar.gz
+cd trident-installer
+----
+
+
+== 手順 3 ： Astra Trident をインストールする
+
+tridentctl install コマンドを実行して 'Astra Trident を目的の名前空間にインストールします
+
+[listing]
+----
+$ ./tridentctl install -n trident
+....
+INFO Starting Trident installation.                namespace=trident
+INFO Created service account.
+INFO Created cluster role.
+INFO Created cluster role binding.
+INFO Added finalizers to custom resource definitions.
+INFO Created Trident service.
+INFO Created Trident secret.
+INFO Created Trident deployment.
+INFO Created Trident daemonset.
+INFO Waiting for Trident pod to start.
+INFO Trident pod started.                          namespace=trident pod=trident-csi-679648bd45-cv2mx
+INFO Waiting for Trident REST interface.
+INFO Trident REST interface is up.                 version=21.07.1
+INFO Trident installation succeeded.
+....
+----
+インストーラが完了すると、次のように表示されます。Kubernetes クラスタ内のノードの数によっては、ポッドをさらに確認することもできます。
+
+[listing]
+----
+$ kubectl get pod -n trident
+NAME                           READY   STATUS    RESTARTS   AGE
+trident-csi-679648bd45-cv2mx   4/4     Running   0          5m29s
+trident-csi-vgc8n              2/2     Running   0          5m29s
+
+$ ./tridentctl -n trident version
++----------------+----------------+
+| SERVER VERSION | CLIENT VERSION |
++----------------+----------------+
+| 21.07.1        | 21.07.1        |
++----------------+----------------+
+----
+上記の例のような出力が表示された場合、この手順は完了していますが、 Astra Trident の設定はまだ完了していません。次の手順に進みます。を参照してください link:kubernetes-postdeployment.html["導入後のタスク"^]。
+
+ただし、インストーラが正常に完了しなかった場合、または * running * trident-csi-< generated id> が表示されない場合は、プラットフォームがインストールされていません。
+
+
+TIP: 導入時の問題のトラブルシューティングについては、を参照してください link:../troubleshooting.html["トラブルシューティング"^] セクション。

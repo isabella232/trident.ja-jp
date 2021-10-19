@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: trident-docker/collect-logs-docker.html 
+keywords: deploy, astra trident, trident for docker, docker, logs, binary, managed plugin 
+summary: トラブルシューティングに役立つログを収集できます。ログの収集方法は、 Docker プラグインの実行方法によって異なります。 
+---
+= ログを収集します
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+トラブルシューティングに役立つログを収集できます。ログの収集方法は、 Docker プラグインの実行方法によって異なります。
+
+.手順
+. 推奨されるマネージプラグインメソッド (`d Occker plugin` コマンドを使用 ) を使用して Astra Trident を実行している場合は、次のように表示します。
++
+[listing]
+----
+# docker plugin ls
+ID                  NAME                DESCRIPTION                          ENABLED
+4fb97d2b956b        netapp:latest       nDVP - NetApp Docker Volume Plugin   false
+# journalctl -u docker | grep 4fb97d2b956b
+----
++
+標準的なロギングレベルでは、ほとんどの問題を診断できます。十分でない場合は、デバッグロギングをイネーブルにできます。
+
+. デバッグロギングをイネーブルにするには、デバッグロギングをイネーブルにしてプラグインをインストールします。
++
+[listing]
+----
+docker plugin install netapp/trident-plugin:<version> --alias <alias> debug=true
+----
++
+または、プラグインがすでにインストールされている場合にデバッグログを有効にします。
+
++
+[listing]
+----
+docker plugin disable <plugin>
+docker plugin set <plugin> debug=true
+docker plugin enable <plugin>
+----
+. ホストでバイナリ自体を実行している場合、ログはホストの「 /var/log/netappdvp 」ディレクトリにあります。デバッグ・ロギングを有効にするには ' プラグインの実行時に -debug を指定します
+
+
+
+
+=== 一般的なトラブルシューティングのヒント
+
+* 新しいユーザーが実行する最も一般的な問題は、プラグインの初期化を妨げる構成ミスです。この場合、プラグインをインストールまたは有効にしようとすると、次のようなメッセージが表示されることがあります。
++
+「デーモンからのエラー応答 : ダイヤル UNIM/run/docx/plugins/<id>/NetApp/smock: connect: no such file or directory`
+
++
+これは、プラグインの起動に失敗したことを意味します。幸い、このプラグインには、発生する可能性の高い問題のほとんどを診断するのに役立つ包括的なログ機能が組み込まれています。
+
+* コンテナへの PV のマウントに問題がある場合は 'rpcbind' がインストールされていて実行されていることを確認してくださいホスト OS に必要なパッケージ・マネージャを使用して 'rpcbind' が実行されているかどうかを確認しますrpcbind サービスのステータスは 'systemctl ステータス rpcbind またはそれに相当する処理を実行することで確認できます
+

@@ -1,0 +1,58 @@
+---
+section: trident-backend
+title: Astra Trident を使用
+entries:
+- title: バックエンドを設定
+  url: "/trident-use/backends.html"
+  entries:
+  - title: ANF バックエンドを設定します
+    url: "/trident-use/anf.html"
+  - title: CVS for AWS バックエンドを設定する
+    url: "/trident-use/aws.html"
+  - title: CVS for Google Cloud を設定する
+    url: "/trident-use/gcp.html"
+  - title: NetApp HCI または SolidFire バックエンドを設定します
+    url: "/trident-use/element.html"
+  - title: バックエンドに ONTAP SAN ドライバを設定します
+    url: "/trident-use/ontap-san.html"
+    entries:
+    - title: 準備
+      url: "/trident-use/ontap-san-prep.html"
+    - title: 設定オプションと例
+      url: "/trident-use/ontap-san-examples.html"
+  - title: バックエンドに ONTAP NAS ドライバを設定します
+    url: "/trident-use/ontap-nas.html"
+    entries:
+    - title: 準備
+      url: "/trident-use/ontap-nas-prep.html"
+    - title: 設定オプションと例
+      url: "/trident-use/ontap-nas-examples.html"
+  - title: Amazon FSX for NetApp ONTAP で Astra Trident を使用
+    url: "/trident-use/trident-fsx.html"
+- title: kubectl を使用してバックエンドを作成します
+  url: "/trident-use/backend-kubectl.html"
+- title: kubectl を使用してバックエンド管理を実行します
+  url: "/trident-use/backend_ops_kubectl.html"
+- title: tridentctl を使用してバックエンド管理を実行します
+  url: "/trident-use/backend_ops_tridentctl.html"
+- title: バックエンド管理オプション間を移動します
+  url: "/trident-use/backend_options.html"
+- title: ストレージクラスを管理する
+  url: "/trident-use/manage-stor-class.html"
+- title: ボリューム操作を実行する
+  url: "/trident-use/vol-operations.html"
+  entries:
+  - title: CSI トポロジを使用します
+    url: "/trident-use/csi-topology.html"
+  - title: スナップショットを操作します
+    url: "/trident-use/vol-snapshots.html"
+  - title: ボリュームを展開します
+    url: "/trident-use/vol-expansion.html"
+  - title: ボリュームをインポート
+    url: "/trident-use/vol-import.html"
+- title: ワーカーノードを準備します
+  url: "/trident-use/worker-node-prep.html"
+- title: ワーカーノードの自動準備
+  url: "/trident-use/automatic-workernode.html"
+- title: Astra Trident を監視
+  url: "/trident-use/monitor-trident.html"

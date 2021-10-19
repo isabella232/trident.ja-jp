@@ -1,0 +1,97 @@
+---
+sidebar: sidebar 
+permalink: trident-concepts/ontap-drivers.html 
+keywords: trident backend, AFF, FAS, ONTAP Select, Cloud, Amazon FSx for NetApp ONTAP, drivers, ONTAP drivers 
+summary: Trident 環境で Element バックエンドを作成して使用する方法について説明します。 
+---
+= ONTAP ドライバ
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Astra Trident は、 ONTAP クラスタとの通信に使用する 5 つの ONTAP ストレージドライバを提供します。各ドライバーがボリュームの作成、アクセス制御、機能をどのように処理するかについて、詳細をご覧ください。
+
+[cols="5"]
+|===
+| ドライバ | プロトコル | ボリュームモード | サポートされているアクセスモード | サポートされるファイルシステム 
+
+
+| 「 ONTAP - NAS 」  a| 
+NFS
+ a| 
+ファイルシステム
+ a| 
+RWO 、 RWX 、 ROX
+ a| 
+"" 、 NFS です
+
+
+
+| 「 ONTAP - NAS - エコノミー」  a| 
+NFS
+ a| 
+ファイルシステム
+ a| 
+RWO 、 RWX 、 ROX
+ a| 
+"" 、 NFS です
+
+
+
+| 「 ONTAP-NAS-flexgroup 」  a| 
+NFS
+ a| 
+ファイルシステム
+ a| 
+RWO 、 RWX 、 ROX
+ a| 
+"" 、 NFS です
+
+
+
+| 「 ontap - san 」  a| 
+iSCSI
+ a| 
+ブロック
+ a| 
+RWO 、 ROX 、 RWX
+ a| 
+ファイルシステムがありません。raw ブロックデバイスです
+
+
+
+| 「 ontap - san 」  a| 
+iSCSI
+ a| 
+ファイルシステム
+ a| 
+RWO 、 ROX
+ a| 
+「 xfs 」、「 ext3 」、「 ext4 」
+
+
+
+| 「 ONTAP - SAN - エコノミー」  a| 
+iSCSI
+ a| 
+ブロック
+ a| 
+RWO 、 ROX 、 RWX
+ a| 
+ファイルシステムがありません。raw ブロックデバイスです
+
+
+
+| 「 ONTAP - SAN - エコノミー」  a| 
+iSCSI
+ a| 
+ファイルシステム
+ a| 
+RWO 、 ROX
+ a| 
+「 xfs 」、「 ext3 」、「 ext4 」
+
+|===
+
+NOTE: ONTAP バックエンドは、セキュリティロール（ユーザ名とパスワード）のログインクレデンシャル、または ONTAP クラスタにインストールされている秘密鍵と証明書を使用して認証されます。既存のバックエンドを更新して 'tridentctl update backend' を使用して認証モードから別の認証モードに移行できます

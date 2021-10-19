@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: trident-use/ontap-nas.html 
+keywords: trident backend, ontap nas, ontap-nas, ontap-nas-economy, ontap-nas-flexgroups 
+summary: ONTAP NAS ドライバを使用した ONTAP バックエンドの設定について説明します。 
+---
+= バックエンドに ONTAP NAS ドライバを設定します
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+ONTAP NAS ドライバを使用した ONTAP バックエンドの設定について説明します。
+
+* link:ontap-nas-prep.html["準備"^]
+* link:ontap-nas-examples.html["設定と例"^]
+
+
+
+
+== ユーザ権限
+
+Astra Trident は、 ONTAP 管理者または SVM 管理者のいずれかとして実行されることを想定しています。通常は、「 admin 」クラスタユーザまたは「 vsadmin 」 SVM ユーザを使用するか、同じロールを持つ別の名前のユーザを使用します。Amazon FSX for NetApp ONTAP 環境では、 Astra Trident は、 ONTAP 管理者または SVM 管理者として、クラスタ「 fsxadmin 」ユーザまたは「 vsadmin 」 SVM ユーザ、または同じロールを持つ別の名前のユーザを実行する必要があります。「 fsxadmin 」ユーザは、クラスタ管理ユーザの限定的な代替ユーザです。
+
+
+NOTE: limitAggregateUsage パラメータを使用する場合は、クラスタ管理者権限が必要です。Amazon FSX for NetApp ONTAP を Astra Trident とともに使用する場合、「 limitAggregateUsage 」パラメータは「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。

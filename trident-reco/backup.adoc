@@ -1,0 +1,171 @@
+---
+sidebar: sidebar 
+permalink: trident-reco/backup.html 
+keywords: security, chap, trident, namespace 
+summary: NetApp のストレージ・プラットフォームが提供するデータ保護およびリカバリ機能のオプションについて説明します。Astra Trident では、こうした機能の一部を活用できるボリュームをプロビジョニングできます。永続性に関する要件があるアプリケーションごとに、完全なデータ保護とリカバリの戦略を策定しておく必要があります。 
+---
+= データ保護
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+NetApp のストレージ・プラットフォームが提供するデータ保護およびリカバリ機能のオプションについて説明します。Astra Trident では、こうした機能の一部を活用できるボリュームをプロビジョニングできます。永続性に関する要件があるアプリケーションごとに、データ保護とリカバリの戦略を用意しておく必要があります。
+
+
+
+== etcd クラスタデータをバックアップします
+
+Astra Trident は、メタデータを Kubernetes クラスタの「 etcd」 データベースに格納します。災害発生時に Kubernetes クラスタをリカバリするには 'etcd' クラスタ・データを定期的にバックアップすることが重要です
+
+.手順
+. etcdctl snapshot save コマンドを使用すると 'etcd' クラスタのポイント・イン・タイム・スナップショットを取得できます
++
+[listing]
+----
+sudo docker run --rm -v /backup:/backup \
+  --network host \
+  -v /etc/kubernetes/pki/etcd:/etc/kubernetes/pki/etcd \
+  --env ETCDCTL_API=3 \
+  k8s.gcr.io/etcd-amd64:3.2.18 \
+  etcdctl --endpoints=https://127.0.0.1:2379 \
+  --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+  --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt \
+  --key=/etc/kubernetes/pki/etcd/healthcheck-client.key \
+  snapshot save /backup/etcd-snapshot.db
+----
++
+このコマンドは 'etcd' コンテナをスピンアップして etcd' スナップショットを作成し '/backup' ディレクトリに保存します
+
+. 災害が発生した場合は、 etcd Snapshot を使用して Kubernetes クラスタをスピンアップできます。etcdctl snapshot restore コマンドを使用して '/var/lib/etcdd フォルダに作成された特定のスナップショットをリストアします復元後、「 /var/lib/etcd` 」フォルダに「 member-」 フォルダが格納されているかどうかを確認します。次に 'etcdctl snapshot restore コマンドの例を示します
++
+[listing]
+----
+# etcdctl snapshot restore '/backup/etcd-snapshot-latest.db' ; mv /default.etcd/member/ /var/lib/etcd/
+----
+. Kubernetes クラスタを初期化する前に、必要な証明書をすべてコピーしておきます。
+. 「 --ignore-preflight -errors=DirAvailable --var-lib-etcd` 」フラグを付けてクラスタを作成します。
+. クラスタが起動したら、 kube-system ポッドが起動していることを確認します。
+. 「 kubectl get CRD 」コマンドを使用して、 Trident によって作成されたカスタムリソースが存在するかどうかを確認し、 Trident オブジェクトを取得して、すべてのデータが利用可能であることを確認します。
+
+
+
+
+== ONTAP スナップショットを使用して日付をリカバリします
+
+Snapshot は、アプリケーションデータのポイントインタイムリカバリオプションを提供することで重要な役割を果たします。ただし、スナップショットは単独ではバックアップされず、ストレージシステムの障害やその他の災害に対する保護は行われません。しかし、ほとんどのシナリオで、データをすばやく簡単にリカバリできる便利な方法です。ONTAP Snapshot テクノロジを使用してボリュームのバックアップを作成する方法とリストアする方法について説明します。
+
+* スナップショット・ポリシーがバックエンドで定義されていない場合 ' デフォルトでは 'none' ポリシーが使用されますそのため、 ONTAP では自動 Snapshot は作成されません。ただし、ストレージ管理者は、 ONTAP 管理インターフェイスから手動で Snapshot を作成したり、 Snapshot ポリシーを変更したりできます。これは Trident の動作には影響しません。
+* デフォルトでは、 snapshot ディレクトリは表示されません。これにより 'ONTAP-NAS' および ONTAP -NAS-エコノミー のドライバを使用してプロビジョニングされたボリュームの互換性を最大限に高めることができます「 ONTAP - NAS 」および「 ONTAP - NAS - エコノミー」ドライバを使用する場合は、「 .snapshot 」ディレクトリを有効にして、アプリケーションがスナップショットから直接データをリカバリできるようにします。
+* volume snapshot restore ONTAP CLI コマンドを使用して ' ボリュームを以前のスナップショットに記録された状態にリストアしますSnapshot コピーをリストアすると、既存のボリューム構成は上書きされます。Snapshot コピーの作成後にボリューム内のデータに加えた変更はすべて失われます。
+
+
+[listing]
+----
+cluster1::*> volume snapshot restore -vserver vs0 -volume vol3 -snapshot vol3_snap_archive
+----
+
+
+== ONTAP を使用してデータをレプリケート
+
+データのレプリケートは、ストレージアレイの障害によるデータ損失から保護する上で重要な役割を果たします。
+
+
+NOTE: ONTAP レプリケーションテクノロジの詳細については、を参照してください https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/GUID-A9A2F347-3E05-4F80-9E9C-CEF8F0A2F8E1.html["ONTAP のドキュメント"^]。
+
+
+
+=== SnapMirror Storage Virtual Machine （ SVM ）レプリケーション
+
+を使用できます https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/GUID-8B187484-883D-4BB4-A1BC-35AC278BF4DC.html["SnapMirror"^] 設定とそのボリュームを含む SVM 全体をレプリケートすること。災害が発生した場合は、 SnapMirror デスティネーション SVM をアクティブ化してデータの提供を開始できます。システムがリストアされたら、プライマリに戻すことができます。
+
+Astra Trident は、レプリケーション関係自体を構成できないため、ストレージ管理者は ONTAP の SnapMirror SVM レプリケーション機能を使用して、ボリュームをディザスタリカバリ（ DR ）デスティネーションに自動的にレプリケートできます。
+
+SnapMirror SVM レプリケーション機能を使用する場合や、現在この機能を使用している場合は、次の点を考慮してください。
+
+* SVM-DR が有効になっている SVM ごとに別個のバックエンドを作成する必要があります。
+* レプリケートされたバックエンドを必要な場合を除き選択しないようにストレージクラスを設定する必要があります。SVM DR をサポートするバックエンドにレプリケーション関係の保護をプロビジョニングする必要がないボリュームがある場合、この問題を回避することが重要です。
+* アプリケーション管理者は、データのレプリケーションに伴う追加のコストと複雑さを理解し、リカバリプランを決定してから、データレプリケーションを利用する必要があります。
+* SnapMirror デスティネーション SVM をアクティブ化する前に、スケジュールされたすべての SnapMirror 転送を停止し、実行中のすべての SnapMirror 転送を中止してレプリケーション関係を解除し、ソース SVM を停止してから、 SnapMirror デスティネーション SVM を起動します。
+* Astra Trident では、 SVM の障害は自動では検出されない。したがって、失敗した場合、管理者は tridentctl backend update コマンドを実行して、新しいバックエンドへの Trident のフェイルオーバーをトリガーする必要があります。
+
+
+SVM のセットアップ手順の概要を次に示します。
+
+* ソースクラスタとデスティネーションクラスタ間にピア関係を設定します。
+* subtype dp-destination オプションを使用して、デスティネーション SVM を作成します。
+* レプリケーションジョブスケジュールを作成して、必要な間隔でレプリケーションが実行されるようにします。
+* 「 -identity-preserve true 」オプションを使用してデスティネーション SVM からソース SVM への SnapMirror レプリケーションを作成し、ソース SVM 構成とソース SVM インターフェイスをデスティネーションにコピーします。デスティネーション SVM から、 SnapMirror SVM レプリケーション関係を初期化します。
+
+
+image::SVMDR1.PNG[に、 SVM のセットアップに必要な手順を示します。]
+
+
+
+==== Trident のディザスタリカバリワークフロー
+
+Astra Trident 19.07 以降では、 Kubernetes の SSD を使用して独自の状態を保存、管理しています。Kubernetes クラスタのメタデータの保存には 'etcd' が使用されますここでは、 Kubernetes の etcd' データファイルと証明書が NetApp FlexVol に格納されているものとします。この FlexVol は SVM にあり、 SVM の SnapMirror SVM-DR 関係はセカンダリサイトのデスティネーション SVM と一緒にあります。
+
+災害発生時に Astra Trident を使用して、単一のマスター Kubernetes クラスタをリカバリする手順を次に示します。
+
+. ソース SVM で障害が発生した場合は、 SnapMirror デスティネーション SVM をアクティブ化します。そのためには、スケジュールされた SnapMirror 転送を停止し、実行中の SnapMirror 転送を中止して、レプリケーション関係を解除し、ソース SVM を停止して、デスティネーション SVM を起動します。
+. デスティネーション SVM から、 Kubernetes の「 etcd」 データファイルおよび証明書が格納されているボリュームを、マスターノードとしてセットアップされるホストにマウントします。
+. Kubernetes クラスタに関連する必要な証明書をすべて、「 /etc/Kubernetes /pki 」の下にコピーし、「 /var/lib/etcd」 の下に「 etcd`m ember-」 ファイルをコピーします。
+. --ignore-preflight -errors=DirAvailable --var-lib-etcd` フラグを指定して kubeadm init コマンドを使用して Kubernetes クラスタを作成しますKubernetes ノードに使用するホスト名は、ソースの Kubernetes クラスタと同じであることが必要です。
+. 「 kubectl get CRD 」コマンドを実行して、すべての Trident カスタムリソースが起動しているかどうかを確認し、 Trident オブジェクトを取得して、すべてのデータが利用可能であることを確認します。
+. 必要なバックエンドをすべて更新して、新しいデスティネーション SVM 名を反映させるために、「 ./tridentctl update backend <backend-name> -f <backend-json -file> -n <namespace> 」コマンドを実行します。
+
+
+
+NOTE: アプリケーション永続ボリュームの場合、デスティネーション SVM がアクティブ化されると、 Trident によってプロビジョニングされたすべてのボリュームがデータの提供を開始します。前述の手順に従って Kubernetes クラスタをデスティネーション側でセットアップしたら、すべての導入ポッドとポッドが開始され、コンテナ化されたアプリケーションは問題なく実行されます。
+
+
+
+=== SnapMirror ボリュームのレプリケーション
+
+ONTAP SnapMirror ボリュームレプリケーションはディザスタリカバリ機能です。この機能を使用すると、ボリュームレベルでプライマリストレージからデスティネーションストレージにフェイルオーバーできます。SnapMirror は、 Snapshot を同期することで、セカンダリストレージ上のプライマリストレージのボリュームレプリカまたはミラーを作成します。
+
+ONTAP の SnapMirror ボリュームレプリケーションのセットアップ手順の概要を次に示します。
+
+* ボリュームが配置されているクラスタとボリュームからデータを提供する SVM 間のピアリングを設定します。
+* 関係の動作を制御する SnapMirror ポリシーを作成し、その関係の設定属性を指定します。
+* を使用して、デスティネーションボリュームとソースボリューム間の SnapMirror 関係を作成します https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-cmpr-970/snapmirror__create.html["'napmirror create' コマンド"^] をクリックし、適切な SnapMirror ポリシーを割り当てます。
+* SnapMirror 関係の作成後、ソースボリュームからデスティネーションボリュームへのベースライン転送が完了するように、関係を初期化します。
+
+
+image::SM1.PNG[に、 SnapMirror ボリュームレプリケーションのセットアップを示します。]
+
+
+
+==== Trident の SnapMirror ボリュームディザスタリカバリワークフロー
+
+Astra Trident で単一のマスター Kubernetes クラスタをリカバリする手順を次に示します。
+
+. 災害が発生した場合は、スケジュールされたすべての SnapMirror 転送を停止し、実行中のすべての SnapMirror 転送を中止します。デスティネーションボリュームが読み取り / 書き込み可能になるように、デスティネーションボリュームとソースボリュームの間のレプリケーション関係を解除します。
+. デスティネーション SVM から、 Kubernetes の「 etcd」 データファイルおよび証明書が格納されているボリュームをホストにマウントします。このホストはマスターノードとしてセットアップされます。
+. Kubernetes クラスタに関連する必要な証明書をすべて、「 /etc/Kubernetes /pki 」の下にコピーし、「 /var/lib/etcd」 の下に「 etcd`m ember-」 ファイルをコピーします。
+. --ignore-preflight -errors=DirAvailable --var-lib-etcd` フラグを指定して kubeadm init コマンドを実行し、 Kubernetes クラスタを作成します。ホスト名はソースの Kubernetes クラスタと同じにする必要があります。
+. 「 kubectl get CRD 」コマンドを実行して、すべての Trident カスタムリソースが起動しているかどうかを確認し、すべてのデータが利用可能であることを確認します。
+. 前のバックエンドをクリーンアップし、 Trident に新しいバックエンドを作成します。デスティネーション SVM の新しい管理 LIF とデータ LIF 、新しい SVM 名、パスワードを指定します。
+
+
+
+
+==== アプリケーション永続ボリュームのディザスタリカバリワークフロー
+
+次の手順は、災害発生時に SnapMirror デスティネーションボリュームをコンテナ化されたワークロードで使用できるようにする方法を示しています。
+
+. スケジュールされたすべての SnapMirror 転送を中止し、実行中のすべての SnapMirror 転送を中止します。デスティネーションボリュームが読み取り / 書き込み可能になるように、デスティネーションボリュームとソースボリュームの間のレプリケーション関係を解除します。ソース SVM のボリュームにバインドされた PVC を使用していた環境をクリーンアップします。
+. 前述の手順に従ってデスティネーション側で Kubernetes クラスタをセットアップしたら、 Kubernetes クラスタから導入環境、 PVC 、 PV をクリーンアップします。
+. Trident で新しい管理 LIF とデータ LIF 、デスティネーション SVM の新しい SVM 名とパスワードを指定して、新しいバックエンドを作成します。
+. Trident のインポート機能を使用して、必要なボリュームを、新しい PVC にバインドされた PV としてインポートします。
+. 新しく作成した PVC を使用してアプリケーション展開を再展開します。
+
+
+
+
+== Element Snapshot を使用してデータをリカバリします
+
+ボリュームの Snapshot スケジュールを設定し、必要な間隔で Snapshot が作成されていることを確認して、 Element ボリューム上のデータをバックアップします。Snapshot スケジュールは、 Element UI または API を使用して設定します。現時点では 'olidfire-san' ドライバを使用して ' スナップショットスケジュールをボリュームに設定することはできません
+
+データが破損した場合は、特定の Snapshot を選択し、 Element UI または API を使用してボリュームを手動で Snapshot にロールバックできます。その Snapshot の作成後にボリュームに対して行われた変更はすべて元に戻ります。

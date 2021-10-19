@@ -1,0 +1,149 @@
+---
+sidebar: sidebar 
+permalink: trident-managing-k8s/upgrade-tridentctl.html 
+keywords: upgrade, trident, methods, operator, tridentctl, helm 
+summary: tridentctl を使用して ' 既存の Astra Trident インストールを簡単にアップグレードできます 
+---
+= <code>tridentctl</code> でアップグレードします
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+tridentctl を使用して ' 既存の Astra Trident インストールを簡単にアップグレードできます
+
+最新リリースの Astra Trident にアップグレードする際は、次の点を考慮してください。
+
+* Trident 20.01 以降では、のベータ版のみが提供されます https://kubernetes.io/docs/concepts/storage/volume-snapshots/["ボリューム Snapshot"^] がサポートされます。Kubernetes 管理者は、従来のアルファスナップショットを保持するために、アルファスナップショットオブジェクトを安全にバックアップするか、ベータ版に変換するように注意する必要があります。
+* ボリュームスナップショットのベータリリースでは、一連の新しい CRD とスナップショットコントローラが導入されています。どちらも Astra Trident をインストールする前にセットアップする必要があります。
+
+
+
+NOTE: https://netapp.io/2020/01/30/alpha-to-beta-snapshots/["この blog"^] alpha ボリュームの Snapshot をベータ版に移行する手順について説明します。
+
+Astra Trident のアンインストールと再インストールはアップグレードとして機能します。Trident をアンインストールしても、 Astra Trident 環境で使用されている Persistent Volume Claim （ PVC ；永続的ボリューム要求）と Persistent Volume （ PV ；永続的ボリューム）は削除されません。Astra Trident がオフラインの間は、すでにプロビジョニング済みの PVS を引き続き使用でき、 Astra Trident は、オンラインに戻った時点で作成された PVC に対してボリュームをプロビジョニングします。
+
+
+IMPORTANT: Astra Trident をアップグレードするときは、アップグレードプロセスを中断しないでください。インストーラが実行されていることを確認します。
+
+
+
+== アップグレード後の次の手順
+
+新しい Trident リリース（ On-Demand Volume Snapshots など）で利用できる豊富な機能を活用するには、「 tridentctl upgrade 」コマンドを使用してボリュームをアップグレードします。
+
+レガシーボリュームがある場合は、それらのボリュームを NFS/iSCSI タイプから CSI タイプにアップグレードして、 Astra Trident のすべての新機能を使用できるようにする必要があります。Trident によってプロビジョニングされたレガシー PV は、従来の機能セットをサポートします。
+
+CSI タイプにボリュームをアップグレードする場合は、次の点を考慮してください。
+
+* 場合によっては、すべてのボリュームをアップグレードする必要はありません。以前に作成したボリュームには引き続きアクセスでき、正常に機能します。
+* PV は、アップグレード時に展開 / 起動可能セットの一部としてマウントできます。展開 / 起動セットを停止する必要はありません。
+* アップグレード時に、スタンドアロンの POD に PV を接続することはできません。ボリュームをアップグレードする前に、ポッドをシャットダウンする必要があります。
+* アップグレードできるのは、 PVC にバインドされているボリュームだけです。PVC にバインドされていないボリュームは、アップグレード前に削除およびインポートする必要があります。
+
+
+
+
+=== ボリュームのアップグレードの例
+
+次の例は、ボリュームのアップグレードを実行する方法を示しています。
+
+. kubectl get pv を実行して PVS を一覧表示します
++
+[listing]
+----
+$ kubectl get pv
+NAME                         CAPACITY     ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                  STORAGECLASS    REASON   AGE
+default-pvc-1-a8475          1073741824   RWO            Delete           Bound    default/pvc-1          standard                 19h
+default-pvc-2-a8486          1073741824   RWO            Delete           Bound    default/pvc-2          standard                 19h
+default-pvc-3-a849e          1073741824   RWO            Delete           Bound    default/pvc-3          standard                 19h
+default-pvc-4-a84de          1073741824   RWO            Delete           Bound    default/pvc-4          standard                 19h
+trident                      2Gi          RWO            Retain           Bound    trident/trident                                 19h
+----
++
+現在、 Trident 20.07 によって「 NetApp.io/trident 」プロビジョニングツールを使用して作成された 4 つの PVS があります。
+
+. kubectl describe pv を実行して PV の詳細を取得します。
++
+[listing]
+----
+$ kubectl describe pv default-pvc-2-a8486
+
+Name:            default-pvc-2-a8486
+Labels:          <none>
+Annotations:     pv.kubernetes.io/provisioned-by: netapp.io/trident
+                 volume.beta.kubernetes.io/storage-class: standard
+Finalizers:      [kubernetes.io/pv-protection]
+StorageClass:    standard
+Status:          Bound
+Claim:           default/pvc-2
+Reclaim Policy:  Delete
+Access Modes:    RWO
+VolumeMode:      Filesystem
+Capacity:        1073741824
+Node Affinity:   <none>
+Message:
+Source:
+    Type:      NFS (an NFS mount that lasts the lifetime of a pod)
+    Server:    10.xx.xx.xx
+    Path:      /trid_1907_alpha_default_pvc_2_a8486
+    ReadOnly:  false
+----
++
+PV は 'NetApp.io/trident プロビジョニングツールを使用して作成されたものであり 'NFS タイプのものですAstra Trident が提供する新機能をすべてサポートするには、この PV を CSI タイプにアップグレードする必要があります。
+
+. tridenctl upgrade volume <name-of -trident-volume>` コマンドを実行して、従来の Astra Trident ボリュームを CSI 仕様にアップグレードします。
++
+[listing]
+----
+$ ./tridentctl get volumes -n trident
++---------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+|            NAME     |  SIZE   | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |
++---------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+| default-pvc-2-a8486 | 1.0 GiB | standard      | file     | c5a6f6a4-b052-423b-80d4-8fb491a14a22 | online | true    |
+| default-pvc-3-a849e | 1.0 GiB | standard      | file     | c5a6f6a4-b052-423b-80d4-8fb491a14a22 | online | true    |
+| default-pvc-1-a8475 | 1.0 GiB | standard      | file     | c5a6f6a4-b052-423b-80d4-8fb491a14a22 | online | true    |
+| default-pvc-4-a84de | 1.0 GiB | standard      | file     | c5a6f6a4-b052-423b-80d4-8fb491a14a22 | online | true    |
++---------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+
+$ ./tridentctl upgrade volume default-pvc-2-a8486 -n trident
++---------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+|            NAME     |  SIZE   | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |
++---------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+| default-pvc-2-a8486 | 1.0 GiB | standard      | file     | c5a6f6a4-b052-423b-80d4-8fb491a14a22 | online | true    |
++---------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+----
+. kubectl describe pv を実行して、ボリュームが CSI ボリュームであることを確認します。
++
+[listing]
+----
+$ kubectl describe pv default-pvc-2-a8486
+Name:            default-pvc-2-a8486
+Labels:          <none>
+Annotations:     pv.kubernetes.io/provisioned-by: csi.trident.netapp.io
+                 volume.beta.kubernetes.io/storage-class: standard
+Finalizers:      [kubernetes.io/pv-protection]
+StorageClass:    standard
+Status:          Bound
+Claim:           default/pvc-2
+Reclaim Policy:  Delete
+Access Modes:    RWO
+VolumeMode:      Filesystem
+Capacity:        1073741824
+Node Affinity:   <none>
+Message:
+Source:
+    Type:              CSI (a Container Storage Interface (CSI) volume source)
+    Driver:            csi.trident.netapp.io
+    VolumeHandle:      default-pvc-2-a8486
+    ReadOnly:          false
+    VolumeAttributes:      backendUUID=c5a6f6a4-b052-423b-80d4-8fb491a14a22
+                           internalName=trid_1907_alpha_default_pvc_2_a8486
+                           name=default-pvc-2-a8486
+                           protocol=file
+Events:                <none>
+----
++
+このようにして、 Astra Trident によって作成された NFS/iSCSI タイプのボリュームを、ボリューム単位で CSI タイプにアップグレードできます。
+
+

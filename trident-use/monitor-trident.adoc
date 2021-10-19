@@ -1,0 +1,180 @@
+---
+sidebar: sidebar 
+permalink: trident-use/monitor-trident.html 
+keywords: telemetry, astra trident, monitor, metrics, health, volume usage, autosupport 
+summary: Astra Trident は、一連の Prometheus 指標エンドポイントを提供し、 Astra Trident のパフォーマンスの監視に使用できます。 
+---
+= Astra Trident を監視
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Astra Trident は、 Astra Trident のパフォーマンスを監視するために使用できる一連の Prometheus 指標エンドポイントを提供します。
+
+Astra Trident が提供する指標を使用すると、次のことが可能になります。
+
+* Astra Trident の健常性と設定を保持処理が成功した方法と、想定どおりにバックエンドと通信できるかどうかを調べることができます。
+* バックエンドの使用状況の情報を調べて、バックエンドでプロビジョニングされているボリュームの数や消費されているスペースなどを確認します。
+* 利用可能なバックエンドにプロビジョニングされたボリュームの量のマッピングを維持します。
+* パフォーマンスを追跡する。Astra Trident がバックエンドと通信して処理を実行するのにどれくらいの時間がかかるかを調べることができます。
+
+
+
+NOTE: デフォルトでは 'Trident のメトリックは '/metrics エンドポイントのターゲットポート 8001' に公開されていますこれらの指標は、 Trident のインストール時にデフォルトで * 有効になります。
+
+.必要なもの
+* Astra Trident がインストールされた Kubernetes クラスタ
+* Prometheus インスタンス。これは a である場合もある https://github.com/prometheus-operator/prometheus-operator["コンテナ化された Prometheus 環境"^] または、 Prometheus をとして実行することもできます。
+
+
+
+
+== 手順 1 ： Prometheus ターゲットを定義する
+
+Prometheus ターゲットを定義して指標を収集し、 Astra Trident が管理するバックエンド、作成するボリュームなどの情報を取得する必要があります。これ https://netapp.io/2020/02/20/prometheus-and-trident/["ブログ"^] Prometheus と Grafana を Astra Trident とともに使用して指標を取得する方法について説明します。ブログでは、 Kubernetes クラスタでオペレータとして Prometheus を実行する方法と、 Astra Trident のメトリックを取得する ServiceMonitor を作成する方法について説明しています。
+
+
+
+== 手順 2 ： Prometheus ServiceMonitor を作成します
+
+Trident のメトリックを使用するには、「 trident-csi 」サービスを監視し、「 m etrics 」ポートを監視する Prometheus ServiceMonitor を作成する必要があります。ServiceMonitor のサンプルは次のようになります。
+
+[listing]
+----
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: trident-sm
+  namespace: monitoring
+  labels:
+      release: prom-operator
+  spec:
+    jobLabel: trident
+    selector:
+      matchLabels:
+        app: controller.csi.trident.netapp.io
+    namespaceSelector:
+      matchNames:
+      - trident
+    endpoints:
+    - port: metrics
+      interval: 15s
+----
+この ServiceMonitor 定義は 'trident-csi サービスから返されたメトリックを取得し ' 特にサービスの 'm etrics エンドポイントを探しますその結果、 Prometheus は Astra Trident の指標を理解するように設定されました。
+
+kubelet は、 Astra Trident から直接利用できるメトリックに加えて、独自のメトリック・エンドポイントを通じて多くの「 kubeet_volume_* 」メトリックを公開しています。Kubelet では、接続されているボリュームに関する情報、およびポッドと、それが処理するその他の内部処理を確認できます。を参照してください https://kubernetes.io/docs/concepts/cluster-administration/monitoring/["こちらをご覧ください"^]。
+
+
+
+== ステップ 3 ： PrompQL を使用して Trident 指標を照会する
+
+PrompQL は、時系列データまたは表データを返す式を作成するのに適しています。
+
+次に、 PrompQL クエリーのいくつかを示します。
+
+
+
+=== Trident の健常性情報を取得
+
+* ** Astra Trident からの HTTP 2XX 応答の割合 **
+
+
+[listing]
+----
+(sum (trident_rest_ops_seconds_total_count{status_code=~"2.."} OR on() vector(0)) / sum (trident_rest_ops_seconds_total_count)) * 100
+----
+* ** Astra Trident からのステータスコードによる REST 応答の割合 **
+
+
+[listing]
+----
+(sum (trident_rest_ops_seconds_total_count) by (status_code)  / scalar (sum (trident_rest_ops_seconds_total_count))) * 100
+----
+* ** Astra Trident によって実行された処理の平均時間（ミリ秒） **
+
+
+[listing]
+----
+sum by (operation) (trident_operation_duration_milliseconds_sum{success="true"}) / sum by (operation) (trident_operation_duration_milliseconds_count{success="true"})
+----
+
+
+=== Astra Trident の使用状況に関する情報を入手
+
+* ** 平均体積サイズ **
+
+
+[listing]
+----
+trident_volume_allocated_bytes/trident_volume_count
+----
+* ** 各バックエンドによってプロビジョニングされた合計ボリューム容量 **
+
+
+[listing]
+----
+sum (trident_volume_allocated_bytes) by (backend_uuid)
+----
+
+
+=== 個々のボリュームの使用状況を取得する
+
+
+NOTE: これは、 kubelet 指標も収集された場合にのみ有効になります。
+
+* ** 各ボリュームの使用済みスペースの割合 **
+
+
+[listing]
+----
+kubelet_volume_stats_used_bytes / kubelet_volume_stats_capacity_bytes * 100
+----
+
+
+== Astra Trident AutoSupport の計測データ
+
+デフォルトでは、 Astra Trident は Prometheus 指標と基本バックエンド情報を毎日定期的にネットアップに送信します。
+
+* Astra Trident が Prometheus 指標と基本バックエンド情報をネットアップに送信しないようにするには、 Astra Trident のインストール時に「 --silence -autosupport 」フラグを渡します。
+* Astra Trident は 'tridentctl send AutoSupport を介してコンテナ・ログをオンデマンドでネットアップ・サポートに送信することもできますAstra Trident をトリガーしてログをアップロードする必要があります。ログを送信する前に、ネットアップのに同意する必要がありますhttps://www.netapp.com/company/legal/privacy-policy/["プライバシーポリシー"^]。
+* 指定しないと、 Astra Trident は過去 24 時間からログを取得します。
+* ログ保持期間は '--since ' フラグで指定できますたとえば 'tridentctl は AutoSupport --since =1h` を送信しますこの情報は、 Astra Trident と一緒にインストールされた 'trident-autosupport' コンテナを介して収集および送信されます。コンテナイメージは、で取得できます https://hub.docker.com/r/netapp/trident-autosupport["Trident AutoSupport の略"^]。
+* Trident AutoSupport は、個人情報（ PII ）や個人情報を収集または送信しません。それにはが付いています https://www.netapp.com/us/media/enduser-license-agreement-worldwide.pdf["EULA"^] これは Trident コンテナイメージ自体には該当しません。ネットアップのデータセキュリティと信頼に対する取り組みの詳細を確認できます。
+
+
+Astra Trident から送信されるペイロードの例を次に示します。
+
+[listing]
+----
+{
+  "items": [
+    {
+      "backendUUID": "ff3852e1-18a5-4df4-b2d3-f59f829627ed",
+      "protocol": "file",
+      "config": {
+        "version": 1,
+        "storageDriverName": "ontap-nas",
+        "debug": false,
+        "debugTraceFlags": null,
+        "disableDelete": false,
+        "serialNumbers": [
+          "nwkvzfanek_SN"
+        ],
+        "limitVolumeSize": ""
+      },
+      "state": "online",
+      "online": true
+    }
+  ]
+}
+----
+* AutoSupport メッセージは、ネットアップの AutoSupport エンドポイントに送信されます。プライベートレジストリを使用してコンテナイメージを格納している場合は '--image_registry' フラグを使用できます
+* インストール YAML ファイルを生成してプロキシ URL を設定することもできます。これは 'tridentctl install --generate-custom-yaml を使用して YAML ファイルを作成し 'trident-deployment.yaml の trident-autosupport コンテナに --proxy-url 引数を追加することによって実行できます
+
+
+
+
+== Astra Trident の指標を無効化
+
+** メトリックがレポートされないようにするには '--generate-custom-yaml' フラグを使用してカスタム YAML を生成し ' これらを編集して 'trident-main' コンテナに対して --metrics フラグが呼び出されないようにします

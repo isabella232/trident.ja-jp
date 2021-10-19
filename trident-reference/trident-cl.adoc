@@ -1,0 +1,49 @@
+---
+sidebar: sidebar 
+permalink: trident-reference/trident-cl.html 
+keywords: command-line, options, logging, kubernetes, docker, ports 
+summary: Astra Trident は、いくつかのコマンドラインオプションを公開し、特定のポートを介して通信を行います。 
+---
+= コマンドラインオプション
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Astra Trident には、いくつかのコマンドラインオプションが用意されています。これらの値は環境で変更できます。
+
+
+
+== ロギング
+
+* --debug: デバッグ出力をイネーブルにします。
+* -loglevel <level>` ：ロギングレベルを設定します（ debug 、 info 、 warn 、 error 、 fatal ）。デフォルトは info です。
+
+
+
+
+== Kubernetes
+
+* `-k8s_pod `: Kubernetes サポートを有効にするには ' このオプションまたは -k8s_api_server を使用しますこれを設定すると、 Trident はポッドの Kubernetes サービスアカウントのクレデンシャルを使用して API サーバに接続します。これは、サービスアカウントが有効になっている Kubernetes クラスタで Trident がポッドとして実行されている場合にのみ機能します。
+* `-k8s_api_server <insecure -address ： insecure -port>`: このオプションまたは -k8s_pod を使用して Kubernetes サポートを有効にしますTrident を指定すると、セキュアでないアドレスとポートを使用して Kubernetes API サーバに接続されます。これにより、 Trident をポッドの外部に導入することができますが、サポートされるのは API サーバへのセキュアでない接続だけです。セキュアに接続するには、「 -k8s_pod 」オプションを使用してポッドに Trident を導入します。
+* `-k8s_config_path<file>`: 必須。このパスを KubeConfig ファイルに指定する必要があります。
+
+
+
+
+== Docker です
+
+* `-volume_driver <name>` ： Docker プラグインを登録するときに使用するドライバ名。デフォルトは 'NetApp' です
+* `-ddriver_port <port-number>`: このポートでは 'UNIX ドメインソケットではなくリッスンします
+* `-config <file>`: 必須。このパスをバックエンド構成ファイルに指定する必要があります。
+
+
+
+
+== REST
+
+* `-address <ip-or -host>` ： Trident の REST サーバがリスンするアドレスを指定します。デフォルトは localhost です。localhost で聞いて Kubernetes ポッド内で実行しているときに、 REST インターフェイスにポッド外から直接アクセスすることはできません。ポッドの IP アドレスから REST インターフェイスにアクセスできるようにするには、「 -address 」を使用します。
+* `-port <port-number>` ： Trident の REST サーバがリスンするポートを指定します。デフォルトは 8000 です。
+* `-rest`: REST インタフェースを有効にしますデフォルトは true です。
+

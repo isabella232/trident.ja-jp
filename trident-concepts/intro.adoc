@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: trident-concepts/intro.html 
+keywords: product overview, astra trident 
+summary: Trident の Astra プロビジョニングの主なフェーズは 2 つあります。最初のフェーズでは、ストレージクラスを適切なバックエンドストレージプールのセットに関連付け、プロビジョニング前の必要な準備として実行します。2 番目のフェーズでは、ボリュームの作成自体が行われます。このフェーズでは、保留中のボリュームのストレージクラスに関連付けられたストレージプールからストレージプールを選択する必要があります。 
+---
+= Astra Trident の概要
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Astra Trident は、ネットアップが管理している、完全にサポートされているオープンソースプロジェクトです。Container Storage Interface （ CSI ）などの業界標準インターフェイスを使用して、コンテナ化されたアプリケーションの永続性に対する要求を満たすように設計されています。
+
+Kubernetes クラスタにポッドとして Trident を導入し、 Kubernetes ワークロードに動的なストレージオーケストレーションサービスを提供コンテナ化されたアプリケーションは、 ONTAP （ AFF / FAS / Select / Cloud / Amazon FSX for NetApp ONTAP ）、 Element ソフトウェア（ NetApp HCI / SolidFire ）、 Azure NetApp Files サービス、 Cloud Volumes Service on Google Cloud 、 Cloud Volumes Service on AWS など、ネットアップの幅広いポートフォリオの永続的ストレージをすばやく簡単に消費できます。
+
+Astra Trident は、 NetApp の Astra の基盤テクノロジでもあり、 NetApp のスナップショット、バックアップ、レプリケーション、クローニングに業界をリードするデータ管理テクノロジを活用して、 Kubernetes ワークロードのデータ保護、ディザスタリカバリ、ポータビリティ、移行のユースケースに対応します。
+
+
+
+== サポートされる Kubernetes クラスタアーキテクチャ
+
+Astra Trident は、次の Kubernetes アーキテクチャでサポートされています。
+
+[cols="3*"]
+|===
+| Kubernetes クラスタアーキテクチャ | サポートされます | デフォルトのインストールです 
+
+
+| 単一マスター、コンピューティング | はい。  a| 
+はい。
+
+
+
+| 複数のマスター、コンピューティング | はい。  a| 
+はい。
+
+
+
+| マスター、「 etcd' 」、コンピューティング | はい。  a| 
+はい。
+
+
+
+| マスター、インフラ、コンピューティング | はい。  a| 
+はい。
+
+|===
+
+
+== アストラとは
+
+Astra を使用すると、 Kubernetes で実行されている大量のデータコンテナ化ワークロードを、パブリッククラウドとオンプレミスの間で簡単に管理、保護、移動できます。Astra は、ネットアップの実績ある拡張可能なパブリッククラウドストレージポートフォリオとオンプレミスのストレージポートフォリオから、 Astra Trident を使用して永続的なコンテナストレージをプロビジョニングし、提供します。また、 Kubernetes ワークロード向けに、 Snapshot 、バックアップとリストア、アクティビティログ、アクティブクローニングによるデータ保護、ディザスタ / データリカバリ、データ監査、移行のユースケースなど、アプリケーションに対応した高度なデータ管理機能も豊富に用意されています。
+
+Astra のドキュメントを今すぐご覧ください。無料トライアルに今すぐ登録して、 Astra のページから申し込むことができます。
+
+* https://docs.netapp.com/us-en/astra/get-started/intro.html["Astra Control Service の概要"^]
+* https://docs.netapp.com/us-en/astra-automation/get-started/before_get_started.html["Astra API の利用を開始しましょう"^]
+* https://docs.netapp.com/us-en/astra-control-center/concepts/intro.html["Astra Control Center の詳細をご確認ください"^]
+

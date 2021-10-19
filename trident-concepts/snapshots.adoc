@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: trident-concepts/snapshots.html 
+keywords: provisioning, astra trident 
+summary: Trident がドライバ用のボリュームスナップショットの作成をどのように処理するかについては、こちらをご覧ください。 
+---
+= ボリューム Snapshot
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Trident がドライバ用のボリュームスナップショットの作成をどのように処理するかについては、こちらをご覧ください。
+
+* 「 ONTAP-NAS' 」、「 ONTAP-SAN' 」、「 AWS- 対」、「 GCP-cvs 」、「 azure-NetApp-files 」ドライバの場合、 各永続ボリューム（ PV ）が FlexVol にマッピングされます。その結果、ボリューム Snapshot はネットアップ Snapshot として作成されます。NetApp のスナップショット・テクノロジーは ' 競合するスナップショット・テクノロジーよりも高い安定性 ' 拡張性 ' リカバリ性 ' パフォーマンスを提供しますSnapshot コピーは、作成時とストレージスペースの両方で非常に効率的です。
+* 「 ONTAP-SAN-エコノミー 」ドライバの場合、 PVS は共有 FlexVol 上に作成された LUN にマッピングされます。PVS のボリューム Snapshot は、関連付けられた LUN の FlexClone を実行することで実現されます。ONTAP の FlexClone テクノロジにより、最大規模のデータセットでもほぼ瞬時にコピーを作成できます。コピーと親でデータブロックが共有されるため、メタデータに必要な分しかストレージは消費されません。
+* 「 olidfire-SAN' ドライバの場合、各 PV は NetApp Element ソフトウェア / NetApp HCI クラスタ上に作成された LUN にマッピングされます。ボリューム Snapshot は、基盤となる LUN の Element Snapshot で表されます。これらの Snapshot はポイントインタイムコピーであり、消費するシステムリソースとスペースはごくわずかです。
+* ONTAP スナップショットは 'ONTAP-NAS' および「 ONTAP-SAN' 」ドライバと連携して動作する場合 ' FlexVol のポイント・イン・タイム・コピーであり ' FlexVol 自体の領域を消費しますその結果、ボリューム内の書き込み可能なスペースが、 Snapshot の作成やスケジュール設定にかかる時間を短縮できます。この問題に対処する簡単な方法の 1 つは、 Kubernetes を使用してサイズを変更することでボリュームを拡張することです。もう 1 つの方法は、不要になった Snapshot を削除することです。Kubernetes で作成されたボリューム Snapshot を削除すると、関連付けられている ONTAP Snapshot が Astra Trident から削除されます。Kubernetes で作成されていない ONTAP スナップショットも削除できます。
+
+
+ネットアップの Trident では、ボリューム Snapshot を使用して PVS を新規作成できます。これらの Snapshot から PVS を作成するには、サポート対象の ONTAP および CVS バックエンドに対して FlexClone テクノロジを使用します。Snapshot から PV を作成する場合、バッキングボリュームは Snapshot の親ボリュームの FlexClone です。'olidfire-SAN' ドライバは ' スナップショットから PVS を作成するために Element ソフトウェアボリュームクローンを使用しますここで、 Element Snapshot からクローンを作成します。

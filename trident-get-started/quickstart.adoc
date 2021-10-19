@@ -1,0 +1,20 @@
+---
+sidebar: sidebar 
+permalink: trident-get-started/quickstart.html 
+keywords: kubernetes cluster, simple installation, Kubernetes installation 
+summary: Kubernetes の使用を開始したばかりの場合は、手順に従って Kubernetes をインストールして試してください。この説明では、 Trident をデモ用に統合できるベアボーンのシングルノードクラスタについて説明しています。 
+---
+= ぜひお試しください
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+ネットアップでは、リクエストに応じてすぐに使用できるラボイメージを提供しています link:https://www.netapp.com/us/try-and-buy/test-drive/index.aspx["ネットアップのテスト用ドライブ"^]。テストドライブは、 3 ノードの Kubernetes クラスタと Astra Trident がインストールおよび設定されたサンドボックス環境を提供します。Astra Trident をよく理解し、機能を調べるのに最適な方法です。
+
+もう 1 つのオプションは、を参照することです link:https://kubernetes.io/docs/setup/independent/install-kubeadm/["kubeadm インストールガイド"] Kubernetes が提供します。
+
+
+NOTE: 本番環境では、この手順で構築した Kubernetes クラスタを使用しないでください。本番環境向けのクラスタを作成するには、ディストリビューションに付属の本番環境導入ガイドを使用します。
+
+Kubernetes を初めて使用する場合は、概念とツールについて理解しておいてください link:https://kubernetes.io/docs/home/["こちらをご覧ください"^]。

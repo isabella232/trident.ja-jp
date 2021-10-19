@@ -1,0 +1,160 @@
+---
+sidebar: sidebar 
+permalink: trident-use/vol-snapshots.html 
+keywords: volumes, on-demand volume snapshots, create snapshots, backends, kubernetes, create PVCs, PVCs 
+summary: Astra Trident の 20.01 リリースから、 Kubernetes レイヤで永続的ボリューム（ PVS ）の Snapshot を作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。 
+---
+= スナップショットを操作します
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Astra Trident の 20.01 リリースから、 Kubernetes レイヤで PVS のスナップショットを作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。ボリューム・スナップショットは 'ONTAP-NAS'`ONTAP-SAN'ONTAP-SAN'ONTAP-エコノミー ''solidfire-SAN'AWS- cvs'' によってサポートされています 「 gcp-cvs 」、「 azure-NetApp-files 」ドライバ。
+
+
+NOTE: この機能は Kubernetes 1.17 （ベータ版）から提供され、 1.20 から GA になります。ベータ版から GA 版への移行に伴う変更点については、を参照してください https://kubernetes.io/blog/2020/12/10/kubernetes-1.20-volume-snapshot-moves-to-ga/["リリースのブログ"^]。GA への卒業とともに 'v1' API バージョンが導入され 'v1beta` スナップショットと下位互換性があります
+
+.必要なもの
+* ボリューム Snapshot を作成するには、外部の Snapshot コントローラとカスタムリソース定義（ CRD ）を作成する必要があります。使用されている Kubernetes Orchestrator （例： Kubeadm 、 GKE 、 OpenShift ）の役割を担っています。
+
+
+次のように、外部スナップショットコントローラとスナップショット作成 SSD を作成できます。
+
+. ボリューム Snapshot の作成：
++
+[listing]
+----
+$ cat snapshot-setup.sh
+#!/bin/bash
+# Create volume snapshot CRDs
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
+----
+. 目的のネームスペースにスナップショットコントローラを作成します。以下の YAML マニフェストを編集して名前空間を変更します。
++
+[listing]
+----
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+----
+
+
+
+TIP: CSI Snapshotter は、を提供します https://github.com/kubernetes-csi/external-snapshotter#validating-webhook["webhook を検証しています"^] ユーザーが既存の v1beta1 スナップショットを検証し、有効なリソースオブジェクトであることを確認できるようにするため。検証中の webhook は、無効なスナップショットオブジェクトに自動的にラベルを付け、今後無効なオブジェクトが作成されないようにします。検証する webhook は Kubernetes Orchestrator によって導入されます。検証するウェブフックを手動で配備する手順を参照してください。無効なスナップショットマニフェストの例を探します。
+
+以下に、スナップショットの操作に必要な構成要素と、スナップショットの作成方法および使用方法の例を示します。
+
+
+
+== ステップ 1 ：ボリューム Snapshot クラスをセットアップする
+
+ボリューム Snapshot を作成する前に、をセットアップします link:../trident-reference/objects.html["'VolumeSnapshotClass'"^]。
+
+[listing]
+----
+$ cat snap-sc.yaml
+#Use apiVersion v1 for Kubernetes 1.20 and above. For Kubernetes 1.17 - 1.19, use apiVersion v1beta1.
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
+metadata:
+  name: csi-snapclass
+driver: csi.trident.netapp.io
+deletionPolicy: Delete
+----
+「川」はアストラトライデントの CSI ドライバを指しています。「保持ポリシー」には「削除」または「保持」を指定できます。「 Retain 」に設定すると、「 VolumeSnapshot 」オブジェクトが削除されても、ストレージ・クラスタ上の基盤となる物理スナップショットは保持されます。
+
+
+
+== 手順 2 ：既存の PVC のスナップショットを作成します
+
+[listing]
+----
+$ cat snap.yaml
+#Use apiVersion v1 for Kubernetes 1.20 and above. For Kubernetes 1.17 - 1.19, use apiVersion v1beta1.
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: pvc1-snap
+spec:
+  volumeSnapshotClassName: csi-snapclass
+  source:
+    persistentVolumeClaimName: pvc1
+----
+スナップショットは 'PVC1' という名前の PVC 用に作成されており ' スナップショットの名前は PVC1-snap' に設定されています
+
+[listing]
+----
+$ kubectl create -f snap.yaml
+volumesnapshot.snapshot.storage.k8s.io/pvc1-snap created
+
+$ kubectl get volumesnapshots
+NAME                   AGE
+pvc1-snap              50s
+----
+これにより 'VolumeSnapshot' オブジェクトが作成されましたVolumeSnapshot は PVC に似ており、実際のスナップショットを表す「 VolumeSnapshotContent 」オブジェクトに関連付けられています。
+
+「 PVC1-SNAP 」ボリューム Snapshot の「 VolumeSnapshotContent 」オブジェクトを指定することができます。
+
+[listing]
+----
+$ kubectl describe volumesnapshots pvc1-snap
+Name:         pvc1-snap
+Namespace:    default
+.
+.
+.
+Spec:
+  Snapshot Class Name:    pvc1-snap
+  Snapshot Content Name:  snapcontent-e8d8a0ca-9826-11e9-9807-525400f3f660
+  Source:
+    API Group:
+    Kind:       PersistentVolumeClaim
+    Name:       pvc1
+Status:
+  Creation Time:  2019-06-26T15:27:29Z
+  Ready To Use:   true
+  Restore Size:   3Gi
+.
+.
+----
+「スナップショットコンテンツ名」は、このスナップショットを提供する VolumeSnapshotContent オブジェクトを識別します。' 使用準備完了 ' パラメータは ' スナップショットを使用して新しい PVC を作成できることを示します
+
+
+
+== 手順 3 ：ボリューム Snapshot から PVC を作成します
+
+スナップショットを使用して PVC を作成する例は、次のとおりです。
+
+[listing]
+----
+$ cat pvc-from-snap.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-from-snap
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: golden
+  resources:
+    requests:
+      storage: 3Gi
+  dataSource:
+    name: pvc1-snap
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
+----
+「 dataSource 」は、「 PVC1-SNAP 」という名前のボリューム Snapshot をデータのソースとして使用して PVC を作成する必要があることを示します。このコマンドを実行すると、 Astra Trident が Snapshot から PVC を作成するように指示します。作成された PVC は、ポッドに接続して、他の PVC と同様に使用できます。
+
+
+NOTE: スナップショットが関連付けられている永続ボリュームを削除すると、対応する Trident ボリュームが「削除状態」に更新されます。Astra Trident ボリュームを削除するには、ボリュームの Snapshot を削除する必要があります。
+
+
+
+== 詳細については、こちらをご覧ください
+
+* link:../trident-concepts/snapshots.html["ボリューム Snapshot"^]
+* link:../trident-reference/objects.html["'VolumeSnapshotClass'"^]
+

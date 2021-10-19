@@ -1,0 +1,83 @@
+---
+sidebar: sidebar 
+permalink: trident-docker/multiple-instances-docker.html 
+keywords: deploy, astra trident, docker, trident for docker, managed plugin, trident instances, alias 
+summary: 複数のストレージ構成を同時に使用する場合は、 Astra Trident の複数のインスタンスが必要です。複数のインスタンスにキーを渡すには、コンテナ化されたプラグインで --alias オプションを使用して、ホストで Trident をインスタンス化するときに --volume-driver オプションを使用して、さまざまな名前を指定します。 
+---
+= 複数の Astra Trident インスタンスを管理
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+複数のストレージ構成を同時に使用する必要がある場合は、 Trident の複数のインスタンスが必要です。複数のインスタンスの鍵は、コンテナ化されたプラグインでは「 --alias 」オプション、ホストで Trident をインスタンス化する場合は「 --volume-driver 」オプションを使用して、それぞれ異なる名前を指定することです。
+
+
+
+== Docker Managed Plugin （バージョン 1.13 / 17.03 以降）の手順
+
+. エイリアスと構成ファイルを指定して、最初のインスタンスを起動します。
++
+[listing]
+----
+docker plugin install --grant-all-permissions --alias silver netapp/trident-plugin:21.07 config=silver.json
+----
+. 別のエイリアスと構成ファイルを指定して、 2 番目のインスタンスを起動します。
++
+[listing]
+----
+docker plugin install --grant-all-permissions --alias gold netapp/trident-plugin:21.07 config=gold.json
+----
+. ドライバ名としてエイリアスを指定するボリュームを作成します。
++
+たとえば、 gold ボリュームの場合：
+
++
+[listing]
+----
+docker volume create -d gold --name ntapGold
+----
++
+たとえば、 Silver ボリュームの場合：
+
++
+[listing]
+----
+docker volume create -d silver --name ntapSilver
+----
+
+
+
+
+== 従来の（バージョン 1.12 以前）の場合の手順
+
+. カスタムドライバ ID を使用して NFS 設定でプラグインを起動します。
++
+[listing]
+----
+sudo trident --volume-driver=netapp-nas --config=/path/to/config-nfs.json
+----
+. カスタムドライバ ID を使用して、 iSCSI 構成でプラグインを起動します。
++
+[listing]
+----
+sudo trident --volume-driver=netapp-san --config=/path/to/config-iscsi.json
+----
+. ドライバインスタンスごとに Docker ボリュームをプロビジョニングします。
++
+たとえば、 NFS の場合：
+
++
+[listing]
+----
+docker volume create -d netapp-nas --name my_nfs_vol
+----
++
+たとえば、 iSCSI の場合：
+
++
+[listing]
+----
+docker volume create -d netapp-san --name my_iscsi_vol
+----
+

@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: trident-concepts/vol-access-groups.html 
+keywords: volume access groups, element, solidfire, chap, astra trident, hci, netapp hci, storage system, access volumes, 
+summary: Trident がボリュームアクセスグループをどのように使用しているかをご確認ください。 
+---
+= ボリュームアクセスグループ
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Trident がどのように活用されているかをご確認ください https://docs.netapp.com/us-en/element-software/concepts/concept_solidfire_concepts_volume_access_groups.html["ボリュームアクセスグループ"^]。
+
+
+NOTE: CHAP を使用する場合は、このセクションを無視してください。 CHAP では、管理を簡易化し、以下に説明する拡張の制限を回避することが推奨されます。また、 CSI モードで Astra Trident を使用している場合は、このセクションを無視できます。Astra Trident は、強化された CSI プロビジョニングツールとしてインストールされた場合、 CHAP を使用します。
+
+Astra Trident は、ボリュームアクセスグループを使用して、プロビジョニングするボリュームへのアクセスを制御できるCHAP が無効になっている場合、構成に 1 つ以上のアクセスグループ ID を指定しない限り、「 trident 」というアクセスグループが検索されます。
+
+Trident が設定されたアクセスグループに新しいボリュームを関連付けても、アクセスグループ自体は作成も管理もされません。ストレージバックエンドが Astra Trident に追加される前に、アクセスグループが存在している必要があります。また、 Kubernetes クラスタ内の、バックエンドでプロビジョニングされたボリュームをマウントできるすべてのノードの iSCSI IQN が含まれている必要があります。ほとんどのインストール環境では、クラスタ内のすべてのワーカーノードがこれに含まれます。
+
+Kubernetes クラスタに 64 個を超えるノードがある場合は、複数のアクセスグループを使用する必要があります。各アクセスグループには最大 64 個の IQN を含めることができ、各ボリュームは 4 つのアクセスグループに属することができます。最大 4 つのアクセスグループを設定すると、クラスタ内の任意のノードから最大 256 ノードのサイズのすべてのボリュームにアクセスできるようになります。ボリュームアクセスグループの最新の制限については、を参照してください https://docs.netapp.com/us-en/element-software/concepts/concept_solidfire_concepts_volume_access_groups.html["こちらをご覧ください"^]。
+
+デフォルトの trident' アクセスグループを使用している構成から ' 他のアクセスグループを使用している構成に変更する場合は ' リストに trident' アクセスグループの ID を含めます

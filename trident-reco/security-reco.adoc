@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: trident-reco/security-reco.html 
+keywords: security, chap, trident, namespace 
+summary: ここに記載された推奨事項に従って、 Astra Trident のインストールを確実にセキュリティで保護してください。 
+---
+= セキュリティ
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+ここに記載された推奨事項に従って、 Astra Trident のインストールを確実にセキュリティで保護してください。
+
+
+
+== Astra Trident を独自のネームスペースで実行
+
+アプリケーション、アプリケーション管理者、ユーザ、および管理アプリケーションが Astra Trident オブジェクト定義またはポッドにアクセスしないようにして、信頼性の高いストレージを確保し、悪意のあるアクティビティをブロックすることが重要です。
+
+他のアプリケーションやユーザを Astra Trident から分離するには、 Astra Trident を必ず独自の Kubernetes ネームスペース（ trident` ）にインストールしてください。Astra Trident を独自の名前空間に配置することで、 Kubernetes 管理担当者のみが Astra Trident ポッドにアクセスでき、名前空間 CRD オブジェクトに格納されたアーティファクト（バックエンドや CHAP シークレット（該当する場合）にアクセスできるようになります。Astra Trident ネームスペースへのアクセスを管理者のみに許可し、 tridentctl アプリケーションへのアクセスを許可する必要があります。
+
+
+
+== ONTAP SAN バックエンドで CHAP 認証を使用します
+
+Astra Trident は、 ONTAP SAN ワークロード向けの CHAP ベースの認証をサポートしています（「 ONTAP-SAN' 」ドライバと「 ONTAP-SAN-エコノミー 」ドライバを使用）。ネットアップでは、ホストとストレージバックエンドの間の認証に、双方向 CHAP と Astra Trident を使用することを推奨しています。
+
+SAN ストレージ・ドライバを使用する ONTAP バックエンドの場合 'Astra Trident は双方向 CHAP をセットアップし 'tridentctl を使用して CHAP ユーザー名とシークレットを管理できますを参照してください link:../trident-use/ontap-san-prep.html["こちらをご覧ください"^] ONTAP バックエンドで Trident が CHAP を構成する方法をご確認ください。
+
+
+NOTE: ONTAP バックエンドの CHAP サポートは Trident 20.04 以降で利用可能
+
+
+
+== NetApp HCI および SolidFire バックエンドで CHAP 認証を使用します
+
+ホストと NetApp HCI バックエンドと SolidFire バックエンドの間の認証を確保するために、双方向の CHAP を導入することを推奨します。Astra Trident は、テナントごとに 2 つの CHAP パスワードを含むシークレットオブジェクトを使用します。Trident を CSI プロビジョニングツールとしてインストールすると、 CHAP シークレットが管理され、それぞれの PV の「 tridentvolume 」 CR オブジェクトに格納されます。PV を作成すると、 CSI Astra Trident は CHAP シークレットを使用して iSCSI セッションを開始し、 CHAP を介して NetApp HCI および SolidFire システムと通信します。
+
+
+NOTE: CSI Trident によって作成されたボリュームは、どのボリュームアクセスグループにも関連付けられていません。
+
+CSI 以外のフロントエンドでは、ワーカーノード上のデバイスとしてのボリュームの接続は Kubernetes で処理されます。ボリュームの作成後、 Astra Trident が NetApp HCI / SolidFire システムに対して API 呼び出しを実行し、テナントのシークレットがない場合はシークレットを取得します。Trident が Kubernetes にシークレットを渡します。各ノード上の kubelet は Kubernetes API を介してシークレットにアクセスし、ボリュームにアクセスする各ノードとボリュームが配置されている NetApp HCI / SolidFire システム間で CHAP を実行 / 有効化するために使用します。

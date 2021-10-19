@@ -1,0 +1,62 @@
+---
+sidebar: sidebar 
+permalink: trident-docker/known-issues-docker.html 
+keywords: known issues, trident, trident for docker, docker 
+summary: Astra Trident と Docker を使用する際の既知の問題に関する情報を入手できます。 
+---
+= 既知の問題および制限事項
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Astra Trident と Docker を使用する際の既知の問題と制限事項について説明しています。
+
+
+
+== Trident Docker Volume Plugin を旧バージョンから 20.10 以降にアップグレードすると、該当するファイルエラーまたはディレクトリエラーなしでアップグレードが失敗します。
+
+.回避策
+. プラグインを無効にします。
++
+[listing]
+----
+docker plugin disable -f netapp:latest
+----
+. プラグインを削除します。
++
+[listing]
+----
+docker plugin rm -f netapp:latest
+----
+. 追加の 'config' パラメータを指定して ' プラグインを再インストールします
++
+[listing]
+----
+docker plugin install netapp/trident-plugin:20.10 --alias netapp --grant-all-permissions config=config.json
+----
+
+
+
+
+== ボリューム名は 2 文字以上にする必要があります。
+
+
+NOTE: これは Docker クライアントの制限事項です。クライアントは、 1 文字の名前を Windows パスと解釈します。 https://github.com/moby/moby/issues/25773["バグ 25773 を参照"^]。
+
+
+
+== Docker Swarm には、 Astra Trident がストレージやドライバのあらゆる組み合わせでサポートしないようにする一定の動作があります。
+
+* Docker Swarm は現在、ボリューム ID ではなくボリューム名を一意のボリューム識別子として使用します。
+* ボリューム要求は、 Swarm クラスタ内の各ノードに同時に送信されます。
+* ボリュームプラグイン（ Astra Trident を含む）は、 Swarm クラスタ内の各ノードで個別に実行する必要があります。ONTAP の仕組みと 'ONTAP-NAS' および 'ONTAP-SAN' ドライバの機能の仕組みにより ' これらの制限の範囲内で動作できるのはこれらのドライバだけです
+
+
+その他のドライバには、競合状態などの問題があります。このような問題が発生すると、ボリュームを同じ名前で異なる ID にする機能が Element に備わっているため、「勝者」を明確にせずに 1 回の要求で大量のボリュームを作成できるようになります。
+
+ネットアップは Docker チームにフィードバックを提供しましたが、今後の変更の兆候はありません。
+
+
+
+== FlexGroup をプロビジョニングする場合、プロビジョニングする FlexGroup と共通のアグリゲートが 2 つ目の FlexGroup に 1 つ以上あると、 ONTAP は 2 つ目の FlexGroup をプロビジョニングしません。

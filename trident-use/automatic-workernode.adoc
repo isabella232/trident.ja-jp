@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: trident-use/automatic-workernode.html 
+keywords: beta feature, trident, automatic worker node, worker node prep, preparation, NFS, iSCSI 
+summary: Trident を使用すると、 Kubernetes クラスタ内のノードに必要な NFS ツールと iSCSI ツールを自動的にインストールできます。 
+---
+= ワーカーノードの自動準備
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Astra Trident は、 Kubernetes クラスタ内のノードに必要な「 nfs 」ツールと「 iscsi 」ツールを自動的にインストールできます。これは * ベータ版の機能 * であり、本番環境クラスタ向けの機能ではありません。現在、この機能は、 CentOS 、 RHEL 、および Ubuntu * を実行するノードで使用できます。
+
+この機能のために 'Astra Trident には 'tridentctl を使用して導入されたインストール用の --enable-node-prep という新しいインストール・フラグが含まれていますTrident 演算子を使用する展開の場合は、ブール値オプションの「 enableNodePrep 」を使用します。
+
+
+WARNING: --enable-node-prep のインストール・オプションは 'Astra Trident に 'NFS および iSCSI のパッケージやサービスが 'Worker ノードにマウントされているときに確実にインストールされ ' 実行されるように指示しますこの機能は * ベータ版で、本番環境での使用が認められていない * 開発 / テスト環境で使用することを目的としています。
+
+--enable-node-prep フラグが 'tridentctl' とともに導入された Astra Trident のインストールに含まれている場合は ' 次のようになります
+
+. インストールの一環として、 Astra Trident が実行するノードを登録します。
+. Persistent Volume Claim （ PVC ；永続的ボリューム要求）が行われると、 Astra Trident は管理対象のバックエンドの 1 つから PV を作成します。
+. ポッド内の PVC を使用するには、ポッドが稼働するノードに Astra Trident がボリュームをマウントする必要があります。Trident が、必要な NFS / iSCSI クライアントユーティリティをインストールし、必要なサービスがアクティブになっていることを確認します。これは、ボリュームがマウントされる前に実行します。
+
+
+ワーカーノードの準備は、最初にボリュームをマウントしようとしたときに 1 回だけ実行されます。Astra Trident の外部では 'NFS' および iSCSI ユーティリティに変更が加えられていない限り ' 後続のすべてのボリューム・マウントは正常に実行されます
+
+このようにして、 Astra Trident は、 Kubernetes クラスタ内のすべてのノードに、ボリュームのマウントと接続に必要なユーティリティを確実に提供します。NFS ボリュームの場合は、エクスポートポリシーでボリュームのマウントも許可する必要があります。Trident では、バックエンドごとにエクスポートポリシーを自動的に管理できます。また、エクスポートポリシーをアウトオブバンドで管理することもできます。

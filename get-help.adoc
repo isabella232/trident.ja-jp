@@ -1,0 +1,15 @@
+---
+sidebar: sidebar 
+permalink: get-help.html 
+keywords: get help, get support, knowledgebase, slack, phone, web, ticket, contact support, support ticket 
+summary: ネットアップでは、さまざまな方法で Trident をサポートしています。Slack チャンネルなど、幅広いセルフサポートオプションを 24 時間 365 日ご利用いただけます。 
+---
+= サポート
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Astra Trident は、正式にサポートされているネットアップのプロジェクトです。任意の標準メカニズムを使用してネットアップに連絡し、必要なエンタープライズクラスのサポートを受けることができます。
+
+コンテナユーザー（ Astra Trident 開発者を含む）の活発なパブリックコミュニティが、「 containers 」チャネルにも存在します http://netapp.io/slack["ネットアップの Slack ワーク"^]。プロジェクトに関する一般的な質問をしたり、同じような気のある同僚と関連するトピックについて話し合うのには、この場所が最適です。

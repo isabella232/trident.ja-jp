@@ -1,0 +1,131 @@
+---
+sidebar: sidebar 
+permalink: trident-docker/volumes-docker.html 
+keywords: create volumes, astra trident, trident for docker, docker, docker volume 
+summary: ボリュームを作成するには、必要に応じて Astra Trident ドライバ名を指定した標準の「 Ocker volume 」コマンドを使用します。 
+---
+= ボリュームを操作します
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+必要に応じて Astra Trident ドライバ名を指定した標準の「 DOcker volume 」コマンドを使用すると、ボリュームの作成、クローニング、削除を簡単に行うことができます。
+
+
+
+== ボリュームを作成します
+
+* デフォルトの名前を使用して、ドライバでボリュームを作成します。
++
+[listing]
+----
+docker volume create -d netapp --name firstVolume
+----
+* 特定の Astra Trident インスタンスを使用してボリュームを作成します。
++
+[listing]
+----
+docker volume create -d ntap_bronze --name bronzeVolume
+----
++
+
+NOTE: 何も指定しない場合 link:volume-driver-options.html["オプション（ Options ）"^]、ドライバのデフォルトが使用されます。
+
+* デフォルトのボリュームサイズを上書きします。次の例を参照して、ドライバで 20GiB ボリュームを作成してください。
++
+[listing]
+----
+docker volume create -d netapp --name my_vol --opt size=20G
+----
++
+
+TIP: ボリュームサイズは、オプションの単位（ 10G 、 20GB 、 3TiB など）を含む整数値で指定します。単位を指定しない場合、デフォルトは g ですサイズの単位は、 2 の累乗（ B 、 KiB 、 MiB 、 GiB 、 TiB ）または 10 の累乗（ B 、 KB 、 MB 、 GB 、 TB ）のいずれかです。略記単位では、 2 の累乗が使用されます（ G=GiB 、 T=TiB 、…）。
+
+
+
+
+
+== ボリュームを削除します
+
+* 他の Docker ボリュームと同様にボリュームを削除します。
++
+[listing]
+----
+docker volume rm firstVolume
+----
++
+
+IMPORTANT: 「 olidfire -san 」ドライバを使用する場合、上記の例ではボリュームを削除してパージします。
+
+
+
+Astra Trident for Docker をアップグレードするには、次の手順を実行します。
+
+
+
+== ボリュームのクローンを作成します
+
+「 ONTAP-NAS' 」、「 ONTAP-SAN' 」、「 olidfire-SAN' 」、「 aws -cvs storage drivers 」を使用する場合、 Astra Trident はボリュームのクローンを作成できます。「 ONTAP-NAS-flexgroup 」または「 ONTAP-NAS-エコノミー 」ドライバを使用する場合、クローニングはサポートされません。既存のボリュームから新しいボリュームを作成すると、新しい Snapshot が作成されます。
+
+* ボリュームを調べて Snapshot を列挙します。
++
+[listing]
+----
+docker volume inspect <volume_name>
+----
+* 既存のボリュームから新しいボリュームを作成します。その結果、新しい Snapshot が作成されます。
++
+[listing]
+----
+docker volume create -d <driver_name> --name <new_name> -o from=<source_docker_volume>
+----
+* ボリューム上の既存の Snapshot から新しいボリュームを作成します。新しい Snapshot は作成されません。
++
+[listing]
+----
+docker volume create -d <driver_name> --name <new_name> -o from=<source_docker_volume> -o fromSnapshot=<source_snap_name>
+----
+
+
+
+
+=== 例
+
+[listing]
+----
+[me@host ~]$ docker volume inspect firstVolume
+
+[
+    {
+        "Driver": "ontap-nas",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker-volumes/ontap-nas/netappdvp_firstVolume",
+        "Name": "firstVolume",
+        "Options": {},
+        "Scope": "global",
+        "Status": {
+            "Snapshots": [
+                {
+                    "Created": "2017-02-10T19:05:00Z",
+                    "Name": "hourly.2017-02-10_1505"
+                }
+            ]
+        }
+    }
+]
+
+[me@host ~]$ docker volume create -d ontap-nas --name clonedVolume -o from=firstVolume
+clonedVolume
+
+[me@host ~]$ docker volume rm clonedVolume
+[me@host ~]$ docker volume create -d ontap-nas --name volFromSnap -o from=firstVolume -o fromSnapshot=hourly.2017-02-10_1505
+volFromSnap
+
+[me@host ~]$ docker volume rm volFromSnap
+----
+
+
+== 外部で作成されたボリュームにアクセス
+
+Trident * を使用して、外部で作成されたブロックデバイス（またはそれらのクローン）には、パーティションがなく、ファイルシステムが Astra Trident でサポートされている場合（例えば、 "ext4 ’でフォーマットされた "/dev/sdc1" は Astra Trident 経由でアクセスできません）のみ、コンテナからアクセスできます。

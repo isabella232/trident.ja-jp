@@ -1,0 +1,23 @@
+---
+section: trident-docker
+title: Trident for Docker が必要です
+entries:
+- title: 導入の前提条件
+  url: "/trident-docker/prereqs-docker.html"
+- title: Astra Trident を導入
+  url: "/trident-docker/deploy-docker.html"
+- title: Trident をアップグレードまたはアンインストールする
+  url: "/trident-docker/upgrade-uninstall-docker.html"
+- title: ボリュームを操作します
+  url: "/trident-docker/volumes-docker.html"
+  entries:
+  - title: ボリュームドライバのオプション
+    url: "/trident-docker/volume-driver-options.html"
+- title: ログを収集します
+  url: "/trident-docker/collect-logs-docker.html"
+- title: 複数の Astra Trident インスタンスを管理
+  url: "/trident-docker/multiple-instances-docker.html"
+- title: ストレージ構成オプション
+  url: "/trident-docker/stor-config.html"
+- title: 既知の問題
+  url: "/trident-docker/known-issues-docker.html"

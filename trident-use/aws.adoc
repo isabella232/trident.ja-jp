@@ -1,0 +1,299 @@
+---
+sidebar: sidebar 
+permalink: trident-use/aws.html 
+keywords: trident backend, cloud volumes service for AWS 
+summary: Cloud Volumes Service for AWS を Astra Trident のバックエンドとして設定する方法を、提供されている構成例を使用して説明します。 
+---
+= CVS for AWS バックエンドを設定する
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+提供されている構成例を使用して、ネットアップ Cloud Volumes Service （ CVS ） for AWS を Astra Trident のバックエンドとして設定する方法を説明します。
+
+
+NOTE: Cloud Volumes Service for AWS では、 100GB 未満のボリュームはサポートされません。Trident は、小さいボリュームが要求された場合は、 100GB のボリュームを自動的に作成します。
+
+を設定して使用します https://cloud.netapp.com/cloud-volumes-service-for-aws?utm_source=NetAppTrident_ReadTheDocs&utm_campaign=Trident["Cloud Volumes Service for AWS"^] バックエンドには次のものが必要です。
+
+* ネットアップ CVS で設定された AWS アカウント
+* CVS アカウントの API リージョン、 URL 、およびキー
+
+
+
+
+== バックエンド構成オプション
+
+バックエンド設定オプションについては、次の表を参照してください。
+
+[cols="3"]
+|===
+| パラメータ | 説明 | デフォルト 
+
+
+| 「バージョン」 |  | 常に 1 
+
+
+| 'torageDriverName' | ストレージドライバの名前 | 「 aws -cvs 」 
+
+
+| backendName` | カスタム名またはストレージバックエンド | ドライバ名 + "_" + API キーの一部 
+
+
+| 「 apiRegion 」と入力します | CVS アカウント地域。この値は、 CVS Web ポータルのアカウント設定 / API アクセスで確認できます。 |  
+
+
+| 「 apiURL 」と入力します | CVS アカウント API の URL 。この値は、 CVS Web ポータルのアカウント設定 / API アクセスで確認できます。 |  
+
+
+| 「 apiKey 」と入力します | CVS アカウントの API キー。この値は、 CVS Web ポータルのアカウント設定 / API アクセスで確認できます。 |  
+
+
+| 「 ecretKey 」 | CVS アカウントのシークレットキー。この値は、 CVS Web ポータルのアカウント設定 / API アクセスで確認できます。 |  
+
+
+| 「 ProxyURL 」と入力します | CVS アカウントへの接続にプロキシサーバが必要な場合は、プロキシ URL を指定します。プロキシサーバには、 HTTP プロキシまたは HTTPS プロキシを使用できます。HTTPS プロキシの場合、プロキシサーバで自己署名証明書を使用するために証明書の検証はスキップされます。認証が有効になっているプロキシサーバはサポートされていません。 |  
+
+
+| 「 nfsvMountOptions 」のように入力します | NFS マウントオプションのきめ細かな制御。 | "nfsvers=3 " 
+
+
+| 「 limitVolumeSize 」と入力します | 要求されたボリュームサイズがこの値を超えている場合はプロビジョニングが失敗します | "" （デフォルトでは適用されません） 
+
+
+| 「サービスレベル」 | 新しいボリュームの CVS サービスレベル。「 Standard 」、「 Premium 」、「 Extreme 」のいずれかです。 | 標準 
+
+
+| 「バグトレースフラグ」 | トラブルシューティング時に使用するデバッグフラグ。例： \\{"API":false," メソッド ":true}`トラブルシューティングを行って詳細なログダンプが必要な場合を除き、このオプションは使用しないでください。 | null 
+|===
+
+NOTE: 「 apiURL 」は、「 apiRegion 」ごとに一意です。たとえば 'us-west-2 'apiRegion' にはがあります https://cv.us-west-2.netapp.com:8080/v1/[] 「 apiURL 」と入力します。同様に、 us-east-1 の apiRegion にもがあります 「 apiURL 」と入力します。バックエンド構成に対応する正しい「 apiRegion 」パラメータと「 apiURL 」パラメータが CVS ダッシュボードにあることを確認してください。
+
+各バックエンドは、 1 つの AWS リージョンにボリュームをプロビジョニングします。他のリージョンにボリュームを作成する場合は、バックエンドを追加で定義します。
+
+構成ファイルの特別なセクションで次のオプションを指定することで、各ボリュームのデフォルトのプロビジョニング方法を制御できます。以下の設定例を参照してください。
+
+[cols=",,"]
+|===
+| パラメータ | 説明 | デフォルト 
+
+
+| 「 exportRule 」 | 新しいボリュームのエクスポートルール | "0.0.0.0/0 " 
+
+
+| 「スナップショット方向」 | 「 .snapshot 」ディレクトリの表示性を制御します | いいえ 
+
+
+| 「スナップショット予約」 | Snapshot 用にリザーブされているボリュームの割合 | "" （ CVS のデフォルト値をそのまま使用） 
+
+
+| 「 size 」 | 新しいボリュームのサイズ | " 100G " 
+|===
+「 exportRule 」の値は、 CIDR 表記の IPv4 アドレスまたは IPv4 サブネットの任意の組み合わせをカンマで区切ったリストにする必要があります。
+
+
+NOTE: CVS AWS バックエンドで作成されたすべてのボリュームに対して、 Astra Trident は、ストレージプールに含まれるすべてのラベルを、プロビジョニング時にストレージボリュームにコピーします。ストレージ管理者は、ストレージプールごとにラベルを定義し、ストレージプール内に作成されたすべてのボリュームをグループ化できます。これにより、バックエンド構成で提供されるカスタマイズ可能な一連のラベルに基づいてボリュームを簡単に区別できます。
+
+
+
+== 例 1 ：最小限の構成
+
+これは、バックエンドの絶対的な最小構成です。
+
+この構成は、 CVS AWS を初めて使用して何か試してみるところですが、実際にはプロビジョニングするボリュームの範囲をさらに設定することを検討しています。
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "aws-cvs",
+    "apiRegion": "us-east-1",
+    "apiURL": "https://cds-aws-bundles.netapp.com:8080/v1",
+    "apiKey": "znHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE",
+    "secretKey": "rR0rUmWXfNioN1KhtHisiSAnoTherboGuskey6pU"
+}
+----
+
+
+== 例 2 ：単一のサービスレベルの設定
+
+次の例は、 AWS us-east-1 リージョンで作成されたすべての Astra Trident ストレージに同じ設定を適用するバックエンドファイルを示しています。この例は ' バックエンド・ファイルでの ProxyURL の使用方法も示しています
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "aws-cvs",
+    "backendName": "cvs-aws-us-east",
+    "apiRegion": "us-east-1",
+    "apiURL": "https://cds-aws-bundles.netapp.com:8080/v1",
+    "apiKey": "znHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE",
+    "secretKey": "rR0rUmWXfNioN1KhtHisiSAnoTherboGuskey6pU",
+    "proxyURL": "http://proxy-server-hostname/",
+    "nfsMountOptions": "vers=3,proto=tcp,timeo=600",
+    "limitVolumeSize": "50Gi",
+    "serviceLevel": "premium",
+    "defaults": {
+        "snapshotDir": "true",
+        "snapshotReserve": "5",
+        "exportRule": "10.0.0.0/24,10.0.1.0/24,10.0.2.100",
+        "size": "200Gi"
+    }
+}
+----
+
+
+== 例 3 ：仮想ストレージプールの構成
+
+この例は、仮想ストレージプールで設定されたバックエンド定義ファイルと、それらを参照する StorageClasses を示しています。
+
+以下に示すバックエンド定義ファイルの例では ' 特定のデフォルトがすべてのストレージプールに設定されていますこれにより 'napshotReserve が 5% に設定され 'exportRule' が 0.0.0.0/0 に設定されます仮想ストレージプールは「ストレージ」セクションで定義します。この例では ' 各ストレージ・プールが独自のサービス・レベルを設定し ' 一部のプールがデフォルト値を上書きします
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "aws-cvs",
+    "apiRegion": "us-east-1",
+    "apiURL": "https://cds-aws-bundles.netapp.com:8080/v1",
+    "apiKey": "EnterYourAPIKeyHere***********************",
+    "secretKey": "EnterYourSecretKeyHere******************",
+    "nfsMountOptions": "vers=3,proto=tcp,timeo=600",
+
+    "defaults": {
+        "snapshotReserve": "5",
+        "exportRule": "0.0.0.0/0"
+    },
+
+    "labels": {
+        "cloud": "aws"
+    },
+    "region": "us-east-1",
+
+    "storage": [
+        {
+            "labels": {
+                "performance": "extreme",
+                "protection": "extra"
+            },
+            "serviceLevel": "extreme",
+            "defaults": {
+                "snapshotDir": "true",
+                "snapshotReserve": "10",
+                "exportRule": "10.0.0.0/24"
+            }
+        },
+        {
+            "labels": {
+                "performance": "extreme",
+                "protection": "standard"
+            },
+            "serviceLevel": "extreme"
+        },
+        {
+            "labels": {
+                "performance": "premium",
+                "protection": "extra"
+            },
+            "serviceLevel": "premium",
+            "defaults": {
+                "snapshotDir": "true",
+                "snapshotReserve": "10"
+            }
+        },
+
+        {
+            "labels": {
+                "performance": "premium",
+                "protection": "standard"
+            },
+            "serviceLevel": "premium"
+        },
+
+        {
+            "labels": {
+                "performance": "standard"
+            },
+            "serviceLevel": "standard"
+        }
+    ]
+}
+----
+次の StorageClass 定義は、上記のストレージプールを参照してください。parameters.selector` フィールドを使用すると ' ボリュームのホストに使用される仮想プールを各 StorageClass に指定できますボリュームには、選択したプールで定義された要素があります。
+
+最初の StorageClass （「 cvs-mextreme -extra-protection 」）は、最初の仮想ストレージプールにマッピングされます。スナップショット予約が 10% の非常に高いパフォーマンスを提供する唯一のプールです。最後の StorageClass （「 cvs-extra-protection 」）は、 10% のスナップショット予約を提供するストレージプールを呼び出します。Trident が、どの仮想ストレージプールを選択するかを決定し、 Snapshot リザーブの要件を確実に満たします。
+
+[listing]
+----
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: cvs-extreme-extra-protection
+provisioner: netapp.io/trident
+parameters:
+  selector: "performance=extreme; protection=extra"
+allowVolumeExpansion: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: cvs-extreme-standard-protection
+provisioner: netapp.io/trident
+parameters:
+  selector: "performance=extreme; protection=standard"
+allowVolumeExpansion: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: cvs-premium-extra-protection
+provisioner: netapp.io/trident
+parameters:
+  selector: "performance=premium; protection=extra"
+allowVolumeExpansion: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: cvs-premium
+provisioner: netapp.io/trident
+parameters:
+  selector: "performance=premium; protection=standard"
+allowVolumeExpansion: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: cvs-standard
+provisioner: netapp.io/trident
+parameters:
+  selector: "performance=standard"
+allowVolumeExpansion: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: cvs-extra-protection
+provisioner: netapp.io/trident
+parameters:
+  selector: "protection=extra"
+allowVolumeExpansion: true
+----
+
+
+== 次の手順
+
+バックエンド構成ファイルを作成したら、次のコマンドを実行します。
+
+[listing]
+----
+tridentctl create backend -f <backend-file>
+----
+バックエンドの作成に失敗した場合は、バックエンドの設定に何か問題があります。次のコマンドを実行すると、ログを表示して原因を特定できます。
+
+[listing]
+----
+tridentctl logs
+----
+構成ファイルで問題を特定して修正したら、 create コマンドを再度実行できます。

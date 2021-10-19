@@ -1,0 +1,117 @@
+---
+sidebar: sidebar 
+permalink: trident-use/manage-stor-class.html 
+keywords: storage class, manage storage class, storage classes, kubernetes storage classes 
+summary: ストレージクラスを作成したり、ストレージクラスを削除したり、既存のストレージクラスを表示したりできます。 
+---
+= ストレージクラスを管理する
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+ストレージクラスの作成、ストレージクラスの削除、および既存のストレージクラスの表示に関する情報を検索します。
+
+
+
+== ストレージクラスを設計する
+
+を参照してください link:../trident-reference/objects.html["こちらをご覧ください"^] ストレージクラスとその設定方法の詳細については、を参照してください。
+
+
+
+== ストレージクラスを作成する。
+
+ストレージクラスファイルが作成されたら、次のコマンドを実行します。
+
+[listing]
+----
+kubectl create -f <storage-class-file>
+----
+「 <storage-class-file> 」は、ストレージクラスのファイル名に置き換える必要があります。
+
+
+
+== ストレージクラスを削除する
+
+Kubernetes からストレージクラスを削除するには、次のコマンドを実行します。
+
+[listing]
+----
+kubectl delete storageclass <storage-class>
+----
+「 <storage-class> 」は、ご使用のストレージクラスに置き換えてください。
+
+このストレージクラスで作成された永続ボリュームには変更はなく、 Astra Trident によって引き続き管理されます。
+
+
+NOTE: Astra Trident は ' 作成したボリュームにブランクの fsType を適用しますiSCSI バックエンドの場合は 'StorageClass に parameters.fsType を適用することをお勧めしますesixting StorageClasses を削除して 'parameters.fsType' を指定して作成し直す必要があります
+
+
+
+== 既存のストレージクラスを表示します
+
+* 既存の Kubernetes ストレージクラスを表示するには、次のコマンドを実行します。
+
+
+[listing]
+----
+kubectl get storageclass
+----
+* Kubernetes ストレージクラスの詳細を表示するには、次のコマンドを実行します。
+
+
+[listing]
+----
+kubectl get storageclass <storage-class> -o json
+----
+* Astra Trident の同期されたストレージクラスを表示するには、次のコマンドを実行します。
+
+
+[listing]
+----
+tridentctl get storageclass
+----
+* Astra Trident の同期されたストレージクラスの詳細を表示するには、次のコマンドを実行します。
+
+
+[listing]
+----
+tridentctl get storageclass <storage-class> -o json
+----
+
+
+== デフォルトのストレージクラスを設定する
+
+Kubernetes 1.6 では、デフォルトのストレージクラスを設定する機能が追加されています。永続ボリューム要求（ PVC ）に永続ボリュームが指定されていない場合に、永続ボリュームのプロビジョニングに使用するストレージクラスです。
+
+* ストレージクラスの定義でアノテーションの「 torageclass.Kubernetes .io/is-default-class 」を true に設定して、デフォルトのストレージクラスを定義します。仕様に応じて、それ以外の値やアノテーションがない場合は false と解釈されます。
+* 次のコマンドを使用して、既存のストレージクラスをデフォルトのストレージクラスとして設定できます。
+
+
+[listing]
+----
+kubectl patch storageclass <storage-class-name> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+----
+* 同様に、次のコマンドを使用して、デフォルトのストレージクラスアノテーションを削除できます。
+
+
+[listing]
+----
+kubectl patch storageclass <storage-class-name> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
+----
+また、このアノテーションが含まれている Trident インストーラバンドルにも例があります。
+
+
+NOTE: クラスタには、常に 1 つのデフォルトストレージクラスだけを設定してください。Kubernetes では、技術的に複数のストレージを使用することはできますが、デフォルトのストレージクラスがまったくない場合と同様に動作します。
+
+
+
+== ストレージクラスのバックエンドを特定します
+
+これは 'tridentctl が 'Astra Trident バックエンド・オブジェクトに出力する JSON を使用して回答が実行できる質問の一例ですこれには 'jq' ユーティリティが使用されますこのユーティリティを最初にインストールする必要があります
+
+[listing]
+----
+tridentctl get storageclass -o json | jq  '[.items[] | {storageClass: .Config.name, backends: [.storage]|unique}]'
+----

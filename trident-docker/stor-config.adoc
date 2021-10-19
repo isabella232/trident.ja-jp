@@ -1,0 +1,969 @@
+---
+sidebar: sidebar 
+permalink: trident-docker/stor-config.html 
+keywords: deploy, trident, docker, trident for docker, nfs, iscsi, protcol, nfs protocol, iscsi protocol, configure host, host config, storage config, options, variables, ontap, element, aws, cvs on gcp, cvs on aws, anf, azure netapp files 
+summary: Astra Trident 構成で使用できる設定オプションを確認してください。 
+---
+= ストレージ構成オプション
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Astra Trident 構成で使用できる設定オプションを確認してください。
+
+
+
+== グローバル構成オプション
+
+以下の設定オプションは、使用するストレージプラットフォームに関係なく、すべての Astra Trident 構成に適用されます。
+
+[cols="3*"]
+|===
+| オプション | 説明 | 例 
+
+
+| 「バージョン」  a| 
+構成ファイルのバージョン番号
+ a| 
+1.
+
+
+
+| 'torageDriverName'  a| 
+ストレージドライバの名前
+ a| 
+「 ontap -na`, `ontap -san`, `ontap -nas-エコノミー 」 , 「 ontap -nas-flexgroup 」 , 「 olidfire -san 」 , 「 azure-NetApp-files 」、「 aws -cvs 」、または「 gcp-cvs 」です
+
+
+
+| 'toragePrefix'  a| 
+ボリューム名のオプションのプレフィックス。デフォルト：「 netappdvp_」 。
+ a| 
+ステージング _
+
+
+
+| 「 limitVolumeSize 」と入力します  a| 
+ボリュームサイズに関するオプションの制限。デフォルト：「」（適用されていない）
+ a| 
+10G
+
+|===
+
+TIP: Element バックエンドには 'toragePrefix' （デフォルトを含む）を使用しないでくださいデフォルトでは 'solidfire-san' ドライバはこの設定を無視し ' 接頭辞を使用しませんDocker ボリュームマッピングには特定の tenantID を使用するか、 Docker バージョン、ドライバ情報、名前の munging が使用されている可能性がある場合には Docker から取得した属性データを使用することを推奨します。
+
+作成するすべてのボリュームでデフォルトのオプションを指定しなくても済むようになっています。「 size 」オプションは、すべてのコントローラタイプで使用できます。デフォルトのボリュームサイズの設定方法の例については、 ONTAP の設定に関するセクションを参照してください。
+
+[cols="3*"]
+|===
+| オプション | 説明 | 例 
+
+
+| 「 size 」  a| 
+新しいボリュームのオプションのデフォルトサイズ。デフォルト：「 1G 」
+ a| 
+10G
+
+|===
+
+
+== ONTAP の設定
+
+ONTAP を使用する場合は、上記のグローバル構成値に加えて、次のトップレベルオプションを使用できます。
+
+[cols="3*"]
+|===
+| オプション | 説明 | 例 
+
+
+| 「管理 LIF 」  a| 
+ONTAP 管理 LIF の IP アドレス。Fully Qualified Domain Name （ FQDN ；完全修飾ドメイン名）を指定できます。
+ a| 
+10.0.0.1
+
+
+
+| 「重複排除  a| 
+プロトコル LIF の IP アドレス。指定しない場合に生成されます。「 ontap/na`drivers * only * 」では、 FQDN を指定できます。この場合、 FQDN が NFS マウント操作に使用されます。「 ONTAP -SAN 」ドライバの場合、デフォルトでは SVM のすべてのデータ LIF IP が使用され、 iSCSI マルチパスが使用されます。「 SAN-SAN 」ドライバの「 datalif 」に IP アドレスを指定すると、ドライバはマルチパスを無効にし、指定されたアドレスだけを使用するように強制されます。
+ a| 
+10.0.0.2
+
+
+
+| 'VM'  a| 
+使用する Storage Virtual Machine （管理 LIF がクラスタ LIF である場合は必須）
+ a| 
+SVM_NFS の場合
+
+
+
+| 「ユーザ名」  a| 
+ストレージデバイスに接続するユーザ名
+ a| 
+vsadmin
+
+
+
+| 「 password 」と入力します  a| 
+ストレージ・デバイスに接続するためのパスワード
+ a| 
+秘密
+
+
+
+| 「集約」  a| 
+プロビジョニング用のアグリゲート（オプション。設定する場合は SVM に割り当てる必要があります）。「 ONTAP-NAS-flexgroup 」ドライバの場合、このオプションは無視されます。SVM に割り当てられたすべてのアグリゲートを使用して FlexGroup ボリュームがプロビジョニングされます。
+ a| 
+aggr1
+
+
+
+| 「 AggreglimitateUsage 」と入力します  a| 
+オプション。使用率がこの割合を超えている場合は、プロビジョニングを失敗させます
+ a| 
+75%
+
+
+
+| 「 nfsvMountOptions 」のように入力します  a| 
+NFS マウントオプションのきめ細かな制御。デフォルトは「 -o nfsvers=3 」です。* 「 ONTAP-NAS' 」および「 ONTAP-NAS-エコノミー 」ドライバ専用です。 https://www.netapp.com/pdf.html?item=/media/10720-tr-4067.pdf["ここでは、 NFS ホストの設定情報を参照してください"^]。
+ a| 
+-o nfsvers=4
+
+
+
+| 「 igroupName 」と入力します  a| 
+プラグインで使用される igroup 。デフォルトは「 netappdvp 」です。* 「 ONTAP-SAN'd river 」のみ利用可能です。
+ a| 
+myigroup と入力します
+
+
+
+| 「 limitVolumeSizee 」  a| 
+最大要求可能ボリュームサイズと qtree 親ボリュームサイズ。* 「 ONTAP-NAS-エコノミー 」ドライバの場合、このオプションにより、作成する FlexVol のサイズも制限されます。 *
+ a| 
+300g
+
+
+
+| qtreesPerFlexvol`  a| 
+FlexVol あたりの最大 qtree 数は [50 、 300] の範囲で指定する必要があります。デフォルトは 200 です。*「 ONTAP-NAS-エコノミー 」ドライバの場合、このオプションを使用すると、 FlexVol あたりの最大数をカスタマイズできます。
+ a| 
+300
+
+|===
+作成するすべてのボリュームでデフォルトのオプションを指定しなくても済むようになっています。
+
+[cols="3*"]
+|===
+| オプション | 説明 | 例 
+
+
+| 「平和のための準備」を参照してください  a| 
+スペースリザベーションモード：「 none 」（シンプロビジョニング）または「 volume 」（シック）
+ a| 
+なし
+
+
+
+| 「ナプショットポリシー」  a| 
+使用する Snapshot ポリシー。デフォルトは「 none 」です。
+ a| 
+なし
+
+
+
+| 「スナップショット予約」  a| 
+Snapshot リザーブの割合。 ONTAP のデフォルトを受け入れる場合は、デフォルトで「」になります
+ a| 
+10.
+
+
+
+| 'plitOnClone  a| 
+作成時にクローンを親からスプリットします。デフォルトは「 false 」です。
+ a| 
+いいえ
+
+
+
+| 「暗号化」  a| 
+NetApp Volume Encryption を有効にします。デフォルトは「 false 」です。
+ a| 
+正しいです
+
+
+
+| 「 unixPermissions 」  a| 
+プロビジョニングされた NFS ボリューム用の NAS オプション。デフォルトは「 777 」
+ a| 
+777
+
+
+
+| 「スナップショット方向」  a| 
+「 .snapshot 」ディレクトリにアクセスするための NAS オプション。デフォルトは「 false 」です。
+ a| 
+正しいです
+
+
+
+| 「 exportPolicy 」と入力します  a| 
+NFS エクスポートポリシーで使用する NAS オプション。デフォルトは「 default 」
+ a| 
+デフォルト
+
+
+
+| 'ecurityStyle'  a| 
+プロビジョニングされた NFS ボリュームにアクセスするための NAS オプション（デフォルトは「 UNIX 」）
+ a| 
+混在
+
+
+
+| 「 filesystemtype 」です  a| 
+SAN オプション：ファイルシステムタイプを選択します。デフォルトは「 ext4 」です。
+ a| 
+XFS
+
+
+
+| 階層ポリシー  a| 
+使用する階層化ポリシー。デフォルトは「 none 」です。 ONTAP 9.5 より前の SVM-DR 構成では「 snapshot-only 」です
+ a| 
+なし
+
+|===
+
+
+=== スケーリングオプション
+
+「 ONTAP-NAS' 」ドライバと「 ONTAP-SAN' 」ドライバは、各 Docker ボリューム用の ONTAP FlexVol を作成します。ONTAP では、クラスタノードあたり最大 1 、 000 個の FlexVol がサポートされます。クラスタの最大 FlexVol 数は 12 、 000 です。Docker ボリューム要件がこの制限に適合する場合、「 ONTAP - NAS 」ドライバは FlexVol が提供する Docker ボリューム単位のスナップショットやクローン作成などの追加機能により、 NAS 解決策の方が望ましいとされます。
+
+FlexVol の制限で対応できる容量よりも多くの Docker ボリュームが必要な場合は、「 ONTAP - NAS - エコノミー」または「 ONTAP - SAN - エコノミー」ドライバを選択します。
+
+「 ONTAP - NAS - エコノミー」ドライバは、自動的に管理される FlexVol プール内の ONTAP qtree として Docker ボリュームを作成します。qtree の拡張性は、クラスタノードあたり最大 10 、 000 、クラスタあたり最大 2 、 40 、 000 で、一部の機能を犠牲にすることで大幅に向上しています。「 ONTAP - NAS - エコノミー」ドライバは、 Docker ボリューム単位のスナップショットまたはクローン作成をサポートしていません。
+
+
+NOTE: Swarm は複数のノード間でのボリューム作成のオーケストレーションを行わないため 'ONTAP-NAS-エコノミー のドライバは現在 Docker Swarm ではサポートされていません
+
+「 ONTAP と SAN の経済性」のドライバは、自動的に管理される FlexVol の共有プール内で、 ONTAP LUN として Docker ボリュームを作成します。この方法により、各 FlexVol が 1 つの LUN に制限されることはなく、 SAN ワークロードのスケーラビリティが向上します。ストレージアレイに応じて、 ONTAP はクラスタあたり最大 16384 個の LUN をサポートします。このドライバは、ボリュームが下位の LUN であるため、 Docker ボリューム単位の Snapshot とクローニングをサポートします。
+
+「 ONTAP-NAS-flexgroup 」ドライバを選択して、数十億個のファイルを含むペタバイト規模に拡張可能な 1 つのボリュームに並列処理を増やすことができます。FlexGroup のユースケースとしては、 AI / ML / DL 、ビッグデータと分析、ソフトウェアのビルド、ストリーミング、ファイルリポジトリなどが考えられます。Trident は、 FlexGroup ボリュームのプロビジョニング時に SVM に割り当てられたすべてのアグリゲートを使用します。Trident での FlexGroup のサポートでは、次の点も考慮する必要があります。
+
+* ONTAP バージョン 9.2 以降が必要です。
+* 本ドキュメントの執筆時点では、 FlexGroup は NFS v3 のみをサポートしています。
+* SVM で 64 ビットの NFSv3 ID を有効にすることを推奨します。
+* 推奨される最小 FlexGroup サイズは 100GB です。
+* FlexGroup Volume ではクローニングはサポートされていません。
+
+
+FlexGroup と FlexGroup に適したワークロードの詳細については、を参照してください https://www.netapp.com/pdf.html?item=/media/12385-tr4571pdf.pdf["『 NetApp FlexGroup Volume Best Practices and Implementation Guide 』にある、ボリュームへの移行に関するセクション"^]。
+
+同じ環境で高度な機能と大規模な拡張性を実現するために 'ONTAP-NAS' を使用して Docker Volume Plugin の複数のインスタンスを実行し ' もう 1 つは「 ONTAP-NAS-エコノミー 」を使用して実行できます
+
+
+
+=== ONTAP 構成ファイルの例
+
+*NFS は 'ONTAP-NAS' ドライバの例です
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "ontap-nas",
+    "managementLIF": "10.0.0.1",
+    "dataLIF": "10.0.0.2",
+    "svm": "svm_nfs",
+    "username": "vsadmin",
+    "password": "secret",
+    "aggregate": "aggr1",
+    "defaults": {
+      "size": "10G",
+      "spaceReserve": "none",
+      "exportPolicy": "default"
+    }
+}
+----
+*NFS は 'ONTAP-NAS-flexgroup ドライバの例です
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "ontap-nas-flexgroup",
+    "managementLIF": "10.0.0.1",
+    "dataLIF": "10.0.0.2",
+    "svm": "svm_nfs",
+    "username": "vsadmin",
+    "password": "secret",
+    "defaults": {
+      "size": "100G",
+      "spaceReserve": "none",
+      "exportPolicy": "default"
+    }
+}
+----
+*NFS は 'ONTAP-NAS-エコノミー 'driver* の例です
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "ontap-nas-economy",
+    "managementLIF": "10.0.0.1",
+    "dataLIF": "10.0.0.2",
+    "svm": "svm_nfs",
+    "username": "vsadmin",
+    "password": "secret",
+    "aggregate": "aggr1"
+}
+----
+*iSCSI は 'ONTAP-SAN' ドライバの例です
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "ontap-san",
+    "managementLIF": "10.0.0.1",
+    "dataLIF": "10.0.0.3",
+    "svm": "svm_iscsi",
+    "username": "vsadmin",
+    "password": "secret",
+    "aggregate": "aggr1",
+    "igroupName": "myigroup"
+}
+----
+*NFS は 'ONTAP-SAN-エコノミー ドライバーの例です
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "ontap-san-economy",
+    "managementLIF": "10.0.0.1",
+    "dataLIF": "10.0.0.3",
+    "svm": "svm_iscsi_eco",
+    "username": "vsadmin",
+    "password": "secret",
+    "aggregate": "aggr1",
+    "igroupName": "myigroup"
+}
+----
+
+
+== Element ソフトウェアの設定
+
+Element ソフトウェア（ NetApp HCI / SolidFire ）を使用する場合は、グローバルな設定値のほかに、以下のオプションも使用できます。
+
+[cols="3*"]
+|===
+| オプション | 説明 | 例 
+
+
+| 「エンドポイント」  a| 
+https://<login>:<password>@<mvip>/json-rpc/<element-version>[]
+ a| 
+https://admin:admin@192.168.160.3/json-rpc/8.0[]
+
+
+
+| 「 VIP 」  a| 
+iSCSI の IP アドレスとポート
+ a| 
+10.0.0.7 ： 3260
+
+
+
+| 「 tenantname 」  a| 
+使用する SolidFire テナント（見つからない場合に作成）
+ a| 
+Docker です
+
+
+
+| 「 InitiatorIFCace 」  a| 
+iSCSI トラフィックをデフォルト以外のインターフェイスに制限する場合は、インターフェイスを指定します
+ a| 
+デフォルト
+
+
+
+| 「タイプ」  a| 
+QoS の仕様
+ a| 
+以下の例を参照してください
+
+
+
+| 「 LegacyNamePrefix 」のように入力します  a| 
+アップグレードされた Trident インストールのプレフィックス。1.3.2 より前のバージョンの Trident を使用していて、既存のボリュームをアップグレードする場合は、この値を設定して、ボリューム名メソッドを使用してマッピングされた古いボリュームにアクセスする必要があります。
+ a| 
+「 netappdvp - 」
+
+|===
+「 olidfire -san 」ドライバは Docker Swarm をサポートしていません。
+
+
+
+=== Element ソフトウェア構成ファイルの例
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "solidfire-san",
+    "Endpoint": "https://admin:admin@192.168.160.3/json-rpc/8.0",
+    "SVIP": "10.0.0.7:3260",
+    "TenantName": "docker",
+    "InitiatorIFace": "default",
+    "Types": [
+        {
+            "Type": "Bronze",
+            "Qos": {
+                "minIOPS": 1000,
+                "maxIOPS": 2000,
+                "burstIOPS": 4000
+            }
+        },
+        {
+            "Type": "Silver",
+            "Qos": {
+                "minIOPS": 4000,
+                "maxIOPS": 6000,
+                "burstIOPS": 8000
+            }
+        },
+        {
+            "Type": "Gold",
+            "Qos": {
+                "minIOPS": 6000,
+                "maxIOPS": 8000,
+                "burstIOPS": 10000
+            }
+        }
+    ]
+}
+----
+
+
+== Cloud Volumes Service （ CVS ）を使用した AWS 構成
+
+CVS on AWS を使用する場合は、グローバル設定の値に加えて、次のオプションを使用できます。必要な値はすべて CVS Web ユーザインターフェイスで確認できます。
+
+[cols="3*"]
+|===
+| オプション | 説明 | 例 
+
+
+| 「 apiRegion 」と入力します  a| 
+CVS アカウントリージョン（必須）。CVS Web ポータルの「アカウント設定」 > 「 API アクセス」で確認できます。
+ a| 
+「 us-east-1 」
+
+
+
+| 「 apiURL 」と入力します  a| 
+CVS アカウント API URL （必須）。CVS Web ポータルの「アカウント設定」 > 「 API アクセス」で確認できます。
+ a| 
+「 https://cds-aws-bundles.netapp.com:8080/v1”
+
+
+
+| 「 apiKey 」と入力します  a| 
+CVS アカウントの API キー（必須）。CVS Web ポータルの「アカウント設定」 > 「 API アクセス」で確認できます。
+ a| 
+Docker です
+
+
+
+| 「 ecretKey 」  a| 
+CVS アカウントのシークレットキー（必須）。CVS Web ポータルの「アカウント設定」 > 「 API アクセス」で確認できます。
+ a| 
+デフォルト
+
+
+
+| 「 ProxyURL 」と入力します  a| 
+CVS アカウントへの接続にプロキシサーバが必要な場合は、プロキシ URL を指定します。プロキシサーバには、 HTTP プロキシまたは HTTPS プロキシを使用できます。HTTPS プロキシの場合、証明書の検証は省略され、プロキシサーバで自己署名証明書が使用されるようになります。* 認証が有効になっているプロキシサーバーはサポートされていません * 。
+ a| 
+「 http://proxy-server-hostname/”
+
+
+
+| 「 nfsvMountOptions 」のように入力します  a| 
+NFS マウントオプション。デフォルトは「 -o nfsvers=3 」です。
+ a| 
+「 nfsvers=3 、 proto=tcp 、 timeo=600 」
+
+
+
+| 「サービスレベル」  a| 
+パフォーマンスレベル（標準、プレミアム、エクストリーム）、デフォルトは「標準」
+ a| 
+Premium サービス
+
+|===
+
+NOTE: NetApp Cloud Volumes Service for AWS では、サイズが 100GB 未満のボリュームはサポートされていません。Trident では、アプリケーションの導入を容易にするために、より小さいボリュームが要求された場合に、 100GB のボリュームが自動的に作成されます。
+
+AWS で CVS を使用している場合は、以下のデフォルトのボリュームオプション設定が使用できます。
+
+[cols="3*"]
+|===
+| オプション | 説明 | 例 
+
+
+| 「 exportRule 」  a| 
+NFS アクセスリスト（アドレスおよび CIDR サブネット）。デフォルトは「 0.0.0.0/0 」です。
+ a| 
+「 10.0.1.0/24,10.0.2.100 」
+
+
+
+| 「スナップショット方向」  a| 
+「 .snapshot 」ディレクトリの表示を制御します
+ a| 
+いいえ
+
+
+
+| 「スナップショット予約」  a| 
+スナップショット予約の割合。デフォルトでは、 CVS のデフォルト値である 0 を使用します
+ a| 
+10.
+
+
+
+| 「 size 」  a| 
+ボリュームサイズ、デフォルトは「 100 GB 」
+ a| 
+「 500G 」
+
+|===
+
+
+=== CVS on AWS 構成ファイルの例
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "aws-cvs",
+    "apiRegion": "us-east-1",
+    "apiURL": "https://cds-aws-bundles.netapp.com:8080/v1",
+    "apiKey":    "znHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE",
+    "secretKey": "rR0rUmWXfNioN1KhtHisiSAnoTherboGuskey6pU",
+    "region": "us-east-1",
+    "proxyURL": "http://proxy-server-hostname/",
+    "serviceLevel": "premium",
+    "limitVolumeSize": "200Gi",
+    "defaults": {
+        "snapshotDir": "true",
+        "snapshotReserve": "5",
+        "exportRule": "10.0.0.0/24,10.0.1.0/24,10.0.2.100",
+        "size": "100Gi"
+    }
+}
+----
+
+
+== GCP 上の Cloud Volumes Service （ CVS ）構成
+
+Trident に、デフォルトの CVS サービスタイプが on に設定された小規模なボリュームがサポートされるようになりました https://cloud.google.com/architecture/partners/netapp-cloud-volumes/service-types["GCP"^]。「 torageClass=software 」で作成されたバックエンドの場合、ボリュームのプロビジョニングサイズは最小 300GiB になります。* 非本番環境のワークロード用に 1TiB 未満のボリュームを使用することを推奨 * 。現在、 CVS ではこの機能が限定的な可用性で提供されており、テクニカルサポートは提供されていません。
+
+
+NOTE: 1TiB 未満のボリュームにアクセスするには、サインアップします https://docs.google.com/forms/d/e/1FAIpQLSc7_euiPtlV8bhsKWvwBl3gm9KUL4kOhD7lnbHC3LlQ7m02Dw/viewform["こちらをご覧ください"^]。
+
+
+WARNING: デフォルトの CVS サービスタイプ「 torageClass=software 」を使用してバックエンドを導入する場合は、該当するプロジェクト番号とプロジェクト ID の GCP の sub1TiB ボリューム機能へのアクセス権を取得する必要があります。これは Trident で sub-1TiB ボリュームのプロビジョニングに必要です。そうでない場合、ボリュームの作成に失敗します。 PVC が 600 GiB 未満の場合。を使用して 1TiB 未満のボリュームへのアクセスを取得します https://docs.google.com/forms/d/e/1FAIpQLSc7_euiPtlV8bhsKWvwBl3gm9KUL4kOhD7lnbHC3LlQ7m02Dw/viewform["このフォーム"^]。
+
+デフォルトの CVS サービスレベル用に Trident で作成されたボリュームは次のようにプロビジョニングされます。
+
+* 300GiB 未満の PVC があると、 Trident によって 300GiB の CVS ボリュームが作成されます。
+* 300GiB から 600GiB の PVC があると、 Trident が要求されたサイズの CVS ボリュームを作成します。
+* 600GiB から 1TiB までの PVC の場合、 Trident によって 1TiB の CVS ボリュームが作成されます。
+* 1TiB を超える PVC の場合、 Trident は要求サイズの CVS ボリュームを作成します。
+
+
+GCP で CVS を使用する場合は、グローバル構成の値に加えて、次のオプションも使用できます。
+
+[cols="3*"]
+|===
+| オプション | 説明 | 例 
+
+
+| 「 apiRegion 」と入力します  a| 
+CVS アカウントリージョン（必須）。は、このバックエンドがボリュームをプロビジョニングする GCP リージョンです。
+ a| 
+「 us-west2 」
+
+
+
+| 「 ProjectNumber 」  a| 
+GCP プロジェクト番号（必須）。GCP Web ポータルのホーム画面にあります。
+ a| 
+“ 123456789012 ”
+
+
+
+| 「 hostProjectNumber 」  a| 
+GCP 共有 VPC ホストプロジェクト番号（共有 VPC を使用する場合は必須）
+ a| 
+「 098765432109 」
+
+
+
+| 「 apiKey 」と入力します  a| 
+CVS admin ロールを持つ GCP サービスアカウントの API キー（必須）。は、 GCP サービスアカウントの秘密鍵ファイルの JSON 形式のコンテンツです（バックエンド構成ファイルにそのままコピーされます）。サービスアカウントには netappcloudvolumes .admin ロールが必要です。
+ a| 
+（秘密鍵ファイルの内容）
+
+
+
+| 「 ecretKey 」  a| 
+CVS アカウントのシークレットキー（必須）。CVS Web ポータルの「アカウント設定」 > 「 API アクセス」で確認できます。
+ a| 
+デフォルト
+
+
+
+| 「 ProxyURL 」と入力します  a| 
+CVS アカウントへの接続にプロキシサーバが必要な場合は、プロキシ URL を指定します。プロキシサーバには、 HTTP プロキシまたは HTTPS プロキシを使用できます。HTTPS プロキシの場合、証明書の検証は省略され、プロキシサーバで自己署名証明書が使用されるようになります。* 認証が有効になっているプロキシサーバーはサポートされていません * 。
+ a| 
+「 http://proxy-server-hostname/”
+
+
+
+| 「 nfsvMountOptions 」のように入力します  a| 
+NFS マウントオプション。デフォルトは「 -o nfsvers=3 」です。
+ a| 
+「 nfsvers=3 、 proto=tcp 、 timeo=600 」
+
+
+
+| 「サービスレベル」  a| 
+パフォーマンスレベル（標準、プレミアム、エクストリーム）、デフォルトは「標準」
+ a| 
+Premium サービス
+
+
+
+| 「ネットワーク」  a| 
+CVS ボリュームに使用される GCP ネットワーク。デフォルトは「 default 」です。
+ a| 
+デフォルト
+
+|===
+
+NOTE: 共有 VPC ネットワークを使用する場合は、「 ProjectNumber 」と「 hostProjectNumber 」の両方を指定する必要があります。その場合、「 ProjectNumber 」はサービスプロジェクト、「 hostProjectNumber 」はホストプロジェクトです。
+
+
+NOTE: NetApp Cloud Volumes Service for GCP では、サイズが 100GiB 未満の CVS パフォーマンスボリュームや 300GiB 未満の CVS ボリュームはサポートされていません。アプリケーションの導入を容易にするために、ボリュームサイズが小さすぎる場合は、 Trident によって最小サイズのボリュームが自動的に作成されます。
+
+GCP で CVS を使用している場合は、これらのデフォルトのボリュームオプション設定を使用できます。
+
+[cols="3*"]
+|===
+| オプション | 説明 | 例 
+
+
+| 「 exportRule 」  a| 
+NFS アクセスリスト（アドレスおよび CIDR サブネット）。デフォルトは「 0.0.0.0/0 」です。
+ a| 
+「 10.0.1.0/24,10.0.2.100 」
+
+
+
+| 「スナップショット方向」  a| 
+「 .snapshot 」ディレクトリの表示を制御します
+ a| 
+いいえ
+
+
+
+| 「スナップショット予約」  a| 
+スナップショット予約の割合。デフォルトでは、 CVS のデフォルト値である 0 を使用します
+ a| 
+10.
+
+
+
+| 「 size 」  a| 
+ボリュームサイズ、デフォルトは「 100GiB 」
+ a| 
+「 10T 」
+
+|===
+
+
+=== GCP 上の CVS 構成ファイルの例
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "gcp-cvs",
+    "projectNumber": "012345678901",
+    "apiRegion": "us-west2",
+    "apiKey": {
+        "type": "service_account",
+        "project_id": "my-gcp-project",
+        "private_key_id": "1234567890123456789012345678901234567890",
+        "private_key": "-----BEGIN PRIVATE KEY-----\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nznHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE4jK3bl/qp8B4Kws8zX5ojY9m\nXsYg6gyxy4zq7OlwWgLwGa==\n-----END PRIVATE KEY-----\n",
+        "client_email": "cloudvolumes-admin-sa@my-gcp-project.iam.gserviceaccount.com",
+        "client_id": "123456789012345678901",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cloudvolumes-admin-sa%40my-gcp-project.iam.gserviceaccount.com"
+    },
+    "proxyURL": "http://proxy-server-hostname/"
+}
+----
+
+
+== Azure NetApp Files 構成
+
+を設定して使用します https://azure.microsoft.com/en-us/services/netapp/["Azure NetApp Files の特長"^] バックエンドには、次のものが必要です。
+
+* Azure NetApp Files が有効な Azure サブスクリプションのスクリプト ID
+* 「 tenantID 」、「 clientID 」、「 clientSecret 」を「」から選択します https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal["アプリケーション登録"^] Azure Active Directory で、 Azure NetApp Files サービスに対する十分な権限がある
+* Azure ロケーションに少なくとも 1 つ以上が含まれている https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-delegate-subnet["委任されたサブネット"^]
+
+
+
+TIP: 初めて Azure NetApp Files を使用している場合や、新しい場所で を使用している場合は、そのような初期設定が必要になります https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes?tabs=azure-portal["クイックスタートガイド"^] ご案内します。
+
+
+NOTE: Astra Trident 21.04.0 以前では、手動 QoS 容量プールはサポートされていません。
+
+[cols="3*"]
+|===
+| オプション | 説明 | デフォルト 
+
+
+| 「バージョン」  a| 
+常に 1
+ a| 
+
+
+
+| 'torageDriverName'  a| 
+「 azure-NetApp-files 」
+ a| 
+
+
+
+| backendName`  a| 
+ストレージバックエンドのカスタム名
+ a| 
+ドライバ名 + "_" + ランダムな文字
+
+
+
+| ' スクリプト ID' 。  a| 
+Azure サブスクリプションのサブスクリプション ID
+ a| 
+
+
+
+| 「 tenantID 」。  a| 
+アプリケーション登録からのテナント ID
+ a| 
+
+
+
+| 「 clientID 」。  a| 
+アプリケーション登録からのクライアント ID
+ a| 
+
+
+
+| 「 clientSecret 」を入力します。  a| 
+アプリケーション登録からのクライアントシークレット
+ a| 
+
+
+
+| 「サービスレベル」  a| 
+「 Standard 」、「 Premium 」、「 Ultra 」のいずれか
+ a| 
+「」（ランダム）
+
+
+
+| 「ロケーション」  a| 
+新しいボリュームを作成する Azure の場所の名前をに指定します
+ a| 
+「」（ランダム）
+
+
+
+| 「 virtualNetwork 」  a| 
+委任されたサブネットを持つ仮想ネットワークの名前
+ a| 
+「」（ランダム）
+
+
+
+| 「サブネット」  a| 
+「 icrosoft.Netapp/volumes` 」に委任されたサブネットの名前
+ a| 
+「」（ランダム）
+
+
+
+| 「 nfsvMountOptions 」のように入力します  a| 
+NFS マウントオプションのきめ細かな制御
+ a| 
+「 -o nfsvers=3 」
+
+
+
+| 「 limitVolumeSize 」と入力します  a| 
+要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します
+ a| 
+“”（デフォルトでは適用されません）
+
+|===
+
+NOTE: Azure NetApp Files サービスでは、サイズが 100GB 未満のボリュームはサポートされません。Trident では、アプリケーションの導入を容易にするために、より小さいボリュームが要求された場合に、 100GB のボリュームが自動的に作成されます。
+
+これらのオプションを使用して、構成の特別なセクションで各ボリュームをデフォルトでプロビジョニングする方法を制御できます。
+
+[cols="3*"]
+|===
+| オプション | 説明 | デフォルト 
+
+
+| 「 exportRule 」  a| 
+新しいボリュームのエクスポートルール。CIDR 表記の IPv4 アドレスまたは IPv4 サブネットの任意の組み合わせをカンマで区切って指定する必要があります。
+ a| 
+「 0.0.0.0/0 」
+
+
+
+| 「スナップショット方向」  a| 
+「 .snapshot 」ディレクトリの表示を制御します
+ a| 
+いいえ
+
+
+
+| 「 size 」  a| 
+新しいボリュームのデフォルトサイズ
+ a| 
+「 100G 」
+
+|===
+
+
+=== Azure NetApp Files 構成の例
+
+* 例 1 ： azure-NetApp-files* のバックエンドの最小構成
+
+これは、バックエンドの絶対的な最小構成です。この構成では、 Trident がお客様のネットアップアカウント、容量プール、および ANF に委譲されたサブネットをすべて検出し、新しいボリュームをいずれかの場所にランダムに配置します。
+
+この構成は、 ANF の利用を開始して問題を解決するのに役立ちます。 しかし実際には、プロビジョニングするボリュームの範囲を追加して、必要な特性を確実に持ち、それを使用しているコンピューティングに近いネットワーク上で終了するようにします。詳細については、以降の例を参照してください。
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "azure-netapp-files",
+    "subscriptionID": "9f87c765-4774-fake-ae98-a721add45451",
+    "tenantID": "68e4f836-edc1-fake-bff9-b2d865ee56cf",
+    "clientID": "dd043f63-bf8e-fake-8076-8de91e5713aa",
+    "clientSecret": "SECRET"
+}
+----
+* 例 2 ： Azure NetApp Files の単一の場所と特定のサービスレベル *
+
+このバックエンド構成では、 Azure の「 eastus 」ロケーションにボリュームを「 Premium 」容量プールに配置します。Trident は、 ANF に委任されているすべてのサブネットを自動的に検出し、いずれかのサブネットに新しいボリュームをランダムに配置します。
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "azure-netapp-files",
+    "subscriptionID": "9f87c765-4774-fake-ae98-a721add45451",
+    "tenantID": "68e4f836-edc1-fake-bff9-b2d865ee56cf",
+    "clientID": "dd043f63-bf8e-fake-8076-8de91e5713aa",
+    "clientSecret": "SECRET",
+    "location": "eastus",
+    "serviceLevel": "Premium"
+}
+----
+* 例 3 ： azure-NetApp-files* の高度な設定
+
+このバックエンド構成は、ボリュームの配置を単一のサブネットにまで適用する手間をさらに削減し、一部のボリュームプロビジョニングのデフォルト設定も変更します。
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "azure-netapp-files",
+    "subscriptionID": "9f87c765-4774-fake-ae98-a721add45451",
+    "tenantID": "68e4f836-edc1-fake-bff9-b2d865ee56cf",
+    "clientID": "dd043f63-bf8e-fake-8076-8de91e5713aa",
+    "clientSecret": "SECRET",
+    "location": "eastus",
+    "serviceLevel": "Premium",
+    "virtualNetwork": "my-virtual-network",
+    "subnet": "my-subnet",
+    "nfsMountOptions": "nfsvers=3,proto=tcp,timeo=600",
+    "limitVolumeSize": "500Gi",
+    "defaults": {
+        "exportRule": "10.0.0.0/24,10.0.1.0/24,10.0.2.100",
+        "size": "200Gi"
+    }
+}
+----
+* 例 4 ： azure-NetApp-files* を使用する仮想ストレージプール
+
+このバックエンド構成では、複数のが定義され link:../trident-concepts/virtual-storage-pool.html["ストレージのプール"^] 1 つのファイルに格納できます。これは、異なるサービスレベルをサポートする複数の容量プールがあり、それらを表すストレージクラスを Kubernetes で作成する場合に便利です。
+
+仮想ストレージプールの機能の表面に、ラベルが貼られています。
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "azure-netapp-files",
+    "subscriptionID": "9f87c765-4774-fake-ae98-a721add45451",
+    "tenantID": "68e4f836-edc1-fake-bff9-b2d865ee56cf",
+    "clientID": "dd043f63-bf8e-fake-8076-8de91e5713aa",
+    "clientSecret": "SECRET",
+    "nfsMountOptions": "nfsvers=3,proto=tcp,timeo=600",
+    "labels": {
+        "cloud": "azure"
+    },
+    "location": "eastus",
+
+    "storage": [
+        {
+            "labels": {
+                "performance": "gold"
+            },
+            "serviceLevel": "Ultra"
+        },
+        {
+            "labels": {
+                "performance": "silver"
+            },
+            "serviceLevel": "Premium"
+        },
+        {
+            "labels": {
+                "performance": "bronze"
+            },
+            "serviceLevel": "Standard",
+        }
+    ]
+}
+----

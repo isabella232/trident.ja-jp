@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: trident-reco/deploy-reco.html 
+keywords: deployment, deploy, trident, namespace 
+summary: Astra Trident の導入時には、ここに示す推奨事項を使用してください。 
+---
+= 導入
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Astra Trident の導入時には、ここに示す推奨事項を使用してください。
+
+
+
+== 専用のネームスペースに導入します
+
+https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/["ネームスペース"^] 異なるアプリケーション間で管理を分離できるため、リソース共有の障壁となります。たとえば、あるネームスペースの PVC を別のネームスペースから使用することはできません。Astra Trident は、 Kubernetes クラスタ内のすべてのネームスペースに PV リソースを提供するため、権限が昇格されたサービスアカウントを利用します。
+
+また、 Trident ポッドにアクセスすると、ユーザがストレージシステムのクレデンシャルやその他の機密情報にアクセスできるようになります。アプリケーションユーザと管理アプリケーションが Trident オブジェクト定義またはポッド自体にアクセスできないようにすることが重要です。
+
+
+
+== クォータと範囲制限を使用してストレージ消費を制御します
+
+Kubernetes には、 2 つの機能があります。これらの機能を組み合わせることで、アプリケーションによるリソース消費を制限する強力なメカニズムが提供されます。。 https://kubernetes.io/docs/concepts/policy/resource-quotas/#storage-resource-quota["ストレージクォータメカニズム"^] 管理者は、グローバルおよびストレージクラス固有の、容量とオブジェクト数の使用制限をネームスペース単位で実装できます。さらに、を使用します 要求がプロビジョニングツールに転送される前に、 PVC 要求が最小値と最大値の両方の範囲内にあることを確認します。
+
+これらの値はネームスペース単位で定義されます。つまり、各ネームスペースに、リソースの要件に応じた値を定義する必要があります。の詳細については、こちらを参照してください https://netapp.io/2017/06/09/self-provisioning-storage-kubernetes-without-worry["クォータの活用方法"^]。

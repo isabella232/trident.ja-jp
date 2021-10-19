@@ -1,0 +1,14 @@
+---
+section: trident-reco
+title: ベストプラクティスと推奨事項
+entries:
+- title: 導入
+  url: "/trident-reco/deploy-reco.html"
+- title: ストレージ構成
+  url: "/trident-reco/storage-config-best-practices.html"
+- title: Trident を統合
+  url: "/trident-reco/integrate-trident.html"
+- title: データ保護
+  url: "/trident-reco/backup.html"
+- title: セキュリティ
+  url: "/trident-reco/security-reco.html"

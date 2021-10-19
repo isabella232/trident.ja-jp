@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: trident-use/vol-operations.html 
+keywords: snapshots, volumes, csi topology, storage classes, pv, pvc, persistent volumes, persistent volume claims, backends, expand volumes, import volumes 
+summary: Astra Trident は、ボリュームを管理するための機能を複数備えています。Trident がボリュームに提供している Astra の機能をご確認ください。 
+---
+= ボリューム操作を実行する
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Astra Trident は、ボリュームを管理するための機能を複数備えています。Trident がボリュームに提供している Astra の機能をご確認ください。
+
+* link:csi-topology.html["CSI トポロジを使用します"^]
+* link:vol-snapshots.html["スナップショットを操作します"^]
+* link:vol-expansion.html["ボリュームを展開します"^]
+* link:vol-import.html["ボリュームをインポート"^]
+

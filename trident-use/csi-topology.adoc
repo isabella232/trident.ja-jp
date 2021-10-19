@@ -1,0 +1,264 @@
+---
+sidebar: sidebar 
+permalink: trident-use/csi-topology.html 
+keywords: volumes, csi topology, storage classes, backends, kubernetes 
+summary: Astra Trident では、 CSI トポロジ機能を利用することにより、 Kubernetes クラスタ内に存在するノードに対してボリュームを選択的に作成して接続できます。 
+---
+= CSI トポロジを使用します
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Astra Trident では、を使用して、 Kubernetes クラスタ内にあるノードにボリュームを選択的に作成して接続できます https://kubernetes-csi.github.io/docs/topology.html["CSI トポロジ機能"^]。CSI トポロジ機能を使用すると、領域およびアベイラビリティゾーンに基づいて、ボリュームへのアクセスをノードのサブセットに制限できます。現在、クラウドプロバイダは、 Kubernetes 管理者がゾーンベースのノードを生成できるようになっています。ノードは、アベイラビリティゾーン内の異なるリージョンに配置することも、さまざまなアベイラビリティゾーンに配置することもできます。マルチゾーンアーキテクチャでワークロード用のボリュームをプロビジョニングするために、 Astra Trident は CSI トポロジを使用します。
+
+
+TIP: CSI トポロジ機能の詳細については、を参照してください https://kubernetes.io/blog/2018/10/11/topology-aware-volume-provisioning-in-kubernetes/["こちらをご覧ください"^]。
+
+Kubernetes には、 2 つの固有のボリュームバインドモードがあります。
+
+* 'VolumeBindingMode' が Immediate に設定されていると 'Astra Trident は ' トポロジーを認識せずにボリュームを作成しますボリュームバインディングと動的プロビジョニングは、 PVC が作成されるときに処理されます。これはデフォルトの「 VolumeBindingMode 」であり、トポロジ制約を適用しないクラスタに適しています。永続ボリュームは、要求側ポッドのスケジュール要件に依存せずに作成されます。
+* VolumeBindingMode を「 WaitForFirstConsumer 」に設定すると、 PVC の永続ボリュームの作成とバインドは、 PVC を使用するポッドがスケジュールされて作成されるまで遅延されます。これにより、トポロジの要件に応じたスケジュールの制約を満たすようにボリュームが作成されます。
+
+
+
+NOTE: 「 WaitForFirstConsumer 」バインディングモードでは、トポロジラベルは必要ありません。これは CSI トポロジ機能とは無関係に使用できます。
+
+CSI トポロジを使用するには、次のものが必要です。
+
+* 1.17 以降を実行する Kubernetes クラスタ。
++
+[listing]
+----
+$ kubectl version
+Client Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.3", GitCommit:"1e11e4a2108024935ecfcb2912226cedeafd99df", GitTreeState:"clean", BuildDate:"2020-10-14T12:50:19Z", GoVersion:"go1.15.2", Compiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.3", GitCommit:"1e11e4a2108024935ecfcb2912226cedeafd99df", GitTreeState:"clean", BuildDate:"2020-10-14T12:41:49Z", GoVersion:"go1.15.2", Compiler:"gc", Platform:"linux/amd64"}
+----
+* クラスタ内のノードには ' トポロジー認識を導入するラベルが必要です（ topology .Kubernetes .io/region および topology .Kubernetes .io/zone ）このラベル * は、 Astra Trident をトポロジ対応としてインストールする前に、クラスタ内のノードに存在する必要があります。
++
+[listing]
+----
+$ kubectl get nodes -o=jsonpath='{range .items[*]}[{.metadata.name}, {.metadata.labels}]{"\n"}{end}' | grep --color "topology.kubernetes.io"
+[node1, {"beta.kubernetes.io/arch":"amd64","beta.kubernetes.io/os":"linux","kubernetes.io/arch":"amd64","kubernetes.io/hostname":"node1","kubernetes.io/os":"linux","node-role.kubernetes.io/master":"","topology.kubernetes.io/region":"us-east1","topology.kubernetes.io/zone":"us-east1-a"}]
+[node2, {"beta.kubernetes.io/arch":"amd64","beta.kubernetes.io/os":"linux","kubernetes.io/arch":"amd64","kubernetes.io/hostname":"node2","kubernetes.io/os":"linux","node-role.kubernetes.io/worker":"","topology.kubernetes.io/region":"us-east1","topology.kubernetes.io/zone":"us-east1-b"}]
+[node3, {"beta.kubernetes.io/arch":"amd64","beta.kubernetes.io/os":"linux","kubernetes.io/arch":"amd64","kubernetes.io/hostname":"node3","kubernetes.io/os":"linux","node-role.kubernetes.io/worker":"","topology.kubernetes.io/region":"us-east1","topology.kubernetes.io/zone":"us-east1-c"}]
+----
+
+
+
+
+== 手順 1 ：トポロジ対応バックエンドを作成する
+
+Astra Trident ストレージバックエンドは、アベイラビリティゾーンに基づいてボリュームを選択的にプロビジョニングするように設計できます。各バックエンドは、サポートする必要があるゾーンおよびリージョンのリストを表すオプションの「 upportedTopologies 」ブロックを伝送できます。ストレージクラスがそのようなバックエンドを使用する場合、ボリュームは、サポートされているリージョン / ゾーンでスケジュールされているアプリケーションから要求された場合にのみ作成されます。
+
+バックエンド定義の例を次に示します。
+
+[listing]
+----
+{
+ "version": 1,
+ "storageDriverName": "ontap-san",
+ "backendName": "san-backend-us-east1",
+ "managementLIF": "192.168.27.5",
+ "svm": "iscsi_svm",
+ "username": "admin",
+ "password": "xxxxxxxxxxxx",
+ "supportedTopologies": [
+{"topology.kubernetes.io/region": "us-east1", "topology.kubernetes.io/zone": "us-east1-a"},
+{"topology.kubernetes.io/region": "us-east1", "topology.kubernetes.io/zone": "us-east1-b"}
+]
+}
+----
+
+NOTE: 「 upportedTopologies 」は、バックエンドごとにリージョンとゾーンのリストを提供するために使用されます。これらのリージョンとゾーンは、 StorageClass で指定できる許容値のリストを表します。バックエンドで提供されるリージョンとゾーンのサブセットを含む StorageClasses の場合、 Astra Trident がバックエンドにボリュームを作成します。
+
+また ' ストレージ・プールごとに 'upportedTopologies を定義することもできます次の例を参照してください。
+
+[listing]
+----
+{"version": 1,
+"storageDriverName": "ontap-nas",
+"backendName": "nas-backend-us-central1",
+"managementLIF": "172.16.238.5",
+"svm": "nfs_svm",
+"username": "admin",
+"password": "Netapp123",
+"supportedTopologies": [
+      {"topology.kubernetes.io/region": "us-central1", "topology.kubernetes.io/zone": "us-central1-a"},
+      {"topology.kubernetes.io/region": "us-central1", "topology.kubernetes.io/zone": "us-central1-b"}
+    ]
+"storage": [
+   {
+       "labels": {"workload":"production"},
+        "region": "Iowa-DC",
+        "zone": "Iowa-DC-A",
+        "supportedTopologies": [
+            {"topology.kubernetes.io/region": "us-central1", "topology.kubernetes.io/zone": "us-central1-a"}
+        ]
+    },
+    {
+        "labels": {"workload":"dev"},
+         "region": "Iowa-DC",
+         "zone": "Iowa-DC-B",
+         "supportedTopologies": [
+             {"topology.kubernetes.io/region": "us-central1", "topology.kubernetes.io/zone": "us-central1-b"}
+         ]
+     }
+]
+}
+----
+この例では、「 re Gion 」および「 zone 」ラベルはストレージプールの場所を表しています。「 topology.efix/region' 」と「 topology.uns.io/zone 」は、ストレージプールの消費元を決定します。
+
+
+
+== 手順 2 ：トポロジを認識するストレージクラスを定義する
+
+クラスタ内のノードに提供されるトポロジラベルに基づいて、トポロジ情報を含めるように StorageClasses を定義できます。これにより、作成された PVC 要求の候補となるストレージプール、および Trident によってプロビジョニングされたボリュームを使用できるノードのサブセットが決まります。
+
+次の例を参照してください。
+
+[listing]
+----
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+name: netapp-san-us-east1
+provisioner: csi.trident.netapp.io
+volumeBindingMode: WaitForFirstConsumer
+allowedTopologies:
+- matchLabelExpressions:
+- key: topology.kubernetes.io/zone
+  values:
+  - us-east1-a
+  - us-east1-b
+- key: topology.kubernetes.io/region
+  values:
+  - us-east1
+parameters:
+  fsType: "ext4"
+----
+上記の StorageClass 定義では、「 volumeBindingMode 」が「 WaitForFirstConsumer 」に設定されます。この StorageClass で要求された PVC は、ポッドで参照されるまで処理されません。また 'allowedTopology' は ' 使用するゾーンと領域を提供しますNetApp-SAN-us-east1StorageClass は、上で定義した「 -backend-us-east1` バックエンド」に PVC を作成します。
+
+
+
+== ステップ 3 ： PVC を作成して使用する
+
+StorageClass を作成してバックエンドにマッピングすると、 PVC を作成できるようになりました。
+
+以下の例「 PEC 」を参照してください。
+
+[listing]
+----
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+name: pvc-san
+spec:
+accessModes:
+  - ReadWriteOnce
+resources:
+  requests:
+    storage: 300Mi
+storageClassName: netapp-san-us-east1
+----
+このマニフェストを使用して PVC を作成すると、次のような結果になります。
+
+[listing]
+----
+$ kubectl create -f pvc.yaml
+persistentvolumeclaim/pvc-san created
+$ kubectl get pvc
+NAME      STATUS    VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS          AGE
+pvc-san   Pending                                      netapp-san-us-east1   2s
+$ kubectl describe pvc
+Name:          pvc-san
+Namespace:     default
+StorageClass:  netapp-san-us-east1
+Status:        Pending
+Volume:
+Labels:        <none>
+Annotations:   <none>
+Finalizers:    [kubernetes.io/pvc-protection]
+Capacity:
+Access Modes:
+VolumeMode:    Filesystem
+Mounted By:    <none>
+Events:
+  Type    Reason                Age   From                         Message
+  ----    ------                ----  ----                         -------
+  Normal  WaitForFirstConsumer  6s    persistentvolume-controller  waiting for first consumer to be created before binding
+----
+Trident でボリュームを作成して PVC にバインドするには、ポッド内の PVC を使用します。次の例を参照してください。
+
+[listing]
+----
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-pod-1
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: topology.kubernetes.io/region
+            operator: In
+            values:
+            - us-east1
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: topology.kubernetes.io/zone
+            operator: In
+            values:
+            - us-east1-a
+            - us-east1-b
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+  volumes:
+  - name: vol1
+    persistentVolumeClaim:
+      claimName: pvc-san
+  containers:
+  - name: sec-ctx-demo
+    image: busybox
+    command: [ "sh", "-c", "sleep 1h" ]
+    volumeMounts:
+    - name: vol1
+      mountPath: /data/demo
+    securityContext:
+      allowPrivilegeEscalation: false
+----
+この podSpec は 'us-east1` 領域に存在するノード上のポッドをスケジュールするよう Kubernetes に指示し 'us-east1-a' または `us-east1-b' ゾーン内に存在する任意のノードから選択します
+
+次の出力を参照してください。
+
+[listing]
+----
+$ kubectl get pods -o wide
+NAME        READY   STATUS    RESTARTS   AGE   IP               NODE              NOMINATED NODE   READINESS GATES
+app-pod-1   1/1     Running   0          19s   192.168.25.131   node2             <none>           <none>
+$ kubectl get pvc -o wide
+NAME      STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS          AGE   VOLUMEMODE
+pvc-san   Bound    pvc-ecb1e1a0-840c-463b-8b65-b3d033e2e62b   300Mi      RWO            netapp-san-us-east1   48s   Filesystem
+----
+
+
+== バックエンドを更新して supportedTopologies を追加します
+
+既存のバックエンドは 'tridentctl backend update を使用して 'upportedTopologies のリストを含むように更新できますこれは、すでにプロビジョニングされているボリュームには影響せず、以降の PVC にのみ使用されます。
+
+
+
+== 詳細については、こちらをご覧ください
+
+* https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/["コンテナのリソースを管理"^]
+* https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector["ノードセレクタ"^]
+* https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity["アフィニティと非アフィニティ"^]
+* https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/["塗料および耐性"^]
+

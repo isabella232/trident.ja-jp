@@ -1,0 +1,268 @@
+---
+sidebar: sidebar 
+permalink: trident-use/anf.html 
+keywords: trident backend, azure netapp files 
+summary: 提供されている設定例を使用して、 Trident インストールのバックエンドとして Azure NetApp Files を設定する方法を説明します。 
+---
+= Azure NetApp Files バックエンドを設定します
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+提供されている構成例を使用して、 Azure NetApp Files （ ANF ）を Astra Trident インストールのバックエンドとして設定する方法を説明します。
+
+
+NOTE: Azure NetApp Files サービスでは、 100GB 未満のボリュームはサポートされません。100 GB のボリュームが小さい場合は、 Trident が自動的に作成します。
+
+を設定して使用します https://azure.microsoft.com/en-us/services/netapp/["Azure NetApp Files の特長"^] バックエンドには次のものが必要です。
+
+* Azure NetApp Files が有効な Azure サブスクリプションのスクリプト ID 。
+* 「 tenantID 」、「 clientID 」、「 clientSecret 」を「」から選択します https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal["アプリケーション登録"^] Azure Active Directory で、 Azure NetApp Files サービスに対する十分な権限がある。App Registration では、 Azure で事前定義されている「 Owner 」または「 Contributor 」の役割を使用する必要があります。
++
+
+TIP: Azure の組み込みロールの詳細については、を参照してください https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles["Azure に関するドキュメント"^]。
+
+* 少なくとも 1 つを含む Azure の「場所」 https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-delegate-subnet["委任されたサブネット"^]。
+* Azure NetApp Files を初めて使用する場合や新しい場所で使用する場合は、いくつかの初期設定が必要です。を参照してください https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes["クイックスタートガイド"^]。
+
+
+Trident は、バックエンド構成（サブネット、仮想ネットワーク、サービスレベル、場所）に基づいて、要求された場所で利用可能な容量プールに ANF ボリュームを作成し、要求されたサービスレベルとサブネットに対応します。
+
+
+NOTE: Astra Trident 21.04.0 以前では、手動 QoS 容量プールはサポートされていません。
+
+
+
+== バックエンド構成オプション
+
+バックエンド設定オプションについては、次の表を参照してください。
+
+[cols="3"]
+|===
+| パラメータ | 説明 | デフォルト 
+
+
+| 「バージョン」 |  | 常に 1 
+
+
+| 'torageDriverName' | ストレージドライバの名前 | 「 azure-NetApp-files 」 
+
+
+| backendName` | カスタム名またはストレージバックエンド | ドライバ名 + "_" + ランダムな文字 
+
+
+| ' スクリプト ID' 。 | Azure サブスクリプションのサブスクリプション ID |  
+
+
+| 「 tenantID 」。 | アプリケーション登録からのテナント ID |  
+
+
+| 「 clientID 」。 | アプリケーション登録からのクライアント ID |  
+
+
+| 「 clientSecret 」を入力します。 | アプリケーション登録からのクライアントシークレット |  
+
+
+| 「サービスレベル」 | 「標準」、「プレミアム」、「ウルトラ」のいずれかです | "" （ランダム） 
+
+
+| 「ロケーション」 | 新しいボリュームを作成する Azure の場所の名前 | "" （ランダム） 
+
+
+| 「 virtualNetwork 」 | 委任されたサブネットを持つ仮想ネットワークの名前 | "" （ランダム） 
+
+
+| 「サブネット」 | 「 icrosoft.Netapp/volumes` 」に委任されたサブネットの名前 | "" （ランダム） 
+
+
+| 「 nfsvMountOptions 」のように入力します | NFS マウントオプションのきめ細かな制御。 | "nfsvers=3 " 
+
+
+| 「 limitVolumeSize 」と入力します | 要求されたボリュームサイズがこの値を超えている場合はプロビジョニングが失敗します | "" （デフォルトでは適用されません） 
+
+
+| 「バグトレースフラグ」 | トラブルシューティング時に使用するデバッグフラグ。例： \\{"API":false," メソッド ":true}`トラブルシューティングを行って詳細なログダンプが必要な場合を除き、このオプションは使用しないでください。 | null 
+|===
+
+WARNING: 既存のバックエンドの「 capacityPools 」フィールドを変更して、プロビジョニングに使用される容量プールの数を減らすと、「 capacityPools 」リストに含まれていない容量プール / プールにプロビジョニングされた孤立したボリュームが作成されます。これらの孤立したボリュームに対するクローニング処理は失敗します。
+
+
+WARNING: PVC の作成時に「 No capacity pools found 」エラーが発生した場合、アプリケーション登録に必要な権限とリソース（サブネット、仮想ネットワーク、容量プール）が関連付けられていない可能性があります。Astra Trident は、デバッグが有効なときにバックエンドが作成されたときに、検出した Azure リソースをログに記録します。適切なロールが使用されているかどうかを確認してください。
+
+
+NOTE: NFS バージョン 4.1 を使用してボリュームをマウントする場合は、 NFS v4.1 を選択するために、カンマ区切りのマウントオプションリストに「 nfsvers=4` 」を含めることができます。ストレージクラスで設定されたマウントオプションは、バックエンド構成ファイルで設定されたマウントオプションよりも優先されます。
+
+構成ファイルの特別なセクションで次のオプションを指定することで、各ボリュームのデフォルトのプロビジョニング方法を制御できます。以下の設定例を参照してください。
+
+[cols=",,"]
+|===
+| パラメータ | 説明 | デフォルト 
+
+
+| 「 exportRule 」 | 新しいボリュームのエクスポートルール | "0.0.0.0/0 " 
+
+
+| 「 size 」 | 新しいボリュームのデフォルトサイズ | " 100G " 
+|===
+「 exportRule 」の値は、 CIDR 表記の IPv4 アドレスまたは IPv4 サブネットの任意の組み合わせをカンマで区切ったリストにする必要があります。
+
+
+NOTE: ANF バックエンドに作成されたすべてのボリュームに対して、ストレージプールに含まれるすべてのラベルが、プロビジョニング時にストレージボリュームにコピーされます。ストレージ管理者は、ストレージプールごとにラベルを定義し、ストレージプール内に作成されたすべてのボリュームをグループ化できます。これにより、バックエンド構成で提供されるカスタマイズ可能な一連のラベルに基づいてボリュームを簡単に区別できます。
+
+
+
+== 例 1 ：最小限の構成
+
+これは、バックエンドの絶対的な最小構成です。この構成では、ネットアップのアカウント、容量プール、 ANF に委譲されたサブネットがすべて検出され、新しいボリュームがいずれかのサイトにランダムに配置されます。
+
+この構成は、 ANF の利用を開始して何を試してみるときに理想的ですが、実際には、プロビジョニングするボリュームの範囲をさらに設定することを検討しています。
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "azure-netapp-files",
+    "subscriptionID": "9f87c765-4774-fake-ae98-a721add45451",
+    "tenantID": "68e4f836-edc1-fake-bff9-b2d865ee56cf",
+    "clientID": "dd043f63-bf8e-fake-8076-8de91e5713aa",
+    "clientSecret": "SECRET"
+}
+----
+
+
+== 例 2 ：単一の場所と特定のサービスレベルの設定
+
+このバックエンド構成は 'Premium' 容量プール内の Azure の eastus ロケーションにボリュームを配置しますAstra Trident は、 ANF に委譲されたすべてのサブネットをその場所で自動的に検出し、いずれかのサブネットに新しいボリュームをランダムに配置します。
+
+[listing]
+----
+    {
+        "version": 1,
+        "storageDriverName": "azure-netapp-files",
+        "subscriptionID": "9f87c765-4774-fake-ae98-a721add45451",
+        "tenantID": "68e4f836-edc1-fake-bff9-b2d865ee56cf",
+        "clientID": "dd043f63-bf8e-fake-8076-8de91e5713aa",
+        "clientSecret": "SECRET",
+        "location": "eastus",
+        "serviceLevel": "Premium"
+    }
+----
+
+
+== 例 3 ：高度な設定
+
+このバックエンド構成は、ボリュームの配置を単一のサブネットにまで適用する手間をさらに削減し、一部のボリュームプロビジョニングのデフォルト設定も変更します。
+
+[listing]
+----
+    {
+        "version": 1,
+        "storageDriverName": "azure-netapp-files",
+        "subscriptionID": "9f87c765-4774-fake-ae98-a721add45451",
+        "tenantID": "68e4f836-edc1-fake-bff9-b2d865ee56cf",
+        "clientID": "dd043f63-bf8e-fake-8076-8de91e5713aa",
+        "clientSecret": "SECRET",
+        "location": "eastus",
+        "serviceLevel": "Premium",
+        "virtualNetwork": "my-virtual-network",
+        "subnet": "my-subnet",
+        "nfsMountOptions": "vers=3,proto=tcp,timeo=600",
+        "limitVolumeSize": "500Gi",
+        "defaults": {
+            "exportRule": "10.0.0.0/24,10.0.1.0/24,10.0.2.100",
+            "size": "200Gi"
+        }
+    }
+----
+
+
+== 例 4 ：仮想ストレージプールの構成
+
+このバックエンド構成では、 1 つのファイルに複数のストレージプールを定義します。これは、異なるサービスレベルをサポートする複数の容量プールがあり、それらを表すストレージクラスを Kubernetes で作成する場合に便利です。
+
+[listing]
+----
+    {
+        "version": 1,
+        "storageDriverName": "azure-netapp-files",
+        "subscriptionID": "9f87c765-4774-fake-ae98-a721add45451",
+        "tenantID": "68e4f836-edc1-fake-bff9-b2d865ee56cf",
+        "clientID": "dd043f63-bf8e-fake-8076-8de91e5713aa",
+        "clientSecret": "SECRET",
+        "nfsMountOptions": "vers=3,proto=tcp,timeo=600",
+        "labels": {
+            "cloud": "azure"
+        },
+        "location": "eastus",
+
+        "storage": [
+            {
+                "labels": {
+                    "performance": "gold"
+                },
+                "serviceLevel": "Ultra"
+            },
+            {
+                "labels": {
+                    "performance": "silver"
+                },
+                "serviceLevel": "Premium"
+            },
+            {
+                "labels": {
+                    "performance": "bronze"
+                },
+                "serviceLevel": "Standard",
+            }
+        ]
+    }
+----
+以下の「 torageClass 」定義は、上記のストレージプールを参照しています。「 parameters.selector` 」フィールドを使用すると、ボリュームのホストに使用される仮想プールを「 S torageClass 」ごとに指定できます。ボリュームには、選択したプールで定義された要素があります。
+
+[listing]
+----
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: gold
+provisioner: csi.trident.netapp.io
+parameters:
+  selector: "performance=gold"
+allowVolumeExpansion: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: silver
+provisioner: csi.trident.netapp.io
+parameters:
+  selector: "performance=silver"
+allowVolumeExpansion: true
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: bronze
+provisioner: csi.trident.netapp.io
+parameters:
+  selector: "performance=bronze"
+allowVolumeExpansion: true
+----
+
+
+== 次の手順
+
+バックエンド構成ファイルを作成したら、次のコマンドを実行します。
+
+[listing]
+----
+tridentctl create backend -f <backend-file>
+----
+バックエンドの作成に失敗した場合は、バックエンドの設定に何か問題があります。次のコマンドを実行すると、ログを表示して原因を特定できます。
+
+[listing]
+----
+tridentctl logs
+----
+構成ファイルで問題を特定して修正したら、 create コマンドを再度実行できます。

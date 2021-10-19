@@ -1,0 +1,250 @@
+---
+sidebar: sidebar 
+permalink: trident-use/vol-import.html 
+keywords: volumes, on-demand volume snapshots, import volumes, drivers, tridenctl import, pv, persistent volumes 
+summary: tridentctl import を使用して、既存のストレージボリュームを Kubernetes PV としてインポートできます。 
+---
+= ボリュームをインポート
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+tridentctl import を使用して、既存のストレージボリュームを Kubernetes PV としてインポートできます。
+
+
+
+== ボリュームインポートをサポートするドライバ
+
+次の表は、ボリュームのインポートをサポートするドライバと、それらのアップグレードが導入されたリリースを示しています。
+
+[cols="2*"]
+|===
+| ドライバ | リリース。 
+
+
+| 「 ONTAP - NAS 」  a| 
+19.04
+
+
+
+| 「 ONTAP-NAS-flexgroup 」  a| 
+19.04
+
+
+
+| 「 olidfire -san 」  a| 
+19.04
+
+
+
+| 「 aws -cvs 」  a| 
+19.04
+
+
+
+| 「 azure-NetApp-files 」と入力します  a| 
+19.04
+
+
+
+| 「 gcp-cvs 」  a| 
+19.04
+
+
+
+| 「 ontap - san 」  a| 
+19.04
+
+|===
+
+
+== ボリュームをインポートする理由
+
+Trident にボリュームをインポートするユースケースはいくつかあります。
+
+* アプリケーションのコンテナ化と既存のデータセットの再利用
+* エフェメラルアプリケーション用のデータセットのクローンを使用する
+* 障害が発生した Kubernetes クラスタの再構築
+* ディザスタリカバリ時にアプリケーションデータを移行する
+
+
+
+
+== インポートはどのように機能しますか。
+
+Persistent Volume Claim （ PVC ；永続ボリューム要求）ファイルは、ボリュームインポートプロセスで PVC を作成するために使用されます。少なくとも、次の例に示すように、 PVC ファイルには name 、 namespace 、 accessModes 、および storageClassName フィールドが含まれている必要があります。
+
+[listing]
+----
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: my_claim
+  namespace: my_namespace
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: my_storage_class
+----
+tridentctl クライアントは ' 既存のストレージ・ボリュームをインポートするために使用されますTrident は、ボリュームのメタデータを保持し、 PVC と PV を作成することで、ボリュームをインポートします。
+
+[listing]
+----
+$ tridentctl import volume <backendName> <volumeName> -f <path-to-pvc-file>
+----
+ストレージボリュームをインポートするには、ボリュームが含まれている Astra Trident バックエンドの名前と、ストレージ上のボリュームを一意に識別する名前（ ONTAP FlexVol 、 Element Volume 、 CVS ボリュームパスなど）を指定します。ストレージボリュームは、読み取り / 書き込みアクセスを許可し、指定された Astra Trident バックエンドからアクセスできる必要があります。引数 -f 文字列は必須であり、 YAML または JSON PVC ファイルへのパスを指定します。
+
+Astra Trident がインポートボリューム要求を受信すると、既存のボリュームサイズが決定され、 PVC で設定されます。ストレージドライバによってボリュームがインポートされると、 PV は ClaimRef を使用して PVC に作成されます。再生ポリシーは、最初に PV 内の「そのまま」に設定されます。Kubernetes が PVC と PV を正常にバインドすると、再利用ポリシーがストレージクラスの再利用ポリシーに合わせて更新されます。ストレージクラスの再利用ポリシーが「削除」の場合、 PV を削除するとストレージボリュームは削除されます。
+
+--no-manage 引数を指定してボリュームをインポートすると、 Trident はオブジェクトのライフサイクルについて PVC または PV に対する追加の操作を実行しません。Trident は '--no-managed' オブジェクトの PV イベントと PVC イベントを無視するため 'PV を削除してもストレージ・ボリュームは削除されませんボリュームのクローンやサイズ変更などの他の処理も無視されます。このオプションは、コンテナ化されたワークロードに Kubernetes を使用するが、 Kubernetes 以外でストレージボリュームのライフサイクルを管理する場合に便利です。
+
+PVC と PV にアノテーションが追加されます。このアノテーションは、ボリュームがインポートされたこと、および PVC と PV が管理されていることを示す二重の目的を果たします。このアノテーションは変更または削除しないでください。
+
+Trident 19.07 以降では、 PVS の添付ファイルを処理し、ボリュームをインポートの一環としてマウントします。以前のバージョンの Astra Trident を使用しているインポートの場合、データパスに処理は存在しないため、ボリュームをマウントできるかどうかがボリュームインポートで検証されません。ボリュームのインポートに誤りがあった場合（ StorageClass が正しくない場合など）は、 PV の再利用ポリシーを「リカバリ」に変更し、 PVC と PV を削除してから、 volume import コマンドを再試行してリカバリできます。
+
+
+
+== ONTAP-NAS および ONTAP-NAS-flexgroup のインポート
+
+「 ontap/nas 」ドライバで作成される各ボリュームは、 ONTAP クラスタ上の FlexVol です。「 ontap/nas 」ドライバを使用して FlexVol をインポートする方法は同じです。ONTAP クラスタにすでに存在する FlexVol は 'ONTAP-NAS'PVC としてインポートできます同様に、 FlexGroup ボリュームは「 ONTAP-NAS-flexgroup 」 PVC としてインポートできます。
+
+
+IMPORTANT: Trident がインポートする ONTAP のタイプは RW である必要があります。DP タイプのボリュームは SnapMirror デスティネーションボリュームです。 Trident にボリュームをインポートする前に、ミラー関係を解除する必要があります。
+
+
+IMPORTANT: 「 ONTAP - NAS 」ドライバは、 qtree のインポートおよび管理を行うことができません。「 ONTAP-NAS' 」および「 ONTAP-NAS-flexgroup 」ドライバでは、ボリューム名の重複が許可されていません。
+
+たとえば、「 ONTAP_NAS' 」という名前のバックエンドに「管理されたボリューム」という名前のボリュームをインポートするには、次のコマンドを使用します。
+
+[listing]
+----
+$ tridentctl import volume ontap_nas managed_volume -f <path-to-pvc-file>
+
++------------------------------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+|                   NAME                   |  SIZE   | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |
++------------------------------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+| pvc-bf5ad463-afbb-11e9-8d9f-5254004dfdb7 | 1.0 GiB | standard      | file     | c5a6f6a4-b052-423b-80d4-8fb491a14a22 | online | true    |
++------------------------------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+----
+Trident が管理しない 'unmanaged_volume' （ ONTAP_NAS バックエンド上）という名前のボリュームをインポートするには ' 次のコマンドを使用します
+
+[listing]
+----
+$ tridentctl import volume nas_blog unmanaged_volume -f <path-to-pvc-file> --no-manage
+
++------------------------------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+|                   NAME                   |  SIZE   | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |
++------------------------------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+| pvc-df07d542-afbc-11e9-8d9f-5254004dfdb7 | 1.0 GiB | standard      | file     | c5a6f6a4-b052-423b-80d4-8fb491a14a22 | online | false   |
++------------------------------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+----
+--no-manage 引数を使用する場合、 Trident はボリュームの名前を変更したり、ボリュームがマウントされたかどうかを検証したりしません。ボリュームが手動でマウントされていない場合、ボリュームインポート処理は失敗します。
+
+
+NOTE: UnixPermissions カスタムのボリュームをインポートするという既存のバグが修正されました。PVC 定義またはバックエンド構成に unixPermissions を指定し、必要に応じて Astra Trident にボリュームをインポートするように指示できます。
+
+
+
+== ontap - SAN インポート
+
+Astra Trident は、 1 つの LUN を含む ONTAP SAN FlexVol をインポートすることもできます。これは 'ONTAP-SAN' ドライバと一致しています FlexVol は 'PVC ごとに FlexVol 内の 1 つの LUN に対して を作成しますtridentctl import コマンドは ' 他の場合と同じ方法で使用できます
+
+* 「 ontap - san 」バックエンドの名前を含めます。
+* インポートする必要がある FlexVol の名前を指定します。この FlexVol には、インポートが必要な LUN が 1 つしか含まれていないことに注意してください。
+* 「 -f 」フラグとともに使用する必要がある PVC 定義のパスを指定します。
+* PVC を管理するか、管理対象外にするかを選択します。デフォルトでは、 Trident によって PVC が管理され、バックエンドの FlexVol と LUN の名前が変更されます。アンマネージボリュームとしてインポートするには、「 --no-manage 」フラグを渡します。
+
+
+
+TIP: 管理対象外の「 ONTAP -SAN 」ボリュームをインポートする場合は、 FlexVol 内の LUN が「 lun0 」になっていて、必要なイニシエータを持つ igroup にマッピングされていることを確認する必要があります。Trident が管理対象のインポートに対して自動的に処理します。
+
+次に、 Astra Trident が FlexVol をインポートし、 PVC 定義に関連付けます。Astra Trident は、 FlexVol の名前を「 pvc-<uuid> 」形式に変更し、 FlexVol 内の LUN を「 lun0 」に変更します。
+
+
+TIP: 既存のアクティブな接続がないボリュームをインポートすることを推奨します。アクティブに使用されているボリュームをインポートする場合は、最初にボリュームをクローニングしてからインポートを実行します。
+
+
+
+=== 例
+
+「 ONTAP_SAN_DEFAULT' バックエンドにある「 ONTAP-SAN-managed 」 FlexVol をインポートするには、「 tridentctl import 」コマンドを次のように実行します。
+
+[listing]
+----
+$ tridentctl import volume ontapsan_san_default ontap-san-managed -f pvc-basic-import.yaml -n trident -d
+
++------------------------------------------+--------+---------------+----------+--------------------------------------+--------+---------+
+|                   NAME                   |  SIZE  | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |
++------------------------------------------+--------+---------------+----------+--------------------------------------+--------+---------+
+| pvc-d6ee4f54-4e40-4454-92fd-d00fc228d74a | 20 MiB | basic         | block    | cd394786-ddd5-4470-adc3-10c5ce4ca757 | online | true    |
++------------------------------------------+--------+---------------+----------+--------------------------------------+--------+---------+
+----
+
+IMPORTANT: ONTAP ボリュームのタイプが RW であることが Astra Trident でインポートされる必要があります。DP タイプのボリュームは SnapMirror デスティネーションボリュームです。ボリュームを Astra Trident にインポートする前に、ミラー関係を解除する必要があります。
+
+
+
+== エレメントをインポートします
+
+Trident を使用して、 NetApp Element ソフトウェア / NetApp HCI ボリュームを Kubernetes クラスタにインポートできます。必要なのは 'tridentctl import コマンドの引数として 'Astra Trident バックエンドの名前とボリュームおよび PVC ファイルの一意の名前です
+
+[listing]
+----
+$ tridentctl import volume element_default element-managed -f pvc-basic-import.yaml -n trident -d
+
++------------------------------------------+--------+---------------+----------+--------------------------------------+--------+---------+
+|                   NAME                   |  SIZE  | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |
++------------------------------------------+--------+---------------+----------+--------------------------------------+--------+---------+
+| pvc-970ce1ca-2096-4ecd-8545-ac7edc24a8fe | 10 GiB | basic-element | block    | d3ba047a-ea0b-43f9-9c42-e38e58301c49 | online | true    |
++------------------------------------------+--------+---------------+----------+--------------------------------------+--------+---------+
+----
+
+NOTE: Element ドライバではボリューム名の重複がサポートされます。ボリューム名が重複している場合、 Trident のボリュームインポートプロセスはエラーを返します。回避策として、ボリュームをクローニングし、一意のボリューム名を指定します。次に、クローンボリュームをインポートします。
+
+
+
+== aws -cvs インポート
+
+
+TIP: NetApp Cloud Volumes Service がサポートするボリュームを AWS でインポートするには、名前ではなくボリュームパスでボリュームを特定します。
+
+"awscvs_YEppr" という名前のバックエンド上の "awscvs_YEppr" ボリュームを "adwaimenthi-jolly -swif" のボリュームパスでインポートするには、次のコマンドを使用します。
+
+[listing]
+----
+$ tridentctl import volume awscvs_YEppr adroit-jolly-swift -f <path-to-pvc-file> -n trident
+
++------------------------------------------+--------+---------------+----------+--------------------------------------+--------+---------+
+|                   NAME                   |  SIZE  | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |
++------------------------------------------+--------+---------------+----------+--------------------------------------+--------+---------+
+| pvc-a46ccab7-44aa-4433-94b1-e47fc8c0fa55 | 93 GiB | aws-storage   | file     | e1a6e65b-299e-4568-ad05-4f0a105c888f | online | true    |
++------------------------------------------+--------+---------------+----------+--------------------------------------+--------+---------+
+----
+
+NOTE: ボリュームパスは、 / のあとのボリュームのエクスポートパスの部分です。たとえば、エクスポートパスが「 10.0.0.1:/adwiswify-jolly -swift 」の場合、ボリュームパスは「 adwiswy-jolly -swift 」です。
+
+
+
+== GCP-cvs インポート
+
+「 gcp-cvs 」ボリュームのインポートは、「 aws -cvs 」ボリュームのインポートと同じように機能します。
+
+
+
+== azure-NetApp-files インポート
+
+ボリューム・パスが importvol1' の 'azurenetappfiles_40517' というバックエンドにある azure-netapp-files' ボリュームをインポートするには ' 次のコマンドを実行します
+
+[listing]
+----
+$ tridentctl import volume azurenetappfiles_40517 importvol1 -f <path-to-pvc-file> -n trident
+
++------------------------------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+|                   NAME                   |  SIZE   | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |
++------------------------------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+| pvc-0ee95d60-fd5c-448d-b505-b72901b3a4ab | 100 GiB | anf-storage   | file     | 1c01274f-d94b-44a3-98a3-04c953c9a51e | online | true    |
++------------------------------------------+---------+---------------+----------+--------------------------------------+--------+---------+
+----
+
+NOTE: ANF ボリュームのボリュームパスは、 / のあとのマウントパスにあります。たとえば ' マウント・パスが 10.0.0.2::/importvol1 の場合 ' ボリューム・パスは importvol1 になります

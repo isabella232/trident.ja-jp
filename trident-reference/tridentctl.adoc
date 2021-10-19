@@ -1,0 +1,252 @@
+---
+sidebar: sidebar 
+permalink: trident-reference/tridentctl.html 
+keywords: tridentctl, trident, kubernetes, commands, options, usage, flags 
+summary: Trident へのシンプルなアクセスを提供するコマンドラインユーティリティである tridentctl の詳細を確認できます。 
+---
+= <code>tridentctl</code> コマンドとオプション
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+。 https://github.com/NetApp/trident/releases["Trident インストーラバンドル"^] Astra Trident へのシンプルなアクセスを提供するコマンドラインユーティリティ「 tridentctl 」が含まれています。十分な権限を持つ Kubernetes ユーザは、このロールを使用して Astra Trident をインストールしたり、 Astra Trident ポッドが含まれるネームスペースを直接管理したりできます。
+
+使用方法については 'tridentctl --help' を実行してください
+
+使用可能なコマンドとグローバルオプションは次のとおりです。
+
+[listing]
+----
+Usage:
+  tridentctl [command]
+----
+使用可能なコマンド：
+
+* `create` ： Astra Trident にリソースを追加します。
+* 「削除」 : Astra Trident から 1 つ以上のリソースを削除します。
+* 「 GET 」： Astra Trident から 1 つ以上のリソースを取得します。
+* 「 help 」：任意のコマンドに関するヘルプ。
+* `imag`: Astra Trident が必要とするコンテナイメージのテーブルを印刷しなさい。
+* import` ：既存のリソースを Astra Trident にインポートします。
+* install` ： Astra Trident をインストールします。
+* logs` ： Astra Trident からログを印刷します。
+* 'send': Astra Trident からリソースを送信します
+* uninstall: Astra Trident をアンインストールします。
+* `update` ： Astra Trident のリソースを変更します。
+* アップグレード： Astra Trident のリソースをアップグレードします。
+* 've rsion ： Astra Trident のバージョンを印刷します。
+
+
+フラグ：
+
+* `-d, --debug`: デバッグ出力。
+* `-h, --help` ： tridentctl のヘルプ。
+* `n,--namespace string`: Astra Trident 配備の名前空間。
+* `-o ,--output string`: 出力形式。JSON の 1 つ | yaml | name | wide | ps （デフォルト）。
+* `s'--server string`: Astra Trident REST インタフェースのアドレス / ポート。
+
+
+
+
+== 作成
+
+create コマンドを実行して 'Astra Trident にリソースを追加できます
+
+[listing]
+----
+Usage:
+  tridentctl create [option]
+----
+利用可能なオプション : backend`: Astra Trident にバックエンドを追加します。
+
+
+
+== 削除
+
+「削除」コマンドを実行すると、 Astra Trident から 1 つ以上のリソースを削除できます。
+
+[listing]
+----
+Usage:
+  tridentctl delete [option]
+----
+使用可能なオプション：
+
+* backend`: Astra Trident から 1 つ以上のストレージバックエンドを削除します。
+* 'node`: Astra Trident から 1 つ以上の CSI ノードを削除します。
+* 'Snapshot` ： Astra Trident から 1 つ以上のボリュームスナップショットを削除します。
+* 'torageclas' ： Astra Trident から 1 つ以上のストレージクラスを削除します
+* 'volume` ： Astra Trident から 1 つ以上のストレージボリュームを削除します
+
+
+
+
+== 取得
+
+get コマンドを実行すると 'Astra Trident から 1 つ以上のリソースを取得できます
+
+[listing]
+----
+Usage:
+  tridentctl get [option]
+----
+使用可能なオプション：
+
+* backend`: Astra Trident から 1 つ以上のストレージバックエンドを取得します。
+* 'Snapshot` ： Astra Trident から 1 つ以上のスナップショットを取得します。
+* 「 torageclass 」： Astra Trident から 1 つ以上のストレージクラスを取得します。
+* 'volume`: Astra Trident から 1 つ以上のボリュームを取得します
+
+
+
+
+== イメージ
+
+「 images 」フラグを実行すると、 Astra Trident が必要とするコンテナイメージのテーブルを印刷できます。
+
+[listing]
+----
+Usage:
+  tridentctl images [flags]
+----
+flags:*`-h, --help`: イメージのヘルプ。*`-v ,--k8s-version string`: Kubernetes クラスタのセマンティックバージョン。
+
+
+
+== ボリュームをインポートします
+
+import volume コマンドを実行して、既存のボリュームを Astra Trident にインポートできます。
+
+[listing]
+----
+Usage:
+  tridentctl import volume <backendName> <volumeName> [flags]
+----
+エイリアス : volume 'v
+
+フラグ：
+
+* `-f ,--filename string`: YAML または JSON PVC ファイルへのパス。
+* `-h, --help` ：ボリュームのヘルプ。
+* ``-- 管理なし `: PV/PVC のみを作成しますボリュームのライフサイクル管理を想定しないでください。
+
+
+
+
+== をインストールします
+
+"install" フラグを実行して、 Astra Trident をインストールできます。
+
+[listing]
+----
+Usage:
+  tridentctl install [flags]
+----
+フラグ：
+
+* `--autosupport-image string` ： AutoSupport Telemetry のコンテナイメージ（デフォルトは「 NetApp/trident autosupport ： 20.07.0 」）。
+* `-- autosupport - proxy string` : AutoSupport Telemetry を送信するためのプロキシのアドレス / ポート。
+* `--csI`: CSI Trident をインストールします (Kubernetes 1.13 のみをオーバーライドしますが、機能ゲートが必要です ) 。
+* `--enable-node-prep : 必要なパッケージをノードにインストールしようとします
+* ``--generate-custom-yaml `: インストールしないで YAML ファイルを生成します。
+* `-h, --help`: インストールのヘルプ。
+* `-- image-registry string : 内部イメージレジストリのアドレス / ポート。
+* `--k8s-timeout duration`: すべての Kubernetes 操作のタイムアウト ( デフォルトは 3m0s)
+* `-- kubbelet-dir string`: kubelet の内部状態のホストの場所 ( デフォルトは /var/lib/kubbelet") 。
+* `--log-format string`: Astra Trident のログ形式 (text,JSON] ( デフォルトは "text") 。
+* `--pv string`: Astra Trident が使用するレガシー PV の名前は、存在しないことを確認します ( デフォルトは "trident") 。
+* `--pvc string`: Astra Trident が使用する従来の PVC の名前は、存在しないことを確認します ( デフォルトは "trident") 。
+* `--silence -autosupport` ： AutoSupport バンドルを自動的にネットアップに送信しないでください ( デフォルトは true) 。
+* `-- silent` : インストール中のほとんどの出力を無効にしなさい。
+* `--trident-image string`: インストールする Astra Trident イメージ。
+* `--use-custom-yaml `: setup ディレクトリに存在する既存の YAML ファイルを使用します。
+* `--use-ipv6` ： Astra Trident のコミュニケーションに IPv6 を使用します。
+
+
+
+
+== ログ
+
+"logs" フラグを実行して、 Astra Trident からログを印刷することができます。
+
+[listing]
+----
+Usage:
+  tridentctl logs [flags]
+----
+フラグ：
+
+* `-a, --archive: 特に指定がない限り ' すべてのログを含むサポート・アーカイブを作成します
+* `-h, --help`: ログのヘルプ。
+* `-l, --log string`: アストラトライデントログを表示します。trident | auto | trident-operator | all （デフォルトは「 auto 」）のいずれかです。
+* `-- ノード文字列 : ノードポッドログの収集元となる Kubernetes ノード名
+* `-p, --previous `: 以前のコンテナインスタンスのログが存在する場合は、そのログを取得します。
+* `-- sidecars` : sidecar コンテナのログを取得します
+
+
+
+
+== 送信
+
+'end' コマンドを実行して 'Astra Trident からリソースを送信できます
+
+[listing]
+----
+Usage:
+  tridentctl send [option]
+----
+利用可能なオプション： AutoSupport ： AutoSupport アーカイブをネットアップに送信します。
+
+
+
+== をアンインストールします
+
+uninstall フラグを実行して 'Astra Trident をアンインストールできます
+
+[listing]
+----
+Usage:
+  tridentctl uninstall [flags]
+----
+flags:*`-h, --help`: アンインストールのヘルプ。*`--silent`: アンインストール中のほとんどの出力を無効にします。
+
+
+
+== 更新
+
+「 update 」コマンドを実行して、 Astra Trident のリソースを変更できます。
+
+[listing]
+----
+Usage:
+  tridentctl update [option]
+----
+利用可能なオプション : backend`: Astra Trident のバックエンドを更新します。
+
+
+
+== アップグレード
+
+'upgrade' コマンドを実行して 'Astra Trident のリソースをアップグレードできます
+
+[listing]
+----
+Usage:
+tridentctl upgrade [option]
+----
+使用可能なオプション : volume 'NFS/iSCSI から CSI に 1 つ以上の永続ボリュームをアップグレードします
+
+
+
+== バージョン
+
+「 rsion 」フラグを実行して、「 tridentctl 」のバージョンと Trident サービスを実行して印刷できます。
+
+[listing]
+----
+Usage:
+  tridentctl version [flags]
+----
+flags:*`--client`: クライアントバージョンのみ ( サーバは不要 )*`-h, --help`: バージョンのヘルプ。

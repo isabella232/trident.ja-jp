@@ -1,0 +1,16 @@
+---
+section: trident-reference
+title: 参照
+entries:
+- title: Astra Trident ポート
+  url: "/trident-reference/trident-ports.html"
+- title: Astra Trident REST API
+  url: "/trident-reference/rest-api.html"
+- title: コマンドラインオプション
+  url: "/trident-reference/trident-cl.html"
+- title: ネットアップの製品が Kubernetes と統合されます
+  url: "/trident-reference/k8s-netapp.html"
+- title: Kubernetes と Astra Trident オブジェクト
+  url: "/trident-reference/objects.html"
+- title: tridentctl コマンドとオプション
+  url: "/trident-reference/tridentctl.html"
