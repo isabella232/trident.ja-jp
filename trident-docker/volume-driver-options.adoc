@@ -4,7 +4,7 @@ permalink: trident-docker/volume-driver-options.html
 keywords: create volumes, astra trident, trident for docker, docker, docker volume, driver options, ontap, element volumes, cloud volumes service on aws, cvs, cloud volumes service on gcp, azure netapp files 
 summary: ストレージドライバにはそれぞれ異なるオプションがあり、ボリュームの作成時に指定することで結果をカスタマイズできます。構成済みのストレージシステムに適用されるオプションについては、以下を参照してください。 
 ---
-= ボリュームドライバのオプション
+= ドライバ固有のボリュームオプション
 :hardbreaks:
 :icons: font
 :imagesdir: ../media/

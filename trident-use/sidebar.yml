@@ -9,7 +9,7 @@ entries:
     url: "/trident-use/anf.html"
   - title: CVS for AWS バックエンドを設定する
     url: "/trident-use/aws.html"
-  - title: CVS for Google Cloud を設定する
+  - title: GCP バックエンドの CVS を設定します
     url: "/trident-use/gcp.html"
   - title: NetApp HCI または SolidFire バックエンドを設定します
     url: "/trident-use/element.html"

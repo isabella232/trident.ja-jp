@@ -111,7 +111,7 @@ basic-csi    csi.trident.netapp.io   15h
 
 これで、最初のボリュームを動的にプロビジョニングできます。これは Kubernetes を作成することで実現されます https://kubernetes.io/docs/concepts/storage/persistent-volumes["永続的ボリュームの要求"^] （ PVC ）オブジェクト。
 
-作成したストレージクラスを使用するボリュームに対して永続的ボリューム要求（ PVC ）を作成します。
+作成したストレージクラスを使用するボリュームの PVC を作成します。
 
 例については 'sample-input/pvc-basic-csI.yaml を参照してくださいストレージクラス名が、作成した名前と一致していることを確認します。
 

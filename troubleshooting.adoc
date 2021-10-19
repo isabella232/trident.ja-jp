@@ -16,6 +16,9 @@ Astra Trident のインストール中および使用中に発生する可能性
 NOTE: Astra Trident のヘルプを参照するには 'tridentctl logs-a -n trident` を使用してサポートバンドルを作成し 'NetApp Support < 困ったときは > に送信してください
 
 
+TIP: トラブルシューティングに関する記事の包括的なリストについては、を参照してください https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Trident_Kubernetes["ネットアップナレッジベース（ログインが必要）"^]。また、 Astra に関連する問題のトラブルシューティングに関する情報も参照できます。
+
+
 
 == 全般的なトラブルシューティング
 

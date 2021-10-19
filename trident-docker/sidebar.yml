@@ -11,7 +11,7 @@ entries:
 - title: ボリュームを操作します
   url: "/trident-docker/volumes-docker.html"
   entries:
-  - title: ボリュームドライバのオプション
+  - title: ドライバ固有のボリュームオプション
     url: "/trident-docker/volume-driver-options.html"
 - title: ログを収集します
   url: "/trident-docker/collect-logs-docker.html"
