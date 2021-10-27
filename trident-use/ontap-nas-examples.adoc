@@ -92,7 +92,7 @@ ONTAP NAS ドライバを作成して Astra Trident インストールで使用�
 | 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー * | いいえ 
 |===
 
-NOTE: 「 useREST 」は **tech preview** として提供されています。これはテスト環境では推奨され、本番ワークロードでは推奨されません。「 true 」に設定すると、 Astra Trident は ONTAP REST API を使用してバックエンドと通信します。この機能を使用するには、 ONTAP 9.8 以降が必要です。また ' 使用する ONTAP ログイン・ロールには ONTAP アプリケーションへのアクセス権が必要ですこれは ' 事前に定義された vsadmin ロールと cluster-admin ロールによって満たされます
+NOTE: 「 useREST 」は **tech preview** として提供されています。これはテスト環境では推奨され、本番ワークロードでは推奨されません。「 true 」に設定すると、 Astra Trident は ONTAP REST API を使用してバックエンドと通信します。この機能を使用するには、 ONTAP 9.9 以降が必要です。また ' 使用する ONTAP ログイン・ロールには ONTAP アプリケーションへのアクセス権が必要ですこれは ' 事前に定義された vsadmin ロールと cluster-admin ロールによって満たされます
 
 ONTAP クラスタと通信するには、認証パラメータを指定する必要があります。これは、セキュリティログインまたはインストールされている証明書のユーザ名 / パスワードです。
 
@@ -273,8 +273,19 @@ NOTE: ネットアップ ONTAP で Trident を使用している場合は、 IP 
 
 === ONTAP-NAS-flexgroup ドライバ
 
-｛ "version" ： 1 、 "storageDriverName" ： "ONTAP-NAS-flexgroup " 、 "managementlif" ： "10.0.0.1" 、 "dataLIF" ： "10.0.0.1" 、 "labels " ： ｛ "k8scluster" ： "test-cluster-east-1b" 、 バックエンドは「 test1 」、「 test1-ontap クラスタ」、「 SVM 」：「 SVM_NFS 」、「ユーザ名」：「 vsadmin 」、「パスワード」：「シークレット」、 ｝ です
-
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "ontap-nas-flexgroup",
+    "managementLIF": "10.0.0.1",
+    "dataLIF": "10.0.0.2",
+    "labels": {"k8scluster": "test-cluster-east-1b", "backend": "test1-ontap-cluster"},
+    "svm": "svm_nfs",
+    "username": "vsadmin",
+    "password": "secret",
+}
+----
 
 
 === IPv6 を使用した ONTAP - NAS ドライバ

@@ -43,6 +43,7 @@ Astra Trident は、 Google Cloud の Google Kubernetes Engine （ GKE ）、 AW
 
 Astra Trident を使用するには、次のバックエンドを 1 つ以上サポートする必要があります。
 
+* NetApp ONTAP 対応の Amazon FSX
 * Azure NetApp Files の特長
 * Cloud Volumes ONTAP
 * Cloud Volumes Service for AWS

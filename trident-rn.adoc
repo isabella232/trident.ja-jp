@@ -13,6 +13,9 @@ summary: ネットアップは、製品やサービスの改善と強化を継�
 リリースノートでは、最新バージョンの Astra Trident の新機能、拡張機能、およびバグ修正に関する情報を提供しています。
 
 
+WARNING: インストーラ zip ファイルに含まれている Linux の tridentctl バイナリは ' テスト済みでサポートされているバージョンですzip ファイルの「 /extras 」部分に含まれている「 macos 」バイナリはテストされておらず、サポートされていないことに注意してください。
+
+
 
 == 新機能
 
@@ -20,40 +23,50 @@ summary: ネットアップは、製品やサービスの改善と強化を継�
 
 
 
-=== Astra Trident 21.07.02
+=== Astra Trident 21.07 以降の変更点
 
-* XFS ボリュームのクローンをソースボリュームと同じノードにマウントできない固定問題です。
+
+
+==== の修正
+
+* XFS ボリュームのクローンをソースボリュームと同じノードにマウントできない固定問題（ GitHub 問題 514 ）
+* Astra Trident がシャットダウン時に致命的なエラーを記録した修正版問題（ GitHub 問題 597 ）。
+* Kubernetes 関連の修正：
++
+** スナップショットを作成するときに 'ONTAP-NAS' および 'ONTAP-NAS-flexgroup ドライバ（ GitHub 問題 645 ）を使用して ' ボリュームの使用済み領域を最小リストアサイズとして返します
+** ボリュームのサイズ変更後に 'Failed to expand filesystem エラーがログに記録された問題を修正しました (GitHub 問題 560)
+** POD が「 Terminating 」状態で停止する可能性がある固定問題（ GitHub 問題 572 ）。
+** 「 ONTAP-SAN-エコノミー 」問題がスナップショット FlexVol （ GitHub 533 ）でいっぱいになる場合があるという問題を修正しました。
+** 異なるイメージを持つ固定カスタム YAML インストーラ問題（ GitHub 問題 613 ）。
+** Snapshot サイズの計算方法を固定（ GitHub 問題 611 ）。
+** 問題は修正され、 Astra Trident のすべてのインストーラが OpenShift としてプレーン Kubernetes を識別できるようになりました（ GitHub 問題 639 ）。
+** Kubernetes API サーバにアクセスできない場合に、 Trident オペレータが更新を停止するよう修正しました（ GitHub 問題 599 ）。
+
+
 
 
 
 
 ==== 拡張機能
 
-* Kubernetes 1.22 のサポートが追加されました。
-* Trident の operator と Helm チャートを Kubernetes 1.22 で使用できるようにしました。
-
-
-を参照してください https://github.com/NetApp/trident/releases["Astra Trident GitHub"^] を参照してください。
-
-
-
-=== Astra Trident 21.07.01
-
-* 画像が異なる固定カスタム YAML インストーラ問題。
-* スナップショット・サイズの固定計算問題。
-
-
-を参照してください https://github.com/NetApp/trident/releases/tag/v21.07.1["Astra Trident GitHub"^] を参照してください。
+* GCP - CVS パフォーマンスボリュームに対する「 unixPermissions 」オプションのサポートが追加されました。
+* GCP でのスケール最適化 CVS ボリュームのサポートが 600GiB から 1TiB に追加されました。
+* Kubernetes 関連の機能拡張：
++
+** Kubernetes 1.22 のサポートが追加されました。
+** Trident の operator と Helm チャートを Kubernetes 1.22 （ GitHub 問題 628 ）と連携させるように設定
+** tridentctl images コマンドに演算子イメージを追加 (GitHub 問題 570)
 
 
 
-=== Astra Trident 21.07
 
-Astra Trident 21.07.0 は * ダウンロードできません * 。バージョン 21.07.0 の「 napshotReserve 」に変更を加えると、 CSI の「 VolumeSnapshots 」が PersistentVolumeClaim の作成に使用できなくなる可能性があります。
 
-すでにバージョン 21.07.0 にアップグレードしている場合は、新しく作成した「 VolumeSnapshots 」（バージョン 21.07.0 でプロビジョニング）を削除して、以前のリリースにダウングレードすることをお勧めします。
 
-を参照してください https://github.com/NetApp/trident/releases/tag/v21.07.0["Astra Trident GitHub"^] を参照してください。
+==== 実験的な機能強化
+
+* 「 ONTAP SAN 」ドライバでのボリューム・レプリケーションのサポートを追加しました。
+* 'ONTAP-NAS-flexgroup 'ONTAP-SAN' および 'ONTAP-NAS-エコノミー ' ドライバの 'tech preview* REST サポートを追加
+
 
 
 
