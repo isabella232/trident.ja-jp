@@ -878,7 +878,6 @@
   <block id="d06b5297af318d2581021098f6b0d44d" category="section-title">名前空間を対象としたオペレータインストールをアップグレードします</block>
   <block id="ddfa75d059a999aedec16392aae03bc4" category="paragraph">名前空間を対象とした演算子（バージョン 20.07 ～ 20.10 ）を使用してインストールされた Astra Trident のインスタンスからアップグレードするには、次の手順に従います。</block>
   <block id="edf5c542759186ded2c7eeaae6b340a5" category="list-text">既存の Trident インストールのステータスを確認これを行うには、 TridentProvisioner の * Status * を確認してください。ステータスは「 Installed 」になります。</block>
-  <block id="0d01552e27bf606a7c7333cead56fe00" category="admonition">ステータスに「更新中」と表示される場合は、続行する前に解決してください。可能なステータス値のリストについては、を参照してください <block ref="cfaafa23765f16a097372bc04c3dd97f" category="inline-link-macro-rx"></block>。</block>
   <block id="683d018a2f7c70469fd74ba0eeae2a79" category="list-text">Trident インストーラに付属のマニフェストを使用して、「 TridentOrchestrator 」 CRD を作成します。</block>
   <block id="ede3d39a1c5211985b126b3f166cf601" category="inline-link">Trident リポジトリ</block>
   <block id="af39f09efb6e7b7133433dff92d0fffe" category="list-text">マニフェストを使用して、名前空間を対象とした演算子を削除します。この手順を完了するには、名前空間を対象とした演算子を配備するために使用する 'undle.yaml ファイルが必要です。から 'bundle.yaml を取得できます<block ref="1403b813895a8a78c447fca96240f2ac" category="inline-link-rx"></block>。適切なブランチを使用するようにしてください。</block>
@@ -1249,8 +1248,6 @@
   <block id="08754f2800804f1fe3673c858b4b56e0" category="list-text">アプリケーションポッドを再起動します。</block>
   <block id="0d3ef54a4cc337b5d907b6639e51c6d4" category="section-title">お客様 / テナントごとにストレージクラスの使用状況を分離するにはどうすればよいですか。</block>
   <block id="fda1b35892cb6f61447f0e49415937d9" category="paragraph">Kubernetes では、ネームスペース内のストレージクラスは使用できません。ただし、 Kubernetes を使用すると、ネームスペースごとにストレージリソースクォータを使用することで、ネームスペースごとに特定のストレージクラスの使用量を制限できます。特定のストレージへのネームスペースアクセスを拒否するには、そのストレージクラスのリソースクォータを 0 に設定します。</block>
-  <block id="ea3d51fb2b16acb7cb260f25bc8965b1" category="summary">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。</block>
-  <block id="14d9b10c6196045941347a9e85704b50" category="doc">Astra Trident のドキュメント</block>
   <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">法的通知</block>
   <block id="c59ae8d7beeb519a23478ab048af482c" category="paragraph"><block ref="c59ae8d7beeb519a23478ab048af482c" category="inline-link-macro-rx"></block></block>
   <block id="6f2ac1cf1da8ec34232c651d4bba0149" category="paragraph"><block ref="6f2ac1cf1da8ec34232c651d4bba0149" category="inline-link-macro-rx"></block></block>
@@ -2566,7 +2563,6 @@
   <block id="5dd03e8d039863e563e049be198c3fd3" category="doc">リリースノート</block>
   <block id="2e6ce374ac42de81aea6a3d682b92e33" category="paragraph">リリースノートでは、最新バージョンの Astra Trident の新機能、拡張機能、およびバグ修正に関する情報を提供しています。</block>
   <block id="e4c4d344a524d21b898e4d04b6539aa7" category="admonition">インストーラ zip ファイルに含まれている Linux の tridentctl バイナリは ' テスト済みでサポートされているバージョンですzip ファイルの「 /extras 」部分に含まれている「 macos 」バイナリはテストされておらず、サポートされていないことに注意してください。</block>
-  <block id="490414e0366b091220802d406e52c076" category="section-title">新機能</block>
   <block id="c1f57827e94910e34725b8cf11415683" category="paragraph">ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能を以下に示します。</block>
   <block id="fdb053d6bab681277dcb47b3a45e2e85" category="section-title">Astra Trident 21.07 以降の変更点</block>
   <block id="41cf959adc98386b54829d71a6ed5d37" category="section-title">の修正</block>
@@ -3056,4 +3052,10 @@
   <block id="748a22b5f1312291ad55429ba4b809a0" category="sidebar">tridentctl を使用してバックエンド管理を実行します</block>
   <block id="f14894e4c400a400c02367258a93029a" category="sidebar">Trident for Docker が必要です</block>
   <block id="e08bfc79c5202517b3814efd6e82fb2c" category="sidebar">Trident をアップグレードまたはアンインストールする</block>
+  <block id="f5915fc941e67784a88a68f3afeda7f1" category="admonition">ステータスに「更新中」と表示される場合は、続行する前に解決してください。可能なステータス値のリストについては、を参照してください<block ref="6aefd1c9ce8e43313a8c7c92e2fac4f3" category="inline-link-rx"></block>。</block>
+  <block id="12d1d54cab9f4d6870988b64372555b8" category="summary">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。</block>
+  <block id="91cba8fa9749855921b347b0cf808b76" category="doc">Astra Trident 21.10 のドキュメント</block>
+  <block id="415e3eb51625ca73d5e09053eea6a42b" category="section-title">21.10 の新機能</block>
+  <block id="1b6ea3b57d23007f55ba778700bc369c" category="inline-link">ドキュメントの ealier バージョン</block>
+  <block id="af78f8cf3a2a8307db27d14c5642d95f" category="paragraph">以前のリリースについては、を参照してください<block ref="a3e07c08f1bbcd23d8422302f837e06b" category="inline-link-rx"></block>。</block>
 </blocks>

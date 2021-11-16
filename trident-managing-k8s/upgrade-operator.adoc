@@ -67,7 +67,7 @@ Version:  v20.10.1
 ----
 +
 
-NOTE: ステータスに「更新中」と表示される場合は、続行する前に解決してください。可能なステータス値のリストについては、を参照してください link:../trident-kubernetes/kubernetes-deploy-operator.html["こちらをご覧ください"^]。
+NOTE: ステータスに「更新中」と表示される場合は、続行する前に解決してください。可能なステータス値のリストについては、を参照してください https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html["こちらをご覧ください"^]。
 
 . Trident インストーラに付属のマニフェストを使用して、「 TridentOrchestrator 」 CRD を作成します。
 +
