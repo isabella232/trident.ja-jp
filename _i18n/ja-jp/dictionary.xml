@@ -1578,7 +1578,6 @@
   <block id="01005ecf4349194d1ec13d0ba516c9e5" category="admonition">トラブルシューティングに関する記事の包括的なリストについては、を参照してください<block ref="57f5c759ada931c6a2051314ca6ee99e" category="inline-link-rx"></block>。また、 Astra に関連する問題のトラブルシューティングに関する情報も参照できます<block ref="695f48b1d8b7348c0e2828947d24161e" category="inline-link-rx"></block>。</block>
   <block id="163fb9eb00818e2c7109900db1a3cc82" category="section-title">全般的なトラブルシューティング</block>
   <block id="f504c27d1ad305a988958b64f34468cb" category="list-text">Trident ポッドが正常に起動しない場合（たとえば、 Trident ポッドが 2 つ未満の「 ContainerCreating 」フェーズで停止した場合）、「 kubectl-n trident 」を実行して、展開が trident 、「 kubectl-n trident 」が pod trident-******** を記述します -**** 追加のインサイトを提供できます。kubelet ログの取得 (journalctl -xeu kubelet など ) も役立ちます。</block>
-  <block id="22e0842769f063bdabbe3e60c842e01a" category="list-text">Trident ログに十分な情報がない場合は、インストールパラメータに「 -d' 」フラグを渡して Trident のデバッグモードを有効にすることができます。</block>
   <block id="87248f7afe198418bdbedd919695631e" category="list-text">バックエンド定義に「 debugTraceFlags 」を含めると、バックエンドごとにデバッグログを取得することもできます。たとえば、 Trident ログで API 呼び出しとメソッドの逆数を取得するには、「 `debugTraceFlags: {"API":true,"method" :true,}` を指定します。既存のバックエンドには 'tridentctl backend update で構成された 'ebugTraceFlags' を設定できます</block>
   <block id="6cc37a0664d7f97f87d34eadef23dbad" category="list-text">RedHat CoreOS を使用する場合は 'iscsid がワーカー・ノードで有効になっており ' デフォルトで起動されていることを確認しますこの設定には、 OpenShift MachineConfig を使用するか、イグニッションテンプレートを変更します。</block>
   <block id="4582245538a41243a95713a7d0c21b64" category="list-text">Trident をで使用する際によく発生する問題です<block ref="4568986ef6397d7c901269fc0e190ede" category="inline-link-rx"></block> テナントとクライアントのシークレットが、必要な権限がないアプリケーションの登録から取得された場合です。Trident の要件の詳細については、を参照してください <block ref="c09112d17e34405b7a5c3d246f91583f" category="inline-link-macro-rx"></block> 設定</block>
@@ -3052,10 +3051,16 @@
   <block id="748a22b5f1312291ad55429ba4b809a0" category="sidebar">tridentctl を使用してバックエンド管理を実行します</block>
   <block id="f14894e4c400a400c02367258a93029a" category="sidebar">Trident for Docker が必要です</block>
   <block id="e08bfc79c5202517b3814efd6e82fb2c" category="sidebar">Trident をアップグレードまたはアンインストールする</block>
-  <block id="f5915fc941e67784a88a68f3afeda7f1" category="admonition">ステータスに「更新中」と表示される場合は、続行する前に解決してください。可能なステータス値のリストについては、を参照してください<block ref="6aefd1c9ce8e43313a8c7c92e2fac4f3" category="inline-link-rx"></block>。</block>
-  <block id="12d1d54cab9f4d6870988b64372555b8" category="summary">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。</block>
   <block id="91cba8fa9749855921b347b0cf808b76" category="doc">Astra Trident 21.10 のドキュメント</block>
   <block id="415e3eb51625ca73d5e09053eea6a42b" category="section-title">21.10 の新機能</block>
   <block id="1b6ea3b57d23007f55ba778700bc369c" category="inline-link">ドキュメントの ealier バージョン</block>
   <block id="af78f8cf3a2a8307db27d14c5642d95f" category="paragraph">以前のリリースについては、を参照してください<block ref="a3e07c08f1bbcd23d8422302f837e06b" category="inline-link-rx"></block>。</block>
+  <block id="f14a1d8e56a0cbd2826edd38778371f7" category="admonition">ステータスに「更新中」と表示される場合は、続行する前に解決してください。可能なステータス値のリストについては、を参照してください<block ref="6aefd1c9ce8e43313a8c7c92e2fac4f3" category="inline-link-rx"></block>。</block>
+  <block id="ea3d51fb2b16acb7cb260f25bc8965b1" category="summary">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。</block>
+  <block id="05d68d1b7214c73141ed12aaed0c2ab5" category="list-text">Trident ログに十分な情報がない場合は、インストールオプションに基づいてインストールパラメータに「 -d 」フラグを渡して、 Trident のデバッグモードを有効にしてみてください。</block>
+  <block id="bc6de9cad530a57dba08ff711f4a6b5f" category="paragraph">次に './tridentctl logs -n trident` を使用して debug が設定され ' ログ内で 'level=debug msg' を検索していることを確認します</block>
+  <block id="8e95ae46f32b05cf983c93e608530e36" category="list-text">オペレータとともにインストールされます</block>
+  <block id="6a304a6cf7cd8c90bac892ab0fb9c134" category="paragraph">Astra Trident 20.07 と 20.10 では、「 Torc 」の代わりに「 tprov 」を使用します。</block>
+  <block id="79b91d0489c081de6794796638793787" category="list-text">Helm とともにインストールされます</block>
+  <block id="d356d628089d439d75e3f85564372658" category="list-text">tridentctl を使用してインストールされます</block>
 </blocks>

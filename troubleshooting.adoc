@@ -23,7 +23,40 @@ TIP: トラブルシューティングに関する記事の包括的なリスト
 == 全般的なトラブルシューティング
 
 * Trident ポッドが正常に起動しない場合（たとえば、 Trident ポッドが 2 つ未満の「 ContainerCreating 」フェーズで停止した場合）、「 kubectl-n trident 」を実行して、展開が trident 、「 kubectl-n trident 」が pod trident-******** を記述します -**** 追加のインサイトを提供できます。kubelet ログの取得 (journalctl -xeu kubelet など ) も役立ちます。
-* Trident ログに十分な情報がない場合は、インストールパラメータに「 -d' 」フラグを渡して Trident のデバッグモードを有効にすることができます。
+* Trident ログに十分な情報がない場合は、インストールオプションに基づいてインストールパラメータに「 -d 」フラグを渡して、 Trident のデバッグモードを有効にしてみてください。
++
+次に './tridentctl logs -n trident` を使用して debug が設定され ' ログ内で 'level=debug msg' を検索していることを確認します
+
++
+オペレータとともにインストールされます::
++
+--
+[listing]
+----
+# kubectl patch torc -n --type=merge -p '{"spec":{"debug":true}}'
+----
+Astra Trident 20.07 と 20.10 では、「 Torc 」の代わりに「 tprov 」を使用します。
+
+--
+Helm とともにインストールされます::
++
+--
+[listing]
+----
+$ helm upgrade <name> trident-operator-21.07.1-custom.tgz --set tridentDebug=true`
+----
+--
+tridentctl を使用してインストールされます::
++
+--
+[listing]
+----
+./tridentctl uninstall -n trident
+./tridentctl install -d -n trident
+----
+--
+
+
 * バックエンド定義に「 debugTraceFlags 」を含めると、バックエンドごとにデバッグログを取得することもできます。たとえば、 Trident ログで API 呼び出しとメソッドの逆数を取得するには、「 `debugTraceFlags: {"API":true,"method" :true,}` を指定します。既存のバックエンドには 'tridentctl backend update で構成された 'ebugTraceFlags' を設定できます
 * RedHat CoreOS を使用する場合は 'iscsid がワーカー・ノードで有効になっており ' デフォルトで起動されていることを確認しますこの設定には、 OpenShift MachineConfig を使用するか、イグニッションテンプレートを変更します。
 * Trident をで使用する際によく発生する問題です https://azure.microsoft.com/en-us/services/netapp/["Azure NetApp Files の特長"] テナントとクライアントのシークレットが、必要な権限がないアプリケーションの登録から取得された場合です。Trident の要件の詳細については、を参照してください link:../trident-backend/anf.html["Azure NetApp Files の特長"] 設定
