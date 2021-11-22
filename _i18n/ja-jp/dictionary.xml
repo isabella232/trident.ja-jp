@@ -1531,18 +1531,10 @@
   <block id="a6595e492ec094375a673911109a32f2" category="paragraph">エアギャップのある環境では、 Astra Trident のインストールに必要なコンテナイメージについて、次のリストを参照してください。</block>
   <block id="aa92c4c233bc01609d957e469736b699" category="cell">コンテナイメージ</block>
   <block id="3b29886980a3307188a882bdc7cad63b" category="cell">v1.17.0</block>
-  <block id="47d07011bca79befe16bb700e92dcbc1" category="list-text">ネットアップ / Trident ： 21.07.0</block>
-  <block id="d9f8e2d8dd775582f52f3faab2fd1e65" category="list-text">ネットアップ / Trident オペレータ： 21.07.0</block>
-  <block id="2e6c4d3ef0db2b4c90724d4a5476e36d" category="list-text">NetApp / Trident - autosupport ： 21.01</block>
-  <block id="b30d0a097738f86abbfecf3f9ea80403" category="list-text">k81.gcr.io/sig-storage/csi-Provisioner ： v2.1.1</block>
-  <block id="0add2d5b06a46b805acf99b6548b2398" category="list-text">k83.GCR.IO/sig-storage/csi-attacher:v3.1.0</block>
-  <block id="2ca7c243ca3adf9f395ed61cad94c4b9" category="list-text">k81.gcr.io/sig-storage/csi-resizer ： v1.1.0</block>
   <block id="ca2e728c8f17fef48811518aaed4de43" category="list-text">k83.gcr.io/sig-storage/csi-snapshotter ： v3.0.3</block>
-  <block id="74ba55b5b18f4a1327f8e0691e73ec2e" category="list-text">k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.1.0</block>
   <block id="b8f1a143b913482d06bc0abdd94e9fc7" category="cell">v1.18.0</block>
   <block id="79f59ba516b478a970a428a795414034" category="cell">v1.19.0</block>
   <block id="4b977ef7367155e20f954fe7b0a00c4f" category="cell">v1.20.0</block>
-  <block id="f5de0771348311ab6f3933f60bd8008d" category="list-text">K81.GCR.IO/sig-storage/CSi-snapshotter ： v4.1.1.</block>
   <block id="6f0b081bef5e745ef2429ef74472d9bd" category="cell">v1.21.0</block>
   <block id="721d66fc3896f0caf2122a92b3f1c017" category="admonition">Kubernetes バージョン 1.20 以降では、検証済みの「 k8es.cr.io/sig-storage/csi-snapshotter ： v4.x 」イメージを使用します。これは、「 v1' バージョンが「 volumesnapshotes.snapshot.storage.k88.io`CRD 」に対応している場合にのみ使用します。v1beta` のバージョンが v1beta` のバージョンの有無に関わらず CRD にサービスを提供している場合は、検証済みの「 k83.gcr.io/sig-storage/csi-snapshotter: v3.x' 」イメージを使用します。</block>
   <block id="a60c2f57df655a9ac5fcaa0750886195" category="summary">Kubernetes の使用を開始したばかりの場合は、手順に従って Kubernetes をインストールして試してください。この説明では、 Trident をデモ用に統合できるベアボーンのシングルノードクラスタについて説明しています。</block>
@@ -2091,7 +2083,6 @@
   <block id="28ea88befb3a7f6a8e98e7ea7a4fd35f" category="paragraph">'UDO apt-get install-y open-iscsi lsscsi SG3-utils multipath-tools scsitools'</block>
   <block id="a53508e75911225e5de8b5febc82cf12" category="list-text">open-iscsi バージョンが 2.0.874-5ubuntu2.10 以降（ bionic の場合）または 2.0.874-7.1ubuntu6.1 以降（ Focal の場合）であることを確認します。</block>
   <block id="f6802be29c6bca93d8f44768b0347ac9" category="paragraph">`d pkg -l open-iscsi`</block>
-  <block id="4dafc112897e668d8c968f7418829817" category="paragraph">'sudo tee//etc/multipath.conf &lt;-' EOF' defaults ｛ user_friendy_names yes find _multipaths yes ｝ EOF sudo systemctl enable -- 今では multipath-tools.service sudo service multipath-tools restart`</block>
   <block id="b163c84ad8a4e55a17b51aad8074093e" category="list-text">「 open-iSCSI」 および「マルチパスツール」が有効で実行されていることを確認します。</block>
   <block id="8741473f7a80f4dd83071161b2c95301" category="paragraph">'sudo systemctl status multipath-tools `sudo systemctl enable -- 現在の open-iscsi.service` 'udo systemctl status open-iscsi'</block>
   <block id="1b757fe9c8a149de349a32b8d21feb54" category="admonition">Ubuntu 18.04 では 'iSCSI デーモンを起動するために 'open-iscsi' を起動する前に 'iscsiadm を持つターゲット・ポートを検出する必要がありますまたは 'iscsid' サービスを 'iscsid' を自動的に開始するように変更することもできます</block>
@@ -3063,4 +3054,16 @@
   <block id="6a304a6cf7cd8c90bac892ab0fb9c134" category="paragraph">Astra Trident 20.07 と 20.10 では、「 Torc 」の代わりに「 tprov 」を使用します。</block>
   <block id="79b91d0489c081de6794796638793787" category="list-text">Helm とともにインストールされます</block>
   <block id="d356d628089d439d75e3f85564372658" category="list-text">tridentctl を使用してインストールされます</block>
+  <block id="822b439e1640423ccbcbed4f9075999d" category="list-text">ネットアップ / Trident ： 21.10.0</block>
+  <block id="098ea8d7067b53d30d17fa3828abed7b" category="list-text">NetApp / Trident - autosupport ： 21.10</block>
+  <block id="b0b4b8e52878f03279584f43bc961472" category="list-text">k81.gcr.io/sig-storage/csi-Provisioner ： v2.2.2</block>
+  <block id="af4499fc8818e7a77f8ba226b45359df" category="list-text">k83.GCR.IO/sig-storage/csi-attacher:v3.3.0</block>
+  <block id="3c8910d4db724229b566887801de96bb" category="list-text">k81.gcr.io/sig-storage/csi-resizer ： v1.3.0</block>
+  <block id="ad51ab91499291ae184dc614edbfe7df" category="list-text">k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.3.0</block>
+  <block id="f948435808f18602f3b9e0f018da83dc" category="list-text">NetApp / Trident オペレータ： 21.10.0 （オプション）</block>
+  <block id="d7f860105f67679f001ef7c3ed889c0c" category="list-text">K83.GCR.IO/sig-storage/csi-Provisioner ： v3.0.0</block>
+  <block id="681d715b456f6d29a501b8f132e941a1" category="cell">v1.22.0</block>
+  <block id="75419edaab27be09afdb3415e83d93f6" category="paragraph">'UDO mpathconf--enable --with _multipathd y -- find _multipaths n</block>
+  <block id="60c268e00db3206011b54b01705d7211" category="admonition">「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults 」に含まれていることを確認します。</block>
+  <block id="b85c80e2af7e3d7dd06b874ed048d430" category="paragraph">'sudo tee//etc/multipath.conf &lt;-' EOF ' defaults ｛ user_friendy_names yes find _multipaths no ｝ EOF sudo systemctl enable -- 今では multipath-tools.service sudo service multipath-tools restart'</block>
 </blocks>
