@@ -74,7 +74,6 @@
   <block id="7358b1fd077fa65f88fff87888fd2547" category="inline-link">Trident インストーラバンドル</block>
   <block id="4e49f66de2e2dc43c25555fe50639334" category="paragraph">。<block ref="5a856e83aada9750fe5389f8da94335b" category="inline-link-rx"></block> Astra Trident へのシンプルなアクセスを提供するコマンドラインユーティリティ「 tridentctl 」が含まれています。十分な権限を持つ Kubernetes ユーザは、このロールを使用して Astra Trident をインストールしたり、 Astra Trident ポッドが含まれるネームスペースを直接管理したりできます。</block>
   <block id="8ca34267f11cb69ea424bc0320f0e295" category="paragraph">使用方法については 'tridentctl --help' を実行してください</block>
-  <block id="82afa66ce2496cc16fa1a7a5a6b3a000" category="paragraph">使用可能なコマンドとグローバルオプションは次のとおりです。</block>
   <block id="2dd878ee55d738aa02e6b0b162d45708" category="paragraph">使用可能なコマンド：</block>
   <block id="4386bd8da14af923cbb7ac011ffc048e" category="list-text">`create` ： Astra Trident にリソースを追加します。</block>
   <block id="f40f9a4cf242d0355aaf8d9e06617436" category="list-text">「削除」 : Astra Trident から 1 つ以上のリソースを削除します。</block>
@@ -3066,4 +3065,5 @@
   <block id="75419edaab27be09afdb3415e83d93f6" category="paragraph">'UDO mpathconf--enable --with _multipathd y -- find _multipaths n</block>
   <block id="60c268e00db3206011b54b01705d7211" category="admonition">「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults 」に含まれていることを確認します。</block>
   <block id="b85c80e2af7e3d7dd06b874ed048d430" category="paragraph">'sudo tee//etc/multipath.conf &lt;-' EOF ' defaults ｛ user_friendy_names yes find _multipaths no ｝ EOF sudo systemctl enable -- 今では multipath-tools.service sudo service multipath-tools restart'</block>
+  <block id="a55b7ee69c26277a1088efc103e15297" category="paragraph">使用可能なコマンドとグローバルオプションは次のとおりです。</block>
 </blocks>
