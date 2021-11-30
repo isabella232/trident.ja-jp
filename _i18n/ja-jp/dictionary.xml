@@ -3067,4 +3067,5 @@
   <block id="3830d427e146a8a64454dc373d9b1502" category="list-text"><block ref="3830d427e146a8a64454dc373d9b1502" category="inline-link-rx"></block></block>
   <block id="287b5cd1a6f828768510ca46bbf05bd9" category="paragraph">「 apiRegion 」は、 Astra Trident が CVS ボリュームを作成する GCP リージョンです。Astra Trident は、同じ GCP リージョンに属する Kubernetes ノードにボリュームをマウントして接続できます。バックエンドを作成するときは 'apiRegion とリージョンの Kubernetes ノードが一致していることをで確認することが重要です複数リージョンの Kubernetes クラスタを作成する場合、指定した「 apiRegion 」で作成された CVS Cloud Volume は、同じ GCP リージョン内のノードでスケジュールされたワークロードでのみ使用できます。</block>
   <block id="9bbe247417ec112bd7f3be36a4035717" category="paragraph">ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能をいくつかご紹介します。</block>
+  <block id="311847a44163ac40ccf470fcf81e74fb" category="admonition">GKE 環境でオンデマンドボリュームスナップショットを設定する場合は、スナップショットコントローラを作成しないでください。GKE では、内蔵の非表示のスナップショットコントローラを使用します。</block>
 </blocks>
