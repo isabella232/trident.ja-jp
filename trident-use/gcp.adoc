@@ -84,7 +84,7 @@ NOTE: デフォルトの CVS サービスタイプ（「 torageClass=software �
 |===
 共有 VPC ネットワークを使用する場合は、「 ProjectNumber 」と「 hostProjectNumber 」の両方を指定する必要があります。その場合、「 ProjectNumber 」はサービスプロジェクト、「 hostProjectNumber 」はホストプロジェクトです。
 
-「 apiRegion 」は、 Astra Trident が CVS ボリュームを作成する GCP リージョンです。Astra Trident は、同じ GCP リージョンに属する Kubernetes ノードにボリュームをマウントして接続できます。バックエンドを作成するときは 'apiRegion とリージョンの Kubernetes ノードが一致していることをで確認することが重要です複数リージョンの Kubernetes クラスタを作成する場合、指定した「 apiRegion 」で作成された CVS ボリュームは、同じ GCP リージョン内のノードでスケジュールされたワークロードでのみ使用できます。
+「 apiRegion 」は、 Astra Trident が CVS ボリュームを作成する GCP リージョンです。Astra Trident は、同じ GCP リージョンに属する Kubernetes ノードにボリュームをマウントして接続できます。バックエンドを作成するときは 'apiRegion とリージョンの Kubernetes ノードが一致していることをで確認することが重要です複数リージョンの Kubernetes クラスタを作成する場合、指定した「 apiRegion 」で作成された CVS Cloud Volume は、同じ GCP リージョン内のノードでスケジュールされたワークロードでのみ使用できます。
 
 
 NOTE: 'torageClass' は、目的のを選択するために使用できるオプションのパラメータです https://cloud.google.com/solutions/partners/netapp-cloud-volumes/service-types?hl=en_US["CVS サービスタイプ"^]。基本の CVS サービスタイプ (`torageClass=software') または CVS-Performance サービスタイプ (`torageClass=hardware') から選択できます。このサービスタイプは、 Trident がデフォルトで使用します。バックエンド定義でそれぞれの CVS の torageClass を提供する 'apiRegion' を指定していることを確認します

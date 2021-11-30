@@ -1691,7 +1691,6 @@
   <block id="e472abc54914c303a14c29f7e853a28a" category="cell">標準</block>
   <block id="e39a04a98487bb1fd113f63d47331565" category="cell">トラブルシューティング時に使用するデバッグフラグ。例： \\{"API":false," メソッド ":true}`トラブルシューティングを行って詳細なログダンプが必要な場合を除き、このオプションは使用しないでください。</block>
   <block id="e96ca96c25a07de5f03e2535b0c2f7fc" category="paragraph">共有 VPC ネットワークを使用する場合は、「 ProjectNumber 」と「 hostProjectNumber 」の両方を指定する必要があります。その場合、「 ProjectNumber 」はサービスプロジェクト、「 hostProjectNumber 」はホストプロジェクトです。</block>
-  <block id="f7a4728554be1aad54665d818b079348" category="paragraph">「 apiRegion 」は、 Astra Trident が CVS ボリュームを作成する GCP リージョンです。Astra Trident は、同じ GCP リージョンに属する Kubernetes ノードにボリュームをマウントして接続できます。バックエンドを作成するときは 'apiRegion とリージョンの Kubernetes ノードが一致していることをで確認することが重要です複数リージョンの Kubernetes クラスタを作成する場合、指定した「 apiRegion 」で作成された CVS ボリュームは、同じ GCP リージョン内のノードでスケジュールされたワークロードでのみ使用できます。</block>
   <block id="34c1edfb4ac8581528c3791be680aeb3" category="inline-link">CVS サービスタイプ</block>
   <block id="457c2f1fead29343fe617ea61b06aaff" category="admonition">'torageClass' は、目的のを選択するために使用できるオプションのパラメータです<block ref="46dc1bdb584c5005116d9d2a4d889e1d" category="inline-link-rx"></block>。基本の CVS サービスタイプ (`torageClass=software') または CVS-Performance サービスタイプ (`torageClass=hardware') から選択できます。このサービスタイプは、 Trident がデフォルトで使用します。バックエンド定義でそれぞれの CVS の torageClass を提供する 'apiRegion' を指定していることを確認します</block>
   <block id="8ae8f69dea7cff0617560bc62f9c8c21" category="admonition">Astra Trident は、 Google Cloud 上の基本 CVS サービスタイプと統合されている ** ベータ版の機能 ** で、本番環境のワークロード向けではありません。Trident は、 CVS パフォーマンスサービスタイプでは完全にサポートされている ** で、デフォルトで使用されます。</block>
@@ -2552,7 +2551,6 @@
   <block id="5dd03e8d039863e563e049be198c3fd3" category="doc">リリースノート</block>
   <block id="2e6ce374ac42de81aea6a3d682b92e33" category="paragraph">リリースノートでは、最新バージョンの Astra Trident の新機能、拡張機能、およびバグ修正に関する情報を提供しています。</block>
   <block id="e4c4d344a524d21b898e4d04b6539aa7" category="admonition">インストーラ zip ファイルに含まれている Linux の tridentctl バイナリは ' テスト済みでサポートされているバージョンですzip ファイルの「 /extras 」部分に含まれている「 macos 」バイナリはテストされておらず、サポートされていないことに注意してください。</block>
-  <block id="c1f57827e94910e34725b8cf11415683" category="paragraph">ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能を以下に示します。</block>
   <block id="fdb053d6bab681277dcb47b3a45e2e85" category="section-title">Astra Trident 21.07 以降の変更点</block>
   <block id="41cf959adc98386b54829d71a6ed5d37" category="section-title">の修正</block>
   <block id="a6e7aa999ba654c6844672ae59f5137a" category="list-text">XFS ボリュームのクローンをソースボリュームと同じノードにマウントできない固定問題（ GitHub 問題 514 ）</block>
@@ -2596,9 +2594,6 @@
   <block id="d090b5d97388b77aa02e5d1203c037a0" category="list-text"><block ref="d090b5d97388b77aa02e5d1203c037a0" category="inline-link-rx"></block></block>
   <block id="34c4dac14496e9c45d92f345d9392fc8" category="summary">最新バージョンを実行していない場合は、以前のリリースの Astra Trident のドキュメントを参照できます。</block>
   <block id="ba09ee47d11962c1ccd13d7e1f10e6c5" category="doc">以前のバージョンのドキュメント</block>
-  <block id="a1509084d79ec341b5fa6440d1be8634" category="paragraph">最新バージョンを実行していない場合は、以前のリリースの Astra Trident のドキュメントを参照できます。</block>
-  <block id="aeeec433666472b603c30d4253b0ebf5" category="admonition">Astra Trident 21.07 および関連するパッチリリースのドキュメントは、です<block ref="05716ac1466b0f4f02ba68e41e25a5d9" category="inline-link-rx"></block>。</block>
-  <block id="b2b6d326276756e4c6b75a232980415b" category="admonition">旧バージョンの Astra Trident のドキュメントは、ネットアップの従来のドキュメントサイトに掲載されています。</block>
   <block id="0c141ec81d4107f4c63fb0deb2531c0d" category="inline-link">Astra Trident 21.04</block>
   <block id="193bfae1ebda99fb7289c66fa69395a0" category="list-text"><block ref="193bfae1ebda99fb7289c66fa69395a0" category="inline-link-rx"></block></block>
   <block id="cba2c660d905f83e39a0d1771286c9e7" category="inline-link">Astra Trident 21.01</block>
@@ -3066,4 +3061,10 @@
   <block id="60c268e00db3206011b54b01705d7211" category="admonition">「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults 」に含まれていることを確認します。</block>
   <block id="b85c80e2af7e3d7dd06b874ed048d430" category="paragraph">'sudo tee//etc/multipath.conf &lt;-' EOF ' defaults ｛ user_friendy_names yes find _multipaths no ｝ EOF sudo systemctl enable -- 今では multipath-tools.service sudo service multipath-tools restart'</block>
   <block id="a55b7ee69c26277a1088efc103e15297" category="paragraph">使用可能なコマンドとグローバルオプションは次のとおりです。</block>
+  <block id="ebb6d1f6681020925f184345a6a955aa" category="paragraph">Astra Trident 21.10 を実行していない場合は、以前のリリースのドキュメントを参照できます。</block>
+  <block id="9f687b4e8cbf2fbb623b26b30fd92717" category="admonition">21.07 より前のリリースでは、レガシードキュメントサイトにリダイレクトされます。</block>
+  <block id="a93e9e44b7a375a4236260f5ff2b251e" category="inline-link">Astra Trident 21.07</block>
+  <block id="3830d427e146a8a64454dc373d9b1502" category="list-text"><block ref="3830d427e146a8a64454dc373d9b1502" category="inline-link-rx"></block></block>
+  <block id="287b5cd1a6f828768510ca46bbf05bd9" category="paragraph">「 apiRegion 」は、 Astra Trident が CVS ボリュームを作成する GCP リージョンです。Astra Trident は、同じ GCP リージョンに属する Kubernetes ノードにボリュームをマウントして接続できます。バックエンドを作成するときは 'apiRegion とリージョンの Kubernetes ノードが一致していることをで確認することが重要です複数リージョンの Kubernetes クラスタを作成する場合、指定した「 apiRegion 」で作成された CVS Cloud Volume は、同じ GCP リージョン内のノードでスケジュールされたワークロードでのみ使用できます。</block>
+  <block id="9bbe247417ec112bd7f3be36a4035717" category="paragraph">ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能をいくつかご紹介します。</block>
 </blocks>
