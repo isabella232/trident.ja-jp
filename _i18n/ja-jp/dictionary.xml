@@ -1488,7 +1488,6 @@
   <block id="74aefc05d193afd5c50a0df882997656" category="paragraph">Trident Astra は、次のような複数のコンテナエンジンとオーケストレーションツールをサポート</block>
   <block id="13ab6ee12e5d62b771a28d7c3a8de9fc" category="list-text">Kubernetes 1.17 以降（最新： 1.22 ）</block>
   <block id="37696641960d6c73a7dadab603c1877e" category="list-text">Mirantis Kubernetes Engine 3.4</block>
-  <block id="6835e07bc055fcef1cc48dc5a6f625a8" category="list-text">OpenShift 4.4 、 4.5 、 4.6 （ 4.6.8+ ）、 4.7 、 4.8 （最新 4.8 ）</block>
   <block id="201eb37826a33e35adff9119f25946bd" category="paragraph">Trident オペレータは、次のリリースでサポートされています。</block>
   <block id="5596419ed8318cabbcb138ef27fd3035" category="inline-link">バグ修正のお知らせ</block>
   <block id="f2f0da9b50bd2001bc802c121fc76254" category="admonition">Red Hat OpenShift Container Platform のユーザは、 4.1.8 よりも前のバージョンを使用している場合、 initiatorname.iscsi ファイルが空白になる可能性があります。これは RedHat によって識別されているバグで、 OpenShift 4.1.8 で修正されています。を参照してください<block ref="ac064f2337a2fc6c16c562bc9e386352" category="inline-link-rx"></block>。ネットアップでは、 OpenShift 4.6.8 以降で Astra Trident を使用することを推奨しています。</block>
@@ -3068,4 +3067,5 @@
   <block id="287b5cd1a6f828768510ca46bbf05bd9" category="paragraph">「 apiRegion 」は、 Astra Trident が CVS ボリュームを作成する GCP リージョンです。Astra Trident は、同じ GCP リージョンに属する Kubernetes ノードにボリュームをマウントして接続できます。バックエンドを作成するときは 'apiRegion とリージョンの Kubernetes ノードが一致していることをで確認することが重要です複数リージョンの Kubernetes クラスタを作成する場合、指定した「 apiRegion 」で作成された CVS Cloud Volume は、同じ GCP リージョン内のノードでスケジュールされたワークロードでのみ使用できます。</block>
   <block id="9bbe247417ec112bd7f3be36a4035717" category="paragraph">ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能をいくつかご紹介します。</block>
   <block id="311847a44163ac40ccf470fcf81e74fb" category="admonition">GKE 環境でオンデマンドボリュームスナップショットを設定する場合は、スナップショットコントローラを作成しないでください。GKE では、内蔵の非表示のスナップショットコントローラを使用します。</block>
+  <block id="f2e9bdbb5c832d5c2334a0d5f04ac327" category="list-text">OpenShift 4.4 、 4.5 、 4.6 （ 4.6.8+ ）、 4.7 、 4.8 、 4.9 （最新 4.9 ）</block>
 </blocks>
