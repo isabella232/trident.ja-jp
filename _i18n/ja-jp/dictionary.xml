@@ -1041,7 +1041,6 @@
   <block id="4ff78ba07210a8b4db65f6ef62b4e1b4" category="admonition">ONTAP バックエンドは、セキュリティロール（ユーザ名とパスワード）のログインクレデンシャル、または ONTAP クラスタにインストールされている秘密鍵と証明書を使用して認証されます。既存のバックエンドを更新して 'tridentctl update backend' を使用して認証モードから別の認証モードに移行できます</block>
   <block id="d00888bc1409d1c598b90af117bd3551" category="summary">Trident の Astra プロビジョニングの主なフェーズは 2 つあります。最初のフェーズでは、ストレージクラスを適切なバックエンドストレージプールのセットに関連付け、プロビジョニング前の必要な準備として実行します。2 番目のフェーズでは、ボリュームの作成自体が行われます。このフェーズでは、保留中のボリュームのストレージクラスに関連付けられたストレージプールからストレージプールを選択する必要があります。</block>
   <block id="8a7354f894ef62fb3f076510315bf206" category="doc">Astra Trident の概要</block>
-  <block id="cac3274b477ab652946784fa7e4d61e7" category="paragraph">Astra Trident は、ネットアップが管理している、完全にサポートされているオープンソースプロジェクトです。Container Storage Interface （ CSI ）などの業界標準インターフェイスを使用して、コンテナ化されたアプリケーションの永続性に対する要求を満たすように設計されています。</block>
   <block id="3777daa0663e4d3f177a85bc67443c32" category="paragraph">Kubernetes クラスタにポッドとして Trident を導入し、 Kubernetes ワークロードに動的なストレージオーケストレーションサービスを提供コンテナ化されたアプリケーションは、 ONTAP （ AFF / FAS / Select / Cloud / Amazon FSX for NetApp ONTAP ）、 Element ソフトウェア（ NetApp HCI / SolidFire ）、 Azure NetApp Files サービス、 Cloud Volumes Service on Google Cloud 、 Cloud Volumes Service on AWS など、ネットアップの幅広いポートフォリオの永続的ストレージをすばやく簡単に消費できます。</block>
   <block id="7c738d9c13e4e5770c6b455ab345afd7" category="paragraph">Astra Trident は、 NetApp の Astra の基盤テクノロジでもあり、 NetApp のスナップショット、バックアップ、レプリケーション、クローニングに業界をリードするデータ管理テクノロジを活用して、 Kubernetes ワークロードのデータ保護、ディザスタリカバリ、ポータビリティ、移行のユースケースに対応します。</block>
   <block id="4bd05efa612e48dd723de2bdd29f88e2" category="section-title">サポートされる Kubernetes クラスタアーキテクチャ</block>
@@ -1249,7 +1248,6 @@
   <block id="fda1b35892cb6f61447f0e49415937d9" category="paragraph">Kubernetes では、ネームスペース内のストレージクラスは使用できません。ただし、 Kubernetes を使用すると、ネームスペースごとにストレージリソースクォータを使用することで、ネームスペースごとに特定のストレージクラスの使用量を制限できます。特定のストレージへのネームスペースアクセスを拒否するには、そのストレージクラスのリソースクォータを 0 に設定します。</block>
   <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">法的通知</block>
   <block id="c59ae8d7beeb519a23478ab048af482c" category="paragraph"><block ref="c59ae8d7beeb519a23478ab048af482c" category="inline-link-macro-rx"></block></block>
-  <block id="6f2ac1cf1da8ec34232c651d4bba0149" category="paragraph"><block ref="6f2ac1cf1da8ec34232c651d4bba0149" category="inline-link-macro-rx"></block></block>
   <block id="55847a7d73d44b84804f47ee7863b80f" category="summary">Astra Trident の導入が完了したら、バックエンドの作成、ストレージクラスの作成、ボリュームのプロビジョニング、ポッドでのボリュームのマウントを実行できます。</block>
   <block id="7c3983f18df54b898b386f7cf4a7d05c" category="doc">次の内容</block>
   <block id="0b0ca016c0d99a4845777aeeebb032ac" category="section-title">手順 1 ：バックエンドを作成する</block>
@@ -3076,4 +3074,11 @@
   <block id="814a65adc75608da31ab5685f9b1c1ce" category="paragraph">Astra Trident は、特定のオペレーティングシステムを正式にサポートしているわけではありませんが、次の Linux ディストリビューションが動作することはわかっています。</block>
   <block id="e088e1f9fcd6d6a9509bd529db24c8f3" category="admonition">Trident の名前空間をまだ作成していない場合は '--create-namespace パラメータを helm install コマンドに追加できますHelm によってネームスペースが自動的に作成されます。</block>
   <block id="94912f7fb206038e8527957b44dfbf25" category="paragraph">すべての Trident ポッドが再起動されます。これには数秒かかることがあります。これを確認するには 'kubectl get pod -n trident' の出力の 'age' 列を確認します</block>
+  <block id="d6601a8eb863a49ea065281f70a5956b" category="summary">Astra Trident は、ネットアップが Astra 製品ファミリーの一部として管理している、完全にサポートされているオープンソースプロジェクトです。Container Storage Interface （ CSI ）などの業界標準のインターフェイスを使用して、コンテナ化されたアプリケーションの永続性に対する要求を満たすことができるように設計されています。</block>
+  <block id="bb453665f57f6823950856f7a9bad0c3" category="inline-link-macro">Astra 製品ファミリー</block>
+  <block id="9f469e7cb13566d8a664e8ab4d46f9e1" category="paragraph">Astra Trident は、ネットアップがの一部として管理している、完全にサポートされているオープンソースプロジェクトです <block ref="a1650a2308dbba03b9ca704756a5a37d" category="inline-link-macro-rx"></block>。Container Storage Interface （ CSI ）などの業界標準のインターフェイスを使用して、コンテナ化されたアプリケーションの永続性に対する要求を満たすことができるように設計されています。</block>
+  <block id="3d9f18019f5d8f128c54babba33ccb6a" category="inline-link">ネットアップアストラ製品ファミリーの概要</block>
+  <block id="553b525c83fb384539ce2a25b030062f" category="list-text"><block ref="553b525c83fb384539ce2a25b030062f" category="inline-link-rx"></block></block>
+  <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">オープンソース</block>
+  <block id="0172b29a9f5d94dc62ee592a98183f3b" category="paragraph">ネットアップの Astra Trident 向けソフトウェアで使用されているサードパーティの著作権とライセンスは、の各リリースの通知ファイルで確認できます<block ref="4a3c8c5a408c6db1c44c04391a8a0a2f" category="inline-link-rx"></block>。</block>
 </blocks>
