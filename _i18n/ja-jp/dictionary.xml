@@ -873,7 +873,6 @@
   <block id="238e63aecc23c1bc2611ca883f075f1f" category="list-text">現在の Astra Trident インスタンスのインストールに使用した Trident オペレータを削除たとえば、 21.01 からアップグレードする場合は、次のコマンドを実行します。</block>
   <block id="caa6267a6d2c9b631544a2ce0d5e4180" category="list-text">（オプション）インストールパラメータを変更する場合は、 Trident のインストール時に作成した「 TridentOrchestrator 」オブジェクトを編集します。カスタム Trident イメージの変更、コンテナイメージをプルするためのプライベートイメージレジストリ、デバッグログの有効化、イメージプルシークレットの指定など、これらの変更が行われる可能性があります。</block>
   <block id="09b615e18699c6675b3705c00a495375" category="list-text">新しいバージョンの Trident 演算子を設定する 'undle.yaml ファイルを使用して Astra Trident をインストールします次のコマンドを実行します。</block>
-  <block id="162868582f509647f4b899829f6e41f6" category="paragraph">この手順の一環として、 21.07.1 Trident オペレータが既存の Astra Trident インストールを特定し、オペレータと同じバージョンにアップグレードします。</block>
   <block id="d06b5297af318d2581021098f6b0d44d" category="section-title">名前空間を対象としたオペレータインストールをアップグレードします</block>
   <block id="ddfa75d059a999aedec16392aae03bc4" category="paragraph">名前空間を対象とした演算子（バージョン 20.07 ～ 20.10 ）を使用してインストールされた Astra Trident のインスタンスからアップグレードするには、次の手順に従います。</block>
   <block id="edf5c542759186ded2c7eeaae6b340a5" category="list-text">既存の Trident インストールのステータスを確認これを行うには、 TridentProvisioner の * Status * を確認してください。ステータスは「 Installed 」になります。</block>
@@ -3081,4 +3080,5 @@
   <block id="553b525c83fb384539ce2a25b030062f" category="list-text"><block ref="553b525c83fb384539ce2a25b030062f" category="inline-link-rx"></block></block>
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">オープンソース</block>
   <block id="0172b29a9f5d94dc62ee592a98183f3b" category="paragraph">ネットアップの Astra Trident 向けソフトウェアで使用されているサードパーティの著作権とライセンスは、の各リリースの通知ファイルで確認できます<block ref="4a3c8c5a408c6db1c44c04391a8a0a2f" category="inline-link-rx"></block>。</block>
+  <block id="4546bbd46f06879787b5670b13277b28" category="paragraph">このステップの一環として、 21.10.0 Trident オペレータが既存の Astra Trident インストールを特定し、オペレータと同じバージョンにアップグレードします。</block>
 </blocks>
