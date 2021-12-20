@@ -3,7 +3,6 @@
   <block id="8447c4879970f03c99a2bec36a05c141" category="summary">Trident の REST API を使用する場合は、 REST エンドポイントを直接使用できます。</block>
   <block id="a0ebcf8495639418ba9d4b85dbb67b8b" category="doc">Astra Trident REST API</block>
   <block id="319c1a7b5479ffa2a028b658ad5b7033" category="inline-link-macro">tridentctl コマンドとオプション</block>
-  <block id="57138e91e6168cecf9d0dad2afd12735" category="paragraph">間 <block ref="6ad29d013fc003c1446dfe4715881765" category="inline-link-macro-rx"></block> Trident の REST API を操作するには簡単です。 REST エンドポイントは必要に応じて直接使用できます。</block>
   <block id="d7c9226cc31c5b12ee3114bc7014c075" category="paragraph">これは、 Kubernetes 以外の環境で、 Astra Trident をスタンドアロンバイナリとして使用する高度なインストールに役立ちます。</block>
   <block id="ff307287df4629ad827fba73568b9a58" category="paragraph">セキュリティを強化するために、 Astra Trident の「 RE ST API 」は、ポッド内で実行される場合のデフォルトで localhost に制限されています。この動作を変更するには、ポッド構成で Astra Trident の「 -address 」引数を設定する必要があります。</block>
   <block id="8b3c7aa88e751573c842f17535525f19" category="paragraph">API は次のように機能します。</block>
@@ -3108,4 +3107,5 @@
   <block id="cd1bf2431d703fd3c62a278b9c812d56" category="list-text">GCP CVS バックエンドでボリュームをインポートする際の競合状態が修正され、インポートに失敗することがありました。</block>
   <block id="8e1e1dad95de3dc781f25f58483acdf3" category="list-text">ノードを削除してから Kubernetes クラスタ（ GitHub 問題 669 ）に再度追加するときに、 Trident コントローラを CrashLoopBackOff 状態にする問題を修正しました。</block>
   <block id="d7c32cb5ff2be4aaff3a8eaea9d18e0d" category="list-text">SVM 名を指定しなかった場合に問題が検出されないという問題を修正しました（ GitHub 問題 612 ）。</block>
+  <block id="2f1ab5b99f1893144b69718c274415f4" category="paragraph">間 <block ref="a3b750e7ac33c9792c64627692f306aa" category="inline-link-macro-rx"></block> Trident の REST API を操作するには簡単です。 REST エンドポイントは必要に応じて直接使用できます。</block>
 </blocks>
