@@ -152,6 +152,7 @@ Usage:
 * `--enable-node-prep : 必要なパッケージをノードにインストールしようとします
 * ``--generate-custom-yaml `: インストールしないで YAML ファイルを生成します。
 * `-h, --help`: インストールのヘルプ。
+* `--http-request-timeout`: Trident コントローラの REST API の HTTP 要求タイムアウトをオーバーライドします ( デフォルトは 1 分 30s) 。
 * `-- image-registry string : 内部イメージレジストリのアドレス / ポート。
 * `--k8s-timeout duration`: すべての Kubernetes 操作のタイムアウト ( デフォルトは 3m0s)
 * `-- kubbelet-dir string`: kubelet の内部状態のホストの場所 ( デフォルトは /var/lib/kubbelet") 。

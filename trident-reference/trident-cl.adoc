@@ -44,6 +44,11 @@ Astra Trident には、いくつかのコマンドラインオプションが用
 == REST
 
 * `-address <ip-or -host>` ： Trident の REST サーバがリスンするアドレスを指定します。デフォルトは localhost です。localhost で聞いて Kubernetes ポッド内で実行しているときに、 REST インターフェイスにポッド外から直接アクセスすることはできません。ポッドの IP アドレスから REST インターフェイスにアクセスできるようにするには、「 -address 」を使用します。
+
+
+
+CAUTION: Trident REST インターフェイスは、 127.0.0.1 （ IPv4 の場合）または [::1] （ IPv6 の場合）のみをリスンして処理するように設定できます。
+
 * `-port <port-number>` ： Trident の REST サーバがリスンするポートを指定します。デフォルトは 8000 です。
 * `-rest`: REST インタフェースを有効にしますデフォルトは true です。
 

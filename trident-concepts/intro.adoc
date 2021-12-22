@@ -52,10 +52,15 @@ Astra Trident は、次の Kubernetes アーキテクチャでサポートされ
 
 Astra を使用すると、 Kubernetes で実行されている大量のデータコンテナ化ワークロードを、パブリッククラウドとオンプレミスの間で簡単に管理、保護、移動できます。Astra は、ネットアップの実績ある拡張可能なパブリッククラウドストレージポートフォリオとオンプレミスのストレージポートフォリオから、 Astra Trident を使用して永続的なコンテナストレージをプロビジョニングし、提供します。また、 Kubernetes ワークロード向けに、 Snapshot 、バックアップとリストア、アクティビティログ、アクティブクローニングによるデータ保護、ディザスタ / データリカバリ、データ監査、移行のユースケースなど、アプリケーションに対応した高度なデータ管理機能も豊富に用意されています。
 
-Astra のドキュメントを今すぐご覧ください。無料トライアルに今すぐ登録して、 Astra のページから申し込むことができます。
+Astra のページで無料トライアルに登録できます。
 
-* https://docs.netapp.com/us-en/astra-family/intro-family.html["ネットアップアストラ製品ファミリーの概要"]
-* https://docs.netapp.com/us-en/astra/get-started/intro.html["Astra Control Service の概要"^]
-* https://docs.netapp.com/us-en/astra-automation/get-started/before_get_started.html["Astra API の利用を開始しましょう"^]
-* https://docs.netapp.com/us-en/astra-control-center/concepts/intro.html["Astra Control Center の詳細をご確認ください"^]
+
+
+== を参照してください。
+
+* https://docs.netapp.com/us-en/astra-family/intro-family.html["ネットアップアストラ製品ファミリー"]
+* https://docs.netapp.com/us-en/astra/get-started/intro.html["Astra Control Service のマニュアル"^]
+* https://docs.netapp.com/us-en/astra-control-center/index.html["Astra Control Center のドキュメント"^]
+* https://docs.netapp.com/us-en/astra-data-store/index.html["Astra データのドキュメント"^]
+* https://docs.netapp.com/us-en/astra-automation/get-started/before_get_started.html["Astra API ドキュメント"^]
 

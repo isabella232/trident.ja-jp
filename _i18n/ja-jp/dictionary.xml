@@ -1051,13 +1051,6 @@
   <block id="5e5f49db20e29f6377e57e98932dae57" category="cell">マスター、インフラ、コンピューティング</block>
   <block id="ae663d0d321764bd88b8d864cd3afc9e" category="section-title">アストラとは</block>
   <block id="dd91e88f9a6ec30684f494c41baeeee0" category="paragraph">Astra を使用すると、 Kubernetes で実行されている大量のデータコンテナ化ワークロードを、パブリッククラウドとオンプレミスの間で簡単に管理、保護、移動できます。Astra は、ネットアップの実績ある拡張可能なパブリッククラウドストレージポートフォリオとオンプレミスのストレージポートフォリオから、 Astra Trident を使用して永続的なコンテナストレージをプロビジョニングし、提供します。また、 Kubernetes ワークロード向けに、 Snapshot 、バックアップとリストア、アクティビティログ、アクティブクローニングによるデータ保護、ディザスタ / データリカバリ、データ監査、移行のユースケースなど、アプリケーションに対応した高度なデータ管理機能も豊富に用意されています。</block>
-  <block id="34354c1f7e5f61fa8fe457b846c277e1" category="paragraph">Astra のドキュメントを今すぐご覧ください。無料トライアルに今すぐ登録して、 Astra のページから申し込むことができます。</block>
-  <block id="b90cfe7eec2fd25d8051aa0d2904effd" category="inline-link">Astra Control Service の概要</block>
-  <block id="e863c6f356f601b620d332145ba64279" category="list-text"><block ref="e863c6f356f601b620d332145ba64279" category="inline-link-rx"></block></block>
-  <block id="84a414bad3d440f298f070c3d3fa60bb" category="inline-link">Astra API の利用を開始しましょう</block>
-  <block id="22e85cb2bef8534170e0b3aa21efdd42" category="list-text"><block ref="22e85cb2bef8534170e0b3aa21efdd42" category="inline-link-rx"></block></block>
-  <block id="41babe56ec27c9b39ecab6c854265300" category="inline-link">Astra Control Center の詳細をご確認ください</block>
-  <block id="05e8ff43093720b9084af213039e0bc5" category="list-text"><block ref="05e8ff43093720b9084af213039e0bc5" category="inline-link-rx"></block></block>
   <block id="02030c8e07c049062fbbba9a32b01067" category="summary">仮想ストレージプールは、 Astra Trident のストレージバックエンドと Kubernetes のストレージクラスの間に抽象化レイヤを提供します。ストレージクラスを作成することなく、管理者は各バックエンドの場所、パフォーマンス、保護などの側面を共通のバックエンドに依存しない方法で定義できます。 StorageClass は、目的の基準を満たすために使用する物理バックエンド、バックエンドプール、またはバックエンドタイプを指定する必要はありません。</block>
   <block id="9f802733184b3e0fb080eddcf9ffeaef" category="doc">仮想ストレージプール</block>
   <block id="9f4406586d4a2343f2a5289e16131b3e" category="paragraph">仮想ストレージプールは、 Astra Trident のストレージバックエンドと Kubernetes の間に抽象化レイヤを提供します。管理者は ' どの物理バックエンド ' バックエンドプール ' またはバックエンドタイプを ' 目的の基準を満たすために使用するかを ' 「 torageClass 」で指定することなく ' バックエンドに依存しない共通の方法で ' 各バックエンドのロケーション ' パフォーマンス ' 保護などの側面を定義できます</block>
@@ -1516,7 +1509,6 @@
   <block id="13d80777c8fd43e555c1f5b1b72d7ef0" category="section-title">ホストの設定</block>
   <block id="62df396fbf0c4fd30e1e851335e8b26b" category="paragraph">使用しているバックエンドによっては、 NFS や iSCSI のユーティリティをクラスタ内のすべてのワーカーにインストールする必要があります。を参照してください <block ref="8e0b40cac942de59585b1131f9197d7b" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="2139fe384d5ae165545994dff01961d9" category="section-title">ストレージシステムの構成：</block>
-  <block id="4bd66d391160d942582baacb04fa201f" category="paragraph">Trident を使用するには、バックエンド構成でストレージシステムを使用する前に、一部の変更が必要になることがあります。を参照してください <block ref="49641f5ab61d7a6ce07b1b6ba31204f8" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="923680056b0f0258907f498670b4ead1" category="section-title">コンテナイメージと対応する Kubernetes バージョン</block>
   <block id="a6595e492ec094375a673911109a32f2" category="paragraph">エアギャップのある環境では、 Astra Trident のインストールに必要なコンテナイメージについて、次のリストを参照してください。</block>
   <block id="aa92c4c233bc01609d957e469736b699" category="cell">コンテナイメージ</block>
@@ -3048,7 +3040,6 @@
   <block id="9f687b4e8cbf2fbb623b26b30fd92717" category="admonition">21.07 より前のリリースでは、レガシードキュメントサイトにリダイレクトされます。</block>
   <block id="a93e9e44b7a375a4236260f5ff2b251e" category="inline-link">Astra Trident 21.07</block>
   <block id="3830d427e146a8a64454dc373d9b1502" category="list-text"><block ref="3830d427e146a8a64454dc373d9b1502" category="inline-link-rx"></block></block>
-  <block id="287b5cd1a6f828768510ca46bbf05bd9" category="paragraph">「 apiRegion 」は、 Astra Trident が CVS ボリュームを作成する GCP リージョンです。Astra Trident は、同じ GCP リージョンに属する Kubernetes ノードにボリュームをマウントして接続できます。バックエンドを作成するときは 'apiRegion とリージョンの Kubernetes ノードが一致していることをで確認することが重要です複数リージョンの Kubernetes クラスタを作成する場合、指定した「 apiRegion 」で作成された CVS Cloud Volume は、同じ GCP リージョン内のノードでスケジュールされたワークロードでのみ使用できます。</block>
   <block id="9bbe247417ec112bd7f3be36a4035717" category="paragraph">ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能をいくつかご紹介します。</block>
   <block id="311847a44163ac40ccf470fcf81e74fb" category="admonition">GKE 環境でオンデマンドボリュームスナップショットを設定する場合は、スナップショットコントローラを作成しないでください。GKE では、内蔵の非表示のスナップショットコントローラを使用します。</block>
   <block id="aaf288b351be41417d093d835297fb3e" category="list-text">OpenShift 4.7 、 4.8 、 4.9 （最新 4.9 ）</block>
@@ -3066,8 +3057,6 @@
   <block id="d6601a8eb863a49ea065281f70a5956b" category="summary">Astra Trident は、ネットアップが Astra 製品ファミリーの一部として管理している、完全にサポートされているオープンソースプロジェクトです。Container Storage Interface （ CSI ）などの業界標準のインターフェイスを使用して、コンテナ化されたアプリケーションの永続性に対する要求を満たすことができるように設計されています。</block>
   <block id="bb453665f57f6823950856f7a9bad0c3" category="inline-link-macro">Astra 製品ファミリー</block>
   <block id="9f469e7cb13566d8a664e8ab4d46f9e1" category="paragraph">Astra Trident は、ネットアップがの一部として管理している、完全にサポートされているオープンソースプロジェクトです <block ref="a1650a2308dbba03b9ca704756a5a37d" category="inline-link-macro-rx"></block>。Container Storage Interface （ CSI ）などの業界標準のインターフェイスを使用して、コンテナ化されたアプリケーションの永続性に対する要求を満たすことができるように設計されています。</block>
-  <block id="3d9f18019f5d8f128c54babba33ccb6a" category="inline-link">ネットアップアストラ製品ファミリーの概要</block>
-  <block id="553b525c83fb384539ce2a25b030062f" category="list-text"><block ref="553b525c83fb384539ce2a25b030062f" category="inline-link-rx"></block></block>
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">オープンソース</block>
   <block id="0172b29a9f5d94dc62ee592a98183f3b" category="paragraph">ネットアップの Astra Trident 向けソフトウェアで使用されているサードパーティの著作権とライセンスは、の各リリースの通知ファイルで確認できます<block ref="4a3c8c5a408c6db1c44c04391a8a0a2f" category="inline-link-rx"></block>。</block>
   <block id="4546bbd46f06879787b5670b13277b28" category="paragraph">このステップの一環として、 21.10.0 Trident オペレータが既存の Astra Trident インストールを特定し、オペレータと同じバージョンにアップグレードします。</block>
@@ -3114,7 +3103,6 @@
   <block id="8035d5d39b2b48f6ec1a3133b688513c" category="inline-link">Astra データストア</block>
   <block id="efd5e8dbeec263f783a6cd6ac036c6a9" category="paragraph">を設定して使用します<block ref="a026c15058b831feb6de8c4c836387ae" category="inline-link-rx"></block> バックエンドには次のものが必要です。</block>
   <block id="0033a0be965b04e889c13f8699fa52ca" category="inline-link-macro">Astra データストアプレビュー版のドキュメント</block>
-  <block id="8845f71e636beb45af772d2d14cf557b" category="list-text">サポートされている ADS ストレージシステム。を参照してください <block ref="1a14c2d84d3a02888bdf552ab07570ae" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="c7f6917a3ac9bd1d4133a82dc3260748" category="list-text">ADS をホストしている Kubernetes クラスタのクレデンシャル。ADS をホストしている Kubernetes クラスタには、この Astra Trident バックエンドが作成および管理するボリューム、 Snapshot 、およびエクスポートポリシーリソース専用のネームスペースが必要です。以下をサポートする広告をホストする Kubernetes クラスタには「 kubeconfig 」が必要です。</block>
   <block id="cebbe731acfa0b8c520f355bcbfa6dd1" category="list-text">'astrs-system' 名前空間内のすべてのオブジェクトを読み取ります</block>
   <block id="cb90bccb2cf5bc16b37e39d379d5a5ea" category="list-text">この Astra Trident バックエンドで使用するために作成されたネームスペース内のオブジェクトの読み取り / 書き込み</block>
@@ -3143,4 +3131,22 @@
   <block id="8f3db75549f212e0fdab2c542531a95e" category="paragraph">次の例は、 Astra Trident で作成されたすべてのストレージに同じ要素を適用するバックエンドファイルを示しています。</block>
   <block id="a2c81e41622f2e2616b33a689e229c72" category="paragraph">次の StorageClass 定義は、上記のストレージプールを参照してください。parameters.selector` フィールドを使用すると ' ボリュームのホストに使用される仮想プールを各 StorageClass に指定できますボリュームには、選択した仮想プール内で定義された要素があります。</block>
   <block id="498784627f42c14468b84a1a351bd462" category="sidebar">ADS バックエンドを設定します</block>
+  <block id="165fe4b78b5877cf8db8ac6361e5c85a" category="paragraph">Astra のページで無料トライアルに登録できます。</block>
+  <block id="d13de4a83d7b44c2e65495def8ef1c7b" category="section-title">を参照してください。</block>
+  <block id="fa80e31eb77798b8dd995ddd9553be6e" category="inline-link">ネットアップアストラ製品ファミリー</block>
+  <block id="ed394f5572d8e7df474126557b3288f8" category="list-text"><block ref="ed394f5572d8e7df474126557b3288f8" category="inline-link-rx"></block></block>
+  <block id="ef22ff17624b3faeed227ce5c717eb5f" category="inline-link">Astra Control Service のマニュアル</block>
+  <block id="0ae0ea6967e9321db008cee4ad5f290c" category="list-text"><block ref="0ae0ea6967e9321db008cee4ad5f290c" category="inline-link-rx"></block></block>
+  <block id="3a4b2c66d4bdac6ce0e3340c71a39eda" category="inline-link">Astra Control Center のドキュメント</block>
+  <block id="ea643bf7aaf130341a17f697a7009368" category="list-text"><block ref="ea643bf7aaf130341a17f697a7009368" category="inline-link-rx"></block></block>
+  <block id="668cea0790a6ca206d2c5f41d4e2bfe3" category="inline-link">Astra データのドキュメント</block>
+  <block id="774d94ad69407b5dff98038fec00368b" category="list-text"><block ref="774d94ad69407b5dff98038fec00368b" category="inline-link-rx"></block></block>
+  <block id="9d6ffa6ef31bd0b92876314219f18ef5" category="inline-link">Astra API ドキュメント</block>
+  <block id="9c2cf0e947812ecb3fc0bfccaa8b3c61" category="list-text"><block ref="9c2cf0e947812ecb3fc0bfccaa8b3c61" category="inline-link-rx"></block></block>
+  <block id="dc5ac69fee94d861f0bed64729b712cf" category="paragraph">Trident を使用するには、バックエンド構成でストレージシステムを使用する前に、一部の変更が必要になることがあります。を参照してください <block ref="49641f5ab61d7a6ce07b1b6ba31204f8" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="91bffb05ce7b35189932ad387d14e41b" category="paragraph">「 apiRegion 」は、 Astra Trident が CVS ボリュームを作成する GCP リージョンです。複数リージョンの Kubernetes クラスタを作成する場合、「 apiRegion 」で作成した CVS ボリュームは、複数の GCP リージョンのノードでスケジュールされたワークロードで使用できます。リージョン間トラフィックは追加コストがかかることに注意してください。</block>
+  <block id="31842a4ad923dd3481336d7d93dc2068" category="list-text">クロスリージョンアクセスを有効にするには、「 allowedTopologies 」の StorageClass 定義にすべてのリージョンを含める必要があります。例：</block>
+  <block id="44353297d28e56e03a6c2fa8ed4c436d" category="list-text">サポートされている ADS ストレージシステム。を参照してください <block ref="a495e7dcf960e6114a66e71691c841e9" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="433f174b6e54b889696b2efd4ef40dc6" category="admonition">Trident REST インターフェイスは、 127.0.0.1 （ IPv4 の場合）または [::1] （ IPv6 の場合）のみをリスンして処理するように設定できます。</block>
+  <block id="1968a7e86875b6b6ca9d5222172f8d16" category="list-text">`--http-request-timeout`: Trident コントローラの REST API の HTTP 要求タイムアウトをオーバーライドします ( デフォルトは 1 分 30s) 。</block>
 </blocks>
