@@ -6,8 +6,9 @@ settings:
     pdf_enabled: true
   prod:
     pdf_enabled: true
-    harmony_enabled: true
+    harmony_enabled: false
     langs: ja-jp,us-en,zh-cn
+  langs: ja-jp,us-en,zh-cn
 sidebar:
   entries:
   - title: Astra Trident のドキュメント
