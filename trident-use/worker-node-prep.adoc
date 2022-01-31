@@ -81,11 +81,7 @@ RHEL/CentOS
 
 . マルチパスを有効化：
 +
-'UDO mpathconf--enable --with _multipathd y -- find _multipaths n
-
-+
-
-NOTE: 「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults 」に含まれていることを確認します。
+'UDO mpathconf--enable--with _multipathd y
 
 . 「 iscsid 」と「 multipathd 」が実行されていることを確認します。
 +
@@ -116,11 +112,7 @@ Ubuntu / Debian
 
 . マルチパスを有効化：
 +
-'sudo tee//etc/multipath.conf <-' EOF ' defaults ｛ user_friendy_names yes find _multipaths no ｝ EOF sudo systemctl enable -- 今では multipath-tools.service sudo service multipath-tools restart'
-
-+
-
-NOTE: 「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults 」に含まれていることを確認します。
+'sudo tee//etc/multipath.conf <-' EOF' defaults ｛ user_friendy_names yes find _multipaths yes ｝ EOF sudo systemctl enable -- 今では multipath-tools.service sudo service multipath-tools restart`
 
 . 「 open-iSCSI」 および「マルチパスツール」が有効で実行されていることを確認します。
 +

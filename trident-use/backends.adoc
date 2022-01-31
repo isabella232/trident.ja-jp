@@ -16,7 +16,7 @@ summary: バックエンドは、 Astra Trident とストレージシステム�
 * link:aws.html["AWS バックエンド用に Cloud Volumes Service を設定します"^]
 * link:gcp.html["Cloud Volumes Service for Google Cloud Platform バックエンドを設定します"^]
 * link:element.html["NetApp HCI または SolidFire バックエンドを設定します"^]
-* link:ontap-nas.html["バックエンドに ONTAP または Cloud Volumes ONTAP NAS ドライバを設定します"^]
-* link:ontap-san.html["バックエンドに ONTAP または Cloud Volumes ONTAP SAN ドライバを設定します"^]
+* link:ontap-nas.html["バックエンドに ONTAP NAS ドライバを設定します"^]
+* link:ontap-san.html["バックエンドに ONTAP SAN ドライバを設定します"^]
 * link:trident-fsx.html["Amazon FSX for NetApp ONTAP で Astra Trident を使用"^]
 

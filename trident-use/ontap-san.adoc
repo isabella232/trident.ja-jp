@@ -4,13 +4,13 @@ permalink: trident-use/ontap-san.html
 keywords: trident backend, ontap san, ontap-san, ontap-san-economy 
 summary: ONTAP SAN ドライバを使用して ONTAP バックエンドを設定する方法について説明します。 
 ---
-= バックエンドに ONTAP または Cloud Volumes ONTAP SAN ドライバを設定します
+= バックエンドに ONTAP SAN ドライバを設定します
 :hardbreaks:
 :icons: font
 :imagesdir: ../media/
 
 
-ONTAP および Cloud Volumes ONTAP SAN ドライバを使用した ONTAP バックエンドの設定について説明します。
+ONTAP SAN ドライバを使用して ONTAP バックエンドを設定する方法について説明します。
 
 * link:ontap-san-prep.html["準備"^]
 * link:ontap-san-examples.html["設定と例"^]

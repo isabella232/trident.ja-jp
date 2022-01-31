@@ -10,7 +10,7 @@ summary: ONTAP NAS ドライバを使用した ONTAP バックエンドの設定
 :imagesdir: ../media/
 
 
-ONTAP および Cloud Volumes ONTAP の NAS ドライバを使用した ONTAP バックエンドの設定について説明します。
+ONTAP NAS ドライバを使用した ONTAP バックエンドの設定について説明します。
 
 * link:ontap-nas-prep.html["準備"^]
 * link:ontap-nas-examples.html["設定と例"^]

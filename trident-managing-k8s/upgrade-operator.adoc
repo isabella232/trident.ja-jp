@@ -43,11 +43,11 @@ kubectl delete -f 21.01/trident-installer/deploy/bundle.yaml -n trident
 +
 [listing]
 ----
-kubectl create -f 21.10.0/trident-installer/deploy/bundle.yaml -n trident
+kubectl install -f 21.07.1/trident-installer/deploy/bundle.yaml -n trident
 ----
 
 
-このステップの一環として、 21.10.0 Trident オペレータが既存の Astra Trident インストールを特定し、オペレータと同じバージョンにアップグレードします。
+この手順の一環として、 21.07.1 Trident オペレータが既存の Astra Trident インストールを特定し、オペレータと同じバージョンにアップグレードします。
 
 
 

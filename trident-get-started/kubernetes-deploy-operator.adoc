@@ -48,10 +48,6 @@ Helm を使用して Trident オペレータを導入するには、以下の手
 ----
 helm install <name> trident-operator-21.07.1.tgz --namespace <namespace you want to use for Trident>
 ----
-+
-
-NOTE: Trident の名前空間をまだ作成していない場合は '--create-namespace パラメータを helm install コマンドに追加できますHelm によってネームスペースが自動的に作成されます。
-
 
 
 インストール中に設定データを渡すには、次の 2 つの方法があります。
