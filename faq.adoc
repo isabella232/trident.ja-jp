@@ -379,7 +379,7 @@ Kubernetes ストレージリソースクォータは、ネットアップスト
 
 === Astra Trident のボリュームスナップショットをサポートするドライバを教えてください。
 
-現在のところ ' オンデマンドのスナップショットサポートは 'ONTAP-NAS'`ONTAP-SAN'ONTAP-SAN'DAエコノミー '''Solidfire-SAN'AWS-cvs''''''' で利用できます 「 gcp-cvs` 」と「 azure-NetApp-files 」バックエンドドライバ。
+現在のところ ' オンデマンドスナップショットのサポートは 'ONTAP-NAS'`ONTAP-NAS-flexgroup 'ONTAP-SAN`'ONTAP-SANエコノミー ''solidfire-san-SAN'''solidfire-san-''''solidfire-san-'''solidfire-san-''''' で利用できます 「 aws -cvs 」、「 gcp-cvs 」、「 azure-NetApp-files 」バックエンドドライバ。
 
 
 

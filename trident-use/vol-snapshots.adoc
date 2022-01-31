@@ -10,7 +10,7 @@ summary: Astra Trident の 20.01 リリースから、 Kubernetes レイヤで�
 :imagesdir: ../media/
 
 
-Astra Trident の 20.01 リリースから、 Kubernetes レイヤで PVS のスナップショットを作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。ボリューム・スナップショットは 'ONTAP-NAS'`ONTAP-SAN'ONTAP-SAN'ONTAP-エコノミー ''solidfire-SAN'AWS- cvs'' によってサポートされています 「 gcp-cvs 」、「 azure-NetApp-files 」ドライバ。
+Astra Trident の 20.01 リリースから、 Kubernetes レイヤで PVS のスナップショットを作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。ボリューム・スナップショットは 'ONTAP-NAS''ONTAP-NAS-flexgroup 'ONTAP-SAN'ONTAP-SAN'ONTAP-エコノミー ''solidfire-san-''solidfire-san-'''solidfire-san-''''' でサポートされています 「 aws -cvs 」、「 gcp-cvs 」、「 azure-NetApp-files 」ドライバ。
 
 
 NOTE: この機能は Kubernetes 1.17 （ベータ版）から提供され、 1.20 から GA になります。ベータ版から GA 版への移行に伴う変更点については、を参照してください https://kubernetes.io/blog/2020/12/10/kubernetes-1.20-volume-snapshot-moves-to-ga/["リリースのブログ"^]。GA への卒業とともに 'v1' API バージョンが導入され 'v1beta` スナップショットと下位互換性があります

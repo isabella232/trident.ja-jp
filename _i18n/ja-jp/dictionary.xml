@@ -1217,7 +1217,6 @@
   <block id="491a93842f7a65b8cbe82aca71db0d3f" category="section-title">Trident を使用してボリューム Snapshot を作成できますか。</block>
   <block id="9792ac41ce6f91861f84548e1b4a2b1c" category="paragraph">はい。Trident が、 Snapshot からオンデマンドのボリューム Snapshot と永続的ボリュームを作成できるようになりました。スナップショットから PVS を作成するには 'VolumeSnapshotDataSource フィーチャーゲートが有効になっていることを確認します</block>
   <block id="1eedb8a6574b0c07ea61689a7e3ec8d4" category="section-title">Astra Trident のボリュームスナップショットをサポートするドライバを教えてください。</block>
-  <block id="98760f13ca9ff06aa46ea65a64b74dea" category="paragraph">現在のところ ' オンデマンドのスナップショットサポートは 'ONTAP-NAS'`ONTAP-SAN'ONTAP-SAN'DAエコノミー '''Solidfire-SAN'AWS-cvs''''''' で利用できます 「 gcp-cvs` 」と「 azure-NetApp-files 」バックエンドドライバ。</block>
   <block id="24c649a639a2c31810a4dfc6ed0190da" category="section-title">ONTAP を使用して Astra Trident でプロビジョニングしたボリュームの Snapshot バックアップを作成する方法を教えてください。</block>
   <block id="0bdcd128fab544a7df404bc496a4126e" category="paragraph">これは 'ONTAP-NAS' 'ONTAP-SAN' および 'ONTAP-NAS-flexgroup ドライバで利用できますFlexVol レベルでは「 ONTAP-SAN-エコノミー 」ドライバに「スナップショットポリシー」を指定することもできます。</block>
   <block id="933b520ff6d70262ddb482995c684d57" category="paragraph">これは「 ONTAP-NAS-エコノミー 」ドライバでも利用できますが、 FlexVol レベルの細分性ではなく、 qtree レベルの細分性で利用できます。Astra Trident によってプロビジョニングされたボリュームのスナップショットを作成できるようにするには、バックエンドパラメータオプション「 napshotPolicy 」を、 ONTAP バックエンドで定義されている目的のスナップショットポリシーに設定します。ストレージコントローラで作成された Snapshot は Astra Trident で認識されません。</block>
@@ -2474,7 +2473,6 @@
   <block id="e3d163236efea4513c9df89a9c1be381" category="section-title">ONTAP - NAS - エコノミードライバ</block>
   <block id="412b252fa44d1a73e3e7bf22113f99a2" category="section-title">ONTAP - NAS ドライバ</block>
   <block id="141da5e3f576179cbf2f6506b07ef538" category="summary">Astra Trident の 20.01 リリースから、 Kubernetes レイヤで永続的ボリューム（ PVS ）の Snapshot を作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。</block>
-  <block id="879d65b9b2cc663b2ff6a01cfe8d4c72" category="paragraph">Astra Trident の 20.01 リリースから、 Kubernetes レイヤで PVS のスナップショットを作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。ボリューム・スナップショットは 'ONTAP-NAS'`ONTAP-SAN'ONTAP-SAN'ONTAP-エコノミー ''solidfire-SAN'AWS- cvs'' によってサポートされています 「 gcp-cvs 」、「 azure-NetApp-files 」ドライバ。</block>
   <block id="332138092a1597c4d5e69679199e490c" category="inline-link">リリースのブログ</block>
   <block id="006b05a472974308122f7f05ef147e80" category="admonition">この機能は Kubernetes 1.17 （ベータ版）から提供され、 1.20 から GA になります。ベータ版から GA 版への移行に伴う変更点については、を参照してください<block ref="02a1c904d0035e03c61e261dbe622345" category="inline-link-rx"></block>。GA への卒業とともに 'v1' API バージョンが導入され 'v1beta` スナップショットと下位互換性があります</block>
   <block id="e197a057bfe0ae792bb2b9ce9a78761e" category="list-text">ボリューム Snapshot を作成するには、外部の Snapshot コントローラとカスタムリソース定義（ CRD ）を作成する必要があります。使用されている Kubernetes Orchestrator （例： Kubeadm 、 GKE 、 OpenShift ）の役割を担っています。</block>
@@ -3119,4 +3117,7 @@
   <block id="fb10fd1921fe8ac41f7ce51b41dd3320" category="paragraph">これは、バックエンドの絶対的な最小構成です。この構成では、ネットアップのアカウント、容量プール、 ANF に委譲されたサブネットがすべて検出され、新しいボリュームがいずれかのサイトにランダムに配置されます。</block>
   <block id="04e5e56f251267658dc57f90ae659538" category="section-title">例 2 ：単一の場所と特定のサービスレベルの設定</block>
   <block id="93d594d992801662d9e5e5d1ccf8bb86" category="paragraph">このバックエンド構成は 'Premium' 容量プール内の Azure の eastus ロケーションにボリュームを配置しますAstra Trident は、 ANF に委譲されたすべてのサブネットをその場所で自動的に検出し、いずれかのサブネットに新しいボリュームをランダムに配置します。</block>
+  <block id="cf282b9c05ab0f84b1690e644cd3f68e" category="list-text">「 ONTAP-NAS-flexgroup 」ドライバの場合、各永続ボリューム（ PV ）は FlexGroup にマッピングされます。その結果、ボリューム Snapshot は NetApp FlexGroup Snapshot として作成されます。NetApp のスナップショット・テクノロジーは ' 競合するスナップショット・テクノロジーよりも高い安定性 ' 拡張性 ' リカバリ性 ' パフォーマンスを提供しますSnapshot コピーは、作成時とストレージスペースの両方で非常に効率的です。</block>
+  <block id="ba9e76e1be4705136fd15fd947717d07" category="paragraph">現在のところ ' オンデマンドスナップショットのサポートは 'ONTAP-NAS'`ONTAP-NAS-flexgroup 'ONTAP-SAN`'ONTAP-SANエコノミー ''solidfire-san-SAN'''solidfire-san-''''solidfire-san-'''solidfire-san-''''' で利用できます 「 aws -cvs 」、「 gcp-cvs 」、「 azure-NetApp-files 」バックエンドドライバ。</block>
+  <block id="1600a61b1da8ff824ac37a5e83b2aef0" category="paragraph">Astra Trident の 20.01 リリースから、 Kubernetes レイヤで PVS のスナップショットを作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。ボリューム・スナップショットは 'ONTAP-NAS''ONTAP-NAS-flexgroup 'ONTAP-SAN'ONTAP-SAN'ONTAP-エコノミー ''solidfire-san-''solidfire-san-'''solidfire-san-''''' でサポートされています 「 aws -cvs 」、「 gcp-cvs 」、「 azure-NetApp-files 」ドライバ。</block>
 </blocks>
