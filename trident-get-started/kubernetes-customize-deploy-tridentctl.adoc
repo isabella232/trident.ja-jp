@@ -4,7 +4,7 @@ permalink: trident-get-started/kubernetes-customize-deploy-tridentctl.html
 keywords: deploy, astra trident, methods, operator, tridentctl, helm, attributes, customize, tridentorchestrator 
 summary: Trident のインストーラでは、属性をカスタマイズできます。 
 ---
-= <code>tridentctl</code> の展開をカスタマイズします
+= tridentctl 展開をカスタマイズします
 :hardbreaks:
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ permalink: trident-get-started/kubernetes-deploy-tridentctl.html
 keywords: deploy, astra trident, methods, tridentctl 
 summary: tridentctl を使用して Astra Trident を導入できます。 
 ---
-= <code>tridentctl</code> で展開します
+= tridentctl を使用して導入します
 :hardbreaks:
 :icons: font
 :imagesdir: ../media/

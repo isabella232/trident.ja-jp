@@ -4,7 +4,7 @@ permalink: trident-reference/tridentctl.html
 keywords: tridentctl, trident, kubernetes, commands, options, usage, flags 
 summary: Trident へのシンプルなアクセスを提供するコマンドラインユーティリティである tridentctl の詳細を確認できます。 
 ---
-= <code>tridentctl</code> コマンドとオプション
+= tridentctl コマンドとオプション
 :hardbreaks:
 :icons: font
 :imagesdir: ../media/

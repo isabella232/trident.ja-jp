@@ -4,7 +4,7 @@ permalink: trident-get-started/kubernetes-postdeployment.html
 keywords: deploy, astra trident, methods, operator, tridentctl, helm, attributes, customize, tridentorchestrator, trident backend, storage class, create backend, create storage class, provision volume, mount volume 
 summary: Astra Trident の導入が完了したら、バックエンドの作成、ストレージクラスの作成、ボリュームのプロビジョニング、ポッドでのボリュームのマウントを実行できます。 
 ---
-= 次の内容
+= 次の手順
 :hardbreaks:
 :icons: font
 :imagesdir: ../media/
