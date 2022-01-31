@@ -69,7 +69,6 @@
   <block id="049ad2e7bef322af60013bbdd35ebbe7" category="list-text">`-port &lt;port-number&gt;` ： Trident の REST サーバがリスンするポートを指定します。デフォルトは 8000 です。</block>
   <block id="188cb756fe8659cb2caf27ca6d1446b4" category="list-text">`-rest`: REST インタフェースを有効にしますデフォルトは true です。</block>
   <block id="afe272beb780ad53d441c342bf1c8c77" category="summary">Trident へのシンプルなアクセスを提供するコマンドラインユーティリティである tridentctl の詳細を確認できます。</block>
-  <block id="1a6cf138336ecfe999b2bfbe3fd1ff14" category="doc">&lt;code&gt;tridentctl&lt;/code&gt; コマンドとオプション</block>
   <block id="7358b1fd077fa65f88fff87888fd2547" category="inline-link">Trident インストーラバンドル</block>
   <block id="4e49f66de2e2dc43c25555fe50639334" category="paragraph">。<block ref="5a856e83aada9750fe5389f8da94335b" category="inline-link-rx"></block> Astra Trident へのシンプルなアクセスを提供するコマンドラインユーティリティ「 tridentctl 」が含まれています。十分な権限を持つ Kubernetes ユーザは、このロールを使用して Astra Trident をインストールしたり、 Astra Trident ポッドが含まれるネームスペースを直接管理したりできます。</block>
   <block id="8ca34267f11cb69ea424bc0320f0e295" category="paragraph">使用方法については 'tridentctl --help' を実行してください</block>
@@ -994,7 +993,6 @@
   <block id="b41f68e89b7b02a9077fb800d31a2fbe" category="inline-link-macro">tridentctl を使用してアップグレードします</block>
   <block id="efb20f59615d4d5ee0437ba57aecbe50" category="list-text"><block ref="efb20f59615d4d5ee0437ba57aecbe50" category="inline-link-macro-rx"></block></block>
   <block id="f71fd95d4de4797557e6830c1448c945" category="summary">tridentctl を使用して ' 既存の Astra Trident インストールを簡単にアップグレードできます</block>
-  <block id="490707832aa352b0efef928713eecabd" category="doc">&lt;code&gt;tridentctl&lt;/code&gt; でアップグレードします</block>
   <block id="6224e22d5a77816dd8b659c25a3f88a5" category="paragraph">最新リリースの Astra Trident にアップグレードする際は、次の点を考慮してください。</block>
   <block id="98c7e2ecbd5f5a638272ee366b25b6a1" category="inline-link">ボリューム Snapshot</block>
   <block id="8f9f7d64f0943a9bec25cdd7b786022a" category="list-text">Trident 20.01 以降では、のベータ版のみが提供されます<block ref="0b290b7ed02de23dc49888d0fa4fc114" category="inline-link-rx"></block> がサポートされます。Kubernetes 管理者は、従来のアルファスナップショットを保持するために、アルファスナップショットオブジェクトを安全にバックアップするか、ベータ版に変換するように注意する必要があります。</block>
@@ -1239,7 +1237,6 @@
   <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">法的通知</block>
   <block id="c59ae8d7beeb519a23478ab048af482c" category="paragraph"><block ref="c59ae8d7beeb519a23478ab048af482c" category="inline-link-macro-rx"></block></block>
   <block id="55847a7d73d44b84804f47ee7863b80f" category="summary">Astra Trident の導入が完了したら、バックエンドの作成、ストレージクラスの作成、ボリュームのプロビジョニング、ポッドでのボリュームのマウントを実行できます。</block>
-  <block id="7c3983f18df54b898b386f7cf4a7d05c" category="doc">次の内容</block>
   <block id="0b0ca016c0d99a4845777aeeebb032ac" category="section-title">手順 1 ：バックエンドを作成する</block>
   <block id="4f374e8dd911d1e70f7b7a53fdac1f2a" category="paragraph">これで、 Astra Trident がボリュームのプロビジョニングに使用するバックエンドを作成できるようになります。そのためには、必要なパラメータを含む「 backend.json 」ファイルを作成します。さまざまなバックエンドタイプのサンプル構成ファイルは 'sample-input' ディレクトリにあります</block>
   <block id="8b389d7be97d6c697a4e775ff8338905" category="paragraph">を参照してください <block ref="49641f5ab61d7a6ce07b1b6ba31204f8" category="inline-link-macro-rx"></block> バックエンドタイプのファイルを設定する方法の詳細については、を参照してください。</block>
@@ -1268,7 +1265,6 @@
   <block id="93e8ba41e1ebcadc1338cc7f75109210" category="inline-link-macro">追加のストレージクラスを作成する。</block>
   <block id="daa40449d28fbb16d2bcd8a8434d05e6" category="list-text"><block ref="daa40449d28fbb16d2bcd8a8434d05e6" category="inline-link-macro-rx"></block></block>
   <block id="ccb0658b39bdba7456d6a536d2d07732" category="summary">Trident のインストーラでは、属性をカスタマイズできます。</block>
-  <block id="71c8fdb9fb1c8f329402b81420c6ebf5" category="doc">&lt;code&gt;tridentctl&lt;/code&gt; の展開をカスタマイズします</block>
   <block id="eabcee1fa9f08716f26be6d1b73360fe" category="paragraph">Trident インストーラを使用して属性をカスタマイズできます。たとえば、 Trident イメージをプライベートリポジトリにコピーした場合、 -trident-image' を使用してイメージ名を指定できます。Trident イメージと必要な CSI サイドカーイメージをプライベートリポジトリにコピーした場合は、 --image_registry' スイッチを使用してリポジトリの場所を指定することをお勧めします。この場合、形式は「 &lt;registry fqdn&gt;[:port] 」です。</block>
   <block id="6fdfbf3444ce4e12e3375405bdd10237" category="paragraph">Astra Trident が自動的にワーカーノードを構成するには、「 --enable-node-prep 」を使用します。この機能の詳細については、を参照してください <block ref="144c3ced0f46507a846b2964eace5739" category="inline-link-macro-rx"></block>。</block>
   <block id="d924f91616fe4accc876113a346ee8ad" category="admonition">ワーカーノードの自動準備は * ベータ機能 * で、非本番環境でのみ使用できます。</block>
@@ -1524,7 +1520,6 @@
   <block id="2cf0c4e99dd3c0b2e7e0f63af3531622" category="admonition">本番環境では、この手順で構築した Kubernetes クラスタを使用しないでください。本番環境向けのクラスタを作成するには、ディストリビューションに付属の本番環境導入ガイドを使用します。</block>
   <block id="e3ecede511471cf67c294e427e2f012e" category="paragraph">Kubernetes を初めて使用する場合は、概念とツールについて理解しておいてください <block ref="22f850f308b2d2016502017a1dcd1044" category="inline-link-macro-rx"></block>。</block>
   <block id="aa452927f1dec9709a523a0de496d6c5" category="summary">tridentctl を使用して Astra Trident を導入できます。</block>
-  <block id="2c5663878eee565d9ef20bc725837ae9" category="doc">&lt;code&gt;tridentctl&lt;/code&gt; で展開します</block>
   <block id="be932f6f71d4b0b1a7f80c2e5b584b34" category="admonition">展開をカスタマイズするには、を参照してください <block ref="b336c95c8f5c7bbe82e004b1378c2302" category="inline-link-macro-rx"></block>。</block>
   <block id="6a64bc5a34f75dde015dc7dd8ece8c61" category="list-text">サポート対象の Kubernetes クラスタに対するすべての権限が必要です。</block>
   <block id="ed000d2029e135f34f854fa4e820940b" category="admonition">導入環境のカスタマイズについては、を参照してください <block ref="b336c95c8f5c7bbe82e004b1378c2302" category="inline-link-macro-rx"></block>。</block>
@@ -2065,7 +2060,6 @@
   <block id="1b757fe9c8a149de349a32b8d21feb54" category="admonition">Ubuntu 18.04 では 'iSCSI デーモンを起動するために 'open-iscsi' を起動する前に 'iscsiadm を持つターゲット・ポートを検出する必要がありますまたは 'iscsid' サービスを 'iscsid' を自動的に開始するように変更することもできます</block>
   <block id="fc1adc7c8cce02d3bd3dbc3e7ae52990" category="admonition">ベータ版の自動ワーカーノードの準備の詳細については、を参照してください <block ref="a57ab171c518329af81ea9d2536c4e10" category="inline-link-macro-rx"></block>。</block>
   <block id="4cc2b9916e7383e5fa29dc6188159e32" category="summary">バックエンドは、 Astra Trident とストレージシステムの関係を定義します。Trident がストレージシステムとの通信方法を Trident から指示し、 Astra Trident がボリュームをプロビジョニングする方法も解説します。Astra Trident のインストールが完了したら、次の手順でバックエンドを作成します。TridentBackendConfig カスタムリソース定義（ CRD ）を使用すると、 Trident バックエンドを Kubernetes インターフェイスから直接作成および管理できます。これを行うには 'kubectl' または Kubernetes ディストリビューションに相当する CLI ツールを使用します</block>
-  <block id="b11222a0d99af7b9eab6c903c5adf5aa" category="doc">code&gt;kubectl&lt;/code&gt; を使用してバックエンドを作成します</block>
   <block id="913a4b06671d1e04e6582a85afe3abbe" category="section-title">TridentBackendConfig の場合</block>
   <block id="d2031a5a319b9363cf98da6b1509598a" category="paragraph">TridentBackendConfig` (`tbc`, `tbconfig`, tbackendconfig`) はフロントエンドであり、 "kubectl" を使って Astra Trident バックエンドを管理するための名前空間 CRD です。Kubernetes とストレージ管理者は、専用のコマンドラインユーティリティ（「 tridentctl 」）を使用せずに、 Kubernetes CLI を使用してバックエンドを直接作成および管理できるようになりました。</block>
   <block id="b44c2fd5cefc815abed7e31c0fa8c8ac" category="paragraph">「 TridentBackendConfig 」オブジェクトを作成すると、次のようになります。</block>
@@ -2259,7 +2253,6 @@
   <block id="8313f77478cb0df464604ae4435acce2" category="paragraph">最後の手順は、「 TridentBackendConfig 」 CR を削除することです。「削除ポリシー」が「取得」に設定されていることを確認したら、削除を続行できます。</block>
   <block id="c1493b6d6e05639a816e5772bbb491af" category="paragraph">TridentBackendConfig オブジェクトを削除すると、 Astra Trident はバックエンド自体を削除せずに削除します。</block>
   <block id="72a5926b7fb086fe87e93771f6620556" category="summary">tridentctl を使用してバックエンド管理操作を実行する方法について説明します</block>
-  <block id="1fd721bfd5fa94f1097ca9ab27e8c732" category="doc">&lt;code&gt;tridentctl&lt;/code&gt; を使用してバックエンド管理を実行します</block>
   <block id="aeeb03235358f0f4bf3be628bed08721" category="section-title">バックエンドを作成します</block>
   <block id="34746f7a1d24170eeebf5510a045d43d" category="inline-link-macro">バックエンド構成ファイル</block>
   <block id="99b7232073a67a8c82304f979e3dc83f" category="paragraph">を作成したら <block ref="03c0b6ed8698193668e92f56e9be3efa" category="inline-link-macro-rx"></block>を使用して、次のコマンドを実行します。</block>
@@ -2347,7 +2340,6 @@
   <block id="e1e08e40036f927a0e660c22aa837f88" category="inline-link">塗料および耐性</block>
   <block id="66b1e0aa9cd6e46c0b85fdf56a15154a" category="list-text"><block ref="66b1e0aa9cd6e46c0b85fdf56a15154a" category="inline-link-rx"></block></block>
   <block id="2941c38dbb7c39c325787067c0540247" category="summary">kubectl' を使用してバックエンド管理操作を実行する方法について説明します</block>
-  <block id="e6b1036b38d2e2ca648ce1207f9bd099" category="doc">&lt;code&gt;kubectl&lt;/code&gt; を使用してバックエンド管理を実行します</block>
   <block id="20309eb77b701e6c49ca6b99a8f93f90" category="paragraph">「 TridentBackendConfig 」を削除すると、「ネットワークポリシー」に基づいて、 Astra Trident にバックエンドを削除 / 保持するように指示します。バックエンドを削除するには、「削除ポリシー」が「削除」に設定されていることを確認します。「 TridentBackendConfig 」だけを削除するには、「 $eleetionPolicy 」が「 retain 」に設定されていることを確認します。これにより ' バックエンドがまだ存在していることが保証され 'tridentctl' を使用して管理できます</block>
   <block id="3fa37f688874143cd423aabca8075ffb" category="paragraph">Astra Trident は、 TridentBackendConfig が使用していた Kubernetes シークレットを削除しません。Kubernetes ユーザは、シークレットのクリーンアップを担当します。シークレットを削除するときは注意が必要です。シークレットは、バックエンドで使用されていない場合にのみ削除してください。</block>
   <block id="265ab4809f08d248e5045a8638ac7afa" category="paragraph">tridentctl get backend -n trident` または tridentctl get backend -o yaml -n trident` を実行して、存在するすべてのバックエンドのリストを取得することもできます。このリストには 'tridentctl' で作成されたバックエンドも含まれます</block>
@@ -3056,35 +3048,7 @@
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">オープンソース</block>
   <block id="0172b29a9f5d94dc62ee592a98183f3b" category="paragraph">ネットアップの Astra Trident 向けソフトウェアで使用されているサードパーティの著作権とライセンスは、の各リリースの通知ファイルで確認できます<block ref="4a3c8c5a408c6db1c44c04391a8a0a2f" category="inline-link-rx"></block>。</block>
   <block id="4546bbd46f06879787b5670b13277b28" category="paragraph">このステップの一環として、 21.10.0 Trident オペレータが既存の Astra Trident インストールを特定し、オペレータと同じバージョンにアップグレードします。</block>
-  <block id="5fe26149fa172056aee5f841415c55fa" category="admonition">Astra Trident は、手動 QoS 容量プールをサポートしていません。</block>
-  <block id="016a4b469916e37291cfe2f7fab49aaf" category="cell">「 resourceGroups 」</block>
-  <block id="66d09fbe1165f3d10b368cbe0cc029f4" category="cell">検出されたリソースをフィルタリングするためのリソースグループのリスト</block>
-  <block id="36cbcb8a57112362b05d06b9fe037a6e" category="cell">"[]" （フィルタなし）</block>
-  <block id="d4b4343f054233d7d339bb1501425fd4" category="cell">「 netappAccounts 」のように入力します</block>
-  <block id="61476ef20a8015760b9cb3c1bd0ea435" category="cell">検出されたリソースをフィルタリングするためのネットアップアカウントのリスト</block>
-  <block id="722c7b4409fa4d1fe6aaa2902ae66473" category="cell">「 capacityPools</block>
-  <block id="225abbb59bc0bbaa2a5852ada333b31b" category="cell">検出されたリソースをフィルタリングする容量プールのリスト</block>
-  <block id="f2a5b99a63a463017b3e5f5848444d9a" category="cell">"[]" （フィルタなし、ランダム）</block>
   <block id="9d4568c009d203ab10e33ea9953a0264" category="cell">""</block>
-  <block id="91b3c29beb3641dce2fcf3d2382fac4f" category="cell">トラブルシューティング時に使用するデバッグフラグ。例 : `\{"API":false," メソッド ":true," 検出 ":true}`トラブルシューティングを行って詳細なログダンプが必要な場合を除き、このオプションは使用しないでください。</block>
-  <block id="b025cb91ea905e0ae1a879fe81e5ff18" category="admonition">NFS バージョン 4.1 を使用してボリュームをマウントする場合は、 NFS v4.1 を選択するために、カンマ区切りのマウントオプションリストに「 nfsvers=4` 」を含めることができます。ストレージクラスで設定されたマウントオプションは、バックエンド構成ファイルで設定されたマウントオプションよりも優先されます。</block>
-  <block id="eaea97dbd365f00421eb397e8eabeebf" category="paragraph">resourceGroups'netappAccounts'capacityPools'virtualNetwork' および 'subnet' の値は ' 短い名前または完全修飾名を使用して指定できます省略形は同じ名前の複数のリソースに一致している可能性があるため、ほとんどの場合は完全修飾名を使用することを推奨します。resourceGroups'netappAccounts'capacityPools' の値は ' 検出されたリソースのセットをこのストレージバックエンドで使用可能なリソースに制限するフィルタであり ' 任意の組み合わせで指定できます完全修飾名の形式は次のとおりです。</block>
-  <block id="520d0db389f362bf79ef56ca0af3dcab" category="cell">の形式で入力し</block>
-  <block id="dde92bca1b59f0db813ef42a2688752e" category="cell">リソースグループ</block>
-  <block id="671e72ca3ef632233f4c27dfef1ec109" category="cell">&lt; リソースグループ &gt;</block>
-  <block id="ac252743de820aac9183d9f76d4bed67" category="cell">ネットアップアカウント</block>
-  <block id="2bf2783c6d0d867a9fe629138b38bd84" category="cell">&lt; リソースグループ &gt;/&lt; ネットアップアカウント &gt;</block>
-  <block id="9eea1c08013c37f1499f428378764a08" category="cell">容量プール</block>
-  <block id="01c656d6b97f45a90022ee307283ae01" category="cell">&lt; リソースグループ &gt;/&lt; ネットアップアカウント &gt;/&lt; 容量プール &gt;</block>
-  <block id="bf76cafc47141522dca89c4d6e25b822" category="cell">仮想ネットワーク</block>
-  <block id="8c9309282517a29ad09b10443d825c7c" category="cell">&lt; リソースグループ &gt;/&lt; 仮想ネットワーク &gt;</block>
-  <block id="9770c6469e9d27585d6c0c389ede7bc3" category="cell">サブネット</block>
-  <block id="7addf9faaab78a084548d05b695cd2e2" category="cell">&lt;resource group&gt;/&lt; 仮想ネットワーク &gt;/&lt; サブネット &gt;</block>
-  <block id="3e71a01ee522f366b6eeb2990e170fde" category="cell">新しいボリュームの UNIX 権限（ 8 進数の 4 桁）</block>
-  <block id="976a6dc52dbcabb541efa0a91e922604" category="cell">"" （プレビュー機能、サブスクリプションでホワイトリスト登録が必要）</block>
-  <block id="54042b89155d99a3568a196cb5ff1da8" category="paragraph">これは、バックエンドの絶対的な最小構成です。この構成では、 ANF に委譲されたネットアップアカウント、容量プール、サブネットがすべて検出され、それらのプールまたはサブネットの 1 つに新しいボリュームがランダムに配置されます。</block>
-  <block id="a78703e6fcb2511d5a565496df5b2082" category="section-title">例 2 ：容量プールフィルタを使用した特定のサービスレベル設定</block>
-  <block id="6da664b0342ea1be008211c33f1eb020" category="paragraph">このバックエンド構成では 'Ultra 容量プール内の Azure の eastus ロケーションにボリュームを配置しますAstra Trident は、 ANF に委譲されたすべてのサブネットをその場所で自動的に検出し、いずれかのサブネットに新しいボリュームをランダムに配置します。</block>
   <block id="def7176d1592ea5f9d6a93b9083b78be" category="section-title">21.10.1 の新機能</block>
   <block id="e56bc548e9811e07f1c872158876a75e" category="section-title">Astra Trident 21.10.0 以降の変更点</block>
   <block id="cdb544a92bee555749f43046d53ef34e" category="admonition">v21.10.0 リリースには、ノードが削除されてから Kubernetes クラスタに再度追加されたときに、 Trident コントローラを CrashLoopBackOff 状態にすることができる問題があります。この問題は、 v21.10.1 (GitHub 問題 669) で修正されています。</block>
@@ -3148,4 +3112,11 @@
   <block id="705db3afa1c1d4451f7b0f7f8552f1b5" category="list-text">Kubernetes 1.17 以降を実行するサポート対象の Kubernetes クラスタに対するすべての権限が必要です。</block>
   <block id="3b4c548466953befff1962ac2426cb8e" category="paragraph">Kubernetes のバージョンが 1.17 よりも新しいかどうかを確認するには、次のコマンドを実行します。</block>
   <block id="834bb262db01800c5b2fc71ef097a803" category="admonition">Red Hat OpenShift Container Platform のユーザは、 4.1.8 よりも前のバージョンを使用している場合、 initiatorname.iscsi ファイルが空白になる可能性があります。これは RedHat によって識別されているバグで、 OpenShift 4.1.8 で修正されています。を参照してください<block ref="ac064f2337a2fc6c16c562bc9e386352" category="inline-link-rx"></block>。ネットアップでは、 OpenShift 4.7 以降で Astra Trident を使用することを推奨しています。</block>
+  <block id="85bfe817bf2347bf6d5dcea4b86ade72" category="cell">アプリケーション登録からのクライアント ID</block>
+  <block id="a5e65d71b5d7719b3a51518133fd2538" category="cell">"" （ランダム）</block>
+  <block id="23ef4149f946c881b1c40a6ac1510554" category="admonition">既存のバックエンドの「 capacityPools 」フィールドを変更して、プロビジョニングに使用される容量プールの数を減らすと、「 capacityPools 」リストに含まれていない容量プール / プールにプロビジョニングされた孤立したボリュームが作成されます。これらの孤立したボリュームに対するクローニング処理は失敗します。</block>
+  <block id="ae9b95a558c60bdc3b5682a1ca2625ea" category="admonition">NFS バージョン 4.1 を使用してボリュームをマウントする場合は、 NFS v4.1 を選択するために、カンマ区切りのマウントオプションリストに「 nfsvers=4` 」を含めることができます。ストレージクラスで設定されたマウントオプションは、バックエンド構成ファイルで設定されたマウントオプションよりも優先されます。</block>
+  <block id="fb10fd1921fe8ac41f7ce51b41dd3320" category="paragraph">これは、バックエンドの絶対的な最小構成です。この構成では、ネットアップのアカウント、容量プール、 ANF に委譲されたサブネットがすべて検出され、新しいボリュームがいずれかのサイトにランダムに配置されます。</block>
+  <block id="04e5e56f251267658dc57f90ae659538" category="section-title">例 2 ：単一の場所と特定のサービスレベルの設定</block>
+  <block id="93d594d992801662d9e5e5d1ccf8bb86" category="paragraph">このバックエンド構成は 'Premium' 容量プール内の Azure の eastus ロケーションにボリュームを配置しますAstra Trident は、 ANF に委譲されたすべてのサブネットをその場所で自動的に検出し、いずれかのサブネットに新しいボリュームをランダムに配置します。</block>
 </blocks>

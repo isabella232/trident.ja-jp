@@ -30,7 +30,7 @@ TIP: Azure の組み込みロールの詳細については、を参照してく
 Trident は、バックエンド構成（サブネット、仮想ネットワーク、サービスレベル、場所）に基づいて、要求された場所で利用可能な容量プールに ANF ボリュームを作成し、要求されたサービスレベルとサブネットに対応します。
 
 
-NOTE: Astra Trident は、手動 QoS 容量プールをサポートしていません。
+NOTE: Astra Trident 21.04.0 以前では、手動 QoS 容量プールはサポートされていません。
 
 
 
@@ -64,22 +64,13 @@ NOTE: Astra Trident は、手動 QoS 容量プールをサポートしていま�
 | 「 clientSecret 」を入力します。 | アプリケーション登録からのクライアントシークレット |  
 
 
-| 「ロケーション」 | 新しいボリュームを作成する Azure の場所の名前 |  
-
-
 | 「サービスレベル」 | 「標準」、「プレミアム」、「ウルトラ」のいずれかです | "" （ランダム） 
 
 
-| 「 resourceGroups 」 | 検出されたリソースをフィルタリングするためのリソースグループのリスト | "[]" （フィルタなし） 
+| 「ロケーション」 | 新しいボリュームを作成する Azure の場所の名前 | "" （ランダム） 
 
 
-| 「 netappAccounts 」のように入力します | 検出されたリソースをフィルタリングするためのネットアップアカウントのリスト | "[]" （フィルタなし） 
-
-
-| 「 capacityPools | 検出されたリソースをフィルタリングする容量プールのリスト | "[]" （フィルタなし、ランダム） 
-
-
-| 「 virtualNetwork 」 | 委任されたサブネットを持つ仮想ネットワークの名前 | "" 
+| 「 virtualNetwork 」 | 委任されたサブネットを持つ仮想ネットワークの名前 | "" （ランダム） 
 
 
 | 「サブネット」 | 「 icrosoft.Netapp/volumes` 」に委任されたサブネットの名前 | "" （ランダム） 
@@ -91,35 +82,17 @@ NOTE: Astra Trident は、手動 QoS 容量プールをサポートしていま�
 | 「 limitVolumeSize 」と入力します | 要求されたボリュームサイズがこの値を超えている場合はプロビジョニングが失敗します | "" （デフォルトでは適用されません） 
 
 
-| 「バグトレースフラグ」 | トラブルシューティング時に使用するデバッグフラグ。例 : `\{"API":false," メソッド ":true," 検出 ":true}`トラブルシューティングを行って詳細なログダンプが必要な場合を除き、このオプションは使用しないでください。 | null 
+| 「バグトレースフラグ」 | トラブルシューティング時に使用するデバッグフラグ。例： \\{"API":false," メソッド ":true}`トラブルシューティングを行って詳細なログダンプが必要な場合を除き、このオプションは使用しないでください。 | null 
 |===
+
+WARNING: 既存のバックエンドの「 capacityPools 」フィールドを変更して、プロビジョニングに使用される容量プールの数を減らすと、「 capacityPools 」リストに含まれていない容量プール / プールにプロビジョニングされた孤立したボリュームが作成されます。これらの孤立したボリュームに対するクローニング処理は失敗します。
+
 
 WARNING: PVC の作成時に「 No capacity pools found 」エラーが発生した場合、アプリケーション登録に必要な権限とリソース（サブネット、仮想ネットワーク、容量プール）が関連付けられていない可能性があります。Astra Trident は、デバッグが有効なときにバックエンドが作成されたときに、検出した Azure リソースをログに記録します。適切なロールが使用されているかどうかを確認してください。
 
 
 NOTE: NFS バージョン 4.1 を使用してボリュームをマウントする場合は、 NFS v4.1 を選択するために、カンマ区切りのマウントオプションリストに「 nfsvers=4` 」を含めることができます。ストレージクラスで設定されたマウントオプションは、バックエンド構成ファイルで設定されたマウントオプションよりも優先されます。
 
-resourceGroups'netappAccounts'capacityPools'virtualNetwork' および 'subnet' の値は ' 短い名前または完全修飾名を使用して指定できます省略形は同じ名前の複数のリソースに一致している可能性があるため、ほとんどの場合は完全修飾名を使用することを推奨します。resourceGroups'netappAccounts'capacityPools' の値は ' 検出されたリソースのセットをこのストレージバックエンドで使用可能なリソースに制限するフィルタであり ' 任意の組み合わせで指定できます完全修飾名の形式は次のとおりです。
-
-[cols="2"]
-|===
-| を入力します | の形式で入力し 
-
-
-| リソースグループ | < リソースグループ > 
-
-
-| ネットアップアカウント | < リソースグループ >/< ネットアップアカウント > 
-
-
-| 容量プール | < リソースグループ >/< ネットアップアカウント >/< 容量プール > 
-
-
-| 仮想ネットワーク | < リソースグループ >/< 仮想ネットワーク > 
-
-
-| サブネット | <resource group>/< 仮想ネットワーク >/< サブネット > 
-|===
 構成ファイルの特別なセクションで次のオプションを指定することで、各ボリュームのデフォルトのプロビジョニング方法を制御できます。以下の設定例を参照してください。
 
 [cols=",,"]
@@ -131,9 +104,6 @@ resourceGroups'netappAccounts'capacityPools'virtualNetwork' および 'subnet' �
 
 
 | 「 size 」 | 新しいボリュームのデフォルトサイズ | " 100G " 
-
-
-| 「 unixPermissions 」 | 新しいボリュームの UNIX 権限（ 8 進数の 4 桁） | "" （プレビュー機能、サブスクリプションでホワイトリスト登録が必要） 
 |===
 「 exportRule 」の値は、 CIDR 表記の IPv4 アドレスまたは IPv4 サブネットの任意の組み合わせをカンマで区切ったリストにする必要があります。
 
@@ -144,7 +114,7 @@ NOTE: ANF バックエンドに作成されたすべてのボリュームに対�
 
 == 例 1 ：最小限の構成
 
-これは、バックエンドの絶対的な最小構成です。この構成では、 ANF に委譲されたネットアップアカウント、容量プール、サブネットがすべて検出され、それらのプールまたはサブネットの 1 つに新しいボリュームがランダムに配置されます。
+これは、バックエンドの絶対的な最小構成です。この構成では、ネットアップのアカウント、容量プール、 ANF に委譲されたサブネットがすべて検出され、新しいボリュームがいずれかのサイトにランダムに配置されます。
 
 この構成は、 ANF の利用を開始して何を試してみるときに理想的ですが、実際には、プロビジョニングするボリュームの範囲をさらに設定することを検討しています。
 
@@ -156,15 +126,14 @@ NOTE: ANF バックエンドに作成されたすべてのボリュームに対�
     "subscriptionID": "9f87c765-4774-fake-ae98-a721add45451",
     "tenantID": "68e4f836-edc1-fake-bff9-b2d865ee56cf",
     "clientID": "dd043f63-bf8e-fake-8076-8de91e5713aa",
-    "clientSecret": "SECRET",
-    "location": "eastus"
+    "clientSecret": "SECRET"
 }
 ----
 
 
-== 例 2 ：容量プールフィルタを使用した特定のサービスレベル設定
+== 例 2 ：単一の場所と特定のサービスレベルの設定
 
-このバックエンド構成では 'Ultra 容量プール内の Azure の eastus ロケーションにボリュームを配置しますAstra Trident は、 ANF に委譲されたすべてのサブネットをその場所で自動的に検出し、いずれかのサブネットに新しいボリュームをランダムに配置します。
+このバックエンド構成は 'Premium' 容量プール内の Azure の eastus ロケーションにボリュームを配置しますAstra Trident は、 ANF に委譲されたすべてのサブネットをその場所で自動的に検出し、いずれかのサブネットに新しいボリュームをランダムに配置します。
 
 [listing]
 ----
@@ -176,11 +145,7 @@ NOTE: ANF バックエンドに作成されたすべてのボリュームに対�
         "clientID": "dd043f63-bf8e-fake-8076-8de91e5713aa",
         "clientSecret": "SECRET",
         "location": "eastus",
-        "serviceLevel": "Ultra",
-        "capacityPools": [
-            "application-group-1/account-1/ultra-1",
-            "application-group-1/account-1/ultra-2"
-        ],
+        "serviceLevel": "Premium"
     }
 ----
 
@@ -199,19 +164,14 @@ NOTE: ANF バックエンドに作成されたすべてのボリュームに対�
         "clientID": "dd043f63-bf8e-fake-8076-8de91e5713aa",
         "clientSecret": "SECRET",
         "location": "eastus",
-        "serviceLevel": "Ultra",
-        "capacityPools": [
-            "application-group-1/account-1/ultra-1",
-            "application-group-1/account-1/ultra-2"
-        ],
+        "serviceLevel": "Premium",
         "virtualNetwork": "my-virtual-network",
         "subnet": "my-subnet",
         "nfsMountOptions": "vers=3,proto=tcp,timeo=600",
         "limitVolumeSize": "500Gi",
         "defaults": {
             "exportRule": "10.0.0.0/24,10.0.1.0/24,10.0.2.100",
-            "size": "200Gi",
-            "unixPermissions": "0777"
+            "size": "200Gi"
         }
     }
 ----
@@ -230,34 +190,30 @@ NOTE: ANF バックエンドに作成されたすべてのボリュームに対�
         "tenantID": "68e4f836-edc1-fake-bff9-b2d865ee56cf",
         "clientID": "dd043f63-bf8e-fake-8076-8de91e5713aa",
         "clientSecret": "SECRET",
-        "location": "eastus",
-        "resourceGroups": ["application-group-1"],
         "nfsMountOptions": "vers=3,proto=tcp,timeo=600",
         "labels": {
             "cloud": "azure"
         },
+        "location": "eastus",
 
         "storage": [
             {
                 "labels": {
                     "performance": "gold"
                 },
-                "serviceLevel": "Ultra",
-                "capacityPools": ["ultra-1", "ultra-2"]
+                "serviceLevel": "Ultra"
             },
             {
                 "labels": {
                     "performance": "silver"
                 },
-                "serviceLevel": "Premium",
-                "capacityPools": ["premium-1"]
+                "serviceLevel": "Premium"
             },
             {
                 "labels": {
                     "performance": "bronze"
                 },
                 "serviceLevel": "Standard",
-                "capacityPools": ["standard-1", "standard-2"]
             }
         ]
     }
