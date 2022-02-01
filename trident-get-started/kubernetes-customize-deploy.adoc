@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-get-started/kubernetes-customize-deploy.html 
 keywords: deploy, trident, methods, operator, tridentctl, helm, attributes, customize, tridentorchestrator 
-summary: Trident オペレータは \'TridentOrchestrator 仕様の属性を使用して \'Astra Trident のインストール方法をカスタマイズできます 
+summary: 'Trident オペレータは "TridentOrchestrator 仕様の属性を使用して "Astra Trident のインストール方法をカスタマイズできます' 
 ---
 = Trident オペレータの環境をカスタマイズ
 :hardbreaks:

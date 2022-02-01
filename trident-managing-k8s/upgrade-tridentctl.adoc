@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-managing-k8s/upgrade-tridentctl.html 
 keywords: upgrade, trident, methods, operator, tridentctl, helm 
-summary: tridentctl を使用して \' 既存の Astra Trident インストールを簡単にアップグレードできます 
+summary: 'tridentctl を使用して " 既存の Astra Trident インストールを簡単にアップグレードできます' 
 ---
 = tridentctl を使用してアップグレードします
 :hardbreaks:
