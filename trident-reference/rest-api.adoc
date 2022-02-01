@@ -11,7 +11,7 @@ summary: Trident の REST API を使用する場合は、 REST エンドポイ�
 
 
 [role="lead"]
-間 link:trident-reference/tridentctl.html["tridentctl コマンドとオプション"^] Trident の REST API を操作するには簡単です。 REST エンドポイントは必要に応じて直接使用できます。
+間 link:tridentctl.html["tridentctl コマンドとオプション"^] Trident の REST API を操作するには簡単です。 REST エンドポイントは必要に応じて直接使用できます。
 
 これは、 Kubernetes 以外の環境で、 Astra Trident をスタンドアロンバイナリとして使用する高度なインストールに役立ちます。
 

@@ -1,0 +1,244 @@
+---
+sidebar: sidebar 
+permalink: trident-use/ads.html 
+keywords: trident backend, cloud volumes service for AWS 
+summary: Astra Trident のインストール用に Astra Data Store （ ADS ）バックエンドを設定する方法について、付属の構成例を参照してください。 
+---
+= Astra データストアバックエンドを構成する
+:hardbreaks:
+:icons: font
+:imagesdir: ../media/
+
+
+Astra Trident のインストールに Astra Data Store （ ADS ）バックエンドを設定する方法を、付属の設定例で説明しています。
+
+を設定して使用します https://cloud.netapp.com/astra-data-store["Astra データストア"^] バックエンドには次のものが必要です。
+
+* サポートされている ADS ストレージシステム。を参照してください link:https://docs.netapp.com/us-en/astra-data-store/index.html["Astra データストアプレビュー版のドキュメント"^] を参照してください。
+* ADS をホストしている Kubernetes クラスタのクレデンシャル。ADS をホストしている Kubernetes クラスタには、この Astra Trident バックエンドが作成および管理するボリューム、 Snapshot 、およびエクスポートポリシーリソース専用のネームスペースが必要です。以下をサポートする広告をホストする Kubernetes クラスタには「 kubeconfig 」が必要です。
++
+** 'astrs-system' 名前空間内のすべてのオブジェクトを読み取ります
+** この Astra Trident バックエンドで使用するために作成されたネームスペース内のオブジェクトの読み取り / 書き込み
+** すべてのクラスタネームスペースをリストします
+
+
+
+
+
+
+== バックエンド構成オプション
+
+バックエンド設定オプションについては、次の表を参照してください。
+
+[cols="3"]
+|===
+| パラメータ | 説明 | デフォルト 
+
+
+| 「バージョン」 |  | 常に 1 
+
+
+| 'torageDriverName' | ストレージドライバの名前 | 「 astrads - NAS 」 
+
+
+| backendName` | カスタム名またはストレージバックエンド | ADS クラスタ名 
+
+
+| 「クラスタ」 | AstraDSCluster リソースの名前 |  
+
+
+| 「 namespace 」を参照してください | Astra Trident がすべての ADS カスタムリソースを作成するネームスペース |  
+
+
+| 「 kubeconfig 」 | ADS Kubernetes クラスタのクレデンシャル（ Base64 コンパクト JSON ） | 「 nfsvMountOptions 」のように入力します 
+
+
+| NFS マウントオプションのきめ細かな制御 | " VERs=4.1 " | 「 autoExportPolicy 」を参照してください 
+
+
+| エクスポートポリシーの自動作成と更新を有効にする [ ブーリアン ] | いいえ | 「 autoExportCI` 」 
+
+
+| 「 autoExportPolicy 」が有効な場合に、 Kubernetes のノード IP をフィルタリングするための CIDR のリスト | [ 「 0.0.0.0/0 」、「：： /0 」 ] | 「 limitVolumeSize 」と入力します 
+
+
+| 要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します | "" （デフォルトでは適用されません） | 「バグトレースフラグ」 
+
+
+| トラブルシューティング時に使用するデバッグフラグ。例： ｛ "api" ： false 、 "method" ： true ｝ | null | 「ラベル」 
+|===
+
+CAUTION: トラブルシューティングを行い、詳細なログダンプが必要な場合を除き、「 ebugTraceFlags 」は使用しないでください。
+
+
+NOTE: バックエンド構成に含める前に、「 kubeconfig 」の値を YAML から compact JSON 形式に変換し、 Base64 形式に変換する必要があります。
+
+各バックエンドは、 ADS をホストする Kubernetes クラスタ上の単一のネームスペースにボリュームをプロビジョニングします。他のネームスペースにボリュームを作成する場合は、追加のバックエンドを定義できます。ADS ボリュームは、ホスティングクラスタ内の任意のネームスペース、他の Kubernetes クラスタ、または NFS 共有をマウントできるその他の任意の場所に接続できます。
+
+これらのオプションを使用して構成ファイルの特別なセクションで、各ボリュームのデフォルトのプロビジョニングを制御できます。
+
+以下の設定例を参照してください。
+
+[cols=",,"]
+|===
+| パラメータ | 説明 | デフォルト 
+
+
+| 「 exportPolicy 」と入力します | 使用するエクスポートポリシー | デフォルト 
+
+
+| 「 unixPermissions 」 | 新しいボリュームのモード。 8 進数で「 0 」で始まる必要があります。 | "0777" 
+
+
+| 「スナップショット予約」 | Snapshot 用にリザーブされているボリュームの割合 | "5" 
+
+
+| 「スナップショット方向」 | 「 .snapshot 」ディレクトリの表示を制御します | いいえ 
+
+
+| 「 QOSPolicy 」 | 作成したボリュームに割り当てる QoS ポリシー | "" 
+|===
+
+NOTE: ADS バックエンドで作成されたすべてのボリュームに対して、 Astra Trident はストレージプール上のすべてのラベルをプロビジョニング時にストレージボリュームにコピーします。ストレージ管理者は、ストレージプールごとにラベルを定義し、ストレージプールごとに作成されるすべてのボリュームをグループ化できます。これにより、バックエンド構成ファイルに含まれるカスタマイズ可能な一連のラベルに基づいてボリュームを簡単に区別できます。
+
+
+
+== 例 1 ：最小限のバックエンド構成
+
+これは、バックエンドの絶対的な最小構成です。
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "astrads-nas",
+    "cluster": "astrads-sti-c6220-09-10-11-12",
+    "namespace": "test",
+    "kubeconfig": "eyJjdXJyZW50LWNvbnRleHQiOiJmZWRlcmFsLWNvbnRleHQiLCJhcGlWZXJzaW9uIjoidjEiLCJjbHVzdGVycyI6W3siY2x1c3RlciI6eyJhcGktdmVyc2lvbiI6InYxIiwic2VydmVyIjoiaHR0cDovL2Nvdy5vcmc6ODA4MCJ9LCJuYW1lIjoiY293LWNsdXN0ZXIifSx7ImNsdXN0ZXIiOnsiY2VydGlmaWNhdGUtYXV0aG9yaXR5IjoicGF0aC90by9teS9jYWZpbGUiLCJzZXJ2ZXIiOiJodHRwczovL2hvcnNlLm9yZzo0NDQzIn0sIm5hbWUiOiJob3JzZS1jbHVzdGVyIn0seyJjbHVzdGVyIjp7Imluc2VjdXJlLXNraXAtdGxzLXZlcmlmeSI6dHJ1ZSwic2VydmVyIjoiaHR0cHM6Ly9waWcub3JnOjQ0MyJ9LCJuYW1lIjoicGlnLWNsdXN0ZXIifV0sImNvbnRleHRzIjpbeyJjb250ZXh0Ijp7ImNsdXN0ZXIiOiJob3JzZS1jbHVzdGVyIiwibmFtZXNwYWNlIjoiY2hpc2VsLW5zIiwidXNlciI6ImdyZWVuLXVzZXIifSwibmFtZSI6ImZlZGVyYWwtY29udGV4dCJ9LHsiY29udGV4dCI6eyJjbHVzdGVyIjoicGlnLWNsdXN0ZXIiLCJuYW1lc3BhY2UiOiJzYXctbnMiLCJ1c2VyIjoiYmxhY2stdXNlciJ9LCJuYW1lIjoicXVlZW4tYW5uZS1jb250ZXh0In1dLCJraW5kIjoiQ29uZmlnIiwicHJlZmVyZW5jZXMiOnsiY29sb3JzIjp0cnVlfSwidXNlcnMiOlt7Im5hbWUiOiJibHVlLXVzZXIiLCJ1c2VyIjp7InRva2VuIjoiYmx1ZS10b2tlbiJ9fSx7Im5hbWUiOiJncmVlbi11c2VyIiwidXNlciI6eyJjbGllbnQtY2VydGlmaWNhdGUiOiJwYXRoL3RvL215L2NsaWVudC9jZXJ0IiwiY2xpZW50LWtleSI6InBhdGgvdG8vbXkvY2xpZW50L2tleSJ9fV19"
+}
+----
+
+
+== 例 2 ：単一のサービスレベルの設定
+
+次の例は、 Astra Trident で作成されたすべてのストレージに同じ要素を適用するバックエンドファイルを示しています。
+
+[listing]
+----
+{
+    "version": 1,
+        "storageDriverName": "astrads-nas",
+        "cluster": "astrads-sti-c6220-09-10-11-12",
+        "namespace": "test",
+        "kubeconfig": "eyJjdXJyZW50LWNvbnRleHQiOiJmZWRlcmFsLWNvbnRleHQiLCJhcGlWZXJzaW9uIjoidjEiLCJjbHVzdGVycyI6W3siY2x1c3RlciI6eyJhcGktdmVyc2lvbiI6InYxIiwic2VydmVyIjoiaHR0cDovL2Nvdy5vcmc6ODA4MCJ9LCJuYW1lIjoiY293LWNsdXN0ZXIifSx7ImNsdXN0ZXIiOnsiY2VydGlmaWNhdGUtYXV0aG9yaXR5IjoicGF0aC90by9teS9jYWZpbGUiLCJzZXJ2ZXIiOiJodHRwczovL2hvcnNlLm9yZzo0NDQzIn0sIm5hbWUiOiJob3JzZS1jbHVzdGVyIn0seyJjbHVzdGVyIjp7Imluc2VjdXJlLXNraXAtdGxzLXZlcmlmeSI6dHJ1ZSwic2VydmVyIjoiaHR0cHM6Ly9waWcub3JnOjQ0MyJ9LCJuYW1lIjoicGlnLWNsdXN0ZXIifV0sImNvbnRleHRzIjpbeyJjb250ZXh0Ijp7ImNsdXN0ZXIiOiJob3JzZS1jbHVzdGVyIiwibmFtZXNwYWNlIjoiY2hpc2VsLW5zIiwidXNlciI6ImdyZWVuLXVzZXIifSwibmFtZSI6ImZlZGVyYWwtY29udGV4dCJ9LHsiY29udGV4dCI6eyJjbHVzdGVyIjoicGlnLWNsdXN0ZXIiLCJuYW1lc3BhY2UiOiJzYXctbnMiLCJ1c2VyIjoiYmxhY2stdXNlciJ9LCJuYW1lIjoicXVlZW4tYW5uZS1jb250ZXh0In1dLCJraW5kIjoiQ29uZmlnIiwicHJlZmVyZW5jZXMiOnsiY29sb3JzIjp0cnVlfSwidXNlcnMiOlt7Im5hbWUiOiJibHVlLXVzZXIiLCJ1c2VyIjp7InRva2VuIjoiYmx1ZS10b2tlbiJ9fSx7Im5hbWUiOiJncmVlbi11c2VyIiwidXNlciI6eyJjbGllbnQtY2VydGlmaWNhdGUiOiJwYXRoL3RvL215L2NsaWVudC9jZXJ0IiwiY2xpZW50LWtleSI6InBhdGgvdG8vbXkvY2xpZW50L2tleSJ9fV19",
+        "defaults": {
+            "exportPolicy": "myexportpolicy1",
+            "qosPolicy": "bronze",
+            "snapshotReserve": "10"
+        },
+        "labels": {"cloud": "on-prem", "creator": "ads-cluster-1", "performance": "bronze"}
+}
+----
+
+
+== 例 3 ：仮想ストレージプールの構成
+
+この例は、仮想ストレージプールで設定されたバックエンド定義ファイルと、それらを参照する StorageClasses を示しています。
+
+[listing]
+----
+{
+    "version": 1,
+    "storageDriverName": "astrads-nas",
+    "cluster": "astrads-sti-c6220-09-10-11-12",
+    "namespace": "test",
+    "kubeconfig": "eyJjdXJyZW50LWNvbnRleHQiOiJmZWRlcmFsLWNvbnRleHQiLCJhcGlWZXJzaW9uIjoidjEiLCJjbHVzdGVycyI6W3siY2x1c3RlciI6eyJhcGktdmVyc2lvbiI6InYxIiwic2VydmVyIjoiaHR0cDovL2Nvdy5vcmc6ODA4MCJ9LCJuYW1lIjoiY293LWNsdXN0ZXIifSx7ImNsdXN0ZXIiOnsiY2VydGlmaWNhdGUtYXV0aG9yaXR5IjoicGF0aC90by9teS9jYWZpbGUiLCJzZXJ2ZXIiOiJodHRwczovL2hvcnNlLm9yZzo0NDQzIn0sIm5hbWUiOiJob3JzZS1jbHVzdGVyIn0seyJjbHVzdGVyIjp7Imluc2VjdXJlLXNraXAtdGxzLXZlcmlmeSI6dHJ1ZSwic2VydmVyIjoiaHR0cHM6Ly9waWcub3JnOjQ0MyJ9LCJuYW1lIjoicGlnLWNsdXN0ZXIifV0sImNvbnRleHRzIjpbeyJjb250ZXh0Ijp7ImNsdXN0ZXIiOiJob3JzZS1jbHVzdGVyIiwibmFtZXNwYWNlIjoiY2hpc2VsLW5zIiwidXNlciI6ImdyZWVuLXVzZXIifSwibmFtZSI6ImZlZGVyYWwtY29udGV4dCJ9LHsiY29udGV4dCI6eyJjbHVzdGVyIjoicGlnLWNsdXN0ZXIiLCJuYW1lc3BhY2UiOiJzYXctbnMiLCJ1c2VyIjoiYmxhY2stdXNlciJ9LCJuYW1lIjoicXVlZW4tYW5uZS1jb250ZXh0In1dLCJraW5kIjoiQ29uZmlnIiwicHJlZmVyZW5jZXMiOnsiY29sb3JzIjp0cnVlfSwidXNlcnMiOlt7Im5hbWUiOiJibHVlLXVzZXIiLCJ1c2VyIjp7InRva2VuIjoiYmx1ZS10b2tlbiJ9fSx7Im5hbWUiOiJncmVlbi11c2VyIiwidXNlciI6eyJjbGllbnQtY2VydGlmaWNhdGUiOiJwYXRoL3RvL215L2NsaWVudC9jZXJ0IiwiY2xpZW50LWtleSI6InBhdGgvdG8vbXkvY2xpZW50L2tleSJ9fV19",
+
+    "autoExportPolicy": true,
+    "autoExportCIDRs": ["10.211.55.0/24"],
+
+    "labels": {"cloud": "on-prem", "creator": "ads-cluster-1"},
+    "defaults": {"snapshotReserve": "5"},
+
+    "storage": [
+        {
+            "labels": {"performance": "gold", "cost": "3"},
+            "defaults": {
+                "qosPolicy": "gold",
+                "snapshotReserve": "10"
+            }
+         },
+         {
+            "labels": {"performance": "silver", "cost": "2"},
+            "defaults": {"qosPolicy": "silver"}
+         },
+         {
+            "labels": {"performance": "bronze", "cost": "1"},
+            "defaults": {"qosPolicy": "bronze"}
+         }
+     ]
+}
+----
+次の StorageClass 定義は、上記のストレージプールを参照してください。parameters.selector` フィールドを使用すると ' ボリュームのホストに使用される仮想プールを各 StorageClass に指定できますボリュームには、選択した仮想プール内で定義された要素があります。
+
+[listing]
+----
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ads
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: astrads-nas
+allowVolumeExpansion: true
+
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ads-gold
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: astrads-nas
+  selector: performance=gold
+allowVolumeExpansion: true
+
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ads-silver
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: astrads-nas
+  selector: performance=silver
+allowVolumeExpansion: true
+
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ads-bronze
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: astrads-nas
+  selector: performance=bronze
+allowVolumeExpansion: true
+----
+
+
+== 次の手順
+
+バックエンド構成ファイルを作成したら、次のコマンドを実行します。
+
+[listing]
+----
+tridentctl create backend -f <backend-file>
+----
+バックエンドの作成に失敗した場合は、バックエンドの設定に何か問題があります。次のコマンドを実行すると、ログを表示して原因を特定できます。
+
+[listing]
+----
+tridentctl logs
+----
+構成ファイルで問題を特定して修正したら、 create コマンドを再度実行できます。

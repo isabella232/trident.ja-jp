@@ -10,7 +10,7 @@ summary: Astra Trident の 20.01 リリースから、 Kubernetes レイヤで�
 :imagesdir: ../media/
 
 
-Astra Trident の 20.01 リリースから、 Kubernetes レイヤで PVS のスナップショットを作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。ボリューム・スナップショットは 'ONTAP-NAS''ONTAP-NAS-flexgroup 'ONTAP-SAN'ONTAP-SAN'ONTAP-エコノミー ''solidfire-san-''solidfire-san-'''solidfire-san-''''' でサポートされています 「 aws -cvs 」、「 gcp-cvs 」、「 azure-NetApp-files 」ドライバ。
+Astra Trident の 20.01 リリースから、 Kubernetes レイヤで PVS のスナップショットを作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。ボリューム・スナップショットは 'ONTAP-NAS'`ONTAP-SAN'ONTAP-SAN'ONTAP-エコノミー ''solidfire-SAN'AWS- cvs'' によってサポートされています 「 gcp-cvs 」、「 azure-NetApp-files 」ドライバ。
 
 
 NOTE: この機能は Kubernetes 1.17 （ベータ版）から提供され、 1.20 から GA になります。ベータ版から GA 版への移行に伴う変更点については、を参照してください https://kubernetes.io/blog/2020/12/10/kubernetes-1.20-volume-snapshot-moves-to-ga/["リリースのブログ"^]。GA への卒業とともに 'v1' API バージョンが導入され 'v1beta` スナップショットと下位互換性があります
@@ -34,13 +34,16 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snaps
 ----
 . 目的のネームスペースにスナップショットコントローラを作成します。以下の YAML マニフェストを編集して名前空間を変更します。
 +
+
+NOTE: GKE 環境でオンデマンドボリュームスナップショットを設定する場合は、スナップショットコントローラを作成しないでください。GKE では、内蔵の非表示のスナップショットコントローラを使用します。
+
+
+
 [listing]
 ----
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
 ----
-
-
 
 TIP: CSI Snapshotter は、を提供します https://github.com/kubernetes-csi/external-snapshotter#validating-webhook["webhook を検証しています"^] ユーザーが既存の v1beta1 スナップショットを検証し、有効なリソースオブジェクトであることを確認できるようにするため。検証中の webhook は、無効なスナップショットオブジェクトに自動的にラベルを付け、今後無効なオブジェクトが作成されないようにします。検証する webhook は Kubernetes Orchestrator によって導入されます。検証するウェブフックを手動で配備する手順を参照してください。無効なスナップショットマニフェストの例を探します。
 

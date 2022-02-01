@@ -17,15 +17,58 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 
 
 
-== 21.10 の新機能
+== 22.01.0 の新機能
 
-ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能を以下に示します。
-
-以前のリリースについては、を参照してください https://docs.netapp.com/us-en/trident/earlier-versions.html["ドキュメントの ealier バージョン"]。
+ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能をいくつかご紹介します。以前のリリースについては、を参照してください https://docs.netapp.com/us-en/trident/earlier-versions.html["ドキュメントの ealier バージョン"]。
 
 
+IMPORTANT: 以前のリリースの Trident からアップグレードして Azure NetApp Files を使用する場合 ' 現在 'location`config パラメータは ' 必須のシングルトンフィールドになっています
 
-=== Astra Trident 21.07 以降の変更点
+
+
+=== の修正
+
+リソース名が重複して 1 箇所に操作が制限されるように ANF ドライバを修正しました。
+
+
+
+=== 拡張機能
+
+* Kubernetes の機能拡張：
++
+** Kubernetes 1.23 のサポートが追加されました。
+** Trident Operator または Helm 経由でインストールした場合、 Trident ポッドのスケジュールオプションを追加します。（link:https://github.com/NetApp/trident/issues/651["GitHub 問題 #651"^])
+
+
+* GCP ドライバでリージョン間のボリュームを許可します。（link:https://github.com/NetApp/trident/issues/633["GitHub 問題 #633"^])
+* ANF ボリュームでの「 unixPermissions 」オプションのサポートが追加されました。（link:https://github.com/NetApp/trident/issues/666["GitHub 問題 #666"^])
+
+
+
+
+=== 非推奨
+
+Trident REST インターフェイスは、 127.0.0.1 または [::1] アドレスでのみリスンおよびサービスを提供できます
+
+
+
+=== Astra Trident 21.10.1 の変更点
+
+
+WARNING: v21.10.0 リリースには、ノードが削除されてから Kubernetes クラスタに再度追加されたときに、 Trident コントローラを CrashLoopBackOff 状態にすることができる問題があります。この問題は、 v21.10.1 (GitHub 問題 669) で修正されています。
+
+
+
+==== の修正
+
+* GCP CVS バックエンドでボリュームをインポートする際の競合状態が修正され、インポートに失敗することがありました。
+* ノードを削除してから Kubernetes クラスタ（ GitHub 問題 669 ）に再度追加するときに、 Trident コントローラを CrashLoopBackOff 状態にする問題を修正しました。
+* SVM 名を指定しなかった場合に問題が検出されないという問題を修正しました（ GitHub 問題 612 ）。
+
+
+
+
+=== 21.10.0 の変更点（ Astra Trident 21.07 以降）
 
 
 
