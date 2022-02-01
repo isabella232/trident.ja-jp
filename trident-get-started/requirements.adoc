@@ -21,7 +21,7 @@ NOTE: Trident が使用するポートについては、を参照してくださ
 
 Trident Astra は、次のような複数のコンテナエンジンとオーケストレーションツールをサポート
 
-* Anthos オンプレミス（ VMware ）と Anthos はベアメタル上で 1.8 、 1.9 です
+* オンプレミス（ VMware ）と Anthos はベアメタル 1.8 、 1.9 上にあります
 * Kubernetes 1.17 以降（最新： 1.23 ）
 * Mirantis Kubernetes Engine 3.4
 * OpenShift 4.7 、 4.8 、 4.9
@@ -29,9 +29,9 @@ Trident Astra は、次のような複数のコンテナエンジンとオーケ
 
 Trident オペレータは、次のリリースでサポートされています。
 
-* Anthos オンプレミス（ VMware ）と Anthos はベアメタル上で 1.8 、 1.9 です
-* Kubernetes 1.17 以降（最新： 1.22 ）
-* OpenShift 4.7 、 4.8 、 4.9 （最新 4.9 ）
+* オンプレミス（ VMware ）と Anthos はベアメタル 1.8 、 1.9 上にあります
+* Kubernetes 1.17 以降（最新： 1.23 ）
+* OpenShift 4.7 、 4.8 、 4.9
 
 
 
