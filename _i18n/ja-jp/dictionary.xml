@@ -3144,4 +3144,5 @@
   <block id="ad9d572821da9bfff3397f2d3260509d" category="list-text">K83.GCR.IO/sig-storage/csi-Provisioner ： v3.1.0</block>
   <block id="73e93ad328287e5ce4c06228cfdba2bf" category="cell">v1.3.0</block>
   <block id="f2fe14f2f47e170d6135f34f6214adcb" category="list-text">オンプレミス（ VMware ）と Anthos はベアメタル 1.8 、 1.9 上にあります</block>
+  <block id="08ee53e1d5cefb7967a295e98036598e" category="cell">.snapshot ディレクトリの表示を制御します</block>
 </blocks>
