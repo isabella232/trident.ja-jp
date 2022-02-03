@@ -3166,4 +3166,6 @@
   <block id="a78703e6fcb2511d5a565496df5b2082" category="section-title">例 2 ：容量プールフィルタを使用した特定のサービスレベル設定</block>
   <block id="6da664b0342ea1be008211c33f1eb020" category="paragraph">このバックエンド構成では 'Ultra 容量プール内の Azure の eastus ロケーションにボリュームを配置しますAstra Trident は、 ANF に委譲されたすべてのサブネットをその場所で自動的に検出し、いずれかのサブネットに新しいボリュームをランダムに配置します。</block>
   <block id="b0f4f0ac7ea6be4c3047dd422c23539b" category="paragraph">Astra Trident 22.01 を実行していない場合は、以前のリリースのドキュメントを参照できます。</block>
+  <block id="cce172403b73af5c2a4e93081affcc7f" category="inline-link">Astra Trident 21.10</block>
+  <block id="606b9e83fb467a43b3065d4fd5037094" category="list-text"><block ref="606b9e83fb467a43b3065d4fd5037094" category="inline-link-rx"></block></block>
 </blocks>
