@@ -46,6 +46,10 @@ Usage:
 * `n,--namespace string`: Astra Trident 配備の名前空間。
 * `-o ,--output string`: 出力形式。JSON の 1 つ | yaml | name | wide | ps （デフォルト）。
 * `s'--server string`: Astra Trident REST インタフェースのアドレス / ポート。
++
+
+CAUTION: Trident REST インターフェイスは、 127.0.0.1 （ IPv4 の場合）または [::1] （ IPv6 の場合）のみをリスンして処理するように設定できます。
+
 
 
 

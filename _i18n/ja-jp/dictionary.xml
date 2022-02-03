@@ -3038,7 +3038,6 @@
   <block id="9d6ffa6ef31bd0b92876314219f18ef5" category="inline-link">Astra API ドキュメント</block>
   <block id="9c2cf0e947812ecb3fc0bfccaa8b3c61" category="list-text"><block ref="9c2cf0e947812ecb3fc0bfccaa8b3c61" category="inline-link-rx"></block></block>
   <block id="4546bbd46f06879787b5670b13277b28" category="paragraph">このステップの一環として、 21.10.0 Trident オペレータが既存の Astra Trident インストールを特定し、オペレータと同じバージョンにアップグレードします。</block>
-  <block id="ebb6d1f6681020925f184345a6a955aa" category="paragraph">Astra Trident 21.10 を実行していない場合は、以前のリリースのドキュメントを参照できます。</block>
   <block id="9f687b4e8cbf2fbb623b26b30fd92717" category="admonition">21.07 より前のリリースでは、レガシードキュメントサイトにリダイレクトされます。</block>
   <block id="a93e9e44b7a375a4236260f5ff2b251e" category="inline-link">Astra Trident 21.07</block>
   <block id="3830d427e146a8a64454dc373d9b1502" category="list-text"><block ref="3830d427e146a8a64454dc373d9b1502" category="inline-link-rx"></block></block>
@@ -3166,4 +3165,5 @@
   <block id="54042b89155d99a3568a196cb5ff1da8" category="paragraph">これは、バックエンドの絶対的な最小構成です。この構成では、 ANF に委譲されたネットアップアカウント、容量プール、サブネットがすべて検出され、それらのプールまたはサブネットの 1 つに新しいボリュームがランダムに配置されます。</block>
   <block id="a78703e6fcb2511d5a565496df5b2082" category="section-title">例 2 ：容量プールフィルタを使用した特定のサービスレベル設定</block>
   <block id="6da664b0342ea1be008211c33f1eb020" category="paragraph">このバックエンド構成では 'Ultra 容量プール内の Azure の eastus ロケーションにボリュームを配置しますAstra Trident は、 ANF に委譲されたすべてのサブネットをその場所で自動的に検出し、いずれかのサブネットに新しいボリュームをランダムに配置します。</block>
+  <block id="b0f4f0ac7ea6be4c3047dd422c23539b" category="paragraph">Astra Trident 22.01 を実行していない場合は、以前のリリースのドキュメントを参照できます。</block>
 </blocks>
