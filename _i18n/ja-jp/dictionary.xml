@@ -1498,7 +1498,6 @@
   <block id="62df396fbf0c4fd30e1e851335e8b26b" category="paragraph">使用しているバックエンドによっては、 NFS や iSCSI のユーティリティをクラスタ内のすべてのワーカーにインストールする必要があります。を参照してください <block ref="8e0b40cac942de59585b1131f9197d7b" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="2139fe384d5ae165545994dff01961d9" category="section-title">ストレージシステムの構成：</block>
   <block id="923680056b0f0258907f498670b4ead1" category="section-title">コンテナイメージと対応する Kubernetes バージョン</block>
-  <block id="a6595e492ec094375a673911109a32f2" category="paragraph">エアギャップのある環境では、 Astra Trident のインストールに必要なコンテナイメージについて、次のリストを参照してください。</block>
   <block id="aa92c4c233bc01609d957e469736b699" category="cell">コンテナイメージ</block>
   <block id="3b29886980a3307188a882bdc7cad63b" category="cell">v1.17.0</block>
   <block id="ca2e728c8f17fef48811518aaed4de43" category="list-text">k83.gcr.io/sig-storage/csi-snapshotter ： v3.0.3</block>
@@ -3168,4 +3167,5 @@
   <block id="b0f4f0ac7ea6be4c3047dd422c23539b" category="paragraph">Astra Trident 22.01 を実行していない場合は、以前のリリースのドキュメントを参照できます。</block>
   <block id="cce172403b73af5c2a4e93081affcc7f" category="inline-link">Astra Trident 21.10</block>
   <block id="606b9e83fb467a43b3065d4fd5037094" category="list-text"><block ref="606b9e83fb467a43b3065d4fd5037094" category="inline-link-rx"></block></block>
+  <block id="ee50d481128d1543f9945b4a4f3fbe9d" category="paragraph">エアギャップのある環境では、 Astra Trident のインストールに必要なコンテナイメージを次の表に示します。tridentctl images コマンドを使用して ' 必要なコンテナイメージのリストを確認します</block>
 </blocks>
