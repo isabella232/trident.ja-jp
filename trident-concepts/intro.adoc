@@ -61,6 +61,6 @@ Astra のページで無料トライアルに登録できます。
 * https://docs.netapp.com/us-en/astra-family/intro-family.html["ネットアップアストラ製品ファミリー"]
 * https://docs.netapp.com/us-en/astra/get-started/intro.html["Astra Control Service のマニュアル"^]
 * https://docs.netapp.com/us-en/astra-control-center/index.html["Astra Control Center のドキュメント"^]
-* https://docs.netapp.com/us-en/astra-data-store/index.html["Astra データのドキュメント"^]
+* https://docs.netapp.com/us-en/astra-data-store/index.html["Astra データストアのドキュメント"^]
 * https://docs.netapp.com/us-en/astra-automation/get-started/before_get_started.html["Astra API ドキュメント"^]
 
