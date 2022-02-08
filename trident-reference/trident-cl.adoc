@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-reference/trident-cl.html 
 keywords: command-line, options, logging, kubernetes, docker, ports 
-summary: Astra Trident は、いくつかのコマンドラインオプションを公開し、特定のポートを介して通信を行います。 
+summary: Astra Trident は、 Trident オーケストレーションツール用のコマンドラインオプションをいくつか提供し、特定のポートを介して通信を行います。 
 ---
 = コマンドラインオプション
 :hardbreaks:
@@ -11,7 +11,7 @@ summary: Astra Trident は、いくつかのコマンドラインオプション
 
 
 [role="lead"]
-Astra Trident には、いくつかのコマンドラインオプションが用意されています。これらの値は環境で変更できます。
+Trident は、 Trident オーケストレーションツールのコマンドラインオプションをいくつか公開しています。これらのオプションを使用して、導入環境を変更できます。
 
 
 

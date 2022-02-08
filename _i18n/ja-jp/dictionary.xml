@@ -50,9 +50,7 @@
   <block id="607ae6360b32f1bd6e559e915d414fab" category="doc">Kubernetes の概念</block>
   <block id="d60f0fff1c23a02458849862f593357e" category="inline-link">Kubernetes システム</block>
   <block id="a7018a5fd7b610274c7786aa5402e64d" category="paragraph">のコンポーネントの詳細については、を参照してください<block ref="f01a74527fa0343e793eb393c9d4809a" category="inline-link-rx"></block>。</block>
-  <block id="7a90ecd4cb81a2963b963ac8c0bba0a2" category="summary">Astra Trident は、いくつかのコマンドラインオプションを公開し、特定のポートを介して通信を行います。</block>
   <block id="7d4fab76513c90b603a722620cde60fe" category="doc">コマンドラインオプション</block>
-  <block id="576f889bab2702f907ac880da895cddb" category="paragraph">Astra Trident には、いくつかのコマンドラインオプションが用意されています。これらの値は環境で変更できます。</block>
   <block id="8db7df66ab1d7ab5f1dc947acdb5fae4" category="section-title">ロギング</block>
   <block id="7e2a14542a2613424ad88206fd2dd9aa" category="list-text">--debug: デバッグ出力をイネーブルにします。</block>
   <block id="55e727716c7f623987be58e50732c01e" category="list-text">-loglevel &lt;level&gt;` ：ロギングレベルを設定します（ debug 、 info 、 warn 、 error 、 fatal ）。デフォルトは info です。</block>
@@ -1415,7 +1413,6 @@
   <block id="df65ec31c6f96e95301e3c6ff8863335" category="list-text">標準のインストール手順を使用して、リモートマシンからの導入を完了します。</block>
   <block id="13c852fce58f7c6981fa0a952dcd76af" category="summary">Trident オペレータは 'TridentOrchestrator 仕様の属性を使用して 'Astra Trident のインストール方法をカスタマイズできます</block>
   <block id="b9d69225e5cf4da0389ed6b1f6b66a10" category="doc">Trident オペレータの環境をカスタマイズ</block>
-  <block id="541de2d8e93ee6c623dfc11938d0e83a" category="paragraph">Trident オペレータは 'TridentOrchestrator 仕様の属性を使用して 'Astra Trident のインストール方法をカスタマイズできます</block>
   <block id="02e0835b3015839cde731027c217d70b" category="paragraph">属性のリストについては、次の表を参照してください。</block>
   <block id="83f499a540b1323009c200d6f8cc9396" category="cell">パラメータ</block>
   <block id="7a1920d61156abc05a60135aefe8bc67" category="cell">デフォルト</block>
@@ -3168,4 +3165,7 @@
   <block id="cce172403b73af5c2a4e93081affcc7f" category="inline-link">Astra Trident 21.10</block>
   <block id="606b9e83fb467a43b3065d4fd5037094" category="list-text"><block ref="606b9e83fb467a43b3065d4fd5037094" category="inline-link-rx"></block></block>
   <block id="ee50d481128d1543f9945b4a4f3fbe9d" category="paragraph">エアギャップのある環境では、 Astra Trident のインストールに必要なコンテナイメージを次の表に示します。tridentctl images コマンドを使用して ' 必要なコンテナイメージのリストを確認します</block>
+  <block id="ec3f9af8f611100a0182ffb9ab2e5ef8" category="paragraph">ONTAP 内では、 Trident ドライバが使用できるより制限的な役割を作成することもできますが、推奨しません。Trident の新リリースでは、多くの場合、考慮すべき API が追加で必要になるため、アップグレードが難しく、エラーも起こりやすくなります。</block>
+  <block id="ee50ce7340da5b018abe62c8e613cae0" category="summary">Astra Trident は、 Trident オーケストレーションツール用のコマンドラインオプションをいくつか提供し、特定のポートを介して通信を行います。</block>
+  <block id="94efe0c9471991c69d2a3b0970a56744" category="paragraph">Trident は、 Trident オーケストレーションツールのコマンドラインオプションをいくつか公開しています。これらのオプションを使用して、導入環境を変更できます。</block>
 </blocks>
