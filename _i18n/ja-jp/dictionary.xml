@@ -3171,7 +3171,6 @@
   <block id="6add71a247c8f4513060920be14857bc" category="cell">allowVolumeExpansion の略</block>
   <block id="84e2c64f38f78ba3ea5c905ab5a2da27" category="cell">ブール値</block>
   <block id="675e3f37a9adfd7ab6433906c490fa06" category="cell">PVC サイズの拡張のサポートをイネーブルまたはディセーブルにします</block>
-  <block id="87122f0775b5e45af5241d0008c1a51f" category="cell">ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 solidfire-san-SAN 、 solidfire-san-SAN 、 AWS- CVS 、 GCP-cvs 、 azure-NetApp-files</block>
   <block id="c791531450eeeb073b30215d9c306a00" category="cell">1.11 以上</block>
   <block id="086b513e7d83c4cf32a8bd3550679276" category="cell">volumeBindingMode のようになりました</block>
   <block id="fd656a4f359aa12808a6d0ceb5792342" category="cell">即時、 WaitForFirstConsumer</block>
@@ -3183,4 +3182,5 @@
   <block id="45d2174daba36b76955e69d2eddf26ca" category="list-text">PVC アクセスモードは RWO です。</block>
   <block id="ba5b62efad4f90a8f4bb806cba4a3ea4" category="paragraph">NFS ストレージドライバの場合、 NFS エクスポートにはファイルシステムがすでに存在します。fsGroup を使用するには ' ストレージ・クラスで fsType を指定する必要がありますこの値は 'NFS' に設定することも ' ヌル以外の任意の値に設定することもできます</block>
   <block id="4811aaaf5eedea1ea9f703353903b5b5" category="list-text">を参照してください <block ref="c35b155baa39b6aa36cf9bc59eea88f3" category="inline-link-macro-rx"></block> ボリューム拡張の詳細については、を参照してください。</block>
+  <block id="853119066470e5145f87024e7c6accdb" category="cell">ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-san 、 aws -cvs 、 gcp-cvs 、 azure-netapp-files</block>
 </blocks>

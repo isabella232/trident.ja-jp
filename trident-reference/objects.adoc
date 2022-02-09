@@ -217,7 +217,7 @@ excludeStoragePools' パラメータを使用して、 Trident がプロビジ�
 | FSstype （英語） | 文字列 | ext4 、 ext3 、 xfs など | ブロックボリュームのファイルシステムのタイプ | solidfire-san-group 、 ontap/nas 、 ontap -nas-エコノミー 、 ontap -nas-flexgroup 、 ontap -san 、 ONTAP - SAN 経済、 eseries-iscsi | すべて 
 
 
-| allowVolumeExpansion の略 | ブール値 | true false | PVC サイズの拡張のサポートをイネーブルまたはディセーブルにします | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 solidfire-san-SAN 、 solidfire-san-SAN 、 AWS- CVS 、 GCP-cvs 、 azure-NetApp-files | 1.11 以上 
+| allowVolumeExpansion の略 | ブール値 | true false | PVC サイズの拡張のサポートをイネーブルまたはディセーブルにします | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-san 、 aws -cvs 、 gcp-cvs 、 azure-netapp-files | 1.11 以上 
 
 
 | volumeBindingMode のようになりました | 文字列 | 即時、 WaitForFirstConsumer | ボリュームバインドと動的プロビジョニングを実行するタイミングを選択します | すべて | 1.17 以上 
