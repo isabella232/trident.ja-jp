@@ -302,7 +302,6 @@
   <block id="7cfbb6f07899c8071ff38e69dca190e2" category="cell">FSstype （英語）</block>
   <block id="64b6d80cc167d5c657b60054dbe396ee" category="cell">ext4 、 ext3 、 xfs など</block>
   <block id="7928a56d4874d982a06a59e3f30f6935" category="cell">ブロックボリュームのファイルシステムのタイプ</block>
-  <block id="b74b022e90a67722f5de8016a0e5578c" category="cell">solidfire-san-エコノミー 、 eseries-iscsi</block>
   <block id="b1c94ca2fbc3e78fc30069c8d0f01680" category="cell">すべて</block>
   <block id="2435c5eb0d842c13f635d4b1d6667a52" category="paragraph">Trident インストーラバンドルには、「 `sample -input/storageclass-*.yaml 」で Trident で使用するストレージクラス定義の例がいくつか用意されています。Kubernetes ストレージクラスを削除すると、対応する Trident ストレージクラスも削除されます。</block>
   <block id="6b218cef3794c1b32702bd37753ce9ef" category="section-title">Kubernetes VolumeSnapshotClass オブジェクト</block>
@@ -3168,4 +3167,20 @@
   <block id="94efe0c9471991c69d2a3b0970a56744" category="paragraph">Trident は、 Trident オーケストレーションツールのコマンドラインオプションをいくつか公開しています。これらのオプションを使用して、導入環境を変更できます。</block>
   <block id="be1c3d3113c4023e29e8dd947523c711" category="inline-link">Astra データストアのドキュメント</block>
   <block id="c54241e3258a450b02a723d6d751a4f1" category="list-text"><block ref="c54241e3258a450b02a723d6d751a4f1" category="inline-link-rx"></block></block>
+  <block id="55f3fc550e9a03a95334f3a19f0920cc" category="cell">solidfire-san-group 、 ontap/nas 、 ontap -nas-エコノミー 、 ontap -nas-flexgroup 、 ontap -san 、 ONTAP - SAN 経済、 eseries-iscsi</block>
+  <block id="6add71a247c8f4513060920be14857bc" category="cell">allowVolumeExpansion の略</block>
+  <block id="84e2c64f38f78ba3ea5c905ab5a2da27" category="cell">ブール値</block>
+  <block id="675e3f37a9adfd7ab6433906c490fa06" category="cell">PVC サイズの拡張のサポートをイネーブルまたはディセーブルにします</block>
+  <block id="87122f0775b5e45af5241d0008c1a51f" category="cell">ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 solidfire-san-SAN 、 solidfire-san-SAN 、 AWS- CVS 、 GCP-cvs 、 azure-NetApp-files</block>
+  <block id="c791531450eeeb073b30215d9c306a00" category="cell">1.11 以上</block>
+  <block id="086b513e7d83c4cf32a8bd3550679276" category="cell">volumeBindingMode のようになりました</block>
+  <block id="fd656a4f359aa12808a6d0ceb5792342" category="cell">即時、 WaitForFirstConsumer</block>
+  <block id="5e7777e1f9cfa3a93159ee44cf3f1f5a" category="cell">ボリュームバインドと動的プロビジョニングを実行するタイミングを選択します</block>
+  <block id="9c26b95cff78678b07389bb95544c7b6" category="cell">1.17 以上</block>
+  <block id="8264769021597389583b0a7d1fa7e076" category="inline-link-macro">Kubernetes ：ポッドまたはコンテナのセキュリティコンテキストを設定します</block>
+  <block id="dca8809f382a96564d64ae1525b39048" category="list-text">SAN LUN に必要なファイル・システム・タイプを制御するには 'fsType' パラメータを使用しますまた 'Kubernetes は ' ストレージ・クラスに fsType が存在することも使用して ' ファイル・システムが存在することを示しますボリューム所有権は 'fsType' が設定されている場合に限り 'pod の fsGroup' セキュリティコンテキストを使用して制御できますを参照してください <block ref="7940a62969e5aeae7f6e32b04e7a11e3" category="inline-link-macro-rx"></block> 「 fsGroup 」コンテキストを使用したボリューム所有権の設定の概要については、を参照してください。次の場合にのみ 'fsGroup' 値が適用されます</block>
+  <block id="6dd29ca7439e52dcf2fbc569066b3d67" category="list-text">「 fsType 」はストレージクラスで設定されます。</block>
+  <block id="45d2174daba36b76955e69d2eddf26ca" category="list-text">PVC アクセスモードは RWO です。</block>
+  <block id="ba5b62efad4f90a8f4bb806cba4a3ea4" category="paragraph">NFS ストレージドライバの場合、 NFS エクスポートにはファイルシステムがすでに存在します。fsGroup を使用するには ' ストレージ・クラスで fsType を指定する必要がありますこの値は 'NFS' に設定することも ' ヌル以外の任意の値に設定することもできます</block>
+  <block id="4811aaaf5eedea1ea9f703353903b5b5" category="list-text">を参照してください <block ref="c35b155baa39b6aa36cf9bc59eea88f3" category="inline-link-macro-rx"></block> ボリューム拡張の詳細については、を参照してください。</block>
 </blocks>

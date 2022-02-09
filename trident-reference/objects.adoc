@@ -129,6 +129,8 @@ provisioner: csi.trident.netapp.io
 mountOptions: <Mount Options>
 parameters:
   <Trident Parameters>
+allowVolumeExpansion: true
+volumeBindingMode: Immediate
 ----
 これらのパラメータは Trident 固有で、クラスのボリュームのプロビジョニング方法を Trident に指示します。
 
@@ -212,10 +214,30 @@ excludeStoragePools' パラメータを使用して、 Trident がプロビジ�
 | 属性 | を入力します | 値 | 説明 | 関連するドライバ | Kubernetes のバージョン 
 
 
-| FSstype （英語） | 文字列 | ext4 、 ext3 、 xfs など | ブロックボリュームのファイルシステムのタイプ | solidfire-san-エコノミー 、 eseries-iscsi | すべて 
-|===
-Trident インストーラバンドルには、「 `sample -input/storageclass-*.yaml 」で Trident で使用するストレージクラス定義の例がいくつか用意されています。Kubernetes ストレージクラスを削除すると、対応する Trident ストレージクラスも削除されます。
+| FSstype （英語） | 文字列 | ext4 、 ext3 、 xfs など | ブロックボリュームのファイルシステムのタイプ | solidfire-san-group 、 ontap/nas 、 ontap -nas-エコノミー 、 ontap -nas-flexgroup 、 ontap -san 、 ONTAP - SAN 経済、 eseries-iscsi | すべて 
 
+
+| allowVolumeExpansion の略 | ブール値 | true false | PVC サイズの拡張のサポートをイネーブルまたはディセーブルにします | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 solidfire-san-SAN 、 solidfire-san-SAN 、 AWS- CVS 、 GCP-cvs 、 azure-NetApp-files | 1.11 以上 
+
+
+| volumeBindingMode のようになりました | 文字列 | 即時、 WaitForFirstConsumer | ボリュームバインドと動的プロビジョニングを実行するタイミングを選択します | すべて | 1.17 以上 
+|===
+[TIP]
+====
+* SAN LUN に必要なファイル・システム・タイプを制御するには 'fsType' パラメータを使用しますまた 'Kubernetes は ' ストレージ・クラスに fsType が存在することも使用して ' ファイル・システムが存在することを示しますボリューム所有権は 'fsType' が設定されている場合に限り 'pod の fsGroup' セキュリティコンテキストを使用して制御できますを参照してください link:https://kubernetes.io/docs/tasks/configure-pod-container/security-context/["Kubernetes ：ポッドまたはコンテナのセキュリティコンテキストを設定します"^] 「 fsGroup 」コンテキストを使用したボリューム所有権の設定の概要については、を参照してください。次の場合にのみ 'fsGroup' 値が適用されます
++
+** 「 fsType 」はストレージクラスで設定されます。
+** PVC アクセスモードは RWO です。
+
+
++
+NFS ストレージドライバの場合、 NFS エクスポートにはファイルシステムがすでに存在します。fsGroup を使用するには ' ストレージ・クラスで fsType を指定する必要がありますこの値は 'NFS' に設定することも ' ヌル以外の任意の値に設定することもできます
+
+* を参照してください link:https://docs.netapp.com/us-en/trident/trident-use/vol-expansion.html["ボリュームを展開します"^] ボリューム拡張の詳細については、を参照してください。
+* Trident インストーラバンドルには、「 `sample -input/storageclass-*.yaml 」で Trident で使用するストレージクラス定義の例がいくつか用意されています。Kubernetes ストレージクラスを削除すると、対応する Trident ストレージクラスも削除されます。
+
+
+====
 
 
 == Kubernetes VolumeSnapshotClass オブジェクト
