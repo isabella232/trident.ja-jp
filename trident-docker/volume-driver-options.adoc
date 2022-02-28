@@ -53,7 +53,8 @@ Snapshot ポリシーが目的の値に設定されます。デフォルトは�
 | 「暗号化」  a| 
 これにより、新しいボリュームで NetApp Volume Encryption （ NVE ）がデフォルトで「 false 」に設定されます。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。
 
-+ 注： NetApp Aggregate Encryption （ NAE ）は現在 Trident でサポートされていません。
+
+NOTE: NetApp Aggregate Encryption （ NAE ）は、現在 Trident ではサポートされていません。
 
 
 

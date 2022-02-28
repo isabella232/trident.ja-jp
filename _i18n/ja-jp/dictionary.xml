@@ -3183,5 +3183,5 @@
   <block id="ba5b62efad4f90a8f4bb806cba4a3ea4" category="paragraph">NFS ストレージドライバの場合、 NFS エクスポートにはファイルシステムがすでに存在します。fsGroup を使用するには ' ストレージ・クラスで fsType を指定する必要がありますこの値は 'NFS' に設定することも ' ヌル以外の任意の値に設定することもできます</block>
   <block id="4811aaaf5eedea1ea9f703353903b5b5" category="list-text">を参照してください <block ref="c35b155baa39b6aa36cf9bc59eea88f3" category="inline-link-macro-rx"></block> ボリューム拡張の詳細については、を参照してください。</block>
   <block id="853119066470e5145f87024e7c6accdb" category="cell">ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-san 、 aws -cvs 、 gcp-cvs 、 azure-netapp-files</block>
-  <block id="eb5fcd9066a478d8d1c83a897726b2c0" category="paragraph">+ 注： NetApp Aggregate Encryption （ NAE ）は現在 Trident でサポートされていません。</block>
+  <block id="23038d88eea805ac06a26959fc129ca5" category="admonition">NetApp Aggregate Encryption （ NAE ）は、現在 Trident ではサポートされていません。</block>
 </blocks>
