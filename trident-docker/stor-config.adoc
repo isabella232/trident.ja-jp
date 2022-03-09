@@ -140,7 +140,7 @@ myigroup と入力します
 
 
 
-| 「 limitVolumeSizee 」  a| 
+| 「 limitVolumeSize 」と入力します  a| 
 最大要求可能ボリュームサイズと qtree 親ボリュームサイズ。* 「 ONTAP-NAS-エコノミー 」ドライバの場合、このオプションにより、作成する FlexVol のサイズも制限されます。 *
  a| 
 300g
