@@ -125,9 +125,14 @@ NOTE: ファイルシステムにアクセスできる任意の場所から SSH 
 
 NOTE: 'ONTAP-SAN' および 'ONTAP-SAN-エコノミー のドライバには 'atalif' を指定しないでください Astra Trident がマルチパスを使用できるようにします
 
+[WARNING]
+.ONTAP 対応の Amazon FSX
+====
+* 「 limitAggregateUsage 」パラメータは、「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。
+* NetApp ONTAP ボリューム用の Amazon FSX には、 SnapMirror が事前に設定されています。Trident では変更や解除はできません。PVC を削除するには、 NetApp ONTAP ボリュームの PV と FSX を手動で削除する必要があります。
 
-WARNING: Amazon FSX for NetApp ONTAP を Astra Trident とともに使用する場合、「 limitAggregateUsage 」パラメータは「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。
 
+====
 導入後、次の手順を実行してを作成します link:../trident-get-started/kubernetes-postdeployment.html["ストレージクラスを定義してボリュームをプロビジョニングし、ポッドでボリュームをマウント"^]。
 
 

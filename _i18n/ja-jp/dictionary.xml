@@ -2189,7 +2189,6 @@
   <block id="82744a46443ebff9011b85aa2468fdc2" category="list-text"><block ref="82744a46443ebff9011b85aa2468fdc2" category="inline-link-macro-rx"></block></block>
   <block id="d1e8ff43d93982813a74a45f9b721655" category="list-text"><block ref="d1e8ff43d93982813a74a45f9b721655" category="inline-link-macro-rx"></block></block>
   <block id="408cf26cdce3db57f4b0cfb372f60739" category="admonition">'ONTAP-SAN' および 'ONTAP-SAN-エコノミー のドライバには 'atalif' を指定しないでください Astra Trident がマルチパスを使用できるようにします</block>
-  <block id="f15eb14cb9557fc6c608200b83965ea4" category="admonition">Amazon FSX for NetApp ONTAP を Astra Trident とともに使用する場合、「 limitAggregateUsage 」パラメータは「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。</block>
   <block id="d11f02b39cdb338286053b2f1315c6b4" category="inline-link-macro">ストレージクラスを定義してボリュームをプロビジョニングし、ポッドでボリュームをマウント</block>
   <block id="95a5f873da165cd068ef3ec7e17364f3" category="paragraph">導入後、次の手順を実行してを作成します <block ref="15bf5a6bf382a8a35f58cdae8ebe845c" category="inline-link-macro-rx"></block>。</block>
   <block id="cc788b7e72b2a734dd0985bd1e0e9fe3" category="inline-link">Amazon FSX for NetApp ONTAP のドキュメント</block>
@@ -2766,7 +2765,6 @@
   <block id="301c869c551e12d862ab0291837102a0" category="paragraph">-o nfsvers=4</block>
   <block id="00d72747af4eb1f0bab120935efe88fe" category="paragraph">プラグインで使用される igroup 。デフォルトは「 netappdvp 」です。* 「 ONTAP-SAN'd river 」のみ利用可能です。</block>
   <block id="79e762988462f6f8da9becfbfd789755" category="paragraph">myigroup と入力します</block>
-  <block id="7f36667ac41e34035d815320145dcadb" category="cell">「 limitVolumeSizee 」</block>
   <block id="5c5adadf8175fd69d4af9bfdb608c42c" category="paragraph">最大要求可能ボリュームサイズと qtree 親ボリュームサイズ。* 「 ONTAP-NAS-エコノミー 」ドライバの場合、このオプションにより、作成する FlexVol のサイズも制限されます。 *</block>
   <block id="f07e606cfe25ac6fb07d9c4af941d9a2" category="paragraph">300g</block>
   <block id="981ba910eb0ffc42f42059de056624b4" category="paragraph">FlexVol あたりの最大 qtree 数は [50 、 300] の範囲で指定する必要があります。デフォルトは 200 です。*「 ONTAP-NAS-エコノミー 」ドライバの場合、このオプションを使用すると、 FlexVol あたりの最大数をカスタマイズできます。</block>
@@ -3184,4 +3182,7 @@
   <block id="4811aaaf5eedea1ea9f703353903b5b5" category="list-text">を参照してください <block ref="c35b155baa39b6aa36cf9bc59eea88f3" category="inline-link-macro-rx"></block> ボリューム拡張の詳細については、を参照してください。</block>
   <block id="853119066470e5145f87024e7c6accdb" category="cell">ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-san 、 aws -cvs 、 gcp-cvs 、 azure-netapp-files</block>
   <block id="23038d88eea805ac06a26959fc129ca5" category="admonition">NetApp Aggregate Encryption （ NAE ）は、現在 Trident ではサポートされていません。</block>
+  <block id="18cf072964a583150dd247485ba75b92" category="admonition-title">ONTAP 対応の Amazon FSX</block>
+  <block id="fa8bc73a8436dd2f79aafaa731d248e4" category="list-text">「 limitAggregateUsage 」パラメータは、「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。</block>
+  <block id="c7e012baf676feb8d925d8f535c01c02" category="list-text">NetApp ONTAP ボリューム用の Amazon FSX には、 SnapMirror が事前に設定されています。Trident では変更や解除はできません。PVC を削除するには、 NetApp ONTAP ボリュームの PV と FSX を手動で削除する必要があります。</block>
 </blocks>
