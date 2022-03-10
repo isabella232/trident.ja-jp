@@ -3185,4 +3185,5 @@
   <block id="18cf072964a583150dd247485ba75b92" category="admonition-title">ONTAP 対応の Amazon FSX</block>
   <block id="fa8bc73a8436dd2f79aafaa731d248e4" category="list-text">「 limitAggregateUsage 」パラメータは、「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。</block>
   <block id="c7e012baf676feb8d925d8f535c01c02" category="list-text">NetApp ONTAP ボリューム用の Amazon FSX には、 SnapMirror が事前に設定されています。Trident では変更や解除はできません。PVC を削除するには、 NetApp ONTAP ボリュームの PV と FSX を手動で削除する必要があります。</block>
+  <block id="7b3ecf601e0eee1c9d097083281abafa" category="example-title">例を展開します</block>
 </blocks>
