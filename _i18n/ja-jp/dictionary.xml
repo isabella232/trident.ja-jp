@@ -3125,7 +3125,6 @@
   <block id="9b73461bc19f14ce7a87a56f6890ca87" category="list-text">NetApp/trident-operator ： 22.01.0 （オプション）</block>
   <block id="ad9d572821da9bfff3397f2d3260509d" category="list-text">K83.GCR.IO/sig-storage/csi-Provisioner ： v3.1.0</block>
   <block id="73e93ad328287e5ce4c06228cfdba2bf" category="cell">v1.3.0</block>
-  <block id="f2fe14f2f47e170d6135f34f6214adcb" category="list-text">オンプレミス（ VMware ）と Anthos はベアメタル 1.8 、 1.9 上にあります</block>
   <block id="08ee53e1d5cefb7967a295e98036598e" category="cell">.snapshot ディレクトリの表示を制御します</block>
   <block id="9837781971083d3fe119b0217014d301" category="list-text">少なくとも 1 つを含む Azure の「場所」<block ref="c5f14b2142014dc234282a513132bad4" category="inline-link-rx"></block>。Trident 22.01 では、「 location 」パラメータはバックエンド構成ファイルの最上位にある必須フィールドです。仮想プールで指定された場所の値は無視されます。</block>
   <block id="3d1c87b616fe621310b766603b6c175d" category="admonition">注： Astra Trident は、手動の QoS 容量プールをサポートしていません。</block>
@@ -3186,4 +3185,5 @@
   <block id="fa8bc73a8436dd2f79aafaa731d248e4" category="list-text">「 limitAggregateUsage 」パラメータは、「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。</block>
   <block id="c7e012baf676feb8d925d8f535c01c02" category="list-text">NetApp ONTAP ボリューム用の Amazon FSX には、 SnapMirror が事前に設定されています。Trident では変更や解除はできません。PVC を削除するには、 NetApp ONTAP ボリュームの PV と FSX を手動で削除する必要があります。</block>
   <block id="7b3ecf601e0eee1c9d097083281abafa" category="example-title">例を展開します</block>
+  <block id="76df2d4e2a105a35b5db1ce7b060bbe1" category="list-text">Anthos オンプレミス（ VMware ）と Anthos は、ベアメタル 1.8 、 1.9 、 1.10 上に実装されています</block>
 </blocks>
