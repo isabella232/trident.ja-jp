@@ -1294,8 +1294,6 @@
   <block id="dc2d0674739dcd145f5287a7d619ee05" category="paragraph">上記の前提条件に加え、 Helm を使用して Trident Operator を導入するには、次のものが必要です。</block>
   <block id="8f5e62e2d03d87aeaafa8d4776fb7a79" category="list-text">Kubernetes 1.17 以降</block>
   <block id="2e1b3f44683eee188be985693c4af5e1" category="list-text">Helm バージョン 3</block>
-  <block id="8a247589aa6f5931b3416e5dd64ba361" category="inline-link">Trident GitHub</block>
-  <block id="c8435da18bdd7e5fe967b241d24c9849" category="list-text">からインストーラバンドルをダウンロードします<block ref="27269fc0a05ad3df94013b630291d22b" category="inline-link-rx"></block> ページインストーラバンドルには 'Helm チャートが用意されています</block>
   <block id="bfd69e00e956b426c17001fc7ae7afbe" category="list-text">「 helm install 」コマンドを使用して、展開の名前を指定します。次の例を参照してください。</block>
   <block id="e366a20246a41520da551be510c1d658" category="paragraph">インストール中に設定データを渡すには、次の 2 つの方法があります。</block>
   <block id="a61e25800624ce452a1c4082ce082d9b" category="list-text">`--values] ( または '-f`) : オーバーライドを含む YAML ファイルを指定しますこれは複数回指定でき、右端のファイルが優先されます。</block>
@@ -3186,4 +3184,5 @@
   <block id="c7e012baf676feb8d925d8f535c01c02" category="list-text">NetApp ONTAP ボリューム用の Amazon FSX には、 SnapMirror が事前に設定されています。Trident では変更や解除はできません。PVC を削除するには、 NetApp ONTAP ボリュームの PV と FSX を手動で削除する必要があります。</block>
   <block id="7b3ecf601e0eee1c9d097083281abafa" category="example-title">例を展開します</block>
   <block id="76df2d4e2a105a35b5db1ce7b060bbe1" category="list-text">Anthos オンプレミス（ VMware ）と Anthos は、ベアメタル 1.8 、 1.9 、 1.10 上に実装されています</block>
+  <block id="9c99c91edd7eddead4f870a324f880bd" category="list-text">Trident の Helm リポジトリを追加：</block>
 </blocks>

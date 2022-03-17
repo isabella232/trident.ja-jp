@@ -41,12 +41,17 @@ Helm を使用して Trident オペレータを導入するには、以下の手
 
 
 .手順
-. からインストーラバンドルをダウンロードします https://github.com/netapp/trident/releases["Trident GitHub"] ページインストーラバンドルには 'Helm チャートが用意されています
+. Trident の Helm リポジトリを追加：
++
+[listing]
+----
+helm repo add netapp-trident https://netapp.github.io/trident-helm-chart
+----
 . 「 helm install 」コマンドを使用して、展開の名前を指定します。次の例を参照してください。
 +
 [listing]
 ----
-helm install <name> trident-operator-21.07.1.tgz --namespace <namespace you want to use for Trident>
+helm install <release-name> netapp-trident/trident-operator --version 22.1.0 --namespace <trident-namespace>
 ----
 +
 
@@ -64,7 +69,7 @@ NOTE: Trident の名前空間をまだ作成していない場合は '--create-n
 
 [listing]
 ----
-$ helm install <name> trident-operator-21.07.1.tgz --set tridentDebug=true
+$ helm install <name> netapp-trident/trident-operator --version 22.1.0 --set tridentDebug=true
 ----
 Helm チャートの一部である `values] の .yaml ファイルには、キーのリストとデフォルト値が表示されます。
 
