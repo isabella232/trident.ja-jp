@@ -2291,7 +2291,6 @@
   <block id="dc0742ede78913414129866d60898f67" category="paragraph">これは 'tridentctl が 'Astra Trident バックエンド・オブジェクトに出力する JSON を使用して回答が実行できる質問の一例ですこれには 'jq' ユーティリティが使用されますこのユーティリティを最初にインストールする必要があります</block>
   <block id="08c4bc4ac4edd9b12963c0596478d746" category="summary">Astra Trident では、 CSI トポロジ機能を利用することにより、 Kubernetes クラスタ内に存在するノードに対してボリュームを選択的に作成して接続できます。</block>
   <block id="4abea6bac3b0b48d11dd8dcd02a11bf9" category="inline-link">CSI トポロジ機能</block>
-  <block id="d8af5701dd1ffedb08b7db3f7efcd86b" category="paragraph">Astra Trident では、を使用して、 Kubernetes クラスタ内にあるノードにボリュームを選択的に作成して接続できます<block ref="80b9a4f4a1bc9851317207ee3477041a" category="inline-link-rx"></block>。CSI トポロジ機能を使用すると、領域およびアベイラビリティゾーンに基づいて、ボリュームへのアクセスをノードのサブセットに制限できます。現在、クラウドプロバイダは、 Kubernetes 管理者がゾーンベースのノードを生成できるようになっています。ノードは、アベイラビリティゾーン内の異なるリージョンに配置することも、さまざまなアベイラビリティゾーンに配置することもできます。マルチゾーンアーキテクチャでワークロード用のボリュームをプロビジョニングするために、 Astra Trident は CSI トポロジを使用します。</block>
   <block id="592af423a2f6a51f57c639ec7f7b245e" category="admonition">CSI トポロジ機能の詳細については、を参照してください<block ref="ff042e7f24bd2adcec09d78466034177" category="inline-link-rx"></block>。</block>
   <block id="bbdcaf9b704dc7a7cf73e6000101b65a" category="paragraph">Kubernetes には、 2 つの固有のボリュームバインドモードがあります。</block>
   <block id="93590d63acbb4fa6864a4665157fbcea" category="list-text">'VolumeBindingMode' が Immediate に設定されていると 'Astra Trident は ' トポロジーを認識せずにボリュームを作成しますボリュームバインディングと動的プロビジョニングは、 PVC が作成されるときに処理されます。これはデフォルトの「 VolumeBindingMode 」であり、トポロジ制約を適用しないクラスタに適しています。永続ボリュームは、要求側ポッドのスケジュール要件に依存せずに作成されます。</block>
@@ -3195,4 +3194,5 @@
   <block id="7213ed07f5b718aa66cfac350f023a77" category="list-text">すでにインポートされているボリュームをインポートしようとすると、 EOF 問題 が返され、 PVC は保留状態になります。（<block ref="b9a2290d6389b9a605883cda4e717749" category="inline-link-macro-rx"></block>)</block>
   <block id="c28d8c94f865f3ef7e4b01a157510ef6" category="list-text">Fixed 問題 ： Astra Trident では、 SolidFire ボリュームで作成される Snapshot が 32 個を超えるとパフォーマンスが低下します。</block>
   <block id="d0aaca968285d0d47ea0c5a0f7b9bab5" category="list-text">SSL 証明書の作成時に SHA-1 を SHA-256 に置き換えました。</block>
+  <block id="92e6030d252cfd43e0567e282a0d2c9b" category="paragraph">Astra Trident では、を使用して、 Kubernetes クラスタ内にあるノードにボリュームを選択的に作成して接続できます<block ref="80b9a4f4a1bc9851317207ee3477041a" category="inline-link-rx"></block>。CSI トポロジ機能を使用すると、領域およびアベイラビリティゾーンに基づいて、ボリュームへのアクセスをノードのサブセットに制限できます。現在、クラウドプロバイダは、 Kubernetes 管理者がゾーンベースのノードを生成できるようになっています。ノードは、リージョンによって異なるアベイラビリティゾーンに配置することも、リージョンによって配置することもできます。マルチゾーンアーキテクチャでワークロード用のボリュームをプロビジョニングするために、 Astra Trident は CSI トポロジを使用します。</block>
 </blocks>
