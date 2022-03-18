@@ -9,6 +9,9 @@ settings:
     harmony_enabled: false
   langs: ja-jp,us-en,zh-cn,ko-kr
 sidebar:
+  product-family:
+    name: Astra
+    repo: astra-family
   entries:
   - title: Astra Trident のドキュメント
     url: "/index.html"
