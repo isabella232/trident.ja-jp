@@ -17,9 +17,9 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 
 
 
-== 22.01.0 の新機能
+== 22.01.1 の新機能
 
-ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能をいくつかご紹介します。以前のリリースについては、を参照してください https://docs.netapp.com/us-en/trident/earlier-versions.html["ドキュメントの ealier バージョン"]。
+ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能をいくつかご紹介します。以前のリリースについては、を参照してください https://docs.netapp.com/us-en/trident/earlier-versions.html["以前のバージョンのドキュメント"]。
 
 
 IMPORTANT: 以前のリリースの Trident からアップグレードして Azure NetApp Files を使用する場合 ' 現在 'location`config パラメータは ' 必須のシングルトンフィールドになっています
@@ -28,7 +28,27 @@ IMPORTANT: 以前のリリースの Trident からアップグレードして Az
 
 === の修正
 
-リソース名が重複して 1 箇所に操作が制限されるように ANF ドライバを修正しました。
+* 削除したノードでボリュームを非公開にする問題 を修正しました。（link:https://github.com/NetApp/trident/issues/691["GitHub 問題 #691"])
+* ONTAP API 応答でアグリゲートスペースを確保するために nil フィールドにアクセスすると、パニックが修正されました。
+
+
+
+
+== 22.01.0 の変更点（ 22.10.1 以降）
+
+
+
+=== の修正
+
+* * Kubernetes ：大規模なクラスタのノード登録バックオフ再試行時間を延長します。
+* azure-NetApp-files ドライバが、同じ名前の複数のリソースによって混乱することがあるという解決済みの問題 。
+* ONTAP SAN IPv6 データ LIF が角かっこで指定した場合に機能するようになりました。
+* すでにインポートされているボリュームをインポートしようとすると、 EOF 問題 が返され、 PVC は保留状態になります。（link:https://github.com/NetApp/trident/issues/489["GitHub 問題 #489"])
+* Fixed 問題 ： Astra Trident では、 SolidFire ボリュームで作成される Snapshot が 32 個を超えるとパフォーマンスが低下します。
+* SSL 証明書の作成時に SHA-1 を SHA-256 に置き換えました。
+* リソース名が重複して 1 箇所に操作が制限されるように ANF ドライバを修正しました。
+* リソース名が重複して 1 箇所に操作が制限されるように ANF ドライバを修正しました。
+
 
 
 

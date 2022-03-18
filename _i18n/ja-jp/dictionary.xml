@@ -2984,7 +2984,6 @@
   <block id="748a22b5f1312291ad55429ba4b809a0" category="sidebar">tridentctl を使用してバックエンド管理を実行します</block>
   <block id="f14894e4c400a400c02367258a93029a" category="sidebar">Trident for Docker が必要です</block>
   <block id="e08bfc79c5202517b3814efd6e82fb2c" category="sidebar">Trident をアップグレードまたはアンインストールする</block>
-  <block id="1b6ea3b57d23007f55ba778700bc369c" category="inline-link">ドキュメントの ealier バージョン</block>
   <block id="f14a1d8e56a0cbd2826edd38778371f7" category="admonition">ステータスに「更新中」と表示される場合は、続行する前に解決してください。可能なステータス値のリストについては、を参照してください<block ref="6aefd1c9ce8e43313a8c7c92e2fac4f3" category="inline-link-rx"></block>。</block>
   <block id="ea3d51fb2b16acb7cb260f25bc8965b1" category="summary">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。</block>
   <block id="05d68d1b7214c73141ed12aaed0c2ab5" category="list-text">Trident ログに十分な情報がない場合は、インストールオプションに基づいてインストールパラメータに「 -d 」フラグを渡して、 Trident のデバッグモードを有効にしてみてください。</block>
@@ -3039,7 +3038,6 @@
   <block id="b0b4b8e52878f03279584f43bc961472" category="list-text">k81.gcr.io/sig-storage/csi-Provisioner ： v2.2.2</block>
   <block id="3c8910d4db724229b566887801de96bb" category="list-text">k81.gcr.io/sig-storage/csi-resizer ： v1.3.0</block>
   <block id="681d715b456f6d29a501b8f132e941a1" category="cell">v1.22.0</block>
-  <block id="80fa8f92dc0ebf122ed30a4a88fda343" category="doc">Astra Trident 22.01 のドキュメント</block>
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">オープンソース</block>
   <block id="0172b29a9f5d94dc62ee592a98183f3b" category="paragraph">ネットアップの Astra Trident 向けソフトウェアで使用されているサードパーティの著作権とライセンスは、の各リリースの通知ファイルで確認できます<block ref="4a3c8c5a408c6db1c44c04391a8a0a2f" category="inline-link-rx"></block>。</block>
   <block id="29db8b676d0a02f8179869506102c8ce" category="doc">バックエンドに ONTAP または Cloud Volumes ONTAP SAN ドライバを設定します</block>
@@ -3087,8 +3085,6 @@
   <block id="b53453343f074fd64ef7129def93f57d" category="section-title">例 1 ：最小限のバックエンド構成</block>
   <block id="8f3db75549f212e0fdab2c542531a95e" category="paragraph">次の例は、 Astra Trident で作成されたすべてのストレージに同じ要素を適用するバックエンドファイルを示しています。</block>
   <block id="a2c81e41622f2e2616b33a689e229c72" category="paragraph">次の StorageClass 定義は、上記のストレージプールを参照してください。parameters.selector` フィールドを使用すると ' ボリュームのホストに使用される仮想プールを各 StorageClass に指定できますボリュームには、選択した仮想プール内で定義された要素があります。</block>
-  <block id="f5037f01585529df5529040fa25eda7f" category="section-title">22.01.0 の新機能</block>
-  <block id="bff57507323bddf3673af0ae7ab80e2b" category="paragraph">ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能をいくつかご紹介します。以前のリリースについては、を参照してください<block ref="a3e07c08f1bbcd23d8422302f837e06b" category="inline-link-rx"></block>。</block>
   <block id="7072ec708b0ea7e3243747d8b79c0d20" category="admonition">以前のリリースの Trident からアップグレードして Azure NetApp Files を使用する場合 ' 現在 'location`config パラメータは ' 必須のシングルトンフィールドになっています</block>
   <block id="b956e1f58f802db57dd9f871ac59ed6c" category="paragraph">リソース名が重複して 1 箇所に操作が制限されるように ANF ドライバを修正しました。</block>
   <block id="851679bec9b3e6c8e6284128fb750b1e" category="list-text">Kubernetes の機能拡張：</block>
@@ -3116,11 +3112,9 @@
   <block id="f2f0da9b50bd2001bc802c121fc76254" category="admonition">Red Hat OpenShift Container Platform のユーザは、 4.1.8 よりも前のバージョンを使用している場合、 initiatorname.iscsi ファイルが空白になる可能性があります。これは RedHat によって識別されているバグで、 OpenShift 4.1.8 で修正されています。を参照してください<block ref="ac064f2337a2fc6c16c562bc9e386352" category="inline-link-rx"></block>。ネットアップでは、 OpenShift 4.6.8 以降で Astra Trident を使用することを推奨しています。</block>
   <block id="0f6e0df69462b7a5d101ec1a3fa8a376" category="list-text">NetApp HCI / Element ソフトウェア 11 以降</block>
   <block id="597a56086e1f9d7ca5e8f55c40a0153a" category="list-text">OpenShift Container Platform でサポートされている Red Hat CoreOS （ RHCOS ）バージョン</block>
-  <block id="83f21d8f3725c4e4a96d4e8da9c06403" category="list-text">NetApp / Trident ： 22.01.0</block>
   <block id="0e3db22955e0ef2a04155e743fdcd843" category="list-text">NetApp / Trident -autosupport ： 22.01.</block>
   <block id="52d5de12f37c2ff6a4de253d20947ca2" category="list-text">k83.GCR.IO/sig-storage/csi-attacher: v3.4.0</block>
   <block id="f86452b351d644230a6ab4c2d580e193" category="list-text">k8s 。 gcr.io/sig-storage/csi-node-driver-registrar: v2.4.0</block>
-  <block id="9b73461bc19f14ce7a87a56f6890ca87" category="list-text">NetApp/trident-operator ： 22.01.0 （オプション）</block>
   <block id="ad9d572821da9bfff3397f2d3260509d" category="list-text">K83.GCR.IO/sig-storage/csi-Provisioner ： v3.1.0</block>
   <block id="73e93ad328287e5ce4c06228cfdba2bf" category="cell">v1.3.0</block>
   <block id="08ee53e1d5cefb7967a295e98036598e" category="cell">.snapshot ディレクトリの表示を制御します</block>
@@ -3185,4 +3179,20 @@
   <block id="7b3ecf601e0eee1c9d097083281abafa" category="example-title">例を展開します</block>
   <block id="76df2d4e2a105a35b5db1ce7b060bbe1" category="list-text">Anthos オンプレミス（ VMware ）と Anthos は、ベアメタル 1.8 、 1.9 、 1.10 上に実装されています</block>
   <block id="9c99c91edd7eddead4f870a324f880bd" category="list-text">Trident の Helm リポジトリを追加：</block>
+  <block id="b9baa6fa560066bf0c9e87d66d1c0664" category="doc">Astra Trident 22.01.1 のドキュメント</block>
+  <block id="583a5308ed42c99426f964d094ea527d" category="list-text">NetApp / Trident ： 22.01.1</block>
+  <block id="e2393935037062665875a528ef53dd36" category="list-text">NetApp/trident-operator ： 22.01.1 （オプション）</block>
+  <block id="6e7239a6c6cfd378a1e55314b7490e32" category="section-title">22.01.1 の新機能</block>
+  <block id="368b120a3b5f53a49dc3ab96ec9b8dbd" category="paragraph">ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能をいくつかご紹介します。以前のリリースについては、を参照してください<block ref="25da125dffad1d6323c21354bccf0203" category="inline-link-rx"></block>。</block>
+  <block id="a98b2ebbcbb381d3abc81e2ecfb2054c" category="inline-link-macro">GitHub 問題 #691</block>
+  <block id="61465c1d4383dd4afdf168925e15e767" category="list-text">削除したノードでボリュームを非公開にする問題 を修正しました。（<block ref="5fee6ab43e8008edba54375694a29266" category="inline-link-macro-rx"></block>)</block>
+  <block id="e50f1057ba4b67b255c98fa09c5ba6f8" category="list-text">ONTAP API 応答でアグリゲートスペースを確保するために nil フィールドにアクセスすると、パニックが修正されました。</block>
+  <block id="f064e09978a6df920139de5d0ebddd77" category="section-title">22.01.0 の変更点（ 22.10.1 以降）</block>
+  <block id="3c72f47eeb46270dd13a77b32ec10dd3" category="list-text">* Kubernetes ：大規模なクラスタのノード登録バックオフ再試行時間を延長します。</block>
+  <block id="0ef48234390855900384d0bc8a0a8a24" category="list-text">azure-NetApp-files ドライバが、同じ名前の複数のリソースによって混乱することがあるという解決済みの問題 。</block>
+  <block id="7eaa7391130c13b3bf9a7e4ae755d908" category="list-text">ONTAP SAN IPv6 データ LIF が角かっこで指定した場合に機能するようになりました。</block>
+  <block id="404cef2e43cb97ccef52692419ad6f6b" category="inline-link-macro">GitHub 問題 #489</block>
+  <block id="7213ed07f5b718aa66cfac350f023a77" category="list-text">すでにインポートされているボリュームをインポートしようとすると、 EOF 問題 が返され、 PVC は保留状態になります。（<block ref="b9a2290d6389b9a605883cda4e717749" category="inline-link-macro-rx"></block>)</block>
+  <block id="c28d8c94f865f3ef7e4b01a157510ef6" category="list-text">Fixed 問題 ： Astra Trident では、 SolidFire ボリュームで作成される Snapshot が 32 個を超えるとパフォーマンスが低下します。</block>
+  <block id="d0aaca968285d0d47ea0c5a0f7b9bab5" category="list-text">SSL 証明書の作成時に SHA-1 を SHA-256 に置き換えました。</block>
 </blocks>
