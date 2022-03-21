@@ -3194,6 +3194,6 @@
   <block id="c28d8c94f865f3ef7e4b01a157510ef6" category="list-text">Fixed 問題 ： Astra Trident では、 SolidFire ボリュームで作成される Snapshot が 32 個を超えるとパフォーマンスが低下します。</block>
   <block id="d0aaca968285d0d47ea0c5a0f7b9bab5" category="list-text">SSL 証明書の作成時に SHA-1 を SHA-256 に置き換えました。</block>
   <block id="92e6030d252cfd43e0567e282a0d2c9b" category="paragraph">Astra Trident では、を使用して、 Kubernetes クラスタ内にあるノードにボリュームを選択的に作成して接続できます<block ref="80b9a4f4a1bc9851317207ee3477041a" category="inline-link-rx"></block>。CSI トポロジ機能を使用すると、領域およびアベイラビリティゾーンに基づいて、ボリュームへのアクセスをノードのサブセットに制限できます。現在、クラウドプロバイダは、 Kubernetes 管理者がゾーンベースのノードを生成できるようになっています。ノードは、リージョンによって異なるアベイラビリティゾーンに配置することも、リージョンによって配置することもできます。マルチゾーンアーキテクチャでワークロード用のボリュームをプロビジョニングするために、 Astra Trident は CSI トポロジを使用します。</block>
-  <block id="4dc3d1311e111454f28be4e2842328b1" category="paragraph">次に、 Trident をノードセレクタとともに導入する方法を説明する例を示します。</block>
   <block id="d293f031e5664526b25f3a65012401b7" category="cell">「 IPv6 」</block>
+  <block id="82ac2196255f9b53a51cdc28bcf73966" category="paragraph">次に、ノードセレクタを使用して Trident を導入する例を示します。</block>
 </blocks>

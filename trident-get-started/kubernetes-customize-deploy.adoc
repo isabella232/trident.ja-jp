@@ -99,7 +99,7 @@ spec:
   imagePullSecrets:
   - thisisasecret
 ----
-次に、 Trident をノードセレクタとともに導入する方法を説明する例を示します。
+次に、ノードセレクタを使用して Trident を導入する例を示します。
 
 [listing]
 ----
