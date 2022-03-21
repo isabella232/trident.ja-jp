@@ -96,8 +96,23 @@ metadata:
 spec:
   debug: true
   namespace: trident
-  tridentImage: netapp/trident:21.04.0
   imagePullSecrets:
   - thisisasecret
+----
+次に、 Trident をノードセレクタとともに導入する方法を説明する例を示します。
+
+[listing]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  controllerPluginNodeSelector:
+    nodetype: master
+  nodePluginNodeSelector:
+    storage: netapp
 ----
 「 TridentOrchestrator 」引数で許可される範囲を超えてインストールをカスタマイズする場合は、「 tridentctl 」を使用して必要に応じて変更できるカスタム YAML マニフェストを生成することを検討してください。
