@@ -1419,7 +1419,6 @@
   <block id="a67cf6b087ff88dbfacec8375928995c" category="cell">「バグ」</block>
   <block id="4f72bc786a1a01d5a1a8bc09d33334cc" category="cell">Astra Trident のデバッグを有効にします</block>
   <block id="68934a3e9455fa72420237eb05902327" category="cell">いいえ</block>
-  <block id="16e20a5ba5cd6442f3cdd49b16e8a5f3" category="cell">「 IPv6 を使用」</block>
   <block id="3dd791c4864e77ae6cf11572e2d7b374" category="cell">IPv6 経由の Astra Trident をインストール</block>
   <block id="077e99fe42ced522b462656cffffe09c" category="cell">k8sTimeout</block>
   <block id="4448b73eac083e33b7142f0e5790fac5" category="cell">Kubernetes 処理のタイムアウト</block>
@@ -3196,4 +3195,5 @@
   <block id="d0aaca968285d0d47ea0c5a0f7b9bab5" category="list-text">SSL 証明書の作成時に SHA-1 を SHA-256 に置き換えました。</block>
   <block id="92e6030d252cfd43e0567e282a0d2c9b" category="paragraph">Astra Trident では、を使用して、 Kubernetes クラスタ内にあるノードにボリュームを選択的に作成して接続できます<block ref="80b9a4f4a1bc9851317207ee3477041a" category="inline-link-rx"></block>。CSI トポロジ機能を使用すると、領域およびアベイラビリティゾーンに基づいて、ボリュームへのアクセスをノードのサブセットに制限できます。現在、クラウドプロバイダは、 Kubernetes 管理者がゾーンベースのノードを生成できるようになっています。ノードは、リージョンによって異なるアベイラビリティゾーンに配置することも、リージョンによって配置することもできます。マルチゾーンアーキテクチャでワークロード用のボリュームをプロビジョニングするために、 Astra Trident は CSI トポロジを使用します。</block>
   <block id="4dc3d1311e111454f28be4e2842328b1" category="paragraph">次に、 Trident をノードセレクタとともに導入する方法を説明する例を示します。</block>
+  <block id="d293f031e5664526b25f3a65012401b7" category="cell">「 IPv6 」</block>
 </blocks>

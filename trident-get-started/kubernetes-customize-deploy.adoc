@@ -25,7 +25,7 @@ Trident オペレータは 'TridentOrchestrator 仕様の属性を使用して '
 | 「バグ」 | Astra Trident のデバッグを有効にします | いいえ 
 
 
-| 「 IPv6 を使用」 | IPv6 経由の Astra Trident をインストール | いいえ 
+| 「 IPv6 」 | IPv6 経由の Astra Trident をインストール | いいえ 
 
 
 | k8sTimeout | Kubernetes 処理のタイムアウト | 30 秒 
