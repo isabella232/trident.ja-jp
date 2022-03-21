@@ -115,7 +115,7 @@ AccessGroups または UseCHAP のどちらも設定されていない場合は 
 | 「 InitiatorIFCace 」 | iSCSI トラフィックを特定のホストインターフェイスに制限します | デフォルト 
 
 
-| UseCHAP' | CHAP を使用して iSCSI を認証します | "nfsvers=3 " 
+| UseCHAP' | CHAP を使用して iSCSI を認証します | 正しいです 
 
 
 | 「アクセスグループ」 | 使用するアクセスグループ ID のリスト | 「 trident 」という名前のアクセスグループの ID を検索します。 
