@@ -3196,4 +3196,5 @@
   <block id="92e6030d252cfd43e0567e282a0d2c9b" category="paragraph">Astra Trident では、を使用して、 Kubernetes クラスタ内にあるノードにボリュームを選択的に作成して接続できます<block ref="80b9a4f4a1bc9851317207ee3477041a" category="inline-link-rx"></block>。CSI トポロジ機能を使用すると、領域およびアベイラビリティゾーンに基づいて、ボリュームへのアクセスをノードのサブセットに制限できます。現在、クラウドプロバイダは、 Kubernetes 管理者がゾーンベースのノードを生成できるようになっています。ノードは、リージョンによって異なるアベイラビリティゾーンに配置することも、リージョンによって配置することもできます。マルチゾーンアーキテクチャでワークロード用のボリュームをプロビジョニングするために、 Astra Trident は CSI トポロジを使用します。</block>
   <block id="d293f031e5664526b25f3a65012401b7" category="cell">「 IPv6 」</block>
   <block id="82ac2196255f9b53a51cdc28bcf73966" category="paragraph">次に、ノードセレクタを使用して Trident を導入する例を示します。</block>
+  <block id="997cff957213b9212a22d7cac2b4275d" category="list-text">生成された証明書を使用して認証をテストONTAP 管理 LIF &gt; と &lt;vserver name&gt; は、管理 LIF の IP アドレスおよび SVM 名に置き換えてください。LIF のサービスポリシーが「 default-data-management 」に設定されていることを確認する必要があります。</block>
 </blocks>

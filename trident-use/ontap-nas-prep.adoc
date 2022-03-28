@@ -48,7 +48,7 @@ Trident が ONTAP バックエンドと通信するには、 SVM を対象とし
   "dataLIF": "10.0.0.2",
   "svm": "svm_nfs",
   "username": "vsadmin",
-  "password": "secret",
+  "password": "secret"
 }
 ----
 バックエンド定義は、クレデンシャルがプレーンテキストで保存される唯一の場所であることに注意してください。バックエンドが作成されると、ユーザ名とパスワードが Base64 でエンコードされ、 Kubernetes シークレットとして格納されます。クレデンシャルの知識が必要なのは、バックエンドの作成と更新だけです。この処理は管理者専用で、 Kubernetes / ストレージ管理者が実行します。
@@ -71,7 +71,7 @@ Trident が ONTAP バックエンドと通信するには、 SVM を対象とし
 +
 [listing]
 ----
-openssl req -x509 -nodes -days 1095 -newkey rsa:2048 -keyout k8senv.key -out k8senv.pem -subj "/C=US/ST=NC/L=RTP/O=NetApp/CN=admin"
+openssl req -x509 -nodes -days 1095 -newkey rsa:2048 -keyout k8senv.key -out k8senv.pem -subj "/C=US/ST=NC/L=RTP/O=NetApp/CN=vsadmin"
 ----
 . 信頼された CA 証明書を ONTAP クラスタに追加します。この処理は、ストレージ管理者がすでに行っている可能性があります。信頼できる CA が使用されていない場合は無視します。
 +
@@ -91,10 +91,10 @@ security ssl modify -vserver <vserver-name> -client-enabled true
 +
 [listing]
 ----
-security login create -user-or-group-name admin -application ontapi -authentication-method cert
-security login create -user-or-group-name admin -application http -authentication-method cert
+security login create -user-or-group-name vsadmin -application ontapi -authentication-method cert -vserver <vserver-name>
+security login create -user-or-group-name vsadmin -application http -authentication-method cert -vserver <vserver-name>
 ----
-. 生成された証明書を使用して認証をテストONTAP 管理 LIF > と <vserver name> は、管理 LIF の IP アドレスおよび SVM 名に置き換えてください。
+. 生成された証明書を使用して認証をテストONTAP 管理 LIF > と <vserver name> は、管理 LIF の IP アドレスおよび SVM 名に置き換えてください。LIF のサービスポリシーが「 default-data-management 」に設定されていることを確認する必要があります。
 +
 [listing]
 ----
@@ -120,8 +120,8 @@ $ cat cert-backend-updated.json
 "managementLIF": "1.2.3.4",
 "dataLIF": "1.2.3.8",
 "svm": "vserver_test",
-"username": "vsadmin",
-"password": "secret",
+"clientCertificate": "Faaaakkkkeeee...Vaaalllluuuueeee",
+"clientPrivateKey": "LS0tFaKE...0VaLuES0tLS0K",
 "storagePrefix": "myPrefix_"
 }
 
