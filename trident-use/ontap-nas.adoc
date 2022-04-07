@@ -6,6 +6,7 @@ summary: ONTAP NAS ドライバを使用した ONTAP バックエンドの設定
 ---
 = バックエンドに ONTAP NAS ドライバを設定します
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

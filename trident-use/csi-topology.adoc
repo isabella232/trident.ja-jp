@@ -6,6 +6,7 @@ summary: Astra Trident では、 CSI トポロジ機能を利用することに�
 ---
 = CSI トポロジを使用します
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

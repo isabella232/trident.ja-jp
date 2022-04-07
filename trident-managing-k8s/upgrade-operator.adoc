@@ -6,6 +6,7 @@ summary: 既存の Astra Trident インストールは、オペレータが簡�
 ---
 = オペレータにアップグレードしてください
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

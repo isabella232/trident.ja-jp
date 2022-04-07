@@ -6,6 +6,7 @@ summary: tridentctl を使用して Astra Trident を導入できます。
 ---
 = tridentctl を使用して導入します
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

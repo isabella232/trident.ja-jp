@@ -6,6 +6,7 @@ summary: Trident がボリュームアクセスグループをどのように使
 ---
 = ボリュームアクセスグループ
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

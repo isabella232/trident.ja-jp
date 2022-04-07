@@ -6,6 +6,7 @@ summary: トラブルシューティングに役立つログを収集できま�
 ---
 = ログを収集します
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

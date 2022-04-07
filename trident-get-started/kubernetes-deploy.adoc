@@ -6,6 +6,7 @@ summary: Trident の導入には、 Trident のオペレータまたは tridentc
 ---
 = 導入の概要
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

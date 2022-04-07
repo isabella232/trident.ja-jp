@@ -6,6 +6,7 @@ summary: 使用中のボリュームに影響を与えることなく、 Astra T
 ---
 = Astra Trident をアップグレードまたはアンインストールする
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

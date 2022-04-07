@@ -6,6 +6,7 @@ summary: tridentctl import を使用して、既存のストレージボリュ�
 ---
 = ボリュームをインポート
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

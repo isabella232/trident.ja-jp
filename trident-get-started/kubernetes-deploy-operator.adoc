@@ -6,6 +6,7 @@ summary: Trident のオペレータが、 Astra Trident を導入できます。
 ---
 = Trident オペレータとともに導入
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

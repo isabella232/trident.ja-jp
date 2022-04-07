@@ -6,6 +6,7 @@ summary: Trident がドライバ用のボリュームスナップショットの
 ---
 = ボリューム Snapshot
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -6,6 +6,7 @@ summary: ここに記載された推奨事項に従って、 Astra Trident の�
 ---
 = セキュリティ
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

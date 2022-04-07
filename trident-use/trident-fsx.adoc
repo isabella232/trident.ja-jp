@@ -6,6 +6,7 @@ summary: Amazon Elastic Kubernetes Service （ EKS ）で実行されている A
 ---
 = Amazon FSX for NetApp ONTAP で Astra Trident を使用
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

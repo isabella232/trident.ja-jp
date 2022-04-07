@@ -6,6 +6,7 @@ summary: Trident のインストーラでは、属性をカスタマイズでき
 ---
 = tridentctl 展開をカスタマイズします
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

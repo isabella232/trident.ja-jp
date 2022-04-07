@@ -6,6 +6,7 @@ summary: Astra Trident でバックエンドを管理するさまざまな方法
 ---
 = バックエンド管理オプション間を移動します
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

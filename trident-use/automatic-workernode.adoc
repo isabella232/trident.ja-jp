@@ -6,6 +6,7 @@ summary: Trident を使用すると、 Kubernetes クラスタ内のノードに
 ---
 = ワーカーノードの自動準備
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

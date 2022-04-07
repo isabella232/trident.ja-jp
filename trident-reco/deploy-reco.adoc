@@ -6,6 +6,7 @@ summary: Astra Trident の導入時には、ここに示す推奨事項を使用
 ---
 = 導入
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

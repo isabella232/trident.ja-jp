@@ -6,6 +6,7 @@ summary: Kubernetes クラスタ内のすべてのワーカーノードが、ポ
 ---
 = ワーカーノードを準備します
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

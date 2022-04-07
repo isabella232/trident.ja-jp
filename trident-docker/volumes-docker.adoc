@@ -6,6 +6,7 @@ summary: ボリュームを作成するには、必要に応じて Astra Trident
 ---
 = ボリュームを操作します
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

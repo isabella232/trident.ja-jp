@@ -6,6 +6,7 @@ summary: ネットアップのストレージ製品ポートフォリオは、 K
 ---
 = ネットアップの製品が Kubernetes と統合されます
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

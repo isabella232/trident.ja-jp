@@ -6,6 +6,7 @@ summary: Trident 環境で Element バックエンドを作成して使用する
 ---
 = ONTAP ドライバ
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

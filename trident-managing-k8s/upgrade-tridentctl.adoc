@@ -6,6 +6,7 @@ summary: 'tridentctl を使用して " 既存の Astra Trident インストー�
 ---
 = tridentctl を使用してアップグレードします
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

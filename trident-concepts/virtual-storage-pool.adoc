@@ -6,6 +6,7 @@ summary: 仮想ストレージプールは、 Astra Trident のストレージ�
 ---
 = 仮想ストレージプール
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

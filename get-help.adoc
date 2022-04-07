@@ -6,6 +6,7 @@ summary: ネットアップでは、さまざまな方法で Trident をサポ�
 ---
 = サポート
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -6,6 +6,7 @@ summary: Kubernetes システムの構成要素の詳細をご確認ください
 ---
 = Kubernetes の概念
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

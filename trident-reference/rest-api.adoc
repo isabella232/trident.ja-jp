@@ -6,6 +6,7 @@ summary: Trident の REST API を使用する場合は、 REST エンドポイ�
 ---
 = Astra Trident REST API
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

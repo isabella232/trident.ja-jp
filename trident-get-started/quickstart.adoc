@@ -6,6 +6,7 @@ summary: Kubernetes の使用を開始したばかりの場合は、手順に従
 ---
 = ぜひお試しください
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

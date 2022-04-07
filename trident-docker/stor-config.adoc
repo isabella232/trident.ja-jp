@@ -6,6 +6,7 @@ summary: Astra Trident 構成で使用できる設定オプションを確認し
 ---
 = ストレージ構成オプション
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

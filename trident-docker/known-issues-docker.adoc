@@ -6,6 +6,7 @@ summary: Astra Trident と Docker を使用する際の既知の問題に関す�
 ---
 = 既知の問題および制限事項
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -6,6 +6,7 @@ summary: tridentctl を使用してバックエンド管理操作を実行する
 ---
 = tridentctl を使用してバックエンド管理を実行します
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

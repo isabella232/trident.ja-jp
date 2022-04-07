@@ -6,6 +6,7 @@ summary: Astra Trident のインストール中および使用中に発生する
 ---
 = トラブルシューティング
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

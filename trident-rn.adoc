@@ -6,6 +6,7 @@ summary: ネットアップは、製品やサービスの改善と強化を継�
 ---
 = リリースノート
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

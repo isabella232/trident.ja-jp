@@ -6,6 +6,7 @@ summary: ストレージドライバにはそれぞれ異なるオプション�
 ---
 = ドライバ固有のボリュームオプション
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -6,6 +6,7 @@ summary: Trident が通信するポートの詳細をご確認ください。
 ---
 = Astra Trident ポート
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

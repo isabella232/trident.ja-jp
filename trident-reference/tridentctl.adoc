@@ -6,6 +6,7 @@ summary: Trident へのシンプルなアクセスを提供するコマンドラ
 ---
 = tridentctl コマンドとオプション
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

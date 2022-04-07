@@ -6,6 +6,7 @@ summary: Astra Trident は、一連の Prometheus 指標エンドポイントを
 ---
 = Astra Trident を監視
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -6,6 +6,7 @@ summary: 提供されている設定例を使用して、 Trident インスト�
 ---
 = Azure NetApp Files バックエンドを設定します
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

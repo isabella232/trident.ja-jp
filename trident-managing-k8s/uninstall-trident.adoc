@@ -6,6 +6,7 @@ summary: Astra Trident のインストール方法に応じて、複数の方法
 ---
 = Astra Trident をアンインストール
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

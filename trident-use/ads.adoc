@@ -6,6 +6,7 @@ summary: Astra Trident のインストール用に Astra Data Store （ ADS ）�
 ---
 = Astra データストアバックエンドを構成する
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

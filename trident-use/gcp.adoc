@@ -6,6 +6,7 @@ summary: Cloud Volumes Service for Google Cloud を Astra Trident のバック�
 ---
 = GCP バックエンドの CVS を設定します
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

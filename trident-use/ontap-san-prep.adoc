@@ -6,6 +6,7 @@ summary: ONTAP SAN ドライバを使用して ONTAP バックエンドを設定
 ---
 = 準備
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -6,6 +6,7 @@ summary: Astra Trident により、 Kubernetes ユーザは作成後にボリュ
 ---
 = ボリュームを展開します
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

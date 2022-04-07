@@ -6,6 +6,7 @@ summary: 'Trident オペレータは "TridentOrchestrator 仕様の属性を使�
 ---
 = Trident オペレータの環境をカスタマイズ
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

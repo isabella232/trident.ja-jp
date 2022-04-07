@@ -6,6 +6,7 @@ summary: ネットアップが提供する Trident インストールで Element
 ---
 = NetApp HCI または SolidFire バックエンドを設定します
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

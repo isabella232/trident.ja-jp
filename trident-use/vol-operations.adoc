@@ -6,6 +6,7 @@ summary: Astra Trident は、ボリュームを管理するための機能を複
 ---
 = ボリューム操作を実行する
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

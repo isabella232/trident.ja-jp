@@ -6,6 +6,7 @@ summary: Astra Trident の導入が完了したら、バックエンドの作成
 ---
 = 次の手順
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -6,6 +6,7 @@ summary: Kubernetes と Trident 、 Trident とストレージ、 Kubernetes と
 ---
 = Kubernetes オブジェクトと Trident オブジェクト
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

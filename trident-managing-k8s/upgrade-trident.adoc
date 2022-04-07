@@ -6,6 +6,7 @@ summary: Astra Trident は四半期ごとにリリースサイクルを実施し
 ---
 = Astra Trident をアップグレード
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

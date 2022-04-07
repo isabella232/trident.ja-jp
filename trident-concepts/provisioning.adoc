@@ -6,6 +6,7 @@ summary: Trident の Astra プロビジョニングの主なフェーズは 2 �
 ---
 = プロビジョニング
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

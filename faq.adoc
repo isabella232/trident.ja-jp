@@ -6,6 +6,7 @@ summary: Trident が提供する Astra のインストール、設定、アッ�
 ---
 = よくある質問
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

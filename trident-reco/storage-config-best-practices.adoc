@@ -6,6 +6,7 @@ summary: Kubernetes クラスタは通常、 2 種類のノードで構成され
 ---
 = ストレージ構成
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

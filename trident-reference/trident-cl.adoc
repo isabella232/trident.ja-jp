@@ -6,6 +6,7 @@ summary: Astra Trident は、 Trident オーケストレーションツール用
 ---
 = コマンドラインオプション
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

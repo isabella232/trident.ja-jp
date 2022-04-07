@@ -6,6 +6,7 @@ summary: Astra Trident の 20.01 リリースから、 Kubernetes レイヤで�
 ---
 = スナップショットを操作します
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

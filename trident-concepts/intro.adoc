@@ -6,6 +6,7 @@ summary: Astra Trident は、ネットアップが Astra 製品ファミリー�
 ---
 = Astra Trident の概要
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

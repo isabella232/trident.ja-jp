@@ -6,6 +6,7 @@ summary: NetApp のストレージ・プラットフォームが提供するデ�
 ---
 = データ保護
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

@@ -6,6 +6,7 @@ summary: Astra Trident for Docker は、ネットアップのストレージプ�
 ---
 = Astra Trident を導入
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 

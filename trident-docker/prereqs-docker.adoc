@@ -6,6 +6,7 @@ summary: Trident を導入するには、必要なプロトコルをホストに
 ---
 = 導入の前提条件
 :hardbreaks:
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
