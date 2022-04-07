@@ -312,7 +312,7 @@ OpenShift の付加価値クラスタサービスは、クラスタ管理者と�
 
 === レジストリサービス
 
-レジストリのストレージの導入と管理については、に記載されています link:https://netapp.io/["netapp.io のコマンドです"^] を参照してください 。
+レジストリのストレージの導入と管理については、に記載されています link:https://netapp.io/["netapp.io のコマンドです"^] を参照してください link:https://netapp.io/2017/08/24/deploying-the-openshift-registry-using-netapp-storage/["ブログ"^]。
 
 
 

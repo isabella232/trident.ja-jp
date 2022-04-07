@@ -25,7 +25,7 @@ NOTE: デフォルトでは 'Trident のメトリックは '/metrics エンド�
 
 .必要なもの
 * Astra Trident がインストールされた Kubernetes クラスタ
-* Prometheus インスタンス。これは a である場合もある https://github.com/prometheus-operator/prometheus-operator["コンテナ化された Prometheus 環境"^] または、 Prometheus をとして実行することもできます。
+* Prometheus インスタンス。これは a である場合もある https://github.com/prometheus-operator/prometheus-operator["コンテナ化された Prometheus 環境"^] または、 Prometheus をとして実行することもできます https://prometheus.io/download/["ネイティブアプリケーション"^]。
 
 
 
@@ -140,7 +140,7 @@ kubelet_volume_stats_used_bytes / kubelet_volume_stats_capacity_bytes * 100
 * Astra Trident は 'tridentctl send AutoSupport を介してコンテナ・ログをオンデマンドでネットアップ・サポートに送信することもできますAstra Trident をトリガーしてログをアップロードする必要があります。ログを送信する前に、ネットアップのに同意する必要がありますhttps://www.netapp.com/company/legal/privacy-policy/["プライバシーポリシー"^]。
 * 指定しないと、 Astra Trident は過去 24 時間からログを取得します。
 * ログ保持期間は '--since ' フラグで指定できますたとえば 'tridentctl は AutoSupport --since =1h` を送信しますこの情報は、 Astra Trident と一緒にインストールされた 'trident-autosupport' コンテナを介して収集および送信されます。コンテナイメージは、で取得できます https://hub.docker.com/r/netapp/trident-autosupport["Trident AutoSupport の略"^]。
-* Trident AutoSupport は、個人情報（ PII ）や個人情報を収集または送信しません。それにはが付いています https://www.netapp.com/us/media/enduser-license-agreement-worldwide.pdf["EULA"^] これは Trident コンテナイメージ自体には該当しません。ネットアップのデータセキュリティと信頼に対する取り組みの詳細を確認できます。
+* Trident AutoSupport は、個人情報（ PII ）や個人情報を収集または送信しません。それにはが付いています https://www.netapp.com/us/media/enduser-license-agreement-worldwide.pdf["EULA"^] これは Trident コンテナイメージ自体には該当しません。ネットアップのデータセキュリティと信頼に対する取り組みの詳細を確認できます https://www.netapp.com/us/company/trust-center/index.aspx["こちらをご覧ください"^]。
 
 
 Astra Trident から送信されるペイロードの例を次に示します。

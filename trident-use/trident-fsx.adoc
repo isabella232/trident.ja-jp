@@ -14,8 +14,23 @@ https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["NetApp
 
 ファイルシステムは、オンプレミスの ONTAP クラスタに似た、 Amazon FSX のプライマリリソースです。各 SVM 内には、ファイルとフォルダをファイルシステムに格納するデータコンテナである 1 つ以上のボリュームを作成できます。Amazon FSX for NetApp ONTAP を使用すると、 Data ONTAP はクラウド内の管理対象ファイルシステムとして提供されます。新しいファイルシステムのタイプは * NetApp ONTAP * です。
 
-Amazon Elastic Kubernetes Service （ EKS ）で実行されている Astra Trident と Amazon FSX for NetApp ONTAP を使用することで、 Amazon Elastic Kubernetes Service （ EKS ）で実行されている Kubernetes クラスタが、 ONTAP がサポートするブロックボリュームとファイル永続ボリュームをプロビジョニングできるようになります。
+Amazon Elastic Kubernetes Service （ EKS ）で実行されている Astra Trident と Amazon FSX for NetApp ONTAP を使用すると、 ONTAP がサポートするブロックボリュームとファイル永続ボリュームを確実にプロビジョニングできます。
 
+[WARNING]
+.ONTAP ファイルシステム用に Amazon FSX を作成します
+====
+自動バックアップが有効になっている Amazon FSX ファイルシステムで作成されたボリュームは Trident で削除できません。PVC を削除するには、 PV と ONTAP ボリュームの FSX を手動で削除する必要があります。
+
+この問題 を回避するには、次の手順
+
+* ONTAP ファイル・システム用の FSX を作成する場合は '**Quick create** を使用しないでくださいクイック作成ワークフローでは、自動バックアップが有効になり、オプトアウトオプションはありません。
+* ** Standard create** を使用する場合は、自動バックアップを無効にしてください。自動バックアップを無効にすると、 Trident は手動操作なしでボリュームを正常に削除できます。
++
+image:screenshot-fsx-backup-disable.png["自動バックアップを無効にしている AWS コンソールのスクリーンショット。"]
+
+
+
+====
 
 
 == Astra Trident の詳細をご確認ください
@@ -94,7 +109,7 @@ aws fsx describe-storage-virtual-machines --region <file system region>
 ----
 
 
-. 認証用の証明書を作成してインストールします。「 ONTAP-SAN' バックエンド」を使用している場合は、を参照してください link:ontap-san.html["こちらをご覧ください"^]。「 ONTAP-NAS' バックエンド」を使用している場合は、を参照してください 。
+. 認証用の証明書を作成してインストールします。「 ONTAP-SAN' バックエンド」を使用している場合は、を参照してください link:ontap-san.html["こちらをご覧ください"^]。「 ONTAP-NAS' バックエンド」を使用している場合は、を参照してください link:ontap-nas.html["こちらをご覧ください"^]。
 +
 
 NOTE: ファイルシステムにアクセスできる任意の場所から SSH を使用して、ファイルシステムにログイン（証明書をインストールする場合など）できます。「 fsxadmin 」ユーザ、ファイルシステムの作成時に設定したパスワード、「 aws FSX describe -file-systems 」の管理 DNS 名を使用します。
@@ -125,14 +140,9 @@ NOTE: ファイルシステムにアクセスできる任意の場所から SSH 
 
 NOTE: 'ONTAP-SAN' および 'ONTAP-SAN-エコノミー のドライバには 'atalif' を指定しないでください Astra Trident がマルチパスを使用できるようにします
 
-[WARNING]
-.ONTAP 対応の Amazon FSX
-====
-* 「 limitAggregateUsage 」パラメータは、「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。
-* NetApp ONTAP ボリューム用の Amazon FSX には、 SnapMirror が事前に設定されています。Trident では変更や解除はできません。PVC を削除するには、 NetApp ONTAP ボリュームの PV と FSX を手動で削除する必要があります。
 
+WARNING: 「 limitAggregateUsage 」パラメータは、「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。
 
-====
 導入後、次の手順を実行してを作成します link:../trident-get-started/kubernetes-postdeployment.html["ストレージクラスを定義してボリュームをプロビジョニングし、ポッドでボリュームをマウント"^]。
 
 

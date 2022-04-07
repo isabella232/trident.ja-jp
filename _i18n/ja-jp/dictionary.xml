@@ -937,7 +937,6 @@
   <block id="46da6852e307b4f4a0e965c9c18fe576" category="list-text">「 tridentOrchestrator 」、 ( または ) 「 tridentProvisioner` 」、 ( または ) 「 trident-operator-xxxxxxxxx-xxxxx 」という名前のポッドが表示されない場合、 Astra Trident * は「 tridentctl 」を使用してインストールされます。</block>
   <block id="72b739b65841b5d903e9ec216f0c4fd1" category="list-text">既存の tridentctl バイナリを使用して Astra Trident をアンインストールしますこの場合は、 21.07 バイナリを使用してアンインストールします。</block>
   <block id="6445365d100b18e233ebf2d08d116aee" category="inline-link-macro">カスタマイズされたインストール</block>
-  <block id="ca35ad40c102410833ee6b7227e3cfcc" category="list-text">これが完了したら、希望するバージョンの Trident バイナリ（この例では 20.07 ）を取得し、 Astra Trident のインストールに使用します。のカスタム YAML を生成できます <block ref="e519c8a747d0bcd553094af015469d7d" category="inline-link-macro-rx"></block> 必要に応じて、</block>
   <block id="03347682a0c8323a17a17933bbf4e18c" category="paragraph">ダウングレードプロセスが完了します。</block>
   <block id="3a90bea856daf0616bcbdde1b9d9ad0b" category="summary">Astra Trident のインストール方法に応じて、複数の方法でアンインストールできます。</block>
   <block id="bdcf993f8f3d91925d60754cd864f3c0" category="section-title">Helm を使用してアンインストールします</block>
@@ -1107,7 +1106,6 @@
   <block id="ffb25b8f3453272318fba778e825268f" category="section-title">サポートされている etcd のバージョンは何ですか。</block>
   <block id="6a3ad0d68dcfe0164611dadb7f7656f9" category="paragraph">Astra Trident はもはや「 etcd 」を必要としない。状態を維持するために CRD を使用します。</block>
   <block id="bde6cb03741f92107c63aeebe62d3278" category="section-title">Astra Trident はプライベートレジストリからのオフラインインストールをサポートしていますか。</block>
-  <block id="eeabb890ce57551c5685ffb613b78406" category="paragraph">はい、 Astra Trident はオフラインでインストールできます。を参照してください <block ref="f0cd5c2694f3680f6758ce5ce7e21a5b" category="inline-link-macro-rx"></block>。</block>
   <block id="1c51806b370d428d5779dbcacd940174" category="section-title">Astra Trident はリモートからインストールできますか。</block>
   <block id="bf858450c271da75a3df3a15ca761330" category="paragraph">はい。Astra Trident 18.10 以降では、クラスタへのアクセスが「 kubectl 」に設定されている任意のマシンからのリモートインストール機能がサポートされています。kubectl アクセスが確認されたら ( たとえば ' リモート・マシンから kubectl get nodes コマンドを起動して確認します ) ' インストール手順に従います</block>
   <block id="12694c2de4575e39a6f7e81d55e35de9" category="section-title">Astra Trident でハイアベイラビリティを構成できますか。</block>
@@ -1115,9 +1113,7 @@
   <block id="1656e4b34abdb6d497b40cac65366767" category="section-title">Astra Trident は kube-system ネームスペースにアクセスする必要がありますか。</block>
   <block id="6f67e1edfd4aa5b0e695528a9c7d8898" category="paragraph">Astra Trident は Kubernetes API Server からデータを読み取り、アプリケーションが新しい PVC を要求するタイミングを判断して、 kube-system へのアクセスを必要とします。</block>
   <block id="16cdb35003b5bcf0f30556e0bc477511" category="section-title">Astra Trident で使用されるロールと権限を教えてください。</block>
-  <block id="dd57666df1542a5c5c1c8ea446433dba" category="paragraph">Trident インストーラが Kubernetes ClusterRole を作成します。このロールには、 Kubernetes クラスタの PersistentVolume 、 PersistentVolumeClaim 、 StorageClass 、 Secret の各リソースへのアクセス権があります。を参照してください <block ref="21005beb39aa5b473ddc4fbc9c302e0b" category="inline-link-macro-rx"></block>。</block>
   <block id="8ff39a39871cc30228035bc0580a6af4" category="section-title">Astra Trident がインストールに使用するマニフェストファイルをローカルで生成できますか。</block>
-  <block id="34edccb29a11f4f0728f07bbefd9d0e6" category="paragraph">必要に応じて、マニフェストファイルである Astra Trident のインストールに使用するものをローカルで生成して変更できます。を参照してください <block ref="21005beb39aa5b473ddc4fbc9c302e0b" category="inline-link-macro-rx"></block>。</block>
   <block id="e6af67b71bd46d7588b50f28e1414f9b" category="section-title">2 つの別々の Kubernetes クラスタに対して、同じ ONTAP バックエンド SVM を 2 つの別々の Astra Trident インスタンスに対して共有できますか。</block>
   <block id="7bbf9b47e035f0f9bb7c46098e78fb4d" category="paragraph">推奨されませんが、同じバックエンド SVM を 2 つの Astra Trident インスタンスに使用できます。インストール時に各インスタンスに一意のボリューム名を指定するか、「 setup/backend.json 」ファイルに一意の「 S toragePrefix 」パラメータを指定します。これは、両方のインスタンスで同じ FlexVol を使用しないためです。</block>
   <block id="9840a5bb6278469ed550bcdcc92c29c5" category="section-title">ContainerLinux （旧 CoreOS ）に Astra Trident をインストールすることはできますか。</block>
@@ -1155,7 +1151,6 @@
   <block id="ce44cbbc54839f39b351c091b0e3caa5" category="paragraph">ネットアップでは、 Astra Trident のメジャーリリースから次回のメジャーリリースへのアップグレードをサポートしています。バージョン 18.xx から 19.xx 、 19.xx から 20.xx にアップグレードできます。本番環境の導入前に、ラボでアップグレードをテストする必要があります。</block>
   <block id="0399b9e6348e554937a4d65efc97a1b8" category="section-title">Trident を以前のリリースにダウングレードできますか。</block>
   <block id="d307563c01953bd90a41ddd049f96d51" category="inline-link-macro">ダウングレードに関するセクション</block>
-  <block id="0dedfa196a76d45ea496a2b3ebca850a" category="paragraph">ダウングレードする場合は、いくつかの要因を評価する必要があります。を参照してください <block ref="4734dc58d0c9739f3584035ff28dc1f1" category="inline-link-macro-rx"></block>。</block>
   <block id="ba9c59aa9d07b25e124dcf6ca88d689a" category="section-title">バックエンドとボリュームを管理</block>
   <block id="ffe72215dff9a93d62ee68905212025e" category="section-title">ONTAP バックエンド定義ファイルに管理 LIF とデータ LIF の両方を定義する必要がありますか。</block>
   <block id="3a35d35cc18d96684d78b36a81422e0c" category="paragraph">バックエンド定義ファイルには両方を指定することを推奨します。必須の管理 LIF は 1 つだけです。</block>
@@ -2132,7 +2127,6 @@
   <block id="337de5d45c69b1e4dcf87a8e7ec9ff76" category="doc">Amazon FSX for NetApp ONTAP で Astra Trident を使用</block>
   <block id="679e88f51c747ba6602cbc38cb32bff8" category="paragraph"><block ref="6a2736fcbb5755dd03d114a5153506eb" category="inline-link-rx"></block>は、 NetApp ONTAP ストレージ・オペレーティング・システムを搭載したファイル・システムの起動と実行を可能にする、フルマネージドの AWS サービスです。Amazon FSX for NetApp ONTAP を使用すると、使い慣れたネットアップの機能、パフォーマンス、管理機能を活用しながら、 AWS にデータを格納する際の簡易性、即応性、セキュリティ、拡張性を活用できます。FSX は、 ONTAP のファイルシステム機能と管理 API の多くをサポートしています。</block>
   <block id="7eb620c879218a348ba0e9afaedf6b01" category="paragraph">ファイルシステムは、オンプレミスの ONTAP クラスタに似た、 Amazon FSX のプライマリリソースです。各 SVM 内には、ファイルとフォルダをファイルシステムに格納するデータコンテナである 1 つ以上のボリュームを作成できます。Amazon FSX for NetApp ONTAP を使用すると、 Data ONTAP はクラウド内の管理対象ファイルシステムとして提供されます。新しいファイルシステムのタイプは * NetApp ONTAP * です。</block>
-  <block id="98cbc4f3bec852897b19deb4e76af117" category="paragraph">Amazon Elastic Kubernetes Service （ EKS ）で実行されている Astra Trident と Amazon FSX for NetApp ONTAP を使用することで、 Amazon Elastic Kubernetes Service （ EKS ）で実行されている Kubernetes クラスタが、 ONTAP がサポートするブロックボリュームとファイル永続ボリュームをプロビジョニングできるようになります。</block>
   <block id="ff27e75635c1ff1e88fbc656b16e56ce" category="section-title">Astra Trident の詳細をご確認ください</block>
   <block id="ac7bd35f3efc1fd44a6368cea5fa9c21" category="paragraph">Astra Trident を初めて使用する場合は、以下のリンクを使用して確認してください。</block>
   <block id="483a5da192f46e3cfe8391d3ef234fc4" category="inline-link-macro">よくある質問です</block>
@@ -3171,9 +3165,7 @@
   <block id="4811aaaf5eedea1ea9f703353903b5b5" category="list-text">を参照してください <block ref="c35b155baa39b6aa36cf9bc59eea88f3" category="inline-link-macro-rx"></block> ボリューム拡張の詳細については、を参照してください。</block>
   <block id="853119066470e5145f87024e7c6accdb" category="cell">ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-san 、 aws -cvs 、 gcp-cvs 、 azure-netapp-files</block>
   <block id="23038d88eea805ac06a26959fc129ca5" category="admonition">NetApp Aggregate Encryption （ NAE ）は、現在 Trident ではサポートされていません。</block>
-  <block id="18cf072964a583150dd247485ba75b92" category="admonition-title">ONTAP 対応の Amazon FSX</block>
   <block id="fa8bc73a8436dd2f79aafaa731d248e4" category="list-text">「 limitAggregateUsage 」パラメータは、「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。</block>
-  <block id="c7e012baf676feb8d925d8f535c01c02" category="list-text">NetApp ONTAP ボリューム用の Amazon FSX には、 SnapMirror が事前に設定されています。Trident では変更や解除はできません。PVC を削除するには、 NetApp ONTAP ボリュームの PV と FSX を手動で削除する必要があります。</block>
   <block id="7b3ecf601e0eee1c9d097083281abafa" category="example-title">例を展開します</block>
   <block id="76df2d4e2a105a35b5db1ce7b060bbe1" category="list-text">Anthos オンプレミス（ VMware ）と Anthos は、ベアメタル 1.8 、 1.9 、 1.10 上に実装されています</block>
   <block id="9c99c91edd7eddead4f870a324f880bd" category="list-text">Trident の Helm リポジトリを追加：</block>
@@ -3197,4 +3189,17 @@
   <block id="d293f031e5664526b25f3a65012401b7" category="cell">「 IPv6 」</block>
   <block id="82ac2196255f9b53a51cdc28bcf73966" category="paragraph">次に、ノードセレクタを使用して Trident を導入する例を示します。</block>
   <block id="997cff957213b9212a22d7cac2b4275d" category="list-text">生成された証明書を使用して認証をテストONTAP 管理 LIF &gt; と &lt;vserver name&gt; は、管理 LIF の IP アドレスおよび SVM 名に置き換えてください。LIF のサービスポリシーが「 default-data-management 」に設定されていることを確認する必要があります。</block>
+  <block id="1e6c7220f5d4eb181d67b4d5043336f5" category="paragraph">Amazon Elastic Kubernetes Service （ EKS ）で実行されている Astra Trident と Amazon FSX for NetApp ONTAP を使用すると、 ONTAP がサポートするブロックボリュームとファイル永続ボリュームを確実にプロビジョニングできます。</block>
+  <block id="8792dbcf77c7dadb90a49563ee249d3e" category="admonition-title">ONTAP ファイルシステム用に Amazon FSX を作成します</block>
+  <block id="fe901b8f112db124800eb81787ce3be4" category="paragraph">自動バックアップが有効になっている Amazon FSX ファイルシステムで作成されたボリュームは Trident で削除できません。PVC を削除するには、 PV と ONTAP ボリュームの FSX を手動で削除する必要があります。</block>
+  <block id="2433c28b2cd1430a6f8bd5d5ea6aa3da" category="paragraph">この問題 を回避するには、次の手順</block>
+  <block id="10b862795141355be1c179a2f878f507" category="list-text">ONTAP ファイル・システム用の FSX を作成する場合は '**Quick create** を使用しないでくださいクイック作成ワークフローでは、自動バックアップが有効になり、オプトアウトオプションはありません。</block>
+  <block id="a10ab8f133704d9a58a1dff179ad7f7d" category="list-text">** Standard create** を使用する場合は、自動バックアップを無効にしてください。自動バックアップを無効にすると、 Trident は手動操作なしでボリュームを正常に削除できます。</block>
+  <block id="4ef50c481a6113a6276514f572c414d2" category="inline-image-macro">自動バックアップを無効にしている AWS コンソールのスクリーンショット。</block>
+  <block id="cce5aa9218d4019d57adcf814d7189c1" category="paragraph"><block ref="cce5aa9218d4019d57adcf814d7189c1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="45b09f7cb3dcbe0274eef2b3fce46bea" category="paragraph">はい、 Astra Trident はオフラインでインストールできます。を参照してください <block ref="4a2b27d6d4bc3dd7ae85bfd131d50753" category="inline-link-macro-rx"></block>。</block>
+  <block id="6efc6545e459b8bb96815706b41a84cd" category="paragraph">Trident インストーラが Kubernetes ClusterRole を作成します。このロールには、 Kubernetes クラスタの PersistentVolume 、 PersistentVolumeClaim 、 StorageClass 、 Secret の各リソースへのアクセス権があります。を参照してください <block ref="7a68296d6f600eac17d317743bea0050" category="inline-link-macro-rx"></block>。</block>
+  <block id="0f43ba8a9cfc14b033c2c652f53bfcb9" category="paragraph">必要に応じて、マニフェストファイルである Astra Trident のインストールに使用するものをローカルで生成して変更できます。を参照してください <block ref="7a68296d6f600eac17d317743bea0050" category="inline-link-macro-rx"></block>。</block>
+  <block id="72fec731c958562fd09df08eef5fbb89" category="paragraph">ダウングレードする場合は、いくつかの要因を評価する必要があります。を参照してください <block ref="ea621a0de3f004c488ea799d0fd7e41d" category="inline-link-macro-rx"></block>。</block>
+  <block id="da4ba399089f873246a85825f8a3e1c3" category="list-text">これが完了したら、希望するバージョンの Trident バイナリ（この例では 20.07 ）を取得し、 Astra Trident のインストールに使用します。のカスタム YAML を生成できます <block ref="a251ebefafa5a5d36d857b7034f07489" category="inline-link-macro-rx"></block> 必要に応じて、</block>
 </blocks>

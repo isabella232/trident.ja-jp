@@ -24,6 +24,6 @@ https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/["�
 
 == クォータと範囲制限を使用してストレージ消費を制御します
 
-Kubernetes には、 2 つの機能があります。これらの機能を組み合わせることで、アプリケーションによるリソース消費を制限する強力なメカニズムが提供されます。。 https://kubernetes.io/docs/concepts/policy/resource-quotas/#storage-resource-quota["ストレージクォータメカニズム"^] 管理者は、グローバルおよびストレージクラス固有の、容量とオブジェクト数の使用制限をネームスペース単位で実装できます。さらに、を使用します 要求がプロビジョニングツールに転送される前に、 PVC 要求が最小値と最大値の両方の範囲内にあることを確認します。
+Kubernetes には、 2 つの機能があります。これらの機能を組み合わせることで、アプリケーションによるリソース消費を制限する強力なメカニズムが提供されます。。 https://kubernetes.io/docs/concepts/policy/resource-quotas/#storage-resource-quota["ストレージクォータメカニズム"^] 管理者は、グローバルおよびストレージクラス固有の、容量とオブジェクト数の使用制限をネームスペース単位で実装できます。さらに、を使用します https://kubernetes.io/docs/tasks/administer-cluster/limit-storage-consumption/#limitrange-to-limit-requests-for-storage["範囲制限"^] 要求がプロビジョニングツールに転送される前に、 PVC 要求が最小値と最大値の両方の範囲内にあることを確認します。
 
 これらの値はネームスペース単位で定義されます。つまり、各ネームスペースに、リソースの要件に応じた値を定義する必要があります。の詳細については、こちらを参照してください https://netapp.io/2017/06/09/self-provisioning-storage-kubernetes-without-worry["クォータの活用方法"^]。

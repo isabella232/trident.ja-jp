@@ -23,7 +23,7 @@ NOTE: NetApp Cloud Volumes Service for Google Cloud では、サイズが 100GiB
 * CVS サービスアカウントの API キーファイル
 
 
-Astra Trident に、小規模なボリュームがデフォルトでサポートされるようになりました https://cloud.google.com/architecture/partners/netapp-cloud-volumes/service-type["GCP 上の CVS サービスタイプ"^]。「 torageClass=software 」で作成されたバックエンドの場合、ボリュームのプロビジョニングサイズは最小 300GiB になります。現在、 CVS ではこの機能が限定的な可用性で提供されており、テクニカルサポートは提供されていません。1TiB 未満のボリュームにアクセスするには、ユーザがサインアップする必要があります。** 非本番 ** のワークロードでは 1TiB 未満のボリュームを使用することを推奨します。
+Astra Trident に、小規模なボリュームがデフォルトでサポートされるようになりました https://cloud.google.com/architecture/partners/netapp-cloud-volumes/service-type["GCP 上の CVS サービスタイプ"^]。「 torageClass=software 」で作成されたバックエンドの場合、ボリュームのプロビジョニングサイズは最小 300GiB になります。現在、 CVS ではこの機能が限定的な可用性で提供されており、テクニカルサポートは提供されていません。1TiB 未満のボリュームにアクセスするには、ユーザがサインアップする必要があります https://docs.google.com/forms/d/e/1FAIpQLSc7_euiPtlV8bhsKWvwBl3gm9KUL4kOhD7lnbHC3LlQ7m02Dw/viewform["こちらをご覧ください"^]。** 非本番 ** のワークロードでは 1TiB 未満のボリュームを使用することを推奨します。
 
 
 NOTE: デフォルトの CVS サービスタイプ（「 torageClass=software 」）を使用してバックエンドを導入する場合、該当するプロジェクト番号とプロジェクト ID について、 GCP の 1TiB 未満のボリューム機能へのアクセス権をユーザが取得する必要があります。これは Astra Trident で sub-1TiB 個のボリュームをプロビジョニングするために必要です。この条件を指定しない場合、 600 GiB 未満の PVC でボリュームの作成が失敗します。を使用して 1TiB 未満のボリュームへのアクセスを取得します https://docs.google.com/forms/d/e/1FAIpQLSc7_euiPtlV8bhsKWvwBl3gm9KUL4kOhD7lnbHC3LlQ7m02Dw/viewform["このフォーム"^]。

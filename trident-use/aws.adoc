@@ -68,7 +68,7 @@ NOTE: Cloud Volumes Service for AWS では、 100GB 未満のボリュームは�
 | 「バグトレースフラグ」 | トラブルシューティング時に使用するデバッグフラグ。例： \\{"API":false," メソッド ":true}`トラブルシューティングを行って詳細なログダンプが必要な場合を除き、このオプションは使用しないでください。 | null 
 |===
 
-NOTE: 「 apiURL 」は、「 apiRegion 」ごとに一意です。たとえば 'us-west-2 'apiRegion' にはがあります https://cv.us-west-2.netapp.com:8080/v1/[] 「 apiURL 」と入力します。同様に、 us-east-1 の apiRegion にもがあります 「 apiURL 」と入力します。バックエンド構成に対応する正しい「 apiRegion 」パラメータと「 apiURL 」パラメータが CVS ダッシュボードにあることを確認してください。
+NOTE: 「 apiURL 」は、「 apiRegion 」ごとに一意です。たとえば 'us-west-2 'apiRegion' にはがあります https://cv.us-west-2.netapp.com:8080/v1/[] 「 apiURL 」と入力します。同様に、 us-east-1 の apiRegion にもがあります https://cds-aws-bundles.netapp.com:8080/v1/[] 「 apiURL 」と入力します。バックエンド構成に対応する正しい「 apiRegion 」パラメータと「 apiURL 」パラメータが CVS ダッシュボードにあることを確認してください。
 
 各バックエンドは、 1 つの AWS リージョンにボリュームをプロビジョニングします。他のリージョンにボリュームを作成する場合は、バックエンドを追加で定義します。
 

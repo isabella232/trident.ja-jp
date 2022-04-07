@@ -45,7 +45,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snaps
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
 ----
 
-TIP: CSI Snapshotter は、を提供します https://github.com/kubernetes-csi/external-snapshotter#validating-webhook["webhook を検証しています"^] ユーザーが既存の v1beta1 スナップショットを検証し、有効なリソースオブジェクトであることを確認できるようにするため。検証中の webhook は、無効なスナップショットオブジェクトに自動的にラベルを付け、今後無効なオブジェクトが作成されないようにします。検証する webhook は Kubernetes Orchestrator によって導入されます。検証するウェブフックを手動で配備する手順を参照してください。無効なスナップショットマニフェストの例を探します。
+TIP: CSI Snapshotter は、を提供します https://github.com/kubernetes-csi/external-snapshotter#validating-webhook["webhook を検証しています"^] ユーザーが既存の v1beta1 スナップショットを検証し、有効なリソースオブジェクトであることを確認できるようにするため。検証中の webhook は、無効なスナップショットオブジェクトに自動的にラベルを付け、今後無効なオブジェクトが作成されないようにします。検証する webhook は Kubernetes Orchestrator によって導入されます。検証するウェブフックを手動で配備する手順を参照してください https://github.com/kubernetes-csi/external-snapshotter/blob/release-3.0/deploy/kubernetes/webhook-example/README.md["こちらをご覧ください"^]。無効なスナップショットマニフェストの例を探します https://github.com/kubernetes-csi/external-snapshotter/tree/release-3.0/examples/kubernetes["こちらをご覧ください"^]。
 
 以下に、スナップショットの操作に必要な構成要素と、スナップショットの作成方法および使用方法の例を示します。
 

@@ -66,7 +66,7 @@ Astra Trident はもはや「 etcd 」を必要としない。状態を維持す
 
 === Astra Trident はプライベートレジストリからのオフラインインストールをサポートしていますか。
 
-はい、 Astra Trident はオフラインでインストールできます。を参照してください link:../trident-get-started/kubernetes-deploy.html["こちらをご覧ください"^]。
+はい、 Astra Trident はオフラインでインストールできます。を参照してください link:https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["こちらをご覧ください"]。
 
 
 
@@ -90,13 +90,13 @@ Astra Trident は Kubernetes API Server からデータを読み取り、アプ�
 
 === Astra Trident で使用されるロールと権限を教えてください。
 
-Trident インストーラが Kubernetes ClusterRole を作成します。このロールには、 Kubernetes クラスタの PersistentVolume 、 PersistentVolumeClaim 、 StorageClass 、 Secret の各リソースへのアクセス権があります。を参照してください link:../trident-get-started/kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"^]。
+Trident インストーラが Kubernetes ClusterRole を作成します。このロールには、 Kubernetes クラスタの PersistentVolume 、 PersistentVolumeClaim 、 StorageClass 、 Secret の各リソースへのアクセス権があります。を参照してください link:https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"]。
 
 
 
 === Astra Trident がインストールに使用するマニフェストファイルをローカルで生成できますか。
 
-必要に応じて、マニフェストファイルである Astra Trident のインストールに使用するものをローカルで生成して変更できます。を参照してください link:../trident-get-started/kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"^]。
+必要に応じて、マニフェストファイルである Astra Trident のインストールに使用するものをローカルで生成して変更できます。を参照してください link:https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"]。
 
 
 
@@ -198,7 +198,7 @@ Trident ポッドが削除されても、データは失われません。Triden
 
 === Trident を以前のリリースにダウングレードできますか。
 
-ダウングレードする場合は、いくつかの要因を評価する必要があります。を参照してください link:../trident-managing-k8s/downgrade-trident.html["ダウングレードに関するセクション"^]。
+ダウングレードする場合は、いくつかの要因を評価する必要があります。を参照してください link:https://docs.netapp.com/us-en/trident/trident-managing-k8s/downgrade-trident.html["ダウングレードに関するセクション"]。
 
 
 

@@ -22,7 +22,7 @@ Trident の導入には、 Trident のオペレータまたは tridentctl を使
 
 === Trident のオペレータが必要な理由
 
-。 link:kubernetes-deploy-operator.html["Trident オペレータ"^] は、 Astra Trident のリソースを動的に管理し、セットアップフェーズを自動化する優れた方法です。いくつかの前提条件を満たす必要があります。を参照してください 。
+。 link:kubernetes-deploy-operator.html["Trident オペレータ"^] は、 Astra Trident のリソースを動的に管理し、セットアップフェーズを自動化する優れた方法です。いくつかの前提条件を満たす必要があります。を参照してください link:requirements.html["要件"^]。
 
 Trident オペレータには、以下に示すような利点があります。
 
@@ -106,7 +106,7 @@ Trident を Kubernetes クラスタに導入すると、 Astra Trident インス
 
 === オフラインでの導入
 
-エアギャップ導入を実行するには 'tridentctl install を呼び出すときに --image-registry フラグを使用して ' プライベートイメージレジストリを参照しますTrident 演算子を使用して展開する場合は、「 TridentOrchestrator 」で「 PEC.imageRegistry 」を指定することもできます。このレジストリにはが含まれている必要があります https://hub.docker.com/r/netapp/trident/["Trident の画像"^]、および CSI のサイドカーイメージ（ Kubernetes バージョンで必要な場合）
+エアギャップ導入を実行するには 'tridentctl install を呼び出すときに --image-registry フラグを使用して ' プライベートイメージレジストリを参照しますTrident 演算子を使用して展開する場合は、「 TridentOrchestrator 」で「 PEC.imageRegistry 」を指定することもできます。このレジストリにはが含まれている必要があります https://hub.docker.com/r/netapp/trident/["Trident の画像"^]、 https://hub.docker.com/r/netapp/trident-autosupport/["Trident AutoSupport の画像"^]および CSI のサイドカーイメージ（ Kubernetes バージョンで必要な場合）
 
 導入環境をカスタマイズするには 'tridentctl' を使用して Trident のリソースのマニフェストを生成します導入、開始、サービスアカウント、 Astra Trident がインストールの一部として作成するクラスタロールが含まれます。
 
