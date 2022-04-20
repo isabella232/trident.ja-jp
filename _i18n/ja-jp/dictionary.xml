@@ -866,7 +866,6 @@
   <block id="2f6881ec6a84d1ac9ef2e551f3ca8466" category="section-title">クラスタを対象としたオペレータ環境をアップグレードします</block>
   <block id="532223fc600c8862511462ff30738c55" category="paragraph">Trident 21.01 以降 * からアップグレードするには、以下の手順に従ってください。</block>
   <block id="238e63aecc23c1bc2611ca883f075f1f" category="list-text">現在の Astra Trident インスタンスのインストールに使用した Trident オペレータを削除たとえば、 21.01 からアップグレードする場合は、次のコマンドを実行します。</block>
-  <block id="caa6267a6d2c9b631544a2ce0d5e4180" category="list-text">（オプション）インストールパラメータを変更する場合は、 Trident のインストール時に作成した「 TridentOrchestrator 」オブジェクトを編集します。カスタム Trident イメージの変更、コンテナイメージをプルするためのプライベートイメージレジストリ、デバッグログの有効化、イメージプルシークレットの指定など、これらの変更が行われる可能性があります。</block>
   <block id="09b615e18699c6675b3705c00a495375" category="list-text">新しいバージョンの Trident 演算子を設定する 'undle.yaml ファイルを使用して Astra Trident をインストールします次のコマンドを実行します。</block>
   <block id="d06b5297af318d2581021098f6b0d44d" category="section-title">名前空間を対象としたオペレータインストールをアップグレードします</block>
   <block id="ddfa75d059a999aedec16392aae03bc4" category="paragraph">名前空間を対象とした演算子（バージョン 20.07 ～ 20.10 ）を使用してインストールされた Astra Trident のインスタンスからアップグレードするには、次の手順に従います。</block>
@@ -3212,4 +3211,6 @@
   <block id="d7f1fbcf9ce4e42f705add574d262b2c" category="paragraph"><block ref="d7f1fbcf9ce4e42f705add574d262b2c" category="inline-link-rx"></block></block>
   <block id="56c34c6410dd45c5cec44149ad0ce037" category="section-title">プライバシーポリシー</block>
   <block id="fc248f74f5e36542f7f5627b8610e9a3" category="paragraph"><block ref="fc248f74f5e36542f7f5627b8610e9a3" category="inline-link-rx"></block></block>
+  <block id="056b6e39cb1ae24d946674f95697989a" category="paragraph">既存の Astra Trident インストールは、オペレータが簡単にアップグレードできます。</block>
+  <block id="d10c9260fe9a1660c2f75dddda0220e4" category="list-text">（オプション）インストールパラメータを変更する場合は、 Trident のインストール時に作成した「 TridentOrchestrator 」オブジェクトを編集します。これには、カスタム Trident イメージの変更、コンテナイメージを抽出するためのプライベートイメージレジストリ、デバッグログの有効化、イメージのプルシークレットの指定などの変更が含まれます。</block>
 </blocks>
