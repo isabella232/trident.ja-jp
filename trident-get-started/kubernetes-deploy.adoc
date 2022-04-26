@@ -131,3 +131,16 @@ IMPORTANT: プライベート・イメージ・リポジトリを使用してい
 * 「 kubectl get nodes 」コマンドを開始して、必要な Kubernetes クラスタに接続できることを確認します。
 * 標準のインストール手順を使用して、リモートマシンからの導入を完了します。
 
+
+
+
+== その他の既知の設定オプション
+
+VMware Tanzu Portfolio 製品に Astra Trident をインストールする場合：
+
+* クラスタが特権ワークロードをサポートしている必要があります。
+* --kubbelet-dir` フラグは kubelet ディレクトリの場所に設定する必要があります。デフォルトでは、これは /var/vcap/data/kubelet` です。
++
+--kubbelet-dir' を使用して kubelet の場所を指定することは、 Trident Operator 、 Helm 、および tridentctl の展開で動作することが知られています。
+
+

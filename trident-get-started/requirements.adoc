@@ -38,7 +38,7 @@ Trident オペレータは、次のリリースでサポートされています
 
 NOTE: Red Hat OpenShift Container Platform のユーザは、 4.1.8 よりも前のバージョンを使用している場合、 initiatorname.iscsi ファイルが空白になる可能性があります。これは RedHat によって識別されているバグで、 OpenShift 4.1.8 で修正されています。を参照してください https://access.redhat.com/errata/RHSA-2020:5259/["バグ修正のお知らせ"^]。ネットアップでは、 OpenShift 4.6.8 以降で Astra Trident を使用することを推奨しています。
 
-Astra Trident は、 Google Cloud の Google Kubernetes Engine （ GKE ）、 AWS の Elastic Kubernetes Services （ EKS ）、 Azure の Azure Kubernetes Service （ AKS ）、 Rancher など、フルマネージドで自己管理型の Kubernetes サービスを数多く提供しています。
+Astra Trident は、 Google Kubernetes Engine （ GKE ）、 Amazon Elastic Kubernetes Services （ EKS ）、 Azure Kubernetes Service （ AKS ）、 Rancher 、 VMware Tanzu Portfolio など、フルマネージドで自己管理型の Kubernetes サービスが数多く提供されています。
 
 
 
