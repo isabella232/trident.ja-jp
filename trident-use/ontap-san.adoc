@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-use/ontap-san.html 
-keywords: trident backend, ontap san, ontap-san, ontap-san-economy 
+keywords: trident backend, ontap san, ontap-san, ontap-san-economy, fsx 
 summary: ONTAP SAN ドライバを使用して ONTAP バックエンドを設定する方法について説明します。 
 ---
 = バックエンドに ONTAP または Cloud Volumes ONTAP SAN ドライバを設定します

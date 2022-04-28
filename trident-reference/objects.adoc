@@ -49,7 +49,7 @@ Trident では、標準仕様に加えて、バックエンド構成で設定し
 | trident.netapp.io/fileSystem | ファイルシステム | ONTAP-SAN 、 solidfire-san-SAN 、 eseries-iscsi 、 ONTAP-SAN-エコノミー の 2 つのシステムがあります 
 
 
-| trident.netapp.io/cloneFromPVC | cloneSourceVolume の実行中です | ONTAPNAS 、 ONTAPSAN 、 solidfire-san-SAN 、 aws -cvs 、 azure-netapp-files 、 GCP-cvs 、 ONTAP-SAN エコノミー 
+| trident.netapp.io/cloneFromPVC | cloneSourceVolume の実行中です | ontap - NAS 、 ontap - san 、 solidfire-san-files 、 gcvs 、 ONTAP - SAN - 経済性 
 
 
 | trident.netapp.io/splitOnClone | splitOnClone | ONTAP - NAS 、 ONTAP - SAN 
@@ -64,7 +64,7 @@ Trident では、標準仕様に加えて、バックエンド構成で設定し
 | trident.netapp.io/snapshotPolicy | Snapshot ポリシー | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAP-SAN 
 
 
-| trident.netapp.io/snapshotReserve | Snapshot リザーブ | ONTAP-NAS 、 ONTAP-NAS-flexgroup 、 ONTAP-SAN 、 AWS- CVS 、 GCP-cvs 
+| trident.netapp.io/snapshotReserve | Snapshot リザーブ | ONTAP-NAS 、 ONTAP-NAS-flexgroup 、 ONTAP-SAN 、 GCP-cvs 
 
 
 | trident.netapp.io/snapshotDirectory | snapshotDirectory の略 | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 
@@ -173,14 +173,14 @@ volumeBindingMode: Immediate
 
 
 | backendType | 文字列  a| 
-ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 solidfire-san-SAN 、 solidfire-san-SAN 、 E シリーズ - iSCSI 、 AWS- CVS 、 GCP-cvs 、 azure-NetApp-files 、 ONTAP-SAN-Eエコノミー
+ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 solidfire-san-SAN 、 solidfire-san-SAN 、 E シリーズ - iSCSI 、 GCP-cvs 、 azure-NetApp-files 、 ONTAP-SAN-Eエコノミー
 | プールはこのタイプのバックエンドに属しています | バックエンドが指定されて | すべてのドライバ 
 
 
-| Snapshot | ブール値 | true false | プールは、 Snapshot を含むボリュームをサポートします | Snapshot が有効なボリューム | ontap - NAS 、 ontap - san 、 solidfire-san-san 、 vss-cvs 、 gcp-cvs 
+| Snapshot | ブール値 | true false | プールは、 Snapshot を含むボリュームをサポートします | Snapshot が有効なボリューム | ONTAP-NAS, ONTAP-SAN, solidfire-san-, gcvs 
 
 
-| クローン | ブール値 | true false | プールはボリュームのクローニングをサポートします | クローンが有効なボリューム | ontap - NAS 、 ontap - san 、 solidfire-san-san 、 vss-cvs 、 gcp-cvs 
+| クローン | ブール値 | true false | プールはボリュームのクローニングをサポートします | クローンが有効なボリューム | ONTAP-NAS, ONTAP-SAN, solidfire-san-, gcvs 
 
 
 | 暗号化 | ブール値 | true false | プールでは暗号化されたボリュームをサポート | 暗号化が有効なボリューム | ONTAP-NAS 、 ONTAP-NAS-エコノミー 、 ONTAP-NAS-FlexArray グループ、 ONTAP-SAN 
@@ -218,7 +218,7 @@ excludeStoragePools' パラメータを使用して、 Trident がプロビジ�
 | FSstype （英語） | 文字列 | ext4 、 ext3 、 xfs など | ブロックボリュームのファイルシステムのタイプ | solidfire-san-group 、 ontap/nas 、 ontap -nas-エコノミー 、 ontap -nas-flexgroup 、 ontap -san 、 ONTAP - SAN 経済、 eseries-iscsi | すべて 
 
 
-| allowVolumeExpansion の略 | ブール値 | true false | PVC サイズの拡張のサポートをイネーブルまたはディセーブルにします | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-san 、 aws -cvs 、 gcp-cvs 、 azure-netapp-files | 1.11 以上 
+| allowVolumeExpansion の略 | ブール値 | true false | PVC サイズの拡張のサポートをイネーブルまたはディセーブルにします | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-, gcvs, azure-netapp-files | 1.11 以上 
 
 
 | volumeBindingMode のようになりました | 文字列 | 即時、 WaitForFirstConsumer | ボリュームバインドと動的プロビジョニングを実行するタイミングを選択します | すべて | 1.17 以上 
@@ -370,7 +370,7 @@ TIP: 関連付けられた Snapshot がある PV を削除すると、対応す�
 | インターン名 | 文字列 | いいえ | Trident が生成した、ストレージシステム上のオブジェクトの名前 
 
 
-| cloneSourceVolume の実行中です | 文字列 | いいえ | ONTAP （ NAS 、 SAN ） & SolidFire - * & AWS- cvs * ：クローン元のボリュームの名前 
+| cloneSourceVolume の実行中です | 文字列 | いいえ | ONTAP （ NAS 、 SAN ） & SolidFire - * ：クローン元のボリュームの名前 
 
 
 | splitOnClone | 文字列 | いいえ | ONTAP （ NAS 、 SAN ）：クローンを親からスプリットします 
@@ -396,7 +396,7 @@ TIP: 関連付けられた Snapshot がある PV を削除すると、対応す�
 
 | ファイルシステム | 文字列 | いいえ | ファイルシステムのタイプ 
 |===
-Trident は ' ボリュームの作成時に internalName を生成しますこの構成は 2 つのステップで構成されます。最初に、ストレージプレフィックス（デフォルトの「 trident 」またはバックエンド構成のプレフィックス）をボリューム名の前に付加し、「 <prefix> - <volume-name> 」という形式の名前を付けます。その後、名前の完全消去が行われ、バックエンドで許可されていない文字が置き換えられます。ONTAP バックエンドでは、ハイフンをアンダースコアで置き換えます（つまり、内部名は「 <prefix>_<volume-name>` 」になります）。Element バックエンドの場合、アンダースコアはハイフンに置き換えられます。CVS （ AWS ）では、一意のボリューム作成トークンに 16 ~ 36 文字の制限があり、 Trident は各ボリュームの内部名に対してランダムな文字列を生成します。
+Trident は ' ボリュームの作成時に internalName を生成しますこの構成は 2 つのステップで構成されます。最初に、ストレージプレフィックス（デフォルトの「 trident 」またはバックエンド構成のプレフィックス）をボリューム名の前に付加し、「 <prefix> - <volume-name> 」という形式の名前を付けます。その後、名前の完全消去が行われ、バックエンドで許可されていない文字が置き換えられます。ONTAP バックエンドでは、ハイフンをアンダースコアで置き換えます（つまり、内部名は「 <prefix>_<volume-name>` 」になります）。Element バックエンドの場合、アンダースコアはハイフンに置き換えられます。
 
 ボリューム設定を使用して、 REST API を使用してボリュームを直接プロビジョニングできますが、 Kubernetes 環境では、ほとんどのユーザが標準の Kubernetes の「 PersistentVolumeClaim 」メソッドを使用することを想定しています。Trident は、プロビジョニングプロセスの一環として、このボリュームオブジェクトを自動的に作成します。
 

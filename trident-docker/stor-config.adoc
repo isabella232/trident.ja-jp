@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-docker/stor-config.html 
-keywords: deploy, trident, docker, trident for docker, nfs, iscsi, protcol, nfs protocol, iscsi protocol, configure host, host config, storage config, options, variables, ontap, element, aws, cvs on gcp, cvs on aws, anf, azure netapp files 
+keywords: deploy, trident, docker, trident for docker, nfs, iscsi, protcol, nfs protocol, iscsi protocol, configure host, host config, storage config, options, variables, ontap, element, cvs on gcp, anf, azure netapp files 
 summary: Astra Trident 構成で使用できる設定オプションを確認してください。 
 ---
 = ストレージ構成オプション
@@ -34,7 +34,7 @@ Astra Trident 構成で使用できる設定オプションを確認してくだ
 | 'torageDriverName'  a| 
 ストレージドライバの名前
  a| 
-「 ontap -na`, `ontap -san`, `ontap -nas-エコノミー 」 , 「 ontap -nas-flexgroup 」 , 「 olidfire -san 」 , 「 azure-NetApp-files 」、「 aws -cvs 」、または「 gcp-cvs 」です
+「 ontap -na`,`ontap -san`,`ontap -nas-エコノミー 」 ,「 ontap -nas-flexgroup 」 ,「 solidfire-san-', 」 「 azure-NetApp-files 」または「 gcp-cvs 」です
 
 
 
@@ -448,127 +448,6 @@ QoS の仕様
             }
         }
     ]
-}
-----
-
-
-== Cloud Volumes Service （ CVS ）を使用した AWS 構成
-
-CVS on AWS を使用する場合は、グローバル設定の値に加えて、次のオプションを使用できます。必要な値はすべて CVS Web ユーザインターフェイスで確認できます。
-
-[cols="3*"]
-|===
-| オプション | 説明 | 例 
-
-
-| 「 apiRegion 」と入力します  a| 
-CVS アカウントリージョン（必須）。CVS Web ポータルの「アカウント設定」 > 「 API アクセス」で確認できます。
- a| 
-「 us-east-1 」
-
-
-
-| 「 apiURL 」と入力します  a| 
-CVS アカウント API URL （必須）。CVS Web ポータルの「アカウント設定」 > 「 API アクセス」で確認できます。
- a| 
-「 https://cds-aws-bundles.netapp.com:8080/v1”
-
-
-
-| 「 apiKey 」と入力します  a| 
-CVS アカウントの API キー（必須）。CVS Web ポータルの「アカウント設定」 > 「 API アクセス」で確認できます。
- a| 
-Docker です
-
-
-
-| 「 ecretKey 」  a| 
-CVS アカウントのシークレットキー（必須）。CVS Web ポータルの「アカウント設定」 > 「 API アクセス」で確認できます。
- a| 
-デフォルト
-
-
-
-| 「 ProxyURL 」と入力します  a| 
-CVS アカウントへの接続にプロキシサーバが必要な場合は、プロキシ URL を指定します。プロキシサーバには、 HTTP プロキシまたは HTTPS プロキシを使用できます。HTTPS プロキシの場合、証明書の検証は省略され、プロキシサーバで自己署名証明書が使用されるようになります。* 認証が有効になっているプロキシサーバーはサポートされていません * 。
- a| 
-「 http://proxy-server-hostname/”
-
-
-
-| 「 nfsvMountOptions 」のように入力します  a| 
-NFS マウントオプション。デフォルトは「 -o nfsvers=3 」です。
- a| 
-「 nfsvers=3 、 proto=tcp 、 timeo=600 」
-
-
-
-| 「サービスレベル」  a| 
-パフォーマンスレベル（標準、プレミアム、エクストリーム）、デフォルトは「標準」
- a| 
-Premium サービス
-
-|===
-
-NOTE: NetApp Cloud Volumes Service for AWS では、サイズが 100GB 未満のボリュームはサポートされていません。Trident では、アプリケーションの導入を容易にするために、より小さいボリュームが要求された場合に、 100GB のボリュームが自動的に作成されます。
-
-AWS で CVS を使用している場合は、以下のデフォルトのボリュームオプション設定が使用できます。
-
-[cols="3*"]
-|===
-| オプション | 説明 | 例 
-
-
-| 「 exportRule 」  a| 
-NFS アクセスリスト（アドレスおよび CIDR サブネット）。デフォルトは「 0.0.0.0/0 」です。
- a| 
-「 10.0.1.0/24,10.0.2.100 」
-
-
-
-| 「スナップショット方向」  a| 
-「 .snapshot 」ディレクトリの表示を制御します
- a| 
-いいえ
-
-
-
-| 「スナップショット予約」  a| 
-スナップショット予約の割合。デフォルトでは、 CVS のデフォルト値である 0 を使用します
- a| 
-10.
-
-
-
-| 「 size 」  a| 
-ボリュームサイズ、デフォルトは「 100 GB 」
- a| 
-「 500G 」
-
-|===
-
-
-=== CVS on AWS 構成ファイルの例
-
-[listing]
-----
-{
-    "version": 1,
-    "storageDriverName": "aws-cvs",
-    "apiRegion": "us-east-1",
-    "apiURL": "https://cds-aws-bundles.netapp.com:8080/v1",
-    "apiKey":    "znHczZsrrtHisIsAbOguSaPIKeyAZNchRAGzlzZE",
-    "secretKey": "rR0rUmWXfNioN1KhtHisiSAnoTherboGuskey6pU",
-    "region": "us-east-1",
-    "proxyURL": "http://proxy-server-hostname/",
-    "serviceLevel": "premium",
-    "limitVolumeSize": "200Gi",
-    "defaults": {
-        "snapshotDir": "true",
-        "snapshotReserve": "5",
-        "exportRule": "10.0.0.0/24,10.0.1.0/24,10.0.2.100",
-        "size": "100Gi"
-    }
 }
 ----
 

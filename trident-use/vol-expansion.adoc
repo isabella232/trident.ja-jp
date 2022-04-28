@@ -175,7 +175,7 @@ $ tridentctl get volumes -n trident
 
 == NFS ボリュームを拡張します
 
-Astra Trident は 'ONTAP-NAS'ONTAP-NAS-エコノミー 'ONTAP-NAS-flexp`'ONTAP-NAS-flexp`'AWS- 対 'GCP-cvs` でプロビジョニングされた NFS PVS のボリューム拡張をサポートしています 「 azure-NetApp-files 」バックエンド。
+Astra Trident は 'ONTAP-NAS''ONTAP-NAS-Bエコノミー 'ONTAP-NAS-flexp`'GCP-cvs`'Azure-NetApp-files' バックエンドでプロビジョニングされた NFS PVS のボリューム拡張をサポートしています
 
 
 

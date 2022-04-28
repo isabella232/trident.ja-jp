@@ -67,7 +67,7 @@ Astra Trident for Docker をアップグレードするには、次の手順を�
 
 == ボリュームのクローンを作成します
 
-「 ONTAP-NAS' 」、「 ONTAP-SAN' 」、「 olidfire-SAN' 」、「 aws -cvs storage drivers 」を使用する場合、 Astra Trident はボリュームのクローンを作成できます。「 ONTAP-NAS-flexgroup 」または「 ONTAP-NAS-エコノミー 」ドライバを使用する場合、クローニングはサポートされません。既存のボリュームから新しいボリュームを作成すると、新しい Snapshot が作成されます。
+「 ONTAP-NAS` 」、「 ONTAP-SAN」 、「 solidfire-san-」 、「 GCP-cvs ストレージドライバ」を使用する場合、 Astra Trident はボリュームのクローンを作成できます。「 ONTAP-NAS-flexgroup 」または「 ONTAP-NAS-エコノミー 」ドライバを使用する場合、クローニングはサポートされません。既存のボリュームから新しいボリュームを作成すると、新しい Snapshot が作成されます。
 
 * ボリュームを調べて Snapshot を列挙します。
 +

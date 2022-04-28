@@ -35,14 +35,8 @@
   <block id="08edd2123939d5309dced149763a50ee" category="section-title">NetApp HCI</block>
   <block id="25f221cc63a7e1fa55b05c29420a72a2" category="paragraph"><block ref="2841e7defe3939e68d83d007d1ad666b" category="inline-link-rx"></block> 日常業務を自動化し、インフラ管理者がより重要な業務に集中できるようにすることで、データセンターの管理と拡張を簡易化します。</block>
   <block id="be17f8b9c728a6cb61cad5a2609b3888" category="paragraph">NetApp HCI は Trident によって完全にサポートされています。Trident では、コンテナ化されたアプリケーション用のストレージデバイスを、基盤となる NetApp HCI ストレージプラットフォームに直接プロビジョニングして管理できます。</block>
-  <block id="b146010b35b21e2354c084cf6d1d2a5d" category="section-title">SANtricity</block>
-  <block id="6161e6c043d51e8eea03494bff7fc57b" category="paragraph">ネットアップの E シリーズと EF シリーズのストレージプラットフォームでは、を使用します<block ref="01c1197ee4ca6d1b24476d1f7b6bc83e" category="inline-link-rx"></block> 可用性とパフォーマンスに優れた堅牢なストレージを提供し、あらゆる規模のアプリケーションにストレージサービスを提供できるようにするためのオペレーティングシステム。</block>
-  <block id="9589e472cb7c5e0d01ca15ecca72de0d" category="paragraph">Trident では、製品ポートフォリオ全体で SANtricity ボリュームを作成、管理できます。</block>
   <block id="7450cfde7058dc5e1f7909d0280fd7ae" category="section-title">Azure NetApp Files の特長</block>
   <block id="29e7ab00082418141d470583a19c28d3" category="paragraph"><block ref="2384314bcd106c8062815b2ed789c4ad" category="inline-link-rx"></block> は、ネットアップが提供するエンタープライズクラスの Azure ファイル共有サービスです。要件がきわめて厳しいファイルベースのワークロードも、ネットアップが提供するパフォーマンスと充実のデータ管理機能を使用して、 Azure でネイティブに実行できます。</block>
-  <block id="06021ba1ee96f1a3a57b50001fc7244c" category="section-title">Cloud Volumes Service for AWS</block>
-  <block id="962483cc436ac01febcdca57fff4735f" category="inline-link">NetApp Cloud Volumes Service for AWS</block>
-  <block id="9cd398e3307ca354d12d0f47aca4f913" category="paragraph"><block ref="a105e3d261515148b2a94b7605496120" category="inline-link-rx"></block> は、 NFS や SMB 経由で NAS ボリュームにオールフラッシュのパフォーマンスを提供する、クラウドネイティブのファイルサービスです。このサービスを使用すると、従来型アプリケーションを含むあらゆるワークロードを AWS クラウドで実行できます。フルマネージドサービスを提供し、ハイパフォーマンス、瞬時のクローニング、データ保護、 Elastic Container Service （ ECS ）インスタンスへのセキュアなアクセスを提供します。</block>
   <block id="b0cee72642f5457a71ddd0b49efb6d93" category="section-title">Cloud Volumes Service for Google Cloud</block>
   <block id="a3b5183ae6f5c3f1d6644448f795b5cb" category="inline-link">NetApp Cloud Volumes Service for Google Cloud</block>
   <block id="a1515efe69d0ac9d979af2bdfc068934" category="paragraph"><block ref="68704f3321dd8ca7029c03c29da7736a" category="inline-link-rx"></block> は、 NFS や SMB 経由で NAS ボリュームにオールフラッシュのパフォーマンスを提供する、クラウドネイティブのファイルサービスです。このサービスを使用すると、従来型アプリケーションを含むあらゆるワークロードを GCP クラウドで実行できます。フルマネージドサービスを提供し、一貫したハイパフォーマンス、瞬時のクローニング、データ保護、 Google Compute Engine （ GCE ）インスタンスへのセキュアなアクセスを実現します。</block>
@@ -185,7 +179,6 @@
   <block id="59c54cb66816513690f886c6cbd45d7e" category="cell">ONTAP-SAN 、 solidfire-san-SAN 、 eseries-iscsi 、 ONTAP-SAN-エコノミー の 2 つのシステムがあります</block>
   <block id="979f70bf9da982ee97ac075df4f048c3" category="cell">trident.netapp.io/cloneFromPVC</block>
   <block id="b4ead50a5ca4f307f7d61da7763ad204" category="cell">cloneSourceVolume の実行中です</block>
-  <block id="a056535de687a7e3ba370fa531941d0e" category="cell">ONTAPNAS 、 ONTAPSAN 、 solidfire-san-SAN 、 aws -cvs 、 azure-netapp-files 、 GCP-cvs 、 ONTAP-SAN エコノミー</block>
   <block id="46ec89aa5290ead7b514dd5182caa0a7" category="cell">trident.netapp.io/splitOnClone</block>
   <block id="58c1c86186ef8de4f6e12d8f3aed8b64" category="cell">splitOnClone</block>
   <block id="80f05e749a4f524e8c8a05fa19d5df0e" category="cell">ONTAP - NAS 、 ONTAP - SAN</block>
@@ -200,7 +193,6 @@
   <block id="7f3bf2672240703dc69740ce11443cf2" category="cell">ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAP-SAN</block>
   <block id="6224177007fc13e9e0d3789985ed165a" category="cell">trident.netapp.io/snapshotReserve</block>
   <block id="bb0d75280f9b683f2f1f0767fd0aff9b" category="cell">Snapshot リザーブ</block>
-  <block id="3419db347ff8e06397e8a611be353848" category="cell">ONTAP-NAS 、 ONTAP-NAS-flexgroup 、 ONTAP-SAN 、 AWS- CVS 、 GCP-cvs</block>
   <block id="1cb43054bed661d8c8457ddbb43e1b1b" category="cell">trident.netapp.io/snapshotDirectory</block>
   <block id="1ae33c448502ac3d326593aee304c21f" category="cell">snapshotDirectory の略</block>
   <block id="ec1739ebad429a70f25efc292c347f8e" category="cell">trident.netapp.io/unixPermissions</block>
@@ -265,7 +257,6 @@
   <block id="ef2577df8468ab39e993a1938ba7f38d" category="cell">シック： All ONTAP &amp; eseries-iscsi ； thin ： all ONTAP &amp; solidfire-san-SAN</block>
   <block id="55b56fb238360663afa6230ad82e74a0" category="cell">backendType</block>
   <block id="d41d8cd98f00b204e9800998ecf8427e" category="doc"></block>
-  <block id="9d7b1f44c2f9de09e74ed8f6104c3f16" category="paragraph">ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 solidfire-san-SAN 、 solidfire-san-SAN 、 E シリーズ - iSCSI 、 AWS- CVS 、 GCP-cvs 、 azure-NetApp-files 、 ONTAP-SAN-Eエコノミー</block>
   <block id="0e1201d4d96df2d9d03c9c66b90874a1" category="cell">プールはこのタイプのバックエンドに属しています</block>
   <block id="c4efe19137f43450149d48fddbab6c28" category="cell">バックエンドが指定されて</block>
   <block id="a04622349b3ede0d4176ca2c2e161763" category="cell">すべてのドライバ</block>
@@ -274,7 +265,6 @@
   <block id="ac1ffb15effdc77a86029972670d022f" category="cell">true false</block>
   <block id="4ac43bef181074fbd4a1f3620b46f77f" category="cell">プールは、 Snapshot を含むボリュームをサポートします</block>
   <block id="13410bff9f7871113a6af273e2a1b97f" category="cell">Snapshot が有効なボリューム</block>
-  <block id="b43a2204ed324763abdbca5be0c35b02" category="cell">ontap - NAS 、 ontap - san 、 solidfire-san-san 、 vss-cvs 、 gcp-cvs</block>
   <block id="bc3832c405ec6cb9c831849328240f3b" category="cell">クローン</block>
   <block id="609d32aa243917905f282544b543752a" category="cell">プールはボリュームのクローニングをサポートします</block>
   <block id="bcb81802de31cf9c717de3c1d6c2f610" category="cell">クローンが有効なボリューム</block>
@@ -355,7 +345,6 @@
   <block id="4f18882934f0472b4bfa32928bf92f14" category="cell">使用するプロトコルの種類：「 file 」または「 block 」</block>
   <block id="252c6d364cc1a0437939a4f01b0717ae" category="cell">インターン名</block>
   <block id="2857a43e58983276d059c0e6e2fcb0e9" category="cell">Trident が生成した、ストレージシステム上のオブジェクトの名前</block>
-  <block id="ff4630d4b2307b42398211e68c0c3996" category="cell">ONTAP （ NAS 、 SAN ） &amp; SolidFire - * &amp; AWS- cvs * ：クローン元のボリュームの名前</block>
   <block id="e94d46d7c89bcb7e6ac2e2df4d21bafb" category="cell">ONTAP （ NAS 、 SAN ）：クローンを親からスプリットします</block>
   <block id="819549a86d14e849e1d0042c9156d781" category="cell">ONTAP - * ：使用する Snapshot ポリシー</block>
   <block id="e38882545bfedafc7e8ec5973b2e6dd8" category="cell">ONTAP - * ： Snapshot 用にリザーブされているボリュームの割合</block>
@@ -514,21 +503,6 @@
   <block id="fc9e812321a3f9b0eab1b702a08bab4e" category="admonition">Trident と強化された CSI プロビジョニングツールは、 CHAP 認証の使用をサポートします。VAG は、従来の CSI 以外の動作モードでのみ使用する必要があります。</block>
   <block id="d23eaa75b7bd1405526da0e18b7290ac" category="paragraph">CHAP 認証（イニシエータが対象のボリュームユーザであることの確認）は、アカウントベースのアクセス制御でのみサポートされます。認証に CHAP を使用している場合は、単方向 CHAP と双方向 CHAP の 2 つのオプションがあります。単方向 CHAP は、 SolidFire アカウント名とイニシエータシークレットを使用してボリュームアクセスを認証します。双方向の CHAP オプションを使用すると、ボリュームがアカウント名とイニシエータシークレットを使用してホストを認証し、ホストがアカウント名とターゲットシークレットを使用してボリュームを認証するため、ボリュームを最も安全に認証できます。</block>
   <block id="42d135bea104c1079cebd1543c89e970" category="paragraph">ただし、 CHAP を有効にできず VAG が必要な場合は、アクセスグループを作成し、ホストのイニシエータとボリュームをアクセスグループに追加します。アクセスグループに追加した各 IQN は、 CHAP 認証の有無に関係なく、グループ内の各ボリュームにアクセスできます。iSCSI イニシエータが CHAP 認証を使用するように設定されている場合は、アカウントベースのアクセス制御が使用されます。iSCSI イニシエータが CHAP 認証を使用するように設定されていない場合は、ボリュームアクセスグループのアクセス制御が使用されます。</block>
-  <block id="b5dd97bf7f44d6c721a9534c1b6d4390" category="section-title">Snapshot 整合性グループ</block>
-  <block id="9279a0fc4d40b361df8598208a14b586" category="paragraph">Snapshot 整合性グループを設定することは、複数のボリュームにまたがるアプリケーションにも適しています。整合グループの目的は、複数のボリュームの Snapshot イメージを同時に作成することで、特定の時点における一連のボリュームの整合性のあるコピーを確保することです。SANtricity System Manager を使用して整合グループを作成する必要があります。</block>
-  <block id="1ea481e04f09f7ec7132c7773f132743" category="section-title">Cloud Volumes Service for AWS のベストプラクティス</block>
-  <block id="17bc2586ce2fe71048cad42dbfd6049f" category="paragraph">AWS で Trident 用に Cloud Volumes Service を設定する際のベストプラクティスをご確認ください。</block>
-  <block id="bb53c6c29f127a298da7dd86bf00bb89" category="section-title">エクスポートポリシーを作成する</block>
-  <block id="8e8d04641d33b2f0af7ad761af53aeb3" category="paragraph">Cloud Volumes Service 経由でプロビジョニングされたボリュームにアクセスできるのが許可されたノードセットだけになるように、 Cloud Volumes Service の作成時にエクスポートポリシーに適切なルールを設定します。Trident を介して Cloud Volume Services でボリュームをプロビジョニングする場合は、バックエンドファイルの「 exportRule 」パラメータを使用して、必要な Kubernetes ノードにアクセスできるようにしてください。</block>
-  <block id="e807ebdf213353b8a415f991a2cade81" category="section-title">Snapshot ポリシーを作成します</block>
-  <block id="07aa362ac01b2df1044db626df0e7c9b" category="paragraph">Cloud Volume Service を使用してプロビジョニングしたボリュームの Snapshot ポリシーを作成し、 Snapshot が必要な間隔で作成されるようにします。これにより、データのバックアップが一定の間隔で保証され、データの損失や破損が発生した場合にデータをリストアすることができます。Cloud Volume Service でホストされているボリュームの Snapshot ポリシーを設定するには、ボリュームの詳細ページで適切なスケジュールを選択します。</block>
-  <block id="283a4f872d02fc8073ac706850ed948b" category="section-title">適切なサービスレベル、ストレージ容量、およびストレージ帯域幅を選択します</block>
-  <block id="3251e3b8c107f351e2d3fd9e462aba19" category="paragraph">Cloud Volume Services for AWS は、 Standard 、 Premium 、 Extreme など、さまざまなサービスレベルを提供します。これらのサービスレベルは、さまざまなストレージ容量とストレージ帯域幅の要件に対応します。ビジネスニーズに基づいて適切なサービスレベルを選択してください。</block>
-  <block id="c34374a04df0b3e2c47131fdbb5ef741" category="paragraph">ボリュームの作成時に、アプリケーション固有のニーズに基づいて、割り当てられているストレージのサイズを選択する必要があります。割り当てられたストレージを決定する際には、次の 2 つの要素を考慮する必要があります。</block>
-  <block id="e2ae4659e808edd54a095d9432707c2f" category="list-text">特定のアプリケーションのストレージ要件</block>
-  <block id="76ba23394d92b7a06d3ecb8582769eff" category="list-text">ピーク時またはエッジ時に必要な帯域幅</block>
-  <block id="e1e4f36a86f0d5a56aa4115fed351ff5" category="paragraph">ストレージ帯域幅は、選択したサービスレベルと割り当て容量の組み合わせによって異なります。したがって、必要な帯域幅を考慮したうえで、適切なサービスレベルと割り当て容量を選択してください。</block>
-  <block id="8015d968013817a20de84963d8c695b4" category="paragraph">Cloud Volume Services for AWS で Trident によって作成されるボリュームの最大サイズは、バックエンド構成ファイルの「 limitVolumeSize 」パラメータを使用して制限できます。このパラメータを設定すると、要求されたボリュームサイズが設定値を超えた場合にプロビジョニングが失敗します。</block>
   <block id="b4931a42b69dbf4e721e7b97873b1ebb" category="section-title">詳細情報の入手方法</block>
   <block id="2c3a4d5c923121574c10ea22c0474a01" category="inline-link">NetApp ライブラリ</block>
   <block id="65840df7365892d2abe1280cb6cdb1d2" category="paragraph">ベストプラクティスのドキュメントの一部を以下に示します。を検索します<block ref="4caccef7312f2c398bfbb419629c1a78" category="inline-link-rx"></block> 最新バージョンの場合。</block>
@@ -599,7 +573,6 @@
   <block id="b483d59c54aea739f0806cf2f30c057e" category="paragraph">上の表に示すように 'ONTAP-NAS' と「 ONTAP-NAS-エコノミー 」の機能の多くは同じですしかし 'ONTAP-NAS-エコノミー のドライバは ' スケジュールを PV 単位で制御する機能を制限するため ' これは特に災害復旧やバックアップ計画に影響を与える可能性がありますONTAP ストレージ上で PVC クローン機能を活用したい開発チームの場合 ' これは 'ONTAP-NAS' ONTAP -SAN' または ONTAP -SAN' のいずれかのドライバを使用する場合にのみ可能です</block>
   <block id="45f7f2e55c0930a28d1a9e481e602a09" category="admonition">「 olidfire -san 」ドライバは PVC のクローン作成にも対応しています。</block>
   <block id="5ea8a1263c170a1b26153c03919a84f2" category="section-title">Cloud Volumes ONTAP のバックエンドドライバを選択します</block>
-  <block id="20743b3fe5b4d69360557b02168b12ea" category="paragraph">Cloud Volumes ONTAP は、ファイル共有や NAS および SAN プロトコル（ NFS 、 SMB / CIFS 、 iSCSI ）を提供するブロックレベルストレージなど、さまざまなユースケースでデータ制御とエンタープライズクラスのストレージ機能を提供します。Cloud Volume ONTAP の互換性のあるドライバは、「 ONTAP-NAS' 」、「 ONTAP-NAS-エコノミー 」、「 ONTAP-SAN' 」、「 ONTAP-SAN-エコノミー 」です。Cloud Volume ONTAP for AWS 、 Cloud Volume ONTAP for Azure 、 Cloud Volume ONTAP for GCP に該当します。</block>
   <block id="6b1a08ddb7e74488a9039997d4961ff8" category="section-title">Amazon FSX for ONTAP のバックエンドドライバを選択します</block>
   <block id="168b96624733268bb4b4ebfbebea0449" category="paragraph">Amazon FSX for ONTAP を使用すると、お客様は使い慣れたネットアップの機能、パフォーマンス、管理機能を活用しながら、 AWS にデータを格納する際のシンプルさ、即応性、セキュリティ、拡張性を活用できます。FSX for ONTAP は、 ONTAP のファイルシステム機能と管理 API の多くをサポートしています。Cloud Volume ONTAP の互換性のあるドライバは、「 ONTAP-NAS' 」、「 ONTAP-NAS-エコノミー 」、「 ONTAP-NAS-flexgroup 」、「 ONTAP-SAN' 」、「 ONTAP-SAN-エコノミー 」です。</block>
   <block id="d0030e26d7e1baf13ad36649449f3689" category="section-title">NetApp HCI / SolidFire のバックエンドドライバを選択します</block>
@@ -617,11 +590,6 @@
   <block id="8098b34f582537833b36b58273c3545b" category="cell">を展開します</block>
   <block id="e228843381960c06d1035c4219901307" category="cell">「 azure-NetApp-files 」と入力します</block>
   <block id="2fdc8a66565228c15d355a7849997337" category="verse-content-simple">脚注：はい脚注： 1[] ： Astra Trident で管理されていません</block>
-  <block id="08a2e51877cfee5806cf83c6d30fbefe" category="section-title">AWS を使用する Cloud Volumes Service のバックエンドドライバを選択します</block>
-  <block id="01d0b26a2d16d5fb475e224d7705b56d" category="paragraph">Astra Trident は、「 aws -cvs 」ドライバを使用して、 AWS バックエンドの Cloud Volumes Service とリンクします。Trident で AWS バックエンドを構成するには、バックエンドファイルに「 apiRegion 」、「 apiURL 」、「 apiKey 」、「 ecretKey 」を指定する必要があります。これらの値は、 CVS Web ポータルのアカウント設定 / API アクセスで確認できます。サポートされているサービス・レベルは 'tandard'premium'extreme などの CVS に合わせて調整されています現在、プロビジョニングする最小ボリュームサイズは 100G です。今後の CVS リリースでは、この制限が解除される可能性があります。</block>
-  <block id="f5619cf78c5af29a1223fb34ef1361ce" category="cell">CVS for AWS ドライバ</block>
-  <block id="b69ca6e3662048fc46e2e4f8adc185a1" category="cell">「 aws -cvs 」</block>
-  <block id="c7fdaa4c02d33ea744bd0e39a9e89956" category="paragraph">「 aws -cvs 」ドライバは仮想ストレージプールを使用します。仮想ストレージプールはバックエンドを抽象化し、 Trident がボリュームの配置を決定できるようにします。管理者が backend.json ファイルに仮想ストレージプールを定義します。ストレージクラスは、ラベルを使用する仮想ストレージプールを識別します。</block>
   <block id="88d040295b5885489339e969bf92517c" category="section-title">GCP で Cloud Volumes Service のバックエンドドライバを選択します</block>
   <block id="1d326a2a7f267c800fe3eafb89e5c7cd" category="inline-link-macro">サービスタイプ</block>
   <block id="f888f12905dbaabc09dd3e50073d862f" category="paragraph">Astra Trident は、 GCP バックエンドの Cloud Volumes Service とリンクするために、「 gcp-cvs` ドライバ」を使用します。Trident で GCP バックエンドを構成するには、バックエンドファイルで「 ProjectNumber 」、「 apiRegion 」、「 apiKey 」を指定する必要があります。プロジェクト番号は GCP Web ポータルで確認できますが、 GCP で Cloud Volume の API アクセスを設定する際に作成したサービスアカウントの秘密鍵ファイルから API キーを取得する必要があります。Astra Trident なら、 CVS ボリュームを 2 つのうちの 1 つで作成できます <block ref="a3cd55e5a9ff014b76f6953040234c24" category="inline-link-macro-rx"></block>：</block>
@@ -646,10 +614,8 @@
   <block id="bd755d43092fcea772b8e9ab21e9951e" category="paragraph">Virtual Storage Pool は、すべての Astra Trident バックエンドで利用可能Trident が提供する任意のドライバを使用して、任意のバックエンドに対して仮想ストレージプールを定義できます。</block>
   <block id="365b4529a5f01ced729944db23d237a5" category="paragraph">仮想ストレージプールを使用すると、管理者はストレージクラスで参照可能なバックエンド経由で抽象化レベルを作成して、バックエンドにボリュームを柔軟かつ効率的に配置できます。同じサービスクラスを使用して異なるバックエンドを定義できます。さらに、同じバックエンドに異なる特性を持つ複数のストレージプールを作成することもできます。セレクタで特定のラベルを設定したストレージクラスがある場合、 Astra Trident は、ボリュームを配置するすべてのセレクタラベルに一致するバックエンドを選択します。ストレージクラスセレクタのラベルが複数のストレージプールに一致する場合、 Astra Trident がボリュームのプロビジョニングに使用するストレージクラスを 1 つ選択します。</block>
   <block id="830a7882918fba200333b9c6ea7db363" category="section-title">Virtual Storage Pool Design の略</block>
-  <block id="65f970319bb8b6ede33a2d975be3693d" category="paragraph">バックエンドの作成時に、一般に一連のパラメータを指定できます。管理者が、同じストレージクレデンシャルと異なるパラメータセットを使用して別のバックエンドを作成することはできませんでした。この問題は、仮想ストレージプールの導入に伴って、軽減されています。仮想ストレージプールは、バックエンドと Kubernetes ストレージクラスの間に抽象化されたレベルです。管理者は、 Kubernetes ストレージクラスを介してパラメータとラベルを定義でき、セレクタとしてバックエンドに依存しない方法で参照できます。Virtual Storage Pools は、サポート対象のすべてのネットアップバックエンドに Astra Trident を使用して定義できます。リストには、 SolidFire / NetApp HCI 、 ONTAP 、 AWS と GCP 上の Cloud Volumes Service 、 Azure NetApp Files が含まれます。</block>
   <block id="3c4f3a478663d0f7aab5180da0b1356a" category="admonition">仮想ストレージプールを定義する場合は、バックエンド定義内の既存の仮想プールの順序を変更しないことを推奨します。また、既存の仮想プールの属性を編集または変更したり、新しい仮想プールを定義したりしないことを推奨します。</block>
   <block id="d96c9f641b35ec82dabdc46092afe1d0" category="section-title">さまざまなサービスレベル / QoS をエミュレートするための仮想ストレージプールを設計します</block>
-  <block id="9e44f014bb0976e50892e95fed1ed5b5" category="paragraph">サービスクラスをエミュレートするための仮想ストレージプールを設計することができます。Cloud Volume Service for AWS の仮想プール実装を使用して、さまざまなサービスクラスをセットアップする方法を見ていきましょう。パフォーマンスレベルが異なる複数のラベルで AWS と CVS バックエンドを設定します。「高度」のアスペクトを適切なパフォーマンスレベルに設定し、各ラベルの下にその他の必要な側面を追加します。では、別の仮想ストレージプールにマッピングする別の Kubernetes ストレージクラスを作成します。parameters.selector` フィールドを使用すると ' 各 StorageClass は ' ボリュームのホストに使用できる仮想プールを呼び出します</block>
   <block id="85d73d477f633146bd32af7aaedd54da" category="section-title">特定の側面を割り当てるための仮想プールを設計します</block>
   <block id="c011d5d6ca18de1df954b81c6bb49d4a" category="paragraph">特定の側面を持つ複数の仮想ストレージプールは、単一のストレージバックエンドから設計できます。そのためには、バックエンドに複数のラベルを設定し、各ラベルに必要な側面を設定します。次に ' 異なる仮想ストレージ・プールにマップされる parameters.selector` フィールドを使用して ' 異なる Kubernetes ストレージ・クラスを作成しますバックエンドでプロビジョニングされるボリュームには、選択した仮想ストレージプールに定義された設定が適用されます。</block>
   <block id="421f7dd5bb37a6401aa6326ad33dae20" category="section-title">ストレージプロビジョニングに影響する PVC 特性</block>
@@ -680,9 +646,7 @@
   <block id="2243e252be826d6ec5e767668d9f961d" category="section-title">ボリュームを展開します</block>
   <block id="a059bca2035a0befa11f641fdabde223" category="paragraph">Astra Trident は、 NFS と iSCSI PVS のサイズ変更をサポートしています。これにより、ユーザは Kubernetes レイヤを介してボリュームのサイズを直接変更できます。ボリュームを拡張できるのは、 ONTAP 、 SolidFire / NetApp HCI 、 Cloud Volumes Service バックエンドなど、主要なすべてのネットアップストレージプラットフォームです。後で拡張できるようにするには ' ボリュームに関連づけられたストレージ・クラスで 'allowVolumeExpansion を true に設定します永続ボリュームのサイズを変更する必要がある場合は、 Persistent Volume Claim の「 PEC.resources.request.storage 」注釈を必要なボリュームサイズに編集します。Trident が、ストレージクラスタ上のボリュームのサイズ変更を自動的に処理します。</block>
   <block id="40a28a40c11a193f8911cf4143a6ae6a" category="section-title">既存のボリュームを Kubernetes にインポートする</block>
-  <block id="911dcebca8f00bd038d697c0c5b9f99d" category="paragraph">Volume Import では、既存のストレージボリュームを Kubernetes 環境にインポートできます。これは現在、「 ONTAP-NAS' 」、「 ONTAP-NAS-flexgroup 」、「 olidfire -san 」、「 azure-NetApp-files 」、「 aws -cvs 」によってサポートされています。 ドライバは「 gcp-cvs 」です。この機能は、既存のアプリケーションを Kubernetes に移植する場合や、ディザスタリカバリシナリオで使用する場合に便利です。</block>
   <block id="5d9f64103cac7a58da69304bc3320e98" category="paragraph">ONTAP ドライバと 'olidfire-san`drivers を使用する場合は 'tridentctl import volume &lt;backend-name&gt;&lt;volume-name&gt;&lt;f/path/pvc.yaml コマンドを使用して 'Astra Trident で管理する既存のボリュームを Kubernetes にインポートしますimport volume コマンドで使用した PVC YAML または JSON ファイルは、 Astra Trident をプロビジョニングツールとして識別するストレージクラスを指定します。NetApp HCI / SolidFire バックエンドを使用する場合は、ボリューム名が一意であることを確認してください。ボリューム名が重複している場合は、ボリュームインポート機能で区別できるように、ボリュームを一意の名前にクローニングします。</block>
-  <block id="5c7a693958891a764b947da44bbeb122" category="paragraph">「 aws -cvs 」、「 azure-NetApp-files 」、または「 gcp-cvs` ドライバが使用されている場合は、「 tridentctl import volume &lt;backend-name&gt; &lt;volume path&gt; -f /path/pvc.yaml 」コマンドを使用して、 Astra Trident で管理する Kubernetes にボリュームをインポートします。これにより、ボリューム参照が一意になります。</block>
   <block id="cb619cd0109686b5f82562b63e44a107" category="paragraph">上記のコマンドを実行すると、 Astra Trident がバックエンド上にボリュームを検出し、サイズを確認します。設定された PVC のボリュームサイズが自動的に追加（必要に応じて上書き）されます。次に Astra Trident が新しい PV を作成し、 Kubernetes が PVC を PV にバインド</block>
   <block id="3a8b25f50e2dcc298175abc8f6a71f82" category="paragraph">特定のインポートされた PVC を必要とするようにコンテナを導入した場合、ボリュームインポートプロセスによって PVC/PV ペアがバインドされるまで、コンテナは保留状態のままになります。PVC/PV ペアがバインドされると、他に問題がなければコンテナが起動します。</block>
   <block id="41603705958b86c3ec4ff21cfce13a5b" category="section-title">OpenShift サービスを導入します</block>
@@ -1065,7 +1029,6 @@
   <block id="4f5254b466f691d7b0c50fb0d8286075" category="paragraph">デフォルトの trident' アクセスグループを使用している構成から ' 他のアクセスグループを使用している構成に変更する場合は ' リストに trident' アクセスグループの ID を含めます</block>
   <block id="4d5445eb6c70cdab8d3ad5e71367f42a" category="summary">Trident がドライバ用のボリュームスナップショットの作成をどのように処理するかについては、こちらをご覧ください。</block>
   <block id="e9c3828cd06711f9036bb4ce862a32c5" category="doc">ボリューム Snapshot</block>
-  <block id="4fb7e6ff3b63c56522fdea39e41d701e" category="list-text">「 ONTAP-NAS' 」、「 ONTAP-SAN' 」、「 AWS- 対」、「 GCP-cvs 」、「 azure-NetApp-files 」ドライバの場合、 各永続ボリューム（ PV ）が FlexVol にマッピングされます。その結果、ボリューム Snapshot はネットアップ Snapshot として作成されます。NetApp のスナップショット・テクノロジーは ' 競合するスナップショット・テクノロジーよりも高い安定性 ' 拡張性 ' リカバリ性 ' パフォーマンスを提供しますSnapshot コピーは、作成時とストレージスペースの両方で非常に効率的です。</block>
   <block id="98c670ffe759cc20cd8a31d49bd0b4fc" category="list-text">「 ONTAP-SAN-エコノミー 」ドライバの場合、 PVS は共有 FlexVol 上に作成された LUN にマッピングされます。PVS のボリューム Snapshot は、関連付けられた LUN の FlexClone を実行することで実現されます。ONTAP の FlexClone テクノロジにより、最大規模のデータセットでもほぼ瞬時にコピーを作成できます。コピーと親でデータブロックが共有されるため、メタデータに必要な分しかストレージは消費されません。</block>
   <block id="9dbabbadda024bb7b1d0db43ab31b45f" category="list-text">「 olidfire-SAN' ドライバの場合、各 PV は NetApp Element ソフトウェア / NetApp HCI クラスタ上に作成された LUN にマッピングされます。ボリューム Snapshot は、基盤となる LUN の Element Snapshot で表されます。これらの Snapshot はポイントインタイムコピーであり、消費するシステムリソースとスペースはごくわずかです。</block>
   <block id="34f731018ae783f70901b14b4950c3a7" category="list-text">ONTAP スナップショットは 'ONTAP-NAS' および「 ONTAP-SAN' 」ドライバと連携して動作する場合 ' FlexVol のポイント・イン・タイム・コピーであり ' FlexVol 自体の領域を消費しますその結果、ボリューム内の書き込み可能なスペースが、 Snapshot の作成やスケジュール設定にかかる時間を短縮できます。この問題に対処する簡単な方法の 1 つは、 Kubernetes を使用してサイズを変更することでボリュームを拡張することです。もう 1 つの方法は、不要になった Snapshot を削除することです。Kubernetes で作成されたボリューム Snapshot を削除すると、関連付けられている ONTAP Snapshot が Astra Trident から削除されます。Kubernetes で作成されていない ONTAP スナップショットも削除できます。</block>
@@ -1107,7 +1070,6 @@
   <block id="5fc6de1b535ebb2a5380b6aa607e4cca" category="section-title">ネットアップの Cloud Volumes ONTAP で Astra Trident を使用できますか。</block>
   <block id="5d1cff73e26dc54ef52bdca5a29b319c" category="paragraph">はい、 Astra Trident は AWS 、 Google Cloud 、 Azure でサポートされています。</block>
   <block id="2ddee53d5c18f6e78f18dad82851303e" category="section-title">Astra Trident は Cloud Volume サービスと連携していますか。</block>
-  <block id="404ebcdc21eb83145ddb36d33bd8c09e" category="paragraph">はい。 Astra Trident は、 Azure の Azure NetApp Files サービスと、 AWS や GCP の Cloud Volumes Service をサポートしています。</block>
   <block id="92d1656d06303733c5e1398fb273a17e" category="section-title">トラブルシューティングとサポート</block>
   <block id="9985a592486717ae388709b9267da4f9" category="section-title">ネットアップは Astra Trident をサポートしていますか。</block>
   <block id="cc56e0da96ceaf708545923f1094815b" category="paragraph">Astra Trident はオープンソースであり、無償で提供されますが、ネットアップのバックエンドがサポートされていれば、完全にサポートされています。</block>
@@ -1732,28 +1694,9 @@
   <block id="a7fe005c9f49619f4438aac8932fb361" category="paragraph">CHAP 証明書を更新するには 'backend.json ファイルの CHAP パラメータを更新しますこれには 'CHAP シークレットを更新し 'tridentctl update コマンドを使用してこれらの変更を反映する必要があります</block>
   <block id="8959ac16a58b09dc5a158e86ab02cb53" category="admonition">バックエンドの CHAP シークレットを更新する場合は 'tridentctl' を使用してバックエンドを更新する必要がありますAstra Trident では変更を取得できないため、 CLI / ONTAP UI からストレージクラスタのクレデンシャルを更新しないでください。</block>
   <block id="1a59d0d7850406f157c314978eb3b821" category="paragraph">既存の接続は影響を受けません。 SVM の Astra Trident でクレデンシャルが更新されても、引き続きアクティブです。新しい接続では更新されたクレデンシャルが使用され、既存の接続は引き続きアクティブです。古い PVS を切断して再接続すると、更新されたクレデンシャルが使用されます。</block>
-  <block id="fe1db7f37fb893d9995534febe29a78b" category="summary">Cloud Volumes Service for AWS を Astra Trident のバックエンドとして設定する方法を、提供されている構成例を使用して説明します。</block>
-  <block id="6e399579bcb032270367d78455e1976f" category="doc">CVS for AWS バックエンドを設定する</block>
-  <block id="f7dc2116b38f0f6097d64ca1dfdcd0b7" category="paragraph">提供されている構成例を使用して、ネットアップ Cloud Volumes Service （ CVS ） for AWS を Astra Trident のバックエンドとして設定する方法を説明します。</block>
-  <block id="0eb1a8be2d6b9505f3b9940718c0c492" category="admonition">Cloud Volumes Service for AWS では、 100GB 未満のボリュームはサポートされません。Trident は、小さいボリュームが要求された場合は、 100GB のボリュームを自動的に作成します。</block>
-  <block id="11873d2393ac3286e0e2949c7fb94c92" category="paragraph">を設定して使用します<block ref="9185b014ee020a0dd27e376023f04353" category="inline-link-rx"></block> バックエンドには次のものが必要です。</block>
-  <block id="162fd644b5a366df1c98de24d39a28e4" category="list-text">ネットアップ CVS で設定された AWS アカウント</block>
-  <block id="65e26b8fa373ad7924b14a196242b605" category="list-text">CVS アカウントの API リージョン、 URL 、およびキー</block>
-  <block id="f8d960efa7386a75b65e6abbdb9e3c36" category="cell">「 aws -cvs 」</block>
-  <block id="a6a8368ae9ff89e7a4ca4c9e2b64ab56" category="cell">CVS アカウント地域。この値は、 CVS Web ポータルのアカウント設定 / API アクセスで確認できます。</block>
-  <block id="3639c86d22a854ef10a2cacfe9eed25d" category="cell">「 apiURL 」と入力します</block>
-  <block id="9aea3113f9edf591b1b341775bd7d092" category="cell">CVS アカウント API の URL 。この値は、 CVS Web ポータルのアカウント設定 / API アクセスで確認できます。</block>
-  <block id="3fc6085f3573a8e927eea401950de8d3" category="cell">CVS アカウントの API キー。この値は、 CVS Web ポータルのアカウント設定 / API アクセスで確認できます。</block>
   <block id="9a5b66949f53f92871d3e1a8aae0cc19" category="cell">「 ecretKey 」</block>
-  <block id="e3891e2d275bb1f55f9de70059eed199" category="cell">CVS アカウントのシークレットキー。この値は、 CVS Web ポータルのアカウント設定 / API アクセスで確認できます。</block>
-  <block id="1394ee99ba1680da948a315df62a7b62" category="admonition">「 apiURL 」は、「 apiRegion 」ごとに一意です。たとえば 'us-west-2 'apiRegion' にはがあります<block ref="445c370e1a8fd8a5bb35e4bcf66dc8ff" category="inline-link-rx"></block> 「 apiURL 」と入力します。同様に、 us-east-1 の apiRegion にもがあります<block ref="89a36317c553c294eadd1c2b2e179f46" category="inline-link-rx"></block> 「 apiURL 」と入力します。バックエンド構成に対応する正しい「 apiRegion 」パラメータと「 apiURL 」パラメータが CVS ダッシュボードにあることを確認してください。</block>
-  <block id="b4ba9ff8dbbcd251a1cb4e16ba80c36c" category="paragraph">各バックエンドは、 1 つの AWS リージョンにボリュームをプロビジョニングします。他のリージョンにボリュームを作成する場合は、バックエンドを追加で定義します。</block>
-  <block id="781e781b44169c656fb79130bd8bd062" category="cell">「 .snapshot 」ディレクトリの表示性を制御します</block>
   <block id="ef81b740be2293b7e3c41047afe98764" category="cell">" 100G "</block>
-  <block id="635686d413c736dacb149d183959f020" category="admonition">CVS AWS バックエンドで作成されたすべてのボリュームに対して、 Astra Trident は、ストレージプールに含まれるすべてのラベルを、プロビジョニング時にストレージボリュームにコピーします。ストレージ管理者は、ストレージプールごとにラベルを定義し、ストレージプール内に作成されたすべてのボリュームをグループ化できます。これにより、バックエンド構成で提供されるカスタマイズ可能な一連のラベルに基づいてボリュームを簡単に区別できます。</block>
-  <block id="2f51b29f400aa735b4f4bd32f0eeed4f" category="paragraph">この構成は、 CVS AWS を初めて使用して何か試してみるところですが、実際にはプロビジョニングするボリュームの範囲をさらに設定することを検討しています。</block>
   <block id="55c1dd55273b867b995333cc3abd250e" category="section-title">例 2 ：単一のサービスレベルの設定</block>
-  <block id="f8ee3192003a383290a06e5d20105030" category="paragraph">次の例は、 AWS us-east-1 リージョンで作成されたすべての Astra Trident ストレージに同じ設定を適用するバックエンドファイルを示しています。この例は ' バックエンド・ファイルでの ProxyURL の使用方法も示しています</block>
   <block id="2b00c4aa6134b525e9355d880ecb0c8d" category="section-title">例 3 ：仮想ストレージプールの構成</block>
   <block id="ff342df7522d6b527768cc6bfe5f9fae" category="summary">Astra Trident により、 Kubernetes ユーザは作成後にボリュームを拡張できます。ここでは、 iSCSI ボリュームと NFS ボリュームの拡張に必要な設定について説明します。</block>
   <block id="15d79b565b148caa23e6f2b53813413d" category="section-title">iSCSI ボリュームを展開します</block>
@@ -1777,7 +1720,6 @@
   <block id="eabf614ed44fe1c3e78cb2300949eb63" category="section-title">手順 5 ：拡張を検証する</block>
   <block id="28abbd693f528f04d0ff068b3013fcd6" category="paragraph">PVC 、 PV 、 Astra Trident のボリュームのサイズを確認することで、拡張が正しく機能しているかどうかを検証できます。</block>
   <block id="75b8249751a8ea5869a0b5a8e465efc1" category="section-title">NFS ボリュームを拡張します</block>
-  <block id="b5d3e13cbbf4f66f0d6b13357e86f974" category="paragraph">Astra Trident は 'ONTAP-NAS'ONTAP-NAS-エコノミー 'ONTAP-NAS-flexp`'ONTAP-NAS-flexp`'AWS- 対 'GCP-cvs` でプロビジョニングされた NFS PVS のボリューム拡張をサポートしています 「 azure-NetApp-files 」バックエンド。</block>
   <block id="578f10bb7cad2abad1cbbcb9a9a732f9" category="paragraph">NFS PV のサイズを変更するには ' まず 'allowVolumeExpansion フィールドを true に設定してボリュームを拡張できるようにストレージ・クラスを構成する必要があります</block>
   <block id="27b4a9ed8609e35526601aa8d8be1ab9" category="paragraph">このオプションを指定せずにすでにストレージ・クラスを作成している場合は 'kubectl Edit storageclass を使用して既存のストレージ・クラスを編集するだけで ' ボリュームの拡張が可能になります</block>
   <block id="784f78e647973a0dcfa11b7a028c7eae" category="paragraph">Astra Trident が、この PVC に対して 20MiB の NFS PV を作成する必要があります。</block>
@@ -1827,12 +1769,8 @@
   <block id="4b8f39874197ebe1407531bd66624aa3" category="section-title">エレメントをインポートします</block>
   <block id="b00215e0583bb02c2474fa62f51462fa" category="paragraph">Trident を使用して、 NetApp Element ソフトウェア / NetApp HCI ボリュームを Kubernetes クラスタにインポートできます。必要なのは 'tridentctl import コマンドの引数として 'Astra Trident バックエンドの名前とボリュームおよび PVC ファイルの一意の名前です</block>
   <block id="c517a1b34541565def824e8e9aeb0524" category="admonition">Element ドライバではボリューム名の重複がサポートされます。ボリューム名が重複している場合、 Trident のボリュームインポートプロセスはエラーを返します。回避策として、ボリュームをクローニングし、一意のボリューム名を指定します。次に、クローンボリュームをインポートします。</block>
-  <block id="441d2edc083114ed813856f0b61524d4" category="section-title">aws -cvs インポート</block>
-  <block id="828c3f28cef558031e2f55632d27b6f4" category="admonition">NetApp Cloud Volumes Service がサポートするボリュームを AWS でインポートするには、名前ではなくボリュームパスでボリュームを特定します。</block>
-  <block id="91676978c9f14db1332e3c5b60f4d681" category="paragraph">"awscvs_YEppr" という名前のバックエンド上の "awscvs_YEppr" ボリュームを "adwaimenthi-jolly -swif" のボリュームパスでインポートするには、次のコマンドを使用します。</block>
   <block id="87e30ad820e5b10036bd18284c1f25ad" category="admonition">ボリュームパスは、 / のあとのボリュームのエクスポートパスの部分です。たとえば、エクスポートパスが「 10.0.0.1:/adwiswify-jolly -swift 」の場合、ボリュームパスは「 adwiswy-jolly -swift 」です。</block>
   <block id="3be8989f2135d86f8b2d60f19eed3846" category="section-title">GCP-cvs インポート</block>
-  <block id="ea6ab4f91ea921bc82295089f42da373" category="paragraph">「 gcp-cvs 」ボリュームのインポートは、「 aws -cvs 」ボリュームのインポートと同じように機能します。</block>
   <block id="9f25c8d8bca8641faa974c73a8d2f5da" category="section-title">azure-NetApp-files インポート</block>
   <block id="e8945ce1398c6d24aa1d518bca08034c" category="paragraph">ボリューム・パスが importvol1' の 'azurenetappfiles_40517' というバックエンドにある azure-netapp-files' ボリュームをインポートするには ' 次のコマンドを実行します</block>
   <block id="c3417eb755bee1658ae5b42ff2115193" category="admonition">ANF ボリュームのボリュームパスは、 / のあとのマウントパスにあります。たとえば ' マウント・パスが 10.0.0.2::/importvol1 の場合 ' ボリューム・パスは importvol1 になります</block>
@@ -2060,10 +1998,6 @@
   <block id="c11257eff6563de2c05e353770c514ca" category="cell">Field 概要の略</block>
   <block id="93c5bebdea9c94a0740fe6fd9bb250f0" category="paragraph">ClientID</block>
   <block id="012e85295e2f1f744cfb8757f8dd4830" category="paragraph">アプリケーション登録からのクライアント ID</block>
-  <block id="c9ff119073ea2567730fb42e3a4fe805" category="paragraph">apiKey</block>
-  <block id="defb11bd732dde7d185fcc4583818851" category="paragraph">CVS アカウントの API キー</block>
-  <block id="ce656850400574e9f9cffb285ee8abc0" category="paragraph">SecretKey</block>
-  <block id="5324944de62956f7d758fd5d2f6d8826" category="paragraph">CVS アカウントのシークレットキー</block>
   <block id="ee64ef6c307cfcfe5c0f085471cd61fa" category="paragraph">private_key_id です</block>
   <block id="1e31c22f827d25c5973eee697baace79" category="paragraph">秘密鍵の ID 。CVS 管理者ロールを持つ GCP サービスアカウントの API キーの一部</block>
   <block id="156a17333e77a3c504018cae5ada8c3b" category="paragraph">private_key を使用します</block>
@@ -2464,8 +2398,6 @@
   <block id="3d79668ab3683a20086b2953dd541cfc" category="summary">バックエンドは、 Astra Trident とストレージシステムの関係を定義します。Trident がストレージシステムとの通信方法を Trident から指示し、 Astra Trident がボリュームをプロビジョニングする方法も解説します。Astra Trident は、ストレージクラスが定義した要件に合わせて、バックエンドからストレージプールを自動的に提供します。お使いのストレージシステムのタイプに基づいたバックエンドの設定の詳細については、こちらを参照してください。</block>
   <block id="87dc0337d3ded2211d9b01c32e22d90d" category="doc">バックエンドを設定</block>
   <block id="2acbb5dd492d792d00383b0c76ade4ad" category="list-text"><block ref="2acbb5dd492d792d00383b0c76ade4ad" category="inline-link-macro-rx"></block></block>
-  <block id="bf50e8af5395f90aa84ae77d9267a6d6" category="inline-link-macro">AWS バックエンド用に Cloud Volumes Service を設定します</block>
-  <block id="cda28963ed4e2275760c1b26ef6c78e0" category="list-text"><block ref="cda28963ed4e2275760c1b26ef6c78e0" category="inline-link-macro-rx"></block></block>
   <block id="252e63ff646a0204671ca04a26b88e06" category="inline-link-macro">Cloud Volumes Service for Google Cloud Platform バックエンドを設定します</block>
   <block id="c00b6e370d4496e06d2135275a992af5" category="list-text"><block ref="c00b6e370d4496e06d2135275a992af5" category="inline-link-macro-rx"></block></block>
   <block id="b1064b6f7a5906eac23601dc24ba95a8" category="list-text"><block ref="b1064b6f7a5906eac23601dc24ba95a8" category="inline-link-macro-rx"></block></block>
@@ -2539,7 +2471,6 @@
   <block id="e43783d5a51a10670edf444f0b58b6af" category="list-text"><block ref="e43783d5a51a10670edf444f0b58b6af" category="inline-link-rx"></block></block>
   <block id="5e152ff33f3262612abc4b942db27ad1" category="inline-link">Astra Trident 19.01</block>
   <block id="977636e26059252def0425dca74811ef" category="list-text"><block ref="977636e26059252def0425dca74811ef" category="inline-link-rx"></block></block>
-  <block id="e84181a29f4e43a18b27e7d82797adef" category="summary">Astra Trident for Docker は、ネットアップのストレージプラットフォーム向けの Docker エコシステムと AWS の Cloud Volumes Service との直接統合を実現します。ストレージプラットフォームから Docker ホストまで、ストレージリソースのプロビジョニングと管理をサポートします。また、将来プラットフォームを追加するためのフレームワークもサポートします。</block>
   <block id="d2eb05d1990246a079aeb2f56e3a4237" category="paragraph">Astra Trident の複数のインスタンスを同じホストで同時に実行できます。これにより、複数のストレージシステムとストレージタイプへの同時接続が可能になり、 Docker ボリュームに使用するストレージをカスタマイズできます。</block>
   <block id="89bcbd8e4ba49b7310e9fa748e878c4b" category="inline-link-macro">導入の前提条件</block>
   <block id="d1e7215d070e62d3e82e915d703ceaa9" category="paragraph">を参照してください <block ref="a51fda4654690ac4414966ed4956599c" category="inline-link-macro-rx"></block>。前提条件を満たしていることを確認したら、 Astra Trident を導入する準備ができました。</block>
@@ -2651,13 +2582,9 @@
   <block id="7afe0c73e341cee7c90b4d4dda4600d9" category="paragraph">上記の構成では、 Bronze 、 Silver 、 Gold の 3 つのポリシー定義を使用します。これらの名前は任意です。</block>
   <block id="cb5b68dacb07bd02a5152bf4ad1de8c6" category="list-text">10GiB の Gold ボリュームを作成します。</block>
   <block id="89014c611c13195dc852587ef9d2bb16" category="list-text">100GiB Bronze ボリュームを作成します。</block>
-  <block id="7f65aa9497b5352a28e3eed539643ea7" category="section-title">CVS （ Cloud Volumes Service on AWS ）ボリュームのオプション</block>
-  <block id="97f74fbb7a82eb99b7ea43017c0bfbe2" category="paragraph">CVS on AWS ドライバのボリューム作成オプションには次のものがあります。</block>
   <block id="742a301c15fea3569e5059520217090e" category="paragraph">ボリュームのサイズ。デフォルトは 100GB です。</block>
   <block id="326ea14a491277cac4032c7b6413a545" category="paragraph">ボリュームの CVS サービスレベル。デフォルトは「 Standard 」です。有効な値は、 standard 、 premium 、 extreme です。</block>
-  <block id="a6b420fe5da257523d2105e9aae9fbc1" category="paragraph">これにより ' スナップショット予約が目的の割合に設定されますデフォルト値は no で、 CVS によって Snapshot リザーブが選択されます（通常は 0% ）。</block>
   <block id="fe0bb617c9579d2f1d51ca5a627839fb" category="list-text">200GiB ボリュームを作成します。</block>
-  <block id="6f5c2d108fc1cf862350561160c4ecac" category="list-text">500GiB のプレミアムボリュームを作成します。</block>
   <block id="84e002f675928fb7347e346a6214eefc" category="paragraph">最小ボリュームサイズは 100GB です。</block>
   <block id="c3fa12e6fe179aa6330774fb658371a5" category="section-title">CVS on GCP ボリュームのオプション</block>
   <block id="c112845976cf3ccb7ec927bea467b805" category="paragraph">GCP 上の CVS ドライバのボリューム作成オプションには、次のものがあります。</block>
@@ -2683,7 +2610,6 @@
   <block id="7959e3701f7a7fba7713c7530d496324" category="admonition">「 olidfire -san 」ドライバを使用する場合、上記の例ではボリュームを削除してパージします。</block>
   <block id="5a1345d94751fc14bedf8f6f5e77a0ff" category="paragraph">Astra Trident for Docker をアップグレードするには、次の手順を実行します。</block>
   <block id="d50044469c0bf9ab38eff9cf7243fb25" category="section-title">ボリュームのクローンを作成します</block>
-  <block id="d9bab73e26d2aaa2f602f32954ab9cd7" category="paragraph">「 ONTAP-NAS' 」、「 ONTAP-SAN' 」、「 olidfire-SAN' 」、「 aws -cvs storage drivers 」を使用する場合、 Astra Trident はボリュームのクローンを作成できます。「 ONTAP-NAS-flexgroup 」または「 ONTAP-NAS-エコノミー 」ドライバを使用する場合、クローニングはサポートされません。既存のボリュームから新しいボリュームを作成すると、新しい Snapshot が作成されます。</block>
   <block id="9374b766b9dd78063440afd69afabf38" category="list-text">ボリュームを調べて Snapshot を列挙します。</block>
   <block id="2747096689037792fa87de7a0e8440e2" category="list-text">既存のボリュームから新しいボリュームを作成します。その結果、新しい Snapshot が作成されます。</block>
   <block id="31d9b5ed201aa44dbeae6d17d38c0c6f" category="list-text">ボリューム上の既存の Snapshot から新しいボリュームを作成します。新しい Snapshot は作成されません。</block>
@@ -2708,7 +2634,6 @@
   <block id="63b276a6c28274ed5e553d4ce3fe7eb1" category="paragraph">構成ファイルのバージョン番号</block>
   <block id="c4ca4238a0b923820dcc509a6f75849b" category="paragraph">1.</block>
   <block id="ac5eb8fcbd1ed9c85a98d91e10e26a38" category="paragraph">ストレージドライバの名前</block>
-  <block id="86561da64fcea64abfe5587158ea1c15" category="paragraph">「 ontap -na`, `ontap -san`, `ontap -nas-エコノミー 」 , 「 ontap -nas-flexgroup 」 , 「 olidfire -san 」 , 「 azure-NetApp-files 」、「 aws -cvs 」、または「 gcp-cvs 」です</block>
   <block id="3f2b20ce3aa5e39b0dbfe20326747a7b" category="paragraph">ボリューム名のオプションのプレフィックス。デフォルト：「 netappdvp_」 。</block>
   <block id="46fa46eed970046d03e2dedc95cdc83b" category="paragraph">ステージング _</block>
   <block id="fcf783284187f1e80e772eacd9266ee1" category="paragraph">ボリュームサイズに関するオプションの制限。デフォルト：「」（適用されていない）</block>
@@ -2798,13 +2723,6 @@
   <block id="8d3aa50a0f9c3c059677927a3fbbfcda" category="paragraph">「 netappdvp - 」</block>
   <block id="36f9c7b615268efec7f4c56c387a55bb" category="paragraph">「 olidfire -san 」ドライバは Docker Swarm をサポートしていません。</block>
   <block id="1059bb8540c48e6b455e802384bad65d" category="section-title">Element ソフトウェア構成ファイルの例</block>
-  <block id="8898f8d83fe6ae40ee889ae1b53dd2a1" category="section-title">Cloud Volumes Service （ CVS ）を使用した AWS 構成</block>
-  <block id="51a61fe7c333c9b247fa4a36f100af60" category="paragraph">CVS on AWS を使用する場合は、グローバル設定の値に加えて、次のオプションを使用できます。必要な値はすべて CVS Web ユーザインターフェイスで確認できます。</block>
-  <block id="87cb49c3ba3ad2b7881daec6cbe2c058" category="paragraph">CVS アカウントリージョン（必須）。CVS Web ポータルの「アカウント設定」 &gt; 「 API アクセス」で確認できます。</block>
-  <block id="ab62ad1f18caedc5173216159619af30" category="paragraph">「 us-east-1 」</block>
-  <block id="72bb1da9c467950d42f276dd60372f9d" category="paragraph">CVS アカウント API URL （必須）。CVS Web ポータルの「アカウント設定」 &gt; 「 API アクセス」で確認できます。</block>
-  <block id="90ecc3761b44b9c5f99193048d67b991" category="paragraph">「 https://cds-aws-bundles.netapp.com:8080/v1”</block>
-  <block id="14d4df12da21ca887a11026db7d26c5a" category="paragraph">CVS アカウントの API キー（必須）。CVS Web ポータルの「アカウント設定」 &gt; 「 API アクセス」で確認できます。</block>
   <block id="49df949d63ad2fe5a679bea21beb739f" category="paragraph">CVS アカウントのシークレットキー（必須）。CVS Web ポータルの「アカウント設定」 &gt; 「 API アクセス」で確認できます。</block>
   <block id="eccfbdf9565fdb1f0b53121d07c0ca4d" category="paragraph">CVS アカウントへの接続にプロキシサーバが必要な場合は、プロキシ URL を指定します。プロキシサーバには、 HTTP プロキシまたは HTTPS プロキシを使用できます。HTTPS プロキシの場合、証明書の検証は省略され、プロキシサーバで自己署名証明書が使用されるようになります。* 認証が有効になっているプロキシサーバーはサポートされていません * 。</block>
   <block id="58b40a255bdd79778c81b51b0189d3bc" category="paragraph">「 http://proxy-server-hostname/”</block>
@@ -2812,15 +2730,10 @@
   <block id="c0c057b1fbdbb4b3fbff5af024800013" category="paragraph">「 nfsvers=3 、 proto=tcp 、 timeo=600 」</block>
   <block id="989640232ebd1cee1600241dcaf3092b" category="paragraph">パフォーマンスレベル（標準、プレミアム、エクストリーム）、デフォルトは「標準」</block>
   <block id="6dc6830d3f5eeef9925e20cb2872face" category="paragraph">Premium サービス</block>
-  <block id="4c4783b692750885787114cffe439cc4" category="admonition">NetApp Cloud Volumes Service for AWS では、サイズが 100GB 未満のボリュームはサポートされていません。Trident では、アプリケーションの導入を容易にするために、より小さいボリュームが要求された場合に、 100GB のボリュームが自動的に作成されます。</block>
-  <block id="2141207c4b192cfda3ca9862d3051c75" category="paragraph">AWS で CVS を使用している場合は、以下のデフォルトのボリュームオプション設定が使用できます。</block>
   <block id="0b4473f186b60c3a658cb10df719e6e7" category="paragraph">NFS アクセスリスト（アドレスおよび CIDR サブネット）。デフォルトは「 0.0.0.0/0 」です。</block>
   <block id="4fd06576654815d69b61384ef4f9e084" category="paragraph">「 10.0.1.0/24,10.0.2.100 」</block>
   <block id="6cac9fafaf62c70b75f827e614328121" category="paragraph">スナップショット予約の割合。デフォルトでは、 CVS のデフォルト値である 0 を使用します</block>
   <block id="c669350437225628cf4fcc3d0ec9d8f6" category="paragraph">10.</block>
-  <block id="24e52229704d0addd6cb9915c2e78093" category="paragraph">ボリュームサイズ、デフォルトは「 100 GB 」</block>
-  <block id="36a1049642c95770e66c6905f890a00a" category="paragraph">「 500G 」</block>
-  <block id="f0fe7c79add8387e161dd776e6af2313" category="section-title">CVS on AWS 構成ファイルの例</block>
   <block id="4c4a4e3967b80166b1c89a42bb702c5c" category="section-title">GCP 上の Cloud Volumes Service （ CVS ）構成</block>
   <block id="c731f72e1d22a7c5e01a7cb789a8885e" category="inline-link">GCP</block>
   <block id="16aba044aae8d4a1f104875fadfa8b7a" category="paragraph">Trident に、デフォルトの CVS サービスタイプが on に設定された小規模なボリュームがサポートされるようになりました<block ref="ba449b67e05ccd893d094c64611dfdac" category="inline-link-rx"></block>。「 torageClass=software 」で作成されたバックエンドの場合、ボリュームのプロビジョニングサイズは最小 300GiB になります。* 非本番環境のワークロード用に 1TiB 未満のボリュームを使用することを推奨 * 。現在、 CVS ではこの機能が限定的な可用性で提供されており、テクニカルサポートは提供されていません。</block>
@@ -2975,7 +2888,6 @@
   <block id="705db3afa1c1d4451f7b0f7f8552f1b5" category="list-text">Kubernetes 1.17 以降を実行するサポート対象の Kubernetes クラスタに対するすべての権限が必要です。</block>
   <block id="3b4c548466953befff1962ac2426cb8e" category="paragraph">Kubernetes のバージョンが 1.17 よりも新しいかどうかを確認するには、次のコマンドを実行します。</block>
   <block id="cf282b9c05ab0f84b1690e644cd3f68e" category="list-text">「 ONTAP-NAS-flexgroup 」ドライバの場合、各永続ボリューム（ PV ）は FlexGroup にマッピングされます。その結果、ボリューム Snapshot は NetApp FlexGroup Snapshot として作成されます。NetApp のスナップショット・テクノロジーは ' 競合するスナップショット・テクノロジーよりも高い安定性 ' 拡張性 ' リカバリ性 ' パフォーマンスを提供しますSnapshot コピーは、作成時とストレージスペースの両方で非常に効率的です。</block>
-  <block id="ba9e76e1be4705136fd15fd947717d07" category="paragraph">現在のところ ' オンデマンドスナップショットのサポートは 'ONTAP-NAS'`ONTAP-NAS-flexgroup 'ONTAP-SAN`'ONTAP-SANエコノミー ''solidfire-san-SAN'''solidfire-san-''''solidfire-san-'''solidfire-san-''''' で利用できます 「 aws -cvs 」、「 gcp-cvs 」、「 azure-NetApp-files 」バックエンドドライバ。</block>
   <block id="b89df534de66f446ec6482f9d7898bb2" category="cell">controller'PluginNodeSelector</block>
   <block id="15cfc4bea44cee69551eb577fb0dcd8a" category="cell">Trident Controller CSI プラグインを実行しているポッドの追加ノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。</block>
   <block id="8d414af35aeb82413205fa45551a5545" category="cell">デフォルトはありません。オプションです</block>
@@ -2990,7 +2902,6 @@
   <block id="d6601a8eb863a49ea065281f70a5956b" category="summary">Astra Trident は、ネットアップが Astra 製品ファミリーの一部として管理している、完全にサポートされているオープンソースプロジェクトです。Container Storage Interface （ CSI ）などの業界標準のインターフェイスを使用して、コンテナ化されたアプリケーションの永続性に対する要求を満たすことができるように設計されています。</block>
   <block id="bb453665f57f6823950856f7a9bad0c3" category="inline-link-macro">Astra 製品ファミリー</block>
   <block id="9f469e7cb13566d8a664e8ab4d46f9e1" category="paragraph">Astra Trident は、ネットアップがの一部として管理している、完全にサポートされているオープンソースプロジェクトです <block ref="a1650a2308dbba03b9ca704756a5a37d" category="inline-link-macro-rx"></block>。Container Storage Interface （ CSI ）などの業界標準のインターフェイスを使用して、コンテナ化されたアプリケーションの永続性に対する要求を満たすことができるように設計されています。</block>
-  <block id="fdc319eb193763016bf0bff75d0c0abc" category="paragraph">Kubernetes クラスタにポッドとして Trident を導入し、 Kubernetes ワークロードに動的なストレージオーケストレーションサービスを提供コンテナ化されたアプリケーションは、 ONTAP （ AFF / FAS / Select / Cloud / Amazon FSX for NetApp ONTAP ）、 Element ソフトウェア（ NetApp HCI / SolidFire ）、 Astra データストア、 Azure NetApp Files サービス、 Cloud Volumes Service on Google Cloud 、 Cloud Volumes Service on AWS など、ネットアップの幅広いポートフォリオの永続的ストレージをすばやく簡単に消費できます。</block>
   <block id="165fe4b78b5877cf8db8ac6361e5c85a" category="paragraph">Astra のページで無料トライアルに登録できます。</block>
   <block id="d13de4a83d7b44c2e65495def8ef1c7b" category="section-title">を参照してください。</block>
   <block id="fa80e31eb77798b8dd995ddd9553be6e" category="inline-link">ネットアップアストラ製品ファミリー</block>
@@ -3018,7 +2929,6 @@
   <block id="0172b29a9f5d94dc62ee592a98183f3b" category="paragraph">ネットアップの Astra Trident 向けソフトウェアで使用されているサードパーティの著作権とライセンスは、の各リリースの通知ファイルで確認できます<block ref="4a3c8c5a408c6db1c44c04391a8a0a2f" category="inline-link-rx"></block>。</block>
   <block id="29db8b676d0a02f8179869506102c8ce" category="doc">バックエンドに ONTAP または Cloud Volumes ONTAP SAN ドライバを設定します</block>
   <block id="133184f8c608809bdc057abf1397d10d" category="paragraph">ONTAP および Cloud Volumes ONTAP SAN ドライバを使用した ONTAP バックエンドの設定について説明します。</block>
-  <block id="879d65b9b2cc663b2ff6a01cfe8d4c72" category="paragraph">Astra Trident の 20.01 リリースから、 Kubernetes レイヤで PVS のスナップショットを作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。ボリューム・スナップショットは 'ONTAP-NAS'`ONTAP-SAN'ONTAP-SAN'ONTAP-エコノミー ''solidfire-SAN'AWS- cvs'' によってサポートされています 「 gcp-cvs 」、「 azure-NetApp-files 」ドライバ。</block>
   <block id="311847a44163ac40ccf470fcf81e74fb" category="admonition">GKE 環境でオンデマンドボリュームスナップショットを設定する場合は、スナップショットコントローラを作成しないでください。GKE では、内蔵の非表示のスナップショットコントローラを使用します。</block>
   <block id="75419edaab27be09afdb3415e83d93f6" category="paragraph">'UDO mpathconf--enable --with _multipathd y -- find _multipaths n</block>
   <block id="60c268e00db3206011b54b01705d7211" category="admonition">「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults 」に含まれていることを確認します。</block>
@@ -3147,7 +3057,6 @@
   <block id="45d2174daba36b76955e69d2eddf26ca" category="list-text">PVC アクセスモードは RWO です。</block>
   <block id="ba5b62efad4f90a8f4bb806cba4a3ea4" category="paragraph">NFS ストレージドライバの場合、 NFS エクスポートにはファイルシステムがすでに存在します。fsGroup を使用するには ' ストレージ・クラスで fsType を指定する必要がありますこの値は 'NFS' に設定することも ' ヌル以外の任意の値に設定することもできます</block>
   <block id="4811aaaf5eedea1ea9f703353903b5b5" category="list-text">を参照してください <block ref="c35b155baa39b6aa36cf9bc59eea88f3" category="inline-link-macro-rx"></block> ボリューム拡張の詳細については、を参照してください。</block>
-  <block id="853119066470e5145f87024e7c6accdb" category="cell">ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-san 、 aws -cvs 、 gcp-cvs 、 azure-netapp-files</block>
   <block id="23038d88eea805ac06a26959fc129ca5" category="admonition">NetApp Aggregate Encryption （ NAE ）は、現在 Trident ではサポートされていません。</block>
   <block id="fa8bc73a8436dd2f79aafaa731d248e4" category="list-text">「 limitAggregateUsage 」パラメータは、「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。</block>
   <block id="7b3ecf601e0eee1c9d097083281abafa" category="example-title">例を展開します</block>
@@ -3206,5 +3115,27 @@
   <block id="4dc3529fbf05312075f0aa52f9c0908e" category="paragraph">--kubbelet-dir' を使用して kubelet の場所を指定することは、 Trident Operator 、 Helm 、および tridentctl の展開で動作することが知られています。</block>
   <block id="8fad5c21cf613e120f249eadc62cda2f" category="paragraph">Astra Trident は、 Google Kubernetes Engine （ GKE ）、 Amazon Elastic Kubernetes Services （ EKS ）、 Azure Kubernetes Service （ AKS ）、 Rancher 、 VMware Tanzu Portfolio など、フルマネージドで自己管理型の Kubernetes サービスが数多く提供されています。</block>
   <block id="7054a9a8c9f6d4b0bcf8cfe758a2e14d" category="paragraph">ネットアップのポートフォリオに含まれる各ストレージプラットフォームは、コンテナ化されたアプリケーションや含まれないアプリケーションにメリットをもたらす独自の機能を備えています。Trident は ONTAP や Element と連携1 つのプラットフォームが他のプラットフォームよりもすべてのアプリケーションとシナリオに適しているわけではありませんが、プラットフォームを選択する際には、アプリケーションのニーズとデバイスを管理するチームを考慮する必要があります。</block>
-  <block id="0f1a50993db502cac54d3679b60ad5a3" category="paragraph">Trident は ' ボリュームの作成時に internalName を生成しますこの構成は 2 つのステップで構成されます。最初に、ストレージプレフィックス（デフォルトの「 trident 」またはバックエンド構成のプレフィックス）をボリューム名の前に付加し、「 &lt;prefix&gt; - &lt;volume-name&gt; 」という形式の名前を付けます。その後、名前の完全消去が行われ、バックエンドで許可されていない文字が置き換えられます。ONTAP バックエンドでは、ハイフンをアンダースコアで置き換えます（つまり、内部名は「 &lt;prefix&gt;_&lt;volume-name&gt;` 」になります）。Element バックエンドの場合、アンダースコアはハイフンに置き換えられます。CVS （ AWS ）では、一意のボリューム作成トークンに 16 ~ 36 文字の制限があり、 Trident は各ボリュームの内部名に対してランダムな文字列を生成します。</block>
+  <block id="23901d5a815c5a1c2f5ce4e4863e4fb6" category="paragraph">「 ontap -na`,`ontap -san`,`ontap -nas-エコノミー 」 ,「 ontap -nas-flexgroup 」 ,「 solidfire-san-', 」 「 azure-NetApp-files 」または「 gcp-cvs 」です</block>
+  <block id="82720d84ad009f069fd0b2cfaf6c3dac" category="summary">Astra Trident for Docker は、ネットアップのストレージプラットフォーム向けの Docker エコシステムとの直接統合を実現します。ストレージプラットフォームから Docker ホストまで、ストレージリソースのプロビジョニングと管理をサポートします。また、将来プラットフォームを追加するためのフレームワークもサポートします。</block>
+  <block id="6798a0701cedf1202e1d70210a3a9a83" category="paragraph">「 ONTAP-NAS` 」、「 ONTAP-SAN」 、「 solidfire-san-」 、「 GCP-cvs ストレージドライバ」を使用する場合、 Astra Trident はボリュームのクローンを作成できます。「 ONTAP-NAS-flexgroup 」または「 ONTAP-NAS-エコノミー 」ドライバを使用する場合、クローニングはサポートされません。既存のボリュームから新しいボリュームを作成すると、新しい Snapshot が作成されます。</block>
+  <block id="a264f15eaddf1d50155847119366be6b" category="list-text">「 ONTAP-NAS」 、「 ONTAP-SAN」 、「 GCP-CVS 」、「 azure-NetApp-files 」ドライバの場合、各永続ボリューム（ PV ）は FlexVol にマッピングされます。その結果、ボリューム Snapshot はネットアップ Snapshot として作成されます。NetApp のスナップショット・テクノロジーは ' 競合するスナップショット・テクノロジーよりも高い安定性 ' 拡張性 ' リカバリ性 ' パフォーマンスを提供しますSnapshot コピーは、作成時とストレージスペースの両方で非常に効率的です。</block>
+  <block id="5db45af67ca348841844b1b2503a2aee" category="paragraph">Kubernetes クラスタにポッドとして Trident を導入し、 Kubernetes ワークロードに動的なストレージオーケストレーションサービスを提供コンテナ化されたアプリケーションは、 ONTAP （ AFF / FAS / Select / Cloud / Amazon FSX for NetApp ONTAP ）、 Element ソフトウェア（ NetApp HCI / SolidFire ）、 Astra データストア、 Azure NetApp Files サービス、 Google Cloud 上の Cloud Volumes Service など、ネットアップの幅広いポートフォリオの永続的ストレージをすばやく簡単に消費できます。</block>
+  <block id="72dfd0afcd8b2eda3e5ec2268b7da6b2" category="paragraph">Astra Trident の 20.01 リリースから、 Kubernetes レイヤで PVS のスナップショットを作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。ボリューム・スナップショットは 'ONTAP-NAS'`ONTAP-SAN'ONTAP-SAN'ONTAP-エコノミー ''solidfire-san-'`solidfire-SAN'GCP - cvs` によってサポートされています 「 azure-NetApp-files 」ドライバを使用します。</block>
+  <block id="2c7e2299fa3c14b5e6f60015eb016a87" category="admonition">GCP の NetApp Cloud Volumes Service から作成されたボリュームをインポートするには、名前ではなくボリュームパスでボリュームを特定します。</block>
+  <block id="37202a3ee6673127b64f84af27fdf523" category="paragraph">"gcpcvs_YEppr" という名前のバックエンド上の "gcpcvss_cvs" ボリュームを "adimenthy-jolly -sw" のボリュームパスでインポートするには、次のコマンドを使用します。</block>
+  <block id="ec2577b4770848fd294d6ca069c34a43" category="paragraph">Astra Trident は 'ONTAP-NAS''ONTAP-NAS-Bエコノミー 'ONTAP-NAS-flexp`'GCP-cvs`'Azure-NetApp-files' バックエンドでプロビジョニングされた NFS PVS のボリューム拡張をサポートしています</block>
+  <block id="986d46700a93c1b67573285912b2a857" category="paragraph">Cloud Volumes ONTAP は、ファイル共有や NAS および SAN プロトコル（ NFS 、 SMB / CIFS 、 iSCSI ）を提供するブロックレベルストレージなど、さまざまなユースケースでデータ制御とエンタープライズクラスのストレージ機能を提供します。Cloud Volume ONTAP の互換性のあるドライバは、「 ONTAP-NAS' 」、「 ONTAP-NAS-エコノミー 」、「 ONTAP-SAN' 」、「 ONTAP-SAN-エコノミー 」です。Cloud Volume ONTAP for Azure と Cloud Volume ONTAP for GCP に該当します。</block>
+  <block id="ae2ddf83f2f62edc7ed33084b587d464" category="paragraph">バックエンドの作成時に、一般に一連のパラメータを指定できます。管理者が、同じストレージクレデンシャルと異なるパラメータセットを使用して別のバックエンドを作成することはできませんでした。この問題は、仮想ストレージプールの導入に伴って、軽減されています。仮想ストレージプールは、バックエンドと Kubernetes ストレージクラスの間に抽象化されたレベルです。管理者は、 Kubernetes ストレージクラスを介してパラメータとラベルを定義でき、セレクタとしてバックエンドに依存しない方法で参照できます。Virtual Storage Pools は、サポート対象のすべてのネットアップバックエンドに Astra Trident を使用して定義できます。リストには、 SolidFire / NetApp HCI 、 ONTAP 、 GCP 上の Cloud Volumes Service 、 Azure NetApp Files が含まれます。</block>
+  <block id="d7408ac84cade8c304e36b634d891b6d" category="paragraph">サービスクラスをエミュレートするための仮想ストレージプールを設計することができます。Cloud Volume Service for Azure NetApp Files の仮想プール実装を使用して、さまざまなサービスクラスをセットアップする方法を見ていきましょう。さまざまなパフォーマンスレベルを表す複数のラベルで ANF バックエンドを設定します。「高度」のアスペクトを適切なパフォーマンスレベルに設定し、各ラベルの下にその他の必要な側面を追加します。では、別の仮想ストレージプールにマッピングする別の Kubernetes ストレージクラスを作成します。parameters.selector` フィールドを使用すると ' 各 StorageClass は ' ボリュームのホストに使用できる仮想プールを呼び出します</block>
+  <block id="62e0abd2d56d565a2b31e85b446fa800" category="paragraph">Volume Import では、既存のストレージボリュームを Kubernetes 環境にインポートできます。これは現在、「 ONTAP-NAS」 、「 ONTAP-NAS-flexgroup 」、「 solidfire-san-」 、「 azure-netapp-files 」、「 gcp-cvs` ドライバ」でサポートされています。この機能は、既存のアプリケーションを Kubernetes に移植する場合や、ディザスタリカバリシナリオで使用する場合に便利です。</block>
+  <block id="555c97661fe540a8eabda5c4680e2f81" category="paragraph">「 azure-NetApp-file' 」または「 gcp-cvs` ドライバが使用されている場合は、「 tridentctl import volume &lt;backend-name&gt; &lt;volume path&gt; -f /path/pvc.yaml 」コマンドを使用して、 Astra Trident で管理される Kubernetes にボリュームをインポートします。これにより、ボリューム参照が一意になります。</block>
+  <block id="cca7544fa2044ea81b43c1e0896bf58e" category="cell">ontap - NAS 、 ontap - san 、 solidfire-san-files 、 gcvs 、 ONTAP - SAN - 経済性</block>
+  <block id="870594bba77423ccae9ad70861e02951" category="cell">ONTAP-NAS 、 ONTAP-NAS-flexgroup 、 ONTAP-SAN 、 GCP-cvs</block>
+  <block id="91511a1d98e80c77f75faa79a0e82734" category="paragraph">ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 solidfire-san-SAN 、 solidfire-san-SAN 、 E シリーズ - iSCSI 、 GCP-cvs 、 azure-NetApp-files 、 ONTAP-SAN-Eエコノミー</block>
+  <block id="33dece0bdda0f88a645c739f3714c038" category="cell">ONTAP-NAS, ONTAP-SAN, solidfire-san-, gcvs</block>
+  <block id="2e647c10640a301eccdc45d7ad72507d" category="cell">ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-, gcvs, azure-netapp-files</block>
+  <block id="051fb2c3f62667c87a197ae412a4dbeb" category="cell">ONTAP （ NAS 、 SAN ） &amp; SolidFire - * ：クローン元のボリュームの名前</block>
+  <block id="c12963ed77d398c8f97e09be58a20fed" category="paragraph">Trident は ' ボリュームの作成時に internalName を生成しますこの構成は 2 つのステップで構成されます。最初に、ストレージプレフィックス（デフォルトの「 trident 」またはバックエンド構成のプレフィックス）をボリューム名の前に付加し、「 &lt;prefix&gt; - &lt;volume-name&gt; 」という形式の名前を付けます。その後、名前の完全消去が行われ、バックエンドで許可されていない文字が置き換えられます。ONTAP バックエンドでは、ハイフンをアンダースコアで置き換えます（つまり、内部名は「 &lt;prefix&gt;_&lt;volume-name&gt;` 」になります）。Element バックエンドの場合、アンダースコアはハイフンに置き換えられます。</block>
+  <block id="ba600e29b197aa569df1df520cc4e4c9" category="paragraph">はい。 Astra Trident は、 Azure の Azure NetApp Files サービスと GCP の Cloud Volumes Service をサポートしています。</block>
+  <block id="804a6c22698fe4782c44f1e8d446964e" category="paragraph">現在のところ ' オンデマンドスナップショットのサポートは 'ONTAP-NAS'`ONTAP-NAS-flexgroup 'ONTAP-SAN`'ONTAP-SANエコノミー ''solidfire-san-SAN'''solidfire-san-''''solidfire-san-'''solidfire-san-''''' で利用できます 「 gcp-cvs` 」と「 azure-NetApp-files 」バックエンドドライバ。</block>
 </blocks>

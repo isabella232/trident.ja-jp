@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-docker/volume-driver-options.html 
-keywords: create volumes, astra trident, trident for docker, docker, docker volume, driver options, ontap, element volumes, cloud volumes service on aws, cvs, cloud volumes service on gcp, azure netapp files 
+keywords: create volumes, astra trident, trident for docker, docker, docker volume, driver options, ontap, element volumes, cvs, cloud volumes service on gcp, azure netapp files 
 summary: ストレージドライバにはそれぞれ異なるオプションがあり、ボリュームの作成時に指定することで結果をカスタマイズできます。構成済みのストレージシステムに適用されるオプションについては、以下を参照してください。 
 ---
 = ドライバ固有のボリュームオプション
@@ -234,51 +234,6 @@ docker volume create -d solidfire --name sfGold -o type=Gold -o size=10G
 docker volume create -d solidfire --name sfBronze -o type=Bronze -o size=100G
 ----
 
-
-
-
-== CVS （ Cloud Volumes Service on AWS ）ボリュームのオプション
-
-CVS on AWS ドライバのボリューム作成オプションには次のものがあります。
-
-[cols="2*"]
-|===
-| オプション | 説明 
-
-
-| 「 size 」  a| 
-ボリュームのサイズ。デフォルトは 100GB です。
-
-
-
-| 「サービスレベル」  a| 
-ボリュームの CVS サービスレベル。デフォルトは「 Standard 」です。有効な値は、 standard 、 premium 、 extreme です。
-
-
-
-| 「スナップショット予約」  a| 
-これにより ' スナップショット予約が目的の割合に設定されますデフォルト値は no で、 CVS によって Snapshot リザーブが選択されます（通常は 0% ）。
-
-|===
-
-
-=== 例
-
-* 200GiB ボリュームを作成します。
-+
-[listing]
-----
-docker volume create -d netapp --name demo -o size=200G
-----
-* 500GiB のプレミアムボリュームを作成します。
-+
-[listing]
-----
-docker volume create -d netapp --name demo -o size=500G -o serviceLevel=premium
-----
-
-
-最小ボリュームサイズは 100GB です。
 
 
 

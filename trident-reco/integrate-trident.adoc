@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-reco/integrate-trident.html 
-keywords: kubernetes, clusters, nodes, components, master, compute 
+keywords: kubernetes, clusters, nodes, components, master, compute, fsx, flexgroup, flexvolume, solidfire, hci, virtual storage pool, cvs, gcp, volumes 
 summary: Kubernetes クラスタは通常、 2 種類のノードで構成され、機能のさまざまな側面を担当します。 
 ---
 = Astra Trident を統合
@@ -78,7 +78,7 @@ NOTE: 「 olidfire -san 」ドライバは PVC のクローン作成にも対応
 
 === Cloud Volumes ONTAP のバックエンドドライバを選択します
 
-Cloud Volumes ONTAP は、ファイル共有や NAS および SAN プロトコル（ NFS 、 SMB / CIFS 、 iSCSI ）を提供するブロックレベルストレージなど、さまざまなユースケースでデータ制御とエンタープライズクラスのストレージ機能を提供します。Cloud Volume ONTAP の互換性のあるドライバは、「 ONTAP-NAS' 」、「 ONTAP-NAS-エコノミー 」、「 ONTAP-SAN' 」、「 ONTAP-SAN-エコノミー 」です。Cloud Volume ONTAP for AWS 、 Cloud Volume ONTAP for Azure 、 Cloud Volume ONTAP for GCP に該当します。
+Cloud Volumes ONTAP は、ファイル共有や NAS および SAN プロトコル（ NFS 、 SMB / CIFS 、 iSCSI ）を提供するブロックレベルストレージなど、さまざまなユースケースでデータ制御とエンタープライズクラスのストレージ機能を提供します。Cloud Volume ONTAP の互換性のあるドライバは、「 ONTAP-NAS' 」、「 ONTAP-NAS-エコノミー 」、「 ONTAP-SAN' 」、「 ONTAP-SAN-エコノミー 」です。Cloud Volume ONTAP for Azure と Cloud Volume ONTAP for GCP に該当します。
 
 
 
@@ -119,24 +119,6 @@ Astra Trident は、「 azure-NetApp-files 」ドライバを使用してを管�
 |===
 [verse]
 脚注：はい脚注： 1[] ： Astra Trident で管理されていません
-
-
-
-=== AWS を使用する Cloud Volumes Service のバックエンドドライバを選択します
-
-Astra Trident は、「 aws -cvs 」ドライバを使用して、 AWS バックエンドの Cloud Volumes Service とリンクします。Trident で AWS バックエンドを構成するには、バックエンドファイルに「 apiRegion 」、「 apiURL 」、「 apiKey 」、「 ecretKey 」を指定する必要があります。これらの値は、 CVS Web ポータルのアカウント設定 / API アクセスで確認できます。サポートされているサービス・レベルは 'tandard'premium'extreme などの CVS に合わせて調整されています現在、プロビジョニングする最小ボリュームサイズは 100G です。今後の CVS リリースでは、この制限が解除される可能性があります。
-
-[cols="20,10,10,10,10,10,10"]
-|===
-| CVS for AWS ドライバ | Snapshot | クローン | マルチアタッチ | QoS | を展開します | レプリケーション 
-
-
-| 「 aws -cvs 」 | はい。 | はい。 | はい。 | はい。 | はい。 | ○脚注： 1[] 
-|===
-[verse]
-脚注：はい脚注： 1[] ： Astra Trident で管理されていません
-
-「 aws -cvs 」ドライバは仮想ストレージプールを使用します。仮想ストレージプールはバックエンドを抽象化し、 Trident がボリュームの配置を決定できるようにします。管理者が backend.json ファイルに仮想ストレージプールを定義します。ストレージクラスは、ラベルを使用する仮想ストレージプールを識別します。
 
 
 
@@ -203,7 +185,7 @@ Virtual Storage Pool は、すべての Astra Trident バックエンドで利�
 
 == Virtual Storage Pool Design の略
 
-バックエンドの作成時に、一般に一連のパラメータを指定できます。管理者が、同じストレージクレデンシャルと異なるパラメータセットを使用して別のバックエンドを作成することはできませんでした。この問題は、仮想ストレージプールの導入に伴って、軽減されています。仮想ストレージプールは、バックエンドと Kubernetes ストレージクラスの間に抽象化されたレベルです。管理者は、 Kubernetes ストレージクラスを介してパラメータとラベルを定義でき、セレクタとしてバックエンドに依存しない方法で参照できます。Virtual Storage Pools は、サポート対象のすべてのネットアップバックエンドに Astra Trident を使用して定義できます。リストには、 SolidFire / NetApp HCI 、 ONTAP 、 AWS と GCP 上の Cloud Volumes Service 、 Azure NetApp Files が含まれます。
+バックエンドの作成時に、一般に一連のパラメータを指定できます。管理者が、同じストレージクレデンシャルと異なるパラメータセットを使用して別のバックエンドを作成することはできませんでした。この問題は、仮想ストレージプールの導入に伴って、軽減されています。仮想ストレージプールは、バックエンドと Kubernetes ストレージクラスの間に抽象化されたレベルです。管理者は、 Kubernetes ストレージクラスを介してパラメータとラベルを定義でき、セレクタとしてバックエンドに依存しない方法で参照できます。Virtual Storage Pools は、サポート対象のすべてのネットアップバックエンドに Astra Trident を使用して定義できます。リストには、 SolidFire / NetApp HCI 、 ONTAP 、 GCP 上の Cloud Volumes Service 、 Azure NetApp Files が含まれます。
 
 
 NOTE: 仮想ストレージプールを定義する場合は、バックエンド定義内の既存の仮想プールの順序を変更しないことを推奨します。また、既存の仮想プールの属性を編集または変更したり、新しい仮想プールを定義したりしないことを推奨します。
@@ -212,7 +194,7 @@ NOTE: 仮想ストレージプールを定義する場合は、バックエン�
 
 === さまざまなサービスレベル / QoS をエミュレートするための仮想ストレージプールを設計します
 
-サービスクラスをエミュレートするための仮想ストレージプールを設計することができます。Cloud Volume Service for AWS の仮想プール実装を使用して、さまざまなサービスクラスをセットアップする方法を見ていきましょう。パフォーマンスレベルが異なる複数のラベルで AWS と CVS バックエンドを設定します。「高度」のアスペクトを適切なパフォーマンスレベルに設定し、各ラベルの下にその他の必要な側面を追加します。では、別の仮想ストレージプールにマッピングする別の Kubernetes ストレージクラスを作成します。parameters.selector` フィールドを使用すると ' 各 StorageClass は ' ボリュームのホストに使用できる仮想プールを呼び出します
+サービスクラスをエミュレートするための仮想ストレージプールを設計することができます。Cloud Volume Service for Azure NetApp Files の仮想プール実装を使用して、さまざまなサービスクラスをセットアップする方法を見ていきましょう。さまざまなパフォーマンスレベルを表す複数のラベルで ANF バックエンドを設定します。「高度」のアスペクトを適切なパフォーマンスレベルに設定し、各ラベルの下にその他の必要な側面を追加します。では、別の仮想ストレージプールにマッピングする別の Kubernetes ストレージクラスを作成します。parameters.selector` フィールドを使用すると ' 各 StorageClass は ' ボリュームのホストに使用できる仮想プールを呼び出します
 
 
 
@@ -293,11 +275,11 @@ Astra Trident は、 NFS と iSCSI PVS のサイズ変更をサポートして�
 
 === 既存のボリュームを Kubernetes にインポートする
 
-Volume Import では、既存のストレージボリュームを Kubernetes 環境にインポートできます。これは現在、「 ONTAP-NAS' 」、「 ONTAP-NAS-flexgroup 」、「 olidfire -san 」、「 azure-NetApp-files 」、「 aws -cvs 」によってサポートされています。 ドライバは「 gcp-cvs 」です。この機能は、既存のアプリケーションを Kubernetes に移植する場合や、ディザスタリカバリシナリオで使用する場合に便利です。
+Volume Import では、既存のストレージボリュームを Kubernetes 環境にインポートできます。これは現在、「 ONTAP-NAS」 、「 ONTAP-NAS-flexgroup 」、「 solidfire-san-」 、「 azure-netapp-files 」、「 gcp-cvs` ドライバ」でサポートされています。この機能は、既存のアプリケーションを Kubernetes に移植する場合や、ディザスタリカバリシナリオで使用する場合に便利です。
 
 ONTAP ドライバと 'olidfire-san`drivers を使用する場合は 'tridentctl import volume <backend-name><volume-name><f/path/pvc.yaml コマンドを使用して 'Astra Trident で管理する既存のボリュームを Kubernetes にインポートしますimport volume コマンドで使用した PVC YAML または JSON ファイルは、 Astra Trident をプロビジョニングツールとして識別するストレージクラスを指定します。NetApp HCI / SolidFire バックエンドを使用する場合は、ボリューム名が一意であることを確認してください。ボリューム名が重複している場合は、ボリュームインポート機能で区別できるように、ボリュームを一意の名前にクローニングします。
 
-「 aws -cvs 」、「 azure-NetApp-files 」、または「 gcp-cvs` ドライバが使用されている場合は、「 tridentctl import volume <backend-name> <volume path> -f /path/pvc.yaml 」コマンドを使用して、 Astra Trident で管理する Kubernetes にボリュームをインポートします。これにより、ボリューム参照が一意になります。
+「 azure-NetApp-file' 」または「 gcp-cvs` ドライバが使用されている場合は、「 tridentctl import volume <backend-name> <volume path> -f /path/pvc.yaml 」コマンドを使用して、 Astra Trident で管理される Kubernetes にボリュームをインポートします。これにより、ボリューム参照が一意になります。
 
 上記のコマンドを実行すると、 Astra Trident がバックエンド上にボリュームを検出し、サイズを確認します。設定された PVC のボリュームサイズが自動的に追加（必要に応じて上書き）されます。次に Astra Trident が新しい PV を作成し、 Kubernetes が PVC を PV にバインド
 

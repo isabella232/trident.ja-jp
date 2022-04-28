@@ -121,7 +121,7 @@ Astra Trident は Kubernetes ポッドとして機能し、 Kubernetes が実行
 
 === Astra Trident は Cloud Volume サービスと連携していますか。
 
-はい。 Astra Trident は、 Azure の Azure NetApp Files サービスと、 AWS や GCP の Cloud Volumes Service をサポートしています。
+はい。 Astra Trident は、 Azure の Azure NetApp Files サービスと GCP の Cloud Volumes Service をサポートしています。
 
 
 
@@ -380,7 +380,7 @@ Kubernetes ストレージリソースクォータは、ネットアップスト
 
 === Astra Trident のボリュームスナップショットをサポートするドライバを教えてください。
 
-現在のところ ' オンデマンドスナップショットのサポートは 'ONTAP-NAS'`ONTAP-NAS-flexgroup 'ONTAP-SAN`'ONTAP-SANエコノミー ''solidfire-san-SAN'''solidfire-san-''''solidfire-san-'''solidfire-san-''''' で利用できます 「 aws -cvs 」、「 gcp-cvs 」、「 azure-NetApp-files 」バックエンドドライバ。
+現在のところ ' オンデマンドスナップショットのサポートは 'ONTAP-NAS'`ONTAP-NAS-flexgroup 'ONTAP-SAN`'ONTAP-SANエコノミー ''solidfire-san-SAN'''solidfire-san-''''solidfire-san-'''solidfire-san-''''' で利用できます 「 gcp-cvs` 」と「 azure-NetApp-files 」バックエンドドライバ。
 
 
 
