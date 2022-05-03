@@ -3127,11 +3127,9 @@
   <block id="65b584d1b3cd0ab857283c862b5ddc53" category="doc">Astra Trident 22.04 のドキュメント</block>
   <block id="679683afa169f4c501ded1ebe8a942e2" category="list-text">Kubernetes 1.18 以降（最新： 1.23 ）</block>
   <block id="41b5e6bb7f3d484ece37970d944243a6" category="list-text">OpenShift 4.7 、 4.8 、 4.9 、 4.10</block>
-  <block id="d4e01cba0135fad4e9e87e274b6665ad" category="list-text">NetApp / Trident ： 22.04.0 -custom</block>
   <block id="2e7762de21d705936d61fb36a7138a5c" category="list-text">NetApp / Trident -autosupport ： 22.04</block>
   <block id="b940865cd29b95c004f3c7f7ba60de73" category="list-text">k81.gcr.io/sig-storage/csi-resizer ： v1.4.0</block>
   <block id="719605430ab8445a9b97c7e6a4d03f30" category="list-text">k8s .GCR.IO/sig-storage/csi-node-driver-registrar: v2.5.0.</block>
-  <block id="b661c0f1dfe5c381a73bb09f637a6cdf" category="list-text">NetApp/trident-operator ： 22.04.0 -custom （オプション）</block>
   <block id="deef9d6bf4083f81d7bd15ae0c9121b6" category="admonition">22.04 リリース以降、 Astra Trident がインストールされるたびに AES キーが再生成されなくなりました。今回のリリースでは、 Astra Trident がインストールする新しいシークレットオブジェクトが、インストール全体で維持されます。つまり '22.04 の tridentctl' は Trident の以前のバージョンをアンインストールできますが ' それ以前のバージョンでは 22.04 のインストールをアンインストールできません</block>
   <block id="485e8e209b502a7975830960817b875e" category="paragraph">Trident 22.04 を実行していない場合は、以前のリリースのドキュメントを参照できます。</block>
   <block id="4af8991c21dff2f779496b8350d1124b" category="inline-link">Trident 22.01</block>
@@ -3155,4 +3153,6 @@
   <block id="135c438d01a49275c458e22005e39c6e" category="section-title">22.01.0 の変更</block>
   <block id="58a2e8c17107cc1ca9cb1317cd0c1ee9" category="section-title">21.10.1 の変更点</block>
   <block id="43e92857220d1a7ea1da88250ea5e2e3" category="section-title">21.10.0 の変更点</block>
+  <block id="bd366d7eff02dab7788621c07458488c" category="list-text">NetApp / Trident ： 22.04.0</block>
+  <block id="6c2d28c058f7c688140000721ee0d18f" category="list-text">NetApp/trident-operator ： 22.04.0 （オプション）</block>
 </blocks>
