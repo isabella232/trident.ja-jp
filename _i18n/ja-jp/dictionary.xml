@@ -2841,7 +2841,6 @@
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">リリースノート</block>
   <block id="93168a8084b3e838d2932c4734bd234e" category="sidebar">以前のバージョン</block>
   <block id="0629fb104936d0fb60cc736b6cb01caa" category="sidebar">Astra Trident の要件</block>
-  <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">新機能</block>
   <block id="1fe917b01f9a3f87fa2d7d3b7643fac1" category="sidebar">よく寄せられる質問</block>
   <block id="312b0dc38b01ff32c1b2f5f81ee1ab2d" category="sidebar">Trident オペレータとともに導入</block>
   <block id="e0e3d7f1aacdf4a8196132549709430c" category="sidebar">tridentctl を使用して導入します</block>
@@ -3162,4 +3161,5 @@
   <block id="5e393c0ca8392e0c84201770c8b544ca" category="open-title">v5.0コントローラ</block>
   <block id="ea567d0d1a58b120efa89893cae2966a" category="open-title">v3.0.3コントローラ</block>
   <block id="086e6c16e3fe8e13c336612ef636aa02" category="sidebar">Astra Trident</block>
+  <block id="756909f99bc1a720d318a5f5b94eb094" category="section-title">トラブルシューティング用にログを収集する</block>
 </blocks>
