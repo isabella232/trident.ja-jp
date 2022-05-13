@@ -48,12 +48,12 @@ homepage:
   tiles:
   - title: はじめに
     links:
+    - title: リリースノート
+      url: trident-rn.html
     - title: Astra Trident の概要
       url: "/trident-concepts/intro.html"
     - title: Astra Trident の要件
       url: "/trident-get-started/requirements.html"
-    - title: 新機能
-      url: trident-rn.html
     - title: ぜひお試しください
       url: "/trident-get-started/quickstart.html"
     - title: よく寄せられる質問
