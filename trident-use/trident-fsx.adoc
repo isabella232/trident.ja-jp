@@ -51,7 +51,7 @@ Astra Trident を初めて使用する場合は、以下のリンクを使用し
 
 NetApp ONTAP 用の Amazon FSX では、を使用します https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mgng-stor-tier-fp/GUID-5A78F93F-7539-4840-AB0B-4A6E3252CF84.html["FabricPool"^] ストレージ階層を管理します。データへのアクセス頻度に基づいて階層にデータを格納することができます。
 
-Astra Trident は、 ONTAP 管理者または SVM 管理者として、クラスタ「 fsxadmin 」ユーザまたは「 vsadmin 」 SVM ユーザ、あるいは同じロールを持つ別の名前を持つユーザとして実行されることを想定しています。「 fsxadmin 」ユーザは、「 admin 」クラスタ・ユーザに限定的に代わるものです。Astra Trident は通常、 Amazon FSX 以外の ONTAP 展開に「 admin 」クラスタユーザを使用します。
+Astra Tridentは、「vsadmin」のSVMユーザとして、または同じロールを持つ別の名前を持つユーザとして実行されることを想定しています。Amazon FSX for NetApp ONTAP には'fsxadmin'ユーザーがいますこれはONTAP のadminクラスタ・ユーザーの限定的な置き換えです「vsadmin」のSVMユーザがより多くのAstra Trident機能にアクセスできるため、「fsxadmin」ユーザをTridentとともに使用することはお勧めしません。
 
 
 
@@ -72,8 +72,12 @@ Astra Trident と Amazon FSX for NetApp ONTAP を統合するには、次のド�
 
 Astra Trident には、次の 2 つの認証モードがあります。
 
-* 認証情報ベース：ファイルシステムには「 fsxadmin 」ユーザを、 SVM には「 vsadmin 」ユーザを使用できます。バックエンドの構成には 'vsadmin ユーザーを使用することをお勧めしますAstra Trident は、このユーザ名とパスワードを使用して FSX ファイルシステムと通信します。
 * 証明書ベース： Astra Trident は、 SVM にインストールされている証明書を使用して、 FSX ファイルシステムの SVM と通信します。
+* 認証情報ベース：ファイルシステムには「 fsxadmin 」ユーザを、 SVM には「 vsadmin 」ユーザを使用できます。
++
+
+WARNING: バックエンドの構成には'fsxadmin'ではなく'vsadminユーザーを使用することを強くお勧めしますAstra Trident は、このユーザ名とパスワードを使用して FSX ファイルシステムと通信します。
+
 
 
 認証の詳細については、次のリンクを参照してください。
