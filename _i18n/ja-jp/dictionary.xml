@@ -3042,7 +3042,6 @@
   <block id="4811aaaf5eedea1ea9f703353903b5b5" category="list-text">を参照してください <block ref="c35b155baa39b6aa36cf9bc59eea88f3" category="inline-link-macro-rx"></block> ボリューム拡張の詳細については、を参照してください。</block>
   <block id="23038d88eea805ac06a26959fc129ca5" category="admonition">NetApp Aggregate Encryption （ NAE ）は、現在 Trident ではサポートされていません。</block>
   <block id="fa8bc73a8436dd2f79aafaa731d248e4" category="list-text">「 limitAggregateUsage 」パラメータは、「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。</block>
-  <block id="76df2d4e2a105a35b5db1ce7b060bbe1" category="list-text">Anthos オンプレミス（ VMware ）と Anthos は、ベアメタル 1.8 、 1.9 、 1.10 上に実装されています</block>
   <block id="9c99c91edd7eddead4f870a324f880bd" category="list-text">Trident の Helm リポジトリを追加：</block>
   <block id="368b120a3b5f53a49dc3ab96ec9b8dbd" category="paragraph">ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能をいくつかご紹介します。以前のリリースについては、を参照してください<block ref="25da125dffad1d6323c21354bccf0203" category="inline-link-rx"></block>。</block>
   <block id="a98b2ebbcbb381d3abc81e2ecfb2054c" category="inline-link-macro">GitHub 問題 #691</block>
@@ -3164,4 +3163,5 @@
   <block id="de781ae8dbfd68aeef56f40c5dc767da" category="paragraph">Astra Tridentは、「vsadmin」のSVMユーザとして、または同じロールを持つ別の名前を持つユーザとして実行されることを想定しています。Amazon FSX for NetApp ONTAP には'fsxadmin'ユーザーがいますこれはONTAP のadminクラスタ・ユーザーの限定的な置き換えです「vsadmin」のSVMユーザがより多くのAstra Trident機能にアクセスできるため、「fsxadmin」ユーザをTridentとともに使用することはお勧めしません。</block>
   <block id="d5d195efeafde24a6a22effd3dd39339" category="list-text">認証情報ベース：ファイルシステムには「 fsxadmin 」ユーザを、 SVM には「 vsadmin 」ユーザを使用できます。</block>
   <block id="be5736bb27c63c0a404a25abaa033c45" category="admonition">バックエンドの構成には'fsxadmin'ではなく'vsadminユーザーを使用することを強くお勧めしますAstra Trident は、このユーザ名とパスワードを使用して FSX ファイルシステムと通信します。</block>
+  <block id="0b4a92a731cb582bd951a7aa481f0602" category="list-text">Anthosオンプレミス（VMware）とAnthos：ベアメタル1.9、1.10、1.11</block>
 </blocks>
