@@ -1231,7 +1231,6 @@
   <block id="dd3de2609b612d76ef4c71b97b8d6100" category="inline-link">CLI へのアクセスを有効にする手順は、ユーザが行ってください</block>
   <block id="c585967fa32d82c5e3c24bd63926c6a0" category="list-text">Kubernetes と Docker Enterprise を併用する場合は、<block ref="57562caf1c76e1a261b7e2f8c3d113f9" category="inline-link-rx"></block>。</block>
   <block id="b430504ce0f6755a2be91a9a221c144e" category="paragraph">それはすべてですか？最高！それでは始めましょう。</block>
-  <block id="f9589cad119238efbce2b063d5225fb4" category="section-title">Helm を使用して Trident オペレータを導入します</block>
   <block id="8a414e5c564a0c9e7a0f799a3c8cf47c" category="paragraph">Helm を使用して Trident オペレータを導入するには、以下の手順を実行します。</block>
   <block id="dc2d0674739dcd145f5287a7d619ee05" category="paragraph">上記の前提条件に加え、 Helm を使用して Trident Operator を導入するには、次のものが必要です。</block>
   <block id="8f5e62e2d03d87aeaafa8d4776fb7a79" category="list-text">Kubernetes 1.17 以降</block>
@@ -3164,4 +3163,10 @@
   <block id="d5d195efeafde24a6a22effd3dd39339" category="list-text">認証情報ベース：ファイルシステムには「 fsxadmin 」ユーザを、 SVM には「 vsadmin 」ユーザを使用できます。</block>
   <block id="be5736bb27c63c0a404a25abaa033c45" category="admonition">バックエンドの構成には'fsxadmin'ではなく'vsadminユーザーを使用することを強くお勧めしますAstra Trident は、このユーザ名とパスワードを使用して FSX ファイルシステムと通信します。</block>
   <block id="0b4a92a731cb582bd951a7aa481f0602" category="list-text">Anthosオンプレミス（VMware）とAnthos：ベアメタル1.9、1.10、1.11</block>
+  <block id="6173739ff97dc1bdcd8c5d867134724c" category="paragraph">Tridentのオペレータが、Astra Tridentを導入できます。Tridentオペレータは、次のいずれかの方法で導入できます。</block>
+  <block id="7d3f46589c43a64fd040e4f0e0691a86" category="inline-link-macro">Helmチャート</block>
+  <block id="5d2b4e1d078f05c18e07065fa7df166d" category="list-text">Tridentの使用 <block ref="cdacb2b0d49176a3c0d8cc9d693de833" category="inline-link-macro-rx"></block>：Helm ChartがTridentオペレータを導入し、Tridentをワンステップでインストールします。</block>
+  <block id="0d472c887b61206765c1caa63a9290ec" category="inline-link-macro">バンドル.yaml</block>
+  <block id="179000091737641056a247acf2c59dc4" category="list-text">手動：Tridentがを提供 <block ref="6f41841ada1b81573b5db54c90d512f9" category="inline-link-macro-rx"></block> オペレータのインストールおよび関連オブジェクトの作成に使用できるファイル。</block>
+  <block id="c9ffe59301b588bbc33bb004cfd312ee" category="section-title">Tridentオペレータを導入し、Helmを使用してAstra Tridentをインストール</block>
 </blocks>
