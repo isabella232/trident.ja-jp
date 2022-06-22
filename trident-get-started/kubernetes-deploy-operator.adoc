@@ -125,8 +125,8 @@ NOTE: 21.01 以降、 Trident Operator はクラスタを対象とします。Tr
 +
 [listing]
 ----
-wget https://github.com/NetApp/trident/releases/download/v21.04/trident-installer-21.04.tar.gz
-tar -xf trident-installer-21.04.tar.gz
+wget https://github.com/NetApp/trident/releases/download/v22.04.0/trident-installer-22.04.0.tar.gz
+tar -xf trident-installer-22.04.0.tar.gz
 cd trident-installer
 ----
 . 適切な CRD マニフェストを使用して、「 TridentOrchestrator 」 CRD を作成します。次に、後で「 TridentOrchestrator 」カスタムリソースを作成して、オペレータによってインストールをインスタンス化します。
