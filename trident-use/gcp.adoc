@@ -81,6 +81,9 @@ NOTE: デフォルトの CVS サービスタイプ（「 torageClass=software �
 | 「サービスレベル」 | 新しいボリュームの CVS サービスレベル。「 Standard 」、「 Premium 」、「 Extreme 」のいずれかです。 | 標準 
 
 
+| 「ネットワーク」 | CVSボリュームに使用するGCPネットワーク | デフォルト 
+
+
 | 「バグトレースフラグ」 | トラブルシューティング時に使用するデバッグフラグ。例： \\{"API":false," メソッド ":true}`トラブルシューティングを行って詳細なログダンプが必要な場合を除き、このオプションは使用しないでください。 | null 
 |===
 共有 VPC ネットワークを使用する場合は、「 ProjectNumber 」と「 hostProjectNumber 」の両方を指定する必要があります。その場合、「 ProjectNumber 」はサービスプロジェクト、「 hostProjectNumber 」はホストプロジェクトです。
