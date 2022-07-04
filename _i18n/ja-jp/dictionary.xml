@@ -3170,4 +3170,7 @@
   <block id="179000091737641056a247acf2c59dc4" category="list-text">手動：Tridentがを提供 <block ref="6f41841ada1b81573b5db54c90d512f9" category="inline-link-macro-rx"></block> オペレータのインストールおよび関連オブジェクトの作成に使用できるファイル。</block>
   <block id="c9ffe59301b588bbc33bb004cfd312ee" category="section-title">Tridentオペレータを導入し、Helmを使用してAstra Tridentをインストール</block>
   <block id="3f44baef815aed01560d6764fea49ebc" category="cell">CVSボリュームに使用するGCPネットワーク</block>
+  <block id="6aef79110fe63635bdb5452c3a08ead7" category="section-title">Cloud Managerを使用してKubernetesクラスタを管理</block>
+  <block id="865ec115b3646a7d42d94fd0d6f64ca5" category="inline-link-macro">Cloud Managerを使用してTridentを活用</block>
+  <block id="70ef9708acb1f72d9648f625edc21d7b" category="paragraph">を使用 <block ref="d2f4359fbe3252be146a4ecb37a6f90e" category="inline-link-macro-rx"></block>では、最新バージョンのAstra Tridentにアップグレードし、ストレージクラスを追加して管理し、作業環境に接続し、Cloud Backup Service を使用して永続的ボリュームをバックアップすることができます。Cloud Managerは、Tridentオペレータを使用して、手動またはHelmを使用したAstra Tridentの導入をサポートしています。</block>
 </blocks>

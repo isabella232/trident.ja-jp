@@ -61,6 +61,12 @@ NOTE: クラスタがサポート対象外のバージョンにアップグレ�
 
 
 
+==== Cloud Managerを使用してKubernetesクラスタを管理
+
+を使用 link:https://docs.netapp.com/us-en/cloud-manager-kubernetes/concept-kubernetes.html["Cloud Managerを使用してTridentを活用"^]では、最新バージョンのAstra Tridentにアップグレードし、ストレージクラスを追加して管理し、作業環境に接続し、Cloud Backup Service を使用して永続的ボリュームをバックアップすることができます。Cloud Managerは、Tridentオペレータを使用して、手動またはHelmを使用したAstra Tridentの導入をサポートしています。
+
+
+
 === Helm を使用する必要があるのはなぜですか？
 
 Helm を使用して管理している他のアプリケーションが Astra Trident 21.01 以降である場合は、 Helm を使用して導入を管理することもできます。
