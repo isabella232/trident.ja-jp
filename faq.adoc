@@ -153,7 +153,7 @@ tridentctl logs-a を実行して ' サポートバンドルを作成できま�
 
 === 新しい機能のリクエストを発行する必要がある場合は、どうすればよいですか。
 
-に問題を作成します https://github.com/NetApp/trident["Trident Github の利用"^] そして、概要の件名と問題に「 * RFE * 」と明記してください。
+に問題を作成します https://github.com/NetApp/trident["Astra Trident Github"^] そして、概要の件名と問題に「 * RFE * 」と明記してください。
 
 
 
@@ -165,7 +165,7 @@ tridentctl logs-a を実行して ' サポートバンドルを作成できま�
 
 === ネットアップが Trident の Astra について簡単に質問できたらどうなりますか。コミュニティやフォーラムはありますか？
 
-ご質問、問題、ご要望がございましたら、弊社までお問い合わせください http://netapp.io/slack["Slack"^] チームまたは GitHub 。
+ご質問、ご質問、ご要望がございましたら、ネットアップのアストラからお問い合わせください link:https://discord.gg/NetApp["チャネルを外します"^] またはGitHub。
 
 
 
