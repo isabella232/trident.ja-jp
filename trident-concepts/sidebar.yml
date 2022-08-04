@@ -2,7 +2,7 @@
 section: trident-concepts
 title: 概念
 entries:
-- title: Astra Trident の概要
+- title: Astra Trident の詳細をご確認ください
   url: "/trident-concepts/intro.html"
 - title: ONTAP ドライバ
   url: "/trident-concepts/ontap-drivers.html"

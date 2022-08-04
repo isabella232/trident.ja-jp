@@ -33,7 +33,7 @@ ONTAP NAS ドライバを作成して Astra Trident インストールで使用�
 | backendName` | カスタム名またはストレージバックエンド | ドライバ名 + "_" + データ LIF 
 
 
-| 「管理 LIF 」 | クラスタ管理 LIF または SVM 管理 LIF の IP アドレス | 「 10.0.0.1 」、「 [2001:1234:abcd::fefe] 」 
+| 「管理 LIF 」 | クラスタ管理LIFまたはSVM管理LIFのIPアドレス：シームレスなMetroCluster スイッチオーバーを実現するには、SVM管理LIFを指定する必要があります。この機能は* tech preview *です。 | 「 10.0.0.1 」、「 [2001:1234:abcd::fefe] 」 
 
 
 | 「重複排除 | プロトコル LIF の IP アドレス。IPv6 には角かっこを使用します。設定後に更新することはできません | 特に指定がないかぎり、 SVM が派生します 
@@ -75,7 +75,7 @@ ONTAP NAS ドライバを作成して Astra Trident インストールで使用�
 | 「 AggreglimitateUsage 」と入力します | 使用率がこの割合を超えている場合は、プロビジョニングが失敗します。* Amazon FSX for ONTAP * には適用されません | “”（デフォルトでは適用されません） 
 
 
-| 「 limitVolumeSize 」と入力します | 要求されたボリュームサイズがエコノミードライバーのこの値を超えている場合、プロビジョニングは失敗します。 | “”（デフォルトでは適用されません） 
+| 「 limitVolumeSize 」と入力します | 要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します。 | “”（デフォルトでは適用されません） 
 
 
 | 'lunsPerFlexvol | FlexVol あたりの最大 LUN 数。有効な範囲は 50 、 200 です | 100 
@@ -90,11 +90,16 @@ ONTAP NAS ドライバを作成して Astra Trident インストールで使用�
 | qtreesPerFlexvol` | FlexVol あたりの最大 qtree 数。有効な範囲は [50 、 300] です。 | 200 
 
 
-| 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー * | いいえ 
+| 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。*テクニカルプレビュー*はMetroCluster ではサポートされていません。 | いいえ 
 |===
+[WARNING]
+.<code>useREST</code>の考慮事項
+====
+* 「 useREST 」は **tech preview** として提供されています。これはテスト環境では推奨され、本番ワークロードでは推奨されません。「 true 」に設定すると、 Astra Trident は ONTAP REST API を使用してバックエンドと通信します。この機能を使用するには、ONTAP 9.10以降が必要です。また ' 使用する ONTAP ログイン・ロールには ONTAP アプリケーションへのアクセス権が必要ですこれは ' 事前に定義された vsadmin ロールと cluster-admin ロールによって満たされます
+* 「useREST」はMetroCluster ではサポートされていません。
 
-NOTE: 「 useREST 」は **tech preview** として提供されています。これはテスト環境では推奨され、本番ワークロードでは推奨されません。「 true 」に設定すると、 Astra Trident は ONTAP REST API を使用してバックエンドと通信します。この機能を使用するには、 ONTAP 9.9 以降が必要です。また ' 使用する ONTAP ログイン・ロールには ONTAP アプリケーションへのアクセス権が必要ですこれは ' 事前に定義された vsadmin ロールと cluster-admin ロールによって満たされます
 
+====
 ONTAP クラスタと通信するには、認証パラメータを指定する必要があります。これは、セキュリティログインまたはインストールされている証明書のユーザ名 / パスワードです。
 
 

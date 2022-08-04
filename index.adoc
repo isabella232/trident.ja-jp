@@ -5,7 +5,7 @@ permalink: index.html
 lead: Astra Trident is an open source storage provisioner and orchestrator maintained by NetApp. It enables you to create storage volumes for containerized applications managed by Docker and Kubernetes. 
 summary: Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。 
 ---
-= Astra Trident 22.04 のドキュメント
+= Astra Trident 22.07ドキュメント
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

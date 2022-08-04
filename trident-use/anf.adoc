@@ -86,6 +86,9 @@ NOTE: 注： Astra Trident は、手動の QoS 容量プールをサポートし
 | 「サブネット」 | 「 icrosoft.Netapp/volumes` 」に委任されたサブネットの名前 | "" 
 
 
+| 「ネットワーク機能」 | ボリュームのVNet機能のセットは'Basic'または'Standard'の場合があります | "" 
+
+
 | 「 nfsvMountOptions 」のように入力します | NFS マウントオプションのきめ細かな制御。 | "nfsvers=3 " 
 
 
@@ -99,6 +102,9 @@ WARNING: PVC の作成時に「 No capacity pools found 」エラーが発生し
 
 
 NOTE: NFS バージョン 4.1 を使用してボリュームをマウントする場合は、 NFS v4.1 を選択するために、カンマ区切りのマウントオプションリストに「 nfsvers=4` 」を含めることができます。ストレージクラスで設定されたマウントオプションは、バックエンド構成ファイルで設定されたマウントオプションよりも優先されます。
+
+
+NOTE: 。 https://docs.microsoft.com/en-us/azure/azure-netapp-files/configure-network-features["Network Features（ネットワーク機能）"^] 機能はすべての地域で一般に利用できるわけではなく、サブスクリプションで有効にする必要があります。機能が有効になっていないときにnetworkFeatures'configオプションを指定すると'Tridentで原因 ボリュームのプロビジョニングが失敗します
 
 resourceGroups'netappAccounts'capacityPools'virtualNetwork' および 'subnet' の値は ' 短い名前または完全修飾名を使用して指定できます省略形は同じ名前の複数のリソースに一致している可能性があるため、ほとんどの場合は完全修飾名を使用することを推奨します。resourceGroups'netappAccounts'capacityPools' の値は ' 検出されたリソースのセットをこのストレージバックエンドで使用可能なリソースに制限するフィルタであり ' 任意の組み合わせで指定できます完全修飾名の形式は次のとおりです。
 
@@ -210,6 +216,7 @@ NOTE: ANF バックエンドに作成されたすべてのボリュームに対�
 ],
         "virtualNetwork": "my-virtual-network",
         "subnet": "my-subnet",
+        "networkFeatures": "Standard",
         "nfsMountOptions": "vers=3,proto=tcp,timeo=600",
         "limitVolumeSize": "500Gi",
         "defaults": {
@@ -217,7 +224,6 @@ NOTE: ANF バックエンドに作成されたすべてのボリュームに対�
             "snapshotDir": "true",
             "size": "200Gi",
             "unixPermissions": "0777"
-=======
         }
     }
 ----
@@ -238,6 +244,7 @@ NOTE: ANF バックエンドに作成されたすべてのボリュームに対�
         "clientSecret": "SECRET",
         "location": "eastus",
         "resourceGroups": ["application-group-1"],
+        "networkFeatures": "Basic",
         "nfsMountOptions": "vers=3,proto=tcp,timeo=600",
         "labels": {
             "cloud": "azure"
@@ -250,7 +257,8 @@ NOTE: ANF バックエンドに作成されたすべてのボリュームに対�
                     "performance": "gold"
                 },
                 "serviceLevel": "Ultra",
-                "capacityPools": ["ultra-1", "ultra-2"]
+                "capacityPools": ["ultra-1", "ultra-2"],
+                "networkFeatures": "Standard"
             },
             {
                 "labels": {

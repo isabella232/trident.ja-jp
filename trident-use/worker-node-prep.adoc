@@ -20,6 +20,25 @@ WARNING: NFS ツールまたは iSCSI ツールをインストールしたあと
 
 
 
+== ノードサービスの検出
+
+22.07以降、Astra Tridentは、ノードでiSCSIサービスまたはNFSサービスを実行できるかどうかを自動的に検出しようとします。Astra Tridentが、検出されたサービスを特定するためのイベントをノードに対して作成次のイベントを確認するには、コマンドを使用します。
+
+[listing]
+----
+kubectl get event -A --field-selector involvedObject.name=<Kubernetes node name>
+----
+Tridentは、TridentノードCRの各ノードで有効になっているサービスも特定します。検出されたサービスを表示するには、次のコマンドを使用します。
+
+[listing]
+----
+tridentctl get node -o wide -n <Trident namespace>
+----
+
+NOTE: ノードサービス検出で検出されたサービスが特定されますが、サービスが適切に設定されていることは保証されませ逆に、検出されたサービスがない場合も、ボリュームのマウントが失敗する保証はありません。
+
+
+
 == NFS ボリューム
 
 [cols="3*"]
@@ -51,8 +70,7 @@ iSCSI ボリュームを使用するときは、次の点に注意してくだ�
 
 * Kubernetes クラスタ内の各ノードには一意の IQN を割り当てる必要があります。* これは必須の前提条件です * 。
 * RHCOS バージョン 4.5 以降、または RHEL または CentOS バージョン 8.2 以降で「 olidfire-san 」ドライバを使用している場合は、 CHAP 認証アルゴリズムが /etc/iscsi/iscsid.conf で MD5 に設定されていることを確認してください。
-
-
++
 [listing]
 ----
 sudo sed -i 's/^\(node.session.auth.chap_algs\).*/\1 = MD5/' /etc/iscsi/iscsid.conf
@@ -132,6 +150,3 @@ NOTE: 「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults
 |===
 
 NOTE: Ubuntu 18.04 では 'iSCSI デーモンを起動するために 'open-iscsi' を起動する前に 'iscsiadm を持つターゲット・ポートを検出する必要がありますまたは 'iscsid' サービスを 'iscsid' を自動的に開始するように変更することもできます
-
-
-NOTE: ベータ版の自動ワーカーノードの準備の詳細については、を参照してください link:automatic-workernode.html["こちらをご覧ください"^]。

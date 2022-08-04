@@ -83,7 +83,6 @@ Usage:
 使用可能なオプション：
 
 * backend`: Astra Trident から 1 つ以上のストレージバックエンドを削除します。
-* 'node`: Astra Trident から 1 つ以上の CSI ノードを削除します。
 * 'Snapshot` ： Astra Trident から 1 つ以上のボリュームスナップショットを削除します。
 * 'torageclas' ： Astra Trident から 1 つ以上のストレージクラスを削除します
 * 'volume` ： Astra Trident から 1 つ以上のストレージボリュームを削除します

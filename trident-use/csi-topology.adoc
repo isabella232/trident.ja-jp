@@ -27,7 +27,7 @@ NOTE: 「 WaitForFirstConsumer 」バインディングモードでは、トポ�
 
 CSI トポロジを使用するには、次のものが必要です。
 
-* 1.17 以降を実行する Kubernetes クラスタ。
+* 1.19 ~ 1.24を実行するKubernetesクラスタ。
 +
 [listing]
 ----

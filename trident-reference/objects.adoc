@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-reference/objects.html 
-keywords: kubernetes objects, trident objects, persistent volume claim, storage class, backend, snapshot 
+keywords: kubernetes objects, trident objects, persistent volume claim, storage class, backend, snapshot, priority class, system-node-critical, daemonset, resource quota, resourcequota, system node critical 
 summary: Kubernetes と Trident 、 Trident とストレージ、 Kubernetes とストレージの関係を決定するリソースオブジェクトがいくつかあります。これらのオブジェクトの中には Kubernetes で管理されるものと Trident で管理されるものがあります。 
 ---
 = Kubernetes オブジェクトと Trident オブジェクト
@@ -221,7 +221,7 @@ excludeStoragePools' パラメータを使用して、 Trident がプロビジ�
 | allowVolumeExpansion の略 | ブール値 | true false | PVC サイズの拡張のサポートをイネーブルまたはディセーブルにします | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-, gcvs, azure-netapp-files | 1.11 以上 
 
 
-| volumeBindingMode のようになりました | 文字列 | 即時、 WaitForFirstConsumer | ボリュームバインドと動的プロビジョニングを実行するタイミングを選択します | すべて | 1.17 以上 
+| volumeBindingMode のようになりました | 文字列 | 即時、 WaitForFirstConsumer | ボリュームバインドと動的プロビジョニングを実行するタイミングを選択します | すべて | 1.19～1.24 
 |===
 [TIP]
 ====
@@ -234,7 +234,7 @@ excludeStoragePools' パラメータを使用して、 Trident がプロビジ�
 +
 NFS ストレージドライバの場合、 NFS エクスポートにはファイルシステムがすでに存在します。fsGroup を使用するには ' ストレージ・クラスで fsType を指定する必要がありますこの値は 'NFS' に設定することも ' ヌル以外の任意の値に設定することもできます
 
-* を参照してください link:https://docs.netapp.com/us-en/trident/trident-use/vol-expansion.html["ボリュームを展開します"^] ボリューム拡張の詳細については、を参照してください。
+* を参照してください link:https://docs.netapp.com/us-en/trident/trident-use/vol-expansion.html["ボリュームを展開します"] ボリューム拡張の詳細については、を参照してください。
 * Trident インストーラバンドルには、「 `sample -input/storageclass-*.yaml 」で Trident で使用するストレージクラス定義の例がいくつか用意されています。Kubernetes ストレージクラスを削除すると、対応する Trident ストレージクラスも削除されます。
 
 
@@ -298,7 +298,7 @@ Trident の CRD については、次の点に注意してください。
 
 * Trident をインストールすると、一連の CRD が作成され、他のリソースタイプと同様に使用できるようになります。
 * Trident の以前のバージョンからアップグレードする場合（ステートを維持するために「 etcd」 を使用したもの）、 Trident インストーラは「 etcd' キーバリューデータストア」からデータを移行し、対応する CRD オブジェクトを作成します。
-* tridentctl uninstall コマンドを使用して Trident をアンインストールすると、 Trident ポッドは削除されますが、作成された CRD はクリーンアップされません。を参照してください link:../trident-managing-k8s/uninstall-trident.html["Trident をアンインストールします"^] Trident を完全に削除して再構成する方法を理解する。
+* tridentctl uninstall コマンドを使用して Trident をアンインストールすると、 Trident ポッドは削除されますが、作成された CRD はクリーンアップされません。を参照してください link:../trident-managing-k8s/uninstall-trident.html["Trident をアンインストールします"] Trident を完全に削除して再構成する方法を理解する。
 
 
 
@@ -323,7 +323,7 @@ REST API を使用して、ストレージクラスを直接定義するスト�
 
 NOTE: これは、自分で作成および管理する 2 つのオブジェクトタイプのうちの 1 つです。もう 1 つは、 Kubernetes の「 torageClass 」オブジェクトです。
 
-これらのオブジェクトの作成方法の詳細については、バックエンド構成を参照してください。
+これらのオブジェクトの作成方法の詳細については、を参照してください link:../trident-use/backends.html["バックエンドの設定"]。
 
 
 
@@ -441,3 +441,51 @@ Snapshot はボリュームのポイントインタイムコピーで、新し�
 NOTE: Kubernetes では、これらのオブジェクトが自動的に管理されます。Trident がプロビジョニングしたものを表示できます。
 
 Kubernetes の「 VolumeSnapshot 」オブジェクト要求が作成されると、 Trident は元のストレージシステム上にスナップショットオブジェクトを作成することによって動作します。このスナップショットオブジェクトの「 internalName 」は、プレフィックス「 snapshot-` と「 VolumeSnapshot 」オブジェクトの「 UID 」を組み合わせることによって生成されます（例：「 snapshot-e8d8d8a0ca-9826-11e9-9807-525400f3f660 」）。「 volumeName 」と「 volumeInternalName 」には、バッキングボリュームの詳細を取得して値を設定します。
+
+
+
+== Astra Trident ResourceQuotaオブジェクト
+
+Tridentのデーモンは'system-node -criticalのPriority Classを消費しますこれはKubernetesで最も高い優先順位クラスですこのクラスにより'Astra Tridentは'正常なノードのシャットダウン時にボリュームを識別してクリーンアップし'リソースの負荷が高いクラスタではTridentのデマ起動ポッドがより低い優先順位でワークロードをプリエンプトできるようになります
+
+これを実現するために、Astra Tridentは「ResourceQuota」オブジェクトを使用して、Tridentのデミスタに対する「システムノードクリティカル」の優先クラスが満たされていることを確認します。Astra Tridentは、展開とデミスの作成を行う前に、「ResourceQuota」オブジェクトを検索し、検出されない場合はそのオブジェクトを適用します。
+
+デフォルトのリソース割り当ておよび優先クラスをより詳細に制御する必要がある場合は'custom.yamlを生成するか'Helmチャートを使用してResourceQuotaオブジェクトを構成します
+
+次に示すのは'ResourceQuota'オブジェクトがTridentのデマ作用を優先する例です
+
+[source, yaml]
+----
+apiVersion: <version>
+kind: ResourceQuota
+metadata:
+  name: trident-csi
+  labels:
+    app: node.csi.trident.netapp.io
+spec:
+  scopeSelector:
+     matchExpressions:
+       - operator : In
+         scopeName: PriorityClass
+         values: ["system-node-critical"]
+----
+リソース・クォータの詳細については'を参照してください link:https://kubernetes.io/docs/concepts/policy/resource-quotas/["Kubernetes：リソースクォータ"^]。
+
+
+
+=== インストールに失敗した場合は、ResourceQuotaをクリーンアップします
+
+まれに'ResourceQuotaオブジェクトが作成された後にインストールが失敗する場合は'最初に実行します link:../trident-managing-k8s/uninstall-trident.html["アンインストール中です"] を再インストールします。
+
+それでも解決しない場合は'ResourceQuotaオブジェクトを手動で削除します
+
+
+
+=== リソースクォータを削除します
+
+独自のリソース割り当てを制御する場合は、コマンドを使用してAstraのResourceQuotaオブジェクトを削除できます。
+
+[source, cli]
+----
+kubectl delete quota trident-csi -n trident
+----

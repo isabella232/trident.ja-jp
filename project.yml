@@ -10,6 +10,9 @@ settings:
   versions:
   - name: Astra Trident
     url: "/trident"
+    version-number: '22.07'
+  - name: Astra Trident
+    url: "/trident-2204"
     version-number: '22.04'
   - name: Astra Trident
     url: "/trident-2201"
@@ -17,9 +20,6 @@ settings:
   - name: Astra Trident
     url: "/trident-2110"
     version-number: '21.10'
-  - name: Astra Trident
-    url: "/trident-2107"
-    version-number: '21.07'
   langs: ja-jp,us-en,zh-cn,zh-tw,ko-kr
 sidebar:
   entries:
@@ -48,11 +48,11 @@ homepage:
   tiles:
   - title: はじめに
     links:
+    - title: Astra Trident の詳細をご確認ください
+      url: "/trident-concepts/intro.html"
     - title: リリースノート
       url: trident-rn.html
-    - title: Astra Trident の概要
-      url: "/trident-concepts/intro.html"
-    - title: Astra Trident の要件
+    - title: 要件
       url: "/trident-get-started/requirements.html"
     - title: ぜひお試しください
       url: "/trident-get-started/quickstart.html"

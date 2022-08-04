@@ -13,11 +13,6 @@ summary: Trident のインストーラでは、属性をカスタマイズでき
 
 Trident インストーラを使用して属性をカスタマイズできます。たとえば、 Trident イメージをプライベートリポジトリにコピーした場合、 -trident-image' を使用してイメージ名を指定できます。Trident イメージと必要な CSI サイドカーイメージをプライベートリポジトリにコピーした場合は、 --image_registry' スイッチを使用してリポジトリの場所を指定することをお勧めします。この場合、形式は「 <registry fqdn>[:port] 」です。
 
-Astra Trident が自動的にワーカーノードを構成するには、「 --enable-node-prep 」を使用します。この機能の詳細については、を参照してください link:../trident-use/automatic-workernode.html["こちらをご覧ください"^]。
-
-
-NOTE: ワーカーノードの自動準備は * ベータ機能 * で、非本番環境でのみ使用できます。
-
 通常の「 /var/lib/kubelet 」以外のパスに「 kubelet 」がデータを保持している Kubernetes の配布を使用する場合は、「 --kubelet -dir 」を使用して代替パスを指定できます。
 
 インストーラの引数で許可される範囲を超えてインストールをカスタマイズする必要がある場合は、配置ファイルをカスタマイズすることもできます。--generate-custom-yaml パラメータを使用して、インストーラの「 etup 」ディレクトリに次の YAML ファイルを作成します。
@@ -30,6 +25,7 @@ NOTE: ワーカーノードの自動準備は * ベータ機能 * で、非本�
 * trident-service.yaml
 * trident-namespac.yaml
 * trident-ServiceAccount.yaml
+* trident-resourcesequota.yaml
 
 
 これらのファイルを生成したら、必要に応じて変更し、「 --use-custom-yaml 」を使用してカスタム展開をインストールできます。

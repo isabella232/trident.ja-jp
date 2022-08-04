@@ -53,7 +53,7 @@ Trident オペレータは 'TridentOrchestrator 仕様の属性を使用して '
 | 「 tridentImage 」のように入力します | インストールする Astra Trident イメージ | 「 NetApp / Trident ： 21.04 」 
 
 
-| 「 imageRegistry 」と入力します | 内部レジストリへのパス。形式は「 <registry fqdn>[:port][/ssubpath]] 」です | "k83.gcr.io/sig-storage (k8s 1.17+) または Qua.io/k8scsi" 
+| 「 imageRegistry 」と入力します | 内部レジストリへのパス。形式は「 <registry fqdn>[:port][/ssubpath]] 」です | "k83.gcr.io/sig-storage (k8s 1.19+)またはQua.io/k8scsi" 
 
 
 | 「 kubeletDir 」を参照してください | ホスト上の kubelet ディレクトリへのパス | 「 /var/lib/kubelet 」 
@@ -78,9 +78,6 @@ Trident オペレータは 'TridentOrchestrator 仕様の属性を使用して '
 |===
 
 IMPORTANT: 「 TridentOrchestrator 」では、どのネームスペース Astra Trident がにインストールされているかを示すために pec.namespace` が指定されています。このパラメータ * は、 Astra Trident のインストール後に更新できません * 。これを実行すると、「 TridentOrchestrator 」のステータスが「 Failed 」に変わります。Astra Trident は、ネームスペース間での移行を意図したものではありません。
-
-
-NOTE: 自動ワーカーノードの前処理は、非本番環境でのみ使用することを目的とした * ベータ機能です。
 
 
 TIP: ポッドパラメータの書式設定の詳細については、を参照してください link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/["ポッドをノードに割り当てます"^]。

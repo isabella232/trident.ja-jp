@@ -4,7 +4,7 @@ permalink: trident-concepts/intro.html
 keywords: product overview, astra trident, fsx, element, astra, google cloud, cvs 
 summary: Astra Trident は、ネットアップが Astra 製品ファミリーの一部として管理している、完全にサポートされているオープンソースプロジェクトです。Container Storage Interface （ CSI ）などの業界標準のインターフェイスを使用して、コンテナ化されたアプリケーションの永続性に対する要求を満たすことができるように設計されています。 
 ---
-= Astra Trident の概要
+= Astra Trident の詳細をご確認ください
 :hardbreaks:
 :allow-uri-read: 
 :icons: font

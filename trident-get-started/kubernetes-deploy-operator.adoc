@@ -22,7 +22,7 @@ TIP: をまだ理解していない場合は、を参照してください link:
 
 Astra Trident を導入するには、次の前提条件を満たしている必要があります。
 
-* Kubernetes 1.17 以降を実行するサポート対象の Kubernetes クラスタに対するすべての権限が必要です。
+* Kubernetes 1.19~1.24を実行するサポート対象のKubernetesクラスタに対するすべての権限が必要です。
 * サポートされているネットアップストレージシステムを利用できるようにしておきます。
 * すべての Kubernetes ワーカーノードからボリュームをマウントできます。
 * 使用する Kubernetes クラスタを管理するために 'kubectl( OpenShift を使用している場合は 'OC) をインストールして構成した Linux ホストがあります
@@ -41,7 +41,7 @@ Helm を使用して Trident オペレータを導入するには、以下の手
 
 上記の前提条件に加え、 Helm を使用して Trident Operator を導入するには、次のものが必要です。
 
-* Kubernetes 1.17 以降
+* Kubernetes 1.19 ~ 1.24
 * Helm バージョン 3
 
 
@@ -56,7 +56,7 @@ helm repo add netapp-trident https://netapp.github.io/trident-helm-chart
 +
 [listing]
 ----
-helm install <release-name> netapp-trident/trident-operator --version 22.1.0 --namespace <trident-namespace>
+helm install <release-name> netapp-trident/trident-operator --version 22.7.0 --namespace <trident-namespace>
 ----
 +
 
@@ -74,7 +74,7 @@ NOTE: Trident の名前空間をまだ作成していない場合は '--create-n
 
 [listing]
 ----
-$ helm install <name> netapp-trident/trident-operator --version 22.1.0 --set tridentDebug=true
+$ helm install <name> netapp-trident/trident-operator --version 22.7.0 --set tridentDebug=true
 ----
 Helm チャートの一部である `values] の .yaml ファイルには、キーのリストとデフォルト値が表示されます。
 
@@ -95,7 +95,7 @@ Trident のオペレータを手動で導入するには、以下の手順を実
 
 NOTE: OpenShift では、以降のすべての例で「 kubectl 」ではなく「 OC 」を使用し、「 OC login-u SYSTEM ： admin 」または「 OC login-u kube-admin 」を実行して最初に「 *system:admin 」としてログインします。
 
-Kubernetes のバージョンが 1.17 よりも新しいかどうかを確認するには、次のコマンドを実行します。
+Kubernetesのバージョンを確認するには、次のコマンドを実行します。
 
 [listing]
 ----
@@ -220,7 +220,6 @@ Status:
     Autosupport Proxy:
     Autosupport Serial Number:
     Debug:                     true
-    Enable Node Prep:          false
     Image Pull Secrets:
     Image Registry:
     k8sTimeout:           30

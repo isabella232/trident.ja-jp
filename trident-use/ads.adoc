@@ -15,7 +15,7 @@ Astra Trident のインストールに Astra Data Store （ ADS ）バックエ�
 
 を設定して使用します https://cloud.netapp.com/astra-data-store["Astra データストア"^] バックエンドには次のものが必要です。
 
-* サポートされている ADS ストレージシステム。を参照してください link:https://docs.netapp.com/us-en/astra-data-store/index.html["Astra データストアプレビュー版のドキュメント"^] を参照してください。
+* Astra Data Store 22.05以降を参照してください link:https://docs.netapp.com/us-en/astra-data-store/index.html["Astra データストアのドキュメント"^] を参照してください。
 * ADS をホストしている Kubernetes クラスタのクレデンシャル。ADS をホストしている Kubernetes クラスタには、この Astra Trident バックエンドが作成および管理するボリューム、 Snapshot 、およびエクスポートポリシーリソース専用のネームスペースが必要です。以下をサポートする広告をホストする Kubernetes クラスタには「 kubeconfig 」が必要です。
 +
 ** 'astrs-system' 名前空間内のすべてのオブジェクトを読み取ります
