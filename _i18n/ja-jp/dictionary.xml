@@ -1382,7 +1382,6 @@
   <block id="0582c93c9857a8b6d0380be79128eefc" category="admonition">Trident が使用するポートについては、を参照してください <block ref="c6b87a878d50568ac1e654ad3964af7b" category="inline-link-macro-rx"></block>。</block>
   <block id="c777be7f669397b0a376fe32ca5cd9c3" category="section-title">サポートされるフロントエンド（オーケストレーションツール）</block>
   <block id="74aefc05d193afd5c50a0df882997656" category="paragraph">Trident Astra は、次のような複数のコンテナエンジンとオーケストレーションツールをサポート</block>
-  <block id="37696641960d6c73a7dadab603c1877e" category="list-text">Mirantis Kubernetes Engine 3.4</block>
   <block id="201eb37826a33e35adff9119f25946bd" category="paragraph">Trident オペレータは、次のリリースでサポートされています。</block>
   <block id="f787cd4b6963b13f12fa53131f58ef6c" category="section-title">サポートされるバックエンド（ストレージ）</block>
   <block id="843e2f0c722d25903a6010b62ac4f13b" category="paragraph">Astra Trident を使用するには、次のバックエンドを 1 つ以上サポートする必要があります。</block>
@@ -3313,4 +3312,5 @@
   <block id="c217b0ac2dd5504f79ba78b220a9c358" category="summary">ネットアップでは、さまざまな方法で Trident をサポートしています。ディスコード・チャネルなど、24時間365日利用可能な広範な無料セルフ・サポート・オプションをご用意しています。</block>
   <block id="1b3d6decfa71cc52ecc9b041f40a02e5" category="paragraph">また、ネットアップのアストラには、コンテナユーザ（Astra Trident開発者を含む）の活気あるパブリックコミュニティもあります <block ref="6130664377fa14615bb1abd5257e9714" category="inline-link-macro-rx"></block>。プロジェクトに関する一般的な質問をしたり、同じような気のある同僚と関連するトピックについて話し合うのには、この場所が最適です。</block>
   <block id="8f5cc6430613f1c12f36965050bb7197" category="sidebar">切断</block>
+  <block id="094a6e8342b02106129112ad2ff3d374" category="list-text">Mirantis Kubernetes Engine 3.5</block>
 </blocks>
