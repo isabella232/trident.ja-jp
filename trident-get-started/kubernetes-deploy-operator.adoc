@@ -121,7 +121,7 @@ kubectl run -i --tty ping --image=busybox --restart=Never --rm -- \
 
 NOTE: 21.01 以降、 Trident Operator はクラスタを対象とします。Trident オペレータを使用して Trident をインストールするには、「 TridentOrchestrator 」カスタムリソース定義（ CRD ）を作成し、その他のリソースを定義する必要があります。Astra Trident をインストールする前に、次の手順を実行してオペレータをセットアップする必要があります。
 
-. の最新バージョンをダウンロードします https://github.com/NetApp/trident/releases/latest["Trident インストーラバンドル"] _Downloads_section から抽出します
+. からTridentインストーラバンドルの最新バージョンをダウンロードして展開します link:https://github.com/NetApp/trident/releases/latest["GitHubの_Assets_sectionを参照してください"^]。
 +
 [listing]
 ----

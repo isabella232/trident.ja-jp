@@ -38,16 +38,16 @@ image:screenshot-fsx-backup-disable.png["自動バックアップを無効にし
 
 Astra Trident を初めて使用する場合は、以下のリンクを使用して確認してください。
 
-* link:../faq.html["よくある質問です"^]
-* link:../trident-get-started/requirements.html["Astra Trident を使用するための要件"^]
-* link:../trident-get-started/kubernetes-deploy.html["Astra Trident を導入"^]
-* link:../trident-reco/storage-config-best-practices.html["ネットアップ ONTAP 用に ONTAP 、 Cloud Volumes ONTAP 、 Amazon FSX を設定する際のベストプラクティス"^]
-* link:../trident-reco/integrate-trident.html#ontap["Astra Trident を統合"^]
-* link:ontap-san.html["ONTAP SAN バックエンド構成"^]
-* link:ontap-nas.html["ONTAP NAS バックエンド構成"^]
+* link:../faq.html["よくある質問です"]
+* link:../trident-get-started/requirements.html["Astra Trident を使用するための要件"]
+* link:../trident-get-started/kubernetes-deploy.html["Astra Trident を導入"]
+* link:../trident-reco/storage-config-best-practices.html["ネットアップ ONTAP 用に ONTAP 、 Cloud Volumes ONTAP 、 Amazon FSX を設定する際のベストプラクティス"]
+* link:../trident-reco/integrate-trident.html#ontap["Astra Trident を統合"]
+* link:ontap-san.html["ONTAP SAN バックエンド構成"]
+* link:ontap-nas.html["ONTAP NAS バックエンド構成"]
 
 
-ドライバー機能の詳細をご覧ください link:../trident-concepts/ontap-drivers.html["こちらをご覧ください"^]。
+ドライバー機能の詳細をご覧ください link:../trident-concepts/ontap-drivers.html["こちらをご覧ください"]。
 
 NetApp ONTAP 用の Amazon FSX では、を使用します https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mgng-stor-tier-fp/GUID-5A78F93F-7539-4840-AB0B-4A6E3252CF84.html["FabricPool"^] ストレージ階層を管理します。データへのアクセス頻度に基づいて階層にデータを格納することができます。
 
@@ -87,8 +87,8 @@ WARNING: クレデンシャルと証明書の両方を*指定しようとする�
 
 認証の詳細については、次のリンクを参照してください。
 
-* link:ontap-nas-prep.html["ONTAP NAS"^]
-* link:ontap-san-prep.html["ONTAP SAN"^]
+* link:ontap-nas-prep.html["ONTAP NAS"]
+* link:ontap-san-prep.html["ONTAP SAN"]
 
 
 
@@ -98,17 +98,17 @@ WARNING: クレデンシャルと証明書の両方を*指定しようとする�
 .必要なもの
 * 既存の Amazon EKS クラスタまたは 'kubectl' がインストールされた自己管理型 Kubernetes クラスタ
 * クラスタのワーカーノードからアクセスできる、 NetApp ONTAP ファイルシステムと Storage Virtual Machine （ SVM ）用の既存の Amazon FSX 。
-* 準備されているワーカーノード link:worker-node-prep.html["NFS か iSCSI か"^]。
+* 準備されているワーカーノード link:worker-node-prep.html["NFS か iSCSI か"]。
 +
 
 NOTE: Amazon Linux および Ubuntu で必要なノードの準備手順を実行します https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html["Amazon Machine Images の略"^] （ AMIS ） EKS の AMI タイプに応じて異なります。
 
 
 
-Astra Trident のその他の要件については、を参照してください link:../trident-get-started/requirements.html["こちらをご覧ください"^]。
+Astra Trident のその他の要件については、を参照してください link:../trident-get-started/requirements.html["こちらをご覧ください"]。
 
 .手順
-. ./trident-get-started/Kubernetes -deployment.html のいずれかを使用して Astra Trident を導入します（導入方法 ^ ）。
+. のいずれかを使用してAstra Tridentを導入 link:../trident-get-started/kubernetes-deploy.html["導入方法"]。
 . Trident を設定する手順は次のとおりです。
 +
 .. SVM の管理 LIF の DNS 名を収集します。たとえば、 AWS CLI を使用して、次のコマンドを実行した後、「 Endpoints 」 -> 「 Manager 」の下にある「 D NSName 」エントリを探します。
@@ -119,7 +119,7 @@ aws fsx describe-storage-virtual-machines --region <file system region>
 ----
 
 
-. 認証用の証明書を作成してインストールします。「 ONTAP-SAN' バックエンド」を使用している場合は、を参照してください link:ontap-san.html["こちらをご覧ください"^]。「 ONTAP-NAS' バックエンド」を使用している場合は、を参照してください link:ontap-nas.html["こちらをご覧ください"^]。
+. 認証用の証明書を作成してインストールします。「 ONTAP-SAN' バックエンド」を使用している場合は、を参照してください link:ontap-san.html["こちらをご覧ください"]。「 ONTAP-NAS' バックエンド」を使用している場合は、を参照してください link:ontap-nas.html["こちらをご覧ください"]。
 +
 
 NOTE: ファイルシステムにアクセスできる任意の場所から SSH を使用して、ファイルシステムにログイン（証明書をインストールする場合など）できます。「 fsxadmin 」ユーザ、ファイルシステムの作成時に設定したパスワード、「 aws FSX describe -file-systems 」の管理 DNS 名を使用します。
@@ -143,8 +143,8 @@ NOTE: ファイルシステムにアクセスできる任意の場所から SSH 
 
 バックエンドの作成については、次のリンクを参照してください。
 
-* link:ontap-nas.html["バックエンドに ONTAP NAS ドライバを設定します"^]
-* link:ontap-san.html["バックエンドに ONTAP SAN ドライバを設定します"^]
+* link:ontap-nas.html["バックエンドに ONTAP NAS ドライバを設定します"]
+* link:ontap-san.html["バックエンドに ONTAP SAN ドライバを設定します"]
 
 
 
@@ -153,7 +153,7 @@ NOTE: 'ONTAP-SAN' および 'ONTAP-SAN-エコノミー のドライバには 'at
 
 WARNING: 「 limitAggregateUsage 」パラメータは、「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。
 
-導入後、次の手順を実行してを作成します link:../trident-get-started/kubernetes-postdeployment.html["ストレージクラスを定義してボリュームをプロビジョニングし、ポッドでボリュームをマウント"^]。
+導入後、次の手順を実行してを作成します link:../trident-get-started/kubernetes-postdeployment.html["ストレージクラスを定義してボリュームをプロビジョニングし、ポッドでボリュームをマウント"]。
 
 
 

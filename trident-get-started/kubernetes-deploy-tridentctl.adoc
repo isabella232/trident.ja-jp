@@ -72,7 +72,7 @@ Kubernetes サーバのバージョンを確認します。このポートは、
 
 NOTE: Trident インストーラは Trident ポッドを作成し、そのステートを維持するために使用される CRD オブジェクトを構成し、プロビジョニングやクラスタホストへのボリュームの接続などのアクションを実行する CSI サイドカーを初期化します。
 
-の最新バージョンをダウンロードできます https://github.com/NetApp/trident/releases/latest["Trident インストーラバンドル"^] _Downloads_section から ' 抽出します
+Tridentインストーラバンドルの最新バージョンは、からダウンロードして展開できます link:https://github.com/NetApp/trident/releases/latest["GitHubの_Assets_sectionを参照してください"^]。
 
 たとえば、最新バージョンが 21.07.1 の場合は、次のようになります。
 
