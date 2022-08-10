@@ -3243,7 +3243,6 @@
   <block id="318a2b6d7e7889951c0d77c3d1ba8546" category="list-text">k81.io/sig-storage/csi-Provisioner：v3.2.1</block>
   <block id="df89a3576bef4d7cad64e69dfa24fdf9" category="list-text">k81.io/sig-storage/csi-snapshotter：v6.0.1</block>
   <block id="468bc1e7f7712a8dc9b91d063523cdff" category="cell">v1.24.0</block>
-  <block id="ec94999ad88afd0106b8352731ec0d9f" category="admonition">Kubernetesバージョン1.20以降では、検証済みの「registry.k88.io/sig-storage/csi-snapshotter：v4.x」イメージを使用します。これは、「v1'バージョンが「volumesnapshotes.snapshot.storage.k83.io`CRD」を処理している場合のみです。v1beta`のバージョンがv1beta`のバージョンの有無に関わらずCRDにサービスを提供している場合は、検証済みの「registry.k83.io/sig-storage/csi-snapshotter:v3.x`のイメージを使用します。</block>
   <block id="82e48d2f97b89a148187e2a719308e68" category="admonition">プライベートイメージリポジトリを使用している場合は、プライベートレジストリURLの末尾に「/sig-storage」を追加する必要があります。tridentctl 配備にプライベートレジストリを使用する場合は '--trident-image' と --autosupport.image' を --image-registry' とともに使用する必要がありますTrident 演算子を使用して Astra Trident を導入する場合は、 Orchestrator CR にインストールパラメータに「 tridentImage 」と「 autosupportImage 」が含まれていることを確認してください。</block>
   <block id="9bef5437c66d7ae75dabd12519ecc5ac" category="section-title">2007年22月の新機能</block>
   <block id="05759468b045fc55d22e8e6881dca01f" category="paragraph">** Kubernetes **</block>
@@ -3317,4 +3316,5 @@
   <block id="a1142049a82a11e90102d655bb7e234d" category="inline-link-macro">GitHubの_Assets_sectionを参照してください</block>
   <block id="28b29acf4f44cae9d70c63d88b52ba30" category="list-text">からTridentインストーラバンドルの最新バージョンをダウンロードして展開します <block ref="6a7c34d1e7545bd3ab5abc336e61eb7f" category="inline-link-macro-rx"></block>。</block>
   <block id="da434b04f7985eff0b8eba0189b03041" category="paragraph">Tridentインストーラバンドルの最新バージョンは、からダウンロードして展開できます <block ref="6a7c34d1e7545bd3ab5abc336e61eb7f" category="inline-link-macro-rx"></block>。</block>
+  <block id="deb871bb56992a4738611a0463ca443d" category="admonition">Kubernetesバージョン1.20以降では、検証済みの「registry.k88.io/sig-storage/csi-snapshotter：v6.x`イメージは、「v1'バージョン」が「volumesnapshotes.snapshot.storage.k83.io`CRD」を処理している場合にのみ使用してください。v1beta`のバージョンがv1beta`のバージョンの有無に関わらずCRDにサービスを提供している場合は、検証済みの「registry.k83.io/sig-storage/csi-snapshotter:v3.x`のイメージを使用します。</block>
 </blocks>
