@@ -3054,7 +3054,6 @@
   <block id="ba600e29b197aa569df1df520cc4e4c9" category="paragraph">はい。 Astra Trident は、 Azure の Azure NetApp Files サービスと GCP の Cloud Volumes Service をサポートしています。</block>
   <block id="804a6c22698fe4782c44f1e8d446964e" category="paragraph">現在のところ ' オンデマンドスナップショットのサポートは 'ONTAP-NAS'`ONTAP-NAS-flexgroup 'ONTAP-SAN`'ONTAP-SANエコノミー ''solidfire-san-SAN'''solidfire-san-''''solidfire-san-'''solidfire-san-''''' で利用できます 「 gcp-cvs` 」と「 azure-NetApp-files 」バックエンドドライバ。</block>
   <block id="deef9d6bf4083f81d7bd15ae0c9121b6" category="admonition">22.04 リリース以降、 Astra Trident がインストールされるたびに AES キーが再生成されなくなりました。今回のリリースでは、 Astra Trident がインストールする新しいシークレットオブジェクトが、インストール全体で維持されます。つまり '22.04 の tridentctl' は Trident の以前のバージョンをアンインストールできますが ' それ以前のバージョンでは 22.04 のインストールをアンインストールできません</block>
-  <block id="485e8e209b502a7975830960817b875e" category="paragraph">Trident 22.04 を実行していない場合は、以前のリリースのドキュメントを参照できます。</block>
   <block id="4af8991c21dff2f779496b8350d1124b" category="inline-link">Trident 22.01</block>
   <block id="7669b0b69333e81c7c208aea3d1a3c6f" category="list-text"><block ref="7669b0b69333e81c7c208aea3d1a3c6f" category="inline-link-rx"></block></block>
   <block id="682c6ce09c9faae3a3e22c55c8db592e" category="list-text">ANF ドライバが複数のエクスポートルールでボリュームのクローニングに失敗した修正済み問題 。</block>
@@ -3313,4 +3312,7 @@
   <block id="1b3d6decfa71cc52ecc9b041f40a02e5" category="paragraph">また、ネットアップのアストラには、コンテナユーザ（Astra Trident開発者を含む）の活気あるパブリックコミュニティもあります <block ref="6130664377fa14615bb1abd5257e9714" category="inline-link-macro-rx"></block>。プロジェクトに関する一般的な質問をしたり、同じような気のある同僚と関連するトピックについて話し合うのには、この場所が最適です。</block>
   <block id="8f5cc6430613f1c12f36965050bb7197" category="sidebar">切断</block>
   <block id="094a6e8342b02106129112ad2ff3d374" category="list-text">Mirantis Kubernetes Engine 3.5</block>
+  <block id="adcc762b8bd0076278dedcc49cc85154" category="paragraph">Astra Trident 22.07を実行していない場合は、以前のリリースのドキュメントを参照できます。</block>
+  <block id="c53358822905bb04d312060d1cb568af" category="inline-link">トライデント22.04アストラ</block>
+  <block id="fdd380631ba8063e7b8f842282a01e40" category="list-text"><block ref="fdd380631ba8063e7b8f842282a01e40" category="inline-link-rx"></block></block>
 </blocks>
