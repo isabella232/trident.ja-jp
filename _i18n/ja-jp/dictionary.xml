@@ -3056,7 +3056,6 @@
   <block id="5e393c0ca8392e0c84201770c8b544ca" category="open-title">v5.0コントローラ</block>
   <block id="ea567d0d1a58b120efa89893cae2966a" category="open-title">v3.0.3コントローラ</block>
   <block id="086e6c16e3fe8e13c336612ef636aa02" category="sidebar">Astra Trident</block>
-  <block id="d24bae93d00d821b3a8e7ee57c3bd468" category="section-title">トラブルシューティングのログを収集します</block>
   <block id="5a333b18a215ecfd4457ba0e1732654b" category="section-title">Tridentは、負荷共有ミラーが設定されているSVMでボリュームをプロビジョニングできますか。</block>
   <block id="0e7629426b9d7596800cd5d72f558a7f" category="paragraph">負荷共有ミラーは、NFS経由でデータを提供するSVMのルートボリューム用に作成できます。ONTAP は、Tridentによって作成されたボリュームの負荷共有ミラーを自動的に更新します。ボリュームのマウントが遅延する可能性があります。Tridentを使用して複数のボリュームを作成する場合、ボリュームをプロビジョニングする方法は、負荷共有ミラーを更新するONTAP によって異なります。</block>
   <block id="de781ae8dbfd68aeef56f40c5dc767da" category="paragraph">Astra Tridentは、「vsadmin」のSVMユーザとして、または同じロールを持つ別の名前を持つユーザとして実行されることを想定しています。Amazon FSX for NetApp ONTAP には'fsxadmin'ユーザーがいますこれはONTAP のadminクラスタ・ユーザーの限定的な置き換えです「vsadmin」のSVMユーザがより多くのAstra Trident機能にアクセスできるため、「fsxadmin」ユーザをTridentとともに使用することはお勧めしません。</block>
@@ -3317,4 +3316,5 @@
   <block id="28b29acf4f44cae9d70c63d88b52ba30" category="list-text">からTridentインストーラバンドルの最新バージョンをダウンロードして展開します <block ref="6a7c34d1e7545bd3ab5abc336e61eb7f" category="inline-link-macro-rx"></block>。</block>
   <block id="da434b04f7985eff0b8eba0189b03041" category="paragraph">Tridentインストーラバンドルの最新バージョンは、からダウンロードして展開できます <block ref="6a7c34d1e7545bd3ab5abc336e61eb7f" category="inline-link-macro-rx"></block>。</block>
   <block id="deb871bb56992a4738611a0463ca443d" category="admonition">Kubernetesバージョン1.20以降では、検証済みの「registry.k88.io/sig-storage/csi-snapshotter：v6.x`イメージは、「v1'バージョン」が「volumesnapshotes.snapshot.storage.k83.io`CRD」を処理している場合にのみ使用してください。v1beta`のバージョンがv1beta`のバージョンの有無に関わらずCRDにサービスを提供している場合は、検証済みの「registry.k83.io/sig-storage/csi-snapshotter:v3.x`のイメージを使用します。</block>
+  <block id="756909f99bc1a720d318a5f5b94eb094" category="section-title">トラブルシューティング用にログを収集する</block>
 </blocks>
