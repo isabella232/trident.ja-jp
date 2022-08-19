@@ -135,7 +135,7 @@ Astra Trident を使用するには、次のバックエンドを 1 つ以上サ
 Astra Trident は、特定のオペレーティングシステムを正式にサポートしているわけではありませんが、次の Linux ディストリビューションが動作することはわかっています。
 
 * OpenShift Container Platform でサポートされている Red Hat CoreOS （ RHCOS ）バージョン
-* RHELまたはCentOS 7.9以降（最新9.10）
+* RHELまたはCentOS 7.
 * Ubuntu 18.04以降（最新22.04）
 
 

@@ -47,14 +47,14 @@ NOTE: ノードサービス検出で検出されたサービスが特定され�
 
 
 | NFS  a| 
-RHEL/CentOS
+RHEL / CentOS 7.
  a| 
 'sudo yum install -y nfs-utils'
 
 
 
 | NFS  a| 
-Ubuntu / Debian
+Ubuntu
  a| 
 'UDO apt-get install-y nfs-common
 
@@ -69,7 +69,7 @@ NOTE: ブート時に NFS サービスが開始されていることを確認し
 iSCSI ボリュームを使用するときは、次の点に注意してください。
 
 * Kubernetes クラスタ内の各ノードには一意の IQN を割り当てる必要があります。* これは必須の前提条件です * 。
-* RHCOS バージョン 4.5 以降、または RHEL または CentOS バージョン 8.2 以降で「 olidfire-san 」ドライバを使用している場合は、 CHAP 認証アルゴリズムが /etc/iscsi/iscsid.conf で MD5 に設定されていることを確認してください。
+* RHCOSバージョン4.5以降、またはRHELと互換性のあるその他のLinuxディストリビューションを「solidfire-san-」ドライバとともに使用している場合は、/etc/iscsi/iscsid.confでCHAP認証アルゴリズムがMD5に設定されていることを確認してください。
 +
 [listing]
 ----
@@ -119,7 +119,7 @@ NOTE: 「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults
 
 
 | iSCSI  a| 
-Ubuntu / Debian
+Ubuntu
  a| 
 . 次のシステムパッケージをインストールします。
 +

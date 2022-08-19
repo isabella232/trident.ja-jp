@@ -30,21 +30,21 @@ docker --version
 
 
 | NFS  a| 
-RHEL/CentOS
+RHEL / CentOS 7.
  a| 
 'sudo yum install -y nfs-utils'
 
 
 
 | NFS  a| 
-Ubuntu / Debian
+Ubuntu
  a| 
 'UDO apt-get install-y nfs-common
 
 
 
 | iSCSI  a| 
-RHEL/CentOS
+RHEL / CentOS 7.
  a| 
 . 次のシステムパッケージをインストールします。
 +
@@ -75,7 +75,7 @@ RHEL/CentOS
 
 
 | iSCSI  a| 
-Ubuntu / Debian
+Ubuntu
  a| 
 . 次のシステムパッケージをインストールします。
 +

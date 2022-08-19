@@ -219,7 +219,7 @@ docker volume rm trident_2
 
 == システム起動時に Astra Trident を起動
 
-システムベースのシステム用のサンプルユニットファイルは、 Git repo の「 contrib / trident.service.example` 」にあります。このファイルを CentOS / RHEL で使用するには、次の手順を実行します。
+システムベースのシステム用のサンプルユニットファイルは、 Git repo の「 contrib / trident.service.example` 」にあります。このファイルをCentOS 7 / RHELで使用するには、次の手順を実行します。
 
 . ファイルを正しい場所にコピーします。
 +
