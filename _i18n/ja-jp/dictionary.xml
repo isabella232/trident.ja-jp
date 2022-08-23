@@ -2834,7 +2834,6 @@
   <block id="9f687b4e8cbf2fbb623b26b30fd92717" category="admonition">21.07 より前のリリースでは、レガシードキュメントサイトにリダイレクトされます。</block>
   <block id="a93e9e44b7a375a4236260f5ff2b251e" category="inline-link">Astra Trident 21.07</block>
   <block id="3830d427e146a8a64454dc373d9b1502" category="list-text"><block ref="3830d427e146a8a64454dc373d9b1502" category="inline-link-rx"></block></block>
-  <block id="e088e1f9fcd6d6a9509bd529db24c8f3" category="admonition">Trident の名前空間をまだ作成していない場合は '--create-namespace パラメータを helm install コマンドに追加できますHelm によってネームスペースが自動的に作成されます。</block>
   <block id="8035d5d39b2b48f6ec1a3133b688513c" category="list-text">Astra データストア</block>
   <block id="af7c8216a3289efe1a298a19c00b8b8c" category="section-title">テスト済みのホストオペレーティングシステム</block>
   <block id="57b3e1695eb7d16642702fbce3837b86" category="paragraph">デフォルトでは、 Astra Trident はコンテナで実行されるため、任意の Linux ワーカーで実行されます。ただし、その場合、使用するバックエンドに応じて、標準の NFS クライアントまたは iSCSI イニシエータを使用して Astra Trident が提供するボリュームをマウントできる必要があります。</block>
@@ -3318,4 +3317,5 @@
   <block id="3d945423f8e9496c429a5d8c65b4604f" category="paragraph">Ubuntu</block>
   <block id="269efd38c7d91afd7e1339da498a391f" category="list-text">RHCOSバージョン4.5以降、またはRHELと互換性のあるその他のLinuxディストリビューションを「solidfire-san-」ドライバとともに使用している場合は、/etc/iscsi/iscsid.confでCHAP認証アルゴリズムがMD5に設定されていることを確認してください。</block>
   <block id="b437164523254b34902d49bbf5e996aa" category="paragraph">システムベースのシステム用のサンプルユニットファイルは、 Git repo の「 contrib / trident.service.example` 」にあります。このファイルをCentOS 7 / RHELで使用するには、次の手順を実行します。</block>
+  <block id="134bf17c90c90b5aeed99dde262bf14d" category="admonition">すでにTridentの名前空間を作成している場合'--create-namespaceパラメータは追加の名前空間を作成しません</block>
 </blocks>
