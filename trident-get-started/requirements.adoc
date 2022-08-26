@@ -167,11 +167,11 @@ Trident を使用するには、バックエンド構成でストレージシス
 | v1.19.0  a| 
 * NetApp / Trident：22.07.0
 * NetApp / Trident -autosupport：22.07
-* k81.io/sig-storage/csi-Provisioner：v2.2.2.
-* k83.io/sig-storage/csi-attacher: v3.5.0.
-* k81.io/sig-storage/csi-resizer：v1.5.0
-* k83.io/sig-storage/csi-snapshotter：v3.0.3
-* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* k81.gcr.io/sig-storage/csi-Provisioner ： v2.2.2
+* k83.GCR.IO/sig-storage/csi-attacher: v3.5.0.
+* k81.gcr.io/sig-storage/csi-resizer：v1.5.0
+* k83.gcr.io/sig-storage/csi-snapshotter ： v3.0.3
+* k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1
 * NetApp/trident-operator：22.07.0（オプション）
 
 
@@ -180,11 +180,11 @@ Trident を使用するには、バックエンド構成でストレージシス
 | v1.20.0  a| 
 * NetApp / Trident：22.07.0
 * NetApp / Trident -autosupport：22.07
-* k81.io/sig-storage/csi-Provisioner：v3.2.1
-* k83.io/sig-storage/csi-attacher: v3.5.0.
-* k81.io/sig-storage/csi-resizer：v1.5.0
-* k81.io/sig-storage/csi-snapshotter：v6.0.1
-* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* K83.GCR.IO/sig-storage/csi-Provisioner：v3.2.1
+* k83.GCR.IO/sig-storage/csi-attacher: v3.5.0.
+* k81.gcr.io/sig-storage/csi-resizer：v1.5.0
+* k81.gcr.io/sig-storage/csi-snapshotter：v6.0.1
+* k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1
 * NetApp/trident-operator：22.07.0（オプション）
 
 
@@ -193,11 +193,11 @@ Trident を使用するには、バックエンド構成でストレージシス
 | v1.21.0  a| 
 * NetApp / Trident：22.07.0
 * NetApp / Trident -autosupport：22.07
-* k81.io/sig-storage/csi-Provisioner：v3.2.1
-* k83.io/sig-storage/csi-attacher: v3.5.0.
-* k81.io/sig-storage/csi-resizer：v1.5.0
-* k81.io/sig-storage/csi-snapshotter：v6.0.1
-* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* K83.GCR.IO/sig-storage/csi-Provisioner：v3.2.1
+* k83.GCR.IO/sig-storage/csi-attacher: v3.5.0.
+* k81.gcr.io/sig-storage/csi-resizer：v1.5.0
+* k81.gcr.io/sig-storage/csi-snapshotter：v6.0.1
+* k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1
 * NetApp/trident-operator：22.07.0（オプション）
 
 
@@ -206,11 +206,11 @@ Trident を使用するには、バックエンド構成でストレージシス
 | v1.22.0  a| 
 * NetApp / Trident：22.07.0
 * NetApp / Trident -autosupport：22.07
-* k81.io/sig-storage/csi-Provisioner：v3.2.1
-* k83.io/sig-storage/csi-attacher: v3.5.0.
-* k81.io/sig-storage/csi-resizer：v1.5.0
-* k81.io/sig-storage/csi-snapshotter：v6.0.1
-* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* K83.GCR.IO/sig-storage/csi-Provisioner：v3.2.1
+* k83.GCR.IO/sig-storage/csi-attacher: v3.5.0.
+* k81.gcr.io/sig-storage/csi-resizer：v1.5.0
+* k81.gcr.io/sig-storage/csi-snapshotter：v6.0.1
+* k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1
 * NetApp/trident-operator：22.07.0（オプション）
 
 
@@ -219,11 +219,11 @@ Trident を使用するには、バックエンド構成でストレージシス
 | v1.3.0  a| 
 * NetApp / Trident：22.07.0
 * NetApp / Trident -autosupport：22.07
-* k81.io/sig-storage/csi-Provisioner：v3.2.1
-* k83.io/sig-storage/csi-attacher: v3.5.0.
-* k81.io/sig-storage/csi-resizer：v1.5.0
-* k81.io/sig-storage/csi-snapshotter：v6.0.1
-* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* K83.GCR.IO/sig-storage/csi-Provisioner：v3.2.1
+* k83.GCR.IO/sig-storage/csi-attacher: v3.5.0.
+* k81.gcr.io/sig-storage/csi-resizer：v1.5.0
+* k81.gcr.io/sig-storage/csi-snapshotter：v6.0.1
+* k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1
 * NetApp/trident-operator：22.07.0（オプション）
 
 
@@ -232,14 +232,14 @@ Trident を使用するには、バックエンド構成でストレージシス
 | v1.24.0  a| 
 * NetApp / Trident：22.07.0
 * NetApp / Trident -autosupport：22.07
-* k81.io/sig-storage/csi-Provisioner：v3.2.1
-* k83.io/sig-storage/csi-attacher: v3.5.0.
-* k81.io/sig-storage/csi-resizer：v1.5.0
-* k81.io/sig-storage/csi-snapshotter：v6.0.1
-* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* K83.GCR.IO/sig-storage/csi-Provisioner：v3.2.1
+* k83.GCR.IO/sig-storage/csi-attacher: v3.5.0.
+* k81.gcr.io/sig-storage/csi-resizer：v1.5.0
+* k81.gcr.io/sig-storage/csi-snapshotter：v6.0.1
+* k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1
 * NetApp/trident-operator：22.07.0（オプション）
 
 
 |===
 
-NOTE: Kubernetesバージョン1.20以降では、検証済みの「registry.k88.io/sig-storage/csi-snapshotter：v6.x`イメージは、「v1'バージョン」が「volumesnapshotes.snapshot.storage.k83.io`CRD」を処理している場合にのみ使用してください。v1beta`のバージョンがv1beta`のバージョンの有無に関わらずCRDにサービスを提供している場合は、検証済みの「registry.k83.io/sig-storage/csi-snapshotter:v3.x`のイメージを使用します。
+NOTE: Kubernetesバージョン1.20以降では、検証済みの「registry.k8es.gcr.io/sig-storage/csi-snapshotter：v6.x'イメージを使用します。これは、バージョンv1'が「volumesnapshotes.snapshot.storages.k83.gcr.io`crdr」を処理している場合のみです。v1beta`のバージョンがv1beta`のバージョンの有無に関わらずCRDを処理している場合は、検証済みの「registry.k83.gcr.io/sig-storage/csi-snapshotter:v3.x'イメージを使用します。

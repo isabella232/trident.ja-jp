@@ -1651,8 +1651,6 @@
   <block id="1a59d0d7850406f157c314978eb3b821" category="paragraph">既存の接続は影響を受けません。 SVM の Astra Trident でクレデンシャルが更新されても、引き続きアクティブです。新しい接続では更新されたクレデンシャルが使用され、既存の接続は引き続きアクティブです。古い PVS を切断して再接続すると、更新されたクレデンシャルが使用されます。</block>
   <block id="9a5b66949f53f92871d3e1a8aae0cc19" category="cell">「 ecretKey 」</block>
   <block id="ef81b740be2293b7e3c41047afe98764" category="cell">" 100G "</block>
-  <block id="55c1dd55273b867b995333cc3abd250e" category="section-title">例 2 ：単一のサービスレベルの設定</block>
-  <block id="2b00c4aa6134b525e9355d880ecb0c8d" category="section-title">例 3 ：仮想ストレージプールの構成</block>
   <block id="ff342df7522d6b527768cc6bfe5f9fae" category="summary">Astra Trident により、 Kubernetes ユーザは作成後にボリュームを拡張できます。ここでは、 iSCSI ボリュームと NFS ボリュームの拡張に必要な設定について説明します。</block>
   <block id="15d79b565b148caa23e6f2b53813413d" category="section-title">iSCSI ボリュームを展開します</block>
   <block id="0b981ab19df55a28a02578aa5f326db8" category="paragraph">CSI プロビジョニングを使用して、 iSCSI Persistent Volume （ PV ）を拡張できます。</block>
@@ -2834,7 +2832,6 @@
   <block id="9f687b4e8cbf2fbb623b26b30fd92717" category="admonition">21.07 より前のリリースでは、レガシードキュメントサイトにリダイレクトされます。</block>
   <block id="a93e9e44b7a375a4236260f5ff2b251e" category="inline-link">Astra Trident 21.07</block>
   <block id="3830d427e146a8a64454dc373d9b1502" category="list-text"><block ref="3830d427e146a8a64454dc373d9b1502" category="inline-link-rx"></block></block>
-  <block id="8035d5d39b2b48f6ec1a3133b688513c" category="list-text">Astra データストア</block>
   <block id="af7c8216a3289efe1a298a19c00b8b8c" category="section-title">テスト済みのホストオペレーティングシステム</block>
   <block id="57b3e1695eb7d16642702fbce3837b86" category="paragraph">デフォルトでは、 Astra Trident はコンテナで実行されるため、任意の Linux ワーカーで実行されます。ただし、その場合、使用するバックエンドに応じて、標準の NFS クライアントまたは iSCSI イニシエータを使用して Astra Trident が提供するボリュームをマウントできる必要があります。</block>
   <block id="814a65adc75608da31ab5685f9b1c1ce" category="paragraph">Astra Trident は、特定のオペレーティングシステムを正式にサポートしているわけではありませんが、次の Linux ディストリビューションが動作することはわかっています。</block>
@@ -2851,38 +2848,7 @@
   <block id="f4f833852bac4217eff92d53c1bd24dc" category="list-text"><block ref="f4f833852bac4217eff92d53c1bd24dc" category="inline-link-macro-rx"></block></block>
   <block id="df7d9b009cdb0a2623872cb3f905e161" category="list-text"><block ref="df7d9b009cdb0a2623872cb3f905e161" category="inline-link-macro-rx"></block></block>
   <block id="4d80e2460d711b841338dfbeea2ca8c1" category="paragraph">ONTAP および Cloud Volumes ONTAP の NAS ドライバを使用した ONTAP バックエンドの設定について説明します。</block>
-  <block id="3381a309aeefac050f7f5319f6757afe" category="summary">Astra Trident のインストール用に Astra Data Store （ ADS ）バックエンドを設定する方法について、付属の構成例を参照してください。</block>
-  <block id="83caf3e7a6bf2dcce3d7d6eab3c8905c" category="doc">Astra データストアバックエンドを構成する</block>
-  <block id="0b1c01b976c493a4217d6f4b772849b0" category="paragraph">Astra Trident のインストールに Astra Data Store （ ADS ）バックエンドを設定する方法を、付属の設定例で説明しています。</block>
-  <block id="efd5e8dbeec263f783a6cd6ac036c6a9" category="paragraph">を設定して使用します<block ref="a026c15058b831feb6de8c4c836387ae" category="inline-link-rx"></block> バックエンドには次のものが必要です。</block>
-  <block id="c7f6917a3ac9bd1d4133a82dc3260748" category="list-text">ADS をホストしている Kubernetes クラスタのクレデンシャル。ADS をホストしている Kubernetes クラスタには、この Astra Trident バックエンドが作成および管理するボリューム、 Snapshot 、およびエクスポートポリシーリソース専用のネームスペースが必要です。以下をサポートする広告をホストする Kubernetes クラスタには「 kubeconfig 」が必要です。</block>
-  <block id="cebbe731acfa0b8c520f355bcbfa6dd1" category="list-text">'astrs-system' 名前空間内のすべてのオブジェクトを読み取ります</block>
-  <block id="cb90bccb2cf5bc16b37e39d379d5a5ea" category="list-text">この Astra Trident バックエンドで使用するために作成されたネームスペース内のオブジェクトの読み取り / 書き込み</block>
-  <block id="2f191460bd4d4750f88513ea54101bed" category="list-text">すべてのクラスタネームスペースをリストします</block>
-  <block id="e269f9fe19f18e73c77815dddc019d7b" category="cell">「 astrads - NAS 」</block>
-  <block id="5b4fc65310144922f0384b20a00bd6ae" category="cell">ADS クラスタ名</block>
-  <block id="65e18a0bb1868a9c1e181302d4733dba" category="cell">「クラスタ」</block>
-  <block id="d24ec3d66e6303208e4767ec5cccbc76" category="cell">AstraDSCluster リソースの名前</block>
-  <block id="a4c39aafd14948aacfcc4f9c6374a875" category="cell">Astra Trident がすべての ADS カスタムリソースを作成するネームスペース</block>
-  <block id="995c6425a4a00f961b0c8a2000c5497c" category="cell">「 kubeconfig 」</block>
-  <block id="dc37fa78a7cf3d9ae1dbf70f4430a142" category="cell">ADS Kubernetes クラスタのクレデンシャル（ Base64 コンパクト JSON ）</block>
-  <block id="e5f77e38f271802a5a75ecdffe577104" category="cell">" VERs=4.1 "</block>
-  <block id="2949ef191693d444cc1f96962c1fd8ae" category="cell">「 autoExportPolicy 」が有効な場合に、 Kubernetes のノード IP をフィルタリングするための CIDR のリスト</block>
-  <block id="1abbe16b7053d16fb89efaebd94484be" category="cell">[ 「 0.0.0.0/0 」、「：： /0 」 ]</block>
-  <block id="857a0a2e6dd17cb6e0022d80855b338a" category="cell">トラブルシューティング時に使用するデバッグフラグ。例： ｛ "api" ： false 、 "method" ： true ｝</block>
-  <block id="0ffdeb640d4a5fc9f33736feec8d274f" category="admonition">バックエンド構成に含める前に、「 kubeconfig 」の値を YAML から compact JSON 形式に変換し、 Base64 形式に変換する必要があります。</block>
-  <block id="5ef844cc326d7b10c0f674ac9b2b3c74" category="paragraph">各バックエンドは、 ADS をホストする Kubernetes クラスタ上の単一のネームスペースにボリュームをプロビジョニングします。他のネームスペースにボリュームを作成する場合は、追加のバックエンドを定義できます。ADS ボリュームは、ホスティングクラスタ内の任意のネームスペース、他の Kubernetes クラスタ、または NFS 共有をマウントできるその他の任意の場所に接続できます。</block>
-  <block id="f2319c1b13782c7170018cdd5fb7fd49" category="paragraph">これらのオプションを使用して構成ファイルの特別なセクションで、各ボリュームのデフォルトのプロビジョニングを制御できます。</block>
-  <block id="77c62856cfaac230e7c2fd8139d7c2c8" category="paragraph">以下の設定例を参照してください。</block>
-  <block id="ef616ce0e78a1254437e682f723bb5e6" category="cell">新しいボリュームのモード。 8 進数で「 0 」で始まる必要があります。</block>
-  <block id="6474dd374337126fa99c86e653ebfd64" category="cell">"0777"</block>
-  <block id="5964a48430cb8e8190dbd855a8514a0c" category="cell">"5"</block>
-  <block id="115261f04e7f7d964bc608b63a82b482" category="cell">作成したボリュームに割り当てる QoS ポリシー</block>
   <block id="9d4568c009d203ab10e33ea9953a0264" category="cell">""</block>
-  <block id="cf04ead37df0a76237b27de327c0cd03" category="admonition">ADS バックエンドで作成されたすべてのボリュームに対して、 Astra Trident はストレージプール上のすべてのラベルをプロビジョニング時にストレージボリュームにコピーします。ストレージ管理者は、ストレージプールごとにラベルを定義し、ストレージプールごとに作成されるすべてのボリュームをグループ化できます。これにより、バックエンド構成ファイルに含まれるカスタマイズ可能な一連のラベルに基づいてボリュームを簡単に区別できます。</block>
-  <block id="b53453343f074fd64ef7129def93f57d" category="section-title">例 1 ：最小限のバックエンド構成</block>
-  <block id="8f3db75549f212e0fdab2c542531a95e" category="paragraph">次の例は、 Astra Trident で作成されたすべてのストレージに同じ要素を適用するバックエンドファイルを示しています。</block>
-  <block id="a2c81e41622f2e2616b33a689e229c72" category="paragraph">次の StorageClass 定義は、上記のストレージプールを参照してください。parameters.selector` フィールドを使用すると ' ボリュームのホストに使用される仮想プールを各 StorageClass に指定できますボリュームには、選択した仮想プール内で定義された要素があります。</block>
   <block id="7072ec708b0ea7e3243747d8b79c0d20" category="admonition">以前のリリースの Trident からアップグレードして Azure NetApp Files を使用する場合 ' 現在 'location`config パラメータは ' 必須のシングルトンフィールドになっています</block>
   <block id="b956e1f58f802db57dd9f871ac59ed6c" category="paragraph">リソース名が重複して 1 箇所に操作が制限されるように ANF ドライバを修正しました。</block>
   <block id="851679bec9b3e6c8e6284128fb750b1e" category="list-text">Kubernetes の機能拡張：</block>
@@ -2902,7 +2868,6 @@
   <block id="2f1ab5b99f1893144b69718c274415f4" category="paragraph">間 <block ref="a3b750e7ac33c9792c64627692f306aa" category="inline-link-macro-rx"></block> Trident の REST API を操作するには簡単です。 REST エンドポイントは必要に応じて直接使用できます。</block>
   <block id="a55b7ee69c26277a1088efc103e15297" category="paragraph">使用可能なコマンドとグローバルオプションは次のとおりです。</block>
   <block id="94912f7fb206038e8527957b44dfbf25" category="paragraph">すべての Trident ポッドが再起動されます。これには数秒かかることがあります。これを確認するには 'kubectl get pod -n trident' の出力の 'age' 列を確認します</block>
-  <block id="498784627f42c14468b84a1a351bd462" category="sidebar">ADS バックエンドを設定します</block>
   <block id="597a56086e1f9d7ca5e8f55c40a0153a" category="list-text">OpenShift Container Platform でサポートされている Red Hat CoreOS （ RHCOS ）バージョン</block>
   <block id="73e93ad328287e5ce4c06228cfdba2bf" category="cell">v1.3.0</block>
   <block id="08ee53e1d5cefb7967a295e98036598e" category="cell">.snapshot ディレクトリの表示を制御します</block>
@@ -3074,7 +3039,6 @@
   <block id="f3aff8b93ad58c4831861213ffc9bbe7" category="paragraph">22.07以降、Astra Tridentは、ノードでiSCSIサービスまたはNFSサービスを実行できるかどうかを自動的に検出しようとします。Astra Tridentが、検出されたサービスを特定するためのイベントをノードに対して作成次のイベントを確認するには、コマンドを使用します。</block>
   <block id="6a3314aee95c1c78527e5f122976ec80" category="paragraph">Tridentは、TridentノードCRの各ノードで有効になっているサービスも特定します。検出されたサービスを表示するには、次のコマンドを使用します。</block>
   <block id="2b6ab5193160f5eaca51526b15f27e3a" category="admonition">ノードサービス検出で検出されたサービスが特定されますが、サービスが適切に設定されていることは保証されませ逆に、検出されたサービスがない場合も、ボリュームのマウントが失敗する保証はありません。</block>
-  <block id="cf4aa5147f5ffc050878ff7f615b9f05" category="list-text">Astra Data Store 22.05以降を参照してください <block ref="14a53a0276a7d83573eeaa3a25171559" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="a8a2b2d9e5637b41609ebc0c72058699" category="list-text">1.19 ~ 1.24を実行するKubernetesクラスタ。</block>
   <block id="3bb4e1a94d47c9447ecf5ab6ce7c23de" category="cell">クラスタ管理LIFまたはSVM管理LIFのIPアドレス：シームレスなMetroCluster スイッチオーバーを実現するには、SVM管理LIFを指定する必要があります。この機能は* tech preview *です。</block>
   <block id="66896c99fb06e0b6c86498b249f8217a" category="cell">要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します。</block>
@@ -3228,14 +3192,7 @@
   <block id="6ebf7ae9dffc55cf86792ea266344b3a" category="list-text">Ubuntu 18.04以降（最新22.04）</block>
   <block id="ea3ab43acafe15e8b0f7e22cb2ad9cfd" category="list-text">NetApp / Trident：22.07.0</block>
   <block id="3e04900915c3d18500b5db27afcc7f36" category="list-text">NetApp / Trident -autosupport：22.07</block>
-  <block id="0cdfc1d8350d0adcf6d641abf16a1046" category="list-text">k81.io/sig-storage/csi-Provisioner：v2.2.2.</block>
-  <block id="ef50726ac477d7ed25cf94fd26f6e4ce" category="list-text">k83.io/sig-storage/csi-attacher: v3.5.0.</block>
-  <block id="c47f8ab6695c185dd1cc8187e762b91f" category="list-text">k81.io/sig-storage/csi-resizer：v1.5.0</block>
-  <block id="a33ee60bce887d9934eaa4c257ba369e" category="list-text">k83.io/sig-storage/csi-snapshotter：v3.0.3</block>
-  <block id="b5df2cef5efcb0eb27dd766a59e4b345" category="list-text">k81.io/sig-storage/csi-node-driver-registrar: v2.5.1</block>
   <block id="465c644c0e7ced87df9adbc6d3657f18" category="list-text">NetApp/trident-operator：22.07.0（オプション）</block>
-  <block id="318a2b6d7e7889951c0d77c3d1ba8546" category="list-text">k81.io/sig-storage/csi-Provisioner：v3.2.1</block>
-  <block id="df89a3576bef4d7cad64e69dfa24fdf9" category="list-text">k81.io/sig-storage/csi-snapshotter：v6.0.1</block>
   <block id="468bc1e7f7712a8dc9b91d063523cdff" category="cell">v1.24.0</block>
   <block id="82e48d2f97b89a148187e2a719308e68" category="admonition">プライベートイメージリポジトリを使用している場合は、プライベートレジストリURLの末尾に「/sig-storage」を追加する必要があります。tridentctl 配備にプライベートレジストリを使用する場合は '--trident-image' と --autosupport.image' を --image-registry' とともに使用する必要がありますTrident 演算子を使用して Astra Trident を導入する場合は、 Orchestrator CR にインストールパラメータに「 tridentImage 」と「 autosupportImage 」が含まれていることを確認してください。</block>
   <block id="9bef5437c66d7ae75dabd12519ecc5ac" category="section-title">2007年22月の新機能</block>
@@ -3310,7 +3267,6 @@
   <block id="a1142049a82a11e90102d655bb7e234d" category="inline-link-macro">GitHubの_Assets_sectionを参照してください</block>
   <block id="28b29acf4f44cae9d70c63d88b52ba30" category="list-text">からTridentインストーラバンドルの最新バージョンをダウンロードして展開します <block ref="6a7c34d1e7545bd3ab5abc336e61eb7f" category="inline-link-macro-rx"></block>。</block>
   <block id="da434b04f7985eff0b8eba0189b03041" category="paragraph">Tridentインストーラバンドルの最新バージョンは、からダウンロードして展開できます <block ref="6a7c34d1e7545bd3ab5abc336e61eb7f" category="inline-link-macro-rx"></block>。</block>
-  <block id="deb871bb56992a4738611a0463ca443d" category="admonition">Kubernetesバージョン1.20以降では、検証済みの「registry.k88.io/sig-storage/csi-snapshotter：v6.x`イメージは、「v1'バージョン」が「volumesnapshotes.snapshot.storage.k83.io`CRD」を処理している場合にのみ使用してください。v1beta`のバージョンがv1beta`のバージョンの有無に関わらずCRDにサービスを提供している場合は、検証済みの「registry.k83.io/sig-storage/csi-snapshotter:v3.x`のイメージを使用します。</block>
   <block id="756909f99bc1a720d318a5f5b94eb094" category="section-title">トラブルシューティング用にログを収集する</block>
   <block id="98a2ec14e38e4acf26c70e52b70bf5f8" category="list-text">RHELまたはCentOS 7.</block>
   <block id="c5e9849ca6abd11c3d0615c338c6a231" category="paragraph">RHEL / CentOS 7.</block>
@@ -3318,4 +3274,12 @@
   <block id="269efd38c7d91afd7e1339da498a391f" category="list-text">RHCOSバージョン4.5以降、またはRHELと互換性のあるその他のLinuxディストリビューションを「solidfire-san-」ドライバとともに使用している場合は、/etc/iscsi/iscsid.confでCHAP認証アルゴリズムがMD5に設定されていることを確認してください。</block>
   <block id="b437164523254b34902d49bbf5e996aa" category="paragraph">システムベースのシステム用のサンプルユニットファイルは、 Git repo の「 contrib / trident.service.example` 」にあります。このファイルをCentOS 7 / RHELで使用するには、次の手順を実行します。</block>
   <block id="134bf17c90c90b5aeed99dde262bf14d" category="admonition">すでにTridentの名前空間を作成している場合'--create-namespaceパラメータは追加の名前空間を作成しません</block>
+  <block id="b0b4b8e52878f03279584f43bc961472" category="list-text">k81.gcr.io/sig-storage/csi-Provisioner ： v2.2.2</block>
+  <block id="2afb1f98073f71c0d17fc9ca4a9e90c1" category="list-text">k83.GCR.IO/sig-storage/csi-attacher: v3.5.0.</block>
+  <block id="1df82264c4305cc7b13edf95e4c3ac44" category="list-text">k81.gcr.io/sig-storage/csi-resizer：v1.5.0</block>
+  <block id="ca2e728c8f17fef48811518aaed4de43" category="list-text">k83.gcr.io/sig-storage/csi-snapshotter ： v3.0.3</block>
+  <block id="c7a50ec55e482100e18c09b42c5f13ad" category="list-text">k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1</block>
+  <block id="300646415618445143d2c1ccbf8526a5" category="list-text">K83.GCR.IO/sig-storage/csi-Provisioner：v3.2.1</block>
+  <block id="7e2f92592397ec9dbbc41011e750def4" category="list-text">k81.gcr.io/sig-storage/csi-snapshotter：v6.0.1</block>
+  <block id="92027c79fbf95308efaf2ec1db03f661" category="admonition">Kubernetesバージョン1.20以降では、検証済みの「registry.k8es.gcr.io/sig-storage/csi-snapshotter：v6.x'イメージを使用します。これは、バージョンv1'が「volumesnapshotes.snapshot.storages.k83.gcr.io`crdr」を処理している場合のみです。v1beta`のバージョンがv1beta`のバージョンの有無に関わらずCRDを処理している場合は、検証済みの「registry.k83.gcr.io/sig-storage/csi-snapshotter:v3.x'イメージを使用します。</block>
 </blocks>

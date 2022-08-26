@@ -7,8 +7,6 @@ entries:
   entries:
   - title: ANF バックエンドを設定します
     url: "/trident-use/anf.html"
-  - title: ADS バックエンドを設定します
-    url: "/trident-use/ads.html"
   - title: GCP バックエンドの CVS を設定します
     url: "/trident-use/gcp.html"
   - title: NetApp HCI または SolidFire バックエンドを設定します
