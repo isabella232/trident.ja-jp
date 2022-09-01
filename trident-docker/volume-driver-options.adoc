@@ -52,10 +52,11 @@ Snapshot ポリシーが目的の値に設定されます。デフォルトは�
 
 
 | 「暗号化」  a| 
-これにより、新しいボリュームで NetApp Volume Encryption （ NVE ）がデフォルトで「 false 」に設定されます。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。
+新しいボリュームでNetApp Volume Encryption（NVE）を有効にします。デフォルトは「false」です。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。
 
+NAEがバックエンドで有効になっている場合は、Astra TridentでプロビジョニングされたすべてのボリュームがNAEに有効になります。
 
-NOTE: NetApp Aggregate Encryption （ NAE ）は、現在 Trident ではサポートされていません。
+詳細については、以下を参照してください。 link:../trident-reco/security-reco.html["Astra TridentとNVEおよびNAEの相互運用性"]。
 
 
 

@@ -159,7 +159,7 @@ NOTE: Astra Trident は 'ONTAP-NAS' および 'ONTAP-NAS-flexgroup を使用し�
 | 'plitOnClone | 作成時にクローンを親からスプリットします | いいえ 
 
 
-| 「暗号化」 | ネットアップのボリューム暗号化を有効にします | いいえ 
+| 「暗号化」 | 新しいボリュームでNetApp Volume Encryption（NVE）を有効にします。デフォルトは「false」です。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。NAEがバックエンドで有効になっている場合は、Astra TridentでプロビジョニングされたすべてのボリュームがNAEに有効になります。詳細については、以下を参照してください。 link:../trident-reco/security-reco.html["Astra TridentとNVEおよびNAEの相互運用性"]。 | いいえ 
 
 
 | 'ecurityStyle' | 新しいボリュームのセキュリティ形式 | 「 UNIX 」 

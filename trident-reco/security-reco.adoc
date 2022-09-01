@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-reco/security-reco.html 
-keywords: security, chap, trident, namespace 
+keywords: security, chap, trident, namespace, nve, nae, encryption, volume encryption, aggregate encryption 
 summary: ここに記載された推奨事項に従って、 Astra Trident のインストールを確実にセキュリティで保護してください。 
 ---
 = セキュリティ
@@ -27,7 +27,7 @@ summary: ここに記載された推奨事項に従って、 Astra Trident の�
 
 Astra Trident は、 ONTAP SAN ワークロード向けの CHAP ベースの認証をサポートしています（「 ONTAP-SAN' 」ドライバと「 ONTAP-SAN-エコノミー 」ドライバを使用）。ネットアップでは、ホストとストレージバックエンドの間の認証に、双方向 CHAP と Astra Trident を使用することを推奨しています。
 
-SAN ストレージ・ドライバを使用する ONTAP バックエンドの場合 'Astra Trident は双方向 CHAP をセットアップし 'tridentctl を使用して CHAP ユーザー名とシークレットを管理できますを参照してください link:../trident-use/ontap-san-prep.html["こちらをご覧ください"^] ONTAP バックエンドで Trident が CHAP を構成する方法をご確認ください。
+SAN ストレージ・ドライバを使用する ONTAP バックエンドの場合 'Astra Trident は双方向 CHAP をセットアップし 'tridentctl を使用して CHAP ユーザー名とシークレットを管理できますを参照してください link:../trident-use/ontap-san-prep.html["こちらをご覧ください"] ONTAP バックエンドで Trident が CHAP を構成する方法をご確認ください。
 
 
 NOTE: ONTAP バックエンドの CHAP サポートは Trident 20.04 以降で利用可能
@@ -42,3 +42,31 @@ NOTE: ONTAP バックエンドの CHAP サポートは Trident 20.04 以降で�
 NOTE: CSI Trident によって作成されたボリュームは、どのボリュームアクセスグループにも関連付けられていません。
 
 CSI 以外のフロントエンドでは、ワーカーノード上のデバイスとしてのボリュームの接続は Kubernetes で処理されます。ボリュームの作成後、 Astra Trident が NetApp HCI / SolidFire システムに対して API 呼び出しを実行し、テナントのシークレットがない場合はシークレットを取得します。Trident が Kubernetes にシークレットを渡します。各ノード上の kubelet は Kubernetes API を介してシークレットにアクセスし、ボリュームにアクセスする各ノードとボリュームが配置されている NetApp HCI / SolidFire システム間で CHAP を実行 / 有効化するために使用します。
+
+
+
+== Astra TridentとNVEおよびNAEの相互運用性
+
+NetApp ONTAP は、保管データの暗号化を提供し、ディスクが盗難、返却、転用された場合に機密データを保護します。詳細については、を参照してください link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-encryption-concept.html["NetApp Volume Encryption の設定の概要"^]。
+
+* NAEがバックエンドで有効になっている場合は、Astra TridentでプロビジョニングされたすべてのボリュームがNAEに対応します。
+* NAEがバックエンドで有効になっていない場合、バックエンド構成でNVE暗号化フラグを「false」に設定しないかぎり、Astra TridentでプロビジョニングされたすべてのボリュームがNVE対応になります。
+
+
+[NOTE]
+====
+NAE対応バックエンドのAstra Tridentで作成されるボリュームは、NVEまたはNAEで暗号化されている必要があります。
+
+* Tridentバックエンド構成でNVE暗号化フラグを「true」に設定すると、NAE暗号化をオーバーライドし、ボリューム単位で特定の暗号化キーを使用できます。
+* NAEが有効なバックエンドでNVE暗号化フラグを「false」に設定すると、NAEが有効なボリュームが作成されます。NVE暗号化フラグを「false」に設定してNAE暗号化を無効にすることはできません。
+
+
+====
+* 明示的にNVE暗号化フラグを「true」に設定すると、Astra TridentでNVEボリュームを手動で作成できます。
+
+
+バックエンド構成オプションの詳細については、以下を参照してください。
+
+* link:https://docs.netapp.com/us-en/trident/trident-use/ontap-san-examples.html["ONTAP のSAN構成オプション"]
+* link:https://docs.netapp.com/us-en/trident/trident-use/ontap-nas-examples.html["ONTAP NASの確認オプション"]
+

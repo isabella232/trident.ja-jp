@@ -385,7 +385,6 @@
   <block id="f40aef657c875e42158050f63dcfbb6f" category="section-title">ONTAP SAN バックエンドで CHAP 認証を使用します</block>
   <block id="2738c60dc60977d9eb6af2bf2a98c193" category="paragraph">Astra Trident は、 ONTAP SAN ワークロード向けの CHAP ベースの認証をサポートしています（「 ONTAP-SAN' 」ドライバと「 ONTAP-SAN-エコノミー 」ドライバを使用）。ネットアップでは、ホストとストレージバックエンドの間の認証に、双方向 CHAP と Astra Trident を使用することを推奨しています。</block>
   <block id="6c92285fa6d3e827b198d120ea3ac674" category="inline-link-macro">こちらをご覧ください</block>
-  <block id="c34904efabe33827baaa88ebf031ffab" category="paragraph">SAN ストレージ・ドライバを使用する ONTAP バックエンドの場合 'Astra Trident は双方向 CHAP をセットアップし 'tridentctl を使用して CHAP ユーザー名とシークレットを管理できますを参照してください <block ref="eda040c33c51e3cee067cf2f06789687" category="inline-link-macro-rx"></block> ONTAP バックエンドで Trident が CHAP を構成する方法をご確認ください。</block>
   <block id="97f83fd51c89f4f9d3fc271b9f7291ab" category="admonition">ONTAP バックエンドの CHAP サポートは Trident 20.04 以降で利用可能</block>
   <block id="d4e0ad8fd8e11d87eb431051692db344" category="section-title">NetApp HCI および SolidFire バックエンドで CHAP 認証を使用します</block>
   <block id="b6a8ac29724d88dfaec657edda424d98" category="paragraph">ホストと NetApp HCI バックエンドと SolidFire バックエンドの間の認証を確保するために、双方向の CHAP を導入することを推奨します。Astra Trident は、テナントごとに 2 つの CHAP パスワードを含むシークレットオブジェクトを使用します。Trident を CSI プロビジョニングツールとしてインストールすると、 CHAP シークレットが管理され、それぞれの PV の「 tridentvolume 」 CR オブジェクトに格納されます。PV を作成すると、 CSI Astra Trident は CHAP シークレットを使用して iSCSI セッションを開始し、 CHAP を介して NetApp HCI および SolidFire システムと通信します。</block>
@@ -1122,7 +1121,6 @@
   <block id="ae6bc3659bb0be0a7d9f98a63775b7c2" category="section-title">プロビジョニングしたボリュームを特定のエクスポートポリシーに設定するにはどうすればよいですか？</block>
   <block id="700a2008fea63d02c24b85f2f75d357e" category="paragraph">適切なホストにボリュームへのアクセスを許可するには、バックエンド定義ファイルに設定されている「 exportPolicy 」パラメータを使用します。</block>
   <block id="9d5813dee71bcbf3d3a03c62354c3e55" category="section-title">ONTAP を使用して Astra Trident 経由でボリューム暗号化を設定する方法を教えてください。</block>
-  <block id="5467ffdca7c34378117097446e6a4408" category="paragraph">Trident によってプロビジョニングされたボリュームで暗号化を設定するには、バックエンド定義ファイルの暗号化パラメータを使用します。</block>
   <block id="ef1581716b653c4364dd5005dbe9e40a" category="section-title">Trident 経由で ONTAP に QoS を実装するには、どのような方法が最適ですか。</block>
   <block id="f412d672b51ea3c57812ebf3be0ddccb" category="paragraph">ONTAP の QoS を実装するには、「 torageClasses 」を使用します。</block>
   <block id="1c771b761835123a135e64f70567d768" category="section-title">Trident 経由でシンプロビジョニングやシックプロビジョニングを指定するにはどうすればよいですか。</block>
@@ -1833,7 +1831,6 @@
   <block id="6f5c0c94b1a17baffd2c33facaa10db6" category="cell">作成時にクローンを親からスプリットします</block>
   <block id="19b4c847405d74614976bd1228f59c9f" category="cell">いいえ</block>
   <block id="b091cbafedf94db98f17823d044434bd" category="cell">「暗号化」</block>
-  <block id="4ecb8b22870f9fb0645228cd38177c49" category="cell">ネットアップのボリューム暗号化を有効にします</block>
   <block id="a463baaf6666da7178b6fc6a3c8a3fee" category="cell">'ecurityStyle'</block>
   <block id="41da49bdd3fd88b2ddc6be7d6df1b335" category="cell">新しいボリュームのセキュリティ形式</block>
   <block id="4cda9f87625c6278fae1a50fcbbf96d3" category="cell">「 UNIX 」</block>
@@ -2467,7 +2464,6 @@
   <block id="91853d7e2338a1395280185fc93d4650" category="paragraph">Snapshot ポリシーが目的の値に設定されます。デフォルトは「 none 」です。つまり、ボリュームに対してスナップショットが自動的に作成されることはありません。ストレージ管理者によって変更されていない限り、「 default 」という名前のポリシーがすべての ONTAP システムに存在し、 6 個の時間単位 Snapshot 、 2 個の日単位 Snapshot 、および 2 個の週単位 Snapshot を作成して保持します。スナップショットに保存されているデータは ' ボリューム内の任意のディレクトリ内の .snapshot ディレクトリに移動してリカバリできます</block>
   <block id="b8a0fde33bd7662b7b9cb4158f04ef52" category="paragraph">これにより、 Snapshot リザーブの割合が希望する値に設定されます。デフォルト値は no で、 Snapshot ポリシーを選択した場合は ONTAP によって snapshotReserve が選択されます（通常は 5% ）。 Snapshot ポリシーがない場合は 0% が選択されます。構成ファイルのすべての ONTAP バックエンドに対して snapshotReserve のデフォルト値を設定できます。また、この値は、 ONTAP-NAS-エコノミー を除くすべての ONTAP バックエンドでボリューム作成オプションとして使用できます。</block>
   <block id="0625856b9dc58db03a6e2c49b1f029e3" category="paragraph">ボリュームをクローニングすると、そのクローンが原因 ONTAP によって親から即座にスプリットされます。デフォルトは「 false 」です。クローンボリュームのクローニングは、作成直後に親からクローンをスプリットする方法を推奨します。これは、ストレージ効率化の効果がまったくないためです。たとえば、空のデータベースをクローニングすると、時間を大幅に節約できますが、ストレージの節約はほとんどできないため、クローンをすぐに分割することをお勧めします。</block>
-  <block id="be94792f601f829d9b2be22553c6bf31" category="paragraph">これにより、新しいボリュームで NetApp Volume Encryption （ NVE ）がデフォルトで「 false 」に設定されます。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。</block>
   <block id="cdaf246fba737b75127faa65456baa30" category="paragraph">ボリュームに使用する階層化ポリシーを設定します。これにより、アクセス頻度の低いコールドデータをクラウド階層に移動するかどうかが決まります。</block>
   <block id="1c46d85ab16f6b373409ad15260b1b0a" category="paragraph">以下は、 NFS * のみ * 用の追加オプションです。</block>
   <block id="ce46e8f3fc6eaddbe03115e0d62090ac" category="cell">「 unixPermissions 」</block>
@@ -2595,7 +2591,6 @@
   <block id="e35ead0e9e7038a6c58695bfa4741686" category="paragraph">Snapshot リザーブの割合。 ONTAP のデフォルトを受け入れる場合は、デフォルトで「」になります</block>
   <block id="d3d9446802a44259755d38e6d163e820" category="paragraph">10.</block>
   <block id="eb28cb6308c229ba4561cf02d78b9a07" category="paragraph">作成時にクローンを親からスプリットします。デフォルトは「 false 」です。</block>
-  <block id="988726bbf32c455be56acbfb0da3aad0" category="paragraph">NetApp Volume Encryption を有効にします。デフォルトは「 false 」です。</block>
   <block id="b326b5062b2f0e69046810717534cb09" category="paragraph">正しいです</block>
   <block id="a3b703e23c8d0caf2b2fb4f46057013b" category="paragraph">プロビジョニングされた NFS ボリューム用の NAS オプション。デフォルトは「 777 」</block>
   <block id="f1c1592588411002af340cbaedd6fc33" category="paragraph">777</block>
@@ -2921,7 +2916,6 @@
   <block id="6dd29ca7439e52dcf2fbc569066b3d67" category="list-text">「 fsType 」はストレージクラスで設定されます。</block>
   <block id="45d2174daba36b76955e69d2eddf26ca" category="list-text">PVC アクセスモードは RWO です。</block>
   <block id="ba5b62efad4f90a8f4bb806cba4a3ea4" category="paragraph">NFS ストレージドライバの場合、 NFS エクスポートにはファイルシステムがすでに存在します。fsGroup を使用するには ' ストレージ・クラスで fsType を指定する必要がありますこの値は 'NFS' に設定することも ' ヌル以外の任意の値に設定することもできます</block>
-  <block id="23038d88eea805ac06a26959fc129ca5" category="admonition">NetApp Aggregate Encryption （ NAE ）は、現在 Trident ではサポートされていません。</block>
   <block id="fa8bc73a8436dd2f79aafaa731d248e4" category="list-text">「 limitAggregateUsage 」パラメータは、「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。</block>
   <block id="9c99c91edd7eddead4f870a324f880bd" category="list-text">Trident の Helm リポジトリを追加：</block>
   <block id="368b120a3b5f53a49dc3ab96ec9b8dbd" category="paragraph">ネットアップは、製品やサービスの改善と強化を継続的に行っています。Astra Trident の最新機能をいくつかご紹介します。以前のリリースについては、を参照してください<block ref="25da125dffad1d6323c21354bccf0203" category="inline-link-rx"></block>。</block>
@@ -3282,4 +3276,25 @@
   <block id="300646415618445143d2c1ccbf8526a5" category="list-text">K83.GCR.IO/sig-storage/csi-Provisioner：v3.2.1</block>
   <block id="7e2f92592397ec9dbbc41011e750def4" category="list-text">k81.gcr.io/sig-storage/csi-snapshotter：v6.0.1</block>
   <block id="92027c79fbf95308efaf2ec1db03f661" category="admonition">Kubernetesバージョン1.20以降では、検証済みの「registry.k8es.gcr.io/sig-storage/csi-snapshotter：v6.x'イメージを使用します。これは、バージョンv1'が「volumesnapshotes.snapshot.storages.k83.gcr.io`crdr」を処理している場合のみです。v1beta`のバージョンがv1beta`のバージョンの有無に関わらずCRDを処理している場合は、検証済みの「registry.k83.gcr.io/sig-storage/csi-snapshotter:v3.x'イメージを使用します。</block>
+  <block id="76ab201466ec43d71ec9051f8a556457" category="paragraph">SAN ストレージ・ドライバを使用する ONTAP バックエンドの場合 'Astra Trident は双方向 CHAP をセットアップし 'tridentctl を使用して CHAP ユーザー名とシークレットを管理できますを参照してください <block ref="2e905590b15db776a189c7b5f90d9174" category="inline-link-macro-rx"></block> ONTAP バックエンドで Trident が CHAP を構成する方法をご確認ください。</block>
+  <block id="ea4a2eeab32b5cd82414bd4a2fc3e8e6" category="section-title">Astra TridentとNVEおよびNAEの相互運用性</block>
+  <block id="c638f77e97a62d0d11f775816222d62a" category="inline-link-macro">NetApp Volume Encryption の設定の概要</block>
+  <block id="b65b10bf779c45e4940c255ecf83bdc3" category="paragraph">NetApp ONTAP は、保管データの暗号化を提供し、ディスクが盗難、返却、転用された場合に機密データを保護します。詳細については、を参照してください <block ref="e0b51490e5d435c82abc702d0a4ca15c" category="inline-link-macro-rx"></block>。</block>
+  <block id="2f96099170687a6fc94d47d5c9e1db78" category="list-text">NAEがバックエンドで有効になっている場合は、Astra TridentでプロビジョニングされたすべてのボリュームがNAEに対応します。</block>
+  <block id="f2e4034ee02b84093370b28f55809870" category="list-text">NAEがバックエンドで有効になっていない場合、バックエンド構成でNVE暗号化フラグを「false」に設定しないかぎり、Astra TridentでプロビジョニングされたすべてのボリュームがNVE対応になります。</block>
+  <block id="82d9a35a126449139766a969834999ca" category="paragraph">NAE対応バックエンドのAstra Tridentで作成されるボリュームは、NVEまたはNAEで暗号化されている必要があります。</block>
+  <block id="1bb1c0791a9e9cff8de216ed44b1de31" category="list-text">Tridentバックエンド構成でNVE暗号化フラグを「true」に設定すると、NAE暗号化をオーバーライドし、ボリューム単位で特定の暗号化キーを使用できます。</block>
+  <block id="c376f853ae2704beeb8bbb6836ada303" category="list-text">NAEが有効なバックエンドでNVE暗号化フラグを「false」に設定すると、NAEが有効なボリュームが作成されます。NVE暗号化フラグを「false」に設定してNAE暗号化を無効にすることはできません。</block>
+  <block id="5991606c4d185f50bd7f678053004989" category="list-text">明示的にNVE暗号化フラグを「true」に設定すると、Astra TridentでNVEボリュームを手動で作成できます。</block>
+  <block id="b6c7fef7b7bcf035a4f4ad02ff8808c2" category="paragraph">バックエンド構成オプションの詳細については、以下を参照してください。</block>
+  <block id="06c4db929b729ddf158ceb5cc15b122b" category="inline-link-macro">ONTAP のSAN構成オプション</block>
+  <block id="ba6742159ffc869573e70b67c08565e4" category="list-text"><block ref="ba6742159ffc869573e70b67c08565e4" category="inline-link-macro-rx"></block></block>
+  <block id="b17af583fc89a3146e5ae28b0712c99c" category="inline-link-macro">ONTAP NASの確認オプション</block>
+  <block id="66299b6466e6eab6aeefa2ab995fca55" category="list-text"><block ref="66299b6466e6eab6aeefa2ab995fca55" category="inline-link-macro-rx"></block></block>
+  <block id="6d9333eebb991611d29a4f8b7cc21fec" category="cell">新しいボリュームでNetApp Volume Encryption（NVE）を有効にします。デフォルトは「false」です。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。NAEがバックエンドで有効になっている場合は、Astra TridentでプロビジョニングされたすべてのボリュームがNAEに有効になります。詳細については、以下を参照してください。 <block ref="00deada136b55f176f599153703cf50d" category="inline-link-macro-rx"></block>。</block>
+  <block id="e6c17edbc8ff331856d1dc0b7667563c" category="paragraph">Trident によってプロビジョニングされたボリュームで暗号化を設定するには、バックエンド定義ファイルの暗号化パラメータを使用します。詳細については、以下を参照してください。 <block ref="00deada136b55f176f599153703cf50d" category="inline-link-macro-rx"></block></block>
+  <block id="911675212835161abe9bce3f33c70af0" category="paragraph">新しいボリュームでNetApp Volume Encryption（NVE）を有効にします。デフォルトは「false」です。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。</block>
+  <block id="1811ba2842625864e8f6233e19051566" category="paragraph">NAEがバックエンドで有効になっている場合は、Astra TridentでプロビジョニングされたすべてのボリュームがNAEに有効になります。</block>
+  <block id="cd6eb5bfdf9299ea3a76e2eb822c8293" category="paragraph">詳細については、以下を参照してください。 <block ref="00deada136b55f176f599153703cf50d" category="inline-link-macro-rx"></block>。</block>
+  <block id="2bc97a247278d92f5552529c55ab7f0d" category="paragraph">新しいボリュームでNetApp Volume Encryption（NVE）を有効にします。デフォルトは「false」です。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。</block>
 </blocks>
