@@ -46,7 +46,6 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 === 非推奨
 
 * **Kubernetes：**サポートされる最小Kubernetes数が1.19に更新されました。
-* Astra Data Store（ADS）ドライバをv1beta1 CRDに更新したので、このバージョンのTridentにはADS 22.5.0以降が必要です。
 * バックエンド構成では、単一の構成で複数の認証タイプを使用できなくなりました。
 
 

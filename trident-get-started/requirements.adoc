@@ -45,7 +45,6 @@ Astra Trident を使用するには、次のバックエンドを 1 つ以上サ
 
 * NetApp ONTAP 対応の Amazon FSX
 * Azure NetApp Files の特長
-* Astra Data Store 22.05以降
 * Cloud Volumes ONTAP
 * Cloud Volumes Service for GCP
 * FAS/AFF / Select 9.3 以降
