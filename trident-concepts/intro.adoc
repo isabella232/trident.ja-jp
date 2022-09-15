@@ -13,7 +13,7 @@ summary: Astra Trident は、ネットアップが Astra 製品ファミリー�
 
 Astra Trident は、ネットアップがの一部として管理している、完全にサポートされているオープンソースプロジェクトです link:https://docs.netapp.com/us-en/astra-family/intro-family.html["Astra 製品ファミリー"^]。Container Storage Interface （ CSI ）などの業界標準のインターフェイスを使用して、コンテナ化されたアプリケーションの永続性に対する要求を満たすことができるように設計されています。
 
-Kubernetes クラスタにポッドとして Trident を導入し、 Kubernetes ワークロードに動的なストレージオーケストレーションサービスを提供コンテナ化されたアプリケーションは、 ONTAP （ AFF / FAS / Select / Cloud / Amazon FSX for NetApp ONTAP ）、 Element ソフトウェア（ NetApp HCI / SolidFire ）、 Astra データストア、 Azure NetApp Files サービス、 Google Cloud 上の Cloud Volumes Service など、ネットアップの幅広いポートフォリオの永続的ストレージをすばやく簡単に消費できます。
+Kubernetes クラスタにポッドとして Trident を導入し、 Kubernetes ワークロードに動的なストレージオーケストレーションサービスを提供コンテナ化されたアプリケーションは、ONTAP （AFF / FAS / Select / Cloud / Amazon FSX for NetApp ONTAP ）、Elementソフトウェア（NetApp HCI / SolidFire）、Azure NetApp Files サービス、Google Cloud上のCloud Volumes Service など、ネットアップの幅広いポートフォリオの永続的ストレージをすばやく簡単に消費できます。
 
 Astra Trident は、 NetApp の Astra の基盤テクノロジでもあり、 NetApp のスナップショット、バックアップ、レプリケーション、クローニングに業界をリードするデータ管理テクノロジを活用して、 Kubernetes ワークロードのデータ保護、ディザスタリカバリ、ポータビリティ、移行のユースケースに対応します。
 
