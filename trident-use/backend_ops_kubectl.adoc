@@ -23,7 +23,7 @@ kubectl' を使用してバックエンド管理操作を実行する方法に�
 
 [listing]
 ----
-$ kubectl delete tbc <tbc-name> -n trident
+kubectl delete tbc <tbc-name> -n trident
 ----
 Astra Trident は、 TridentBackendConfig が使用していた Kubernetes シークレットを削除しません。Kubernetes ユーザは、シークレットのクリーンアップを担当します。シークレットを削除するときは注意が必要です。シークレットは、バックエンドで使用されていない場合にのみ削除してください。
 
@@ -35,7 +35,7 @@ Astra Trident は、 TridentBackendConfig が使用していた Kubernetes シ�
 
 [listing]
 ----
-$ kubectl get tbc -n trident
+kubectl get tbc -n trident
 ----
 tridentctl get backend -n trident` または tridentctl get backend -o yaml -n trident` を実行して、存在するすべてのバックエンドのリストを取得することもできます。このリストには 'tridentctl' で作成されたバックエンドも含まれます
 
@@ -50,20 +50,20 @@ tridentctl get backend -n trident` または tridentctl get backend -o yaml -n t
 
 [listing]
 ----
-$ kubectl apply -f <updated-secret-file.yaml> -n trident
+kubectl apply -f <updated-secret-file.yaml> -n trident
 ----
 * パラメータ（使用する ONTAP SVM の名前など）を更新する必要があります。この場合 'TridentBackendConfig' オブジェクトは Kubernetes を介して直接更新できます
 
 
 [listing]
 ----
-$ kubectl apply -f <updated-backend-file.yaml>
+kubectl apply -f <updated-backend-file.yaml>
 ----
 または、次のコマンドを実行して、既存の「 TridentBackendConfig 」 CR に変更を加えます。
 
 [listing]
 ----
-$ kubectl edit tbc <tbc-name> -n trident
+kubectl edit tbc <tbc-name> -n trident
 ----
 バックエンドの更新に失敗した場合、バックエンドは最後の既知の設定のまま残ります。ログを表示して原因を確認するには、「 kubectl get tbc <tbc-name> -o yaml -n trident` または「 kubectl describe tbc <tbc-name> -n trident` 」を実行します。
 

@@ -76,7 +76,7 @@ NOTE: すでにTridentの名前空間を作成している場合'--create-namesp
 
 [source, cli]
 ----
-$ helm install <name> netapp-trident/trident-operator --version 22.7.0 --set tridentDebug=true
+helm install <name> netapp-trident/trident-operator --version 22.7.0 --set tridentDebug=true
 ----
 Helm チャートの一部である `values] の .yaml ファイルには、キーのリストとデフォルト値が表示されます。
 
@@ -152,7 +152,7 @@ Trident インストーラには、これらのリソースを定義するマニ
 +
 [source, cli]
 ----
-$ kubectl apply -f deploy/namespace.yaml
+kubectl apply -f deploy/namespace.yaml
 ----
 
 
@@ -177,11 +177,11 @@ kubectl create -f deploy/bundle.yaml
 +
 [source, cli]
 ----
-$ kubectl get deployment -n <operator-namespace>
+kubectl get deployment -n <operator-namespace>
 NAME               READY   UP-TO-DATE   AVAILABLE   AGE
 trident-operator   1/1     1            1           3m
 
-$ kubectl get pods -n <operator-namespace>
+kubectl get pods -n <operator-namespace>
 NAME                              READY   STATUS             RESTARTS   AGE
 trident-operator-54cb664d-lnjxh   1/1     Running            0          3m
 ----
@@ -200,10 +200,10 @@ IMPORTANT: Kubernetes クラスタには、オペレータのインスタンス�
 
 [source, cli]
 ----
-$ kubectl create -f deploy/crds/tridentorchestrator_cr.yaml
+kubectl create -f deploy/crds/tridentorchestrator_cr.yaml
 tridentorchestrator.trident.netapp.io/trident created
 
-$ kubectl describe torc trident
+kubectl describe torc trident
 Name:        trident
 Namespace:
 Labels:      <none>
@@ -272,7 +272,7 @@ Astra Trident のインストールが完了しているかどうかを確認す
 
 [source, cli]
 ----
-$ kubectl get pod -n trident
+kubectl get pod -n trident
 NAME                                READY   STATUS    RESTARTS   AGE
 trident-csi-7d466bf5c7-v4cpw        5/5     Running   0           1m
 trident-csi-mr6zc                   2/2     Running   0           1m
@@ -284,7 +284,7 @@ trident-operator-766f7b8658-ldzsv   1/1     Running   0           3m
 
 [source, cli]
 ----
-$ ./tridentctl -n trident version
+./tridentctl -n trident version
 +----------------+----------------+
 | SERVER VERSION | CLIENT VERSION |
 +----------------+----------------+

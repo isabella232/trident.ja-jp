@@ -34,7 +34,7 @@ TIP: トラブルシューティングに関する記事の包括的なリスト
 --
 [listing]
 ----
-# kubectl patch torc trident -n <namespace> --type=merge -p '{"spec":{"debug":true}}'
+kubectl patch torc trident -n <namespace> --type=merge -p '{"spec":{"debug":true}}'
 ----
 すべての Trident ポッドが再起動されます。これには数秒かかることがあります。これを確認するには 'kubectl get pod -n trident' の出力の 'age' 列を確認します
 
@@ -46,7 +46,7 @@ Helm とともにインストールされます::
 --
 [listing]
 ----
-$ helm upgrade <name> trident-operator-21.07.1-custom.tgz --set tridentDebug=true`
+helm upgrade <name> trident-operator-21.07.1-custom.tgz --set tridentDebug=true`
 ----
 --
 tridentctl を使用してインストールされます::
@@ -93,7 +93,7 @@ Trident のインストールが失敗した理由を理解するには、「 Tr
 
 [listing]
 ----
-$ kubectl describe torc trident-2
+kubectl describe torc trident-2
 Name:         trident-2
 Namespace:
 Labels:       <none>
@@ -131,7 +131,7 @@ Events:
 
 [listing]
 ----
-$ kubectl get pods -n trident
+kubectl get pods -n trident
 
 NAME                                READY   STATUS             RESTARTS   AGE
 trident-csi-4p5kq                   1/2     ImagePullBackOff   0          5m18s

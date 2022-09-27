@@ -87,7 +87,7 @@ tridentctl クライアントは ' 既存のストレージ・ボリュームを
 
 [listing]
 ----
-$ tridentctl import volume <backendName> <volumeName> -f <path-to-pvc-file>
+tridentctl import volume <backendName> <volumeName> -f <path-to-pvc-file>
 ----
 ストレージボリュームをインポートするには、ボリュームが含まれている Astra Trident バックエンドの名前と、ストレージ上のボリュームを一意に識別する名前（ ONTAP FlexVol 、 Element Volume 、 CVS ボリュームパスなど）を指定します。ストレージボリュームは、読み取り / 書き込みアクセスを許可し、指定された Astra Trident バックエンドからアクセスできる必要があります。引数 -f 文字列は必須であり、 YAML または JSON PVC ファイルへのパスを指定します。
 
@@ -115,7 +115,7 @@ IMPORTANT: 「 ONTAP - NAS 」ドライバは、 qtree のインポートおよ�
 
 [listing]
 ----
-$ tridentctl import volume ontap_nas managed_volume -f <path-to-pvc-file>
+tridentctl import volume ontap_nas managed_volume -f <path-to-pvc-file>
 
 +------------------------------------------+---------+---------------+----------+--------------------------------------+--------+---------+
 |                   NAME                   |  SIZE   | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |
@@ -127,7 +127,7 @@ Trident が管理しない 'unmanaged_volume' （ ONTAP_NAS バックエンド�
 
 [listing]
 ----
-$ tridentctl import volume nas_blog unmanaged_volume -f <path-to-pvc-file> --no-manage
+tridentctl import volume nas_blog unmanaged_volume -f <path-to-pvc-file> --no-manage
 
 +------------------------------------------+---------+---------------+----------+--------------------------------------+--------+---------+
 |                   NAME                   |  SIZE   | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |
@@ -168,7 +168,7 @@ TIP: 既存のアクティブな接続がないボリュームをインポート
 
 [listing]
 ----
-$ tridentctl import volume ontapsan_san_default ontap-san-managed -f pvc-basic-import.yaml -n trident -d
+tridentctl import volume ontapsan_san_default ontap-san-managed -f pvc-basic-import.yaml -n trident -d
 
 +------------------------------------------+--------+---------------+----------+--------------------------------------+--------+---------+
 |                   NAME                   |  SIZE  | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |
@@ -187,7 +187,7 @@ Trident を使用して、 NetApp Element ソフトウェア / NetApp HCI ボリ
 
 [listing]
 ----
-$ tridentctl import volume element_default element-managed -f pvc-basic-import.yaml -n trident -d
+tridentctl import volume element_default element-managed -f pvc-basic-import.yaml -n trident -d
 
 +------------------------------------------+--------+---------------+----------+--------------------------------------+--------+---------+
 |                   NAME                   |  SIZE  | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |
@@ -209,7 +209,7 @@ TIP: GCP の NetApp Cloud Volumes Service から作成されたボリューム�
 
 [listing]
 ----
-$ tridentctl import volume gcpcvs_YEppr adroit-jolly-swift -f <path-to-pvc-file> -n trident
+tridentctl import volume gcpcvs_YEppr adroit-jolly-swift -f <path-to-pvc-file> -n trident
 
 +------------------------------------------+--------+---------------+----------+--------------------------------------+--------+---------+
 |                   NAME                   |  SIZE  | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |
@@ -228,7 +228,7 @@ NOTE: ボリュームパスは、 / のあとのボリュームのエクスポ�
 
 [listing]
 ----
-$ tridentctl import volume azurenetappfiles_40517 importvol1 -f <path-to-pvc-file> -n trident
+tridentctl import volume azurenetappfiles_40517 importvol1 -f <path-to-pvc-file> -n trident
 
 +------------------------------------------+---------+---------------+----------+--------------------------------------+--------+---------+
 |                   NAME                   |  SIZE   | STORAGE CLASS | PROTOCOL |             BACKEND UUID             | STATE  | MANAGED |

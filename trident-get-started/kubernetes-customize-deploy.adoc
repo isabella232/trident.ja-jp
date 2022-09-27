@@ -86,7 +86,7 @@ TIP: ポッドパラメータの書式設定の詳細については、を参照
 
 [listing]
 ----
-$ cat deploy/crds/tridentorchestrator_cr_imagepullsecrets.yaml
+cat deploy/crds/tridentorchestrator_cr_imagepullsecrets.yaml
 apiVersion: trident.netapp.io/v1
 kind: TridentOrchestrator
 metadata:

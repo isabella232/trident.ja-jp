@@ -42,7 +42,7 @@ sudo docker run --rm -v /backup:/backup \
 +
 [listing]
 ----
-# etcdctl snapshot restore '/backup/etcd-snapshot-latest.db' ; mv /default.etcd/member/ /var/lib/etcd/
+etcdctl snapshot restore '/backup/etcd-snapshot-latest.db' ; mv /default.etcd/member/ /var/lib/etcd/
 ----
 . Kubernetes クラスタを初期化する前に、必要な証明書をすべてコピーしておきます。
 . 「 --ignore-preflight -errors=DirAvailable --var-lib-etcd` 」フラグを付けてクラスタを作成します。

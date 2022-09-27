@@ -22,12 +22,12 @@ Helm を使用して Astra Trident をインストールした場合は 'helm un
 [listing]
 ----
 #List the Helm release corresponding to the Astra Trident install.
-$ helm ls -n trident
+helm ls -n trident
 NAME          NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
 trident       trident         1               2021-04-20 00:26:42.417764794 +0000 UTC deployed        trident-operator-21.07.1        21.07.1
 
 #Uninstall Helm release to remove Trident
-$ helm uninstall trident -n trident
+helm uninstall trident -n trident
 release "trident" uninstalled
 ----
 
@@ -40,7 +40,7 @@ Operator を使用して Astra Trident をインストールした場合、次�
 +
 [listing]
 ----
-$  kubectl patch torc <trident-orchestrator-name> --type=merge -p '{"spec":{"uninstall":true}}'
+kubectl patch torc <trident-orchestrator-name> --type=merge -p '{"spec":{"uninstall":true}}'
 ----
 +
 uninstall` フラグが 'true' に設定されている場合、 Trident オペレータは Trident をアンインストールしますが、 TridentOrchestrator 自体は削除しません。Trident を再度インストールする場合は、 TridentOrchestrator をクリーンアップして新しい Trident を作成する必要があります。
@@ -50,7 +50,7 @@ uninstall` フラグが 'true' に設定されている場合、 Trident オペ�
 
 [listing]
 ----
-$ kubectl patch torc <trident-orchestrator-name> --type=merge -p '{"spec":{"wipeout":["crds"],"uninstall":true}}'
+kubectl patch torc <trident-orchestrator-name> --type=merge -p '{"spec":{"wipeout":["crds"],"uninstall":true}}'
 ----
 Astra Trident が完全にアンインストールされ、管理対象のバックエンドとボリュームに関連するすべてのメタデータがクリアされます。以降のインストールは新規インストールとして扱われます。
 

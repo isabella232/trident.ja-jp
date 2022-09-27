@@ -828,7 +828,6 @@
   <block id="1869e61179995eed8692bfc705434d2b" category="list-text">Helm list を実行して ' グラフとアプリケーションのバージョンが両方ともアップグレードされていることを確認します</block>
   <block id="1d0b5ffc29a6dba36314ccbba6a46038" category="admonition">アップグレード中に構成データを渡すには '--set' を使用します</block>
   <block id="4a6b869a481b52472aa62cfa4d9d255e" category="paragraph">たとえば 'tridentDebug' のデフォルト値を変更するには ' 次のコマンドを実行します</block>
-  <block id="6b30e95bff9143b45494dd9486e9515d" category="paragraph">$tridentctl logs を実行すると ' デバッグメッセージを表示できます</block>
   <block id="ad00f75f90e86259efc5e8512fe4c23a" category="admonition">初期インストール時にデフォルト以外のオプションを設定する場合は、オプションが upgrade コマンドに含まれていることを確認してください。含まれていない場合は、値がデフォルトにリセットされます。</block>
   <block id="5c83dd886f5edc620e809e7800bc225f" category="section-title">オペレータ以外のインストールからアップグレードします</block>
   <block id="69f43f0aadf9091408f80d6d1e0fdd45" category="paragraph">CSI Trident インスタンスが上記の前提条件を満たしている場合は、 Trident オペレータの最新リリースにアップグレードできます。</block>
@@ -3293,4 +3292,6 @@
   <block id="17d79009c5c2bb6bd570bb6f87552a2d" category="paragraph">Astra Trident は、 NFS と iSCSI PVS のサイズ変更をサポートしています。これにより、ユーザは Kubernetes レイヤを介してボリュームのサイズを直接変更できます。ボリュームを拡張できるのは、 ONTAP 、 SolidFire / NetApp HCI 、 Cloud Volumes Service バックエンドなど、主要なすべてのネットアップストレージプラットフォームです。後で拡張できるようにするには ' ボリュームに関連づけられたストレージ・クラスで 'allowVolumeExpansion を true に設定します永続ボリュームのサイズを変更する必要がある場合は、 Persistent Volume Claim の「 PEC.resources.request.storage 」注釈を必要なボリュームサイズに編集します。Tridentによって、ストレージクラスタ上のボリュームのサイズが自動的に変更されます。</block>
   <block id="ee3d8ea22d8bf88f2f7fcd6d6dbf26d2" category="paragraph">この指標サービスは、 OpenShift クラスタのステータス、リソース利用率、可用性に関する重要な情報を管理者に提供します。ポッドの自動拡張機能にも必要であり、多くの組織では、チャージバックやショーバックのアプリケーションに指標サービスのデータを使用しています。</block>
   <block id="5e5cb863d5fe17c205c3d2201a1a2235" category="paragraph">Kubernetes クラスタにポッドとして Trident を導入し、 Kubernetes ワークロードに動的なストレージオーケストレーションサービスを提供コンテナ化されたアプリケーションは、ONTAP （AFF / FAS / Select / Cloud / Amazon FSX for NetApp ONTAP ）、Elementソフトウェア（NetApp HCI / SolidFire）、Azure NetApp Files サービス、Google Cloud上のCloud Volumes Service など、ネットアップの幅広いポートフォリオの永続的ストレージをすばやく簡単に消費できます。</block>
+  <block id="e73292b954f1f9bb2feaf96e6032765a" category="paragraph">tridentctl logsを実行すると'デバッグ・メッセージが表示されます</block>
+  <block id="f21f22dde0e0692333a7a28cce456b08" category="sidebar">すべてのAstraドキュメント</block>
 </blocks>
