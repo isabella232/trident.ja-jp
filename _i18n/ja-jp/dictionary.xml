@@ -2252,7 +2252,6 @@
   <block id="725ae241ec74eed978f0b099030236b8" category="section-title">例 3 ：高度な設定</block>
   <block id="a83f4a534ccef7ac1d209fb0015cd907" category="paragraph">このバックエンド構成は、ボリュームの配置を単一のサブネットにまで適用する手間をさらに削減し、一部のボリュームプロビジョニングのデフォルト設定も変更します。</block>
   <block id="198188b722e4e8ee2004b3bd2a9348ed" category="paragraph">このバックエンド構成では、 1 つのファイルに複数のストレージプールを定義します。これは、異なるサービスレベルをサポートする複数の容量プールがあり、それらを表すストレージクラスを Kubernetes で作成する場合に便利です。</block>
-  <block id="db471f3119123601d175fe8d2ef2dd0a" category="paragraph">以下の「 torageClass 」定義は、上記のストレージプールを参照しています。「 parameters.selector` 」フィールドを使用すると、ボリュームのホストに使用される仮想プールを「 S torageClass 」ごとに指定できます。ボリュームには、選択したプールで定義された要素があります。</block>
   <block id="0cc7642bbaf969ea355ea12764841c91" category="summary">ONTAP NAS ドライバを作成して Astra Trident インストールで使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。</block>
   <block id="a0f3a965c12688befda99da850903dcb" category="cell">「 autoExportPolicy 」を参照してください</block>
   <block id="4a5695a4c9eea28a296b0b2f210a15f8" category="cell">エクスポートポリシーの自動作成と更新を有効にする [ ブーリアン ]</block>
@@ -3294,4 +3293,5 @@
   <block id="5e5cb863d5fe17c205c3d2201a1a2235" category="paragraph">Kubernetes クラスタにポッドとして Trident を導入し、 Kubernetes ワークロードに動的なストレージオーケストレーションサービスを提供コンテナ化されたアプリケーションは、ONTAP （AFF / FAS / Select / Cloud / Amazon FSX for NetApp ONTAP ）、Elementソフトウェア（NetApp HCI / SolidFire）、Azure NetApp Files サービス、Google Cloud上のCloud Volumes Service など、ネットアップの幅広いポートフォリオの永続的ストレージをすばやく簡単に消費できます。</block>
   <block id="e73292b954f1f9bb2feaf96e6032765a" category="paragraph">tridentctl logsを実行すると'デバッグ・メッセージが表示されます</block>
   <block id="f21f22dde0e0692333a7a28cce456b08" category="sidebar">すべてのAstraドキュメント</block>
+  <block id="f943c993a92ee9c5049454147c981fc1" category="paragraph">以下の「 torageClass 」定義は、上記のストレージプールを参照しています。parameters.selector`フィールドを使用すると'ボリュームのホストに使用される仮想プールをStorageClass'ごとに指定できますボリュームには、選択したプールで定義された要素があります。</block>
 </blocks>
