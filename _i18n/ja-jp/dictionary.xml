@@ -3173,7 +3173,6 @@
   <block id="ff3e13aad771f1b75db023012e96d057" category="list-text">Kubernetes 1.19~1.24を実行するサポート対象のKubernetesクラスタに対するすべての権限が必要です。</block>
   <block id="d85ea0185bbd496941944ab1e486ddb8" category="list-text">Kubernetes 1.19 ~ 1.24</block>
   <block id="0b0c130cbadeba098951b51bf8268b3f" category="paragraph">Kubernetesのバージョンを確認するには、次のコマンドを実行します。</block>
-  <block id="ca3cbba69cf4bb9d3450c7c6c27983aa" category="list-text">OpenShift 4.7（サポート終了は2022年8月24日）、4.8、4.9、4.10</block>
   <block id="6b51834314ece904405eb0ce1a6e6bd8" category="list-text">NetApp HCI / Elementソフトウェア11以降</block>
   <block id="6ebf7ae9dffc55cf86792ea266344b3a" category="list-text">Ubuntu 18.04以降（最新22.04）</block>
   <block id="ea3ab43acafe15e8b0f7e22cb2ad9cfd" category="list-text">NetApp / Trident：22.07.0</block>
@@ -3294,4 +3293,5 @@
   <block id="e73292b954f1f9bb2feaf96e6032765a" category="paragraph">tridentctl logsを実行すると'デバッグ・メッセージが表示されます</block>
   <block id="f21f22dde0e0692333a7a28cce456b08" category="sidebar">すべてのAstraドキュメント</block>
   <block id="f943c993a92ee9c5049454147c981fc1" category="paragraph">以下の「 torageClass 」定義は、上記のストレージプールを参照しています。parameters.selector`フィールドを使用すると'ボリュームのホストに使用される仮想プールをStorageClass'ごとに指定できますボリュームには、選択したプールで定義された要素があります。</block>
+  <block id="08367c27454c4c2ca57c42b7991575f7" category="list-text">OpenShift 4.8、4.9、4.10、4.11</block>
 </blocks>

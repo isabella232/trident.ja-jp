@@ -25,14 +25,14 @@ Trident Astra は、次のような複数のコンテナエンジンとオーケ
 * Anthosオンプレミス（VMware）とAnthos：ベアメタル1.9、1.10、1.11
 * Kubernetes 1.19 ~ 1.24
 * Mirantis Kubernetes Engine 3.5
-* OpenShift 4.7（サポート終了は2022年8月24日）、4.8、4.9、4.10
+* OpenShift 4.8、4.9、4.10、4.11
 
 
 Trident オペレータは、次のリリースでサポートされています。
 
 * Anthosオンプレミス（VMware）とAnthos：ベアメタル1.9、1.10、1.11
 * Kubernetes 1.19 ~ 1.24
-* OpenShift 4.7（サポート終了は2022年8月24日）、4.8、4.9、4.10
+* OpenShift 4.8、4.9、4.10、4.11
 
 
 Astra Trident は、 Google Kubernetes Engine （ GKE ）、 Amazon Elastic Kubernetes Services （ EKS ）、 Azure Kubernetes Service （ AKS ）、 Rancher 、 VMware Tanzu Portfolio など、フルマネージドで自己管理型の Kubernetes サービスが数多く提供されています。
