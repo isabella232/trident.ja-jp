@@ -31,7 +31,7 @@ Kubernetes 1.20以降では、v5.0以上のスナップショットコンポー�
 ====
 .v5.0コンポーネント
 --
-[source, yaml]
+[listing]
 ----
 cat snapshot-setup.sh
 #!/bin/bash
@@ -43,7 +43,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snaps
 --
 .v3.0.3コンポーネント
 --
-[source, yaml]
+[listing]
 ----
 cat snapshot-setup.sh
 #!/bin/bash
@@ -67,7 +67,7 @@ NOTE: GKE環境でオンデマンドボリュームスナップショットを�
 ====
 .v5.0コントローラ
 --
-[source, yaml]
+[listing]
 ----
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-5.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-5.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
@@ -75,7 +75,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snaps
 --
 .v3.0.3コントローラ
 --
-[source, yaml]
+[listing]
 ----
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v3.0.3/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v3.0.3/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml

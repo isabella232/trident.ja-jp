@@ -120,7 +120,7 @@ Kubernetes の「 torageClass 」オブジェクトは、「 PersistentVolumeCla
 
 Trident を使用する Kubernetes の「 torageClass 」オブジェクトは次のようになります。
 
-[source, yaml]
+[listing]
 ----
 apiVersion: storage.k8s.io/v1beta1
 kind: StorageClass
@@ -247,7 +247,7 @@ Kubernetes 'VolumeSnapshotClass' オブジェクトは 'S torageClasses' に似�
 
 スナップショットを作成するには 'VolumeSnapshotClass' を管理者が定義する必要がありますボリューム Snapshot クラスは、次の定義で作成されます。
 
-[source, yaml]
+[listing]
 ----
 apiVersion: snapshot.storage.k8s.io/v1beta1
 kind: VolumeSnapshotClass
@@ -454,7 +454,7 @@ Tridentのデーモンは'system-node -criticalのPriority Classを消費しま�
 
 次に示すのは'ResourceQuota'オブジェクトがTridentのデマ作用を優先する例です
 
-[source, yaml]
+[listing]
 ----
 apiVersion: <version>
 kind: ResourceQuota
@@ -485,7 +485,7 @@ spec:
 
 独自のリソース割り当てを制御する場合は、コマンドを使用してAstraのResourceQuotaオブジェクトを削除できます。
 
-[source, cli]
+[listing]
 ----
 kubectl delete quota trident-csi -n trident
 ----
