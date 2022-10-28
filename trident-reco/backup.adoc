@@ -130,7 +130,7 @@ ONTAP の SnapMirror ボリュームレプリケーションのセットアッ�
 
 * ボリュームが配置されているクラスタとボリュームからデータを提供する SVM 間のピアリングを設定します。
 * 関係の動作を制御する SnapMirror ポリシーを作成し、その関係の設定属性を指定します。
-* を使用して、デスティネーションボリュームとソースボリューム間の SnapMirror 関係を作成します https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-cmpr-970/snapmirror__create.html["'napmirror create' コマンド"^] をクリックし、適切な SnapMirror ポリシーを割り当てます。
+* を使用して、デスティネーションボリュームとソースボリューム間の SnapMirror 関係を作成します https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-cmpr-970/snapmirror__create.html["d9934e78a9254dde4a227181c30fa2d2"^] をクリックし、適切な SnapMirror ポリシーを割り当てます。
 * SnapMirror 関係の作成後、ソースボリュームからデスティネーションボリュームへのベースライン転送が完了するように、関係を初期化します。
 
 

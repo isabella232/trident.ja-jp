@@ -31,12 +31,10 @@ indexpage:
       url: "/trident-managing-k8s/upgrade-tridentctl.html"
   - title: Astra Trident を使用
     links:
+    - title: ワーカーノードを準備します
+      url: "/trident-use/worker-node-prep.html"
     - title: バックエンドを設定
       url: "/trident-use/backends.html"
-    - title: kubectl を使用してバックエンドを作成します
-      url: "/trident-use/backend-kubectl.html"
-    - title: バックエンド管理オプション間を移動します
-      url: "/trident-use/backend_options.html"
     - title: ストレージクラスを管理する
       url: "/trident-use/manage-stor-class.html"
     - title: ボリューム操作を実行する

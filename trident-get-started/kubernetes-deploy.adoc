@@ -123,7 +123,7 @@ Trident を Kubernetes クラスタに導入すると、 Astra Trident インス
 導入環境のカスタマイズの詳細については、次のリンクを参照してください。
 
 * link:kubernetes-customize-deploy.html["オペレータベースの展開をカスタマイズします"^]
-* link:kubernetes-customize-deploy-tridentctl.html["tridentctl ベースの配備をカスタマイズします"^]
+* link:kubernetes-customize-deploy-tridentctl.html["85cda507040c129ee606d4d8df583b90"^]
 
 
 

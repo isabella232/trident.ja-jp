@@ -11,7 +11,6 @@
   <block id="c34156b367bae1b376f09b89d3be7992" category="list-text">get&lt;trident-address&gt;/trident/v1/&lt; オブジェクトタイプ &gt;/&lt; オブジェクト名 &gt;: 名前付きオブジェクトの詳細を取得します。</block>
   <block id="a02439ec229d8be0e74b0c1602392310" category="section-title">投稿（ Post ）</block>
   <block id="6692e2cd6834e6b9b2151799cac2a9f8" category="paragraph">'POST &lt;trident-address&gt;/trident/v1/&lt;object-type&gt;` ：指定した型のオブジェクトを作成します。</block>
-  <block id="ce87eb03803d5633c163541464e9e7f2" category="inline-link-macro">tridentctl コマンドとオプション</block>
   <block id="3d2bacacf0178e742d5abb2abc32d431" category="list-text">オブジェクトを作成するには JSON 構成が必要です。各オブジェクトタイプの仕様については、を参照してください <block ref="e87a326653960de9774fcc58ee9fa490" category="inline-link-macro-rx"></block>。</block>
   <block id="5b2f45c3d098b61927afda859c9144f8" category="list-text">オブジェクトがすでに存在する場合、動作は一定ではありません。バックエンドが既存のオブジェクトを更新しますが、それ以外のすべてのオブジェクトタイプで処理が失敗します。</block>
   <block id="32f68a60cef40faedbc6af20298c1a1e" category="section-title">削除</block>
@@ -769,7 +768,6 @@
   <block id="19f60a36276037e5b82b5096d2ba7a5c" category="paragraph">ONTAP の SnapMirror ボリュームレプリケーションのセットアップ手順の概要を次に示します。</block>
   <block id="c4e9d0a10c58301ad78e9e9bf74f9229" category="list-text">ボリュームが配置されているクラスタとボリュームからデータを提供する SVM 間のピアリングを設定します。</block>
   <block id="b1c132fa6284fd6d42f93781032cd962" category="list-text">関係の動作を制御する SnapMirror ポリシーを作成し、その関係の設定属性を指定します。</block>
-  <block id="d9934e78a9254dde4a227181c30fa2d2" category="inline-link">'napmirror create' コマンド</block>
   <block id="0a30bcd5b223c18be449821765a8ec07" category="list-text">を使用して、デスティネーションボリュームとソースボリューム間の SnapMirror 関係を作成します<block ref="bfbfdbcdb00ddafcc3e3ca740d1d316b" category="inline-link-rx"></block> をクリックし、適切な SnapMirror ポリシーを割り当てます。</block>
   <block id="20872623d19783e0dbe00afcdcb9ba46" category="list-text">SnapMirror 関係の作成後、ソースボリュームからデスティネーションボリュームへのベースライン転送が完了するように、関係を初期化します。</block>
   <block id="af1fe101ed84f2b2bc465f0a9e92a35f" category="image-alt">に、 SnapMirror ボリュームレプリケーションのセットアップを示します。</block>
@@ -901,8 +899,6 @@
   <block id="558ab0bef1894a7a726109d36632d09d" category="inline-link-macro">既知の問題</block>
   <block id="33966eba1ed0cde6afda5a97ffaffb09" category="inline-link">セキュリティコンテキスト</block>
   <block id="ceb268093ddd5aa9df1769eda5d1c8cd" category="inline-link">入力例：</block>
-  <block id="9d267d893296d1b56789c03ad196afc8" category="inline-link">'storage-class-basic.yamml.templ'</block>
-  <block id="4e4578e23d9d48bd9338b1581f884392" category="inline-link">'storage-class-bronze -default.yaml</block>
   <block id="1ca02e26ff81cefae18a0a8d994ca94a" category="admonition">アップグレードする場合は、 Astra Trident が使用する「 torageClasses 」に「 parameter) .fsType 」を指定することが重要です。既存のボリュームを中断することなく、「 torageClasses 」を削除して再作成できます。これは、強制の ** 要件 ** です<block ref="cafe4c6014d8c45aaac70e49318f1a2a" category="inline-link-rx"></block> SAN ボリュームの場合。。<block ref="25daec0b57549a6ad43dbc62a9e717ca" category="inline-link-rx"></block> directory には、などの例があります<block ref="d308f4d12b21bf269d64643e1eceeeb2" category="inline-link-rx"></block> および<block ref="b6ff3ec2ac914a047085c08d5843e316" category="inline-link-rx"></block>。詳細については、を参照してください <block ref="139a59f2208174d2bf825b80dc580275" category="inline-link-macro-rx"></block>。</block>
   <block id="17cfb8bd7f378fa26b63ee73d467cb82" category="section-title">どのアップグレードパスを選択すればよいですか？</block>
   <block id="46940159293e259bcf0bb4df75448100" category="paragraph">次のいずれかのパスを使用してアップグレードできます。</block>
@@ -924,7 +920,6 @@
   <block id="9c83e144e5481ac6766f4055e566594d" category="section-title">詳細については、こちらをご覧ください</block>
   <block id="7d224494dc0d22edaed4c965cdddffe6" category="inline-link-macro">Trident オペレータを使用してアップグレード</block>
   <block id="85f4fc5b4c12e5ede408e45a6d484dc1" category="list-text"><block ref="85f4fc5b4c12e5ede408e45a6d484dc1" category="inline-link-macro-rx"></block></block>
-  <block id="b41f68e89b7b02a9077fb800d31a2fbe" category="inline-link-macro">tridentctl を使用してアップグレードします</block>
   <block id="efb20f59615d4d5ee0437ba57aecbe50" category="list-text"><block ref="efb20f59615d4d5ee0437ba57aecbe50" category="inline-link-macro-rx"></block></block>
   <block id="f71fd95d4de4797557e6830c1448c945" category="summary">tridentctl を使用して ' 既存の Astra Trident インストールを簡単にアップグレードできます</block>
   <block id="6224e22d5a77816dd8b659c25a3f88a5" category="paragraph">最新リリースの Astra Trident にアップグレードする際は、次の点を考慮してください。</block>
@@ -1318,7 +1313,6 @@
   <block id="4c774e8a2d80dbc16b0bf55be6c7b358" category="paragraph">導入環境のカスタマイズの詳細については、次のリンクを参照してください。</block>
   <block id="711011f15ff69da45006043e93ed8981" category="inline-link-macro">オペレータベースの展開をカスタマイズします</block>
   <block id="8f863c0ccd38c8782b36eedbea08fc5b" category="list-text"><block ref="8f863c0ccd38c8782b36eedbea08fc5b" category="inline-link-macro-rx"></block></block>
-  <block id="85cda507040c129ee606d4d8df583b90" category="inline-link-macro">tridentctl ベースの配備をカスタマイズします</block>
   <block id="16486d6f9e6411719306bdb76f0b34fa" category="list-text"><block ref="16486d6f9e6411719306bdb76f0b34fa" category="inline-link-macro-rx"></block></block>
   <block id="47c0166da57a75ed65ddb766c838a91c" category="section-title">リモート導入</block>
   <block id="761bf14d8b8339a8f345e63dc12c36bb" category="paragraph">次に、リモート導入プロセスの概要を示します。</block>
@@ -2295,7 +2289,6 @@
   <block id="46b189b23dfbd5f3f622a1c04590b05e" category="admonition">CSI Snapshotter は、を提供します<block ref="927ab0e919f8034deab1249bed53a289" category="inline-link-rx"></block> ユーザーが既存の v1beta1 スナップショットを検証し、有効なリソースオブジェクトであることを確認できるようにするため。検証中の webhook は、無効なスナップショットオブジェクトに自動的にラベルを付け、今後無効なオブジェクトが作成されないようにします。検証する webhook は Kubernetes Orchestrator によって導入されます。検証するウェブフックを手動で配備する手順を参照してください<block ref="07cb3cdda0599ec9f2e82062ecd12e82" category="inline-link-rx"></block>。無効なスナップショットマニフェストの例を探します<block ref="bceda34f0850fc68d82f08741abbc69e" category="inline-link-rx"></block>。</block>
   <block id="f535be08d3997f1a801b132862d99a5c" category="paragraph">以下に、スナップショットの操作に必要な構成要素と、スナップショットの作成方法および使用方法の例を示します。</block>
   <block id="551730f3a084f9dee63029647e815d3a" category="section-title">ステップ 1 ：ボリューム Snapshot クラスをセットアップする</block>
-  <block id="d7ca7162c394dee752c35d07a92823da" category="inline-link-macro">'VolumeSnapshotClass'</block>
   <block id="b91e58d7d80a51e4fa86b9ab27dca505" category="paragraph">ボリューム Snapshot を作成する前に、をセットアップします <block ref="c740b46915208e935cb2017421ec0264" category="inline-link-macro-rx"></block>。</block>
   <block id="4744d2c82c1c470ab40280b2ebba0c08" category="paragraph">「川」はアストラトライデントの CSI ドライバを指しています。「保持ポリシー」には「削除」または「保持」を指定できます。「 Retain 」に設定すると、「 VolumeSnapshot 」オブジェクトが削除されても、ストレージ・クラスタ上の基盤となる物理スナップショットは保持されます。</block>
   <block id="0ab6380edce0d0e7b8538ebf3215ebbd" category="section-title">手順 2 ：既存の PVC のスナップショットを作成します</block>
@@ -2351,7 +2344,6 @@
   <block id="91186d69835ccf9911e356f74938c539" category="list-text">複数の Astra Trident インスタンス間でバックエンドを使用する場合、各バックエンド構成ファイルの ONTAP バックエンドに異なる「 toragePrefix 」値を指定するか、 SolidFire バックエンドに異なる「 tenantname 」を使用する必要があります。Astra Trident は、 Astra Trident の他のインスタンスが作成したボリュームを検出できません。ONTAP または SolidFire バックエンドに既存のボリュームを作成しようとすると成功します。 Astra Trident は、ボリューム作成をべき等の操作として扱います。「 toragePrefix 」または「 tenantname 」が異なる場合は、同じバックエンド上に作成されたボリュームに名前の衝突が発生する可能性があります。</block>
   <block id="9bf4c601179068ff3574d2cf87536564" category="list-text">Astra Trident をインストールするときに (tridentctl または Trident Operator を使用 ) 、 tridentctl を使用して Astra Trident を管理するときは、「 KUBECONFIG 」環境変数が設定されていることを確認する必要があります。これは 'tridentctl が機能するべき Kubernetes クラスタを示すために必要です複数の Kubernetes 環境で作業する場合は、「 KBECONFIG 」ファイルが正確にソースされていることを確認する必要があります。</block>
   <block id="6d791d3b45515fd8619e489b938f39e8" category="inline-link">マウントオプション</block>
-  <block id="d4b9b9554fd820f43eae492d33e41167" category="inline-link">'torageClass'</block>
   <block id="a5c785ee36f0f2d14349653f744c8e3b" category="list-text">iSCSI PVS のオンラインスペース再生を実行するには、作業者ノード上の基盤となる OS がボリュームにマウントオプションを渡す必要があります。これは、「 discard 」を必要とする RHEL/RedHat CoreOS インスタンスに当てはまります<block ref="2ee633fb26bfccf07d490458d29f92a2" category="inline-link-rx"></block>; discard mountOption がに含まれていることを確認します<block ref="b44436f062a8f5a535d8cafcffeb70b2" category="inline-link-rx"></block> オンラインブロックの破棄をサポートするため。</block>
   <block id="c2ebda3702872aaa7ad44122f2343d7e" category="list-text">Kubernetes クラスタごとに複数の Astra Trident インスタンスがある場合、 Astra Trident は他のインスタンスと通信できず、作成した他のボリュームを検出できません。そのため、 1 つのクラスタ内で複数のインスタンスを実行している場合、予期しない動作が発生したり、誤ったりすることがあります。Kubernetes クラスタごとに Trident のインスタンスが 1 つだけ必要です。</block>
   <block id="294f8c33b7ccdbcbf422998b64c9c931" category="list-text">Trident がオフラインのときに Astra Trident ベースの「 torageClass 」オブジェクトが Kubernetes から削除された場合、 Astra Trident は、対応するストレージクラスをオンラインに戻ってもデータベースから削除しません。これらのストレージクラスは、「 tridentctl 」または REST API を使用して削除してください。</block>
@@ -3294,4 +3286,6 @@
   <block id="f21f22dde0e0692333a7a28cce456b08" category="sidebar">すべてのAstraドキュメント</block>
   <block id="f943c993a92ee9c5049454147c981fc1" category="paragraph">以下の「 torageClass 」定義は、上記のストレージプールを参照しています。parameters.selector`フィールドを使用すると'ボリュームのホストに使用される仮想プールをStorageClass'ごとに指定できますボリュームには、選択したプールで定義された要素があります。</block>
   <block id="08367c27454c4c2ca57c42b7991575f7" category="list-text">OpenShift 4.8、4.9、4.10、4.11</block>
+  <block id="5d40a2b5dc4a222fe46fe927bb2bb348" category="inline-link-macro">&lt;block ref="c67fd1b9999934afa248dfeb285a9a4191" prefix="" category='inline-code"/&gt;ベースの展開をカスタマイズします</block>
+  <block id="d874cb235ec1b03394e3293dc2c95d44" category="inline-link-macro">block ref="c67fd1b9999934afa248dfeb285a9a4191" prefix="" category='inline-code"/&gt;を使用してアップグレードします</block>
 </blocks>
