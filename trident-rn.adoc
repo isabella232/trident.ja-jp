@@ -51,16 +51,16 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 
 * Kubernetes：
 +
-** Kubernetes 1.25のサポートが追加されました。
+** Kubernetes 1.25のサポートが追加されました。Kubernetes 1.25にアップグレードする前に、Astra Tridentを22.10にアップグレードする必要があります。
 ** Trident Deployment and DemonSet用に別々のServiceAccount、ClusterRole、ClusterRoleBindingを追加して、今後の権限の強化を可能にしました。
-** のサポートが追加されました link:../trident-use/volume-share.html["ネームスペース間ボリューム共有"]。
+** のサポートが追加されました link:https://docs.netapp.com/us-en/trident/trident-use/volume-share.html["ネームスペース間ボリューム共有"]。
 
 
 * すべてTrident `ontap-*` ストレージドライバがONTAP REST APIで機能するようになりました。
 * 新しい演算子YAMLを追加しました (`bundle_post_1_25.yaml`）を使用しない場合 `PodSecurityPolicy` Kubernetes 1.25をサポートするため。
-* を追加しました link:../trident-reco/security-reco.html#use-linux-unified-key-setup-luks["LUKS暗号化ボリュームをサポートします"] の場合 `ontap-san` および `ontap-san-economy` ストレージドライバ。
+* を追加しました link:https://docs.netapp.com/us-en/trident/trident-reco/security-reco.html#enable-per-volume-host-side-encryption-using-linux-unified-key-setup-luks["LUKS暗号化ボリュームをサポートします"] の場合 `ontap-san` および `ontap-san-economy` ストレージドライバ。
 * Windows Server 2019ノードのサポートが追加されました。
-* を追加しました link:../trident-use/anf.html["WindowsノードでのSMBボリュームのサポート"] を使用する `azure-netapp-files` ストレージドライバ。
+* を追加しました link:https://docs.netapp.com/us-en/trident/trident-use/anf.html["WindowsノードでのSMBボリュームのサポート"] を使用する `azure-netapp-files` ストレージドライバ。
 
 
 

@@ -55,5 +55,7 @@ entries:
     url: "/trident-use/vol-expansion.html"
   - title: ボリュームをインポート
     url: "/trident-use/vol-import.html"
+- title: ネームスペース間でNFSボリュームを共有します
+  url: "/trident-use/volume-share.html"
 - title: Astra Trident を監視
   url: "/trident-use/monitor-trident.html"
