@@ -12,11 +12,12 @@ summary: 最新バージョンを実行していない場合は、以前のリ�
 
 
 [role="lead"]
-Astra Trident 22.07を実行していない場合は、以前のリリースのドキュメントを参照できます。
+Astra Trident 22.10を実行していない場合は、以前のリリースのドキュメントを参照できます。バージョンセレクタを使用して、最新バージョンと以前の4つのバージョンを切り替えることも、以下のリンクを使用することもできます。
 
 
 NOTE: 21.07 より前のリリースでは、レガシードキュメントサイトにリダイレクトされます。
 
+* https://docs.netapp.com/us-en/trident-2207/index.html["トライデント22.07年アストラト"^]
 * https://docs.netapp.com/us-en/trident-2204/index.html["トライデント22.04アストラ"^]
 * https://docs.netapp.com/us-en/trident-2201/index.html["Trident 22.01"^]
 * https://docs.netapp.com/us-en/trident-2110/index.html["Astra Trident 21.10"^]

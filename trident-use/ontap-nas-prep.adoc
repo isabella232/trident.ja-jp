@@ -4,7 +4,7 @@ permalink: trident-use/ontap-nas-prep.html
 keywords: trident backend, ontap nas, ontap-nas, ontap-nas-economy, ontap-nas-flexgroups 
 summary: ONTAP NAS ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。 
 ---
-= 準備
+= ONTAP NASドライバを使用してバックエンドを設定する準備をします
 :hardbreaks:
 :allow-uri-read: 
 :icons: font

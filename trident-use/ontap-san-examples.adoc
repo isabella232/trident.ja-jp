@@ -4,7 +4,7 @@ permalink: trident-use/ontap-san-examples.html
 keywords: map backends, storage classes, trident backend, ontap san, ontap san economy, options, storageclasses, fsx 
 summary: ONTAP SAN ドライバを作成して Astra Trident インストールで使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。 
 ---
-= 設定オプションと例
+= ONTAP のSAN構成オプションと例
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -176,6 +176,9 @@ NOTE: Astra Trident は 'ONTAP-SAN' ドライバを使用して作成された�
 
 
 | 「暗号化」 | 新しいボリュームでNetApp Volume Encryption（NVE）を有効にします。デフォルトは「false」です。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。NAEがバックエンドで有効になっている場合は、Astra TridentでプロビジョニングされたすべてのボリュームがNAEに有効になります。詳細については、以下を参照してください。 link:../trident-reco/security-reco.html["Astra TridentとNVEおよびNAEの相互運用性"]。 | いいえ 
+
+
+| `luksEncryption` | LUKS暗号化を有効にします。を参照してください link:../trident-reco/security-reco.html#Use-Linux-Unified-Key-Setup-(LUKS)["Linux Unified Key Setup（LUKS；統合キーセットアップ）を使用"]。 | "" 
 
 
 | 'ecurityStyle' | 新しいボリュームのセキュリティ形式 | 「 UNIX 」 

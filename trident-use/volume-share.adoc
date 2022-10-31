@@ -1,0 +1,153 @@
+---
+sidebar: sidebar 
+permalink: trident-use/volume-share.html 
+keywords: volref, volume reference, share, pvc, pv, nfs, namespace 
+summary:  
+---
+= ネームスペース間でNFSボリュームを共有します
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+Astra TridentVolumeReference CRを使用すると、1つ以上のKubernetesネームスペース間でReadWriteMany（RWX）NFSボリュームをセキュアに共有できます。このKubernetesネイティブ解決策 には、次のようなメリットがあります。
+
+* セキュリティを確保するために、複数のレベルのアクセス制御が可能です
+* すべてのTrident NFSボリュームドライバで動作
+* tridentctlやその他の非ネイティブのKubernetes機能に依存しません
+
+
+この図は、2つのKubernetesネームスペース間でのNFSボリュームの共有を示しています。
+
+image::cross-namespace-sharing.png[ネームスペース間共有の概念図。]
+
+
+
+== クイックスタート
+
+NFSボリューム共有はいくつかの手順で設定できます。
+
+[role="quick-margin-para"]
+ソースネームスペースの所有者は、ソースPVCのデータにアクセスする権限を付与します。
+
+[role="quick-margin-para"]
+クラスタ管理者が、デスティネーションネームスペースの所有者にTridentVolumeReference CRを作成する権限を付与します。
+
+[role="quick-margin-para"]
+宛先名前空間の所有者は、送信元PVCを参照するためにTridentVolumeReference CRを作成します。
+
+[role="quick-margin-para"]
+宛先名前空間の所有者は、送信元PVCからのデータソースを使用する下位PVCを作成します。
+
+
+
+== ソースネームスペースとデスティネーションネームスペースを設定します
+
+セキュリティを確保するために、ネームスペース間共有では、ソースネームスペースの所有者、クラスタ管理者、および宛先ネームスペースの所有者によるコラボレーションとアクションが必要です。ユーザロールは各手順で指定します。
+
+.手順
+. *ソース名前空間の所有者：* PVCを作成します (`pvc1`）をソースネームスペースに追加し、デスティネーションネームスペースとの共有権限を付与します (`namespace2`)を使用します `shareToNamespace` アノテーション
++
+[listing]
+----
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc1
+  namespace: namespace1
+  annotations:
+    trident.netapp.io/shareToNamespace: namespace2
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: trident-csi
+  resources:
+    requests:
+      storage: 100Gi
+----
++
+Astra TridentがPVとバックエンドのNFSストレージボリュームを作成
+
++
+[NOTE]
+====
+** カンマ区切りリストを使用して、複数の名前空間にPVCを共有できます。例： `trident.netapp.io/shareToNamespace: namespace2,namespace3,namespace4`。
+** を使用して、すべてのネームスペースに共有できます `*`。例： `trident.netapp.io/shareToNamespace: *`
+** PVCを更新してを含めることができます `shareToNamespace` アノテーションはいつでも作成できます。
+
+
+====
+. *クラスタ管理者：*カスタムロールとkubeconfigを作成して、デスティネーションネームスペースの所有者にTridentVolumeReference CRを作成する権限を付与します。
+. *デスティネーションネームスペース所有者：*ソースネームスペースを参照するデスティネーションネームスペースにTridentVolumeReference CRを作成します `pvc1`。
++
+[listing]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentVolumeReference
+metadata:
+  name: my-first-tvr
+  namespace: namespace2
+spec:
+  pvcName: pvc1
+  pvcNamespace: namespace1
+----
+. *宛先名前空間の所有者：* PVCを作成します (`pvc2`）をデスティネーションネームスペースに展開します (`namespace2`)を使用します `shareFromPVC` 送信元PVCを指定する注釈。
++
+[listing]
+----
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  annotations:
+    trident.netapp.io/shareFromPVC: namespace1/pvc1
+  name: pvc2
+  namespace: namespace2
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: trident-csi
+  resources:
+    requests:
+      storage: 100Gi
+----
++
+
+NOTE: 宛先PVCのサイズは、送信元PVCのサイズ以下である必要があります。
+
+
+
+Astra Tridentがを読み取り `shareFromPVC` デスティネーションPVCにアノテーションを設定し、ソースPVを参照するストレージリソースを持たない下位のボリュームとしてデスティネーションPVを作成し、ソースPVストレージリソースを共有します。宛先PVCとPVは、通常どおりバインドされているように見えます。
+
+
+
+== 共有ボリュームを削除
+
+複数のネームスペースで共有されているボリュームは削除できます。Tridentが、ソースネームスペースのボリュームへのアクセスを削除し、ボリュームを共有する他のネームスペースへのアクセスを維持します。ボリュームを参照するすべてのネームスペースが削除されると、Astra Tridentによってボリュームが削除されます。
+
+
+
+== tridentctl getを使用して下位のボリュームを照会します
+
+を使用する[`tridentctl` ユーティリティを使用すると、を実行できます `get` コマンドを使用して下位のボリュームを取得します。詳細については、リンク:./trident-reference/tridentctl.htmlを参照してください[`tridentctl` コマンドとオプション]。
+
+[listing]
+----
+Usage:
+  tridentctl get [option]
+----
+フラグ：
+
+* ``-h, --help`：ボリュームのヘルプ。
+* `--parentOfSubordinate string`：クエリを下位のソースボリュームに制限します。
+* `--subordinateOf string`:クエリをボリュームの下位に制限します。
+
+
+
+
+== 制限
+
+* Astra Tridentでは、デスティネーションネームスペースが共有ボリュームに書き込まれるのを防ぐことはできません。共有ボリュームのデータの上書きを防止するには、ファイルロックなどのプロセスを使用する必要があります。
+* を削除しても、送信元PVCへのアクセスを取り消すことはできません `shareToNamespace` または `shareFromNamepace` 注釈またはを削除します `TridentVolumeReference` CR。アクセスを取り消すには、下位PVCを削除する必要があります。
+* Snapshot、クローン、およびミラーリングは下位のボリュームでは実行できません。
+

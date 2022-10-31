@@ -107,6 +107,8 @@ Usage:
 * 'volume`: Astra Trident から 1 つ以上のボリュームを取得します
 
 
+`volume` フラグ：* ``-h, --help`：ボリュームのヘルプ。* `--parentOfSubordinate string`：クエリを下位のソースボリュームに制限します。* `--subordinateOf string`:クエリをボリュームの下位に制限します。
+
 
 
 == イメージ

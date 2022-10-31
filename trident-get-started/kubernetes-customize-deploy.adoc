@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-get-started/kubernetes-customize-deploy.html 
-keywords: deploy, trident, methods, operator, tridentctl, helm, attributes, customize, tridentorchestrator 
+keywords: deploy, trident, methods, operator, tridentctl, helm, attributes, customize, tridentorchestrator, smb, windows 
 summary: 'Trident オペレータは "TridentOrchestrator 仕様の属性を使用して "Astra Trident のインストール方法をカスタマイズできます' 
 ---
 = Trident オペレータの環境をカスタマイズ
@@ -11,9 +11,18 @@ summary: 'Trident オペレータは "TridentOrchestrator 仕様の属性を使�
 :imagesdir: ../media/
 
 
-Trident オペレータは 'TridentOrchestrator 仕様の属性を使用して 'Astra Trident のインストール方法をカスタマイズできます
+Tridentオペレータは、の属性を使用してAstra Tridentのインストールをカスタマイズできます `TridentOrchestrator` 仕様
 
-属性のリストについては、次の表を参照してください。
+インストールをカスタマイズする場合は、それ以上のカスタマイズが必要です `TridentOrchestrator` arguments allow、の使用を検討する必要があります `tridentctl` 必要に応じて変更できるカスタムYAMLマニフェストを生成します。
+
+
+WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra Tridentがインストールされているネームスペースを示します。このパラメータ * は、 Astra Trident のインストール後に更新できません * 。これを実行すると、が実行されます `TridentOrchestrator` ステータスをに変更します `Failed`。Astra Tridentは、ネームスペース間での移行を意図していません。
+
+
+
+== 設定オプション
+
+このテーブルの詳細 `TridentOrchestrator` 属性：
 
 [cols="3"]
 |===
@@ -24,6 +33,9 @@ Trident オペレータは 'TridentOrchestrator 仕様の属性を使用して '
 
 
 | 「バグ」 | Astra Trident のデバッグを有効にします | いいえ 
+
+
+| `windows` | をに設定します `true` Windowsワーカーノードへのインストールを有効にします。 | いいえ 
 
 
 | 「 IPv6 」 | IPv6 経由の Astra Trident をインストール | いいえ 
@@ -38,7 +50,7 @@ Trident オペレータは 'TridentOrchestrator 仕様の属性を使用して '
 | enableNodePrep | ワーカーノードの依存関係を自動的に管理（ * beta * ） | いいえ 
 
 
-| 「 autosupportImage 」を参照してください | AutoSupport テレメトリのコンテナイメージ | 「 NetApp/trident-autosupport ： 21.04.0 」 
+| 「 autosupportImage 」を参照してください | AutoSupport テレメトリのコンテナイメージ | 「NetApp/trident-autosupport：22.10.0」 
 
 
 | 「 autosupportProxy 」と入力します | AutoSupport テレメトリを送信するプロキシのアドレス / ポート | "http://proxy.example.com:8888"[] 
@@ -77,12 +89,17 @@ Trident オペレータは 'TridentOrchestrator 仕様の属性を使用して '
 | 「 nodePluginTolerations` 」 | Trident Node CSI プラグインを実行しているポッドに対する許容値を上書きします。POD .spec.Toleratations と同じ形式を使用します。 | デフォルトはありません。オプションです 
 |===
 
-IMPORTANT: 「 TridentOrchestrator 」では、どのネームスペース Astra Trident がにインストールされているかを示すために pec.namespace` が指定されています。このパラメータ * は、 Astra Trident のインストール後に更新できません * 。これを実行すると、「 TridentOrchestrator 」のステータスが「 Failed 」に変わります。Astra Trident は、ネームスペース間での移行を意図したものではありません。
+NOTE: ポッドパラメータの書式設定の詳細については、を参照してください link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/["ポッドをノードに割り当てます"^]。
 
 
-TIP: ポッドパラメータの書式設定の詳細については、を参照してください link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/["ポッドをノードに割り当てます"^]。
 
-「 TridentOrchestrator 」を定義するときに上記の属性を使用して、インストールをカスタマイズできます。次に例を示します。
+== 構成例
+
+上記の属性は、を定義するときに使用できます `TridentOrchestrator` をクリックして、インストールをカスタマイズします。
+
+.例1：基本的なカスタム構成
+====
+次に、基本的なカスタム構成の例を示します。
 
 [listing]
 ----
@@ -97,7 +114,10 @@ spec:
   imagePullSecrets:
   - thisisasecret
 ----
-次に、ノードセレクタを使用して Trident を導入する例を示します。
+====
+.例2：ノードセレクタを使用して導入します
+====
+次の例では、ノードセレクタを使用してTridentを導入する方法を示します。
 
 [listing]
 ----
@@ -113,4 +133,21 @@ spec:
   nodePluginNodeSelector:
     storage: netapp
 ----
-「 TridentOrchestrator 」引数で許可される範囲を超えてインストールをカスタマイズする場合は、「 tridentctl 」を使用して必要に応じて変更できるカスタム YAML マニフェストを生成することを検討してください。
+====
+.例3：Windowsワーカーノードに導入する
+====
+この例は、Windowsワーカーノードへの導入を示しています。
+
+[listing]
+----
+$ cat deploy/crds/tridentorchestrator_cr.yaml
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  windows: true
+----
+====

@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-reco/security-reco.html 
-keywords: security, chap, trident, namespace, nve, nae, encryption, volume encryption, aggregate encryption 
+keywords: security, chap, trident, namespace, nve, nae, encryption, volume encryption, aggregate encryption, luks, linux unified key setup, encryption 
 summary: ここに記載された推奨事項に従って、 Astra Trident のインストールを確実にセキュリティで保護してください。 
 ---
 = セキュリティ
@@ -11,7 +11,7 @@ summary: ここに記載された推奨事項に従って、 Astra Trident の�
 :imagesdir: ../media/
 
 
-ここに記載された推奨事項に従って、 Astra Trident のインストールを確実にセキュリティで保護してください。
+ここに記載された推奨事項を参考に、Astra Tridentのインストールを安全に行ってください。
 
 
 
@@ -45,7 +45,7 @@ CSI 以外のフロントエンドでは、ワーカーノード上のデバイ�
 
 
 
-== Astra TridentとNVEおよびNAEの相互運用性
+== NVEおよびNAEでAstra Tridentを使用する
 
 NetApp ONTAP は、保管データの暗号化を提供し、ディスクが盗難、返却、転用された場合に機密データを保護します。詳細については、を参照してください link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-encryption-concept.html["NetApp Volume Encryption の設定の概要"^]。
 
@@ -68,5 +68,86 @@ NAE対応バックエンドのAstra Tridentで作成されるボリュームは�
 バックエンド構成オプションの詳細については、以下を参照してください。
 
 * link:https://docs.netapp.com/us-en/trident/trident-use/ontap-san-examples.html["ONTAP のSAN構成オプション"]
-* link:https://docs.netapp.com/us-en/trident/trident-use/ontap-nas-examples.html["ONTAP NASの確認オプション"]
+* link:https://docs.netapp.com/us-en/trident/trident-use/ontap-nas-examples.html["ONTAP NASの構成オプション"]
+
+
+
+
+== Linux Unified Key Setup（LUKS；統合キーセットアップ）を使用したボリューム単位のホスト側暗号化を有効にする
+
+Linux Unified Key Setup（LUKS；ユニファイドキーセットアップ）を有効にして、Astra Trident上のONTAP SANおよびONTAP SANエコノミーボリュームを暗号化できます。Astra Tridentでは、で推奨されるとおり、LUKSによって暗号化されたボリュームがAES-XTS -原64定型とモードを使用します link:https://csrc.nist.gov/publications/detail/sp/800-38e/final["NIST"^]。
+
+ONTAP SANのバックエンド構成オプションの詳細については、を参照してください link:https://docs.netapp.com/us-en/trident/trident-use/ontap-san-examples.html["ONTAP のSAN構成オプション"]
+
+.作業を開始する前に
+* ワーカーノードにはcryptsetup 2.1以上がインストールされている必要があります。詳細については、を参照してください link:https://gitlab.com/cryptsetup/cryptsetup["Gitlab: cryptsetup"^]。
+* パフォーマンス上の理由から、ワーカーノードでAdvanced Encryption Standard New Instructions（AES-NI）をサポートすることを推奨します。AES-NIサポートを確認するには、次のコマンドを実行します。
++
+[listing]
+----
+grep "aes" /proc/cpuinfo
+----
++
+何も返されない場合、お使いのプロセッサはAES-NIをサポートしていません。AES-NIの詳細については、以下を参照してください。 link:https://www.intel.com/content/www/us/en/developer/articles/technical/advanced-encryption-standard-instructions-aes-ni.html["Intel：Advanced Encryption Standard Instructions（AES-NI）"^]。
+
+
+
+.手順
+. バックエンド構成でLUKS暗号化属性を定義します。
++
+[listing]
+----
+"storage": [
+    {
+        "labels":{"luks": "true"},
+        "zone":"us_east_1a",
+        "defaults": {
+            "luksEncryption": true
+        }
+    },
+    {
+        "labels":{"luks": "false"},
+        "zone":"us_east_1a",
+        "defaults": {
+            "luksEncryption": false
+        }
+    },
+]
+----
+. 使用 `parameters.selector` LUKS暗号化を使用してストレージプールを定義する方法。例：
++
+[listing]
+----
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: luks
+provisioner: netapp.io/trident
+parameters:
+  selector: "luks=true"
+  csi.storage.k8s.io/node-stage-secret-name: luks-\${pvc.name}
+  csi.storage.k8s.io/node-stage-secret-namespace: \${pvc.namespace}
+----
+. LUKSパスフレーズを含むシークレットを作成します。例：
++
+[listing]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: luks-pvc1
+stringData:
+  luks-passphrase-name: B
+  luks-passphrase: secretB
+  previous-luks-passphrase-name: A
+  previous-luks-passphrase: secretA
+----
+
+
+
+
+=== 制限
+
+* LUKS暗号化されたボリュームは、ONTAP 重複排除と圧縮を利用できません。
+* 現時点では、LUKSパスフレーズのローテーションはサポートされていません。パスフレーズを変更するには、PVC間でデータを手動でコピーします。
 

@@ -14,8 +14,25 @@ summary: サポートされるフロントエンド、バックエンド、お�
 サポートされるフロントエンド、バックエンド、およびホスト構成を確認することから始めましょう。
 
 
-NOTE: Trident が使用するポートについては、を参照してください link:../trident-reference/trident-ports.html["こちらをご覧ください"^]。
+NOTE: Trident が使用するポートについては、を参照してください link:../trident-reference/trident-ports.html["こちらをご覧ください"]。
 
+
+
+== Astra Tridentに関する重要な情報22.10
+
+* Astra Trident 22.10.*にアップグレードする前に、次の重要な情報をお読みください
+
+[WARNING]
+.<strong>Astra Tridentに関する重要な情報22.10</strong>
+====
+* TridentでKubernetes 1.25がサポートされるようになりました。Kubernetes 1.25にアップグレードする前に、Astra Trident 22.10にアップグレードする必要があります。
+* Astra Tridentは、SAN環境でマルチパス構成を厳密に使用するよう強制し、推奨値をに設定するようになりました `find_multipaths: no` multipath.confファイル内。
++
+非マルチパス構成またはを使用 `find_multipaths: yes` または `find_multipaths: smart` multipath.confファイルの値が原因でマウントが失敗します。Tridentはの使用を推奨しています `find_multipaths: no` 21.07リリース以降
+
+
+
+====
 
 
 == サポートされるフロントエンド（オーケストレーションツール）
@@ -23,7 +40,7 @@ NOTE: Trident が使用するポートについては、を参照してくださ
 Trident Astra は、次のような複数のコンテナエンジンとオーケストレーションツールをサポート
 
 * Anthosオンプレミス（VMware）とAnthos：ベアメタル1.9、1.10、1.11
-* Kubernetes 1.19 ~ 1.24
+* Kubernetes 1.20-1.25
 * Mirantis Kubernetes Engine 3.5
 * OpenShift 4.8、4.9、4.10、4.11
 
@@ -31,7 +48,7 @@ Trident Astra は、次のような複数のコンテナエンジンとオーケ
 Trident オペレータは、次のリリースでサポートされています。
 
 * Anthosオンプレミス（VMware）とAnthos：ベアメタル1.9、1.10、1.11
-* Kubernetes 1.19 ~ 1.24
+* Kubernetes 1.20-1.25
 * OpenShift 4.8、4.9、4.10、4.11
 
 
@@ -64,63 +81,63 @@ Astra Trident を使用するには、次のバックエンドを 1 つ以上サ
 
 
 | CSI Trident  a| 
-1.19～1.24
+1.20-1.25
  a| 
 いいえ
 
 
 
 | ボリューム Snapshot  a| 
-1.19～1.24
+1.20-1.25
  a| 
 いいえ
 
 
 
 | ボリューム Snapshot からの PVC  a| 
-1.19～1.24
+1.20-1.25
  a| 
 いいえ
 
 
 
 | iSCSI PV のサイズ変更  a| 
-1.19～1.24
+1.20-1.25
  a| 
 いいえ
 
 
 
 | ONTAP 双方向 CHAP  a| 
-1.19～1.24
+1.20-1.25
  a| 
 いいえ
 
 
 
 | 動的エクスポートポリシー  a| 
-1.19～1.24
+1.20-1.25
  a| 
 いいえ
 
 
 
 | Trident のオペレータ  a| 
-1.19～1.24
+1.20-1.25
  a| 
 いいえ
 
 
 
 | 自動ワーカーノード準備（ベータ版）  a| 
-1.19～1.24
+1.20-1.25
  a| 
 いいえ
 
 
 
 | CSI トポロジ  a| 
-1.19～1.24
+1.20-1.25
  a| 
 いいえ
 
@@ -163,80 +180,80 @@ Trident を使用するには、バックエンド構成でストレージシス
 | Kubernetes のバージョン | コンテナイメージ 
 
 
-| v1.19.0  a| 
-* NetApp / Trident：22.07.0
-* NetApp / Trident -autosupport：22.07
-* k81.gcr.io/sig-storage/csi-Provisioner ： v2.2.2
-* k83.GCR.IO/sig-storage/csi-attacher: v3.5.0.
-* k81.gcr.io/sig-storage/csi-resizer：v1.5.0
-* k83.gcr.io/sig-storage/csi-snapshotter ： v3.0.3
-* k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1
-* NetApp/trident-operator：22.07.0（オプション）
-
-
-
-
 | v1.20.0  a| 
-* NetApp / Trident：22.07.0
-* NetApp / Trident -autosupport：22.07
-* K83.GCR.IO/sig-storage/csi-Provisioner：v3.2.1
-* k83.GCR.IO/sig-storage/csi-attacher: v3.5.0.
-* k81.gcr.io/sig-storage/csi-resizer：v1.5.0
-* k81.gcr.io/sig-storage/csi-snapshotter：v6.0.1
-* k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1
-* NetApp/trident-operator：22.07.0（オプション）
+* ネットアップ/ Trident：22.10.0カスタム
+* NetApp / Trident -autosupport：22.10
+* k83.io/sig-storage/csi-Provisioner：v3.3.0
+* k8s .io/sig-storage/csi-attacher: v4.0.0
+* k81.io/sig-storage/csi-resizer：v1.6.0
+* k83.io/sig-storage/csi-snapshotter：v3.0.3
+* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* ネットアップ/ Tridentオペレータ：22.10.0（オプション）
 
 
 
 
 | v1.21.0  a| 
-* NetApp / Trident：22.07.0
-* NetApp / Trident -autosupport：22.07
-* K83.GCR.IO/sig-storage/csi-Provisioner：v3.2.1
-* k83.GCR.IO/sig-storage/csi-attacher: v3.5.0.
-* k81.gcr.io/sig-storage/csi-resizer：v1.5.0
-* k81.gcr.io/sig-storage/csi-snapshotter：v6.0.1
-* k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1
-* NetApp/trident-operator：22.07.0（オプション）
+* ネットアップ/ Trident：22.10.0カスタム
+* NetApp / Trident -autosupport：22.10
+* k83.io/sig-storage/csi-Provisioner：v3.3.0
+* k8s .io/sig-storage/csi-attacher: v4.0.0
+* k81.io/sig-storage/csi-resizer：v1.6.0
+* k83.io/sig-storage/csi-snapshotter：v3.0.3
+* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* ネットアップ/ Tridentオペレータ：22.10.0（オプション）
 
 
 
 
 | v1.22.0  a| 
-* NetApp / Trident：22.07.0
-* NetApp / Trident -autosupport：22.07
-* K83.GCR.IO/sig-storage/csi-Provisioner：v3.2.1
-* k83.GCR.IO/sig-storage/csi-attacher: v3.5.0.
-* k81.gcr.io/sig-storage/csi-resizer：v1.5.0
-* k81.gcr.io/sig-storage/csi-snapshotter：v6.0.1
-* k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1
-* NetApp/trident-operator：22.07.0（オプション）
+* ネットアップ/ Trident：22.10.0カスタム
+* NetApp / Trident -autosupport：22.10
+* k83.io/sig-storage/csi-Provisioner：v3.3.0
+* k8s .io/sig-storage/csi-attacher: v4.0.0
+* k81.io/sig-storage/csi-resizer：v1.6.0
+* k83.io/sig-storage/csi-snapshotter：v3.0.3
+* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* ネットアップ/ Tridentオペレータ：22.10.0（オプション）
 
 
 
 
 | v1.3.0  a| 
-* NetApp / Trident：22.07.0
-* NetApp / Trident -autosupport：22.07
-* K83.GCR.IO/sig-storage/csi-Provisioner：v3.2.1
-* k83.GCR.IO/sig-storage/csi-attacher: v3.5.0.
-* k81.gcr.io/sig-storage/csi-resizer：v1.5.0
-* k81.gcr.io/sig-storage/csi-snapshotter：v6.0.1
-* k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1
-* NetApp/trident-operator：22.07.0（オプション）
+* ネットアップ/ Trident：22.10.0カスタム
+* NetApp / Trident -autosupport：22.10
+* k83.io/sig-storage/csi-Provisioner：v3.3.0
+* k8s .io/sig-storage/csi-attacher: v4.0.0
+* k81.io/sig-storage/csi-resizer：v1.6.0
+* k83.io/sig-storage/csi-snapshotter：v3.0.3
+* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* ネットアップ/ Tridentオペレータ：22.10.0（オプション）
 
 
 
 
 | v1.24.0  a| 
-* NetApp / Trident：22.07.0
-* NetApp / Trident -autosupport：22.07
-* K83.GCR.IO/sig-storage/csi-Provisioner：v3.2.1
-* k83.GCR.IO/sig-storage/csi-attacher: v3.5.0.
-* k81.gcr.io/sig-storage/csi-resizer：v1.5.0
-* k81.gcr.io/sig-storage/csi-snapshotter：v6.0.1
-* k81.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1
-* NetApp/trident-operator：22.07.0（オプション）
+* ネットアップ/ Trident：22.10.0カスタム
+* NetApp / Trident -autosupport：22.10
+* k83.io/sig-storage/csi-Provisioner：v3.3.0
+* k8s .io/sig-storage/csi-attacher: v4.0.0
+* k81.io/sig-storage/csi-resizer：v1.6.0
+* k83.io/sig-storage/csi-snapshotter：v3.0.3
+* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* ネットアップ/ Tridentオペレータ：22.10.0（オプション）
+
+
+
+
+| v1.25.0  a| 
+* ネットアップ/ Trident：22.10.0カスタム
+* NetApp / Trident -autosupport：22.10
+* k83.io/sig-storage/csi-Provisioner：v3.3.0
+* k8s .io/sig-storage/csi-attacher: v4.0.0
+* k81.io/sig-storage/csi-resizer：v1.6.0
+* k83.io/sig-storage/csi-snapshotter：v3.0.3
+* k81.io/sig-storage/csi-node-driver-registrar: v2.5.1
+* ネットアップ/ Tridentオペレータ：22.10.0（オプション）
 
 
 |===

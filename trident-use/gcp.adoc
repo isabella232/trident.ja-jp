@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-use/gcp.html 
 keywords: trident backend, cloud volumes service for google cloud platform, Google Cloud Platform 
-summary: Cloud Volumes Service for Google Cloud を Astra Trident のバックエンドとして設定する方法を、提供されている構成例を使用して説明します。 
+summary: Cloud Volumes Service for Google CloudをAstra Tridentのバックエンドとして構成する方法を、提供されている構成例を使用して説明します。 
 ---
 = GCP バックエンドの CVS を設定します
 :hardbreaks:
@@ -11,30 +11,24 @@ summary: Cloud Volumes Service for Google Cloud を Astra Trident のバック�
 :imagesdir: ../media/
 
 
-提供されている構成例を使用して、ネットアップ Cloud Volumes Service （ CVS ） for Google Cloud Platform （ GCP ）を Astra Trident インストールのバックエンドとして設定する方法を説明します。
+提供されている設定例を使用して、ネットアップCloud Volumes Service （CVS）for Google Cloud Platform（GCP）をAstra Tridentインストールのバックエンドとして設定する方法を説明します。
+
+Astra Tridentは、デフォルトのCVSサービスタイプがonに設定されたボリュームをサポートしています https://cloud.google.com/architecture/partners/netapp-cloud-volumes/service-types["GCP"^]。Astra Tridentは、CVSサービスタイプで許可されている最小値に関係なく、100GiB未満のCVSボリュームをサポートしていません。したがって、Tridentは要求されたボリュームが最小サイズよりも小さい場合、自動的に100GiBのボリュームを作成します。
+
+[NOTE]
+====
+* 非本番環境のワークロード用に1TiB未満のボリュームを使用することを推奨します。
+* デフォルトのCVSサービスタイプを使用してバックエンドを導入する場合 `storageClass=software`で、関連するプロジェクト番号とプロジェクトIDについて、GCPのsub-1TiBボリューム機能にアクセスするためのサインアップを行います。これは Trident で sub-1TiB ボリュームのプロビジョニングに必要です。そうでない場合、ボリュームの作成*が失敗し、PVCが600GiB未満の場合。
+* link:https://docs.google.com/forms/d/e/1FAIpQLSc7_euiPtlV8bhsKWvwBl3gm9KUL4kOhD7lnbHC3LlQ7m02Dw/viewform["1TiB未満のボリュームにアクセスするには、サインアップします。"]
 
 
-NOTE: NetApp Cloud Volumes Service for Google Cloud では、サイズが 100GiB 未満の CVS パフォーマンスボリュームや 300GiB 未満の CVS ボリュームはサポートされていません。Trident は、要求されたボリュームが最小サイズより小さい場合、最小サイズのボリュームを自動的に作成します。
-
+====
 を設定して使用します https://cloud.netapp.com/cloud-volumes-service-for-gcp?utm_source=NetAppTrident_ReadTheDocs&utm_campaign=Trident["Cloud Volumes Service for Google Cloud"^] バックエンドには次のものが必要です。
 
 * ネットアップ CVS で設定された Google Cloud アカウント
 * Google Cloud アカウントのプロジェクト番号
 * 「 netappcloudvolumes .admin 」ロールを持つ Google Cloud サービスアカウント
 * CVS サービスアカウントの API キーファイル
-
-
-Astra Trident に、小規模なボリュームがデフォルトでサポートされるようになりました https://cloud.google.com/architecture/partners/netapp-cloud-volumes/service-type["GCP 上の CVS サービスタイプ"^]。「 torageClass=software 」で作成されたバックエンドの場合、ボリュームのプロビジョニングサイズは最小 300GiB になります。現在、 CVS ではこの機能が限定的な可用性で提供されており、テクニカルサポートは提供されていません。1TiB 未満のボリュームにアクセスするには、ユーザがサインアップする必要があります https://docs.google.com/forms/d/e/1FAIpQLSc7_euiPtlV8bhsKWvwBl3gm9KUL4kOhD7lnbHC3LlQ7m02Dw/viewform["こちらをご覧ください"^]。** 非本番 ** のワークロードでは 1TiB 未満のボリュームを使用することを推奨します。
-
-
-NOTE: デフォルトの CVS サービスタイプ（「 torageClass=software 」）を使用してバックエンドを導入する場合、該当するプロジェクト番号とプロジェクト ID について、 GCP の 1TiB 未満のボリューム機能へのアクセス権をユーザが取得する必要があります。これは Astra Trident で sub-1TiB 個のボリュームをプロビジョニングするために必要です。この条件を指定しない場合、 600 GiB 未満の PVC でボリュームの作成が失敗します。を使用して 1TiB 未満のボリュームへのアクセスを取得します https://docs.google.com/forms/d/e/1FAIpQLSc7_euiPtlV8bhsKWvwBl3gm9KUL4kOhD7lnbHC3LlQ7m02Dw/viewform["このフォーム"^]。
-
-デフォルトの CVS サービスレベル用に Astra Trident で作成されたボリュームは、次のようにプロビジョニングされます。
-
-* 300GiB 未満の PVC があると、 Astra Trident によって 300GiB の CVS ボリュームが作成されます。
-* 300GiB から 600GiB の PVC があると、 Astra Trident が要求されたサイズの CVS ボリュームを作成します。
-* 600GiB から 1TiB までの PVC の場合、 Astra Trident によって 1TiB の CVS ボリュームが作成されます。
-* 1TiB を超える PVC の場合、要求サイズの CVS ボリュームが Astra Trident に作成されます。
 
 
 

@@ -4,7 +4,7 @@ permalink: trident-use/ontap-nas-examples.html
 keywords: map backends, storage classes, trident backend, ontap-nas, ontap-nas-economy, ontap-nas-flexgroups, options, storageclasses, fsx 
 summary: ONTAP NAS ドライバを作成して Astra Trident インストールで使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。 
 ---
-= 設定オプションと例
+= ONTAP NASの設定オプションと例
 :hardbreaks:
 :allow-uri-read: 
 :icons: font

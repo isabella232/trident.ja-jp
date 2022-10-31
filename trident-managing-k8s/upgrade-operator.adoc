@@ -74,11 +74,11 @@ NOTE: ステータスに「更新中」と表示される場合は、続行す�
 +
 [listing]
 ----
-# Download the release required [21.01]
-mkdir 21.07.1
-cd 21.07.1
-wget https://github.com/NetApp/trident/releases/download/v21.07.1/trident-installer-21.07.1.tar.gz
-tar -xf trident-installer-21.07.1.tar.gz
+# Download the release required [22.10.0]
+mkdir 22.10.0
+cd 22.10.0
+wget https://github.com/NetApp/trident/releases/download/v22.10.0/trident-installer-22.10.0.tar.gz
+tar -xf trident-installer-22.10.0.tar.gz
 cd trident-installer
 kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml
 ----
@@ -134,7 +134,7 @@ kubectl patch tprov <trident-provisioner-name> -n <trident-namespace> --type=mer
 . クラスタを対象とした演算子をインストールします。
 +
 
-NOTE: クラスタを対象とした演算子をインストールすると、「 TridentProvisioner 」オブジェクトから「 TridentOrchestrator 」オブジェクトへの移行が開始され、「 TridentProvisioner 」オブジェクトと「 tridentProvisioner`CRD 」が削除され、 Astra Trident が使用中のクラスタを対象とした演算子のバージョンにアップグレードされます。次の例では、 Trident が 21.07.1 にアップグレードされています。
+NOTE: クラスタを対象としたオペレータをインストールすると、の移行が開始されます `TridentProvisioner` オブジェクトの移動先 `TridentOrchestrator` オブジェクトを削除します `TridentProvisioner` オブジェクトと `tridentprovisioner` CRD、およびAstra Tridentを、使用しているクラスタ対象オペレータのバージョンにアップグレードします。次の例では、Tridentを22.10.0にアップグレードしています。
 
 +
 
@@ -145,7 +145,7 @@ IMPORTANT: クラスタを対象とした演算子を使用して Astra Trident 
 ----
 #Ensure you are in the correct directory
 pwd
-/root/21.07.1/trident-installer
+/root/22.10.0/trident-installer
 
 #Install the cluster-scoped operator in the **same namespace**
 kubectl create -f deploy/bundle.yaml
@@ -176,7 +176,7 @@ kubectl describe torc trident | grep Message -A 3
 Message:                Trident installed
 Namespace:              trident
 Status:                 Installed
-Version:                v21.07.1
+Version:                v22.10.0
 ----
 
 
@@ -192,10 +192,10 @@ Helm ベースのオペレータインストレーションをアップグレー
 +
 [listing]
 ----
-helm upgrade <name> trident-operator-21.07.1.tgz
+helm upgrade <name> trident-operator-22.10.0.tgz
 ----
 +
-ここで 'trident-operator-21.07.tgz は ' アップグレード先のバージョンを反映しています
+ここで、 `trident-operator-22.10.0.tgz` アップグレード後のバージョンが反映されます。
 
 . Helm list を実行して ' グラフとアプリケーションのバージョンが両方ともアップグレードされていることを確認します
 
@@ -207,7 +207,7 @@ NOTE: アップグレード中に構成データを渡すには '--set' を使�
 
 [listing]
 ----
-helm upgrade <name> trident-operator-21.07.1-custom.tgz --set tridentDebug=true
+helm upgrade <name> trident-operator-22.10.0-custom.tgz --set tridentDebug=true
 ----
 tridentctl logsを実行すると'デバッグ・メッセージが表示されます
 
@@ -225,11 +225,11 @@ CSI Trident インスタンスが上記の前提条件を満たしている場�
 +
 [listing]
 ----
-# Download the release required [21.07.1]
-mkdir 21.07.1
-cd 21.07.1
-wget https://github.com/NetApp/trident/releases/download/v21.07.1/trident-installer-21.07.1.tar.gz
-tar -xf trident-installer-21.07.1.tar.gz
+# Download the release required [22.10.0]
+mkdir 22.10.0
+cd 22.10.0
+wget https://github.com/NetApp/trident/releases/download/v22.10.0/trident-installer-22.10.0.tar.gz
+tar -xf trident-installer-22.10.0.tar.gz
 cd trident-installer
 ----
 . マニフェストから「 tridentオーケストラ 」 CRD を作成します。
@@ -283,7 +283,7 @@ kubectl describe torc trident | grep Message -A 3
 Message:                Trident installed
 Namespace:              trident
 Status:                 Installed
-Version:                v21.07.1
+Version:                v22.10.0
 ----
 
 

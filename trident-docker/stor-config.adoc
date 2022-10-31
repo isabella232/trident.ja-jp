@@ -458,22 +458,16 @@ QoS の仕様
 
 == GCP 上の Cloud Volumes Service （ CVS ）構成
 
-Trident に、デフォルトの CVS サービスタイプが on に設定された小規模なボリュームがサポートされるようになりました https://cloud.google.com/architecture/partners/netapp-cloud-volumes/service-types["GCP"^]。「 torageClass=software 」で作成されたバックエンドの場合、ボリュームのプロビジョニングサイズは最小 300GiB になります。* 非本番環境のワークロード用に 1TiB 未満のボリュームを使用することを推奨 * 。現在、 CVS ではこの機能が限定的な可用性で提供されており、テクニカルサポートは提供されていません。
+Astra Tridentは、デフォルトのCVSサービスタイプがonに設定されたボリュームをサポートしています https://cloud.google.com/architecture/partners/netapp-cloud-volumes/service-types["GCP"^]。Astra Tridentは、CVSサービスタイプで許可されている最小値に関係なく、100GiB未満のCVSボリュームをサポートしていません。したがって、Tridentは要求されたボリュームが最小サイズよりも小さい場合、自動的に100GiBのボリュームを作成します。
+
+[NOTE]
+====
+* 非本番環境のワークロード用に1TiB未満のボリュームを使用することを推奨します。
+* デフォルトのCVSサービスタイプを使用してバックエンドを導入する場合 `storageClass=software`で、関連するプロジェクト番号とプロジェクトIDについて、GCPのsub-1TiBボリューム機能にアクセスするためのサインアップを行います。これは Trident で sub-1TiB ボリュームのプロビジョニングに必要です。そうでない場合、ボリュームの作成*が失敗し、PVCが600GiB未満の場合。
+* link:https://docs.google.com/forms/d/e/1FAIpQLSc7_euiPtlV8bhsKWvwBl3gm9KUL4kOhD7lnbHC3LlQ7m02Dw/viewform["1TiB未満のボリュームにアクセスするには、サインアップします。"]
 
 
-NOTE: 1TiB 未満のボリュームにアクセスするには、サインアップします https://docs.google.com/forms/d/e/1FAIpQLSc7_euiPtlV8bhsKWvwBl3gm9KUL4kOhD7lnbHC3LlQ7m02Dw/viewform["こちらをご覧ください"^]。
-
-
-WARNING: デフォルトの CVS サービスタイプ「 torageClass=software 」を使用してバックエンドを導入する場合は、該当するプロジェクト番号とプロジェクト ID の GCP の sub1TiB ボリューム機能へのアクセス権を取得する必要があります。これは Trident で sub-1TiB ボリュームのプロビジョニングに必要です。そうでない場合、ボリュームの作成に失敗します。 PVC が 600 GiB 未満の場合。を使用して 1TiB 未満のボリュームへのアクセスを取得します https://docs.google.com/forms/d/e/1FAIpQLSc7_euiPtlV8bhsKWvwBl3gm9KUL4kOhD7lnbHC3LlQ7m02Dw/viewform["このフォーム"^]。
-
-デフォルトの CVS サービスレベル用に Trident で作成されたボリュームは次のようにプロビジョニングされます。
-
-* 300GiB 未満の PVC があると、 Trident によって 300GiB の CVS ボリュームが作成されます。
-* 300GiB から 600GiB の PVC があると、 Trident が要求されたサイズの CVS ボリュームを作成します。
-* 600GiB から 1TiB までの PVC の場合、 Trident によって 1TiB の CVS ボリュームが作成されます。
-* 1TiB を超える PVC の場合、 Trident は要求サイズの CVS ボリュームを作成します。
-
-
+====
 GCP で CVS を使用する場合は、グローバル構成の値に加えて、次のオプションも使用できます。
 
 [cols="3*"]
@@ -545,9 +539,6 @@ CVS ボリュームに使用される GCP ネットワーク。デフォルト�
 |===
 
 NOTE: 共有 VPC ネットワークを使用する場合は、「 ProjectNumber 」と「 hostProjectNumber 」の両方を指定する必要があります。その場合、「 ProjectNumber 」はサービスプロジェクト、「 hostProjectNumber 」はホストプロジェクトです。
-
-
-NOTE: NetApp Cloud Volumes Service for GCP では、サイズが 100GiB 未満の CVS パフォーマンスボリュームや 300GiB 未満の CVS ボリュームはサポートされていません。アプリケーションの導入を容易にするために、ボリュームサイズが小さすぎる場合は、 Trident によって最小サイズのボリュームが自動的に作成されます。
 
 GCP で CVS を使用している場合は、これらのデフォルトのボリュームオプション設定を使用できます。
 

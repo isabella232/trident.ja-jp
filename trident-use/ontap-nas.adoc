@@ -4,7 +4,7 @@ permalink: trident-use/ontap-nas.html
 keywords: trident backend, ontap nas, ontap-nas, ontap-nas-economy, ontap-nas-flexgroups, fsx 
 summary: ONTAP NAS ドライバを使用した ONTAP バックエンドの設定について説明します。 
 ---
-= バックエンドに ONTAP NAS ドライバを設定します
+= ONTAP NASバックエンドを設定します
 :hardbreaks:
 :allow-uri-read: 
 :icons: font

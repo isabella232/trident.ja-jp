@@ -18,7 +18,63 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 
 
 
-== 2007年22月の新機能
+== 22.10の新機能
+
+* Astra Trident 22.10.*にアップグレードする前に、次の重要な情報をお読みください
+
+[WARNING]
+.<strong>Astra Tridentに関する重要な情報22.10</strong>
+====
+* TridentでKubernetes 1.25がサポートされるようになりました。Kubernetes 1.25にアップグレードする前に、Astra Tridentを22.10にアップグレードする必要があります。
+* Astra Tridentは、SAN環境でマルチパス構成を厳密に使用するよう強制し、推奨値をに設定するようになりました `find_multipaths: no` multipath.confファイル内。
++
+非マルチパス構成またはを使用 `find_multipaths: yes` または `find_multipaths: smart` multipath.confファイルの値が原因でマウントが失敗します。Tridentはの使用を推奨しています `find_multipaths: no` 21.07リリース以降
+
+
+
+====
+
+
+=== の修正
+
+* を使用して作成されたONTAP バックエンドに固有の修正済み問題 `credentials` 22.07.0アップグレード時にフィールドがオンラインにならない（link:https://github.com/NetApp/trident/issues/759["問題 #759"^]）。
+* **Docker：**一部の環境でDockerボリュームプラグインが起動しないという問題 が修正されました（link:https://github.com/NetApp/trident/issues/548["問題 #548"^] および link:https://github.com/NetApp/trident/issues/760["問題 #760"^]）。
+* レポートノードに属するデータLIFのサブセットのみが公開されるように、ONTAP SANバックエンド固有の修正されたSLM問題 。
+* ボリュームの接続時にiSCSI LUNの不要なスキャンが発生するというパフォーマンス問題 の問題が修正されました。
+* Astra Trident iSCSIワークフロー内で詳細な再試行を削除し、失敗の時間を短縮。外部の再試行間隔も短縮
+* 対応するマルチパスデバイスがすでにフラッシュされている場合にiSCSIデバイスのフラッシュ時にエラーが返される修正問題 。
+
+
+
+
+=== 拡張機能
+
+* Kubernetes：
++
+** Kubernetes 1.25のサポートが追加されました。
+** Trident Deployment and DemonSet用に別々のServiceAccount、ClusterRole、ClusterRoleBindingを追加して、今後の権限の強化を可能にしました。
+** のサポートが追加されました link:../trident-use/volume-share.html["ネームスペース間ボリューム共有"]。
+
+
+* すべてTrident `ontap-*` ストレージドライバがONTAP REST APIで機能するようになりました。
+* 新しい演算子YAMLを追加しました (`bundle_post_1_25.yaml`）を使用しない場合 `PodSecurityPolicy` Kubernetes 1.25をサポートするため。
+* を追加しました link:../trident-reco/security-reco.html#use-linux-unified-key-setup-luks["LUKS暗号化ボリュームをサポートします"] の場合 `ontap-san` および `ontap-san-economy` ストレージドライバ。
+* Windows Server 2019ノードのサポートが追加されました。
+* を追加しました link:../trident-use/anf.html["WindowsノードでのSMBボリュームのサポート"] を使用する `azure-netapp-files` ストレージドライバ。
+
+
+
+
+=== 非推奨
+
+* **Kubernetes：**サポートされている最小Kubernetesを1.20に更新。
+* Astraデータストア(Aads )ドライバを削除
+* のサポートが削除されました `yes` および `smart` のオプション `find_multipaths` iSCSI用にワーカーノードのマルチパスを設定する場合。
+
+
+
+
+== 2007年22月の変更
 
 
 

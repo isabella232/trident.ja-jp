@@ -9,6 +9,11 @@ entries:
   entries:
   - title: ANF バックエンドを設定します
     url: "/trident-use/anf.html"
+    entries:
+    - title: ANFバックエンドを設定するための準備をします
+      url: "/trident-use/anf-prep.html"
+    - title: ANF設定オプションと例
+      url: "/trident-use/anf-examples.html"
   - title: GCP バックエンドの CVS を設定します
     url: "/trident-use/gcp.html"
   - title: NetApp HCI または SolidFire バックエンドを設定します
@@ -16,16 +21,16 @@ entries:
   - title: バックエンドに ONTAP SAN ドライバを設定します
     url: "/trident-use/ontap-san.html"
     entries:
-    - title: 準備
+    - title: バックエンドにONTAP SANドライバを設定する準備をします
       url: "/trident-use/ontap-san-prep.html"
-    - title: 設定オプションと例
+    - title: ONTAP のSAN構成オプションと例
       url: "/trident-use/ontap-san-examples.html"
   - title: バックエンドに ONTAP NAS ドライバを設定します
     url: "/trident-use/ontap-nas.html"
     entries:
-    - title: 準備
+    - title: ONTAP NASドライバを使用してバックエンドを設定する準備をします
       url: "/trident-use/ontap-nas-prep.html"
-    - title: 設定オプションと例
+    - title: ONTAP NASの設定オプションと例
       url: "/trident-use/ontap-nas-examples.html"
   - title: Amazon FSX for NetApp ONTAP で Astra Trident を使用
     url: "/trident-use/trident-fsx.html"
