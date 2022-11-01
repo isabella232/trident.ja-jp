@@ -2950,9 +2950,6 @@
   <block id="179000091737641056a247acf2c59dc4" category="list-text">手動：Tridentがを提供 <block ref="6f41841ada1b81573b5db54c90d512f9" category="inline-link-macro-rx"></block> オペレータのインストールおよび関連オブジェクトの作成に使用できるファイル。</block>
   <block id="c9ffe59301b588bbc33bb004cfd312ee" category="section-title">Tridentオペレータを導入し、Helmを使用してAstra Tridentをインストール</block>
   <block id="3f44baef815aed01560d6764fea49ebc" category="cell">CVSボリュームに使用するGCPネットワーク</block>
-  <block id="6aef79110fe63635bdb5452c3a08ead7" category="section-title">Cloud Managerを使用してKubernetesクラスタを管理</block>
-  <block id="865ec115b3646a7d42d94fd0d6f64ca5" category="inline-link-macro">Cloud Managerを使用してTridentを活用</block>
-  <block id="70ef9708acb1f72d9648f625edc21d7b" category="paragraph">を使用 <block ref="d2f4359fbe3252be146a4ecb37a6f90e" category="inline-link-macro-rx"></block>では、最新バージョンのAstra Tridentにアップグレードし、ストレージクラスを追加して管理し、作業環境に接続し、Cloud Backup Service を使用して永続的ボリュームをバックアップすることができます。Cloud Managerは、Tridentオペレータを使用して、手動またはHelmを使用したAstra Tridentの導入をサポートしています。</block>
   <block id="1ea1b160621872df5909653ebde1bf7f" category="paragraph">既存のバックエンドを更新して、クレデンシャルベースの方式と証明書ベースの方式を切り替えることができます。ただし、一度にサポートされる認証方法は1つだけです。別の認証方式に切り替えるには、バックエンド設定から既存の方式を削除する必要があります。</block>
   <block id="7335992f174c029a990442aca68aacbd" category="admonition">クレデンシャルと証明書の両方を*指定しようとすると、バックエンドの作成が失敗し、構成ファイルに複数の認証方法が指定されているというエラーが表示されます。</block>
   <block id="d1914bc190cdc3bc9eee6db0c81021bc" category="section-title">ノードサービスの検出</block>
@@ -3436,4 +3433,7 @@
   <block id="adbfe36f6399f2846983b2901604a962" category="list-text">を追加しました <block ref="40be42d37bc6014716dcd0a1d368ffb5" category="inline-link-macro-rx"></block> を使用する<block ref="bc5779a2d33eeb1304bae57f15920cfc" prefix=" " category="inline-code"></block> ストレージドライバ。</block>
   <block id="f18a50f02f48551895d57b81dd288142" category="sidebar">ネームスペース間でNFSボリュームを共有します</block>
   <block id="0da21d7acd742e8c3833231cf3efcc96" category="list-text">ネットアップ/ Trident：22.10.0</block>
+  <block id="9a2de1d16997c70e89ecdce4706d67c3" category="section-title">BlueXP（旧Cloud Manager）を使用したKubernetesクラスタの管理</block>
+  <block id="fd1117c82327fbe8671f26e897ceb8f4" category="inline-link-macro">Astra TridentでBlueXPを使用</block>
+  <block id="a76a1e164520105317267dc41b95e8ce" category="paragraph">を使用 <block ref="f8c16e8c21124ccc028d2db7fd32a98f" category="inline-link-macro-rx"></block>では、最新バージョンのAstra Tridentにアップグレードし、ストレージクラスを追加して管理し、作業環境に接続し、Cloud Backup Service を使用して永続的ボリュームをバックアップすることができます。BlueXPは、Tridentオペレータを使用したAstra Tridentの導入を、手動またはHelmを使用してサポートしています。</block>
 </blocks>
