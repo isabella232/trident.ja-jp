@@ -3275,7 +3275,6 @@
   <block id="2e44d2afbcec8f918cac113e6d910eea" category="list-text">TridentでKubernetes 1.25がサポートされるようになりました。Kubernetes 1.25にアップグレードする前に、Astra Trident 22.10にアップグレードする必要があります。</block>
   <block id="fad7d46c16a119c490585d8b68fa0362" category="list-text">Kubernetes 1.20-1.25</block>
   <block id="c44c116f5202cffacd119919cb69b584" category="paragraph">1.20-1.25</block>
-  <block id="8d28c32954820bd19810ae81faecbaba" category="list-text">ネットアップ/ Trident：22.10.0カスタム</block>
   <block id="5a4f48c8cc996f58dfb69f6cb6322641" category="list-text">NetApp / Trident -autosupport：22.10</block>
   <block id="205eb4d1f3dd4b4a46f8ebda17a6987a" category="list-text">k83.io/sig-storage/csi-Provisioner：v3.3.0</block>
   <block id="5a072765b8872c7a5b301bf26a7bcf6f" category="list-text">k8s .io/sig-storage/csi-attacher: v4.0.0</block>
@@ -3436,4 +3435,5 @@
   <block id="9f010916f3fa12858d7cef8c56ca32b2" category="list-text">を追加しました <block ref="79adf4cd0300f2fbcb360d22cc5460b5" category="inline-link-macro-rx"></block> の場合<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block> および<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block> ストレージドライバ。</block>
   <block id="adbfe36f6399f2846983b2901604a962" category="list-text">を追加しました <block ref="40be42d37bc6014716dcd0a1d368ffb5" category="inline-link-macro-rx"></block> を使用する<block ref="bc5779a2d33eeb1304bae57f15920cfc" prefix=" " category="inline-code"></block> ストレージドライバ。</block>
   <block id="f18a50f02f48551895d57b81dd288142" category="sidebar">ネームスペース間でNFSボリュームを共有します</block>
+  <block id="0da21d7acd742e8c3833231cf3efcc96" category="list-text">ネットアップ/ Trident：22.10.0</block>
 </blocks>

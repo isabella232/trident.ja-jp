@@ -181,7 +181,7 @@ Trident を使用するには、バックエンド構成でストレージシス
 
 
 | v1.20.0  a| 
-* ネットアップ/ Trident：22.10.0カスタム
+* ネットアップ/ Trident：22.10.0
 * NetApp / Trident -autosupport：22.10
 * k83.io/sig-storage/csi-Provisioner：v3.3.0
 * k8s .io/sig-storage/csi-attacher: v4.0.0
@@ -194,7 +194,7 @@ Trident を使用するには、バックエンド構成でストレージシス
 
 
 | v1.21.0  a| 
-* ネットアップ/ Trident：22.10.0カスタム
+* ネットアップ/ Trident：22.10.0
 * NetApp / Trident -autosupport：22.10
 * k83.io/sig-storage/csi-Provisioner：v3.3.0
 * k8s .io/sig-storage/csi-attacher: v4.0.0
@@ -207,7 +207,7 @@ Trident を使用するには、バックエンド構成でストレージシス
 
 
 | v1.22.0  a| 
-* ネットアップ/ Trident：22.10.0カスタム
+* ネットアップ/ Trident：22.10.0
 * NetApp / Trident -autosupport：22.10
 * k83.io/sig-storage/csi-Provisioner：v3.3.0
 * k8s .io/sig-storage/csi-attacher: v4.0.0
@@ -220,7 +220,7 @@ Trident を使用するには、バックエンド構成でストレージシス
 
 
 | v1.3.0  a| 
-* ネットアップ/ Trident：22.10.0カスタム
+* ネットアップ/ Trident：22.10.0
 * NetApp / Trident -autosupport：22.10
 * k83.io/sig-storage/csi-Provisioner：v3.3.0
 * k8s .io/sig-storage/csi-attacher: v4.0.0
@@ -233,7 +233,7 @@ Trident を使用するには、バックエンド構成でストレージシス
 
 
 | v1.24.0  a| 
-* ネットアップ/ Trident：22.10.0カスタム
+* ネットアップ/ Trident：22.10.0
 * NetApp / Trident -autosupport：22.10
 * k83.io/sig-storage/csi-Provisioner：v3.3.0
 * k8s .io/sig-storage/csi-attacher: v4.0.0
@@ -246,7 +246,7 @@ Trident を使用するには、バックエンド構成でストレージシス
 
 
 | v1.25.0  a| 
-* ネットアップ/ Trident：22.10.0カスタム
+* ネットアップ/ Trident：22.10.0
 * NetApp / Trident -autosupport：22.10
 * k83.io/sig-storage/csi-Provisioner：v3.3.0
 * k8s .io/sig-storage/csi-attacher: v4.0.0
