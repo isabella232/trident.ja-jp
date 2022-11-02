@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: trident-reference/trident-ports.html 
+permalink: trident-reference/ports.html 
 keywords: astra trident, port, ports 
 summary: Trident が通信するポートの詳細をご確認ください。 
 ---

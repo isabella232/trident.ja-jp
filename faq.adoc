@@ -311,7 +311,7 @@ Trident では、デフォルトでマウントオプションが Kubernetes で
 
 === ONTAP を使用して Astra Trident 経由でボリューム暗号化を設定する方法を教えてください。
 
-Trident によってプロビジョニングされたボリュームで暗号化を設定するには、バックエンド定義ファイルの暗号化パラメータを使用します。詳細については、以下を参照してください。 link:../trident-reco/security-reco.html["Astra TridentとNVEおよびNAEの相互運用性"]
+Trident によってプロビジョニングされたボリュームで暗号化を設定するには、バックエンド定義ファイルの暗号化パラメータを使用します。詳細については、以下を参照してください。 link:https://docs.netapp.com/us-en/trident/trident-reco/security-reco.html#use-astra-trident-with-nve-and-nae["Astra TridentとNVEおよびNAEの相互運用性"]
 
 
 

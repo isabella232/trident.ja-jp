@@ -3194,7 +3194,6 @@
   <block id="06c4db929b729ddf158ceb5cc15b122b" category="inline-link-macro">ONTAP のSAN構成オプション</block>
   <block id="ba6742159ffc869573e70b67c08565e4" category="list-text"><block ref="ba6742159ffc869573e70b67c08565e4" category="inline-link-macro-rx"></block></block>
   <block id="6d9333eebb991611d29a4f8b7cc21fec" category="cell">新しいボリュームでNetApp Volume Encryption（NVE）を有効にします。デフォルトは「false」です。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。NAEがバックエンドで有効になっている場合は、Astra TridentでプロビジョニングされたすべてのボリュームがNAEに有効になります。詳細については、以下を参照してください。 <block ref="00deada136b55f176f599153703cf50d" category="inline-link-macro-rx"></block>。</block>
-  <block id="e6c17edbc8ff331856d1dc0b7667563c" category="paragraph">Trident によってプロビジョニングされたボリュームで暗号化を設定するには、バックエンド定義ファイルの暗号化パラメータを使用します。詳細については、以下を参照してください。 <block ref="00deada136b55f176f599153703cf50d" category="inline-link-macro-rx"></block></block>
   <block id="911675212835161abe9bce3f33c70af0" category="paragraph">新しいボリュームでNetApp Volume Encryption（NVE）を有効にします。デフォルトは「false」です。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。</block>
   <block id="1811ba2842625864e8f6233e19051566" category="paragraph">NAEがバックエンドで有効になっている場合は、Astra TridentでプロビジョニングされたすべてのボリュームがNAEに有効になります。</block>
   <block id="cd6eb5bfdf9299ea3a76e2eb822c8293" category="paragraph">詳細については、以下を参照してください。 <block ref="00deada136b55f176f599153703cf50d" category="inline-link-macro-rx"></block>。</block>
@@ -3436,4 +3435,5 @@
   <block id="9a2de1d16997c70e89ecdce4706d67c3" category="section-title">BlueXP（旧Cloud Manager）を使用したKubernetesクラスタの管理</block>
   <block id="fd1117c82327fbe8671f26e897ceb8f4" category="inline-link-macro">Astra TridentでBlueXPを使用</block>
   <block id="a76a1e164520105317267dc41b95e8ce" category="paragraph">を使用 <block ref="f8c16e8c21124ccc028d2db7fd32a98f" category="inline-link-macro-rx"></block>では、最新バージョンのAstra Tridentにアップグレードし、ストレージクラスを追加して管理し、作業環境に接続し、Cloud Backup Service を使用して永続的ボリュームをバックアップすることができます。BlueXPは、Tridentオペレータを使用したAstra Tridentの導入を、手動またはHelmを使用してサポートしています。</block>
+  <block id="6ce33e8f1e198bf1c3583bc5ef789b75" category="paragraph">Trident によってプロビジョニングされたボリュームで暗号化を設定するには、バックエンド定義ファイルの暗号化パラメータを使用します。詳細については、以下を参照してください。 <block ref="3260a21902518174ce8d9bfef42be276" category="inline-link-macro-rx"></block></block>
 </blocks>
