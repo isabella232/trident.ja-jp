@@ -85,7 +85,7 @@ kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.1
 . マニフェストを使用して、名前空間を対象とした演算子を削除します。この手順を完了するには、名前空間を対象とした演算子を配備するために使用する 'undle.yaml ファイルが必要です。から 'bundle.yaml を取得できます https://github.com/NetApp/trident/blob/stable/v20.10/deploy/bundle.yaml["Trident リポジトリ"^]。適切なブランチを使用するようにしてください。
 +
 
-NOTE: 名前空間スコープ演算子を削除してクラスタスコープ演算子をインストールする前に、 Trident のインストールパラメータを必要に応じて変更します（たとえば、「 tridentImage 」、「 autosupportImage 」、プライベートイメージリポジトリ、「 imagePullSecrets 」の値を変更します）。更新可能なパラメータの一覧については、を参照してください link:../trident-deploy-k8s/kubernetes-customize-deploy.html["パラメータのリスト"^]。
+NOTE: Tridentのインストールパラメータに必要な変更を加えます（の値の変更など） `tridentImage`、 `autosupportImage`、プライベートイメージリポジトリ、および提供 `imagePullSecrets`)名前空間を対象とした演算子を削除した後、クラスタを対象とした演算子をインストールする前。更新可能なパラメータの一覧については、を参照してください link:https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-customize-deploy.html#configuration-options["設定オプション"]。
 
 +
 [listing]

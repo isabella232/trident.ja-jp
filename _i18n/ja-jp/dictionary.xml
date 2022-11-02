@@ -810,8 +810,6 @@
   <block id="683d018a2f7c70469fd74ba0eeae2a79" category="list-text">Trident インストーラに付属のマニフェストを使用して、「 TridentOrchestrator 」 CRD を作成します。</block>
   <block id="ede3d39a1c5211985b126b3f166cf601" category="inline-link">Trident リポジトリ</block>
   <block id="af39f09efb6e7b7133433dff92d0fffe" category="list-text">マニフェストを使用して、名前空間を対象とした演算子を削除します。この手順を完了するには、名前空間を対象とした演算子を配備するために使用する 'undle.yaml ファイルが必要です。から 'bundle.yaml を取得できます<block ref="1403b813895a8a78c447fca96240f2ac" category="inline-link-rx"></block>。適切なブランチを使用するようにしてください。</block>
-  <block id="5451265740f1553dff7af7814faa5277" category="inline-link-macro">パラメータのリスト</block>
-  <block id="8afea862003d4f613fcffecc022fb20c" category="admonition">名前空間スコープ演算子を削除してクラスタスコープ演算子をインストールする前に、 Trident のインストールパラメータを必要に応じて変更します（たとえば、「 tridentImage 」、「 autosupportImage 」、プライベートイメージリポジトリ、「 imagePullSecrets 」の値を変更します）。更新可能なパラメータの一覧については、を参照してください <block ref="e5ef433069537d0999d9cf3f906affdb" category="inline-link-macro-rx"></block>。</block>
   <block id="5fbede7820945c99130183fd2fd0f4b3" category="paragraph">この段階で 'trident-operator-xxxxxxxxxxxxxxx Pod が削除されます</block>
   <block id="86463d362af5835ff8c3fd6587fbd24f" category="list-text">（オプション）インストールパラメータを変更する必要がある場合は、「 TridentProvisioner 」の仕様を更新します。これらの変更には、コンテナイメージをからプルするためのプライベートイメージレジストリの変更、デバッグログの有効化、イメージプルシークレットの指定などがあります。</block>
   <block id="df486b34cec5fdfba24de79fe6b388d4" category="list-text">クラスタを対象とした演算子をインストールします。</block>
@@ -3436,4 +3434,6 @@
   <block id="fd1117c82327fbe8671f26e897ceb8f4" category="inline-link-macro">Astra TridentでBlueXPを使用</block>
   <block id="a76a1e164520105317267dc41b95e8ce" category="paragraph">を使用 <block ref="f8c16e8c21124ccc028d2db7fd32a98f" category="inline-link-macro-rx"></block>では、最新バージョンのAstra Tridentにアップグレードし、ストレージクラスを追加して管理し、作業環境に接続し、Cloud Backup Service を使用して永続的ボリュームをバックアップすることができます。BlueXPは、Tridentオペレータを使用したAstra Tridentの導入を、手動またはHelmを使用してサポートしています。</block>
   <block id="6ce33e8f1e198bf1c3583bc5ef789b75" category="paragraph">Trident によってプロビジョニングされたボリュームで暗号化を設定するには、バックエンド定義ファイルの暗号化パラメータを使用します。詳細については、以下を参照してください。 <block ref="3260a21902518174ce8d9bfef42be276" category="inline-link-macro-rx"></block></block>
+  <block id="cae73b6a00921ef48cee176b0d4336fe" category="inline-link-macro">設定オプション</block>
+  <block id="094d2b2ef4b98bdb0943b10cc4e305f4" category="admonition">Tridentのインストールパラメータに必要な変更を加えます（の値の変更など）<block ref="d771848c80f96e5954a8658655cf79d7" prefix=" " category="inline-code"></block>、<block ref="7ecc687ea7566f05fd13fde7be607bfc" prefix=" " category="inline-code"></block>、プライベートイメージリポジトリ、および提供<block ref="0d9b54b29da54379cca6b8782b9faae5" prefix=" " category="inline-code"></block>)名前空間を対象とした演算子を削除した後、クラスタを対象とした演算子をインストールする前。更新可能なパラメータの一覧については、を参照してください <block ref="d752d8869a42e1b0fd341b92b54677e0" category="inline-link-macro-rx"></block>。</block>
 </blocks>
