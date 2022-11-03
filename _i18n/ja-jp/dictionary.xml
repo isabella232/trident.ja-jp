@@ -2955,14 +2955,12 @@
   <block id="6a3314aee95c1c78527e5f122976ec80" category="paragraph">Tridentは、TridentノードCRの各ノードで有効になっているサービスも特定します。検出されたサービスを表示するには、次のコマンドを使用します。</block>
   <block id="2b6ab5193160f5eaca51526b15f27e3a" category="admonition">ノードサービス検出で検出されたサービスが特定されますが、サービスが適切に設定されていることは保証されませ逆に、検出されたサービスがない場合も、ボリュームのマウントが失敗する保証はありません。</block>
   <block id="a8a2b2d9e5637b41609ebc0c72058699" category="list-text">1.19 ~ 1.24を実行するKubernetesクラスタ。</block>
-  <block id="3bb4e1a94d47c9447ecf5ab6ce7c23de" category="cell">クラスタ管理LIFまたはSVM管理LIFのIPアドレス：シームレスなMetroCluster スイッチオーバーを実現するには、SVM管理LIFを指定する必要があります。この機能は* tech preview *です。</block>
   <block id="66896c99fb06e0b6c86498b249f8217a" category="cell">要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します。</block>
   <block id="67183086f9356a825023b7315f5c3b99" category="cell">ONTAP REST API を使用するためのブーリアンパラメータ。*テクニカルプレビュー*はMetroCluster ではサポートされていません。</block>
   <block id="6c1cf09676baae03b976277c6c163155" category="admonition-title">&lt;code&gt;useREST&lt;/code&gt;の考慮事項</block>
   <block id="cc000fddfbaaf7d7224962be55624657" category="list-text">「 useREST 」は **tech preview** として提供されています。これはテスト環境では推奨され、本番ワークロードでは推奨されません。「 true 」に設定すると、 Astra Trident は ONTAP REST API を使用してバックエンドと通信します。この機能を使用するには、ONTAP 9.10以降が必要です。また ' 使用する ONTAP ログイン・ロールには ONTAP アプリケーションへのアクセス権が必要ですこれは ' 事前に定義された vsadmin ロールと cluster-admin ロールによって満たされます</block>
   <block id="747fac2d713255095ea0ae3786ea4b77" category="list-text">「useREST」はMetroCluster ではサポートされていません。</block>
   <block id="412427d9207c4cc4b01539aff3c50e7c" category="cell">「ネットワーク機能」</block>
-  <block id="183f3ea9e133b02a796a810dda5e539e" category="cell">クラスタ管理LIFまたはSVM管理LIFのIPアドレス：シームレスなMetroCluster スイッチオーバーを実現するには、SVM管理LIFを指定する必要があります。この機能は**tech preview**です。</block>
   <block id="6dc4cb19f2792a3eadfa64d4b4b6d177" category="paragraph">すべてのKubernetesワーカーノードに適切なNFSツールをインストールしておく必要があります。を参照してください <block ref="f1f954e59a21e3ffe189e77dd2ee9f86" category="inline-link-macro-rx"></block> 詳細：</block>
   <block id="6adbf3424e5de1b4e2baad3b4d632c4a" category="paragraph">既存のバックエンドを更新して、別の認証方法を使用したり、クレデンシャルをローテーションしたりできます。これはどちらの方法でも機能します。ユーザ名とパスワードを使用するバックエンドは証明書を使用するように更新できますが、証明書を使用するバックエンドはユーザ名とパスワードに基づいて更新できます。これを行うには、既存の認証方法を削除して、新しい認証方法を追加する必要があります。次に'必要なパラメータを含む更新されたbackend.jsonファイルを使用して'tridentctl backend updateを実行します</block>
   <block id="da5e3ce6518bd669264e1e0768c2d9f1" category="paragraph">すべてのKubernetesワーカーノードに適切なiSCSIツールをインストールしておく必要があります。を参照してください <block ref="f1f954e59a21e3ffe189e77dd2ee9f86" category="inline-link-macro-rx"></block> 詳細：</block>
@@ -3437,4 +3435,5 @@
   <block id="cae73b6a00921ef48cee176b0d4336fe" category="inline-link-macro">設定オプション</block>
   <block id="094d2b2ef4b98bdb0943b10cc4e305f4" category="admonition">Tridentのインストールパラメータに必要な変更を加えます（の値の変更など）<block ref="d771848c80f96e5954a8658655cf79d7" prefix=" " category="inline-code"></block>、<block ref="7ecc687ea7566f05fd13fde7be607bfc" prefix=" " category="inline-code"></block>、プライベートイメージリポジトリ、および提供<block ref="0d9b54b29da54379cca6b8782b9faae5" prefix=" " category="inline-code"></block>)名前空間を対象とした演算子を削除した後、クラスタを対象とした演算子をインストールする前。更新可能なパラメータの一覧については、を参照してください <block ref="d752d8869a42e1b0fd341b92b54677e0" category="inline-link-macro-rx"></block>。</block>
   <block id="66f2c42a4ca561f5472459301bc7d096" category="list-text">ONTAP ドライバの自動MetroCluster スイッチオーバー検出機能が一般提供されるようになりました。</block>
+  <block id="0ae86fe6c7f12cff95cb90a50097ca60" category="cell">クラスタ管理LIFまたはSVM管理LIFのIPアドレス：シームレスなMetroCluster スイッチオーバーを実現するには、SVM管理LIFを指定する必要があります。</block>
 </blocks>
