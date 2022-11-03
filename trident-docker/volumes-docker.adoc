@@ -11,6 +11,7 @@ summary: ボリュームを作成するには、必要に応じて Astra Trident
 :imagesdir: ../media/
 
 
+[role="lead"]
 必要に応じて Astra Trident ドライバ名を指定した標準の「 DOcker volume 」コマンドを使用すると、ボリュームの作成、クローニング、削除を簡単に行うことができます。
 
 

@@ -12,17 +12,25 @@ summary: Trident の REST API を使用する場合は、 REST エンドポイ�
 
 
 [role="lead"]
-間 link:tridentctl.html["tridentctl コマンドとオプション"^] Trident の REST API を操作するには簡単です。 REST エンドポイントは必要に応じて直接使用できます。
+間 link:tridentctl.html["tridentctl コマンドとオプション"] Trident REST APIを使用するには、RESTエンドポイントを直接使用する方法が最も簡単です。
 
-これは、 Kubernetes 以外の環境で、 Astra Trident をスタンドアロンバイナリとして使用する高度なインストールに役立ちます。
 
-セキュリティを強化するために、 Astra Trident の「 RE ST API 」は、ポッド内で実行される場合のデフォルトで localhost に制限されています。この動作を変更するには、ポッド構成で Astra Trident の「 -address 」引数を設定する必要があります。
+
+== REST APIを使用する状況
+
+REST APIは、Kubernetes以外の環境でAstra Tridentをスタンドアロンバイナリとして使用する高度なインストールに役立ちます。
+
+セキュリティ強化のため、Astra Tridentをぜひご利用ください `REST API` ポッド内で実行されている場合は、デフォルトでlocalhostに制限されます。この動作を変更するには、Astra Tridentを設定する必要があります `-address` 引数をポッド構成で指定します。
+
+
+
+== REST APIを使用する
 
 API は次のように機能します。
 
 
 
-== 取得
+=== 取得
 
 * get<trident-address>/trident/v1/<object-type>: そのタイプのすべてのオブジェクトを一覧表示します。
 * get<trident-address>/trident/v1/< オブジェクトタイプ >/< オブジェクト名 >: 名前付きオブジェクトの詳細を取得します。
@@ -30,7 +38,7 @@ API は次のように機能します。
 
 
 
-== 投稿（ Post ）
+=== 投稿（ Post ）
 
 'POST <trident-address>/trident/v1/<object-type>` ：指定した型のオブジェクトを作成します。
 
@@ -40,7 +48,7 @@ API は次のように機能します。
 
 
 
-== 削除
+=== 削除
 
 `D eleet<trident-address>/trident/v1/< オブジェクトタイプ >/< オブジェクト名 >` ：名前付きリソースを削除します。
 

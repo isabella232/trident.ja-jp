@@ -11,6 +11,7 @@ summary: Astra Trident 構成で使用できる設定オプションを確認し
 :imagesdir: ../media/
 
 
+[role="lead"]
 Astra Trident 構成で使用できる設定オプションを確認してください。
 
 
@@ -371,9 +372,9 @@ Element ソフトウェア（ NetApp HCI / SolidFire ）を使用する場合は
 
 
 | 「エンドポイント」  a| 
-https://<login>:<password>@<mvip>/json-rpc/<element-version>[]
+\ https://<login>:<password>@<mvip>/json-rpc/<element-version>
  a| 
-https://admin:admin@192.168.160.3/json-rpc/8.0[]
+\ https://admin:admin@192.168.160.3/json-rpc/8.0
 
 
 

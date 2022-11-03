@@ -11,7 +11,12 @@ summary: Trident がドライバ用のボリュームスナップショットの
 :imagesdir: ../media/
 
 
+[role="lead"]
 Trident がドライバ用のボリュームスナップショットの作成をどのように処理するかについては、こちらをご覧ください。
+
+
+
+== ボリュームSnapshotの作成方法について説明します
 
 * 「 ONTAP-NAS」 、「 ONTAP-SAN」 、「 GCP-CVS 」、「 azure-NetApp-files 」ドライバの場合、各永続ボリューム（ PV ）は FlexVol にマッピングされます。その結果、ボリューム Snapshot はネットアップ Snapshot として作成されます。NetApp のスナップショット・テクノロジーは ' 競合するスナップショット・テクノロジーよりも高い安定性 ' 拡張性 ' リカバリ性 ' パフォーマンスを提供しますSnapshot コピーは、作成時とストレージスペースの両方で非常に効率的です。
 * 「 ONTAP-NAS-flexgroup 」ドライバの場合、各永続ボリューム（ PV ）は FlexGroup にマッピングされます。その結果、ボリューム Snapshot は NetApp FlexGroup Snapshot として作成されます。NetApp のスナップショット・テクノロジーは ' 競合するスナップショット・テクノロジーよりも高い安定性 ' 拡張性 ' リカバリ性 ' パフォーマンスを提供しますSnapshot コピーは、作成時とストレージスペースの両方で非常に効率的です。

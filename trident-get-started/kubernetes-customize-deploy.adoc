@@ -11,6 +11,7 @@ summary: 'Trident オペレータは "TridentOrchestrator 仕様の属性を使�
 :imagesdir: ../media/
 
 
+[role="lead"]
 Tridentオペレータは、の属性を使用してAstra Tridentのインストールをカスタマイズできます `TridentOrchestrator` 仕様
 
 インストールをカスタマイズする場合は、それ以上のカスタマイズが必要です `TridentOrchestrator` arguments allow、の使用を検討する必要があります `tridentctl` 必要に応じて変更できるカスタムYAMLマニフェストを生成します。

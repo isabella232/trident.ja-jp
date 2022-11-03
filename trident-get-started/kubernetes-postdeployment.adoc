@@ -11,6 +11,7 @@ summary: Astra Trident の導入が完了したら、バックエンドの作成
 :imagesdir: ../media/
 
 
+[role="lead"]
 Astra Trident の導入が完了したら、バックエンドの作成、ストレージクラスの作成、ボリュームのプロビジョニング、ポッドでのボリュームのマウントを実行できます。
 
 

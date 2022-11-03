@@ -11,6 +11,7 @@ summary: Kubernetesポッドのセキュリティ標準（PSS）とポッドの�
 :imagesdir: ../media/
 
 
+[role="lead"]
 Kubernetesポッドのセキュリティ標準（PSS）とポッドのセキュリティポリシー（PSP）によって、権限レベルが定義され、ポッドの動作が制限されます。また、OpenShift Security Context Constraints（SCC）でも、OpenShift Kubernetes Engine固有のポッド制限を定義します。このカスタマイズを行うために、Astra Tridentはインストール時に特定の権限を有効にします。次のセクションでは、Astra Tridentによって設定された権限の詳細を説明します。
 
 

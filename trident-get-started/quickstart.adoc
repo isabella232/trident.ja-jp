@@ -11,7 +11,14 @@ summary: Kubernetes の使用を開始したばかりの場合は、手順に従
 :imagesdir: ../media/
 
 
-ネットアップでは、リクエストに応じてすぐに使用できるラボイメージを提供しています link:https://www.netapp.com/us/try-and-buy/test-drive/index.aspx["ネットアップのテスト用ドライブ"^]。テストドライブは、 3 ノードの Kubernetes クラスタと Astra Trident がインストールおよび設定されたサンドボックス環境を提供します。Astra Trident をよく理解し、機能を調べるのに最適な方法です。
+[role="lead"]
+ネットアップでは、リクエストに応じてすぐに使用できるラボイメージを提供しています link:https://www.netapp.com/us/try-and-buy/test-drive/index.aspx["ネットアップのテスト用ドライブ"^]。
+
+
+
+== 試乗について学びます
+
+テストドライブは、 3 ノードの Kubernetes クラスタと Astra Trident がインストールおよび設定されたサンドボックス環境を提供します。Astra Trident をよく理解し、機能を調べるのに最適な方法です。
 
 もう 1 つのオプションは、を参照することです link:https://kubernetes.io/docs/setup/independent/install-kubeadm/["kubeadm インストールガイド"] Kubernetes が提供します。
 

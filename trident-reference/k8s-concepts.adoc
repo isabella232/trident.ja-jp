@@ -11,4 +11,5 @@ summary: Kubernetes システムの構成要素の詳細をご確認ください
 :imagesdir: ../media/
 
 
+[role="lead"]
 のコンポーネントの詳細については、を参照してください https://kubernetes.io/docs/concepts/["Kubernetes システム"^]。

@@ -11,6 +11,7 @@ summary: Astra Trident と Docker を使用する際の既知の問題に関す�
 :imagesdir: ../media/
 
 
+[role="lead"]
 Astra Trident と Docker を使用する際の既知の問題と制限事項について説明しています。
 
 

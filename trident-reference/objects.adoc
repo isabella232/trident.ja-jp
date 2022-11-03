@@ -11,6 +11,7 @@ summary: Kubernetes と Trident 、 Trident とストレージ、 Kubernetes と
 :imagesdir: ../media/
 
 
+[role="lead"]
 リソースオブジェクトの読み取りと書き込みを行うことで、 REST API を使用して Kubernetes や Trident を操作できます。Kubernetes と Trident 、 Trident とストレージ、 Kubernetes とストレージの関係を決定するリソースオブジェクトがいくつかあります。これらのオブジェクトの中には Kubernetes で管理されるものと Trident で管理されるものがあります。
 
 

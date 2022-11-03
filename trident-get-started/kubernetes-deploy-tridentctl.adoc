@@ -11,15 +11,9 @@ summary: tridentctl を使用して Astra Trident を導入できます。
 :imagesdir: ../media/
 
 
-を使用して、Astra Tridentを導入できます `tridentctl`。
+[role="lead"]
+を使用して、Astra Tridentを導入できます `tridentctl`。をよく理解しておくことをお勧めします link:../trident-concepts/intro.html["基本概念"]。をカスタマイズします `tridentctl` 配置については、を参照してください link:kubernetes-customize-deploy-tridentctl.html["tridentctl 展開をカスタマイズします"]。
 
-[NOTE]
-====
-* をまだ理解していない場合は、を参照してください link:../trident-concepts/intro.html["基本概念"]今こそ、そのための絶好の機会です。
-* をカスタマイズします `tridentctl` 配置については、を参照してください link:kubernetes-customize-deploy-tridentctl.html["tridentctl 展開をカスタマイズします"]。
-
-
-====
 
 
 == Astra Tridentに関する重要な情報22.10
@@ -37,6 +31,10 @@ summary: tridentctl を使用して Astra Trident を導入できます。
 
 
 ====
+
+
+== 前提条件を確認する
+
 Astra Trident を導入するには、次の前提条件を満たしている必要があります。
 
 * サポート対象のKubernetesクラスタに対するすべての権限。

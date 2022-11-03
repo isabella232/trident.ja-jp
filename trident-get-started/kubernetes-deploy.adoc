@@ -11,6 +11,7 @@ summary: Trident の導入には、 Trident のオペレータまたは tridentc
 :imagesdir: ../media/
 
 
+[role="lead"]
 Trident の導入には、 Trident のオペレータまたは tridentctl を使用できます。
 
 
@@ -41,7 +42,7 @@ NOTE: 22.04 リリース以降、 Astra Trident がインストールされる�
 
 
 
-=== Trident のオペレータが必要な理由
+=== Tridentのオペレータが対応するタイミング
 
 。 link:kubernetes-deploy-operator.html["Trident オペレータ"^] は、 Astra Trident のリソースを動的に管理し、セットアップフェーズを自動化する優れた方法です。いくつかの前提条件を満たす必要があります。を参照してください link:requirements.html["要件"^]。
 
@@ -84,15 +85,15 @@ NOTE: クラスタがサポート対象外のバージョンにアップグレ�
 
 
 
-=== Helm を使用する必要があるのはなぜですか？
+=== Helmを使用する状況
 
 Helm を使用して管理している他のアプリケーションが Astra Trident 21.01 以降である場合は、 Helm を使用して導入を管理することもできます。
 
 
 
-=== tridenctl はいつ使用すればよいですか。
+=== tridenctlを使用する場合
 
-既存の導入環境をにアップグレードする必要がある場合や、高度にカスタマイズする場合は、のを参照してください link:kubernetes-deploy-tridentctl.html["Tridentctl"^]。これは、従来の方法であった Astra Trident を導入する方法です。
+既存の環境をにアップグレードする必要がある場合や、高度にカスタマイズする場合は、の使用を検討してください link:kubernetes-deploy-tridentctl.html["Tridentctl"^]。これは、従来の方法であった Astra Trident を導入する方法です。
 
 
 

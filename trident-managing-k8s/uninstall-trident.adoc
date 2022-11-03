@@ -11,6 +11,7 @@ summary: Astra Trident のインストール方法に応じて、複数の方法
 :imagesdir: ../media/
 
 
+[role="lead"]
 Astra Trident のインストール方法に応じて、複数の方法でアンインストールできます。
 
 

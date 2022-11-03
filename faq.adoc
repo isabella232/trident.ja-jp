@@ -11,6 +11,7 @@ summary: Trident が提供する Astra のインストール、設定、アッ�
 :imagesdir: ../media/
 
 
+[role="lead"]
 Trident が提供する Astra のインストール、設定、アップグレード、トラブルシューティングに関する FAQ を掲載しています。
 
 

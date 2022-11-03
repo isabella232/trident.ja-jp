@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-get-started/kubernetes-customize-deploy-tridentctl.html 
 keywords: deploy, astra trident, methods, operator, tridentctl, helm, attributes, customize, tridentorchestrator 
-summary: Trident のインストーラでは、属性をカスタマイズできます。 
+summary: Astra Tridentインストーラを使用して、導入をカスタマイズできます。 
 ---
 = tridentctl 展開をカスタマイズします
 :hardbreaks:
@@ -11,7 +11,14 @@ summary: Trident のインストーラでは、属性をカスタマイズでき
 :imagesdir: ../media/
 
 
-Trident インストーラを使用して属性をカスタマイズできます。たとえば、 Trident イメージをプライベートリポジトリにコピーした場合、 -trident-image' を使用してイメージ名を指定できます。Trident イメージと必要な CSI サイドカーイメージをプライベートリポジトリにコピーした場合は、 --image_registry' スイッチを使用してリポジトリの場所を指定することをお勧めします。この場合、形式は「 <registry fqdn>[:port] 」です。
+[role="lead"]
+Astra Tridentインストーラを使用して、導入をカスタマイズできます。
+
+
+
+== インストーラの詳細を確認してください
+
+Astra Tridentインストーラを使用して、属性をカスタマイズできます。たとえば、Tridentイメージをプライベートリポジトリにコピーした場合は、を使用してイメージ名を指定できます `--trident-image`。Tridentイメージと必要なCSIサイドカーイメージをプライベートリポジトリにコピーした場合は、を使用してリポジトリの場所を指定することを推奨します `--image-registry` スイッチ。の形式を指定します `<registry FQDN>[:port]`。
 
 通常の「 /var/lib/kubelet 」以外のパスに「 kubelet 」がデータを保持している Kubernetes の配布を使用する場合は、「 --kubelet -dir 」を使用して代替パスを指定できます。
 

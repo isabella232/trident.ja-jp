@@ -11,7 +11,12 @@ summary: Trident 環境で Element バックエンドを作成して使用する
 :imagesdir: ../media/
 
 
+[role="lead"]
 Astra Trident は、 ONTAP クラスタとの通信に使用する 5 つの ONTAP ストレージドライバを提供します。各ドライバーがボリュームの作成、アクセス制御、機能をどのように処理するかについて、詳細をご覧ください。
+
+
+
+== ONTAP ストレージドライバについて説明します
 
 [cols="5"]
 |===

@@ -11,6 +11,7 @@ summary: Astra Trident の導入時には、ここに示す推奨事項を使用
 :imagesdir: ../media/
 
 
+[role="lead"]
 Astra Trident の導入時には、ここに示す推奨事項を使用してください。
 
 

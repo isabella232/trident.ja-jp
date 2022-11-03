@@ -11,6 +11,7 @@ summary: 既存の Astra Trident インストールは、オペレータが簡�
 :imagesdir: ../media/
 
 
+[role="lead"]
 既存の Astra Trident インストールは、オペレータが簡単にアップグレードできます。
 
 オペレータを使用してアップグレードするには、次の条件を満たしている必要があります。
@@ -19,7 +20,7 @@ summary: 既存の Astra Trident インストールは、オペレータが簡�
 * CRD ベースの Trident をインストールしている必要があります。19.07 以降のすべてのリリースを表します。CSI ベースのインストールを使用している場合は、 CRD ベースのインストールを使用している可能性があります。
 * CSI Trident をアンインストールしても、インストールからのメタデータが保持されている場合は、オペレータを使用してアップグレードできます。
 * 特定の Kubernetes クラスタ内のすべてのネームスペースに存在する Trident のは、 1 つの Astra だけです。
-* を実行する Kubernetes クラスタを使用する必要があります link:requirements.html["バージョン1.19～1.24"^]。
+* を実行する Kubernetes クラスタを使用する必要があります link:../trident-get-started/requirements.html["サポートされるKubernetesバージョン"]。
 * アルファスナップショットの CRD が存在する場合は、 tridentctl を使用して削除してください。これにより、アルファスナップショット仕様の CRD が削除されます。削除または移行が必要な既存のスナップショットについては、を参照してください https://netapp.io/2020/01/30/alpha-to-beta-snapshots/["この blog"^]。
 
 

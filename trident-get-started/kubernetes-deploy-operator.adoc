@@ -11,14 +11,8 @@ summary: Trident のオペレータが、 Astra Trident を導入できます。
 :imagesdir: ../media/
 
 
-Tridentのオペレータが、Astra Tridentを導入できます。Tridentオペレータは、次のいずれかの方法で導入できます。
-
-* Tridentの使用 link:https://artifacthub.io/packages/helm/netapp-trident/trident-operator["Helmチャート"^]：Helm ChartがTridentオペレータを導入し、Tridentをワンステップでインストールします。
-* 手動：Tridentがを提供 link:https://github.com/NetApp/trident/blob/master/deploy/bundle.yaml["バンドル.yaml"^] オペレータのインストールおよび関連オブジェクトの作成に使用できるファイル。
-
-
-
-TIP: をまだ理解していない場合は、を参照してください link:../trident-concepts/intro.html["基本概念"^]今こそ、そのための絶好の機会です。
+[role="lead"]
+Tridentのオペレータが、Astra Tridentを導入できます。
 
 
 
@@ -37,6 +31,23 @@ TIP: をまだ理解していない場合は、を参照してください link:
 
 
 ====
+
+
+== Tridentのオペレータ導入オプション
+
+Tridentオペレータは、次のいずれかの方法で導入できます。
+
+* Tridentの使用 link:https://artifacthub.io/packages/helm/netapp-trident/trident-operator["Helmチャート"^]：Helm ChartがTridentオペレータを導入し、Tridentをワンステップでインストールします。
+* 手動：Tridentがを提供 link:https://github.com/NetApp/trident/blob/master/deploy/bundle.yaml["バンドル.yaml"^] オペレータのインストールおよび関連オブジェクトの作成に使用できるファイル。
+
+
+
+TIP: をまだ理解していない場合は、を参照してください link:../trident-concepts/intro.html["基本概念"^]今こそ、そのための絶好の機会です。
+
+
+
+== 前提条件を確認する
+
 Astra Trident を導入するには、次の前提条件を満たしている必要があります。
 
 * Kubernetes 1.19~1.24を実行するサポート対象のKubernetesクラスタに対するすべての権限が必要です。
@@ -101,7 +112,7 @@ Helm チャートの一部である `values] の .yaml ファイルには、キ�
 
 
 
-== Trident オペレータを手動で導入
+== Tridentオペレータを手動で導入し、Tridentをインストール
 
 Trident のオペレータを手動で導入するには、以下の手順を実行します。
 

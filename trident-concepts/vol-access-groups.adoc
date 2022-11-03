@@ -11,10 +11,15 @@ summary: Trident がボリュームアクセスグループをどのように使
 :imagesdir: ../media/
 
 
+[role="lead"]
 Trident がどのように活用されているかをご確認ください https://docs.netapp.com/us-en/element-software/concepts/concept_solidfire_concepts_volume_access_groups.html["ボリュームアクセスグループ"^]。
 
 
 NOTE: CHAP を使用する場合は、このセクションを無視してください。 CHAP では、管理を簡易化し、以下に説明する拡張の制限を回避することが推奨されます。また、 CSI モードで Astra Trident を使用している場合は、このセクションを無視できます。Astra Trident は、強化された CSI プロビジョニングツールとしてインストールされた場合、 CHAP を使用します。
+
+
+
+== ボリュームアクセスグループについて学習する
 
 Astra Trident は、ボリュームアクセスグループを使用して、プロビジョニングするボリュームへのアクセスを制御できるCHAP が無効になっている場合、構成に 1 つ以上のアクセスグループ ID を指定しない限り、「 trident 」というアクセスグループが検索されます。
 
