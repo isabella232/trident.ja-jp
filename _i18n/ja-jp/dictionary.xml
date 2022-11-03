@@ -3436,4 +3436,5 @@
   <block id="6ce33e8f1e198bf1c3583bc5ef789b75" category="paragraph">Trident によってプロビジョニングされたボリュームで暗号化を設定するには、バックエンド定義ファイルの暗号化パラメータを使用します。詳細については、以下を参照してください。 <block ref="3260a21902518174ce8d9bfef42be276" category="inline-link-macro-rx"></block></block>
   <block id="cae73b6a00921ef48cee176b0d4336fe" category="inline-link-macro">設定オプション</block>
   <block id="094d2b2ef4b98bdb0943b10cc4e305f4" category="admonition">Tridentのインストールパラメータに必要な変更を加えます（の値の変更など）<block ref="d771848c80f96e5954a8658655cf79d7" prefix=" " category="inline-code"></block>、<block ref="7ecc687ea7566f05fd13fde7be607bfc" prefix=" " category="inline-code"></block>、プライベートイメージリポジトリ、および提供<block ref="0d9b54b29da54379cca6b8782b9faae5" prefix=" " category="inline-code"></block>)名前空間を対象とした演算子を削除した後、クラスタを対象とした演算子をインストールする前。更新可能なパラメータの一覧については、を参照してください <block ref="d752d8869a42e1b0fd341b92b54677e0" category="inline-link-macro-rx"></block>。</block>
+  <block id="66f2c42a4ca561f5472459301bc7d096" category="list-text">ONTAP ドライバの自動MetroCluster スイッチオーバー検出機能が一般提供されるようになりました。</block>
 </blocks>

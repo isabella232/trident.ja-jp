@@ -61,6 +61,7 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 * を追加しました link:https://docs.netapp.com/us-en/trident/trident-reco/security-reco.html#enable-per-volume-host-side-encryption-using-linux-unified-key-setup-luks["LUKS暗号化ボリュームをサポートします"] の場合 `ontap-san` および `ontap-san-economy` ストレージドライバ。
 * Windows Server 2019ノードのサポートが追加されました。
 * を追加しました link:https://docs.netapp.com/us-en/trident/trident-use/anf.html["WindowsノードでのSMBボリュームのサポート"] を使用する `azure-netapp-files` ストレージドライバ。
+* ONTAP ドライバの自動MetroCluster スイッチオーバー検出機能が一般提供されるようになりました。
 
 
 
