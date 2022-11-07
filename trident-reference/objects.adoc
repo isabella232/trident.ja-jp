@@ -222,7 +222,7 @@ excludeStoragePools' パラメータを使用して、 Trident がプロビジ�
 | allowVolumeExpansion の略 | ブール値 | true false | PVC サイズの拡張のサポートをイネーブルまたはディセーブルにします | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-, gcvs, azure-netapp-files | 1.11 以上 
 
 
-| volumeBindingMode のようになりました | 文字列 | 即時、 WaitForFirstConsumer | ボリュームバインドと動的プロビジョニングを実行するタイミングを選択します | すべて | 1.19～1.24 
+| volumeBindingMode のようになりました | 文字列 | 即時、 WaitForFirstConsumer | ボリュームバインドと動的プロビジョニングを実行するタイミングを選択します | すべて | 1.19 ~ 1.25 
 |===
 [TIP]
 ====
