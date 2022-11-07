@@ -54,25 +54,29 @@ RHEL / CentOS 7.
 +
 'sudo yum install -y lsscsi iscsi-initiator-utils SG3_utils device-mapper-multipath`
 
-. マルチパスデーモンを開始します。
+. iscsi-initiator-utils のバージョンが 6.2.0.874-2.el7 以降であることを確認します。
 +
-'UDO mpathconf--enable--with _multipathd y
+「 rpm -q iscsi-initiator-utils 」のように入力します
 
-. 「 iscsid 」と「 multipathd 」が有効で、実行中であることを確認します。
+. スキャンを手動に設定：
 +
-'sudo systemctl enable iscsid multipathd `sudo systemctl start iscsid multipathd
+'sudo sed-i'/ ^ \ （ node.session.scan\).*/\1 = manual/ '/etc/iscsi/iscsid.conf
 
-. iSCSI ターゲットを検出します。
+. マルチパスを有効化：
 +
-'UDO iscsiadm -m discoverydb -t st -p <data_lif_ip>--discover `
+'UDO mpathconf--enable --with _multipathd y -- find _multipaths n
 
-. 検出された iSCSI ターゲットにログインします。
 +
-'UDO iscsiadm -m node -p <data_lif_ip>-- login
+
+NOTE: 「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults 」に含まれていることを確認します。
+
+. 「 iscsid 」と「 multipathd 」が実行されていることを確認します。
++
+'sudo systemctl enable -- 現在 iscsid multipathd
 
 . 'iSCSI' を有効にして開始します
 +
-'UDO systemctl enable iscsi `sudo systemctl start iSCSI
+'sudo systemctl enable -- 現在の iSCSI
 
 
 
@@ -85,21 +89,25 @@ Ubuntu
 +
 'UDO apt-get install-y open-iscsi lsscsi SG3-utils multipath-tools scsitools'
 
+. open-iscsi バージョンが 2.0.874-5ubuntu2.10 以降（ bionic の場合）または 2.0.874-7.1ubuntu6.1 以降（ Focal の場合）であることを確認します。
++
+`d pkg -l open-iscsi`
+
+. スキャンを手動に設定：
++
+'sudo sed-i'/ ^ \ （ node.session.scan\).*/\1 = manual/ '/etc/iscsi/iscsid.conf
+
 . マルチパスを有効化：
 +
-'sudo tee//etc/multipath.conf <-'EOF' defaults ｛ user_friendy_names yes find _multipaths yes ｝ EOF sudo service multipath-tools restart`
+'sudo tee//etc/multipath.conf <-' EOF ' defaults ｛ user_friendy_names yes find _multipaths no ｝ EOF sudo systemctl enable -- 今では multipath-tools.service sudo service multipath-tools restart'
 
-. 「 iscsid 」と「 multipathd 」が実行されていることを確認します。
 +
-'sudo service open-iscsi start sudo service multipath-tools start
 
-. iSCSI ターゲットを検出します。
-+
-'UDO iscsiadm -m discoverydb -t st -p <data_lif_ip>--discover `
+NOTE: 「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults 」に含まれていることを確認します。
 
-. 検出された iSCSI ターゲットにログインします。
+. 「 open-iSCSI」 および「マルチパスツール」が有効で実行されていることを確認します。
 +
-'UDO iscsiadm -m node -p <data_lif_ip>-- login
+'sudo systemctl status multipath-tools `sudo systemctl enable -- 現在の open-iscsi.service` 'udo systemctl status open-iscsi'
 
 
 
