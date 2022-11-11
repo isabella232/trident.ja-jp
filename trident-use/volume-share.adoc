@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: trident-use/volume-share.html 
-keywords: volref, volume reference, share, pvc, pv, nfs, namespace 
-summary:  
+keywords: volref, volume reference, share, pvc, pv, nfs, namespace, cvna, cross-namespace, sharing 
+summary: Tridentを使用すると、プライマリネームスペースにボリュームを作成し、1つ以上のセカンダリネームスペースで共有できます。 
 ---
 = ネームスペース間でNFSボリュームを共有します
 :hardbreaks:
@@ -10,6 +10,13 @@ summary:
 :icons: font
 :imagesdir: ../media/
 
+
+[role="lead"]
+Tridentを使用すると、プライマリネームスペースにボリュームを作成し、1つ以上のセカンダリネームスペースで共有できます。
+
+
+
+== の機能
 
 Astra TridentVolumeReference CRを使用すると、1つ以上のKubernetesネームスペース間でReadWriteMany（RWX）NFSボリュームをセキュアに共有できます。このKubernetesネイティブ解決策 には、次のようなメリットがあります。
 
@@ -150,4 +157,14 @@ Usage:
 * Astra Tridentでは、デスティネーションネームスペースが共有ボリュームに書き込まれるのを防ぐことはできません。共有ボリュームのデータの上書きを防止するには、ファイルロックなどのプロセスを使用する必要があります。
 * を削除しても、送信元PVCへのアクセスを取り消すことはできません `shareToNamespace` または `shareFromNamepace` 注釈またはを削除します `TridentVolumeReference` CR。アクセスを取り消すには、下位PVCを削除する必要があります。
 * Snapshot、クローン、およびミラーリングは下位のボリュームでは実行できません。
+
+
+
+
+== を参照してください。
+
+ネームスペース間のボリュームアクセスの詳細については、次の資料を参照してください。
+
+* にアクセスします link:https://cloud.netapp.com/blog/astra-blg-sharing-volumes-between-namespaces-say-hello-to-cross-namespace-volume-access["ネームスペース間でのボリュームの共有：ネームスペース間のボリュームアクセスを許可する場合は「Hello」と入力します"^]。
+* のデモをご覧ください link:http://netapp.tv/cloud/details/29594?playlist_id=81&mcid=63262890210074608700682715883688763007["ネットアップTV"^]。
 

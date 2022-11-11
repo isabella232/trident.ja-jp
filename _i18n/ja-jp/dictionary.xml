@@ -945,14 +945,11 @@
   <block id="d5e2d9f8d8f10044e38b71b49e675d2e" category="cell">サポートされているアクセスモード</block>
   <block id="15971126972a002fcddb2c507534e371" category="cell">サポートされるファイルシステム</block>
   <block id="ac52cf637478f3656a1fdee5c02324fd" category="paragraph">ファイルシステム</block>
-  <block id="0d3a79885df431b0b67b50b9479e2fee" category="paragraph">RWO 、 RWX 、 ROX</block>
   <block id="9f47e55b538b64923f2ee8c19bc6887a" category="paragraph">"" 、 NFS です</block>
   <block id="e1e4c8c9ccd9fc39c391da4bcd093fb2" category="paragraph">ブロック</block>
   <block id="aa91b58ced7ef060eb0e27ac4e1d18a8" category="paragraph">RWO 、 ROX 、 RWX</block>
-  <block id="bc2e0aeb951ff36e6703a1ff5419eb02" category="paragraph">ファイルシステムがありません。raw ブロックデバイスです</block>
   <block id="0b86d82002caac6130185da4ef1be67e" category="paragraph">RWO 、 ROX</block>
   <block id="a029cca698cbf05f07897f86c43cf9e8" category="paragraph">「 xfs 」、「 ext3 」、「 ext4 」</block>
-  <block id="4ff78ba07210a8b4db65f6ef62b4e1b4" category="admonition">ONTAP バックエンドは、セキュリティロール（ユーザ名とパスワード）のログインクレデンシャル、または ONTAP クラスタにインストールされている秘密鍵と証明書を使用して認証されます。既存のバックエンドを更新して 'tridentctl update backend' を使用して認証モードから別の認証モードに移行できます</block>
   <block id="d00888bc1409d1c598b90af117bd3551" category="summary">Trident の Astra プロビジョニングの主なフェーズは 2 つあります。最初のフェーズでは、ストレージクラスを適切なバックエンドストレージプールのセットに関連付け、プロビジョニング前の必要な準備として実行します。2 番目のフェーズでは、ボリュームの作成自体が行われます。このフェーズでは、保留中のボリュームのストレージクラスに関連付けられたストレージプールからストレージプールを選択する必要があります。</block>
   <block id="7c738d9c13e4e5770c6b455ab345afd7" category="paragraph">Astra Trident は、 NetApp の Astra の基盤テクノロジでもあり、 NetApp のスナップショット、バックアップ、レプリケーション、クローニングに業界をリードするデータ管理テクノロジを活用して、 Kubernetes ワークロードのデータ保護、ディザスタリカバリ、ポータビリティ、移行のユースケースに対応します。</block>
   <block id="4bd05efa612e48dd723de2bdd29f88e2" category="section-title">サポートされる Kubernetes クラスタアーキテクチャ</block>
@@ -3444,4 +3441,15 @@
   <block id="482d7c15b1a7200b3981ee1f99a86fef" category="list-text"><block ref="482d7c15b1a7200b3981ee1f99a86fef" category="inline-link-macro-rx"></block></block>
   <block id="756efcb3a97cdd37e8b34de3913c3d8f" category="paragraph">を参照してください <block ref="18d5551396fb2ce2e009cfdb709e4875" category="inline-link-macro-rx"></block>。前提条件を満たしていることを確認したら、 Astra Trident を導入する準備ができました。</block>
   <block id="0d41f8565b8b74a59fc029ccf2becd83" category="list-text">マネージドプラグインシステムを使用して Astra Trident を起動交換してください<block ref="3d689bd3819ead35ed794427bd12f459" prefix=" " category="inline-code"></block> 使用しているプラグインのバージョン（xxx.xxx.xxx.xxx）を使用している必要があります。</block>
+  <block id="4f0e7dc30ffb3e25e75331c9afb2243a" category="cell">ボリュームモード</block>
+  <block id="28c142639a9bbdd526b8eb986c13907d" category="paragraph">ファイルシステムなし。rawブロックデバイスです</block>
+  <block id="0453a3e06be842b09a9479fe06f0dd13" category="paragraph">rwxはファイルシステムボリュームモードでは使用できません。</block>
+  <block id="04de2f1b0cab8344abeded774f82f9d5" category="admonition">ONTAP バックエンドは、セキュリティロール（ユーザ名とパスワード）のログインクレデンシャル、またはONTAP クラスタにインストールされている秘密鍵と証明書を使用して認証できます。を使用して既存のバックエンドを更新し、認証モードを移行することができます<block ref="defd1e55f93269ac9278afc086951ba8" prefix=" " category="inline-code"></block>。</block>
+  <block id="964ea71824e902693c3ef56b57cf78be" category="summary">Tridentを使用すると、プライマリネームスペースにボリュームを作成し、1つ以上のセカンダリネームスペースで共有できます。</block>
+  <block id="98f770b0af18ca763421bac22b4b6805" category="section-title">の機能</block>
+  <block id="8ff961668c6784e84b25c265cbb629d7" category="paragraph">ネームスペース間のボリュームアクセスの詳細については、次の資料を参照してください。</block>
+  <block id="f1cfea5f1444de607dfa549b3aa57010" category="inline-link-macro">ネームスペース間でのボリュームの共有：ネームスペース間のボリュームアクセスを許可する場合は「Hello」と入力します</block>
+  <block id="2780f690b7670efc296ac19ef3029d0c" category="list-text">にアクセスします <block ref="b0d29f1b2abb2cc552e4cc47177582ef" category="inline-link-macro-rx"></block>。</block>
+  <block id="96e1384807331548bf745acde0fe1b73" category="inline-link-macro">ネットアップTV</block>
+  <block id="414883f8b6ef58c7b3b37e66fbfd482f" category="list-text">のデモをご覧ください <block ref="1945a2d4809e81668f29485f6ae1bbc8" category="inline-link-macro-rx"></block>。</block>
 </blocks>
