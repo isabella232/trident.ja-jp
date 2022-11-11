@@ -16,7 +16,7 @@ Astra Trident for Docker は、ネットアップのストレージプラット�
 
 Astra Trident の複数のインスタンスを同じホストで同時に実行できます。これにより、複数のストレージシステムとストレージタイプへの同時接続が可能になり、 Docker ボリュームに使用するストレージをカスタマイズできます。
 
-を参照してください link:prereqs-docker.html["導入の前提条件"^]。前提条件を満たしていることを確認したら、 Astra Trident を導入する準備ができました。
+を参照してください link:prereqs-docker.html["導入の前提条件"]。前提条件を満たしていることを確認したら、 Astra Trident を導入する準備ができました。
 
 
 
@@ -84,11 +84,11 @@ EOF
 
 
 
-. マネージドプラグインシステムを使用して Astra Trident を起動
+. マネージドプラグインシステムを使用して Astra Trident を起動交換してください `<version>` 使用しているプラグインのバージョン（xxx.xxx.xxx.xxx）を使用している必要があります。
 +
 [listing]
 ----
-docker plugin install --grant-all-permissions --alias netapp netapp/trident-plugin:21.07 config=myConfigFile.json
+docker plugin install --grant-all-permissions --alias netapp netapp/trident-plugin:<version> config=myConfigFile.json
 ----
 . Astra Trident を使用して、構成したシステムのストレージを使用しましょう。
 +

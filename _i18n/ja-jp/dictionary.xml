@@ -2323,7 +2323,6 @@
   <block id="977636e26059252def0425dca74811ef" category="list-text"><block ref="977636e26059252def0425dca74811ef" category="inline-link-rx"></block></block>
   <block id="d2eb05d1990246a079aeb2f56e3a4237" category="paragraph">Astra Trident の複数のインスタンスを同じホストで同時に実行できます。これにより、複数のストレージシステムとストレージタイプへの同時接続が可能になり、 Docker ボリュームに使用するストレージをカスタマイズできます。</block>
   <block id="89bcbd8e4ba49b7310e9fa748e878c4b" category="inline-link-macro">導入の前提条件</block>
-  <block id="d1e7215d070e62d3e82e915d703ceaa9" category="paragraph">を参照してください <block ref="a51fda4654690ac4414966ed4956599c" category="inline-link-macro-rx"></block>。前提条件を満たしていることを確認したら、 Astra Trident を導入する準備ができました。</block>
   <block id="88f0ab229fa9d759d74fcf6ab7cc17b1" category="section-title">Docker Managed Plugin メソッド（バージョン 1.13 / 17.03 以降）</block>
   <block id="135b308ed83c53f1516b7c754566d1c4" category="admonition-title">作業を開始する前に</block>
   <block id="070ecb002d71e4e7618a4b46a5ba690f" category="admonition">従来のデーモン方式で Astra Trident 以前の Docker 1.13 / 17.03 を使用していた場合は、マネージドプラグイン方式を使用する前に Astra Trident プロセスを停止し、 Docker デーモンを再起動してください。</block>
@@ -2338,7 +2337,6 @@
   <block id="45ed67026a1141006588fcc698646141" category="list-text">`ebug`: デバッグログを有効にするかどうかを指定します。デフォルトは false です。true の場合、ログレベルを上書きします。</block>
   <block id="3bed6f89999b483af7f55024d9e7c02a" category="list-text">構成ファイルの場所を作成します。</block>
   <block id="28156615c51d4bad2ee47d0a9f43f404" category="list-text">構成ファイルを作成します</block>
-  <block id="4e2deef4eda7b7593f1e94279c96a31d" category="list-text">マネージドプラグインシステムを使用して Astra Trident を起動</block>
   <block id="a4574d19d34a14aa0accde782f35318b" category="list-text">Astra Trident を使用して、構成したシステムのストレージを使用しましょう。</block>
   <block id="a9c521f25a3bacb94ad1dd4705b3585f" category="list-text">「 firstVolume 」という名前のボリュームを作成します。</block>
   <block id="4fbca4f67cbe96bc7d7a16691d2912c2" category="list-text">コンテナの開始時にデフォルトのボリュームを作成します。</block>
@@ -3444,4 +3442,6 @@
   <block id="279d526c0cf636b7292c2cfddc1d9957" category="list-text">を実行するKubernetesクラスタ <block ref="54886eff1282d00a4f74bc7c51429511" category="inline-link-macro-rx"></block></block>
   <block id="87aa97ac70530bd54af65d5fc819f906" category="paragraph">この手順の一環として、Tridentオペレータが既存のAstra Tridentインストールを特定し、オペレータと同じバージョンにアップグレードします。</block>
   <block id="482d7c15b1a7200b3981ee1f99a86fef" category="list-text"><block ref="482d7c15b1a7200b3981ee1f99a86fef" category="inline-link-macro-rx"></block></block>
+  <block id="756efcb3a97cdd37e8b34de3913c3d8f" category="paragraph">を参照してください <block ref="18d5551396fb2ce2e009cfdb709e4875" category="inline-link-macro-rx"></block>。前提条件を満たしていることを確認したら、 Astra Trident を導入する準備ができました。</block>
+  <block id="0d41f8565b8b74a59fc029ccf2becd83" category="list-text">マネージドプラグインシステムを使用して Astra Trident を起動交換してください<block ref="3d689bd3819ead35ed794427bd12f459" prefix=" " category="inline-code"></block> 使用しているプラグインのバージョン（xxx.xxx.xxx.xxx）を使用している必要があります。</block>
 </blocks>
