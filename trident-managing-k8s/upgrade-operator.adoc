@@ -31,25 +31,37 @@ WARNING: OpenShift Container Platform で演算子を使用して Trident をア
 
 == クラスタを対象としたオペレータ環境をアップグレードします
 
-Trident 21.01 以降 * からアップグレードするには、以下の手順に従ってください。
+次の手順に従って、* Trident 21.01以降*からアップグレードします。
 
 .手順
 . 現在の Astra Trident インスタンスのインストールに使用した Trident オペレータを削除たとえば、 21.01 からアップグレードする場合は、次のコマンドを実行します。
 +
 [listing]
 ----
-kubectl delete -f 22.01/trident-installer/deploy/bundle.yaml -n trident
+kubectl delete -f 22.01/trident-installer/deploy/BUNDLE.YAML -n trident
 ----
-. （オプション）インストールパラメータを変更する場合は、 Trident のインストール時に作成した「 TridentOrchestrator 」オブジェクトを編集します。これには、カスタム Trident イメージの変更、コンテナイメージを抽出するためのプライベートイメージレジストリ、デバッグログの有効化、イメージのプルシークレットの指定などの変更が含まれます。
-. 新しいバージョンの Trident 演算子を設定する 'undle.yaml ファイルを使用して Astra Trident をインストールします次のコマンドを実行します。
+. 必要に応じて、を編集できます `TridentOrchestrator` Tridentのインストール時に作成したオブジェクトで、インストールパラメータを変更します。これには、カスタムTridentイメージの変更、コンテナイメージをプルするためのプライベートイメージレジストリ、デバッグログの有効化、イメージプルシークレットの指定などの変更が含まれます。
+. 環境に適したバンドルYAMLファイルとからAstra Tridentバージョンを使用して、Astra Tridentをインストールします `\https://github.com/NetApp/trident/tree/stable/_vXX.XX_/deploy/_BUNDLE.YAML_` ここで、 `_vXX.XX_` は、バージョン番号です（例 `v22.10`）および `_BUNDLE.YAML_` はバンドルYAMLファイル名です。
++
+[NOTE]
+====
+** Kubernetes 1.24以前を実行しているクラスタの場合は、を使用します link:https://github.com/NetApp/trident/tree/stable/v22.10/deploy/bundle_pre_1_25.yaml["Bundle_pre_1_25.yaml"^]。
+** Kubernetes 1.25以上を実行するクラスタの場合は、を使用します link:https://github.com/NetApp/trident/tree/stable/v22.10/deploy/bundle_post_1_25.yaml["bundle_post_1_25.yaml"^]。
+
+
+====
++
+たとえば、Kubernetes 1.25用にAstra Trident 22.10をインストールする場合は、次のコマンドを実行します。
+
 +
 [listing]
 ----
-kubectl create -f 22.10.0/trident-installer/deploy/bundle.yaml -n trident
+kubectl create -f 22.10.0/trident-installer/deploy/bundle_post_1_25.yaml -n trident
 ----
-
-
++
 この手順の一環として、Tridentオペレータが既存のAstra Tridentインストールを特定し、オペレータと同じバージョンにアップグレードします。
+
+
 
 
 
@@ -83,7 +95,7 @@ tar -xf trident-installer-22.10.0.tar.gz
 cd trident-installer
 kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml
 ----
-. マニフェストを使用して、名前空間を対象とした演算子を削除します。この手順を完了するには、名前空間を対象とした演算子を配備するために使用する 'undle.yaml ファイルが必要です。から 'bundle.yaml を取得できます https://github.com/NetApp/trident/blob/stable/v20.10/deploy/bundle.yaml["Trident リポジトリ"^]。適切なブランチを使用するようにしてください。
+. マニフェストを使用して、名前空間を対象とした演算子を削除します。この手順を完了するには、名前空間を対象とした演算子をから配備するために使用するバンドルYAMLファイルが必要です `\https://github.com/NetApp/trident/tree/stable/_vXX.XX_/deploy/_BUNDLE.YAML_` ここで、 `_vXX.XX_` は、バージョン番号です（例 `v22.10`）および `_BUNDLE.YAML_` はバンドルYAMLファイル名です。
 +
 
 NOTE: Tridentのインストールパラメータに必要な変更を加えます（の値の変更など） `tridentImage`、 `autosupportImage`、プライベートイメージリポジトリ、および提供 `imagePullSecrets`)名前空間を対象とした演算子を削除した後、クラスタを対象とした演算子をインストールする前。更新可能なパラメータの一覧については、を参照してください link:https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-customize-deploy.html#configuration-options["設定オプション"]。
@@ -96,7 +108,7 @@ pwd
 /root/20.10.1/trident-installer
 
 #Delete the namespace-scoped operator
-kubectl delete -f deploy/bundle.yaml
+kubectl delete -f deploy/<BUNDLE.YAML>
 serviceaccount "trident-operator" deleted
 clusterrole.rbac.authorization.k8s.io "trident-operator" deleted
 clusterrolebinding.rbac.authorization.k8s.io "trident-operator" deleted
@@ -149,7 +161,7 @@ pwd
 /root/22.10.0/trident-installer
 
 #Install the cluster-scoped operator in the **same namespace**
-kubectl create -f deploy/bundle.yaml
+kubectl create -f deploy/<BUNDLE.YAML>
 serviceaccount/trident-operator created
 clusterrole.rbac.authorization.k8s.io/trident-operator created
 clusterrolebinding.rbac.authorization.k8s.io/trident-operator created
@@ -244,7 +256,7 @@ kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.1
 [listing]
 ----
 #Install the cluster-scoped operator in the **same namespace**
-kubectl create -f deploy/bundle.yaml
+kubectl create -f deploy/<BUNDLE.YAML>
 serviceaccount/trident-operator created
 clusterrole.rbac.authorization.k8s.io/trident-operator created
 clusterrolebinding.rbac.authorization.k8s.io/trident-operator created

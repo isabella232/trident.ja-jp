@@ -54,8 +54,8 @@ Trident オペレータを使用してインストールを完了した場合は
 Astra Trident を、クラスタを対象としたオペレータを使用するリリースにダウングレードするには、次の手順に従います。
 
 .手順
-. link:uninstall-trident.html["Astra Trident をアンインストール"^]。** 既存のインストールを完全に削除する場合を除き、 CRD を削除しないでください。 **
-. クラスタを対象とした演算子を削除します。これを行うには、オペレータを配置するために使用するマニフェストが必要です。から入手できます https://github.com/NetApp/trident/blob/stable/v21.07/deploy/bundle.yaml["Trident GitHub repo"^]。必要なブランチに切り替えていることを確認してください。
+. link:uninstall-trident.html["Astra Trident をアンインストール"^]。**既存のインストールを完全に削除する場合を除き、CRDは削除しないでください。**
+. Tridentのオペレータは、ご使用のバージョンに関連付けられているオペレータマニフェストを使用することで削除できます。例： `\https://github.com/NetApp/trident/tree/stable/_vXX.XX_/deploy/_bundle.yaml_` ここで、 `_vXX.XX_` は、バージョン番号です（例 `v22.10`）および `_bundle.yaml_` はバンドルYAMLファイル名です。
 . 必要なバージョンの Astra Trident をインストールして、ダウングレードを続行します。目的のリリースのマニュアルに従ってください。
 
 
@@ -79,7 +79,7 @@ trident     20h
 kubectl delete torc trident
 tridentorchestrator.trident.netapp.io "trident" deleted
 ----
-. クラスタを対象とした演算子を削除します。これを行うには、オペレータを配置するために使用するマニフェストが必要です。このファイルは、から入手できます https://github.com/NetApp/trident/blob/stable/v21.07/deploy/bundle.yaml["Trident GitHub repo"^]。必要なブランチに切り替えていることを確認してください。
+. Tridentのオペレータは、ご使用のバージョンに関連付けられているオペレータマニフェストを使用することで削除できます。例： `\https://github.com/NetApp/trident/tree/stable/_vXX.XX_/deploy/_bundle.yaml_` ここで、 `_vXX.XX_` は、バージョン番号です（例 `v22.10`）および `_bundle.yaml_` はバンドルYAMLファイル名です。
 . 「 tridentオーケストラ 」の「 CRD 」を削除します。
 +
 [listing]
