@@ -14,6 +14,7 @@ summary: 既存の Astra Trident インストールは、オペレータが簡�
 [role="lead"]
 既存の Astra Trident インストールは、オペレータが簡単にアップグレードできます。
 
+.必要なもの
 オペレータを使用してアップグレードするには、次の条件を満たしている必要があります。
 
 * CSI ベースの Astra Trident がインストールされている必要があります。CSI Trident を実行しているかどうかを確認するには、 Trident ネームスペースのポッドを調べます。"trident-csi-*" の命名パターンに従っている場合は、 CSI Trident を実行しています。

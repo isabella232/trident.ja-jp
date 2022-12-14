@@ -91,7 +91,7 @@ Helm を使用して管理している他のアプリケーションが Astra Tr
 
 
 
-=== tridenctlを使用する場合
+=== を使用する状況 `tridenctl`
 
 既存の環境をにアップグレードする必要がある場合や、高度にカスタマイズする場合は、の使用を検討してください link:kubernetes-deploy-tridentctl.html["Tridentctl"^]。これは、従来の方法であった Astra Trident を導入する方法です。
 

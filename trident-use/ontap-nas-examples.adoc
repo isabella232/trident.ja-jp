@@ -234,7 +234,7 @@ NOTE: ネットアップ ONTAP で Trident を使用している場合は、 IP 
 
 
 
-=== 証明書ベースの認証を使用する ONTAP - NAS ドライバ
+=== `ontap-nas` 証明書ベースの認証を使用するドライバ
 
 これは、バックエンドの最小限の設定例です。「 clientCertificate` 」、「 clientPrivateKey 」、「 trustedCACertifate` （信頼された CA を使用する場合はオプション）」は「 backend.json 」に格納され、それぞれクライアント証明書、秘密鍵、信頼された CA 証明書の Base64 でエンコードされた値を取得します。
 
@@ -255,7 +255,7 @@ NOTE: ネットアップ ONTAP で Trident を使用している場合は、 IP 
 ----
 
 
-=== ONTAP - NAS ドライバと auto エクスポートポリシーが設定されています
+=== `ontap-nas` ドライバと自動エクスポートポリシー
 
 この例は、動的なエクスポートポリシーを使用してエクスポートポリシーを自動的に作成および管理するように Astra Trident に指示する方法を示しています。これは「 ONTAP-NAS-エコノミー 」と「 ONTAP-NAS-flexgroup 」ドライバで同様に機能します。
 
@@ -277,7 +277,7 @@ NOTE: ネットアップ ONTAP で Trident を使用している場合は、 IP 
 ----
 
 
-=== ONTAP-NAS-flexgroup ドライバ
+=== `ontap-nas-flexgroup` ドライバ
 
 [listing]
 ----
@@ -294,7 +294,7 @@ NOTE: ネットアップ ONTAP で Trident を使用している場合は、 IP 
 ----
 
 
-=== IPv6 を使用した ONTAP - NAS ドライバ
+=== `ontap-nas` IPv6対応ドライバ
 
 [listing]
 ----
@@ -311,7 +311,7 @@ NOTE: ネットアップ ONTAP で Trident を使用している場合は、 IP 
 ----
 
 
-=== ONTAP - NAS - エコノミードライバ
+=== `ontap-nas-economy` ドライバ
 
 [listing]
 ----
@@ -335,7 +335,7 @@ NOTE: ネットアップ ONTAP で Trident を使用している場合は、 IP 
 
 
 
-=== ONTAP - NAS ドライバ
+=== `ontap-nas` ドライバ
 
 [listing]
 ----
@@ -400,7 +400,7 @@ NOTE: ネットアップ ONTAP で Trident を使用している場合は、 IP 
 ----
 
 
-=== ONTAP-NAS-flexgroup ドライバ
+=== `ontap-nas-flexgroup` ドライバ
 
 [listing]
 ----
@@ -461,7 +461,7 @@ NOTE: ネットアップ ONTAP で Trident を使用している場合は、 IP 
 ----
 
 
-=== ONTAP - NAS - エコノミードライバ
+=== `ontap-nas-economy` ドライバ
 
 [listing]
 ----

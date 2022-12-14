@@ -36,7 +36,7 @@ TIP: Kubernetes オブジェクトの詳細については、を参照するこ�
 
 
 
-== Kubernetes PersistentVolumeClaim オブジェクト
+== Kubernetes `PersistentVolumeClaim` オブジェクト
 
 Kubernetes の「 PersistentVolumeClaim 」オブジェクトは、 Kubernetes クラスタユーザが作成したストレージの要求です。
 
@@ -98,7 +98,7 @@ NOTE: CSI Trident では 'cloneFromPVC' および 'plitOnClone' 注釈を使用�
 
 
 
-== Kubernetes PersistentVolume オブジェクト
+== Kubernetes `PersistentVolume` オブジェクト
 
 Kubernetes の 'PersistentVolume' オブジェクトは 'Kubernetes クラスタで利用できるようになったストレージの一部ですポッドに依存しないライフサイクルがあります。
 
@@ -113,7 +113,7 @@ Trident をベースとする「 torageClass 」を参照する PVC を作成す
 
 
 
-== Kubernetes StorageClass オブジェクト
+== Kubernetes `StorageClass` オブジェクト
 
 Kubernetes の「 torageClass 」オブジェクトは、「 PersistentVolumeClaims 」内の名前によって指定され、一連のプロパティを持つストレージをプロビジョニングします。ストレージクラス自体が、使用するプロビジョニングツールを特定し、プロビジョニングツールが理解できる一連のプロパティを定義します。
 
@@ -242,7 +242,7 @@ NFS ストレージドライバの場合、 NFS エクスポートにはファ�
 ====
 
 
-== Kubernetes VolumeSnapshotClass オブジェクト
+== Kubernetes `VolumeSnapshotClass` オブジェクト
 
 Kubernetes 'VolumeSnapshotClass' オブジェクトは 'S torageClasses' に似ていますこの Snapshot コピーは、複数のストレージクラスの定義に役立ちます。また、ボリューム Snapshot によって参照され、 Snapshot を必要な Snapshot クラスに関連付けます。各ボリューム Snapshot は、単一のボリューム Snapshot クラスに関連付けられます。
 
@@ -261,7 +261,7 @@ deletionPolicy: Delete
 
 
 
-== Kubernetes VolumeSnapshot オブジェクト
+== Kubernetes `VolumeSnapshot` オブジェクト
 
 Kubernetes の VolumeSnapshot オブジェクトは ' ボリュームのスナップショットを作成する要求ですPVC がボリュームに対するユーザからの要求を表すのと同様に、ボリュームスナップショットは、ユーザが既存の PVC のスナップショットを作成する要求です。
 
@@ -272,7 +272,7 @@ NOTE: VolumeSnapshot のライフサイクルはソース PVC とは無関係で
 
 
 
-== Kubernetes VolumeSnapshotContent オブジェクト
+== Kubernetes `VolumeSnapshotContent` オブジェクト
 
 Kubernetes の「 VolumeSnapshotContent 」オブジェクトは、すでにプロビジョニングされているボリュームから取得されたスナップショットを表します。これは「 PersistentVolume 」と似ており、ストレージ・クラスタ上でプロビジョニングされた Snapshot を表します。「 PersistentVolumeClaim 」および「 PersistentVolume 」オブジェクトと同様に、スナップショットが作成されると、「 VolumeContent Snapshot」 オブジェクトは「 VolumeSnapshot 」オブジェクトへの 1 対 1 のマッピングを保持します。これは、スナップショットの作成を要求しました。
 
@@ -285,7 +285,7 @@ Trident では、スナップショット要求を受信すると、バックエ
 
 
 
-== Kubernetes CustomResourceDefinition オブジェクト
+== Kubernetes `CustomResourceDefinition` オブジェクト
 
 Kubernetes カスタムリソースは、管理者が定義した Kubernetes API 内のエンドポイントであり、類似するオブジェクトのグループ化に使用されます。Kubernetes では、オブジェクトのコレクションを格納するためのカスタムリソースの作成をサポートしています。これらのリソース定義を取得するには 'kubectl get CRDs' を実行します
 
@@ -304,7 +304,7 @@ Trident の CRD については、次の点に注意してください。
 
 
 
-== Trident StorageClass オブジェクト
+== Trident `StorageClass` オブジェクト
 
 Trident は 'Kubernetes のプロビジョニング・フィールドに csi.trident.netapp.io`/`netapp.io/trident` を指定する 'S torageClass' オブジェクトに一致するストレージ・クラスを作成しますストレージクラス名は、そのストレージクラスが表す Kubernetes の「 torageClass 」オブジェクトの名前と一致します。
 
@@ -328,7 +328,7 @@ NOTE: これは、自分で作成および管理する 2 つのオブジェク�
 
 
 
-== Trident StoragePool オブジェクト
+== Trident `StoragePool` オブジェクト
 
 ストレージプールは、各バックエンドでのプロビジョニングに使用できる個別の場所を表します。ONTAP の場合、これらは SVM 内のアグリゲートに対応します。NetApp HCI / SolidFire では、管理者が指定した QoS 帯域に対応します。Cloud Volumes Service の場合、これらはクラウドプロバイダのリージョンに対応します。各ストレージプールには、パフォーマンス特性とデータ保護特性を定義するストレージ属性があります。
 
@@ -336,7 +336,7 @@ NOTE: これは、自分で作成および管理する 2 つのオブジェク�
 
 
 
-== Trident Volume オブジェクト
+== Trident `Volume` オブジェクト
 
 ボリュームは、 NFS 共有や iSCSI LUN などのバックエンドエンドエンドエンドポイントで構成される、プロビジョニングの基本単位です。Kubernetes では ' これらは 'PersistentVolumes' に直接対応しますボリュームを作成するときは、そのボリュームにストレージクラスが含まれていることを確認します。このクラスによって、ボリュームをプロビジョニングできる場所とサイズが決まります。
 
@@ -403,7 +403,7 @@ Trident は ' ボリュームの作成時に internalName を生成しますこ�
 
 
 
-== Trident Snapshot オブジェクト
+== Trident `Snapshot` オブジェクト
 
 Snapshot はボリュームのポイントインタイムコピーで、新しいボリュームのプロビジョニングやリストア状態に使用できます。Kubernetes では ' これらは 'VolumeSnapshotContent' オブジェクトに直接対応します各 Snapshot には、 Snapshot のデータのソースであるボリュームが関連付けられます。
 
@@ -445,7 +445,7 @@ Kubernetes の「 VolumeSnapshot 」オブジェクト要求が作成される�
 
 
 
-== Astra Trident ResourceQuotaオブジェクト
+== Astra Trident `ResourceQuota` オブジェクト
 
 Tridentのデーモンは'system-node -criticalのPriority Classを消費しますこれはKubernetesで最も高い優先順位クラスですこのクラスにより'Astra Tridentは'正常なノードのシャットダウン時にボリュームを識別してクリーンアップし'リソースの負荷が高いクラスタではTridentのデマ起動ポッドがより低い優先順位でワークロードをプリエンプトできるようになります
 
@@ -474,7 +474,7 @@ spec:
 
 
 
-=== インストールに失敗した場合は、ResourceQuotaをクリーンアップします
+=== クリーンアップ `ResourceQuota` インストールが失敗した場合
 
 まれに'ResourceQuotaオブジェクトが作成された後にインストールが失敗する場合は'最初に実行します link:../trident-managing-k8s/uninstall-trident.html["アンインストール中です"] を再インストールします。
 
@@ -482,7 +482,7 @@ spec:
 
 
 
-=== リソースクォータを削除します
+=== 取り外します `ResourceQuota`
 
 独自のリソース割り当てを制御する場合は、コマンドを使用してAstraのResourceQuotaオブジェクトを削除できます。
 

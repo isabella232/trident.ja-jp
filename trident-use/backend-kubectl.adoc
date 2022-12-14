@@ -15,7 +15,7 @@ summary: 'バックエンドは、 Astra Trident とストレージシステム�
 
 
 
-== TridentBackendConfig の場合
+== `TridentBackendConfig`
 
 TridentBackendConfig` (`tbc`, `tbconfig`, tbackendconfig`) はフロントエンドであり、 "kubectl" を使って Astra Trident バックエンドを管理するための名前空間 CRD です。Kubernetes とストレージ管理者は、専用のコマンドラインユーティリティ（「 tridentctl 」）を使用せずに、 Kubernetes CLI を使用してバックエンドを直接作成および管理できるようになりました。
 
@@ -186,7 +186,7 @@ CHAP ターゲットイニシエータシークレット。useCHAP = true の場
 
 
 
-== 手順 2 ： TridentBackendConfig CR を作成します
+== 手順2：を作成します `TridentBackendConfig` CR
 
 これで「 TridentBackendConfig 」 CR を作成する準備ができました。この例では 'ONTAP-SAN' ドライバを使用するバックエンドは ' 次に示す TridentBackendConfig オブジェクトを使用して作成されます
 
@@ -212,7 +212,7 @@ spec:
 ----
 
 
-== 手順 3 ： TridentBackendConfig CR のステータスを確認します
+== 手順3：のステータスを確認します `TridentBackendConfig` CR
 
 これで「 TridentBackendConfig 」 CR が作成され、ステータスを確認できるようになりました。次の例を参照してください。
 

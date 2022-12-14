@@ -60,7 +60,7 @@ tridentctl get コマンドを使用して 'Astra Trident の構成に関する�
 
 
 
-=== サポートされている etcd のバージョンは何ですか。
+=== のサポート対象のバージョンを指定します `etcd`？
 
 Astra Trident はもはや「 etcd 」を必要としない。状態を維持するために CRD を使用します。
 

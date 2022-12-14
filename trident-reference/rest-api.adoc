@@ -30,7 +30,7 @@ API は次のように機能します。
 
 
 
-=== 取得
+=== `GET`
 
 * get<trident-address>/trident/v1/<object-type>: そのタイプのすべてのオブジェクトを一覧表示します。
 * get<trident-address>/trident/v1/< オブジェクトタイプ >/< オブジェクト名 >: 名前付きオブジェクトの詳細を取得します。
@@ -38,7 +38,7 @@ API は次のように機能します。
 
 
 
-=== 投稿（ Post ）
+=== `POST`
 
 'POST <trident-address>/trident/v1/<object-type>` ：指定した型のオブジェクトを作成します。
 
@@ -48,7 +48,7 @@ API は次のように機能します。
 
 
 
-=== 削除
+=== `DELETE`
 
 `D eleet<trident-address>/trident/v1/< オブジェクトタイプ >/< オブジェクト名 >` ：名前付きリソースを削除します。
 
