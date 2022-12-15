@@ -461,14 +461,6 @@ QoS の仕様
 
 Astra Tridentは、デフォルトのCVSサービスタイプがonに設定されたボリュームをサポートしています https://cloud.google.com/architecture/partners/netapp-cloud-volumes/service-types["GCP"^]。Astra Tridentは、CVSサービスタイプで許可されている最小値に関係なく、100GiB未満のCVSボリュームをサポートしていません。したがって、Tridentは要求されたボリュームが最小サイズよりも小さい場合、自動的に100GiBのボリュームを作成します。
 
-[NOTE]
-====
-* 非本番環境のワークロード用に1TiB未満のボリュームを使用することを推奨します。
-* デフォルトのCVSサービスタイプを使用してバックエンドを導入する場合 `storageClass=software`で、関連するプロジェクト番号とプロジェクトIDについて、GCPのsub-1TiBボリューム機能にアクセスするためのサインアップを行います。これは Trident で sub-1TiB ボリュームのプロビジョニングに必要です。そうでない場合、ボリュームの作成*が失敗し、PVCが600GiB未満の場合。
-* link:https://docs.google.com/forms/d/e/1FAIpQLSc7_euiPtlV8bhsKWvwBl3gm9KUL4kOhD7lnbHC3LlQ7m02Dw/viewform["1TiB未満のボリュームにアクセスするには、サインアップします。"]
-
-
-====
 GCP で CVS を使用する場合は、グローバル構成の値に加えて、次のオプションも使用できます。
 
 [cols="3*"]
