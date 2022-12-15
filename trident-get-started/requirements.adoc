@@ -15,7 +15,7 @@ summary: サポートされるフロントエンド、バックエンド、お�
 サポートされるフロントエンド、バックエンド、およびホスト構成を確認することから始めましょう。
 
 
-NOTE: Trident が使用するポートについては、を参照してください link:../trident-reference/trident-ports.html["こちらをご覧ください"]。
+NOTE: Trident が使用するポートについては、を参照してください link:../trident-reference/ports.html["こちらをご覧ください"]。
 
 
 
