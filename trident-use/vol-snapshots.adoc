@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-use/vol-snapshots.html 
 keywords: volumes, on-demand volume snapshots, create snapshots, backends, kubernetes, create PVCs, PVCs 
-summary: Astra Trident の 20.01 リリースから、 Kubernetes レイヤで永続的ボリューム（ PVS ）の Snapshot を作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。 
+summary: '永続ボリューム（PVS）のKubernetesボリュームSnapshot（ボリュームSnapshot）を作成して、Astra Tridentボリュームのポイントインタイムコピーを保持できます。また、既存のボリュームSnapshotから、_ clone__という名前の新しいボリュームを作成することもできます。ボリュームSnapshotは、でサポートされます `ontap-nas`、 `ontap-san`、 `ontap-san-economy`、 `solidfire-san`、 `gcp-cvs`および `azure-netapp-files` ドライバ。' 
 ---
 = スナップショットを操作します
 :hardbreaks:
@@ -11,97 +11,26 @@ summary: Astra Trident の 20.01 リリースから、 Kubernetes レイヤで�
 :imagesdir: ../media/
 
 
-Astra Trident の 20.01 リリースから、 Kubernetes レイヤで PVS のスナップショットを作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。ボリューム・スナップショットは 'ONTAP-NAS'`ONTAP-SAN'ONTAP-SAN'ONTAP-エコノミー ''solidfire-san-'`solidfire-SAN'GCP - cvs` によってサポートされています 「 azure-NetApp-files 」ドライバを使用します。
+[role="lead"]
+永続ボリューム（PVS）のKubernetesボリュームSnapshot（ボリュームSnapshot）を作成して、Astra Tridentボリュームのポイントインタイムコピーを保持できます。また、既存のボリュームSnapshotから、_ clone__という名前の新しいボリュームを作成することもできます。ボリュームSnapshotは、でサポートされます `ontap-nas`、 `ontap-san`、 `ontap-san-economy`、 `solidfire-san`、 `gcp-cvs`および `azure-netapp-files` ドライバ。
+
+.作業を開始する前に
+外部スナップショットコントローラとカスタムリソース定義（CRD）が必要です。Kubernetesオーケストレーションツール（例：Kubeadm、GKE、OpenShift）の役割を担っています。
+
+KubernetesディストリビューションにスナップショットコントローラとCRDが含まれていない場合は、を参照してください <<ボリュームSnapshotコントローラを導入する>>。
 
 
-NOTE: この機能は Kubernetes 1.17 （ベータ版）から提供され、 1.20 から GA になります。ベータ版から GA 版への移行に伴う変更点については、を参照してください https://kubernetes.io/blog/2020/12/10/kubernetes-1.20-volume-snapshot-moves-to-ga/["リリースのブログ"^]。GA への卒業とともに 'v1' API バージョンが導入され 'v1beta` スナップショットと下位互換性があります
-
-.必要なもの
-ボリュームSnapshotを作成するには、外部のSnapshotコントローラとカスタムリソース定義（CRD）を作成する必要があります。使用されているKubernetesオーケストレーションツール（例：Kubeadm、GKE、OpenShift）の役割を担っています。
-
-
-
-== ボリュームSnapshotコントローラを導入する
-
-KubernetesディストリビューションにスナップショットコントローラとCRDが含まれていない場合は、次のように導入できます。
-
-. ボリュームのSnapshot作成
-+
-Kubernetes 1.20以降では、v5.0以上のスナップショットコンポーネントでv1スナップショットCRDを使用します。Kubernetes 1.19には、v1beta1とv3.0.3のスナップショットコンポーネントを使用します。
-
-+
-[role="tabbed-block"]
-====
-.v5.0コンポーネント
---
-[listing]
-----
-cat snapshot-setup.sh
-#!/bin/bash
-# Create volume snapshot CRDs
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-5.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-5.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-5.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
-----
---
-.v3.0.3コンポーネント
---
-[listing]
-----
-cat snapshot-setup.sh
-#!/bin/bash
-# Create volume snapshot CRDs
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v3.0.3/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v3.0.3/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v3.0.3/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
-----
---
-====
-. 目的のネームスペースにスナップショットコントローラを作成します。以下の YAML マニフェストを編集して名前空間を変更します。
-+
-Kubernetes 1.20以降ではv5.0以上を使用してください。Kubernetesバージョン1.19にはv3.0.3を使用します
-
-+
-
-NOTE: GKE環境でオンデマンドボリュームスナップショットを設定する場合は、スナップショットコントローラを作成しないでください。GKE では、内蔵の非表示のスナップショットコントローラを使用します。
-
-+
-[role="tabbed-block"]
-====
-.v5.0コントローラ
---
-[listing]
-----
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-5.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-5.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
-----
---
-.v3.0.3コントローラ
---
-[listing]
-----
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v3.0.3/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v3.0.3/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
-----
---
-====
+NOTE: GKE環境でオンデマンドボリュームスナップショットを作成する場合は、スナップショットコントローラを作成しないでください。GKEでは、内蔵の非表示のスナップショットコントローラを使用します。
 
 
 
-TIP: CSI Snapshotter は、を提供します https://github.com/kubernetes-csi/external-snapshotter#validating-webhook["webhook を検証しています"^] ユーザーが既存の v1beta1 スナップショットを検証し、有効なリソースオブジェクトであることを確認できるようにするため。検証中の webhook は、無効なスナップショットオブジェクトに自動的にラベルを付け、今後無効なオブジェクトが作成されないようにします。検証する webhook は Kubernetes Orchestrator によって導入されます。検証するウェブフックを手動で配備する手順を参照してください https://github.com/kubernetes-csi/external-snapshotter/blob/release-3.0/deploy/kubernetes/webhook-example/README.md["こちらをご覧ください"^]。無効なスナップショットマニフェストの例を探します https://github.com/kubernetes-csi/external-snapshotter/tree/release-3.0/examples/kubernetes["こちらをご覧ください"^]。
+== 手順1：を作成します `VolumeSnapshotClass`
 
-以下に、スナップショットの操作に必要な構成要素と、スナップショットの作成方法および使用方法の例を示します。
-
-
-
-== 手順1：を設定します `VolumeSnapshotClass`
-
-ボリューム Snapshot を作成する前に、をセットアップします link:../trident-reference/objects.html["d7ca7162c394dee752c35d07a92823da"^]。
+次の例は、ボリュームSnapshotクラスを作成します。
 
 [listing]
 ----
 cat snap-sc.yaml
-#Use apiVersion v1 for Kubernetes 1.20 and above. For Kubernetes 1.19, use apiVersion v1beta1.
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshotClass
 metadata:
@@ -111,14 +40,17 @@ deletionPolicy: Delete
 ----
 「川」はアストラトライデントの CSI ドライバを指しています。「保持ポリシー」には「削除」または「保持」を指定できます。「 Retain 」に設定すると、「 VolumeSnapshot 」オブジェクトが削除されても、ストレージ・クラスタ上の基盤となる物理スナップショットは保持されます。
 
+詳細については、link：./trident-reference/objects.html#Kubernetes -volumesnapshotclass-objectsを参照してください[`VolumeSnapshotClass`]。
+
 
 
 == 手順 2 ：既存の PVC のスナップショットを作成します
 
+次に、既存のPVCのスナップショットを作成する例を示します。
+
 [listing]
 ----
 cat snap.yaml
-#Use apiVersion v1 for Kubernetes 1.20 and above. For Kubernetes 1.19, use apiVersion v1beta1.
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
@@ -128,7 +60,7 @@ spec:
   source:
     persistentVolumeClaimName: pvc1
 ----
-スナップショットは 'PVC1' という名前の PVC 用に作成されており ' スナップショットの名前は PVC1-snap' に設定されています
+この例では、という名前のPVCに対してスナップショットが作成されます `pvc1` Snapshotの名前はに設定されます `pvc1-snap`。
 
 [listing]
 ----
@@ -171,7 +103,7 @@ Status:
 
 == 手順 3 ：ボリューム Snapshot から PVC を作成します
 
-スナップショットを使用して PVC を作成する例は、次のとおりです。
+次に、Snapshotを使用してPVCを作成する例を示します。
 
 [listing]
 ----
@@ -199,8 +131,35 @@ NOTE: スナップショットが関連付けられている永続ボリュー�
 
 
 
-== 詳細については、こちらをご覧ください
+== ボリュームSnapshotコントローラを導入する
 
-* link:../trident-concepts/snapshots.html["ボリューム Snapshot"^]
-* link:../trident-reference/objects.html["d7ca7162c394dee752c35d07a92823da"^]
+KubernetesディストリビューションにスナップショットコントローラとCRDが含まれていない場合は、次のように導入できます。
+
+.手順
+. ボリュームのSnapshot作成
++
+[listing]
+----
+cat snapshot-setup.sh
+#!/bin/bash
+# Create volume snapshot CRDs
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-6.1/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-6.1/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-6.1/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
+----
+. 目的のネームスペースにスナップショットコントローラを作成します。以下の YAML マニフェストを編集して名前空間を変更します。
++
+[listing]
+----
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-6.1/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-6.1/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+----
+
+
+
+
+== 関連リンク
+
+* link:../trident-concepts/snapshots.html["ボリューム Snapshot"]
+* link:../trident-reference/objects.html["ボリュームSnapshotクラス"]
 

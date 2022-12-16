@@ -2140,25 +2140,14 @@
   <block id="daabb7db82ac9f3f074671a1185c462e" category="paragraph">以前のインストールからの既存のバックエンドは、 Astra Trident のアップグレード時に前述のようにボリュームをプロビジョニングします。アップグレード前に作成したボリュームについては、変更が反映されるようにボリュームのサイズを変更する必要があります。たとえば、「 napshotReserve 」が 50 であった 2GiB PVC の場合、ボリュームは書き込み可能なスペースが 1GiB であると考えられていました。たとえば、ボリュームのサイズを 3GiB に変更すると、アプリケーションの書き込み可能なスペースが 6GiB のボリュームで 3GiB になります。</block>
   <block id="f35c0fe4b6581c16866c964cef229bfa" category="admonition">ネットアップ ONTAP で Trident を使用している場合は、 IP アドレスではなく LIF の DNS 名を指定することを推奨します。</block>
   <block id="8c35a9f7d631f51e05811b36617db641" category="paragraph">この例は、動的なエクスポートポリシーを使用してエクスポートポリシーを自動的に作成および管理するように Astra Trident に指示する方法を示しています。これは「 ONTAP-NAS-エコノミー 」と「 ONTAP-NAS-flexgroup 」ドライバで同様に機能します。</block>
-  <block id="141da5e3f576179cbf2f6506b07ef538" category="summary">Astra Trident の 20.01 リリースから、 Kubernetes レイヤで永続的ボリューム（ PVS ）の Snapshot を作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。</block>
-  <block id="332138092a1597c4d5e69679199e490c" category="inline-link">リリースのブログ</block>
-  <block id="006b05a472974308122f7f05ef147e80" category="admonition">この機能は Kubernetes 1.17 （ベータ版）から提供され、 1.20 から GA になります。ベータ版から GA 版への移行に伴う変更点については、を参照してください<block ref="02a1c904d0035e03c61e261dbe622345" category="inline-link-rx"></block>。GA への卒業とともに 'v1' API バージョンが導入され 'v1beta` スナップショットと下位互換性があります</block>
-  <block id="26c4fe55fc424c7b41b517701f54f074" category="inline-link">webhook を検証しています</block>
-  <block id="46b189b23dfbd5f3f622a1c04590b05e" category="admonition">CSI Snapshotter は、を提供します<block ref="927ab0e919f8034deab1249bed53a289" category="inline-link-rx"></block> ユーザーが既存の v1beta1 スナップショットを検証し、有効なリソースオブジェクトであることを確認できるようにするため。検証中の webhook は、無効なスナップショットオブジェクトに自動的にラベルを付け、今後無効なオブジェクトが作成されないようにします。検証する webhook は Kubernetes Orchestrator によって導入されます。検証するウェブフックを手動で配備する手順を参照してください<block ref="07cb3cdda0599ec9f2e82062ecd12e82" category="inline-link-rx"></block>。無効なスナップショットマニフェストの例を探します<block ref="bceda34f0850fc68d82f08741abbc69e" category="inline-link-rx"></block>。</block>
-  <block id="f535be08d3997f1a801b132862d99a5c" category="paragraph">以下に、スナップショットの操作に必要な構成要素と、スナップショットの作成方法および使用方法の例を示します。</block>
-  <block id="b91e58d7d80a51e4fa86b9ab27dca505" category="paragraph">ボリューム Snapshot を作成する前に、をセットアップします <block ref="c740b46915208e935cb2017421ec0264" category="inline-link-macro-rx"></block>。</block>
   <block id="4744d2c82c1c470ab40280b2ebba0c08" category="paragraph">「川」はアストラトライデントの CSI ドライバを指しています。「保持ポリシー」には「削除」または「保持」を指定できます。「 Retain 」に設定すると、「 VolumeSnapshot 」オブジェクトが削除されても、ストレージ・クラスタ上の基盤となる物理スナップショットは保持されます。</block>
   <block id="0ab6380edce0d0e7b8538ebf3215ebbd" category="section-title">手順 2 ：既存の PVC のスナップショットを作成します</block>
-  <block id="ef55488b02c4b0173eb6f7bb867db086" category="paragraph">スナップショットは 'PVC1' という名前の PVC 用に作成されており ' スナップショットの名前は PVC1-snap' に設定されています</block>
   <block id="501470eb266ff6637de993e3f193ba40" category="paragraph">これにより 'VolumeSnapshot' オブジェクトが作成されましたVolumeSnapshot は PVC に似ており、実際のスナップショットを表す「 VolumeSnapshotContent 」オブジェクトに関連付けられています。</block>
   <block id="320e7c242b569ab5bbdaa490b3df817e" category="paragraph">「 PVC1-SNAP 」ボリューム Snapshot の「 VolumeSnapshotContent 」オブジェクトを指定することができます。</block>
   <block id="b3841b02d7da01fde480332e3295a08e" category="paragraph">「スナップショットコンテンツ名」は、このスナップショットを提供する VolumeSnapshotContent オブジェクトを識別します。' 使用準備完了 ' パラメータは ' スナップショットを使用して新しい PVC を作成できることを示します</block>
   <block id="7957320b126678e9b713ef146b3ac009" category="section-title">手順 3 ：ボリューム Snapshot から PVC を作成します</block>
-  <block id="4d780b57cad08f64bcd1ea7351a15588" category="paragraph">スナップショットを使用して PVC を作成する例は、次のとおりです。</block>
   <block id="2592284f87bba60e4c05337a134ef047" category="paragraph">「 dataSource 」は、「 PVC1-SNAP 」という名前のボリューム Snapshot をデータのソースとして使用して PVC を作成する必要があることを示します。このコマンドを実行すると、 Astra Trident が Snapshot から PVC を作成するように指示します。作成された PVC は、ポッドに接続して、他の PVC と同様に使用できます。</block>
   <block id="bda01e3aa44c411129a6fbf29445bfb4" category="admonition">スナップショットが関連付けられている永続ボリュームを削除すると、対応する Trident ボリュームが「削除状態」に更新されます。Astra Trident ボリュームを削除するには、ボリュームの Snapshot を削除する必要があります。</block>
-  <block id="fab3fcd54585164dbc9d7adf57f8e3d9" category="list-text"><block ref="fab3fcd54585164dbc9d7adf57f8e3d9" category="inline-link-macro-rx"></block></block>
-  <block id="c740b46915208e935cb2017421ec0264" category="list-text"><block ref="c740b46915208e935cb2017421ec0264" category="inline-link-macro-rx"></block></block>
   <block id="3d79668ab3683a20086b2953dd541cfc" category="summary">バックエンドは、 Astra Trident とストレージシステムの関係を定義します。Trident がストレージシステムとの通信方法を Trident から指示し、 Astra Trident がボリュームをプロビジョニングする方法も解説します。Astra Trident は、ストレージクラスが定義した要件に合わせて、バックエンドからストレージプールを自動的に提供します。お使いのストレージシステムのタイプに基づいたバックエンドの設定の詳細については、こちらを参照してください。</block>
   <block id="87dc0337d3ded2211d9b01c32e22d90d" category="doc">バックエンドを設定</block>
   <block id="2acbb5dd492d792d00383b0c76ade4ad" category="list-text"><block ref="2acbb5dd492d792d00383b0c76ade4ad" category="inline-link-macro-rx"></block></block>
@@ -2774,7 +2763,6 @@
   <block id="82720d84ad009f069fd0b2cfaf6c3dac" category="summary">Astra Trident for Docker は、ネットアップのストレージプラットフォーム向けの Docker エコシステムとの直接統合を実現します。ストレージプラットフォームから Docker ホストまで、ストレージリソースのプロビジョニングと管理をサポートします。また、将来プラットフォームを追加するためのフレームワークもサポートします。</block>
   <block id="6798a0701cedf1202e1d70210a3a9a83" category="paragraph">「 ONTAP-NAS` 」、「 ONTAP-SAN」 、「 solidfire-san-」 、「 GCP-cvs ストレージドライバ」を使用する場合、 Astra Trident はボリュームのクローンを作成できます。「 ONTAP-NAS-flexgroup 」または「 ONTAP-NAS-エコノミー 」ドライバを使用する場合、クローニングはサポートされません。既存のボリュームから新しいボリュームを作成すると、新しい Snapshot が作成されます。</block>
   <block id="a264f15eaddf1d50155847119366be6b" category="list-text">「 ONTAP-NAS」 、「 ONTAP-SAN」 、「 GCP-CVS 」、「 azure-NetApp-files 」ドライバの場合、各永続ボリューム（ PV ）は FlexVol にマッピングされます。その結果、ボリューム Snapshot はネットアップ Snapshot として作成されます。NetApp のスナップショット・テクノロジーは ' 競合するスナップショット・テクノロジーよりも高い安定性 ' 拡張性 ' リカバリ性 ' パフォーマンスを提供しますSnapshot コピーは、作成時とストレージスペースの両方で非常に効率的です。</block>
-  <block id="72dfd0afcd8b2eda3e5ec2268b7da6b2" category="paragraph">Astra Trident の 20.01 リリースから、 Kubernetes レイヤで PVS のスナップショットを作成できるようになりました。この Snapshot を使用して、 Astra Trident で作成されたボリュームのポイントインタイムコピーを管理し、追加のボリューム（クローン）の作成をスケジュールできます。ボリューム・スナップショットは 'ONTAP-NAS'`ONTAP-SAN'ONTAP-SAN'ONTAP-エコノミー ''solidfire-san-'`solidfire-SAN'GCP - cvs` によってサポートされています 「 azure-NetApp-files 」ドライバを使用します。</block>
   <block id="2c7e2299fa3c14b5e6f60015eb016a87" category="admonition">GCP の NetApp Cloud Volumes Service から作成されたボリュームをインポートするには、名前ではなくボリュームパスでボリュームを特定します。</block>
   <block id="37202a3ee6673127b64f84af27fdf523" category="paragraph">"gcpcvs_YEppr" という名前のバックエンド上の "gcpcvss_cvs" ボリュームを "adimenthy-jolly -sw" のボリュームパスでインポートするには、次のコマンドを使用します。</block>
   <block id="ec2577b4770848fd294d6ca069c34a43" category="paragraph">Astra Trident は 'ONTAP-NAS''ONTAP-NAS-Bエコノミー 'ONTAP-NAS-flexp`'GCP-cvs`'Azure-NetApp-files' バックエンドでプロビジョニングされた NFS PVS のボリューム拡張をサポートしています</block>
@@ -2804,15 +2792,9 @@
   <block id="135c438d01a49275c458e22005e39c6e" category="section-title">22.01.0 の変更</block>
   <block id="58a2e8c17107cc1ca9cb1317cd0c1ee9" category="section-title">21.10.1 の変更点</block>
   <block id="43e92857220d1a7ea1da88250ea5e2e3" category="section-title">21.10.0 の変更点</block>
-  <block id="67b47f9232c8507cb74ec2668b3bb75d" category="list-text">ボリュームSnapshotを作成するには、外部のSnapshotコントローラとカスタムリソース定義（CRD）を作成する必要があります。使用されているKubernetesオーケストレーションツール（例：Kubeadm、GKE、OpenShift）の役割を担っています。</block>
   <block id="9c87569b835a8f66b7490390d350d9a4" category="paragraph">KubernetesディストリビューションにスナップショットコントローラとCRDが含まれていない場合は、次のように導入できます。</block>
   <block id="469f7ca16938508b5dcb777767828b70" category="list-text">ボリュームのSnapshot作成</block>
-  <block id="351d6da9c87ca81d91cd4755e4730d82" category="open-title">v5.0コンポーネント</block>
-  <block id="3d5442333756ee7fdf64adf51439d855" category="open-title">v3.0.3コンポーネント</block>
   <block id="65b146df7d5c27b212f54a7c9980960b" category="list-text">目的のネームスペースにスナップショットコントローラを作成します。以下の YAML マニフェストを編集して名前空間を変更します。</block>
-  <block id="1cfbd89d099907d91122529e677f1c71" category="admonition">GKE環境でオンデマンドボリュームスナップショットを設定する場合は、スナップショットコントローラを作成しないでください。GKE では、内蔵の非表示のスナップショットコントローラを使用します。</block>
-  <block id="5e393c0ca8392e0c84201770c8b544ca" category="open-title">v5.0コントローラ</block>
-  <block id="ea567d0d1a58b120efa89893cae2966a" category="open-title">v3.0.3コントローラ</block>
   <block id="086e6c16e3fe8e13c336612ef636aa02" category="sidebar">Astra Trident</block>
   <block id="5a333b18a215ecfd4457ba0e1732654b" category="section-title">Tridentは、負荷共有ミラーが設定されているSVMでボリュームをプロビジョニングできますか。</block>
   <block id="0e7629426b9d7596800cd5d72f558a7f" category="paragraph">負荷共有ミラーは、NFS経由でデータを提供するSVMのルートボリューム用に作成できます。ONTAP は、Tridentによって作成されたボリュームの負荷共有ミラーを自動的に更新します。ボリュームのマウントが遅延する可能性があります。Tridentを使用して複数のボリュームを作成する場合、ボリュームをプロビジョニングする方法は、負荷共有ミラーを更新するONTAP によって異なります。</block>
@@ -2839,8 +2821,6 @@
   <block id="6dc4cb19f2792a3eadfa64d4b4b6d177" category="paragraph">すべてのKubernetesワーカーノードに適切なNFSツールをインストールしておく必要があります。を参照してください <block ref="f1f954e59a21e3ffe189e77dd2ee9f86" category="inline-link-macro-rx"></block> 詳細：</block>
   <block id="6adbf3424e5de1b4e2baad3b4d632c4a" category="paragraph">既存のバックエンドを更新して、別の認証方法を使用したり、クレデンシャルをローテーションしたりできます。これはどちらの方法でも機能します。ユーザ名とパスワードを使用するバックエンドは証明書を使用するように更新できますが、証明書を使用するバックエンドはユーザ名とパスワードに基づいて更新できます。これを行うには、既存の認証方法を削除して、新しい認証方法を追加する必要があります。次に'必要なパラメータを含む更新されたbackend.jsonファイルを使用して'tridentctl backend updateを実行します</block>
   <block id="da5e3ce6518bd669264e1e0768c2d9f1" category="paragraph">すべてのKubernetesワーカーノードに適切なiSCSIツールをインストールしておく必要があります。を参照してください <block ref="f1f954e59a21e3ffe189e77dd2ee9f86" category="inline-link-macro-rx"></block> 詳細：</block>
-  <block id="4b38dd8e9c8be42320db7f14bd043f55" category="paragraph">Kubernetes 1.20以降では、v5.0以上のスナップショットコンポーネントでv1スナップショットCRDを使用します。Kubernetes 1.19には、v1beta1とv3.0.3のスナップショットコンポーネントを使用します。</block>
-  <block id="95454921c0beb7e02eef219b349c8b2e" category="paragraph">Kubernetes 1.20以降ではv5.0以上を使用してください。Kubernetesバージョン1.19にはv3.0.3を使用します</block>
   <block id="880cacf6429ab3c253b14beac8b73951" category="summary">Kubernetesポッドのセキュリティ標準（PSS）とポッドのセキュリティポリシー（PSP）によって、権限レベルが定義され、ポッドの動作が制限されます。また、OpenShift Security Context Constraints（SCC）でも、OpenShift Kubernetes Engine固有のポッド制限を定義します。このカスタマイズを行うために、Astra Tridentはインストール時に特定の権限を有効にします。</block>
   <block id="bc3c69459955aa51e6720ee4098db2c2" category="doc">PODセキュリティ標準（PSS）およびセキュリティコンテキストの制約（SCC）</block>
   <block id="9d482ecca4ba8a41fd8e1180c97a4b97" category="paragraph">Kubernetesポッドのセキュリティ標準（PSS）とポッドのセキュリティポリシー（PSP）によって、権限レベルが定義され、ポッドの動作が制限されます。また、OpenShift Security Context Constraints（SCC）でも、OpenShift Kubernetes Engine固有のポッド制限を定義します。このカスタマイズを行うために、Astra Tridentはインストール時に特定の権限を有効にします。次のセクションでは、Astra Tridentによって設定された権限の詳細を説明します。</block>
@@ -3407,7 +3387,6 @@
   <block id="701fd6484c41253418049cc2bf503a1e" category="section-title"><block ref="8321592ce24c8a122ecf26a63cfca407" prefix="" category="inline-code"></block> IPv6対応ドライバ</block>
   <block id="4a8519b09a0b2a70d40200e88ec2c5dc" category="section-title"><block ref="caafdf62a2c609bfa5316118231a1007" prefix="" category="inline-code"></block> ドライバ</block>
   <block id="c495273b4c0d19189acec3e2135954e0" category="section-title"><block ref="8321592ce24c8a122ecf26a63cfca407" prefix="" category="inline-code"></block> ドライバ</block>
-  <block id="cd694f8c60b5f42437f7390e015a46b5" category="section-title">手順1：を設定します<block ref="19476662cd814e0aa085eca121de89b8" prefix=" " category="inline-code"></block></block>
   <block id="454631312fab234fc91bb2f85a751fac" category="section-title"><block ref="913a4b06671d1e04e6582a85afe3abbe" prefix="" category="inline-code"></block></block>
   <block id="e892fda55ead7e15eed753e850d35f12" category="section-title">手順2：を作成します<block ref="913a4b06671d1e04e6582a85afe3abbe" prefix=" " category="inline-code"></block> CR</block>
   <block id="a0d777cf1acc36406564409adef85b17" category="section-title">のサポート対象のバージョンを指定します<block ref="a226e9fbdfc1c8dd7e7fef4d333f86ed" prefix=" " category="inline-code"></block>？</block>
@@ -3459,4 +3438,18 @@
   <block id="c0e37f832e8a72edd734ffdce2ad0bed" category="section-title">仮想ストレージプールの設計</block>
   <block id="b6e026d8066036cf2628237905a58384" category="section-title">さまざまなサービスレベル/QoSのエミュレート</block>
   <block id="628fd4af2a4e2fce014efbf03b84bb71" category="section-title">特定の一連の側面を割り当てます</block>
+  <block id="2068f3aa095d99b45558d078cf0ccef1" category="summary">永続ボリューム（PVS）のKubernetesボリュームSnapshot（ボリュームSnapshot）を作成して、Astra Tridentボリュームのポイントインタイムコピーを保持できます。また、既存のボリュームSnapshotから、_ clone__という名前の新しいボリュームを作成することもできます。ボリュームSnapshotは、でサポートされます<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block>、<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block>、<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block>、<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block>、<block ref="5935ea92cdd7d975b4e764b429f21c01" prefix=" " category="inline-code"></block>および<block ref="bc5779a2d33eeb1304bae57f15920cfc" prefix=" " category="inline-code"></block> ドライバ。</block>
+  <block id="1ee74a3407fb0558688a68f8a4011d8b" category="paragraph">外部スナップショットコントローラとカスタムリソース定義（CRD）が必要です。Kubernetesオーケストレーションツール（例：Kubeadm、GKE、OpenShift）の役割を担っています。</block>
+  <block id="4e9d71562a7ee4d135b94aa7e33203d4" category="paragraph">KubernetesディストリビューションにスナップショットコントローラとCRDが含まれていない場合は、を参照してください <block ref="66b3d1bc7c4350b2c78856aa6724afe9" category="inline-xref-macro-rx"></block>。</block>
+  <block id="af79c649a1b22da7699446c292250fcc" category="admonition">GKE環境でオンデマンドボリュームスナップショットを作成する場合は、スナップショットコントローラを作成しないでください。GKEでは、内蔵の非表示のスナップショットコントローラを使用します。</block>
+  <block id="a19c6b176bcf5d5df56d61bfda053c09" category="section-title">手順1：を作成します<block ref="19476662cd814e0aa085eca121de89b8" prefix=" " category="inline-code"></block></block>
+  <block id="5113d8074a0a5072af49f1e1fa6901bd" category="paragraph">次の例は、ボリュームSnapshotクラスを作成します。</block>
+  <block id="ce43eda1a51d5de70f422e14ca195db3" category="paragraph">詳細については、link：./trident-reference/objects.html#Kubernetes -volumesnapshotclass-objectsを参照してください<block ref="19476662cd814e0aa085eca121de89b8" prefix="[" category="inline-code"></block>]。</block>
+  <block id="a599393b295f7ad56a8c7f1d327290de" category="paragraph">次に、既存のPVCのスナップショットを作成する例を示します。</block>
+  <block id="4191daf22334ac03a54cdf8adbfd6dfe" category="paragraph">この例では、という名前のPVCに対してスナップショットが作成されます<block ref="30520f4f96804df83914260b79f55962" prefix=" " category="inline-code"></block> Snapshotの名前はに設定されます<block ref="2599ab7993e15386327b6345bc1cc4e1" prefix=" " category="inline-code"></block>。</block>
+  <block id="b2b2f8b28370c274887f8aa2f82bb5d4" category="paragraph">次に、Snapshotを使用してPVCを作成する例を示します。</block>
+  <block id="f6bd0d7447ff66cc6b859603a88fbde9" category="section-title">関連リンク</block>
+  <block id="35aa4a2a819e526c2e930e487df8d423" category="list-text"><block ref="35aa4a2a819e526c2e930e487df8d423" category="inline-link-macro-rx"></block></block>
+  <block id="19476662cd814e0aa085eca121de89b8" category="inline-link-macro">ボリュームSnapshotクラス</block>
+  <block id="d63cadc96caf4b05f8fa532b08e889da" category="list-text"><block ref="d63cadc96caf4b05f8fa532b08e889da" category="inline-link-macro-rx"></block></block>
 </blocks>
