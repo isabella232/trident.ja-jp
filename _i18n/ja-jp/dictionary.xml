@@ -2635,7 +2635,6 @@
   <block id="3830d427e146a8a64454dc373d9b1502" category="list-text"><block ref="3830d427e146a8a64454dc373d9b1502" category="inline-link-rx"></block></block>
   <block id="af7c8216a3289efe1a298a19c00b8b8c" category="section-title">テスト済みのホストオペレーティングシステム</block>
   <block id="57b3e1695eb7d16642702fbce3837b86" category="paragraph">デフォルトでは、 Astra Trident はコンテナで実行されるため、任意の Linux ワーカーで実行されます。ただし、その場合、使用するバックエンドに応じて、標準の NFS クライアントまたは iSCSI イニシエータを使用して Astra Trident が提供するボリュームをマウントできる必要があります。</block>
-  <block id="814a65adc75608da31ab5685f9b1c1ce" category="paragraph">Astra Trident は、特定のオペレーティングシステムを正式にサポートしているわけではありませんが、次の Linux ディストリビューションが動作することはわかっています。</block>
   <block id="dc5ac69fee94d861f0bed64729b712cf" category="paragraph">Trident を使用するには、バックエンド構成でストレージシステムを使用する前に、一部の変更が必要になることがあります。を参照してください <block ref="49641f5ab61d7a6ce07b1b6ba31204f8" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="681d715b456f6d29a501b8f132e941a1" category="cell">v1.22.0</block>
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">オープンソース</block>
@@ -3452,4 +3451,6 @@
   <block id="35aa4a2a819e526c2e930e487df8d423" category="list-text"><block ref="35aa4a2a819e526c2e930e487df8d423" category="inline-link-macro-rx"></block></block>
   <block id="19476662cd814e0aa085eca121de89b8" category="inline-link-macro">ボリュームSnapshotクラス</block>
   <block id="d63cadc96caf4b05f8fa532b08e889da" category="list-text"><block ref="d63cadc96caf4b05f8fa532b08e889da" category="inline-link-macro-rx"></block></block>
+  <block id="2f82d12ae3ce8f940e10b062c5134f3d" category="paragraph">Astra Tridentは、特定のオペレーティングシステムを正式にサポートしているわけではありませんが、動作確認済みの特徴は次のとおりです。</block>
+  <block id="31f8757839909e87266f2b53482c86ef" category="list-text">Windows Server 2019</block>
 </blocks>
