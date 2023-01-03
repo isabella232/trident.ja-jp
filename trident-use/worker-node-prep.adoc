@@ -69,7 +69,7 @@ NOTE: ブート時に NFS サービスが開始されていることを確認し
 iSCSI ボリュームを使用するときは、次の点に注意してください。
 
 * Kubernetes クラスタ内の各ノードには一意の IQN を割り当てる必要があります。* これは必須の前提条件です * 。
-* RHCOSバージョン4.5以降、またはRHELと互換性のあるその他のLinuxディストリビューションを「solidfire-san-」ドライバとともに使用している場合は、/etc/iscsi/iscsid.confでCHAP認証アルゴリズムがMD5に設定されていることを確認してください。
+* RHCOSバージョン4.5以降またはRHEL互換のその他のLinuxディストリビューションをで使用している場合は、を使用します `solidfire-san` DriverおよびElement OS 12.5以前。CHAP認証アルゴリズムがMD5 inに設定されていることを確認します `/etc/iscsi/iscsid.conf`。Element 12.7では、FIPS準拠のセキュアなCHAPアルゴリズムSHA1、SHA-256、およびSHA3-256が提供されています。
 +
 [listing]
 ----

@@ -2191,7 +2191,6 @@
   <block id="ddab3f1d971a7608afb4c30c688a32ac" category="list-text">対応する PVC を削除する前に Astra Trident によってプロビジョニングされた PV を削除しても、 Astra Trident は自動的に元のボリュームを削除しません。tridentctl または REST API を使用してボリュームを削除してください。</block>
   <block id="0821431aba133adbfa7fa0ca1781eedd" category="list-text">FlexGroup では、プロビジョニング要求ごとに一意のアグリゲートセットがないかぎり、同時に複数の ONTAP をプロビジョニングすることはできません。</block>
   <block id="38699c45ccc629a8b46bd780d7aef2f6" category="list-text">IPv6 経由で Astra Trident を使用する場合は、バックエンド定義内の角かっこ内に「 managementlif 」と「 datalif 」を指定する必要があります。例えば、「 [fd20 ： 8b1e ： b258 ： 2000 ： f816 ： 3eff ： feec ： 0]`` 」のようになります。</block>
-  <block id="d83c67344719a209c50396895dd2fbe1" category="list-text">OpenShift 4.5 で「 olidfire-san 」ドライバを使用する場合は、基になるワーカーノードが CHAP 認証アルゴリズムとして MD5 を使用していることを確認します。</block>
   <block id="e9a7080bd6d1b50ff15cef6f14fa1d64" category="inline-link">Astra Trident GitHub</block>
   <block id="b94e036fb032554ca486dd8fc2e3fafe" category="list-text"><block ref="b94e036fb032554ca486dd8fc2e3fafe" category="inline-link-rx"></block></block>
   <block id="3334dfda9735f9b3ed55a34ef316b599" category="inline-link">Astra Trident のブログ</block>
@@ -3013,7 +3012,6 @@
   <block id="98a2ec14e38e4acf26c70e52b70bf5f8" category="list-text">RHELまたはCentOS 7.</block>
   <block id="c5e9849ca6abd11c3d0615c338c6a231" category="paragraph">RHEL / CentOS 7.</block>
   <block id="3d945423f8e9496c429a5d8c65b4604f" category="paragraph">Ubuntu</block>
-  <block id="269efd38c7d91afd7e1339da498a391f" category="list-text">RHCOSバージョン4.5以降、またはRHELと互換性のあるその他のLinuxディストリビューションを「solidfire-san-」ドライバとともに使用している場合は、/etc/iscsi/iscsid.confでCHAP認証アルゴリズムがMD5に設定されていることを確認してください。</block>
   <block id="b437164523254b34902d49bbf5e996aa" category="paragraph">システムベースのシステム用のサンプルユニットファイルは、 Git repo の「 contrib / trident.service.example` 」にあります。このファイルをCentOS 7 / RHELで使用するには、次の手順を実行します。</block>
   <block id="134bf17c90c90b5aeed99dde262bf14d" category="admonition">すでにTridentの名前空間を作成している場合'--create-namespaceパラメータは追加の名前空間を作成しません</block>
   <block id="92027c79fbf95308efaf2ec1db03f661" category="admonition">Kubernetesバージョン1.20以降では、検証済みの「registry.k8es.gcr.io/sig-storage/csi-snapshotter：v6.x'イメージを使用します。これは、バージョンv1'が「volumesnapshotes.snapshot.storages.k83.gcr.io`crdr」を処理している場合のみです。v1beta`のバージョンがv1beta`のバージョンの有無に関わらずCRDを処理している場合は、検証済みの「registry.k83.gcr.io/sig-storage/csi-snapshotter:v3.x'イメージを使用します。</block>
@@ -3460,4 +3458,6 @@
   <block id="eb0254f1d0a82e646c239d4d2e2f83ac" category="cell"><block ref="f65e5ff2a1bb1af969dccabe7dcd5cdd" prefix="" category="inline-code"></block></block>
   <block id="67a3b723b2d9024808eb2c6e686d00a0" category="cell">!保護</block>
   <block id="1fde97909b90bb329db2062f7744bd45" category="cell">存在しません</block>
+  <block id="5eb07a7cb7d445ef6bbb17270c65cf52" category="list-text">RHCOSバージョン4.5以降またはRHEL互換のその他のLinuxディストリビューションをで使用している場合は、を使用します<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block> DriverおよびElement OS 12.5以前。CHAP認証アルゴリズムがMD5 inに設定されていることを確認します<block ref="104f48adc29dc1e1d7c9bbe7b5dd3f8d" prefix=" " category="inline-code"></block>。Element 12.7では、FIPS準拠のセキュアなCHAPアルゴリズムSHA1、SHA-256、およびSHA3-256が提供されています。</block>
+  <block id="18c20e5d2e368f36f420dd39019d460f" category="list-text">を使用する場合<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block> OpenShift 4.5を搭載したドライバ。基になるワーカーノードがMD5をCHAP認証アルゴリズムとして使用するようにします。Element 12.7では、FIPS準拠のセキュアなCHAPアルゴリズムSHA1、SHA-256、およびSHA3-256が提供されています。</block>
 </blocks>
