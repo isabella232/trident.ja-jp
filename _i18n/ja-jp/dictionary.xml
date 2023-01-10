@@ -157,7 +157,6 @@
   <block id="db8a0bbeae97b94338c1b7a61e2a1ec3" category="cell">サポートされているドライバ</block>
   <block id="f3780100617165ed98557e3a6d2be72d" category="cell">trident.netapp.io/fileSystem</block>
   <block id="44d4d4eb1f08d8eb29766160086f61dd" category="cell">ファイルシステム</block>
-  <block id="59c54cb66816513690f886c6cbd45d7e" category="cell">ONTAP-SAN 、 solidfire-san-SAN 、 eseries-iscsi 、 ONTAP-SAN-エコノミー の 2 つのシステムがあります</block>
   <block id="979f70bf9da982ee97ac075df4f048c3" category="cell">trident.netapp.io/cloneFromPVC</block>
   <block id="b4ead50a5ca4f307f7d61da7763ad204" category="cell">cloneSourceVolume の実行中です</block>
   <block id="46ec89aa5290ead7b514dd5182caa0a7" category="cell">trident.netapp.io/splitOnClone</block>
@@ -233,7 +232,6 @@
   <block id="6026fbd9abd05590949de220154e3262" category="cell">シン、シック</block>
   <block id="3064025fe3541bec9942e14fcaedfab7" category="cell">プールはこのプロビジョニング方法をサポートします</block>
   <block id="cf65591e3da90317fc132ea7464105d8" category="cell">プロビジョニング方法が指定されました</block>
-  <block id="ef2577df8468ab39e993a1938ba7f38d" category="cell">シック： All ONTAP &amp; eseries-iscsi ； thin ： all ONTAP &amp; solidfire-san-SAN</block>
   <block id="55b56fb238360663afa6230ad82e74a0" category="cell">backendType</block>
   <block id="d41d8cd98f00b204e9800998ecf8427e" category="doc"></block>
   <block id="0e1201d4d96df2d9d03c9c66b90874a1" category="cell">プールはこのタイプのバックエンドに属しています</block>
@@ -2691,7 +2689,6 @@
   <block id="ec3f9af8f611100a0182ffb9ab2e5ef8" category="paragraph">ONTAP 内では、 Trident ドライバが使用できるより制限的な役割を作成することもできますが、推奨しません。Trident の新リリースでは、多くの場合、考慮すべき API が追加で必要になるため、アップグレードが難しく、エラーも起こりやすくなります。</block>
   <block id="ee50ce7340da5b018abe62c8e613cae0" category="summary">Astra Trident は、 Trident オーケストレーションツール用のコマンドラインオプションをいくつか提供し、特定のポートを介して通信を行います。</block>
   <block id="94efe0c9471991c69d2a3b0970a56744" category="paragraph">Trident は、 Trident オーケストレーションツールのコマンドラインオプションをいくつか公開しています。これらのオプションを使用して、導入環境を変更できます。</block>
-  <block id="55f3fc550e9a03a95334f3a19f0920cc" category="cell">solidfire-san-group 、 ontap/nas 、 ontap -nas-エコノミー 、 ontap -nas-flexgroup 、 ontap -san 、 ONTAP - SAN 経済、 eseries-iscsi</block>
   <block id="6add71a247c8f4513060920be14857bc" category="cell">allowVolumeExpansion の略</block>
   <block id="84e2c64f38f78ba3ea5c905ab5a2da27" category="cell">ブール値</block>
   <block id="675e3f37a9adfd7ab6433906c490fa06" category="cell">PVC サイズの拡張のサポートをイネーブルまたはディセーブルにします</block>
@@ -2765,7 +2762,6 @@
   <block id="555c97661fe540a8eabda5c4680e2f81" category="paragraph">「 azure-NetApp-file' 」または「 gcp-cvs` ドライバが使用されている場合は、「 tridentctl import volume &lt;backend-name&gt; &lt;volume path&gt; -f /path/pvc.yaml 」コマンドを使用して、 Astra Trident で管理される Kubernetes にボリュームをインポートします。これにより、ボリューム参照が一意になります。</block>
   <block id="cca7544fa2044ea81b43c1e0896bf58e" category="cell">ontap - NAS 、 ontap - san 、 solidfire-san-files 、 gcvs 、 ONTAP - SAN - 経済性</block>
   <block id="870594bba77423ccae9ad70861e02951" category="cell">ONTAP-NAS 、 ONTAP-NAS-flexgroup 、 ONTAP-SAN 、 GCP-cvs</block>
-  <block id="91511a1d98e80c77f75faa79a0e82734" category="paragraph">ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 solidfire-san-SAN 、 solidfire-san-SAN 、 E シリーズ - iSCSI 、 GCP-cvs 、 azure-NetApp-files 、 ONTAP-SAN-Eエコノミー</block>
   <block id="33dece0bdda0f88a645c739f3714c038" category="cell">ONTAP-NAS, ONTAP-SAN, solidfire-san-, gcvs</block>
   <block id="2e647c10640a301eccdc45d7ad72507d" category="cell">ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-, gcvs, azure-netapp-files</block>
   <block id="051fb2c3f62667c87a197ae412a4dbeb" category="cell">ONTAP （ NAS 、 SAN ） &amp; SolidFire - * ：クローン元のボリュームの名前</block>
@@ -3460,4 +3456,8 @@
   <block id="5eb07a7cb7d445ef6bbb17270c65cf52" category="list-text">RHCOSバージョン4.5以降またはRHEL互換のその他のLinuxディストリビューションをで使用している場合は、を使用します<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block> DriverおよびElement OS 12.5以前。CHAP認証アルゴリズムがMD5 inに設定されていることを確認します<block ref="104f48adc29dc1e1d7c9bbe7b5dd3f8d" prefix=" " category="inline-code"></block>。Element 12.7では、FIPS準拠のセキュアなCHAPアルゴリズムSHA1、SHA-256、およびSHA3-256が提供されています。</block>
   <block id="18c20e5d2e368f36f420dd39019d460f" category="list-text">を使用する場合<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block> OpenShift 4.5を搭載したドライバ。基になるワーカーノードがMD5をCHAP認証アルゴリズムとして使用するようにします。Element 12.7では、FIPS準拠のセキュアなCHAPアルゴリズムSHA1、SHA-256、およびSHA3-256が提供されています。</block>
   <block id="5896cc977dd7b9854957e18a2a5bf072" category="cell">アダプティブ QoS ポリシーグループ：作成したボリュームに割り当てます。ストレージプール / バックエンドごとに QOSPolicy または adaptiveQosPolicy のいずれかを選択します。経済性に影響する ONTAP - NAS ではサポートされません。</block>
+  <block id="19ab49765cdd2c8ab592eb40eeff08cf" category="cell">ONTAP-SAN、solidfire-san-エコノミー 構成、solidfire-san-SAN間にあるSolidFireを実現します</block>
+  <block id="054b5072368dea4f8748909c16c7de98" category="cell">シック：All ONTAP ；thin：All ONTAP &amp; solidfire-san-SAN</block>
+  <block id="dbdc06f8742b98dcacdf7fdb1af111ea" category="paragraph">ONTAPNAS、ONTAPNASエコノミー、ONTAP-NAS-flexgroup、ONTAPSAN、solidfire-san-SAN、solidfire-san-SAN、GCP-cvs、azure-NetApp-files、ONTAP-SAN-bエコノミー</block>
+  <block id="f888aa18c19e41f8c1263fa99ca8b94c" category="cell">solidfire-san-group、ontap/nas、ontap -nas-エコノミー、ontap -nas-flexgroup、ontap -san、ONTAP - SAN -経済性</block>
 </blocks>
