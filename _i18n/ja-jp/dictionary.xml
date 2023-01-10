@@ -2122,7 +2122,6 @@
   <block id="e98c128dda80ebab208244e4f62e7372" category="paragraph">「 ONTAP-NAS-エコノミー 」ドライバの場合、「 limitVolumeSize 」オプションを使用すると、 qtree および LUN 用に管理するボリュームの最大サイズも制限されます。「 qtreesPerFlexvol 」オプションを使用すると、 FlexVol あたりの最大 qtree 数をカスタマイズできます。</block>
   <block id="92e660f52759e323dbc0ec71541a2e9e" category="paragraph">マウントオプションを指定するには 'nfsMountOptions' パラメータを使用しますKubernetes 永続ボリュームのマウントオプションは通常ストレージクラスで指定されますが、ストレージクラスでマウントオプションが指定されていない場合、 Astra Trident はストレージバックエンドの構成ファイルで指定されているマウントオプションを使用します。ストレージクラスまたは構成ファイルにマウントオプションが指定されていない場合、 Astra Trident は関連付けられた永続的ボリュームにマウントオプションを設定しません。</block>
   <block id="7587c806a60b3f88688668f32e0b766c" category="admonition">Astra Trident は 'ONTAP-NAS' および 'ONTAP-NAS-flexgroup を使用して作成されたすべてのボリュームの Comments フィールドにプロビジョニングラベルを設定します使用するドライバに基づいて ' コメントは FlexVol (`ONTAP-NAS') または FlexGroup (`ONTAP-NAS-flexgroup ') に設定されますTrident が、ストレージプール上にあるすべてのラベルを、プロビジョニング時にストレージボリュームにコピーします。ストレージ管理者は、ストレージプールごとにラベルを定義し、ストレージプール内に作成されたすべてのボリュームをグループ化できます。これにより、バックエンド構成で提供されるカスタマイズ可能な一連のラベルに基づいてボリュームを簡単に区別できます。</block>
-  <block id="831924abd31e90baedabed887dbfc24c" category="cell">アダプティブ QoS ポリシーグループ：作成したボリュームに割り当てます。ストレージプール / バックエンドごとに QOSPolicy または adaptiveQosPolicy のいずれかを選択します。経済性に影響する ONTAP - NAS ではサポートされません。</block>
   <block id="3e9a232d025270ed6767c385b8291871" category="cell">新しいボリュームのモード</block>
   <block id="2ad2c2d9206a1be7e744bb13b2b126dd" category="cell">777</block>
   <block id="7ad68fdac2eac069eb8ed0fc45b0fb74" category="cell">Snapshot ディレクトリ</block>
@@ -3460,4 +3459,5 @@
   <block id="1fde97909b90bb329db2062f7744bd45" category="cell">存在しません</block>
   <block id="5eb07a7cb7d445ef6bbb17270c65cf52" category="list-text">RHCOSバージョン4.5以降またはRHEL互換のその他のLinuxディストリビューションをで使用している場合は、を使用します<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block> DriverおよびElement OS 12.5以前。CHAP認証アルゴリズムがMD5 inに設定されていることを確認します<block ref="104f48adc29dc1e1d7c9bbe7b5dd3f8d" prefix=" " category="inline-code"></block>。Element 12.7では、FIPS準拠のセキュアなCHAPアルゴリズムSHA1、SHA-256、およびSHA3-256が提供されています。</block>
   <block id="18c20e5d2e368f36f420dd39019d460f" category="list-text">を使用する場合<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block> OpenShift 4.5を搭載したドライバ。基になるワーカーノードがMD5をCHAP認証アルゴリズムとして使用するようにします。Element 12.7では、FIPS準拠のセキュアなCHAPアルゴリズムSHA1、SHA-256、およびSHA3-256が提供されています。</block>
+  <block id="5896cc977dd7b9854957e18a2a5bf072" category="cell">アダプティブ QoS ポリシーグループ：作成したボリュームに割り当てます。ストレージプール / バックエンドごとに QOSPolicy または adaptiveQosPolicy のいずれかを選択します。経済性に影響する ONTAP - NAS ではサポートされません。</block>
 </blocks>
