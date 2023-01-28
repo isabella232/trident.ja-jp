@@ -2148,8 +2148,6 @@
   <block id="b1064b6f7a5906eac23601dc24ba95a8" category="list-text"><block ref="b1064b6f7a5906eac23601dc24ba95a8" category="inline-link-macro-rx"></block></block>
   <block id="d7f015aa2f1d488e17e175dac6de3149" category="list-text"><block ref="d7f015aa2f1d488e17e175dac6de3149" category="inline-link-macro-rx"></block></block>
   <block id="24ca391029d6df294c5d5b8f1fe5b4eb" category="summary">ONTAP NAS ドライバを使用した ONTAP バックエンドの設定について説明します。</block>
-  <block id="df3afb1ce4cf5592326d7f536313cbc9" category="list-text"><block ref="df3afb1ce4cf5592326d7f536313cbc9" category="inline-link-macro-rx"></block></block>
-  <block id="6a60ddae29750feed1e12421a92ea824" category="list-text"><block ref="6a60ddae29750feed1e12421a92ea824" category="inline-link-macro-rx"></block></block>
   <block id="0f5dc79c8003190ab8f758b1748ba0d8" category="summary">ネットアップは、製品やサービスの改善と強化を継続的に行っています。最新バージョンの Astra Trident の機能、拡張機能、バグ修正の一部を以下に示します。</block>
   <block id="5dd03e8d039863e563e049be198c3fd3" category="doc">リリースノート</block>
   <block id="2e6ce374ac42de81aea6a3d682b92e33" category="paragraph">リリースノートでは、最新バージョンの Astra Trident の新機能、拡張機能、およびバグ修正に関する情報を提供しています。</block>
@@ -3460,4 +3458,7 @@
   <block id="054b5072368dea4f8748909c16c7de98" category="cell">シック：All ONTAP ；thin：All ONTAP &amp; solidfire-san-SAN</block>
   <block id="dbdc06f8742b98dcacdf7fdb1af111ea" category="paragraph">ONTAPNAS、ONTAPNASエコノミー、ONTAP-NAS-flexgroup、ONTAPSAN、solidfire-san-SAN、solidfire-san-SAN、GCP-cvs、azure-NetApp-files、ONTAP-SAN-bエコノミー</block>
   <block id="f888aa18c19e41f8c1263fa99ca8b94c" category="cell">solidfire-san-group、ontap/nas、ontap -nas-エコノミー、ontap -nas-flexgroup、ontap -san、ONTAP - SAN -経済性</block>
+  <block id="a64f78ea5d42780118e8f5c7f6cfdcbb" category="list-text"><block ref="a64f78ea5d42780118e8f5c7f6cfdcbb" category="inline-link-macro-rx"></block></block>
+  <block id="65a38da8aec2b99cf44dbf919fbd6991" category="list-text"><block ref="65a38da8aec2b99cf44dbf919fbd6991" category="inline-link-macro-rx"></block></block>
+  <block id="5e91194ed6174e8f5eb09a2fffc13dad" category="admonition">を使用する必要があります<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block> データ保護、ディザスタリカバリ、モビリティを必要とする本番ワークロード向けのドライバ。Astra Controlは、で作成されたボリュームに対して、シームレスな保護、ディザスタリカバリ、モビリティを提供します<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block> ドライバ。。<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> ドライバは、ONTAP がサポートする容量よりも予想されるボリューム使用量が大幅に多いことが予想される限られたユースケースでのみ使用し、予想されるデータ保護、ディザスタリカバリ、またはモビリティ（Kubernetesクラスタ間でのボリュームの移動）要件は使用しないようにしてください。</block>
 </blocks>
