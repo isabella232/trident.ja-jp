@@ -148,7 +148,7 @@ Astra Trident で単一のマスター Kubernetes クラスタをリカバリす
 . Kubernetes クラスタに関連する必要な証明書をすべて、「 /etc/Kubernetes /pki 」の下にコピーし、「 /var/lib/etcd」 の下に「 etcd`m ember-」 ファイルをコピーします。
 . --ignore-preflight -errors=DirAvailable --var-lib-etcd` フラグを指定して kubeadm init コマンドを実行し、 Kubernetes クラスタを作成します。ホスト名はソースの Kubernetes クラスタと同じにする必要があります。
 . 「 kubectl get CRD 」コマンドを実行して、すべての Trident カスタムリソースが起動しているかどうかを確認し、すべてのデータが利用可能であることを確認します。
-. 前のバックエンドをクリーンアップし、 Trident に新しいバックエンドを作成します。デスティネーション SVM の新しい管理 LIF とデータ LIF 、新しい SVM 名、パスワードを指定します。
+. 前のバックエンドをクリーンアップし、 Trident に新しいバックエンドを作成します。デスティネーションSVMの新しい管理LIF、新しいSVM名、およびパスワードを指定します。
 
 
 

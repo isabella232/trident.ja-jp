@@ -1,0 +1,137 @@
+---
+sidebar: sidebar 
+permalink: trident-use/trident-fsx-prep.html 
+keywords: Amazon FSx for NetApp ONTAP, FSx for ONTAP, deploy Trident, integrate Trident, Trident 
+summary: Amazon Elastic Kubernetes Service（EKS）で実行されているKubernetesクラスタが、ONTAP によってサポートされるブロックおよびファイルの永続ボリュームをプロビジョニングできるように、Amazon ONTAP ファイルシステム用のAmazon FSXをAstra Tridentに統合することができます。 
+---
+= NetApp ONTAP 向けAmazon FSXを統合します
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Amazon Elastic Kubernetes Service（EKS）で実行されているKubernetesクラスタが、ONTAP によってサポートされるブロックおよびファイルの永続ボリュームをプロビジョニングできるように、Amazon ONTAP ファイルシステム用のAmazon FSXをAstra Tridentに統合することができます。
+
+.作業を開始する前に
+に加えて link:../trident-get-started/requirements.html["Astra Trident の要件"]FSX for ONTAP とAstra Tridentを統合するには、次のものが必要です。
+
+* 既存の Amazon EKS クラスタまたは 'kubectl' がインストールされた自己管理型 Kubernetes クラスタ
+* クラスタのワーカーノードからアクセスできる、 NetApp ONTAP ファイルシステムと Storage Virtual Machine （ SVM ）用の既存の Amazon FSX 。
+* 準備されているワーカーノード link:worker-node-prep.html["NFSまたはiSCSI"]。
++
+
+NOTE: Amazon LinuxおよびUbuntuで必要なノードの準備手順を実行します https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html["Amazon Machine Images の略"^] （ AMIS ） EKS の AMI タイプに応じて異なります。
+
+
+
+.SMBボリュームに関するその他の要件
+* Linuxコントローラノードと少なくとも1つのWindowsワーカーノードでWindows Server 2019を実行しているKubernetesクラスタ。Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート
+* Active Directoryのクレデンシャルを含むAstra Tridentのシークレットが少なくとも1つ必要です。シークレットを生成します `smbcreds`：
++
+[listing]
+----
+kubectl create secret generic smbcreds --from-literal username=user --from-literal password='pw'
+----
+* Windowsサービスとして設定されたCSIプロキシ。を設定します `csi-proxy`を参照してください link:https://github.com/kubernetes-csi/csi-proxy["GitHub: CSIプロキシ"^] または link:https://github.com/Azure/aks-engine/blob/master/docs/topics/csi-proxy-windows.md["GitHub: Windows向けCSIプロキシ"^] Windowsで実行されているKubernetesノードの場合。
+
+
+
+
+== ONTAP SANとNASドライバの統合
+
+
+WARNING: SMBボリュームについて設定する場合は、を参照してください <<SMBボリュームをプロビジョニングする準備をします>> バックエンドを作成する前に。
+
+.手順
+. のいずれかを使用してAstra Tridentを導入 link:../trident-get-started/kubernetes-deploy.html["導入方法"]。
+. SVM管理LIFのDNS名を収集します。たとえば、AWS CLIを使用してを検索します `DNSName` の下のエントリ `Endpoints` -> `Management` 次のコマンドを実行した後：
++
+[listing]
+----
+aws fsx describe-storage-virtual-machines --region <file system region>
+----
+. 用の証明書を作成してインストールします link:ontap-nas-prep.html["NASバックエンド認証"] または link:ontap-san-prep.html["SANバックエンド認証"]。
++
+
+NOTE: ファイルシステムにアクセスできる任意の場所から SSH を使用して、ファイルシステムにログイン（証明書をインストールする場合など）できます。「 fsxadmin 」ユーザ、ファイルシステムの作成時に設定したパスワード、「 aws FSX describe -file-systems 」の管理 DNS 名を使用します。
+
+. 次の例に示すように、証明書と管理 LIF の DNS 名を使用してバックエンドファイルを作成します。
++
+[listing]
+----
+{
+  "version": 1,
+  "storageDriverName": "ontap-san",
+  "backendName": "customBackendName",
+  "managementLIF": "svm-XXXXXXXXXXXXXXXXX.fs-XXXXXXXXXXXXXXXXX.fsx.us-east-2.aws.internal",
+  "svm": "svm01",
+  "clientCertificate": "ZXR0ZXJwYXB...ICMgJ3BhcGVyc2",
+  "clientPrivateKey": "vciwKIyAgZG...0cnksIGRlc2NyaX",
+  "trustedCACertificate": "zcyBbaG...b3Igb3duIGNsYXNz",
+ }
+----
++
+バックエンドの作成については、次のリンクを参照してください。
+
++
+** link:ontap-nas.html["バックエンドに ONTAP NAS ドライバを設定します"]
+** link:ontap-san.html["バックエンドに ONTAP SAN ドライバを設定します"]
+
+
+
+
+.結果
+導入後、を作成できます link:../trident-get-started/kubernetes-postdeployment.html["ストレージクラスを定義してボリュームをプロビジョニングし、ポッドでボリュームをマウント"]。
+
+
+
+== SMBボリュームをプロビジョニングする準備をします
+
+を使用してSMBボリュームをプロビジョニングできます `ontap-nas` ドライバ。をクリックしてください <<ONTAP SANとNASドライバの統合>> 次の手順を実行します。
+
+.手順
+. SMB共有を作成SMB管理共有は、のいずれかの方法で作成できます link:https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/what-is-microsoft-management-console["Microsoft管理コンソール"^] 共有フォルダスナップインまたはONTAP CLIを使用します。ONTAP CLIを使用してSMB共有を作成するには、次の手順を実行します
++
+.. 必要に応じて、共有のディレクトリパス構造を作成します。
++
+。 `vserver cifs share create` コマンドは、共有の作成時に-pathオプションで指定されているパスを確認します。指定したパスが存在しない場合、コマンドは失敗します。
+
+.. 指定したSVMに関連付けられているSMB共有を作成します。
++
+[listing]
+----
+vserver cifs share create -vserver vserver_name -share-name share_name -path path [-share-properties share_properties,...] [other_attributes] [-comment text]
+----
+.. 共有が作成されたことを確認します。
++
+[listing]
+----
+vserver cifs share show -share-name share_name
+----
++
+
+NOTE: を参照してください link:https://docs.netapp.com/us-en/ontap/smb-config/create-share-task.html["SMB 共有を作成"^] 詳細については、
+
+
+
+. バックエンドを作成する際に、SMBボリュームを指定するように次の項目を設定する必要があります。ONTAP バックエンド構成オプションのすべてのFSXについては、を参照してください link:trident-fsx-examples.html["FSX（ONTAP の構成オプションと例）"]。
++
+[cols="3"]
+|===
+| パラメータ | 説明 | 例 
+
+
+| `smbShare` | 共有フォルダMicrosoft管理コンソールを使用して作成したSMB共有の名前。たとえば、「smb-share」と入力します。* SMBボリュームに必要です。* | 「smb共有」 
+
+
+| `nasType` | *をに設定する必要があります `smb`.* nullの場合、デフォルトはです `nfs`。 | "SMB" 
+
+
+| 'ecurityStyle' | 新しいボリュームのセキュリティ形式。* SMBボリュームの場合は「ntfs」に設定します。* | "NTFS" 
+
+
+| 「 unixPermissions 」 | 新しいボリュームのモード。* SMBボリュームは空にしておく必要があります。* | "" 
+|===
+

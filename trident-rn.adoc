@@ -19,7 +19,51 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 
 
 
-== 22.10の新機能
+== 23.01の新機能
+
+
+IMPORTANT: TridentでKubernetes 1.26がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレードしてください。
+
+
+
+=== の修正
+
+* Kubernetes：Helm（link:https://github.com/NetApp/trident/issues/794["問題#783、#794"^]）。
+
+
+
+
+=== 拡張機能
+
+.Kubernetes
+* Kubernetes 1.26のサポートを追加。
+* Trident RBACのリソース利用率が全般的に向上（link:https://github.com/NetApp/trident/issues/757["問題 番号757"^]）。
+* ホストノードで解除されたiSCSIセッションや古いiSCSIセッションを自動で検出して修正できるようになりました。
+* LUKS暗号化ボリュームの拡張のサポートが追加されました。
+* Kubernetes：LUKS暗号化ボリュームのクレデンシャルローテーションのサポートを追加しました。
+
+
+.Astra Trident
+* ONTAP 対応のAmazon FSXを使用したSMBボリュームのONTAP NASストレージドライバへのサポートが追加されました。
+* SMBボリュームの使用時のNTFS権限のサポートが追加されました。
+* CVSサービスレベルを使用したGCPボリュームのストレージプールのサポートが追加されました。
+* FlexGroupをONTAP-NAS-flexgroupストレージドライバで作成する際のflexgroupAggregateListのオプション使用がサポートされるようになりました。
+* 複数のFlexVolを管理する場合の、ONTAPとNASの両方に対応したストレージドライバのパフォーマンスが向上しました。
+* すべてのONTAP NASストレージドライバに対してデータLIFの更新を有効にしました。
+* Trident DeploymentとDemonSetの命名規則を更新し、ホストノードOSを反映させました。
+
+
+
+
+=== 非推奨
+
+* Kubernetes：サポートされる最小Kubernetes数を1.21に更新
+* 設定時にデータLIFを指定しないようにしてください `ontap-san` または `ontap-san-economy` ドライバ。
+
+
+
+
+== 22.10の変更
 
 * Astra Trident 22.10.*にアップグレードする前に、次の重要な情報をお読みください
 
@@ -59,7 +103,7 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 
 * すべてTrident `ontap-*` ストレージドライバがONTAP REST APIで機能するようになりました。
 * 新しい演算子YAMLを追加しました (`bundle_post_1_25.yaml`）を使用しない場合 `PodSecurityPolicy` Kubernetes 1.25をサポートするため。
-* を追加しました link:https://docs.netapp.com/us-en/trident/trident-reco/security-reco.html#enable-per-volume-host-side-encryption-using-linux-unified-key-setup-luks["LUKS暗号化ボリュームをサポートします"] の場合 `ontap-san` および `ontap-san-economy` ストレージドライバ。
+* を追加しました link:https://docs.netapp.com/us-en/trident/trident-reco/security-luks.html["LUKS暗号化ボリュームをサポートします"] の場合 `ontap-san` および `ontap-san-economy` ストレージドライバ。
 * Windows Server 2019ノードのサポートが追加されました。
 * を追加しました link:https://docs.netapp.com/us-en/trident/trident-use/anf.html["WindowsノードでのSMBボリュームのサポート"] を使用する `azure-netapp-files` ストレージドライバ。
 * ONTAP ドライバの自動MetroCluster スイッチオーバー検出機能が一般提供されるようになりました。
@@ -293,6 +337,10 @@ WARNING: v21.10.0 リリースには、ノードが削除されてから Kuberne
 * 対応する PVC を削除する前に Astra Trident によってプロビジョニングされた PV を削除しても、 Astra Trident は自動的に元のボリュームを削除しません。tridentctl または REST API を使用してボリュームを削除してください。
 * FlexGroup では、プロビジョニング要求ごとに一意のアグリゲートセットがないかぎり、同時に複数の ONTAP をプロビジョニングすることはできません。
 * IPv6 経由で Astra Trident を使用する場合は、バックエンド定義内の角かっこ内に「 managementlif 」と「 datalif 」を指定する必要があります。例えば、「 [fd20 ： 8b1e ： b258 ： 2000 ： f816 ： 3eff ： feec ： 0]`` 」のようになります。
++
+
+NOTE: を指定することはできません `dataLIF` ONTAP SANバックエンドの場合：Astra Tridentは、使用可能なすべてのiSCSI LIFを検出し、それらを使用してマルチパスセッションを確立します。
+
 * を使用する場合 `solidfire-san` OpenShift 4.5を搭載したドライバ。基になるワーカーノードがMD5をCHAP認証アルゴリズムとして使用するようにします。Element 12.7では、FIPS準拠のセキュアなCHAPアルゴリズムSHA1、SHA-256、およびSHA3-256が提供されています。
 
 

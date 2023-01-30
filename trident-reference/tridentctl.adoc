@@ -224,7 +224,7 @@ uninstall フラグを実行して 'Astra Trident をアンインストールで
 Usage:
   tridentctl uninstall [flags]
 ----
-flags:*`-h, --help`: アンインストールのヘルプ。*`--silent`: アンインストール中のほとんどの出力を無効にします。
+フラグ：* `-h, --help`:アンインストールのヘルプ。* `--silent`:アンインストール中のほとんどの出力を無効にします。
 
 
 

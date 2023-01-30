@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: trident-get-started/kubernetes-deploy.html 
-keywords: deploy, astra trident, methods, operator, tridentctl, helm 
-summary: Trident の導入には、 Trident のオペレータまたは tridentctl を使用できます。 
+keywords: deploy, astra trident, methods, operator, tridentctl, helm, tanzu, vmware 
+summary: 'Tridentは、Tridentオペレータ（手動またはHelmを使用）またはでインストールできます `tridentctl`。このトピックでは、適切なインストールプロセスを選択するための重要な情報を提供します。' 
 ---
-= 導入の概要
+= Astra Tridentのインストール方法をご確認ください
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -12,22 +12,19 @@ summary: Trident の導入には、 Trident のオペレータまたは tridentc
 
 
 [role="lead"]
-Trident の導入には、 Trident のオペレータまたは tridentctl を使用できます。
-
-
-NOTE: 22.04 リリース以降、 Astra Trident がインストールされるたびに AES キーが再生成されなくなりました。今回のリリースでは、 Astra Trident がインストールする新しいシークレットオブジェクトが、インストール全体で維持されます。つまり '22.04 の tridentctl' は Trident の以前のバージョンをアンインストールできますが ' それ以前のバージョンでは 22.04 のインストールをアンインストールできません
+ネットアップでは、Astra Tridentをさまざまな環境や組織に導入できるように、複数のインストールオプションを提供しています。Tridentは、Tridentオペレータ（手動またはHelmを使用）またはでインストールできます `tridentctl`。このトピックでは、適切なインストールプロセスを選択するための重要な情報を提供します。
 
 
 
-== Astra Tridentに関する重要な情報22.10
+== Astra Trident 23.01に関する重要な情報
 
-* Astra Trident 22.10.*にアップグレードする前に、次の重要な情報をお読みください
+* Astra Tridentに関する次の重要な情報をお読みください。*
 
-[WARNING]
-.<strong>Astra Tridentに関する重要な情報22.10</strong>
+.<strong> ：Trident </strong> に関する重要な情報
+[%collapsible%open]
 ====
-* TridentでKubernetes 1.25がサポートされるようになりました。Kubernetes 1.25にアップグレードする前に、Astra Trident 22.10にアップグレードする必要があります。
-* Astra Tridentは、SAN環境でマルチパス構成を厳密に使用するよう強制し、推奨値をに設定するようになりました `find_multipaths: no` multipath.confファイル内。
+* TridentでKubernetes 1.26がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレード
+* Astra Tridentは、SAN環境でマルチパス構成を厳密に使用し、推奨される値をに設定します `find_multipaths: no` multipath.confファイル内。
 +
 非マルチパス構成またはを使用 `find_multipaths: yes` または `find_multipaths: smart` multipath.confファイルの値が原因でマウントが失敗します。Tridentはの使用を推奨しています `find_multipaths: no` 21.07リリース以降
 
@@ -36,31 +33,59 @@ NOTE: 22.04 リリース以降、 Astra Trident がインストールされる�
 ====
 
 
-== 導入方法を選択します
+== 作業を開始する前に
 
-使用する導入方法を決定するには、次の点を考慮してください。
+インストールパスに関係なく、次のものが必要です。
 
-
-
-=== Tridentのオペレータが対応するタイミング
-
-。 link:kubernetes-deploy-operator.html["Trident オペレータ"^] は、 Astra Trident のリソースを動的に管理し、セットアップフェーズを自動化する優れた方法です。いくつかの前提条件を満たす必要があります。を参照してください link:requirements.html["要件"^]。
-
-Trident オペレータには、以下に示すような利点があります。
-
-
-
-==== 自己回復機能
-
-Trident の Astra インストールを監視し、導入が削除されたときや誤って変更された場合など、問題に対処する手段を積極的に講じることができます。オペレータが配備として設定されると 'trident-operator-<generated-id>'POD が作成されますこのポッドは 'TridentOrchestrator CR と Astra Trident のインストールを関連付けて ' 常にアクティブな TridentOrchestrator が 1 つだけになるようにしますつまり、オペレータは、 Astra Trident のインスタンスがクラスタ内に 1 つしかないことを確認し、セットアップを制御して、インストールがべきでないことを確認します。インストールに変更が加えられると（展開またはノードのデミスタなど）、オペレータはそれらを識別し、個別に修正します。
+* サポートされているバージョンのKubernetesと機能の要件を有効にして実行されている、サポートされるKubernetesクラスタに対するすべての権限。を確認します link:requirements.html["要件"] を参照してください。
+* サポートされているネットアップストレージシステムへのアクセス。
+* Kubernetesワーカーノードすべてからボリュームをマウントできます。
+* を搭載したLinuxホスト `kubectl` （または `oc`OpenShiftを使用している場合）Kubernetesクラスタを管理するようにインストールおよび設定します。
+* 。 `KUBECONFIG` Kubernetesクラスタ構成を参照するように設定された環境変数。
+* Kubernetes と Docker Enterprise を併用する場合は、 https://docs.docker.com/ee/ucp/user-access/cli/["CLI へのアクセスを有効にする手順は、ユーザが行ってください"^]。
 
 
 
-==== 既存のインストール環境を簡単に更新できます
+TIP: に慣れていない場合は link:../trident-concepts/intro.html["基本概念"^]今こそ、そのための絶好の機会です。
 
-既存の展開をオペレータと簡単に更新できます。「 TridentOrchestrator 」 CR を編集するだけで、インストールを更新できます。たとえば、 Astra Trident を有効にしてデバッグログを生成する必要があるシナリオを考えてみましょう。
 
-これを行うには、「 TridentOrchestrator 」に「 pec.debug` 」を「 true 」に設定するパッチを適用します。
+
+== インストール方法を選択します
+
+適切なインストール方法を選択します。また、に関する考慮事項についても確認しておく必要があります link:kubernetes-deploy.html#move-between-installation-methods["メソッド間を移動しています"] 決定する前に。
+
+
+
+=== Trident演算子を使用する
+
+Tridentのオペレータは、手動で導入する場合でも、Helmを使用する場合でも、Astra Tridentのリソースを動的に管理して簡単にインストールできます。それは可能である link:../trident-get-started/kubernetes-customize-deploy.html["Tridentのオペレータ環境をカスタマイズ"] で属性を使用する `TridentOrchestrator` カスタムリソース（CR）。
+
+Tridentオペレータには次のようなメリットがあります。
+
+.<strong> Astra Tridentオブジェクト作成</strong>
+[%collapsible]
+====
+Tridentオペレータが、Kubernetesのバージョンに応じて次のオブジェクトを自動的に作成します。
+
+* オペレータのサービスアカウント
+* ClusterRoleおよびClusterRoleBindingをサービスアカウントにバインドする
+* 専用のPodSecurityPolicy（Kubernetes 1.25以前用）
+* 演算子自体
+
+
+====
+.<strong> 自己回復機能</strong>
+[%collapsible]
+====
+OperatorはAstra Tridentのインストールを監視し、導入が削除されたときや誤って変更された場合などの問題に対処するための手段をアクティブに講じます。A `trident-operator-<generated-id>` ポッドが作成され、が関連付けられます `TridentOrchestrator` Astra TridentをインストールしたCR。これにより、クラスタ内にAstra Tridentのインスタンスが1つだけ存在し、そのセットアップを制御することで、インストールがべき等の状態であることを確認できます。インストールに変更が加えられると（展開またはノードのデミスタなど）、オペレータはそれらを識別し、個別に修正します。
+
+====
+.<strong> は、インストール済みの既存の</strong> を簡単に更新できます
+[%collapsible]
+====
+既存の展開をオペレータと簡単に更新できます。を編集するだけで済みます `TridentOrchestrator` CRを使用してインストールを更新します。
+
+たとえば、 Astra Trident を有効にしてデバッグログを生成する必要があるシナリオを考えてみましょう。これを行うには、にパッチを適用します `TridentOrchestrator` をクリックして設定します `spec.debug` 終了： `true`：
 
 [listing]
 ----
@@ -68,95 +93,110 @@ kubectl patch torc <trident-orchestrator-name> -n trident --type=merge -p '{"spe
 ----
 TridentOrchestrator が更新されると、オペレータは既存のインストールの更新とパッチを処理します。これにより、新しいポッドの作成がトリガーされ、それに応じてインストールが変更される場合があります。
 
-
-
-==== Kubernetes のアップグレードを自動的に処理
-
+====
+.<strong> Kubernetesの自動アップグレード処理</strong>
+[%collapsible]
+====
 Kubernetes バージョンのクラスタをサポート対象バージョンにアップグレードすると、オペレータが既存の Astra Trident インストールを自動的に更新し、 Kubernetes バージョンの要件を確実に満たすように変更します。
 
 
 NOTE: クラスタがサポート対象外のバージョンにアップグレードされた場合、オペレータによって Astra Trident はインストールされません。Astra Trident がすでにオペレータとともにインストールされている場合、サポート対象外の Kubernetes バージョンに Astra Trident がインストールされていることを示す警告が表示されます。
 
-
-
-==== BlueXP（旧Cloud Manager）を使用したKubernetesクラスタの管理
-
+====
+.BlueXP（旧Cloud Manager）</strong> を使用した<strong> Kubernetesクラスタ管理
+[%collapsible]
+====
 を使用 link:https://docs.netapp.com/us-en/cloud-manager-kubernetes/concept-kubernetes.html["Astra TridentでBlueXPを使用"^]では、最新バージョンのAstra Tridentにアップグレードし、ストレージクラスを追加して管理し、作業環境に接続し、Cloud Backup Service を使用して永続的ボリュームをバックアップすることができます。BlueXPは、Tridentオペレータを使用したAstra Tridentの導入を、手動またはHelmを使用してサポートしています。
 
+====
 
 
-=== Helmを使用する状況
+=== を使用します `tridenctl`
 
-Helm を使用して管理している他のアプリケーションが Astra Trident 21.01 以降である場合は、 Helm を使用して導入を管理することもできます。
+既存の環境をアップグレードする必要がある場合や、高度にカスタマイズすることを検討している場合は、アップグレードを検討する必要があります link:kubernetes-deploy-tridentctl.html["tridentctlを使用したインストール"]。これは、従来の方法であった Astra Trident を導入する方法です。
 
-
-
-=== を使用する状況 `tridenctl`
-
-既存の環境をにアップグレードする必要がある場合や、高度にカスタマイズする場合は、の使用を検討してください link:kubernetes-deploy-tridentctl.html["Tridentctl"^]。これは、従来の方法であった Astra Trident を導入する方法です。
+可能です  Tridentリソースのマニフェストを生成するには、次の手順を実行します導入、開始、サービスアカウント、 Astra Trident がインストールの一部として作成するクラスタロールが含まれます。
 
 
-
-== 導入方法間での移動に関する考慮事項
-
-導入方法を切り替える必要があるシナリオを想像するのは難しいことではありません。tridentctl 配備からオペレータベースの配備に移行する前に ' またはその逆を行う前に ' 次の点を考慮してください
-
-* Astra Trident のアンインストールには、常に同じ方法を使用します。tridentctl を使用して導入した場合は 'tridentctl' バイナリの適切なバージョンを使用して Astra Trident をアンインストールする必要があります同様に、オペレータとともに展開する場合は、「 TridentOrchestrator 」 CR を編集し、「 PEC.uninstall=true 」を設定して Astra Trident をアンインストールする必要があります。
-* Astra Trident を削除して tridentctl を使用して Astra Trident を導入するオペレータベースの導入環境の場合は、最初に「 TridentOrchestrator 」を編集し、「 PEC.uninstall=true 」を設定して Astra Trident をアンインストールする必要があります。次に 'TridentOrchestrator とオペレータの配備を削除します次に 'tridentctl を使用してインストールできます
-* オペレータベースの手動導入環境で、 Helm ベースの Trident オペレータ環境を使用する場合は、最初に手動でオペレータをアンインストールしてから Helm インストールを実行する必要があります。これにより、 Helm は必要なラベルとアノテーションを使用して Trident オペレータを導入できます。これを行わないと、 Helm ベースの Trident オペレータの導入が失敗し、ラベル検証エラーとアノテーション検証エラーが表示されます。tridentctl ベースの配備を使用している場合は 'Helm ベースの配備を問題なく使用できます
+NOTE: 22.04 リリース以降、 Astra Trident がインストールされるたびに AES キーが再生成されなくなりました。今回のリリースでは、 Astra Trident がインストールする新しいシークレットオブジェクトが、インストール全体で維持されます。つまり、 `tridentctl` 22.04では、以前のバージョンのTridentをアンインストールできますが、それより前のバージョンでは22.04のインストールをアンインストールできません。適切なインストール方法_を選択します。
 
 
 
+== インストールモードを選択します
 
-== 導入モードを理解する
+組織で必要な_インストールモード_（標準、オフライン、またはリモート）に基づいて導入プロセスを決定します。
 
-Trident を導入する方法は 3 種類あります。
+[role="tabbed-block"]
+====
+.標準インストール
+--
+これは、Astra Tridentをインストールする最も簡単な方法であり、ネットワークの制限を課すことのないほとんどの環境で機能します。標準インストールモードでは、必要なTridentを格納するためにデフォルトのレジストリが使用されます (`docker.io`）とCSIを参照してください (`registry.k8s.io`）イメージ。
 
+標準モードを使用すると、Astra Tridentインストーラは次のように動作します。
 
-
-=== 標準的な導入
-
-Trident を Kubernetes クラスタに導入すると、 Astra Trident インストーラで次の 2 つの作業を実行できます。
-
-* インターネット経由でコンテナイメージを取得しています
-* 導入環境とノードのデプロイを作成し、 Kubernetes クラスタ内のすべての対象ノードで Astra Trident ポッドがスピンアップする。
-
-
-このような標準的な導入は、次の 2 つの方法で実行できます。
-
-* tridentctl install を使用
-* Trident 演算子を使用する。Trident オペレータは、手動で導入することも、 Helm を使用して導入することもできます。
+* インターネット経由でコンテナイメージを取得します
+* 導入環境またはノードのデプロイを作成し、Kubernetesクラスタ内のすべての対象ノードでAstra Tridentポッドがスピンアップします
 
 
-このインストールモードは、 Astra Trident をインストールする最も簡単な方法であり、ネットワークの制限を課すことのないほとんどの環境で機能します。
+--
+.オフラインインストール
+--
+オフラインインストールモードは、エアギャップまたは安全な場所で必要になる場合があります。このシナリオでは、必要なTridentイメージとCSIイメージを格納するために、1つのプライベートなミラーリングされたレジストリ、または2つのミラーリングされたレジストリを作成できます。
 
 
+NOTE: CSIイメージは、レジストリ設定に関係なく、1つのレジストリに存在する必要があります。
 
-=== オフラインでの導入
-
-エアギャップ導入を実行するには 'tridentctl install を呼び出すときに --image-registry フラグを使用して ' プライベートイメージレジストリを参照しますTrident 演算子を使用して展開する場合は、「 TridentOrchestrator 」で「 PEC.imageRegistry 」を指定することもできます。このレジストリにはが含まれている必要があります https://hub.docker.com/r/netapp/trident/["Trident の画像"^]、 https://hub.docker.com/r/netapp/trident-autosupport/["Trident AutoSupport の画像"^]および CSI のサイドカーイメージ（ Kubernetes バージョンで必要な場合）
-
-導入環境をカスタマイズするには 'tridentctl' を使用して Trident のリソースのマニフェストを生成します導入、開始、サービスアカウント、 Astra Trident がインストールの一部として作成するクラスタロールが含まれます。
-
-導入環境のカスタマイズの詳細については、次のリンクを参照してください。
-
-* link:kubernetes-customize-deploy.html["オペレータベースの展開をカスタマイズします"^]
-* link:kubernetes-customize-deploy-tridentctl.html["85cda507040c129ee606d4d8df583b90"^]
-
-
-
-IMPORTANT: プライベートイメージリポジトリを使用している場合は、プライベートレジストリURLの末尾に「/sig-storage」を追加する必要があります。tridentctl 配備にプライベートレジストリを使用する場合は '--trident-image' と --autosupport.image' を --image-registry' とともに使用する必要がありますTrident 演算子を使用して Astra Trident を導入する場合は、 Orchestrator CR にインストールパラメータに「 tridentImage 」と「 autosupportImage 」が含まれていることを確認してください。
-
-
-
-=== リモート導入
-
-次に、リモート導入プロセスの概要を示します。
+--
+.リモートインストール
+--
+次に、リモートインストールプロセスの概要を示します。
 
 * Astra Trident を導入するリモートマシンに適切なバージョンの kubectl を導入します。
 * Kubernetes クラスタから構成ファイルをコピーし、リモートマシンで「 KUBECONFIG 」環境変数を設定します。
 * 「 kubectl get nodes 」コマンドを開始して、必要な Kubernetes クラスタに接続できることを確認します。
 * 標準のインストール手順を使用して、リモートマシンからの導入を完了します。
+
+
+--
+====
+
+
+== メソッドとモードに基づいてプロセスを選択します
+
+決定が終わったら、適切なプロセスを選択します。
+
+[cols="2"]
+|===
+| メソッド | インストールモード 
+
+
+| Tridentのオペレータ（手動）  a| 
+link:kubernetes-deploy-operator.html["標準インストール"]
+
+link:kubernetes-deploy-operator-mirror.html["オフラインインストール"]
+
+
+
+| Tridentオペレータ（Helm）  a| 
+link:kubernetes-deploy-helm.html["標準インストール"]
+
+link:kubernetes-deploy-helm-mirror.html["オフラインインストール"]
+
+
+
+| `tridentctl`  a| 
+link:kubernetes-deploy-tridentctl.html["標準インストールまたはオフラインインストール"]
+
+|===
+
+
+== インストール方法を切り替える
+
+インストール方法を変更することもできます。その前に、次の点を考慮してください。
+
+* Astra Tridentのインストールとアンインストールには、常に同じ方法を使用します。を使用してを導入した場合 `tridentctl`を使用する場合は、適切なバージョンのを使用する必要があります `tridentctl` Astra Tridentをアンインストールするためのバイナリ。同様に、演算子を使用してを配置する場合は、を編集する必要があります `TridentOrchestrator` CRおよびSET `spec.uninstall=true` Astra Tridentをアンインストールする方法
+* オペレータベースの導入環境で、削除して代わりにを使用する場合は `tridentctl` Astra Tridentを導入するには、まずを編集する必要があります `TridentOrchestrator` をクリックして設定します `spec.uninstall=true` Astra Tridentをアンインストールする方法次に、を削除します `TridentOrchestrator` オペレータによる導入も可能です。その後、を使用してをインストールできます `tridentctl`。
+* オペレータベースの手動導入環境で、HelmベースのTridentオペレータ環境を使用する場合は、最初に手動でオペレータをアンインストールしてからHelmインストールを実行する必要があります。これにより、 Helm は必要なラベルとアノテーションを使用して Trident オペレータを導入できます。これを行わないと、 Helm ベースの Trident オペレータの導入が失敗し、ラベル検証エラーとアノテーション検証エラーが表示されます。を使用する場合は `tridentctl`- Helmベースの展開を使用すると、問題を発生させずに導入できます。
 
 
 

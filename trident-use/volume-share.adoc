@@ -160,7 +160,7 @@ Usage:
 == 制限
 
 * Astra Tridentでは、デスティネーションネームスペースが共有ボリュームに書き込まれるのを防ぐことはできません。共有ボリュームのデータの上書きを防止するには、ファイルロックなどのプロセスを使用する必要があります。
-* を削除しても、送信元PVCへのアクセスを取り消すことはできません `shareToNamespace` または `shareFromNamepace` 注釈またはを削除します `TridentVolumeReference` CR。アクセスを取り消すには、下位PVCを削除する必要があります。
+* を削除しても、送信元PVCへのアクセスを取り消すことはできません `shareToNamespace` または `shareFromNamespace` 注釈またはを削除します `TridentVolumeReference` CR。アクセスを取り消すには、下位PVCを削除する必要があります。
 * Snapshot、クローン、およびミラーリングは下位のボリュームでは実行できません。
 
 

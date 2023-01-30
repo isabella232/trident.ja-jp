@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-use/worker-node-prep.html 
-keywords: storage class, manage storage class, storage classes, kubernetes storage classes, worker node, nfs, iscsi, kubernetes clusters 
+keywords: storage class, manage storage class, storage classes, kubernetes storage classes, worker node, nfs, iscsi, kubernetes clusters, self-healing, healing 
 summary: Kubernetes クラスタ内のすべてのワーカーノードが、ポッド用にプロビジョニングしたボリュームをマウントできる必要があります。いずれかのバックエンドに ONTAP-NAS 、 ONTAP-NAS-エコノミー 、 ONTAP-NAS-flexgroup ドライバを使用している場合は、ワーカーノードに NFS ツールが必要です。それ以外の場合は iSCSI ツールが必要です。 
 ---
 = ワーカーノードを準備します
@@ -11,63 +11,111 @@ summary: Kubernetes クラスタ内のすべてのワーカーノードが、ポ
 :imagesdir: ../media/
 
 
-Kubernetes クラスタ内のすべてのワーカーノードが、ポッド用にプロビジョニングしたボリュームをマウントできる必要があります。いずれかのバックエンドに「 ONTAP-NAS' 」、「 ONTAP-NAS-Bエコノミー 」、または「 ONTAP-NAS-flexgroup 」ドライバを使用している場合は、ワーカーノードに NFS ツールが必要です。それ以外の場合は iSCSI ツールが必要です。
+[role="lead"]
+Kubernetesクラスタ内のすべてのワーカーノードが、ポッド用にプロビジョニングしたボリュームをマウントできる必要があります。ワーカーノードを準備するには、ドライバの選択に基づいてNFSツールまたはiSCSIツールをインストールする必要があります。
 
-最新バージョンの RedHat CoreOS には、デフォルトで NFS と iSCSI の両方がインストールされています。
 
 
-WARNING: NFS ツールまたは iSCSI ツールをインストールしたあとは、必ずワーカーノードをリブートしてください。リブートしないと、ボリュームをコンテナに接続できないことがあります。
+== 適切なツールを選択する
+
+ドライバを組み合わせて使用する場合は、NFSツールとiSCSIツールをインストールする必要があります。
+
+.NFSツール
+NFSツールを使用している場合は、次の手順でインストールします。 `ontap-nas`、 `ontap-nas-economy`、 `ontap-nas-flexgroup`、 `azure-netapp-files`、 `gcp-cvs`
+
+.iSCSIツール
+使用する場合はiSCSIツールをインストールします。 `ontap-san`、 `ontap-san-economy`、 `solidfire-san`
+
+
+NOTE: 最新バージョンのRed Hat CoreOSには、デフォルトでNFSとiSCSIがインストールされています。
 
 
 
 == ノードサービスの検出
 
-22.07以降、Astra Tridentは、ノードでiSCSIサービスまたはNFSサービスを実行できるかどうかを自動的に検出しようとします。Astra Tridentが、検出されたサービスを特定するためのイベントをノードに対して作成次のイベントを確認するには、コマンドを使用します。
+Astra Tridentは、ノードでiSCSIサービスやNFSサービスを実行できるかどうかを自動的に検出しようとします。
+
+
+NOTE: ノードサービス検出で検出されたサービスが特定されますが、サービスが適切に設定されていることは保証されませ逆に、検出されたサービスがない場合も、ボリュームのマウントが失敗する保証はありません。
+
+.イベントを確認します
+Astra Tridentが、検出されたサービスを特定するためのイベントをノードに対して作成次のイベントを確認するには、を実行します。
 
 [listing]
 ----
 kubectl get event -A --field-selector involvedObject.name=<Kubernetes node name>
 ----
-Tridentは、TridentノードCRの各ノードで有効になっているサービスも特定します。検出されたサービスを表示するには、次のコマンドを使用します。
+.検出されたサービスを確認
+Astra Tridentは、TridentノードCRの各ノードで有効になっているサービスを識別します。検出されたサービスを表示するには、を実行します。
 
 [listing]
 ----
 tridentctl get node -o wide -n <Trident namespace>
 ----
 
-NOTE: ノードサービス検出で検出されたサービスが特定されますが、サービスが適切に設定されていることは保証されませ逆に、検出されたサービスがない場合も、ボリュームのマウントが失敗する保証はありません。
-
-
 
 == NFS ボリューム
 
-[cols="3*"]
-|===
-| プロトコル | オペレーティングシステム | コマンド 
+オペレーティングシステム用のコマンドを使用して、NFSツールをインストールします。ブート時にNFSサービスが開始されていることを確認します。
 
+[role="tabbed-block"]
+====
+.RHEL 8以降
+--
+[listing]
+----
+sudo yum install -y nfs-utils
+----
+--
+.Ubuntu
+--
+[listing]
+----
+sudo apt-get install -y nfs-common
+----
+--
+====
 
-| NFS  a| 
-RHEL / CentOS 7.
- a| 
-'sudo yum install -y nfs-utils'
-
-
-
-| NFS  a| 
-Ubuntu
- a| 
-'UDO apt-get install-y nfs-common
-
-|===
-
-NOTE: ブート時に NFS サービスが開始されていることを確認してください。
+WARNING: NFSツールをインストールしたあとにワーカーノードをリブートして、コンテナにボリュームを接続する際の障害を回避します。
 
 
 
 == iSCSI ボリューム
 
-iSCSI ボリュームを使用するときは、次の点に注意してください。
+Astra Tridentを使用すると、iSCSIセッションを自動的に確立し、LUNをスキャンし、マルチパスデバイスを検出してフォーマットし、ポッドにマウントできます。
 
+
+
+=== iSCSIの自己回復機能
+
+ONTAP システムでは、Astra TridentがiSCSIの自己修復機能を5分ごとに実行し、以下を実現します。
+
+. *希望するiSCSIセッションの状態と現在のiSCSIセッションの状態を識別します
+. *希望する状態と現在の状態を比較して、必要な修理を特定します。Astra Tridentが、修理の優先順位と、修理に先手を打つタイミングを判断
+. *現在のiSCSIセッションの状態を希望するiSCSIセッションの状態に戻すために必要な修復*を実行します。
+
+
+
+NOTE: 自己回復アクティビティのログはにあります `trident-main` 各Demonsetポッドにコンテナを配置します。ログを表示するには、を設定しておく必要があります `debug` Astra Tridentのインストール中に「true」に設定。
+
+Astra Tridentの自動修復機能は、次のような問題を防止します。
+
+* ネットワーク接続問題 後に発生する可能性がある古いiSCSIセッションまたは正常でないiSCSIセッション。古いセッションの場合、Astra Tridentは7分待機してからログアウトし、ポータルとの接続を再確立します。
++
+
+NOTE: たとえば、ストレージコントローラでCHAPシークレットがローテーションされた場合にネットワークが接続を失うと、古い（_stale_）CHAPシークレットが保持されることがあります。自己修復では、これを認識し、自動的にセッションを再確立して、更新されたCHAPシークレットを適用できます。
+
+* iSCSIセッションがありません
+* LUNが見つかりません
+
+
+
+
+=== iSCSIツールをインストール
+
+使用しているオペレーティングシステム用のコマンドを使用して、iSCSIツールをインストールします。
+
+.作業を開始する前に
 * Kubernetes クラスタ内の各ノードには一意の IQN を割り当てる必要があります。* これは必須の前提条件です * 。
 * RHCOSバージョン4.5以降またはRHEL互換のその他のLinuxディストリビューションをで使用している場合は、を使用します `solidfire-san` DriverおよびElement OS 12.5以前。CHAP認証アルゴリズムがMD5 inに設定されていることを確認します `/etc/iscsi/iscsid.conf`。Element 12.7では、FIPS準拠のセキュアなCHAPアルゴリズムSHA1、SHA-256、およびSHA3-256が提供されています。
 +
@@ -75,78 +123,108 @@ iSCSI ボリュームを使用するときは、次の点に注意してくだ�
 ----
 sudo sed -i 's/^\(node.session.auth.chap_algs\).*/\1 = MD5/' /etc/iscsi/iscsid.conf
 ----
-* iSCSI PVS を搭載した RHEL/RedHat CoreOS を実行するワーカーノードを使用する場合は、インラインスペース再生を実行するために、 StorageClass で「 discard 」 mountOption を指定してください。を参照してください https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_file_systems/discarding-unused-blocks_managing-file-systems["RedHat のマニュアル"^]。
+* iSCSI PVSを搭載したRHEL / RedHat CoreOSを実行するワーカーノードを使用する場合は、を指定します `discard` StorageClassのmountOptionを使用して、インラインのスペース再生を実行します。を参照してください https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_file_systems/discarding-unused-blocks_managing-file-systems["RedHat のマニュアル"^]。
 
 
-[cols="3*"]
-|===
-| プロトコル | オペレーティングシステム | コマンド 
-
-
-| iSCSI  a| 
-RHEL/CentOS
- a| 
+[role="tabbed-block"]
+====
+.RHEL 8以降
+--
 . 次のシステムパッケージをインストールします。
 +
-'sudo yum install -y lsscsi iscsi-initiator-utils SG3_utils device-mapper-multipath`
-
+[listing]
+----
+sudo yum install -y lsscsi iscsi-initiator-utils sg3_utils device-mapper-multipath
+----
 . iscsi-initiator-utils のバージョンが 6.2.0.874-2.el7 以降であることを確認します。
 +
-「 rpm -q iscsi-initiator-utils 」のように入力します
-
+[listing]
+----
+rpm -q iscsi-initiator-utils
+----
 . スキャンを手動に設定：
 +
-'sudo sed-i'/ ^ \ （ node.session.scan\).*/\1 = manual/ '/etc/iscsi/iscsid.conf
-
+[listing]
+----
+sudo sed -i 's/^\(node.session.scan\).*/\1 = manual/' /etc/iscsi/iscsid.conf
+----
 . マルチパスを有効化：
 +
-'UDO mpathconf--enable --with _multipathd y -- find _multipaths n
-
+[listing]
+----
+sudo mpathconf --enable --with_multipathd y --find_multipaths n
+----
 +
 
 NOTE: 「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults 」に含まれていることを確認します。
 
 . 「 iscsid 」と「 multipathd 」が実行されていることを確認します。
 +
-'sudo systemctl enable -- 現在 iscsid multipathd
-
+[listing]
+----
+sudo systemctl enable --now iscsid multipathd
+----
 . 'iSCSI' を有効にして開始します
 +
-'sudo systemctl enable -- 現在の iSCSI
+[listing]
+----
+sudo systemctl enable --now iscsi
+----
 
 
-
-
-
-| iSCSI  a| 
-Ubuntu
- a| 
+--
+.Ubuntu
+--
 . 次のシステムパッケージをインストールします。
 +
-'UDO apt-get install-y open-iscsi lsscsi SG3-utils multipath-tools scsitools'
-
+[listing]
+----
+sudo apt-get install -y open-iscsi lsscsi sg3-utils multipath-tools scsitools
+----
 . open-iscsi バージョンが 2.0.874-5ubuntu2.10 以降（ bionic の場合）または 2.0.874-7.1ubuntu6.1 以降（ Focal の場合）であることを確認します。
 +
-`d pkg -l open-iscsi`
-
+[listing]
+----
+dpkg -l open-iscsi
+----
 . スキャンを手動に設定：
 +
-'sudo sed-i'/ ^ \ （ node.session.scan\).*/\1 = manual/ '/etc/iscsi/iscsid.conf
-
+[listing]
+----
+sudo sed -i 's/^\(node.session.scan\).*/\1 = manual/' /etc/iscsi/iscsid.conf
+----
 . マルチパスを有効化：
 +
-'sudo tee//etc/multipath.conf <-' EOF ' defaults ｛ user_friendy_names yes find _multipaths no ｝ EOF sudo systemctl enable -- 今では multipath-tools.service sudo service multipath-tools restart'
-
+[listing]
+----
+sudo tee /etc/multipath.conf <<-'EOF
+defaults {
+    user_friendly_names yes
+    find_multipaths no
+}
+EOF
+sudo systemctl enable --now multipath-tools.service
+sudo service multipath-tools restart
+----
 +
 
 NOTE: 「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults 」に含まれていることを確認します。
 
 . 「 open-iSCSI」 および「マルチパスツール」が有効で実行されていることを確認します。
 +
-'sudo systemctl status multipath-tools `sudo systemctl enable -- 現在の open-iscsi.service` 'udo systemctl status open-iscsi'
-
-
-
-|===
+[listing]
+----
+sudo systemctl status multipath-tools
+sudo systemctl enable --now open-iscsi.service
+sudo systemctl status open-iscsi
+----
++
 
 NOTE: Ubuntu 18.04 では 'iSCSI デーモンを起動するために 'open-iscsi' を起動する前に 'iscsiadm を持つターゲット・ポートを検出する必要がありますまたは 'iscsid' サービスを 'iscsid' を自動的に開始するように変更することもできます
+
+
+
+--
+====
+
+WARNING: iSCSIツールをインストールしたあとにワーカーノードをリブートして、コンテナにボリュームを接続する際の障害を回避します。

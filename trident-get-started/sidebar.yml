@@ -6,17 +6,27 @@ entries:
   url: "/trident-get-started/quickstart.html"
 - title: 要件
   url: "/trident-get-started/requirements.html"
-- title: 導入の概要
-  url: "/trident-get-started/kubernetes-deploy.html"
-- title: Trident オペレータとともに導入
-  url: "/trident-get-started/kubernetes-deploy-operator.html"
+- title: Astra Trident をインストール
   entries:
-  - title: Trident オペレータの環境をカスタマイズ
-    url: "/trident-get-started/kubernetes-customize-deploy.html"
-- title: tridentctl を使用して導入します
-  url: "/trident-get-started/kubernetes-deploy-tridentctl.html"
-  entries:
-  - title: tridentctl 展開をカスタマイズします
-    url: "/trident-get-started/kubernetes-customize-deploy-tridentctl.html"
+  - title: インストールの概要
+    url: "/trident-get-started/kubernetes-deploy.html"
+  - title: Tridentオペレータを使用してインストール
+    entries:
+    - title: Tridentオペレータを手動で導入（標準）
+      url: "/trident-get-started/kubernetes-deploy-operator.html"
+    - title: Tridentオペレータを手動で導入（オフライン）
+      url: "/trident-get-started/kubernetes-deploy-operator-mirror.html"
+    - title: Trident Helmチャートを使用（標準）
+      url: "/trident-get-started/kubernetes-deploy-helm.html"
+    - title: Trident Helmチャートを使用（オフライン）
+      url: "/trident-get-started/kubernetes-deploy-helm-mirror.html"
+    - title: Tridentオペレータのインストールをカスタマイズ
+      url: "/trident-get-started/kubernetes-customize-deploy.html"
+  - title: tridentctlを使用してインストールします
+    entries:
+    - title: tridentctlを使用してインストールします
+      url: "/trident-get-started/kubernetes-deploy-tridentctl.html"
+    - title: tridentctlのインストールをカスタマイズします
+      url: "/trident-get-started/kubernetes-customize-deploy-tridentctl.html"
 - title: 次の手順
   url: "/trident-get-started/kubernetes-postdeployment.html"

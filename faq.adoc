@@ -210,7 +210,11 @@ Trident ポッドが削除されても、データは失われません。Triden
 
 === ONTAP バックエンド定義ファイルに管理 LIF とデータ LIF の両方を定義する必要がありますか。
 
-バックエンド定義ファイルには両方を指定することを推奨します。必須の管理 LIF は 1 つだけです。
+管理LIFは必須です。データLIFのタイプはさまざまです。
+
+* ONTAP SAN：iSCSIには指定しないでください。Astra Tridentが使用 link:https://docs.netapp.com/us-en/ontap/san-admin/selective-lun-map-concept.html["ONTAP の選択的LUNマップ"^] iSCSI LIFを検出するには、マルチパスセッションを確立する必要があります。の場合は警告が生成されます `dataLIF` は明示的に定義されます。を参照してください link:trident-use/ontap-san-examples.html["ONTAP のSAN構成オプションと例"] を参照してください。
+* ONTAP NAS:を指定することを推奨します `dataLIF`。指定しない場合は、Astra TridentがSVMからデータLIFを取得します。NFSマウント処理に使用するFully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定して、ラウンドロビンDNSを作成して複数のデータLIF間で負荷を分散することができます。を参照してください link:trident-use/ontap-nas-examples.html["ONTAP NASの設定オプションと例"] を参照してください
+
 
 
 
@@ -234,7 +238,13 @@ Astra Trident 19.01 以降では、 DataLIF にポートを指定できます。
 
 === 管理 LIF とデータ LIF に IPv6 アドレスを使用できますか。
 
-はい。Astra Trident 20.01 は、 ONTAP バックエンドの管理 LIF パラメータとデータ LIF パラメータに対して IPv6 アドレスを定義できます。アドレスが IPv6 のセマンティクスに準拠していること、および管理 LIF が角かっこで囲まれて定義されていることを確認する必要があります（例： [ec0d:6504:a9c1:ae67:53d1:4bdf:ab32:e233]`` ）。また、 IPv6 で動作するためには、 Astra Trident が「 --use-ipv6' 」フラグを使用してインストールされていることを確認する必要があります。
+Astra Tridentでは、次の機能に対してIPv6アドレスを定義できます。
+
+* `managementLIF` および `dataLIF` ONTAP NASバックエンドの場合：
+* `managementLIF` ONTAP SANバックエンドの場合：を指定することはできません `dataLIF` ONTAP SANバックエンドの場合：
+
+
+Astra Tridentは、を使用してインストールする必要があります ``--use-ipv6` IPv6で動作するためのフラグ。
 
 
 
@@ -246,7 +256,7 @@ Astra Trident 19.01 以降では、 DataLIF にポートを指定できます。
 
 === バックエンドのデータ LIF を更新できるか。
 
-いいえ、バックエンドのデータ LIF を更新できません。
+のデータLIFを更新できます `ontap-nas` および `ontap-nas-economy` のみ。
 
 
 

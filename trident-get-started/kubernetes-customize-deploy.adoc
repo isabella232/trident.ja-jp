@@ -4,7 +4,7 @@ permalink: trident-get-started/kubernetes-customize-deploy.html
 keywords: deploy, trident, methods, operator, tridentctl, helm, attributes, customize, tridentorchestrator, smb, windows 
 summary: 'Trident オペレータは "TridentOrchestrator 仕様の属性を使用して "Astra Trident のインストール方法をカスタマイズできます' 
 ---
-= Trident オペレータの環境をカスタマイズ
+= Tridentオペレータのインストールをカスタマイズ
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -51,7 +51,7 @@ WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra T
 | enableNodePrep | ワーカーノードの依存関係を自動的に管理（ * beta * ） | いいえ 
 
 
-| 「 autosupportImage 」を参照してください | AutoSupport テレメトリのコンテナイメージ | 「NetApp/trident-autosupport：22.10.0」 
+| 「 autosupportImage 」を参照してください | AutoSupport テレメトリのコンテナイメージ | "NetApp/trident-autosupport：23.01.0" 
 
 
 | 「 autosupportProxy 」と入力します | AutoSupport テレメトリを送信するプロキシのアドレス / ポート | "http://proxy.example.com:8888"[] 
@@ -76,6 +76,12 @@ WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra T
 
 
 | 「 imagePullSecrets 」 | 内部レジストリからイメージをプルするシークレット |  
+
+
+| `imagePullPolicy` | Tridentオペレータのイメージプルポリシーを設定します。有効な値は次のとおりです。
+`Always` 常にイメージをプルする。
+`IfNotPresent` ノード上にイメージが存在しない場合にのみ取得します。
+`Never` 画像を絶対に引き出さないでください。 | `IfNotPresent` 
 
 
 | controller'PluginNodeSelector | Trident Controller CSI プラグインを実行しているポッドの追加ノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。 | デフォルトはありません。オプションです 
@@ -144,7 +150,7 @@ spec:
 
 [listing]
 ----
-$ cat deploy/crds/tridentorchestrator_cr.yaml
+cat deploy/crds/tridentorchestrator_cr.yaml
 apiVersion: trident.netapp.io/v1
 kind: TridentOrchestrator
 metadata:

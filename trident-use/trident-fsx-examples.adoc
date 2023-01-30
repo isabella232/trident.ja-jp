@@ -1,0 +1,194 @@
+---
+sidebar: sidebar 
+permalink: trident-use/trident-fsx-examples.html 
+keywords: map backends, storage classes, trident backend, ontap-nas, ontap-nas-economy, ontap-nas-flexgroups, options, storageclasses, fsx 
+summary: Amazon FSX for ONTAP のバックエンド構成オプションについて説明します。ここでは、バックエンドの設定例を示します。 
+---
+= FSX（ONTAP の構成オプションと例）
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Amazon FSX for ONTAP のバックエンド構成オプションについて説明します。ここでは、バックエンドの設定例を示します。
+
+
+
+== バックエンド構成オプション
+
+バックエンド設定オプションについては、次の表を参照してください。
+
+[cols="3"]
+|===
+| パラメータ | 説明 | 例 
+
+
+| 「バージョン」 |  | 常に 1 
+
+
+| 'torageDriverName' | ストレージドライバの名前 | 「 ONTAP-NAS 」、「 ONTAP-NAS-エコノミー 」、「 ONTAP-NAS-flexgroup 」、「 ONTAP-SAN 」、「 ONTAP-SAN-エコノミー 」 
+
+
+| backendName` | カスタム名またはストレージバックエンド | ドライバ名 + "_" + データ LIF 
+
+
+| 「管理 LIF 」 | クラスタ管理LIFまたはSVM管理LIFのIPアドレス：シームレスなMetroCluster スイッチオーバーを実現するには、SVM管理LIFを指定する必要があります。Fully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定できます。を使用してAstra Tridentをインストールした場合、IPv6アドレスを使用するようにを設定できます `--use-ipv6` フラグ。IPv6アドレスは、[28e8：d9fb：a825：b7bf：69a8：d02f：9e7b：3555]などの角かっこで定義する必要があります。 | 「 10.0.0.1 」、「 [2001:1234:abcd::fefe] 」 
+
+
+| 「重複排除 | プロトコル LIF の IP アドレス。* ONTAP NASドライバ*：データLIFを指定することを推奨します。指定しない場合は、Astra TridentがSVMからデータLIFを取得します。NFSマウント処理に使用するFully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定して、ラウンドロビンDNSを作成して複数のデータLIF間で負荷を分散することができます。初期設定後に変更できます。を参照してください 。* ONTAP SANドライバ*: iSCSIには指定しないでくださいTridentがONTAP の選択的LUNマップを使用して、マルチパスセッションの確立に必要なiSCSI LIFを検出します。データLIFが明示的に定義されている場合は警告が生成されます。を使用してAstra Tridentをインストールした場合、IPv6アドレスを使用するようにを設定できます `--use-ipv6` フラグ。IPv6アドレスは、[28e8：d9fb：a825：b7bf：69a8：d02f：9e7b：3555]などの角かっこで定義する必要があります。 |  
+
+
+| 「 autoExportPolicy 」を参照してください | エクスポートポリシーの自動作成と更新を有効にします[ブーリアン]。を使用する `autoExportPolicy` および `autoExportCIDRs` ネットアップのAstra Tridentなら、エクスポートポリシーを自動的に管理できます。 | いいえ 
+
+
+| 「 autoExportCI` 」 | KubernetesのノードIPをいつからフィルタリングするかを示すCIDRsのリスト `autoExportPolicy` が有効になります。を使用する `autoExportPolicy` および `autoExportCIDRs` ネットアップのAstra Tridentなら、エクスポートポリシーを自動的に管理できます。 | 「[0.0.0.0/0]、「::/0」」」 
+
+
+| 「ラベル」 | ボリュームに適用する任意の JSON 形式のラベルのセット | "" 
+
+
+| 「 clientCertificate 」をクリックします | クライアント証明書の Base64 エンコード値。証明書ベースの認証に使用されます | "" 
+
+
+| 「 clientPrivateKey 」 | クライアント秘密鍵の Base64 エンコード値。証明書ベースの認証に使用されます | "" 
+
+
+| 「 trustedCacertifate 」 | 信頼された CA 証明書の Base64 エンコード値。任意。証明書ベースの認証に使用されます。 | "" 
+
+
+| 「ユーザ名」 | クラスタまたはSVMに接続するためのユーザ名。クレデンシャルベースの認証に使用されます。たとえば、vsadminのように指定します。 |  
+
+
+| 「 password 」と入力します | クラスタまたはSVMに接続するためのパスワード。クレデンシャルベースの認証に使用されます。 |  
+
+
+| 'VM' | 使用する Storage Virtual Machine | SVM管理LIFが指定されている場合に生成されます。 
+
+
+| 「 igroupName 」と入力します | SANボリュームで使用するigroupの名前。を参照してください 。 | "trident-<backend-UUID> " 
+
+
+| 'toragePrefix' | SVM で新しいボリュームをプロビジョニングする際に使用するプレフィックスを指定します。作成後に変更することはできません。このパラメータを更新するには、新しいバックエンドを作成する必要があります。 | Trident 
+
+
+| 「 AggreglimitateUsage 」と入力します | * NetApp ONTAP にはAmazon FSXを指定しないでください。*提供されている `fsxadmin` および `vsadmin` アグリゲートの使用状況を取得し、Astra Tridentを使用して制限するために必要な権限が含まれていない。 | 使用しないでください。 
+
+
+| 「 limitVolumeSize 」と入力します | 要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します。また、qtreeおよびLUN用に管理するボリュームの最大サイズも制限します `qtreesPerFlexvol` オプションを使用すると、FlexVol あたりの最大qtree数をカスタマイズできます。 | “”（デフォルトでは適用されません） 
+
+
+| 'lunsPerFlexvol | FlexVol あたりの最大LUN数。有効な範囲は50、200です。SANのみ。 | "100" 
+
+
+| 「バグトレースフラグ」 | トラブルシューティング時に使用するデバッグフラグ。例：{"API"：false、"method"：true}は使用されません `debugTraceFlags` トラブルシューティングを実行していて、詳細なログダンプが必要な場合を除きます。 | null 
+
+
+| 「 nfsvMountOptions 」のように入力します | NFSマウントオプションをカンマで区切ったリスト。Kubernetes永続ボリュームのマウントオプションは通常はストレージクラスで指定されますが、ストレージクラスでマウントオプションが指定されていない場合、Astra Tridentはストレージバックエンドの構成ファイルで指定されているマウントオプションを使用します。ストレージクラスや構成ファイルにマウントオプションが指定されていない場合、Astra Tridentは関連付けられた永続的ボリュームにマウントオプションを設定しません。 | "" 
+
+
+| `nasType` | NFSボリュームまたはSMBボリュームの作成を設定オプションはです `nfs`、 `smb`、またはnull。*をに設定する必要があります `smb` SMBボリューム。*をnullに設定すると、デフォルトでNFSボリュームが使用されます。 | "NFS" 
+
+
+| qtreesPerFlexvol` | FlexVol あたりの最大 qtree 数。有効な範囲は [50 、 300] です。 | "200" 
+
+
+| `smbShare` | 共有フォルダMicrosoft管理コンソールを使用して作成したSMB共有の名前。* SMBボリュームに必要です。* | 「smb共有」 
+
+
+| 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー *
+`useREST` は、**テクニカルプレビュー**として提供されています。テスト環境では、本番環境のワークロードでは推奨されません。に設定すると `true`Astra Tridentは、ONTAP REST APIを使用してバックエンドと通信します。この機能にはONTAP 9.11.1以降が必要です。また、使用するONTAP ログインロールにはへのアクセス権が必要です `ontap` アプリケーション：これは事前定義されたによって満たされます `vsadmin` および `cluster-admin` ロール。 | いいえ 
+|===
+
+
+=== の詳細 `igroupName`
+
+`igroupName` ONTAP クラスタですでに作成されているigroupに設定できます。指定しない場合、Astra Tridentはという名前のigroupを自動的に作成します `trident-<backend-UUID>`。
+
+定義済みのigroupNameを指定する場合は、各Kubernetesクラスタで1つのigroupを使用することを推奨します。ただし、SVMが環境間で共有される場合です。これは、Astra TridentがIQNの追加と削除を自動的に管理するために必要です。
+
+* `igroupName` を更新し、Astra Tridentの外部のSVMで作成、管理される新しいigroupを参照できるようになりました。
+* `igroupName` 省略できます。この場合、Astra Tridentが、という名前のigroupを作成して管理します `trident-<backend-UUID>` 自動的に。
+
+
+どちらの場合も、ボリュームの添付ファイルには引き続きアクセスできます。以降のボリューム接続では、更新された igroup が使用されます。この更新によって、バックエンドにあるボリュームへのアクセスが中断されることはありません。
+
+
+
+=== 更新 `dataLIF` 初期設定後
+
+初期設定後にデータLIFを変更するには、次のコマンドを実行して、更新されたデータLIFを新しいバックエンドJSONファイルに指定します。
+
+[listing]
+----
+tridentctl update backend <backend-name> -f <path-to-backend-json-file-with-updated-dataLIF>
+----
+
+NOTE: PVCが1つ以上のポッドに接続されている場合は、対応するすべてのポッドを停止してから、新しいデータLIFを有効にするために稼働状態に戻す必要があります。
+
+
+
+== ボリュームのプロビジョニング用のバックエンド構成オプション
+
+これらのオプションを使用して、のデフォルトプロビジョニングを制御できます `defaults` 設定のセクション。例については、以下の設定例を参照してください。
+
+[cols="3"]
+|===
+| パラメータ | 説明 | デフォルト 
+
+
+| 「平和の配分」 | space-allocation for LUN のコマンドを指定します | 正しいです 
+
+
+| 「平和のための準備」を参照してください | スペースリザベーションモード：「 none 」（シン）または「 volume 」（シック） | なし 
+
+
+| 「ナプショットポリシー」 | 使用する Snapshot ポリシー | なし 
+
+
+| 「 QOSPolicy 」 | 作成したボリュームに割り当てる QoS ポリシーグループ。ストレージプールまたはバックエンドごとに、QOSPolicyまたはadaptiveQosPolicyのいずれかを選択します。Trident が Astra で QoS ポリシーグループを使用するには、 ONTAP 9.8 以降が必要です。非共有のQoSポリシーグループを使用して、各コンスティチュエントに個別にポリシーグループを適用することを推奨します。共有 QoS ポリシーグループにより、すべてのワークロードの合計スループットに対して上限が適用されます。 | 「」 
+
+
+| 「 adaptiveQosPolicy 」を参照してください | アダプティブ QoS ポリシーグループ：作成したボリュームに割り当てます。ストレージプールまたはバックエンドごとに、QOSPolicyまたはadaptiveQosPolicyのいずれかを選択します。経済性に影響する ONTAP - NAS ではサポートされません。 | 「」 
+
+
+| 「スナップショット予約」 | スナップショット "0" 用に予約されたボリュームの割合 | 「 napshotPolicy 」が「 none 」の場合、それ以外の場合は「」 
+
+
+| 'plitOnClone | 作成時にクローンを親からスプリットします | いいえ 
+
+
+| 「暗号化」 | 新しいボリュームでNetApp Volume Encryption（NVE）を有効にします。デフォルトは「false」です。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。NAEがバックエンドで有効になっている場合は、Astra TridentでプロビジョニングされたすべてのボリュームがNAEに有効になります。詳細については、以下を参照してください。 link:../trident-reco/security-reco.html["Astra TridentとNVEおよびNAEの相互運用性"]。 | いいえ 
+
+
+| `luksEncryption` | LUKS暗号化を有効にします。を参照してください link:../trident-reco/security-reco.html#Use-Linux-Unified-Key-Setup-(LUKS)["Linux Unified Key Setup（LUKS；統合キーセットアップ）を使用"]。SANのみ。 | "" 
+
+
+| 階層ポリシー | 「なし」を使用する階層化ポリシー | ONTAP 9.5 よりも前の SVM-DR 構成の「スナップショットのみ」 
+
+
+| 「 unixPermissions 」 | 新しいボリュームのモード。* SMBボリュームは空にしておきます。* | 「」 
+
+
+| 'ecurityStyle' | 新しいボリュームのセキュリティ形式。 | NFSボリュームの場合は「unix」、SMBボリュームの場合は「ntfs」 
+|===
+
+
+== 例
+
+を使用します `nasType`、 `node-stage-secret-name`および `node-stage-secret-namespace`を使用して、SMBボリュームを指定し、必要なActive Directoryクレデンシャルを指定できます。SMBボリュームは、を使用してサポートされます `ontap-nas` ドライバーのみ。
+
+[listing]
+----
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nas-smb-sc
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: "ontap-nas"
+  trident.netapp.io/nasType: "smb"
+  csi.storage.k8s.io/node-stage-secret-name: "smbcreds"
+  csi.storage.k8s.io/node-stage-secret-namespace: "default"
+----

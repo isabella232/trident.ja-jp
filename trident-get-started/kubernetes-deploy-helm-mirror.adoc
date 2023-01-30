@@ -1,0 +1,114 @@
+---
+sidebar: sidebar 
+permalink: trident-get-started/kubernetes-deploy-helm-mirror.html 
+keywords: deploy, astra trident, operator, helm, helm chart, configuration, values, offline, air gap, gap, registry 
+summary: Tridentオペレータを導入し、Helmを使用してAstra Tridentをインストールできます。このプロセスでは、環境 をインストールする際に、Astra Tridentで必要なコンテナイメージがプライベートレジストリに格納されます。 
+---
+= Helm（オフラインモード）を使用したTridentのオペレータの導入
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Tridentオペレータを導入し、Helmを使用してAstra Tridentをインストールできます。このプロセスでは、環境 をインストールする際に、Astra Tridentで必要なコンテナイメージがプライベートレジストリに格納されます。プライベートイメージレジストリがない場合は、を使用します link:kubernetes-deploy-helm.html["標準的な導入のプロセス"]。
+
+
+
+== Astra Trident 23.01に関する重要な情報
+
+* Astra Tridentに関する次の重要な情報をお読みください。*
+
+.<strong> ：Trident </strong> に関する重要な情報
+[%collapsible%open]
+====
+* TridentでKubernetes 1.26がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレード
+* Astra Tridentは、SAN環境でマルチパス構成を厳密に使用し、推奨される値をに設定します `find_multipaths: no` multipath.confファイル内。
++
+非マルチパス構成またはを使用 `find_multipaths: yes` または `find_multipaths: smart` multipath.confファイルの値が原因でマウントが失敗します。Tridentはの使用を推奨しています `find_multipaths: no` 21.07リリース以降
+
+
+
+====
+
+
+== Tridentオペレータを導入し、Helmを使用してAstra Tridentをインストール
+
+Tridentの使用 link:https://artifacthub.io/packages/helm/netapp-trident/trident-operator["Helmチャート"^] Tridentオペレータを導入し、Tridentを一度にインストールできます。
+
+レビュー link:../trident-get-started/kubernetes-deploy.html["インストールの概要"] インストールの前提条件を満たし、環境に適したインストールオプションを選択していることを確認します。
+
+.作業を開始する前に
+に加えて link:../trident-get-started/kubernetes-deploy.html#before-you-deploy["導入の前提条件"] 必要です link:https://v3.helm.sh/["Helm バージョン 3"^]。
+
+.手順
+. Astra Trident Helmリポジトリを追加します。
++
+[listing]
+----
+helm repo add netapp-trident https://netapp.github.io/trident-helm-chart
+----
+. 使用 `helm install` および次の例に示すように、導入環境とイメージのレジストリの場所の名前を指定します。例では、 `23.01.0` は、インストールするAstra Tridentのバージョンです。
++
+[role="tabbed-block"]
+====
+.TridentとCSIのイメージを1つのレジストリに格納します
+--
+[listing]
+----
+helm install <name> netapp-trident/trident-operator --version 23.01.0 --set imageRegistry=<your-registry> --create-namespace --namespace <trident-namespace>
+----
+--
+.TridentとCSIのイメージが異なるレジストリにあります
+--
+を追加する必要があります `sig-storage` に移動します `imageRegistry` 別のレジストリの場所を使用します。
+
+[listing]
+----
+helm install <name> netapp-trident/trident-operator --version 23.01.0 --set imageRegistry=<your-registry>/sig-storage --set operatorImage=<your-registry>/netapp/trident-operator:23.01.0 --set tridentAutosupportImage=<your-registry>/netapp/trident-autosupport:23.01 --set tridentImage=<your-registry>/netapp/trident:23.01.0 --create-namespace --namespace <trident-namespace>
+----
+--
+====
++
+
+NOTE: すでにTridentの名前空間を作成している場合'--create-namespaceパラメータは追加の名前空間を作成しません
+
+
+
+を使用できます `helm list` 名前、ネームスペース、グラフ、ステータス、アプリケーションバージョンなどのインストールの詳細を確認するには、次の手順を実行します。とリビジョン番号。
+
+
+
+== インストール中に設定データを渡す
+
+インストール中に設定データを渡すには、次の 2 つの方法があります。
+
+[cols="2"]
+|===
+| オプション | 説明 
+
+
+| `--values` （または `-f`)  a| 
+オーバーライドを使用してYAMLファイルを指定します。これは複数回指定でき、右端のファイルが優先されます。
+
+
+
+| `--set`  a| 
+コマンドラインでオーバーライドを指定します。
+
+|===
+たとえば、のデフォルト値を変更するには、のように指定します `debug`をクリックし、次のコマンドを実行します `--set` コマンドを入力します `23.01.0` は、インストールするAstra Tridentのバージョンです。
+
+[listing]
+----
+helm install <name> netapp-trident/trident-operator --version 23.01.0  --create-namespace --namespace --set tridentDebug=true
+----
+
+NOTE: Helm チャートの一部である `values] の .yaml ファイルには、キーのリストとデフォルト値が表示されます。
+
+
+
+== 次のステップ
+
+できるようになりました。 link:kubernetes-postdeployment.html["バックエンドとストレージクラスを作成し、ボリュームをプロビジョニングして、ポッドにボリュームをマウントします"]。

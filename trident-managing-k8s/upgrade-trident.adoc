@@ -12,54 +12,42 @@ summary: Astra Trident は四半期ごとにリリースサイクルを実施し
 
 
 [role="lead"]
-Astra Trident は四半期ごとにリリースサイクルを実施し、毎年 4 つのメジャーリリースをリリースしています。各新しいリリースは、以前のリリースに基づいてビルドされ、新機能とパフォーマンスの強化に加え、バグの修正や改善点が追加されています。Astra Trident の新機能を活用するには、 1 年に 1 回以上アップグレードすることを推奨します。
-
-
-NOTE: 5 つ先のリリースにアップグレードするには、複数の手順でアップグレードする必要があります。
+Astra Trident は四半期ごとにリリースサイクルを実施し、毎年 4 つのメジャーリリースをリリースしています。各新しいリリースは、以前のリリースに基づいてビルドされ、新機能とパフォーマンスの強化に加え、バグの修正や改善点が追加されています。ネットアップでは、Astra Tridentの新機能を活用するために、1年に1回以上アップグレードすることを推奨しています。
 
 
 
-== アップグレード先のバージョンを確認します
+== バージョンを選択します
 
-* YY-1.mm' リリースから 'YY.MM' リリースにアップグレードできますたとえば、 19.07 以降（ 19.07.1 などのドットリリースを含む）から 20.07 への直接アップグレードを実行できます。
-* 以前のリリースを使用している場合は、複数の手順からなるアップグレードを実行する必要があります。そのためには、最初に 4 つのリリースウィンドウに対応する最新リリースにアップグレードする必要があります。たとえば '18.07 を実行していて '20.07 リリースにアップグレードする場合は ' 次に示すように ' 複数ステップのアップグレード・プロセスを実行します
+Astra Tridentバージョンは日付ベースです `YY.MM` 命名規則。「YY」は年の最後の2桁、「MM」は月です。ドットリリースは、の後に続きます `YY.MM.X` 条約。ここで、「X」はパッチレベルです。アップグレード前のバージョンに基づいて、アップグレード後のバージョンを選択します。
+
+* インストールされているバージョンの4リリースウィンドウ内にある任意のターゲットリリースに直接アップグレードできます。たとえば、22.01から23.01に直接アップグレードできます(22.01.1などのドットリリースを含む)。
+* 以前のリリースを使用している場合は、具体的な手順について、該当するリリースのドキュメントを参照してアップグレードを実行してください。そのためには、最初に 4 つのリリースウィンドウに対応する最新リリースにアップグレードする必要があります。たとえば'18.07を実行していて'20.07リリースにアップグレードする場合は'次のように複数ステップのアップグレードプロセスを実行します
 +
-** 最初のアップグレードは 18.07 から 19.07 へ。特定のアップグレード手順については、該当するリリースのドキュメントを参照してください。
-** その後 '19.07 から 20.07 にアップグレードします
+.. 最初のアップグレードは 18.07 から 19.07 へ。
+.. その後 '19.07 から 20.07 にアップグレードします
 
 
 
 
-
-IMPORTANT: バージョン 19.04 以前のすべてのアップグレードでは、 Astra Trident のメタデータを独自の「 etcd」 オブジェクトから CRD オブジェクトに移行する必要があります。アップグレードの仕組みについては、リリースのドキュメントを確認してください。
-
-
-WARNING: アップグレードする場合は、 Astra Trident が使用する「 torageClasses 」に「 parameter) .fsType 」を指定することが重要です。既存のボリュームを中断することなく、「 torageClasses 」を削除して再作成できます。これは、強制の ** 要件 ** です https://kubernetes.io/docs/tasks/configure-pod-container/security-context/["セキュリティコンテキスト"^] SAN ボリュームの場合。。 https://github.com/NetApp/trident/tree/master/trident-installer/sample-input["入力例："^] directory には、などの例があります https://github.com/NetApp/trident/blob/master/trident-installer/sample-input/storage-class-basic.yaml.templ["9d267d893296d1b56789c03ad196afc8"^] および https://github.com/NetApp/trident/blob/master/trident-installer/sample-input/storage-class-bronze-default.yaml["4e4578e23d9d48bd9338b1581f884392"^]。詳細については、を参照してください link:../trident-rn.html["既知の問題"^]。
-
+[WARNING]
+====
+* バージョン19.04以前のアップグレードでは、Astra TridentメタデータをIT所有から移行する必要があります `etcd` をCRDオブジェクトに追加します。リリースのマニュアルを参照して、アップグレードの仕組みを確認してください。
+* アップグレードするときは、この作業を行うことが重要です `parameter.fsType` インチ `StorageClasses` Astra Tridentが使用。削除して再作成することができます `StorageClasses` 実行前のボリュームの中断はなし。これは、強制の ** 要件 ** です https://kubernetes.io/docs/tasks/configure-pod-container/security-context/["セキュリティコンテキスト"^] SAN ボリュームの場合。。 https://github.com/NetApp/trident/tree/master/trident-installer/sample-input["入力例："^] directory には、などの例があります[`storage-class-basic.yaml.templ`^]および[`storage-class-bronze-default.yaml`^]をクリックします。詳細については、を参照してください link:../trident-rn.html["既知の問題"]。
 
 
-== どのアップグレードパスを選択すればよいですか？
+====
 
-次のいずれかのパスを使用してアップグレードできます。
 
-* Trident 演算子を使用する。
-* tridentctl を使用。
+== アップグレードオプションを選択します
+
+Tridentをアップグレードする方法は2つあります。通常は、初期インストールに使用したものと同じオプションを使用しますが、使用することもできます link:../trident-get-started/kubernetes-deploy.html#moving-between-installation-methods["インストール方法を切り替えます"]。
+
+* link:upgrade-operator.html["Tridentオペレータを使用してアップグレード"]
+* 
 
 
 
 WARNING: CSI のボリュームスナップショットは、 Kubernetes 1.20 以降の GA 機能になりました。Astra Trident をアップグレードする場合、アップグレードを実行する前に、以前のスナップショット CRS と CRD （ボリューム Snapshot クラス、ボリューム Snapshot 、ボリューム Snapshot コンテンツ）をすべて削除する必要があります。を参照してください https://netapp.io/2020/01/30/alpha-to-beta-snapshots/["この blog"^] アルファスナップショットを beta/GA 仕様に移行する手順を理解する。
-
-Trident のオペレータは、次の条件が満たされている場合にアップグレードできます。
-
-* CSI Trident を実行している（ 19.07 以降）。
-* CRD ベースの Trident リリース（ 19.07 以降）があります。
-* カスタム YAML を使用して ' カスタマイズされたインストールを実行することは ** できません **
-
-
-
-WARNING: etcd' ベースの Trident リリース（ 19.04 以前）を使用している場合は、 Trident のアップグレードにオペレータを使用しないでください。
-
-オペレータを使用しない場合 ' またはオペレータがサポートできないカスタマイズされたインストールを使用している場合は 'tridentctl' を使用してアップグレードできますTrident リリース 19.04 以前では、これがアップグレードに推奨される方法です。
 
 
 
@@ -74,12 +62,4 @@ Astra Trident の 21.01 リリースでは、アーキテクチャに関する�
 
 
 * TridentProvisioner は、 Astra Trident のインストールと管理に使用されるカスタムリソースとして、 TridentOrchestrator に置き換えられました。さらに、「 TridentOrchestrator 」の仕様に新しいフィールドが追加されました。ユーザは、「 pec.namespace` 」フィールドを使用して Trident ネームスペースをインストールまたはアップグレードするように指定できます。例を見てみましょう https://github.com/NetApp/trident/blob/stable/v21.01/deploy/crds/tridentorchestrator_cr.yaml["こちらをご覧ください"^]。
-
-
-
-
-== 詳細については、こちらをご覧ください
-
-* link:upgrade-operator.html["Trident オペレータを使用してアップグレード"^]
-* link:upgrade-tridentctl.html["b41f68e89b7b02a9077fb800d31a2fbe"]
 

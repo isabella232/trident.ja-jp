@@ -46,7 +46,7 @@ kubectl delete storageclass <storage-class>
 このストレージクラスで作成された永続ボリュームには変更はなく、 Astra Trident によって引き続き管理されます。
 
 
-NOTE: Astra Trident は ' 作成したボリュームにブランクの fsType を適用しますiSCSI バックエンドの場合は 'StorageClass に parameters.fsType を適用することをお勧めしますesixting StorageClasses を削除して 'parameters.fsType' を指定して作成し直す必要があります
+NOTE: Astra Tridentでは空白が強制される `fsType` を作成します。iSCSIバックエンドの場合は、適用することを推奨します `parameters.fsType` ストレージクラス。既存のストレージクラスを削除して、で再作成する必要があります `parameters.fsType` 指定された。
 
 
 

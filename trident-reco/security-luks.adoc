@@ -1,0 +1,217 @@
+---
+sidebar: sidebar 
+permalink: trident-reco/security-luks.html 
+keywords: security, luks, linux unified key setup, encryption, key rotation, resizing, advanced encryption, rotation, key, passphrase, nist, aes-ni, aes 
+summary: Linux Unified Key Setup（LUKS；ユニファイドキーセットアップ）を有効にして、Astra Trident上のONTAP SANおよびONTAP SANエコノミーボリュームを暗号化できます。Astra Tridentは、LUKS暗号化ボリュームのボリュームサイズ変更とキー（パスフレーズ）ローテーションをサポートしています。 
+---
+= Linux Unified Key Setup（LUKS；統合キーセットアップ）
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Linux Unified Key Setup（LUKS；ユニファイドキーセットアップ）を有効にして、Astra Trident上のONTAP SANおよびONTAP SANエコノミーボリュームを暗号化できます。Astra Tridentは、LUKS暗号化ボリュームのパスフレーズローテーションとボリューム拡張をサポートしています。
+
+Astra Tridentでは、で推奨されるとおり、LUKSによって暗号化されたボリュームがAES-XTS -原64定型とモードを使用します link:https://csrc.nist.gov/publications/detail/sp/800-38e/final["NIST"^]。
+
+.作業を開始する前に
+* ワーカーノードにはcryptsetup 2.1以上（3.0よりも下位）がインストールされている必要があります。詳細については、を参照してください link:https://gitlab.com/cryptsetup/cryptsetup["Gitlab: cryptsetup"^]。
+* パフォーマンス上の理由から、ワーカーノードでAdvanced Encryption Standard New Instructions（AES-NI）をサポートすることを推奨します。AES-NIサポートを確認するには、次のコマンドを実行します。
++
+[listing]
+----
+grep "aes" /proc/cpuinfo
+----
++
+何も返されない場合、お使いのプロセッサはAES-NIをサポートしていません。AES-NIの詳細については、以下を参照してください。 link:https://www.intel.com/content/www/us/en/developer/articles/technical/advanced-encryption-standard-instructions-aes-ni.html["Intel：Advanced Encryption Standard Instructions（AES-NI）"^]。
+
+
+
+
+
+== LUKS暗号化を有効にします
+
+ONTAP SANおよびONTAP SANエコノミーボリュームでは、Linux Unified Key Setup（LUKS；Linux統合キーセットアップ）を使用して、ボリューム単位のホスト側暗号化を有効にできます。
+
+.手順
+. バックエンド構成でLUKS暗号化属性を定義します。ONTAP SANのバックエンド構成オプションの詳細については、を参照してください link:../trident-use/ontap-san-examples.html["ONTAP のSAN構成オプション"]。
++
+[listing]
+----
+"storage": [
+    {
+        "labels":{"luks": "true"},
+        "zone":"us_east_1a",
+        "defaults": {
+            "luksEncryption": "true"
+        }
+    },
+    {
+        "labels":{"luks": "false"},
+        "zone":"us_east_1a",
+        "defaults": {
+            "luksEncryption": "false"
+        }
+    },
+]
+----
+. 使用 `parameters.selector` LUKS暗号化を使用してストレージプールを定義する方法。例：
++
+[listing]
+----
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: luks
+provisioner: netapp.io/trident
+parameters:
+  selector: "luks=true"
+  csi.storage.k8s.io/node-stage-secret-name: luks-${pvc.name}
+  csi.storage.k8s.io/node-stage-secret-namespace: ${pvc.namespace}
+----
+. LUKSパスフレーズを含むシークレットを作成します。例：
++
+[listing]
+----
+kubectl -n trident create -f luks-pvc1.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: luks-pvc1
+stringData:
+  luks-passphrase-name: A
+  luks-passphrase: secretA
+----
+
+
+
+
+=== 制限
+
+LUKSで暗号化されたボリュームは、ONTAP の重複排除と圧縮を利用できません。
+
+
+
+== LUKSパスフレーズをローテーションします
+
+LUKSのパスフレーズをローテーションしてローテーションを確認できます。
+
+
+WARNING: パスフレーズは、ボリューム、Snapshot、シークレットで参照されなくなることを確認するまで忘れないでください。参照されているパスフレーズが失われた場合、ボリュームをマウントできず、データが暗号化されたままアクセスできなくなることがあります。
+
+.このタスクについて
+LUKSパスフレーズのローテーションは、ボリュームをマウントするポッドが、新しいLUKSパスフレーズの指定後に作成されたときに行われます。新しいポッドが作成されると、Astra TridentはボリュームのLUKSパスフレーズをシークレット内のアクティブなパスフレーズと比較します。
+
+* ボリュームのパスフレーズがシークレットでアクティブなパスフレーズと一致しない場合、ローテーションが実行されます。
+* ボリュームのパスフレーズがシークレットのアクティブなパスフレーズと一致する場合は、を参照してください `previous-luks-passphrase` パラメータは無視されます。
+
+
+.手順
+. を追加します `node-publish-secret-name` および `node-publish-secret-namespace` StorageClassパラメータ。例：
++
+[listing]
+----
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: csi-san
+provisioner: csi.trident.netapp.io
+parameters:
+  trident.netapp.io/backendType: "ontap-san"
+  csi.storage.k8s.io/node-stage-secret-name: luks
+  csi.storage.k8s.io/node-stage-secret-namespace: ${pvc.namespace}
+  csi.storage.k8s.io/node-publish-secret-name: luks
+  csi.storage.k8s.io/node-publish-secret-namespace: ${pvc.namespace}
+----
+. ボリュームまたはSnapshotの既存のパスフレーズを特定します。
++
+.ボリューム
+[listing]
+----
+tridentctl -d get volume luks-pvc1
+GET http://127.0.0.1:8000/trident/v1/volume/<volumeID>
+
+...luksPassphraseNames:["A"]
+----
++
+.スナップショット
+[listing]
+----
+tridentctl -d get snapshot luks-pvc1
+GET http://127.0.0.1:8000/trident/v1/volume/<volumeID>/<snapshotID>
+
+...luksPassphraseNames:["A"]
+----
+. ボリュームのLUKSシークレットを更新して、新しいパスフレーズと前のパスフレーズを指定します。確認します  `previous-luke-passphrase-name` および `previous-luks-passphrase` 前のパスフレーズと同じにします。
++
+[listing]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: luks-pvc1
+stringData:
+  luks-passphrase-name: B
+  luks-passphrase: secretB
+  previous-luks-passphrase-name: A
+  previous-luks-passphrase: secretA
+----
+. ボリュームをマウントする新しいポッドを作成します。これはローテーションを開始するために必要です。
+. パスフレーズがローテーションされたことを確認します。
++
+.ボリューム
+[listing]
+----
+tridentctl -d get volume luks-pvc1
+GET http://127.0.0.1:8000/trident/v1/volume/<volumeID>
+
+...luksPassphraseNames:["B"]
+----
++
+.スナップショット
+[listing]
+----
+tridentctl -d get snapshot luks-pvc1
+GET http://127.0.0.1:8000/trident/v1/volume/<volumeID>/<snapshotID>
+
+...luksPassphraseNames:["B"]
+----
+
+
+.結果
+パスフレーズは、ボリュームとSnapshotに新しいパスフレーズのみが返されたときにローテーションされました。
+
+
+NOTE: たとえば、2つのパスフレーズが返された場合などです `luksPassphraseNames: ["B", "A"]`回転が不完全です。回転を完了するために、新しいポッドをトリガできます。
+
+
+
+== ボリュームの拡張を有効にします
+
+LUKS暗号化ボリューム上でボリューム拡張を有効にできます。
+
+.手順
+. を有効にします `CSINodeExpandSecret` 機能ゲート（ベータ1.25+）。を参照してください link:https://kubernetes.io/blog/2022/09/21/kubernetes-1-25-use-secrets-while-expanding-csi-volumes-on-node-alpha/["Kubernetes 1.25：CSIボリュームのノードベースの拡張にシークレットを使用します"^] を参照してください。
+. を追加します `node-expand-secret-name` および `node-expand-secret-namespace` StorageClassパラメータ。例：
++
+[listing]
+----
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: luks
+provisioner: netapp.io/trident
+parameters:
+  selector: "luks=true"
+  csi.storage.k8s.io/node-stage-secret-name: luks-${pvc.name}
+  csi.storage.k8s.io/node-stage-secret-namespace: ${pvc.namespace}
+  csi.storage.k8s.io/node-expand-secret-name: luks-${pvc.name}
+  csi.storage.k8s.io/node-expand-secret-namespace: ${pvc.namespace}
+allowVolumeExpansion: true
+----
+
+
+.結果
+ストレージのオンライン拡張を開始すると、ドライバに適切なクレデンシャルが渡されます。

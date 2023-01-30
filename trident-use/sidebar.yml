@@ -7,33 +7,40 @@ entries:
 - title: バックエンドを設定
   url: "/trident-use/backends.html"
   entries:
-  - title: ANF バックエンドを設定します
-    url: "/trident-use/anf.html"
+  - title: Azure NetApp Files の特長
     entries:
-    - title: ANFバックエンドを設定するための準備をします
+    - title: 概要
+      url: "/trident-use/anf.html"
+    - title: 設定を準備
       url: "/trident-use/anf-prep.html"
-    - title: ANF設定オプションと例
+    - title: 設定オプションと例
       url: "/trident-use/anf-examples.html"
-  - title: GCP バックエンドの CVS を設定します
+  - title: Cloud Volumes Service for Google Cloud
     url: "/trident-use/gcp.html"
-  - title: NetApp HCI または SolidFire バックエンドを設定します
+  - title: NetApp HCI またはSolidFire
     url: "/trident-use/element.html"
-  - title: バックエンドに ONTAP SAN ドライバを設定します
+  - title: ONTAP SAN ドライバ
     url: "/trident-use/ontap-san.html"
     entries:
-    - title: バックエンドにONTAP SANドライバを設定する準備をします
+    - title: 設定を準備
       url: "/trident-use/ontap-san-prep.html"
-    - title: ONTAP のSAN構成オプションと例
+    - title: 設定オプションと例
       url: "/trident-use/ontap-san-examples.html"
-  - title: バックエンドに ONTAP NAS ドライバを設定します
+  - title: ONTAP NAS ドライバ
     url: "/trident-use/ontap-nas.html"
     entries:
-    - title: ONTAP NASドライバを使用してバックエンドを設定する準備をします
+    - title: 設定を準備
       url: "/trident-use/ontap-nas-prep.html"
-    - title: ONTAP NASの設定オプションと例
+    - title: 設定オプションと例
       url: "/trident-use/ontap-nas-examples.html"
-  - title: Amazon FSX for NetApp ONTAP で Astra Trident を使用
-    url: "/trident-use/trident-fsx.html"
+  - title: NetApp ONTAP 対応の Amazon FSX
+    entries:
+    - title: 概要
+      url: "/trident-use/trident-fsx.html"
+    - title: Amazon FSX for ONTAP を統合します
+      url: "/trident-use/trident-fsx-prep.html"
+    - title: 設定オプションと例
+      url: "/trident-use/trident-fsx-examples.html"
 - title: kubectl を使用してバックエンドを作成します
   url: "/trident-use/backend-kubectl.html"
 - title: kubectl を使用してバックエンド管理を実行します
