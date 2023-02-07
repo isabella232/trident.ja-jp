@@ -1462,7 +1462,6 @@
   <block id="f703d18584e163e18762e4dc13ad96a0" category="cell">「 useREST` 」</block>
   <block id="73e65f4bf1c67cf81e3531ab80adee7e" category="paragraph">どちらの場合も、ボリュームの添付ファイルには引き続きアクセスできます。以降のボリューム接続では、更新された igroup が使用されます。この更新によって、バックエンドにあるボリュームへのアクセスが中断されることはありません。</block>
   <block id="193a49bcfb561fea878daa5efe72cad9" category="section-title">ボリュームのプロビジョニング用のバックエンド構成オプション</block>
-  <block id="4b162a795c1916b18df8b6a76a8fef49" category="paragraph">これらのオプションを使用して、構成の特別なセクションで各ボリュームをデフォルトでプロビジョニングする方法を制御できます。例については、以下の設定例を参照してください。</block>
   <block id="a0ee23c5b4cbd6a28a4143933891f927" category="cell">「平和の配分」</block>
   <block id="26161d08a960162cd8633d0e23058aed" category="cell">space-allocation for LUN のコマンドを指定します</block>
   <block id="3be488c6a2bc52ceb7e8685ca24927d7" category="cell">正しいです</block>
@@ -2638,7 +2637,6 @@
   <block id="ee3d8ea22d8bf88f2f7fcd6d6dbf26d2" category="paragraph">この指標サービスは、 OpenShift クラスタのステータス、リソース利用率、可用性に関する重要な情報を管理者に提供します。ポッドの自動拡張機能にも必要であり、多くの組織では、チャージバックやショーバックのアプリケーションに指標サービスのデータを使用しています。</block>
   <block id="5e5cb863d5fe17c205c3d2201a1a2235" category="paragraph">Kubernetes クラスタにポッドとして Trident を導入し、 Kubernetes ワークロードに動的なストレージオーケストレーションサービスを提供コンテナ化されたアプリケーションは、ONTAP （AFF / FAS / Select / Cloud / Amazon FSX for NetApp ONTAP ）、Elementソフトウェア（NetApp HCI / SolidFire）、Azure NetApp Files サービス、Google Cloud上のCloud Volumes Service など、ネットアップの幅広いポートフォリオの永続的ストレージをすばやく簡単に消費できます。</block>
   <block id="f21f22dde0e0692333a7a28cce456b08" category="sidebar">すべてのAstraドキュメント</block>
-  <block id="271eadf9144a35af6e28eb2db28db36c" category="summary">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。**リリースノートを読み、Astra Trident 22.10.**へのアップグレードに関する重要な情報を確認してください</block>
   <block id="06d5b814514e67e2a36b491b2493aed1" category="paragraph">ここに記載された推奨事項を参考に、Astra Tridentのインストールを安全に行ってください。</block>
   <block id="252ee40ccbd23adc008945e85af83513" category="section-title">NVEおよびNAEでAstra Tridentを使用する</block>
   <block id="676ad90ce2543d29917d8a5a6fc02e01" category="inline-link-macro">ONTAP NASの構成オプション</block>
@@ -3564,4 +3562,5 @@
   <block id="58834b137fd6fa7a9ca23468a5c91fd6" category="sidebar">設定を準備</block>
   <block id="6fc0b7515ecca271c88eae4a685da613" category="sidebar">NetApp HCI またはSolidFire</block>
   <block id="60be48bb4b3314965bf50e88e7ae728c" category="sidebar">Amazon FSX for ONTAP を統合します</block>
+  <block id="ea3d51fb2b16acb7cb260f25bc8965b1" category="sidebar">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。</block>
 </blocks>
