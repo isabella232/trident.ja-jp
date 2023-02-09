@@ -141,7 +141,7 @@ Astra Tridentは特定のオペレーティングシステムを正式にサポ�
 
 * OpenShift Container Platform でサポートされている Red Hat CoreOS （ RHCOS ）バージョン
 * RHEL 8以降
-* Ubuntu 18.04以降（最新22.04）
+* Ubuntu 22.04以降
 * Windows Server 2019
 
 

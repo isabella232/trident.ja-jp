@@ -2559,7 +2559,6 @@
   <block id="9337cac2cd1105449cd4e78ff2a353a4" category="cell">"k83.gcr.io/sig-storage (k8s 1.19+)またはQua.io/k8scsi"</block>
   <block id="702fa57eedc6ee8490a7294016f8b14f" category="list-text">trident-resourcesequota.yaml</block>
   <block id="6b51834314ece904405eb0ce1a6e6bd8" category="list-text">NetApp HCI / Elementソフトウェア11以降</block>
-  <block id="6ebf7ae9dffc55cf86792ea266344b3a" category="list-text">Ubuntu 18.04以降（最新22.04）</block>
   <block id="468bc1e7f7712a8dc9b91d063523cdff" category="cell">v1.24.0</block>
   <block id="05759468b045fc55d22e8e6881dca01f" category="paragraph">** Kubernetes **</block>
   <block id="a885c202ff7951e3ed11491edbe869b2" category="inline-link-macro">GitHub問題 #700</block>
@@ -3563,4 +3562,5 @@
   <block id="6fc0b7515ecca271c88eae4a685da613" category="sidebar">NetApp HCI またはSolidFire</block>
   <block id="60be48bb4b3314965bf50e88e7ae728c" category="sidebar">Amazon FSX for ONTAP を統合します</block>
   <block id="ea3d51fb2b16acb7cb260f25bc8965b1" category="sidebar">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。</block>
+  <block id="784060ce5e49eff75eaca62337b5ff53" category="list-text">Ubuntu 22.04以降</block>
 </blocks>
