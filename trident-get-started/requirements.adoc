@@ -53,6 +53,9 @@ Trident オペレータは、次のリリースでサポートされています
 Astra Trident は、 Google Kubernetes Engine （ GKE ）、 Amazon Elastic Kubernetes Services （ EKS ）、 Azure Kubernetes Service （ AKS ）、 Rancher 、 VMware Tanzu Portfolio など、フルマネージドで自己管理型の Kubernetes サービスが数多く提供されています。
 
 
+WARNING: Astra TridentがインストールされているKubernetesクラスタを1.24から1.25以降にアップグレードする前に、を参照してください link:../trident-managing-k8s/upgrade-operator.html#upgrade-a-helm-based-operator-installation["Helm ベースのオペレータインストレーションをアップグレードします"]。
+
+
 
 == サポートされるバックエンド（ストレージ）
 

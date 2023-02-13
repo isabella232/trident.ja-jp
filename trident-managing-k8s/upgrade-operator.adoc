@@ -211,6 +211,9 @@ NOTE: 。 `trident-controller` ポッド名は、23.01で導入された命名�
 
 Helm ベースのオペレータインストレーションをアップグレードするには、次の手順を実行します。
 
+
+WARNING: Astra TridentがインストールされているKubernetesクラスタを1.24から1.25以降にアップグレードする場合は、value.yamlを更新して設定する必要があります `excludePodSecurityPolicy` 終了： `true` または、を追加します `--set excludePodSecurityPolicy=true` に移動します `helm upgrade` コマンドを実行してからクラスタをアップグレードしてください。
+
 .手順
 . 最新の Astra Trident リリースをダウンロード
 . を使用します `helm upgrade` コマンドを入力します `trident-operator-23.01.0.tgz` アップグレード後のバージョンが反映されます。
