@@ -171,7 +171,7 @@ NOTE: PVCが1つ以上のポッドに接続されている場合は、対応す�
 | 「 unixPermissions 」 | 新しいボリュームのモード。* SMBボリュームは空にしておきます。* | 「」 
 
 
-| 'ecurityStyle' | 新しいボリュームのセキュリティ形式。 | NFSボリュームの場合は「unix」、SMBボリュームの場合は「ntfs」 
+| 'ecurityStyle' | 新しいボリュームのセキュリティ形式。NFSのサポート `mixed` および `unix` セキュリティ形式SMBはをサポートします `mixed` および `ntfs` セキュリティ形式 | NFSのデフォルトはです `unix`。SMBのデフォルトはです `ntfs`。 
 |===
 
 

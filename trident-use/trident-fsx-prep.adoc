@@ -123,13 +123,13 @@ NOTE: を参照してください link:https://docs.netapp.com/us-en/ontap/smb-c
 | パラメータ | 説明 | 例 
 
 
-| `smbShare` | 共有フォルダMicrosoft管理コンソールを使用して作成したSMB共有の名前。たとえば、「smb-share」と入力します。* SMBボリュームに必要です。* | 「smb共有」 
+| `smbShare` | 共有フォルダMicrosoft管理コンソールを使用して作成したSMB共有の名前。たとえば、「smb-share」と入力します。* SMBボリュームに必要です。* | `smb-share` 
 
 
-| `nasType` | *をに設定する必要があります `smb`.* nullの場合、デフォルトはです `nfs`。 | "SMB" 
+| `nasType` | *をに設定する必要があります `smb`.* nullの場合、デフォルトはです `nfs`。 | `smb` 
 
 
-| 'ecurityStyle' | 新しいボリュームのセキュリティ形式。* SMBボリュームの場合は「ntfs」に設定します。* | "NTFS" 
+| 'ecurityStyle' | 新しいボリュームのセキュリティ形式。*をに設定する必要があります `ntfs` または `mixed` SMBボリューム* | `ntfs` または `mixed` SMBボリュームの場合 
 
 
 | 「 unixPermissions 」 | 新しいボリュームのモード。* SMBボリュームは空にしておく必要があります。* | "" 

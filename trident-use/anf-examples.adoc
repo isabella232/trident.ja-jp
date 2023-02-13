@@ -371,7 +371,7 @@ parameters:
 ----
 ====
 
-NOTE: `nasType: "smb"` SMBボリュームをサポートするプールでフィルタリングします。 `nasType: "nfs"`` または `nasType: "null"` NFSプールに対してフィルタを適用します。
+NOTE: `nasType: `smb` SMBボリュームをサポートするプールでフィルタリングします。 `nasType: `nfs` または `nasType: `null` NFSプールに対してフィルタを適用します。
 
 
 

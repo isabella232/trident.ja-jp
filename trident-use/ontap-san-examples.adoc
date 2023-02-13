@@ -152,7 +152,7 @@ ONTAP SAN ドライバを作成して Astra Trident インストールで使用�
 | `luksEncryption` | LUKS暗号化を有効にします。を参照してください link:../trident-reco/security-luks.html["Linux Unified Key Setup（LUKS；統合キーセットアップ）を使用"]。 | "" 
 
 
-| 'ecurityStyle' | 新しいボリュームのセキュリティ形式 | 「 UNIX 」 
+| 'ecurityStyle' | 新しいボリュームのセキュリティ形式 | `unix` 
 
 
 | 階層ポリシー | 「なし」を使用する階層化ポリシー | ONTAP 9.5 よりも前の SVM-DR 構成の「スナップショットのみ」 
