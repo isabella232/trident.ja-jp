@@ -17,9 +17,17 @@ ONTAP および Cloud Volumes ONTAP の NAS ドライバを使用した ONTAP �
 * link:ontap-nas-examples.html["設定と例"]
 
 
+[WARNING]
+====
+Astra Controlは、で作成したボリュームに対して、シームレスな保護、ディザスタリカバリ、および移動（Kubernetesクラスタ間でボリュームを移動）を提供します `ontap-nas`、 `ontap-nas-flexgroup`および `ontap-san` ドライバ。を参照してください link:https://docs.netapp.com/us-en/astra-control-center/use/replicate_snapmirror.html#replication-prerequisites["Astra Controlレプリケーションの前提条件"^] を参照してください。
 
-WARNING: を使用する必要があります `ontap-nas` データ保護、ディザスタリカバリ、モビリティを必要とする本番ワークロード向けのドライバ。Astra Controlは、で作成されたボリュームに対して、シームレスな保護、ディザスタリカバリ、モビリティを提供します `ontap-nas` ドライバ。。 `ontap-nas-economy` ドライバは、ONTAP がサポートする容量よりも予想されるボリューム使用量が大幅に多いことが予想される限られたユースケースでのみ使用し、予想されるデータ保護、ディザスタリカバリ、またはモビリティ（Kubernetesクラスタ間でのボリュームの移動）要件は使用しないようにしてください。
+* を使用する必要があります `ontap-nas` データ保護、ディザスタリカバリ、モビリティを必要とする本番環境のワークロード向けのサービスです。
+* 使用 `ontap-san-economy` 想定されるボリューム使用量がONTAP でサポートされる量よりも大幅に多い場合
+* 使用 `ontap-nas-economy` 想定されるボリューム使用量が、ONTAP でサポートされるおよびよりも大幅に多い場合にのみ該当します `ontap-san-economy` ドライバは使用できません。
+* 使用しないでください `ontap-nas-economy` データ保護、ディザスタリカバリ、モビリティのニーズが予想される場合。
 
+
+====
 
 
 == ユーザ権限
