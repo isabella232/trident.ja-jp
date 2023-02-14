@@ -246,7 +246,7 @@ NOTE: ネットアップ ONTAP で Trident を使用している場合は、 IP 
 ====
 以下の例は、動的なエクスポートポリシーを使用してエクスポートポリシーを自動的に作成および管理するようにAstra Tridentに指示する方法を示しています。これは、でも同様に機能します `ontap-nas-economy` および `ontap-nas-flexgroup` ドライバ。
 
-.ONTAP - NAS - エコノミードライバ
+.ONTAP - NAS ドライバ
 [listing]
 ----
 {
