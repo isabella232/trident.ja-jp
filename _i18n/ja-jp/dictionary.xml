@@ -3037,8 +3037,6 @@
   <block id="f72ba1a3a498489a96fd8774bfa9ea9d" category="example-title">&lt;strong&gt; Kubernetesの自動アップグレード処理&lt;/strong&gt;</block>
   <block id="c3b2fe84f143129d7a18ad12df229bc6" category="example-title">BlueXP（旧Cloud Manager）&lt;/strong&gt; を使用した&lt;strong&gt; Kubernetesクラスタ管理</block>
   <block id="152d763e6dc0313ce9b449d200613a5f" category="section-title">を使用します<block ref="26df55f7460e08309d510282499b6b1d" prefix=" " category="inline-code"></block></block>
-  <block id="9572d5e218b06cdccf02985efd1e22d3" category="inline-link-macro">tridentctlを使用したインストール</block>
-  <block id="87e3a0ec03a6ec1b426ef99e6436161e" category="paragraph">既存の環境をアップグレードする必要がある場合や、高度にカスタマイズすることを検討している場合は、アップグレードを検討する必要があります <block ref="1d8d1486a21051f79115d6882092358e" category="inline-link-macro-rx"></block>。これは、従来の方法であった Astra Trident を導入する方法です。</block>
   <block id="4c24a3b9facf2ea9fc7ed2ca52dab45d" category="inline-link-macro">&lt;block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category='inline-code'/&gt; のインストールをカスタマイズします</block>
   <block id="40beff6895ce0eeff65f9568dd5c7247" category="paragraph">可能です <block ref="d16089dfa270d6679e80d43ec8b5c378" category="inline-link-macro-rx"></block> Tridentリソースのマニフェストを生成するには、次の手順を実行します導入、開始、サービスアカウント、 Astra Trident がインストールの一部として作成するクラスタロールが含まれます。</block>
   <block id="cb024a74bf03f9ba7a9433337492808e" category="admonition">22.04 リリース以降、 Astra Trident がインストールされるたびに AES キーが再生成されなくなりました。今回のリリースでは、 Astra Trident がインストールする新しいシークレットオブジェクトが、インストール全体で維持されます。つまり、<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> 22.04では、以前のバージョンのTridentをアンインストールできますが、それより前のバージョンでは22.04のインストールをアンインストールできません。適切なインストール方法_を選択します。</block>
@@ -3571,4 +3569,6 @@
   <block id="e69dee79b2104ff7c08b095e6212f492" category="list-text">Astra TridentがインストールされているKubernetesクラスタを1.24から1.25以降にアップグレードする場合は、value.yamlを更新して設定する必要があります<block ref="94ef2a130a825358ab3002442d6e5145" prefix=" " category="inline-code"></block> 終了：<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> または、を追加します<block ref="96d5d0b9a6e3e01b2ae2ed889f75d22e" prefix=" " category="inline-code"></block> に移動します<block ref="cd01e1bae83933b9c59c914bc71332ac" prefix=" " category="inline-code"></block> コマンドを実行してからクラスタをアップグレードしてください。</block>
   <block id="3936420db557853e037e33725ba2e1b4" category="list-text">を使用します<block ref="cd01e1bae83933b9c59c914bc71332ac" prefix=" " category="inline-code"></block> コマンドを入力します<block ref="13eee8d0c5cbca0f1ea5bc4275d5bc8d" prefix=" " category="inline-code"></block> アップグレード後のバージョンが反映されます。</block>
   <block id="412b252fa44d1a73e3e7bf22113f99a2" category="listing-title">ONTAP - NAS ドライバ</block>
+  <block id="f39486d0f9f7ffc885eca61e8823ea0a" category="inline-link-macro">tridentctlを使用したインストール</block>
+  <block id="ea71d8757e4d8afc8f6253684f5a7f1c" category="paragraph">既存の環境をアップグレードする必要がある場合や、高度にカスタマイズすることを検討している場合は、アップグレードを検討する必要があります <block ref="004ed44e395c472642e5a257ee453413" category="inline-link-macro-rx"></block>。これは、従来の方法であった Astra Trident を導入する方法です。</block>
 </blocks>
