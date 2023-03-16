@@ -49,18 +49,18 @@ Tridentの使用 link:https://artifacthub.io/packages/helm/netapp-trident/triden
 ----
 helm repo add netapp-trident https://netapp.github.io/trident-helm-chart
 ----
-. 使用 `helm install` および次の例に示すように、導入環境とイメージのレジストリの場所の名前を指定します。例では、 `23.01.0` は、インストールするAstra Tridentのバージョンです。
+. 使用 `helm install` 展開およびイメージレジストリの場所の名前を指定します。。 link:../trident-get-started/requirements.html#container-images-and-corresponding-kubernetes-versions["TridentとCSIの画像"] 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例では、 `23.01.0` は、インストールするAstra Tridentのバージョンです。
 +
 [role="tabbed-block"]
 ====
-.TridentとCSIのイメージを1つのレジストリに格納します
+.1つのレジストリ内のイメージ
 --
 [listing]
 ----
 helm install <name> netapp-trident/trident-operator --version 23.01.0 --set imageRegistry=<your-registry> --create-namespace --namespace <trident-namespace>
 ----
 --
-.TridentとCSIのイメージが異なるレジストリにあります
+.異なるレジストリ内の画像
 --
 を追加する必要があります `sig-storage` に移動します `imageRegistry` 別のレジストリの場所を使用します。
 

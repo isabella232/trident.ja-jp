@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-get-started/kubernetes-deploy-tridentctl.html 
 keywords: deploy, astra trident, methods, tridentctl, windows 
-summary: tridentctl を使用して Astra Trident を導入できます。 
+summary: 'を使用して、Astra Tridentをインストールできます `tridentctl`。このプロセスでは、Astra Tridentで必要なコンテナイメージがプライベートレジストリに格納されているかどうかに関係なく、環境 のインストールを実行します。' 
 ---
 = tridentctlを使用してインストールします
 :hardbreaks:
@@ -12,7 +12,7 @@ summary: tridentctl を使用して Astra Trident を導入できます。
 
 
 [role="lead"]
-を使用して、Astra Tridentをインストールできます `tridentctl`。このプロセスでは、TridentイメージとCSIイメージがにある環境 のインストールを行います `docker.io` および `registry.k8s.io` または、プライベートのミラー化されたレジストリ。をカスタマイズします `tridentctl` 配置については、を参照してください link:kubernetes-customize-deploy-tridentctl.html["tridentctl 展開をカスタマイズします"]。
+を使用して、Astra Tridentをインストールできます `tridentctl`。このプロセスでは、Astra Tridentで必要なコンテナイメージがプライベートレジストリに格納されているかどうかに関係なく、環境 のインストールを実行します。をカスタマイズします `tridentctl` 配置については、を参照してください link:kubernetes-customize-deploy-tridentctl.html["tridentctl 展開をカスタマイズします"]。
 
 
 
@@ -97,14 +97,14 @@ NOTE: WindowsノードでAstra Tridentを実行できるようにするには、
 ./tridentctl install -n trident
 ----
 --
-.1つのミラー化されたレジストリにTridentイメージとCSIイメージが含まれます
+.1つのレジストリ内のイメージ
 --
 [listing]
 ----
 ./tridentctl install -n trident --image-registry <your-registry> --autosupport-image <your-registry>/trident-autosupport:23.01 --trident-image <your-registry>/trident:23.01.0
 ----
 --
-.TridentとCSIのイメージが、異なるミラーレジストリに含まれています
+.異なるレジストリ内の画像
 --
 を追加する必要があります `sig-storage` に移動します `imageRegistry` 別のレジストリの場所を使用します。
 
