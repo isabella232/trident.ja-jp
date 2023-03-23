@@ -123,7 +123,7 @@ Trident を使用する Kubernetes の「 torageClass 」オブジェクトは�
 
 [listing]
 ----
-apiVersion: storage.k8s.io/v1beta1
+apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: <Name>
@@ -250,7 +250,7 @@ Kubernetes 'VolumeSnapshotClass' オブジェクトは 'S torageClasses' に似�
 
 [listing]
 ----
-apiVersion: snapshot.storage.k8s.io/v1beta1
+apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshotClass
 metadata:
   name: csi-snapclass
