@@ -188,79 +188,79 @@ link:../trident-reference/ports.html["Astra Trident ポート"]
 
 
 | v1.21.0  a| 
-* ネットアップ/ Trident：23.01.0
+* ネットアップ/ Trident：23.01.1
 * NetApp / Trident - autosupport：23.01
 * k8s.io/sig-storage/csi-Provisioner：v3.4.0
 * k8s.io/sig-storage/csi-attacher:v4.1.0
 * k8s.io/sig-storage/csi-resizer：v1.7.0
 * k8s.io/sig-storage/csi-snapshotter：v6.2.1
 * k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0
-* NetApp / Tridentオペレータ：23.01.0（オプション）
+* netapp / trident-operator：23.01.1（オプション）
 
 
 
 
 | v1.22.0  a| 
-* ネットアップ/ Trident：23.01.0
+* ネットアップ/ Trident：23.01.1
 * NetApp / Trident - autosupport：23.01
 * k8s.io/sig-storage/csi-Provisioner：v3.4.0
 * k8s.io/sig-storage/csi-attacher:v4.1.0
 * k8s.io/sig-storage/csi-resizer：v1.7.0
 * k8s.io/sig-storage/csi-snapshotter：v6.2.1
 * k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0
-* NetApp / Tridentオペレータ：23.01.0（オプション）
+* netapp / trident-operator：23.01.1（オプション）
 
 
 
 
 | v1.3.0  a| 
-* ネットアップ/ Trident：23.01.0
+* ネットアップ/ Trident：23.01.1
 * NetApp / Trident - autosupport：23.01
 * k8s.io/sig-storage/csi-Provisioner：v3.4.0
 * k8s.io/sig-storage/csi-attacher:v4.1.0
 * k8s.io/sig-storage/csi-resizer：v1.7.0
 * k8s.io/sig-storage/csi-snapshotter：v6.2.1
 * k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0
-* NetApp / Tridentオペレータ：23.01.0（オプション）
+* netapp / trident-operator：23.01.1（オプション）
 
 
 
 
 | v1.24.0  a| 
-* ネットアップ/ Trident：23.01.0
+* ネットアップ/ Trident：23.01.1
 * NetApp / Trident - autosupport：23.01
 * k8s.io/sig-storage/csi-Provisioner：v3.4.0
 * k8s.io/sig-storage/csi-attacher:v4.1.0
 * k8s.io/sig-storage/csi-resizer：v1.7.0
 * k8s.io/sig-storage/csi-snapshotter：v6.2.1
 * k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0
-* NetApp / Tridentオペレータ：23.01.0（オプション）
+* netapp / trident-operator：23.01.1（オプション）
 
 
 
 
 | v1.25.0  a| 
-* ネットアップ/ Trident：23.01.0
+* ネットアップ/ Trident：23.01.1
 * NetApp / Trident - autosupport：23.01
 * k8s.io/sig-storage/csi-Provisioner：v3.4.0
 * k8s.io/sig-storage/csi-attacher:v4.1.0
 * k8s.io/sig-storage/csi-resizer：v1.7.0
 * k8s.io/sig-storage/csi-snapshotter：v6.2.1
 * k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0
-* NetApp / Tridentオペレータ：23.01.0（オプション）
+* netapp / trident-operator：23.01.1（オプション）
 
 
 
 
 | v1.26.0  a| 
-* ネットアップ/ Trident：23.01.0
+* ネットアップ/ Trident：23.01.1
 * NetApp / Trident - autosupport：23.01
 * k8s.io/sig-storage/csi-Provisioner：v3.4.0
 * k8s.io/sig-storage/csi-attacher:v4.1.0
 * k8s.io/sig-storage/csi-resizer：v1.7.0
 * k8s.io/sig-storage/csi-snapshotter：v6.2.1
 * k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0
-* NetApp / Tridentオペレータ：23.01.0（オプション）
+* netapp / trident-operator：23.01.1（オプション）
 
 
 |===

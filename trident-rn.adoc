@@ -19,10 +19,25 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 
 
 
-== 23.01の新機能
+== 23.01.1の新機能
 
 
-IMPORTANT: TridentでKubernetes 1.26がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレードしてください。
+
+=== の修正
+
+* Tridentのオペレータが、仕様で指定されている場合にインストールにIPv6 localhostを使用するように修正しました。
+* Trident Operatorクラスタロールの権限が、バンドルの権限と同期されるように修正されました link:https://github.com/NetApp/trident/issues/799["問題 #799"^]。
+* 外部プロセスを完了まで実行できるようにする修正を追加しました。
+* RWXモードで複数のノードにrawブロックボリュームを接続することで問題 を修正。
+* SMBボリュームのFlexGroup クローニングのサポートとボリュームインポートが修正されました。
+
+
+
+
+== 23.01の変更点
+
+
+IMPORTANT: TridentでKubernetes 1.26がサポートされるようになりました。Kubernetesをアップグレードする前にAstra Tridentをアップグレードしてください。
 
 
 

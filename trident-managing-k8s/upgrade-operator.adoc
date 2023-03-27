@@ -54,15 +54,15 @@ kubectl delete -f 22.01/trident-installer/deploy/bundle.yaml -n trident
 +
 [listing]
 ----
-kubectl create -f 23.01.0/trident-installer/deploy/bundle_post_1_25.yaml -n trident
+kubectl create -f 23.01.1/trident-installer/deploy/bundle_post_1_25.yaml -n trident
 ----
 +
 [NOTE]
 ====
 Tridentでは、オペレータのインストールやKubernetesバージョンに関連するオブジェクトの作成に使用できるバンドルファイルが提供されています。
 
-** Kubernetes 1.24以前を実行しているクラスタの場合は、を使用します link:https://github.com/NetApp/trident/tree/stable/v22.10/deploy/bundle_pre_1_25.yaml["Bundle_pre_1_25.yaml"^]。
-** Kubernetes 1.25以上を実行するクラスタの場合は、を使用します link:https://github.com/NetApp/trident/tree/stable/v22.10/deploy/bundle_post_1_25.yaml["bundle_post_1_25.yaml"^]。
+** Kubernetes 1.24以前を実行しているクラスタの場合は、を使用します link:https://github.com/NetApp/trident/tree/stable/v23.01/deploy/bundle_pre_1_25.yaml["Bundle_pre_1_25.yaml"^]。
+** Kubernetes 1.25以上を実行するクラスタの場合は、を使用します link:https://github.com/NetApp/trident/tree/stable/v23.01/deploy/bundle_post_1_25.yaml["bundle_post_1_25.yaml"^]。
 
 
 ====
@@ -95,11 +95,11 @@ NOTE: ステータスに「更新中」と表示される場合は、続行す�
 +
 [listing]
 ----
-# Download the release required [23.01.0]
-mkdir 23.01.0
-cd 23.01.0
-wget https://github.com/NetApp/trident/releases/download/v23.01.0/trident-installer-23.01.0.tar.gz
-tar -xf trident-installer-23.01.0.tar.gz
+# Download the release required [23.01.1]
+mkdir 23.01.1
+cd 23.01.1
+wget https://github.com/NetApp/trident/releases/download/v23.01.1/trident-installer-23.01.1.tar.gz
+tar -xf trident-installer-23.01.1.tar.gz
 cd trident-installer
 kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml
 ----
@@ -155,7 +155,7 @@ kubectl patch tprov <trident-provisioner-name> -n <trident-namespace> --type=mer
 . Tridentオペレータをインストール
 +
 
-NOTE: クラスタを対象としたオペレータをインストールすると、の移行が開始されます `TridentProvisioner` オブジェクトの移動先 `TridentOrchestrator` オブジェクトを削除します `TridentProvisioner` オブジェクトと `tridentprovisioner` CRD、およびAstra Tridentを、使用しているクラスタ対象オペレータのバージョンにアップグレードします。次の例では、Tridentが23.01.0にアップグレードされます。
+NOTE: クラスタを対象としたオペレータをインストールすると、の移行が開始されます `TridentProvisioner` オブジェクトの移動先 `TridentOrchestrator` オブジェクトを削除します `TridentProvisioner` オブジェクトと `tridentprovisioner` CRD、およびAstra Tridentを、使用しているクラスタ対象オペレータのバージョンにアップグレードします。次の例では、Tridentが23.01.1にアップグレードされています。
 
 +
 
@@ -166,7 +166,7 @@ IMPORTANT: Tridentオペレータを使用してAstra Tridentをアップグレ�
 ----
 #Ensure you are in the correct directory
 pwd
-/root/23.01.0/trident-installer
+/root/23.01.1/trident-installer
 
 #Install the cluster-scoped operator in the **same namespace**
 kubectl create -f deploy/<BUNDLE.YAML>
@@ -197,7 +197,7 @@ kubectl describe torc trident | grep Message -A 3
 Message:                Trident installed
 Namespace:              trident
 Status:                 Installed
-Version:                v23.01.0
+Version:                v23.01.1
 ----
 +
 
@@ -216,11 +216,11 @@ WARNING: Astra TridentがインストールされているKubernetesクラスタ
 
 .手順
 . 最新の Astra Trident リリースをダウンロード
-. を使用します `helm upgrade` コマンドを入力します `trident-operator-23.01.0.tgz` アップグレード後のバージョンが反映されます。
+. を使用します `helm upgrade` コマンドを入力します `trident-operator-23.01.1.tgz` アップグレード後のバージョンが反映されます。
 +
 [listing]
 ----
-helm upgrade <name> trident-operator-23.01.0.tgz
+helm upgrade <name> trident-operator-23.01.1.tgz
 ----
 +
 [NOTE]
@@ -231,7 +231,7 @@ helm upgrade <name> trident-operator-23.01.0.tgz
 
 [listing]
 ----
-helm upgrade <name> trident-operator-23.01.0-custom.tgz --set tridentDebug=true
+helm upgrade <name> trident-operator-23.01.1-custom.tgz --set tridentDebug=true
 ----
 ====
 . を実行します `helm list` グラフとアプリのバージョンが両方ともアップグレードされていることを確認します。を実行します `tridentctl logs` デバッグメッセージを確認します。
@@ -251,11 +251,11 @@ Tridentのオペレータが、既存のAstra Tridentインストールを特定
 +
 [listing]
 ----
-# Download the release required [23.01.0]
-mkdir 23.01.0
-cd 23.01.0
-wget https://github.com/NetApp/trident/releases/download/v22.01.0/trident-installer-23.01.0.tar.gz
-tar -xf trident-installer-23.01.0.tar.gz
+# Download the release required [23.01.1]
+mkdir 23.01.1
+cd 23.01.1
+wget https://github.com/NetApp/trident/releases/download/v22.01.1/trident-installer-23.01.1.tar.gz
+tar -xf trident-installer-23.01.1.tar.gz
 cd trident-installer
 ----
 . マニフェストから「 tridentオーケストラ 」 CRD を作成します。
@@ -309,7 +309,7 @@ kubectl describe torc trident | grep Message -A 3
 Message:                Trident installed
 Namespace:              trident
 Status:                 Installed
-Version:                v23.01.0
+Version:                v23.01.1
 ----
 
 

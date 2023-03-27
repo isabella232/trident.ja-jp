@@ -94,7 +94,7 @@ Source:
 +
 PV は 'NetApp.io/trident プロビジョニングツールを使用して作成されたものであり 'NFS タイプのものですAstra Trident が提供する新機能をすべてサポートするには、この PV を CSI タイプにアップグレードする必要があります。
 
-. tridenctl upgrade volume <name-of -trident-volume>` コマンドを実行して、従来の Astra Trident ボリュームを CSI 仕様にアップグレードします。
+. を実行します `tridentctl upgrade volume <name-of-trident-volume>` 従来のAstra TridentボリュームをCSI仕様にアップグレードするコマンド。
 +
 [listing]
 ----
