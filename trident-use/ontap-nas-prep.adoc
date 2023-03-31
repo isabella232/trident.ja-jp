@@ -52,7 +52,7 @@ Trident が ONTAP バックエンドと通信するには、 SVM を対象とし
   "dataLIF": "10.0.0.2",
   "svm": "svm_nfs",
   "username": "vsadmin",
-  "password": "secret"
+  "password": "password"
 }
 ----
 バックエンド定義は、クレデンシャルがプレーンテキストで保存される唯一の場所であることに注意してください。バックエンドが作成されると、ユーザ名とパスワードが Base64 でエンコードされ、 Kubernetes シークレットとして格納されます。クレデンシャルの知識が必要なのは、バックエンドの作成と更新だけです。この処理は管理者専用で、 Kubernetes / ストレージ管理者が実行します。
@@ -156,7 +156,7 @@ cat cert-backend-updated.json
 "dataLIF": "1.2.3.8",
 "svm": "vserver_test",
 "username": "vsadmin",
-"password": "secret",
+"password": "password",
 "storagePrefix": "myPrefix_"
 }
 
@@ -209,7 +209,7 @@ NOTE: エクスポートポリシーの動的管理は CSI Trident でのみ使�
     "managementLIF": "192.168.0.135",
     "svm": "svm1",
     "username": "vsadmin",
-    "password": "FaKePaSsWoRd",
+    "password": "password",
     "autoExportCIDRs": ["192.168.0.0/24"],
     "autoExportPolicy": true
 }

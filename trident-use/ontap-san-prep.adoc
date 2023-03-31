@@ -50,7 +50,7 @@ Trident が ONTAP バックエンドと通信するには、 SVM を対象とし
   "dataLIF": "10.0.0.2",
   "svm": "svm_nfs",
   "username": "vsadmin",
-  "password": "secret",
+  "password": "password",
 }
 ----
 バックエンド定義は、クレデンシャルがプレーンテキストで保存される唯一の場所であることに注意してください。バックエンドが作成されると、ユーザ名とパスワードが Base64 でエンコードされ、 Kubernetes シークレットとして格納されます。クレデンシャルの知識が必要なのは、バックエンドの作成または更新だけです。この処理は管理者専用で、 Kubernetes / ストレージ管理者が実行します。
@@ -154,7 +154,7 @@ cat cert-backend-updated.json
 "dataLIF": "1.2.3.8",
 "svm": "vserver_test",
 "username": "vsadmin",
-"password": "secret",
+"password": "password",
 "storagePrefix": "myPrefix_"
 }
 
@@ -206,7 +206,7 @@ Astra Trident は 'ONTAP-SAN' ドライバと 'ONTAP-SAN-エコノミー ドラ�
     "svm": "ontap_iscsi_svm",
     "useCHAP": true,
     "username": "vsadmin",
-    "password": "FaKePaSsWoRd",
+    "password": "password",
     "igroupName": "trident",
     "chapInitiatorSecret": "cl9qxIm36DKyawxy",
     "chapTargetInitiatorSecret": "rqxigXgkesIpwxyz",
@@ -257,7 +257,7 @@ cat backend-san.json
     "svm": "ontap_iscsi_svm",
     "useCHAP": true,
     "username": "vsadmin",
-    "password": "FaKePaSsWoRd",
+    "password": "password",
     "igroupName": "trident",
     "chapInitiatorSecret": "cl9qxUpDaTeD",
     "chapTargetInitiatorSecret": "rqxigXgkeUpDaTeD",

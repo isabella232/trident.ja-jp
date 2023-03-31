@@ -258,7 +258,7 @@ NOTE: ネットアップ ONTAP で Astra Trident を使用している場合、 
     "chapUsername": "uh2aNCLSd6cNwxyz",
     "igroupName": "trident",
     "username": "vsadmin",
-    "password": "secret"
+    "password": "password"
 }
 ----
 
@@ -279,7 +279,7 @@ NOTE: ネットアップ ONTAP で Astra Trident を使用している場合、 
     "chapUsername": "uh2aNCLSd6cNwxyz",
     "igroupName": "trident",
     "username": "vsadmin",
-    "password": "secret"
+    "password": "password"
 }
 ----
 
@@ -307,7 +307,7 @@ Astra Tridentは、[Comments]フィールドにプロビジョニングラベル
     "chapUsername": "uh2aNCLSd6cNwxyz",
     "igroupName": "trident",
     "username": "vsadmin",
-    "password": "secret",
+    "password": "password",
 
     "defaults": {
           "spaceAllocation": "false",
@@ -362,7 +362,7 @@ Astra Tridentは、[Comments]フィールドにプロビジョニングラベル
     "chapUsername": "uh2aNCLSd6cNwxyz",
     "igroupName": "trident",
     "username": "vsadmin",
-    "password": "secret",
+    "password": "password",
 
     "defaults": {
           "spaceAllocation": "false",

@@ -91,7 +91,7 @@ Azure NetApp Files を初めて使用する場合や新しい場所で使用す�
 +
 [listing]
 ----
-kubectl create secret generic smbcreds --from-literal username=user --from-literal password='pw'
+kubectl create secret generic smbcreds --from-literal username=user --from-literal password='password'
 ----
 * Windowsサービスとして設定されたCSIプロキシ。を設定します `csi-proxy`を参照してください link:https://github.com/kubernetes-csi/csi-proxy["GitHub: CSIプロキシ"^] または link:https://github.com/Azure/aks-engine/blob/master/docs/topics/csi-proxy-windows.md["GitHub: Windows向けCSIプロキシ"^] Windowsで実行されているKubernetesノードの場合。
 
