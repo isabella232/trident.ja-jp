@@ -12,18 +12,28 @@ summary: 'Trident オペレータは "TridentOrchestrator 仕様の属性を使�
 
 
 [role="lead"]
-Tridentオペレータは、の属性を使用してAstra Tridentのインストールをカスタマイズできます `TridentOrchestrator` 仕様
-
-インストールをカスタマイズする場合は、それ以上のカスタマイズが必要です `TridentOrchestrator` arguments allow、の使用を検討する必要があります `tridentctl` 必要に応じて変更できるカスタムYAMLマニフェストを生成します。
+Tridentオペレータは、の属性を使用してAstra Tridentのインストールをカスタマイズできます `TridentOrchestrator` 仕様インストールをカスタマイズする場合は、それ以上のカスタマイズが必要です `TridentOrchestrator` 引数allow、使用を検討してください `tridentctl` 必要に応じて変更するカスタムYAMLマニフェストを生成します。
 
 
-WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra Tridentがインストールされているネームスペースを示します。このパラメータ * は、 Astra Trident のインストール後に更新できません * 。これを実行すると、が実行されます `TridentOrchestrator` ステータスをに変更します `Failed`。Astra Tridentは、ネームスペース間での移行を意図していません。
+
+== コントローラポッドとノードポッドについて
+
+Astra Tridentは、単一のコントローラポッドと、クラスタ内の各ワーカーノード上のノードポッドとして実行されます。Astra Tridentボリュームをマウントするすべてのホストでノードポッドが実行されている必要があります。
+
+Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/["ノードセレクタ"^] および link:https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/["寛容さと汚れ"^] は、特定のノードまたは優先ノードで実行されるようにポッドを制限するために使用されます。「ControllerPlugin」およびを使用します `NodePlugin`を使用すると、拘束とオーバーライドを指定できます。
+
+* コントローラプラグインは、Snapshotやサイズ変更などのボリュームのプロビジョニングと管理を処理します。
+* ノードプラグインによって、ノードへのストレージの接続が処理されます。
+
 
 
 
 == 設定オプション
 
-このテーブルの詳細 `TridentOrchestrator` 属性：
+
+WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra Tridentがインストールされているネームスペースを指定します。このパラメータ * は、 Astra Trident のインストール後に更新できません * 。これを実行すると、が実行されます `TridentOrchestrator` ステータスをに変更します `Failed`。Astra Tridentは、ネームスペース間での移行を意図していません。
+
+このテーブルの詳細 `TridentOrchestrator` 属性。
 
 [cols="3"]
 |===
@@ -84,16 +94,16 @@ WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra T
 `Never` 画像を絶対に引き出さないでください。 | `IfNotPresent` 
 
 
-| controller'PluginNodeSelector | Trident Controller CSI プラグインを実行しているポッドの追加ノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。 | デフォルトはありません。オプションです 
+| controller'PluginNodeSelector | ポッド用の追加のノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。 | デフォルトはありません。オプションです 
 
 
-| controllerPluginTolerations | Trident Controller CSI プラグインを実行しているポッドに対する許容値を上書きします。POD .spec.Toleratations と同じ形式を使用します。 | デフォルトはありません。オプションです 
+| controllerPluginTolerations | ポッドに対するKubernetesの許容範囲を上書きします。POD .spec.Toleratations と同じ形式を使用します。 | デフォルトはありません。オプションです 
 
 
-| 「 nodePluginNodeSelector 」 | Trident ノード CSI プラグインを実行しているポッドの追加ノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。 | デフォルトはありません。オプションです 
+| 「 nodePluginNodeSelector 」 | ポッド用の追加のノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。 | デフォルトはありません。オプションです 
 
 
-| 「 nodePluginTolerations` 」 | Trident Node CSI プラグインを実行しているポッドに対する許容値を上書きします。POD .spec.Toleratations と同じ形式を使用します。 | デフォルトはありません。オプションです 
+| 「 nodePluginTolerations` 」 | ポッドに対するKubernetesの許容範囲を上書きします。POD .spec.Toleratations と同じ形式を使用します。 | デフォルトはありません。オプションです 
 |===
 
 NOTE: ポッドパラメータの書式設定の詳細については、を参照してください link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/["ポッドをノードに割り当てます"^]。

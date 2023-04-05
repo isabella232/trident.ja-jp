@@ -2242,14 +2242,10 @@
   <block id="1968a7e86875b6b6ca9d5222172f8d16" category="list-text">`--http-request-timeout`: Trident コントローラの REST API の HTTP 要求タイムアウトをオーバーライドします ( デフォルトは 1 分 30s) 。</block>
   <block id="cf282b9c05ab0f84b1690e644cd3f68e" category="list-text">「 ONTAP-NAS-flexgroup 」ドライバの場合、各永続ボリューム（ PV ）は FlexGroup にマッピングされます。その結果、ボリューム Snapshot は NetApp FlexGroup Snapshot として作成されます。NetApp のスナップショット・テクノロジーは ' 競合するスナップショット・テクノロジーよりも高い安定性 ' 拡張性 ' リカバリ性 ' パフォーマンスを提供しますSnapshot コピーは、作成時とストレージスペースの両方で非常に効率的です。</block>
   <block id="b89df534de66f446ec6482f9d7898bb2" category="cell">controller'PluginNodeSelector</block>
-  <block id="15cfc4bea44cee69551eb577fb0dcd8a" category="cell">Trident Controller CSI プラグインを実行しているポッドの追加ノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。</block>
   <block id="8d414af35aeb82413205fa45551a5545" category="cell">デフォルトはありません。オプションです</block>
   <block id="df1f367efe879ec0030f43610e29c5af" category="cell">controllerPluginTolerations</block>
-  <block id="2fba8e7843d1d343f2fe29feeca4b34d" category="cell">Trident Controller CSI プラグインを実行しているポッドに対する許容値を上書きします。POD .spec.Toleratations と同じ形式を使用します。</block>
   <block id="47a441037628a3c0f0edb0daccb33f99" category="cell">「 nodePluginNodeSelector 」</block>
-  <block id="109ef057002ce8b5901039ee5b81df88" category="cell">Trident ノード CSI プラグインを実行しているポッドの追加ノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。</block>
   <block id="f297db5a937924105908a365d9d4c4ff" category="cell">「 nodePluginTolerations` 」</block>
-  <block id="01fae47efea3407f5bc27a09eea8709c" category="cell">Trident Node CSI プラグインを実行しているポッドに対する許容値を上書きします。POD .spec.Toleratations と同じ形式を使用します。</block>
   <block id="4352a1b4e004cf57ac04661a18de43aa" category="inline-link-macro">ポッドをノードに割り当てます</block>
   <block id="b3b67fd79d24b4873c8164c750c21798" category="admonition">ポッドパラメータの書式設定の詳細については、を参照してください <block ref="7b3a69fdac08c769183925679da4c365" category="inline-link-macro-rx"></block>。</block>
   <block id="d6601a8eb863a49ea065281f70a5956b" category="summary">Astra Trident は、ネットアップが Astra 製品ファミリーの一部として管理している、完全にサポートされているオープンソースプロジェクトです。Container Storage Interface （ CSI ）などの業界標準のインターフェイスを使用して、コンテナ化されたアプリケーションの永続性に対する要求を満たすことができるように設計されています。</block>
@@ -2673,11 +2669,7 @@
   <block id="19eb712f406fc64109f96d9cf4055cb9" category="list-text">Kubernetesワーカーノードすべてからボリュームをマウントできます。</block>
   <block id="5f35b91e200cda68bf700d65b89c2c73" category="list-text">を搭載したLinuxホスト<block ref="0f12ee5c9f1dd90158580f1c292b0d37" prefix=" " category="inline-code"></block> （または<block ref="fb024832e51eb5f6da9113a745f1eb59" prefix=" " category="inline-code"></block>OpenShiftを使用している場合）Kubernetesクラスタを管理するようにインストールおよび設定します。</block>
   <block id="c1c8ac442a800bb41f1cc1dc1350132e" category="admonition">WindowsノードでAstra Tridentを実行できるようにするには、を追加します<block ref="636d7cccc33f77beafb20be9cf83cd53" prefix=" " category="inline-code"></block> インストールコマンドへのフラグ：<block ref="a240440622dae805c5d62a3c17f5f51e" prefix=" " category="inline-code"></block>。</block>
-  <block id="1f9652420326ed09ea403326a1fcac4c" category="paragraph">Tridentオペレータは、の属性を使用してAstra Tridentのインストールをカスタマイズできます<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> 仕様</block>
-  <block id="c154f686329451dbb564bc5e47a0d582" category="paragraph">インストールをカスタマイズする場合は、それ以上のカスタマイズが必要です<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> arguments allow、の使用を検討する必要があります<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> 必要に応じて変更できるカスタムYAMLマニフェストを生成します。</block>
-  <block id="1d4667db6671394243a3ea2bd3b7865b" category="admonition"><block ref="b2c66bca748ffde67c7b6817cb8dd795" prefix="" category="inline-code"></block> は、で指定します<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> Astra Tridentがインストールされているネームスペースを示します。このパラメータ * は、 Astra Trident のインストール後に更新できません * 。これを実行すると、が実行されます<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> ステータスをに変更します<block ref="d7c8c85bf79bbe1b7188497c32c3b0ca" prefix=" " category="inline-code"></block>。Astra Tridentは、ネームスペース間での移行を意図していません。</block>
   <block id="50f33d14f129e4548c1c270fd6725a78" category="section-title">設定オプション</block>
-  <block id="a25615871c9e4699a568a615398858d7" category="paragraph">このテーブルの詳細<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> 属性：</block>
   <block id="05f901da7fdacb9ca59e3d7e2d40f98d" category="cell"><block ref="0f4137ed1502b5045d6083aa258b5c42" prefix="" category="inline-code"></block></block>
   <block id="fbbd7b4b14060c4fdb02f92c4c08e702" category="cell">をに設定します<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> Windowsワーカーノードへのインストールを有効にします。</block>
   <block id="a3ff66cf5848a34d56915c8e879a5d52" category="section-title">構成例</block>
@@ -3578,4 +3570,19 @@
   <block id="190a9f9a8311c8a23bff1fd7a5693342" category="section-title">23.01の変更点</block>
   <block id="8b418db90259290a719e83f1a2509366" category="admonition">TridentでKubernetes 1.26がサポートされるようになりました。Kubernetesをアップグレードする前にAstra Tridentをアップグレードしてください。</block>
   <block id="1cb76b1c7887cad1e077a4cbdc765b9b" category="list-text">Astra Tridentのバージョンを確認します。</block>
+  <block id="705dbdc50888270bf4b0230d75c7ae1d" category="paragraph">Tridentオペレータは、の属性を使用してAstra Tridentのインストールをカスタマイズできます<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> 仕様インストールをカスタマイズする場合は、それ以上のカスタマイズが必要です<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> 引数allow、使用を検討してください<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> 必要に応じて変更するカスタムYAMLマニフェストを生成します。</block>
+  <block id="a5199cf0d9f113491f9efa18f3bee2e1" category="section-title">コントローラポッドとノードポッドについて</block>
+  <block id="f412c056318f78edc1cce01ed98e751b" category="paragraph">Astra Tridentは、単一のコントローラポッドと、クラスタ内の各ワーカーノード上のノードポッドとして実行されます。Astra Tridentボリュームをマウントするすべてのホストでノードポッドが実行されている必要があります。</block>
+  <block id="30735a308956ec6de6caa328d0d5b43b" category="inline-link-macro">ノードセレクタ</block>
+  <block id="1db653cf6745dd1e6aa8d6e843ea5e96" category="inline-link-macro">寛容さと汚れ</block>
+  <block id="0897b2b75e3d0217c2f6994605a2cae7" category="paragraph">Kubernetes <block ref="219288b06ade6fd51c16efe605941441" category="inline-link-macro-rx"></block> および <block ref="9466cd429d8630101055a8fd14904bd9" category="inline-link-macro-rx"></block> は、特定のノードまたは優先ノードで実行されるようにポッドを制限するために使用されます。「ControllerPlugin」およびを使用します<block ref="96687552cc4dff10038a1b07a8bf3bd3" prefix=" " category="inline-code"></block>を使用すると、拘束とオーバーライドを指定できます。</block>
+  <block id="e3826c3aea0bf8502f2ba8ff27eeef19" category="list-text">コントローラプラグインは、Snapshotやサイズ変更などのボリュームのプロビジョニングと管理を処理します。</block>
+  <block id="361d997e700d422835e56b644784bb7e" category="list-text">ノードプラグインによって、ノードへのストレージの接続が処理されます。</block>
+  <block id="1736b3823517cc62395e05494b09ddb9" category="admonition"><block ref="b2c66bca748ffde67c7b6817cb8dd795" prefix="" category="inline-code"></block> は、で指定します<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> Astra Tridentがインストールされているネームスペースを指定します。このパラメータ * は、 Astra Trident のインストール後に更新できません * 。これを実行すると、が実行されます<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> ステータスをに変更します<block ref="d7c8c85bf79bbe1b7188497c32c3b0ca" prefix=" " category="inline-code"></block>。Astra Tridentは、ネームスペース間での移行を意図していません。</block>
+  <block id="a739aa7f082abebdf65f4b114dd3ad7d" category="paragraph">このテーブルの詳細<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> 属性。</block>
+  <block id="b520e4144a27e0f45e8e22d5ccd8328d" category="cell">ポッド用の追加のノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。</block>
+  <block id="e138e2a410035dad85499a3dabe692d5" category="cell">ポッドに対するKubernetesの許容範囲を上書きします。POD .spec.Toleratations と同じ形式を使用します。</block>
+  <block id="d4cc4428c9a6422247c8ff288ea4b5eb" category="cell">ポッド用の追加のノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。</block>
+  <block id="a5353a10ead2905c577659fdd805af0a" category="summary">KubernetesクラスタでAstra Tridentを実行する方法をご紹介します。</block>
+  <block id="c350769115c3c8e4132e9c428b166b12" category="doc">Astra Tridentのアーキテクチャ</block>
 </blocks>
