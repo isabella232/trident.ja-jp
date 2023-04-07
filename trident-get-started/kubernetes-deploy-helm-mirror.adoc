@@ -105,7 +105,131 @@ NOTE: すでにTridentの名前空間を作成している場合'--create-namesp
 helm install <name> netapp-trident/trident-operator --version 23.01.1  --create-namespace --namespace --set tridentDebug=true
 ----
 
-NOTE: Helm チャートの一部である `values] の .yaml ファイルには、キーのリストとデフォルト値が表示されます。
+
+== 設定オプション
+
+このテーブルと `values.yaml` Helmチャートの一部であるファイルには、キーとそのデフォルト値のリストが表示されます。
+
+[cols="3"]
+|===
+| オプション | 説明 | デフォルト 
+
+
+| `nodeSelector` | ポッド割り当てのノードラベル |  
+
+
+| `podAnnotations` | ポッドの注釈 |  
+
+
+| `deploymentAnnotations` | 配置のアノテーション |  
+
+
+| `tolerations` | ポッド割り当ての許容値 |  
+
+
+| `affinity` | ポッド割り当てのアフィニティ |  
+
+
+| `tridentControllerPluginNodeSelector` | ポッド用の追加のノードセレクタ。を参照してください <<コントローラポッドとノードポッドについて>> を参照してください。 |  
+
+
+| `tridentControllerPluginTolerations` | ポッドに対するKubernetesの許容範囲を上書きします。を参照してください <<コントローラポッドとノードポッドについて>> を参照してください。 |  
+
+
+| `tridentNodePluginNodeSelector` | ポッド用の追加のノードセレクタ。を参照してください <<コントローラポッドとノードポッドについて>> を参照してください。 |  
+
+
+| `tridentNodePluginTolerations` | ポッドに対するKubernetesの許容範囲を上書きします。を参照してください <<コントローラポッドとノードポッドについて>> を参照してください。 |  
+
+
+| 「 imageRegistry 」と入力します | のレジストリを指定します `trident-operator`、 `trident`、およびその他の画像。デフォルトをそのまま使用する場合は、空のままにします。 | "" 
+
+
+| `imagePullPolicy` | のイメージプルポリシーを設定します `trident-operator`。 | `IfNotPresent` 
+
+
+| 「 imagePullSecrets 」 | のイメージプルシークレットを設定します `trident-operator`、 `trident`、およびその他の画像。 |  
+
+
+| 「 kubeletDir 」を参照してください | kubeletの内部状態のホスト位置を上書きできます。 | '"/var/lib/kubeelet"' 
+
+
+| `operatorLogLevel` | Tridentオペレータのログレベルを次のように設定できます。 `trace`、 `debug`、 `info`、 `warn`、 `error`または `fatal`。 | `"info"` 
+
+
+| `operatorDebug` | Tridentオペレータのログレベルをdebugに設定できます。 | 「真」 
+
+
+| `operatorImage` | のイメージを完全に上書きできます `trident-operator`。 | "" 
+
+
+| `operatorImageTag` | のタグを上書きできます `trident-operator` イメージ（Image）： | "" 
+
+
+| `tridentIPv6` | IPv6クラスタでAstra Tridentを動作させることができます。 | 「偽」 
+
+
+| `tridentK8sTimeout` | ほとんどのKubernetes API処理でデフォルトの30秒タイムアウトを上書きします（0以外の場合は秒単位）。 | `0` 
+
+
+| `tridentHttpRequestTimeout` | HTTP要求のデフォルトの90秒タイムアウトをで上書きします `0s` タイムアウトの期間は無限です。負の値は使用できません。 | `"90s"` 
+
+
+| `tridentSilenceAutosupport` | Astra Tridentの定期的なAutoSupport レポートを無効にできます。 | 「偽」 
+
+
+| `tridentAutosupportImageTag` | Astra Trident AutoSupport コンテナのイメージのタグを上書きできます。 | `<version>` 
+
+
+| `tridentAutosupportProxy` | Astra TridentのAutoSupport コンテナがHTTPプロキシ経由で自宅に通信できるようになります。 | "" 
+
+
+| `tridentLogFormat` | Astra Tridentのログ形式を設定します (`text` または `json`）。 | `"text"` 
+
+
+| `tridentDisableAuditLog` | Astra Trident監査ロガーを無効にします。 | 「真」 
+
+
+| `tridentLogLevel` | Astra Tridentのログレベルを次のように設定できます。 `trace`、 `debug`、 `info`、 `warn`、 `error`または `fatal`。 | `"info"` 
+
+
+| `tridentDebug` | Astra Tridentのログレベルをに設定できます `debug`。 | 「偽」 
+
+
+| `tridentLogWorkflows` | 特定のAstra Tridentワークフローを有効にして、トレースロギングやログ抑制を実行できます。 | "" 
+
+
+| `tridentLogLayers` | 特定のAstra Tridentレイヤでトレースロギングやログ抑制を有効にできます。 | "" 
+
+
+| 「 tridentImage 」のように入力します | Astra Tridentのイメージを完全に上書きできます。 | "" 
+
+
+| `tridentImageTag` | Astra Tridentのイメージのタグを上書きできます。 | "" 
+
+
+| `tridentProbePort` | Kubernetesの活性/準備プローブに使用されるデフォルトポートを上書きできます。 | "" 
+
+
+| `windows` | WindowsワーカーノードにAstra Tridentをインストールできます。 | 「偽」 
+
+
+| `enableForceDetach` | 強制切り離し機能を有効にできます。 | 「偽」 
+
+
+| `excludePodSecurityPolicy` | オペレータポッドのセキュリティポリシーを作成から除外します。 | 「偽」 
+|===
+
+
+=== コントローラポッドとノードポッドについて
+
+Astra Tridentは、単一のコントローラポッドと、クラスタ内の各ワーカーノード上のノードポッドとして実行されます。Astra Tridentボリュームをマウントするすべてのホストでノードポッドが実行されている必要があります。
+
+Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/["ノードセレクタ"^] および link:https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/["寛容さと汚れ"^] は、特定のノードまたは優先ノードで実行されるようにポッドを制限するために使用されます。「ControllerPlugin」およびを使用します `NodePlugin`を使用すると、拘束とオーバーライドを指定できます。
+
+* コントローラプラグインは、Snapshotやサイズ変更などのボリュームのプロビジョニングと管理を処理します。
+* ノードプラグインによって、ノードへのストレージの接続が処理されます。
+
 
 
 
