@@ -11,24 +11,24 @@ summary: ANFバックエンドを設定する前に、次の要件を満たし�
 :imagesdir: ../media/
 
 
+[role="lead"]
 Azure NetApp Files バックエンドを設定する前に、次の要件を満たしていることを確認する必要があります。
 
-Azure NetApp Files を初めて使用する場合や新しい場所で使用する場合は、いくつかの初期設定が必要です。
 
-* Azure NetApp Files をセットアップしてNFSボリュームを作成する方法については、を参照してください https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes["Azure：Azure NetApp Files をセットアップし、NFSボリュームを作成します"^]。
-* Azure NetApp Files を設定してSMBボリュームを追加するには、以下を参照してください。 https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb["Azure：Azure NetApp Files 用のSMBボリュームを作成します"^]。
+NOTE: Azure NetApp Files を初めてまたは新しい場所で使用する場合は、Azure NetApp Files をセットアップしてNFSボリュームを作成するためにいくつかの初期設定が必要です。を参照してください https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes["Azure：Azure NetApp Files をセットアップし、NFSボリュームを作成します"^]。
 
 
 
-
-== 要件
+== NFSボリュームとSMBボリュームの前提条件
 
 を設定して使用します https://azure.microsoft.com/en-us/services/netapp/["Azure NetApp Files の特長"^] バックエンドには次のものが必要です。
 
+* 容量プール。を参照してください link:https://learn.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool["Microsoft：Azure NetApp Files 用の容量プールを作成します"^]。
+* Azure NetApp Files に委任されたサブネット。を参照してください link:https://learn.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-delegate-subnet["Microsoft：サブネットをAzure NetApp Files に委任します"^]。
 * Azure NetApp Files が有効な Azure サブスクリプションのスクリプト ID 。
 * `tenantID`、 `clientID`および `clientSecret` から link:https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal["アプリケーション登録"^] Azure Active Directory で、 Azure NetApp Files サービスに対する十分な権限がある。アプリケーション登録では、次のいずれかを使用します。
 +
-** オーナーまたは寄与者のロール link:https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles["Azureで事前定義"^]
+** オーナーまたは寄与者のロール link:https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles["Azureで事前定義"^]。
 ** A link:https://learn.microsoft.com/en-us/azure/role-based-access-control/custom-roles-portal["カスタム投稿者ロール"] をサブスクリプションレベルで選択します (`assignableScopes`)以下のアクセス許可は、Astra Tridentが必要とするものに限定されます。カスタムロールを作成したあと、 link:https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal["Azureポータルを使用してロールを割り当てます"^]。
 +
 [source, JSON]
@@ -86,8 +86,11 @@ Azure NetApp Files を初めて使用する場合や新しい場所で使用す�
 
 == SMBボリュームに関するその他の要件
 
+SMBボリュームを作成するには、以下が必要です。
+
+* Active Directoryが設定され、Azure NetApp Files に接続されています。を参照してください link:https://learn.microsoft.com/en-us/azure/azure-netapp-files/create-active-directory-connections["Microsoft：Azure NetApp Files のActive Directory接続を作成および管理します"^]。
 * Linuxコントローラノードと少なくとも1つのWindowsワーカーノードでWindows Server 2019を実行しているKubernetesクラスタ。Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート
-* Active Directoryのクレデンシャルを含むTridentシークレットが少なくとも1つあり、ANFがActive Directoryに認証できるようになっている。シークレットを生成します `smbcreds`：
+* Azure NetApp Files がActive Directoryに対して認証できるように、Active Directoryクレデンシャルを含むAstra Tridentのシークレットが少なくとも1つ含まれています。シークレットを生成します `smbcreds`：
 +
 [listing]
 ----

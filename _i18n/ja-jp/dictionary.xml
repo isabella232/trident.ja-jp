@@ -2717,21 +2717,15 @@
   <block id="3908892c437778f8b161a2ca006782cd" category="list-text">Snapshot、クローン、およびミラーリングは下位のボリュームでは実行できません。</block>
   <block id="e6fe09cae66ba22c6abbd2511f660545" category="summary">ANFバックエンドを設定する前に、次の要件を満たしていることを確認する必要があります。</block>
   <block id="aec47cf6a0cb83824b504b756eb4b71c" category="doc">Azure NetApp Files バックエンドを設定する準備をします</block>
-  <block id="fafa3c0a3cb069057415a83c6ebcceba" category="paragraph">Azure NetApp Files を初めて使用する場合や新しい場所で使用する場合は、いくつかの初期設定が必要です。</block>
   <block id="97d64245613ba751b698ce77fd51779a" category="inline-link">Azure：Azure NetApp Files をセットアップし、NFSボリュームを作成します</block>
-  <block id="2aa05cb8290726bf399391736b2c3515" category="list-text">Azure NetApp Files をセットアップしてNFSボリュームを作成する方法については、を参照してください<block ref="b6e93c3bfc36cf835c63e42e55586d97" category="inline-link-rx"></block>。</block>
-  <block id="a2d5857c3b9121391e94a67cf08493ee" category="inline-link">Azure：Azure NetApp Files 用のSMBボリュームを作成します</block>
-  <block id="04c87c2db0b97d613ced591af56ad5bb" category="list-text">Azure NetApp Files を設定してSMBボリュームを追加するには、以下を参照してください。<block ref="c33ad357613bf495746b18bdb4ed3ee8" category="inline-link-rx"></block>。</block>
   <block id="caa7dc98c21b44b17c214508b9b0fa3c" category="list-text"><block ref="bc54592d6183695b841c6d1880ec0bf8" prefix="" category="inline-code"></block>、<block ref="93c5bebdea9c94a0740fe6fd9bb250f0" prefix=" " category="inline-code"></block>および<block ref="2b53761249254ce6b502f521e5cc0683" prefix=" " category="inline-code"></block> から <block ref="63405c89f422580946169fa59c41e7ae" category="inline-link-macro-rx"></block> Azure Active Directory で、 Azure NetApp Files サービスに対する十分な権限がある。アプリケーション登録では、次のいずれかを使用します。</block>
   <block id="ee495045d2c4c5131217a0248a404b4d" category="inline-link-macro">Azureで事前定義</block>
-  <block id="0b0da58ea52df6ff74bcbb53ae7ba931" category="list-text">オーナーまたは寄与者のロール <block ref="76b3209c91e1786a477c35a6e91cf55f" category="inline-link-macro-rx"></block></block>
   <block id="2fbc632d5939633cc9c3b254d116080f" category="inline-link-macro">カスタム投稿者ロール</block>
   <block id="b0ee19cc46a4fb3df97c1c676c0a5d57" category="inline-link-macro">Azureポータルを使用してロールを割り当てます</block>
   <block id="993c1a80e778c965961521eeb4afd398" category="list-text">A <block ref="8ad3956583058d3582a7dd1281d1f882" category="inline-link-macro-rx"></block> をサブスクリプションレベルで選択します <block ref="e023f2926fb9af676f2809a760efeb14" prefix="(" category="inline-code"></block>)以下のアクセス許可は、Astra Tridentが必要とするものに限定されます。カスタムロールを作成したあと、 <block ref="af58105ed429db29198b767444ed6d0d" category="inline-link-macro-rx"></block>。</block>
   <block id="daba51cb28ea016a4e85ad77defc5a2c" category="list-text">Azureがサポートされます<block ref="d5189de027922f81005951e6efe0efd5" prefix=" " category="inline-code"></block> を1つ以上含むデータセンターを展開します <block ref="e2df5d3690a644a8599397d798c15f56" category="inline-link-macro-rx"></block>。Trident 22.01の時点では<block ref="d5189de027922f81005951e6efe0efd5" prefix=" " category="inline-code"></block> パラメータは、バックエンド構成ファイルの最上位にある必須フィールドです。仮想プールで指定された場所の値は無視されます。</block>
   <block id="77a4a369d552f7d3be163bda86f9113f" category="section-title">SMBボリュームに関するその他の要件</block>
   <block id="1f43150a13f29c496f07ed4a9750b2ff" category="list-text">Linuxコントローラノードと少なくとも1つのWindowsワーカーノードでWindows Server 2019を実行しているKubernetesクラスタ。Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート</block>
-  <block id="43950c84ce08a6b99dc3b224bc37d814" category="list-text">Active Directoryのクレデンシャルを含むTridentシークレットが少なくとも1つあり、ANFがActive Directoryに認証できるようになっている。シークレットを生成します<block ref="e47a193687dde960f6b6f80d394142a3" prefix=" " category="inline-code"></block>：</block>
   <block id="7595de66780a622cdd37b4823afebc07" category="inline-link-macro">GitHub: CSIプロキシ</block>
   <block id="c680a0c023a6d45186b9752a07e9938c" category="inline-link-macro">GitHub: Windows向けCSIプロキシ</block>
   <block id="2d6b406e65ac91f2af09f4228e3efe4f" category="list-text">Windowsサービスとして設定されたCSIプロキシ。を設定します<block ref="0f8126c17871ed45f2a848f15d96a1bb" prefix=" " category="inline-code"></block>を参照してください <block ref="3ca23c6eadaac7aa23a492aef5e5d012" category="inline-link-macro-rx"></block> または <block ref="0b56a9ad79a8fef177779e7d3d856994" category="inline-link-macro-rx"></block> Windowsで実行されているKubernetesノードの場合。</block>
@@ -3585,4 +3579,15 @@
   <block id="d4cc4428c9a6422247c8ff288ea4b5eb" category="cell">ポッド用の追加のノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。</block>
   <block id="a5353a10ead2905c577659fdd805af0a" category="summary">KubernetesクラスタでAstra Tridentを実行する方法をご紹介します。</block>
   <block id="c350769115c3c8e4132e9c428b166b12" category="doc">Astra Tridentのアーキテクチャ</block>
+  <block id="d90582d42d65d5af05c3d40ad0eb4987" category="admonition">Azure NetApp Files を初めてまたは新しい場所で使用する場合は、Azure NetApp Files をセットアップしてNFSボリュームを作成するためにいくつかの初期設定が必要です。を参照してください<block ref="b6e93c3bfc36cf835c63e42e55586d97" category="inline-link-rx"></block>。</block>
+  <block id="84444089b52eed627a838de74ae8d652" category="section-title">NFSボリュームとSMBボリュームの前提条件</block>
+  <block id="99c7065ab76131a7b7763287bb5b6735" category="inline-link-macro">Microsoft：Azure NetApp Files 用の容量プールを作成します</block>
+  <block id="ee59ecaa79882c8dc8f7f897c113094a" category="list-text">容量プール。を参照してください <block ref="96caced282b604468ab13f86483cd9f6" category="inline-link-macro-rx"></block>。</block>
+  <block id="7ed0731ff411d37210b51a78b95c1fc3" category="inline-link-macro">Microsoft：サブネットをAzure NetApp Files に委任します</block>
+  <block id="c896cfae248dc2b000cc04c39d8a8de6" category="list-text">Azure NetApp Files に委任されたサブネット。を参照してください <block ref="795b5e8f62d2267a0996a3b260968048" category="inline-link-macro-rx"></block>。</block>
+  <block id="856955b6cbc3fe2168b2dcd43fb0a5dd" category="list-text">オーナーまたは寄与者のロール <block ref="76b3209c91e1786a477c35a6e91cf55f" category="inline-link-macro-rx"></block>。</block>
+  <block id="227e516e7258b6dcab3e7bcb4148f7f1" category="paragraph">SMBボリュームを作成するには、以下が必要です。</block>
+  <block id="d8c74c31c4550aed073521ba0fb8984a" category="inline-link-macro">Microsoft：Azure NetApp Files のActive Directory接続を作成および管理します</block>
+  <block id="6bb7e9dc5268dcbdde1a91b151d9a94b" category="list-text">Active Directoryが設定され、Azure NetApp Files に接続されています。を参照してください <block ref="2f3bcda54aaf4e8e45316bb04708293f" category="inline-link-macro-rx"></block>。</block>
+  <block id="3742b45a8312c4721cad63322a4932ac" category="list-text">Azure NetApp Files がActive Directoryに対して認証できるように、Active Directoryクレデンシャルを含むAstra Tridentのシークレットが少なくとも1つ含まれています。シークレットを生成します<block ref="e47a193687dde960f6b6f80d394142a3" prefix=" " category="inline-code"></block>：</block>
 </blocks>
