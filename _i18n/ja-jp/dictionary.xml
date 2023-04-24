@@ -3658,4 +3658,5 @@
   <block id="0a08ed3de9d17e8644d3e57dc374c3ea" category="cell">強制切り離し機能を有効にできます。</block>
   <block id="632a46acdaa26f30f25b11d5c83eaa58" category="cell"><block ref="94ef2a130a825358ab3002442d6e5145" prefix="" category="inline-code"></block></block>
   <block id="ad77b466842808c8dce5116073a3e52b" category="cell">オペレータポッドのセキュリティポリシーを作成から除外します。</block>
+  <block id="31aae55e68bb5034f8f948ec526b9ff3" category="paragraph">既存のバックエンドを更新して、別の認証方法を使用したり、クレデンシャルをローテーションしたりできます。これはどちらの方法でも機能します。ユーザ名とパスワードを使用するバックエンドは証明書を使用するように更新できますが、証明書を使用するバックエンドはユーザ名とパスワードに基づいて更新できます。これを行うには、既存の認証方法を削除して、新しい認証方法を追加する必要があります。次に、更新されたbackend.jsonファイルに必要なパラメータが含まれたものを使用して実行します<block ref="defd1e55f93269ac9278afc086951ba8" prefix=" " category="inline-code"></block>。</block>
 </blocks>
