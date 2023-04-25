@@ -42,6 +42,25 @@ Trident が ONTAP バックエンドと通信するには、 SVM を対象とし
 
 バックエンド定義の例は次のようになります。
 
+[role="tabbed-block"]
+====
+.YAML
+--
+[listing]
+----
+---
+version: 1
+backendName: ExampleBackend
+storageDriverName: ontap-nas
+managementLIF: 10.0.0.1
+dataLIF: 10.0.0.2
+svm: svm_nfs
+username: vsadmin
+password: password
+----
+--
+.JSON
+--
 [listing]
 ----
 {
@@ -55,6 +74,8 @@ Trident が ONTAP バックエンドと通信するには、 SVM を対象とし
   "password": "password"
 }
 ----
+--
+====
 バックエンド定義は、クレデンシャルがプレーンテキストで保存される唯一の場所であることに注意してください。バックエンドが作成されると、ユーザ名とパスワードが Base64 でエンコードされ、 Kubernetes シークレットとして格納されます。クレデンシャルの知識が必要なのは、バックエンドの作成と更新だけです。この処理は管理者専用で、 Kubernetes / ストレージ管理者が実行します。
 
 
@@ -202,17 +223,17 @@ NOTE: エクスポートポリシーの動的管理は CSI Trident でのみ使�
 
 [listing]
 ----
-{
-    "version": 1,
-    "storageDriverName": "ontap-nas",
-    "backendName": "ontap_nas_auto_export,
-    "managementLIF": "192.168.0.135",
-    "svm": "svm1",
-    "username": "vsadmin",
-    "password": "password",
-    "autoExportCIDRs": ["192.168.0.0/24"],
-    "autoExportPolicy": true
-}
+---
+version: 1
+storageDriverName: ontap-nas
+backendName: ontap_nas_auto_export
+managementLIF: 192.168.0.135
+svm: svm1
+username: vsadmin
+password: password
+autoExportCIDRs:
+- 192.168.0.0/24
+autoExportPolicy: true
 ----
 
 NOTE: この機能を使用する場合は、SVMのルートジャンクションに、ノードのCIDRブロックを許可するエクスポートルール（デフォルトのエクスポートポリシーなど）を含む事前に作成したエクスポートポリシーがあることを確認する必要があります。ネットアップが推奨する、 Astra Trident 専用のベストプラクティスを常に守ってください。

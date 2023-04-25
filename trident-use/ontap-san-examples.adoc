@@ -162,26 +162,29 @@ ONTAP SAN ドライバを作成して Astra Trident インストールで使用�
 
 [listing]
 ----
-{
- "version": 1,
- "storageDriverName": "ontap-san",
- "managementLIF": "10.0.0.1",
- "dataLIF": "10.0.0.2",
- "svm": "trident_svm",
- "username": "admin",
- "password": "password",
- "labels": {"k8scluster": "dev2", "backend": "dev2-sanbackend"},
- "storagePrefix": "alternate-trident",
- "igroupName": "custom",
- "debugTraceFlags": {"api":false, "method":true},
- "defaults": {
-     "spaceReserve": "volume",
-     "qosPolicy": "standard",
-     "spaceAllocation": "false",
-     "snapshotPolicy": "default",
-     "snapshotReserve": "10"
- }
-}
+---
+version: 1
+storageDriverName: ontap-san
+managementLIF: 10.0.0.1
+dataLIF: 10.0.0.2
+svm: trident_svm
+username: admin
+password: password
+labels:
+  k8scluster: dev2
+  backend: dev2-sanbackend
+storagePrefix: alternate-trident
+igroupName: custom
+debugTraceFlags:
+  api: false
+  method: true
+defaults:
+  spaceReserve: volume
+  qosPolicy: standard
+  spaceAllocation: 'false'
+  snapshotPolicy: default
+  snapshotReserve: '10'
+
 ----
 
 NOTE: 「 'SAN 」ドライバを使用して作成されたすべてのボリュームに対して 'Astra Trident は 'LUN のメタデータに対応するために FlexVol にさらに 10% の容量を追加しますLUN は、ユーザが PVC で要求したサイズとまったく同じサイズでプロビジョニングされます。Astra Trident が FlexVol に 10% を追加（ ONTAP で利用可能なサイズとして表示）ユーザには、要求した使用可能容量が割り当てられます。また、利用可能なスペースがフルに活用されていないかぎり、 LUN が読み取り専用になることもありません。これは、 ONTAP と SAN の経済性には該当しません。
@@ -215,23 +218,22 @@ NOTE: ネットアップ ONTAP で Astra Trident を使用している場合、 
 
 [listing]
 ----
-{
-    "version": 1,
-    "storageDriverName": "ontap-san",
-    "backendName": "DefaultSANBackend",
-    "managementLIF": "10.0.0.1",
-    "dataLIF": "10.0.0.3",
-    "svm": "svm_iscsi",
-    "useCHAP": true,
-    "chapInitiatorSecret": "cl9qxIm36DKyawxy",
-    "chapTargetInitiatorSecret": "rqxigXgkesIpwxyz",
-    "chapTargetUsername": "iJF4heBRT0TCwxyz",
-    "chapUsername": "uh2aNCLSd6cNwxyz",
-    "igroupName": "trident",
-    "clientCertificate": "ZXR0ZXJwYXB...ICMgJ3BhcGVyc2",
-    "clientPrivateKey": "vciwKIyAgZG...0cnksIGRlc2NyaX",
-    "trustedCACertificate": "zcyBbaG...b3Igb3duIGNsYXNz"
-}
+---
+version: 1
+storageDriverName: ontap-san
+backendName: DefaultSANBackend
+managementLIF: 10.0.0.1
+dataLIF: 10.0.0.3
+svm: svm_iscsi
+useCHAP: true
+chapInitiatorSecret: cl9qxIm36DKyawxy
+chapTargetInitiatorSecret: rqxigXgkesIpwxyz
+chapTargetUsername: iJF4heBRT0TCwxyz
+chapUsername: uh2aNCLSd6cNwxyz
+igroupName: trident
+clientCertificate: ZXR0ZXJwYXB...ICMgJ3BhcGVyc2
+clientPrivateKey: vciwKIyAgZG...0cnksIGRlc2NyaX
+trustedCACertificate: zcyBbaG...b3Igb3duIGNsYXNz
 ----
 
 
@@ -241,22 +243,23 @@ NOTE: ネットアップ ONTAP で Astra Trident を使用している場合、 
 
 [listing]
 ----
-{
-    "version": 1,
-    "storageDriverName": "ontap-san",
-    "managementLIF": "10.0.0.1",
-    "dataLIF": "10.0.0.3",
-    "svm": "svm_iscsi",
-    "labels": {"k8scluster": "test-cluster-1", "backend": "testcluster1-sanbackend"},
-    "useCHAP": true,
-    "chapInitiatorSecret": "cl9qxIm36DKyawxy",
-    "chapTargetInitiatorSecret": "rqxigXgkesIpwxyz",
-    "chapTargetUsername": "iJF4heBRT0TCwxyz",
-    "chapUsername": "uh2aNCLSd6cNwxyz",
-    "igroupName": "trident",
-    "username": "vsadmin",
-    "password": "password"
-}
+---
+version: 1
+storageDriverName: ontap-san
+managementLIF: 10.0.0.1
+dataLIF: 10.0.0.3
+svm: svm_iscsi
+labels:
+  k8scluster: test-cluster-1
+  backend: testcluster1-sanbackend
+useCHAP: true
+chapInitiatorSecret: cl9qxIm36DKyawxy
+chapTargetInitiatorSecret: rqxigXgkesIpwxyz
+chapTargetUsername: iJF4heBRT0TCwxyz
+chapUsername: uh2aNCLSd6cNwxyz
+igroupName: trident
+username: vsadmin
+password: password
 ----
 
 
@@ -264,20 +267,19 @@ NOTE: ネットアップ ONTAP で Astra Trident を使用している場合、 
 
 [listing]
 ----
-{
-    "version": 1,
-    "storageDriverName": "ontap-san-economy",
-    "managementLIF": "10.0.0.1",
-    "svm": "svm_iscsi_eco",
-    "useCHAP": true,
-    "chapInitiatorSecret": "cl9qxIm36DKyawxy",
-    "chapTargetInitiatorSecret": "rqxigXgkesIpwxyz",
-    "chapTargetUsername": "iJF4heBRT0TCwxyz",
-    "chapUsername": "uh2aNCLSd6cNwxyz",
-    "igroupName": "trident",
-    "username": "vsadmin",
-    "password": "password"
-}
+---
+version: 1
+storageDriverName: ontap-san-economy
+managementLIF: 10.0.0.1
+svm: svm_iscsi_eco
+useCHAP: true
+chapInitiatorSecret: cl9qxIm36DKyawxy
+chapTargetInitiatorSecret: rqxigXgkesIpwxyz
+chapTargetUsername: iJF4heBRT0TCwxyz
+chapUsername: uh2aNCLSd6cNwxyz
+igroupName: trident
+username: vsadmin
+password: password
 ----
 
 
@@ -291,109 +293,98 @@ Astra Tridentは、[Comments]フィールドにプロビジョニングラベル
 
 [listing]
 ----
-{
-    "version": 1,
-    "storageDriverName": "ontap-san",
-    "managementLIF": "10.0.0.1",
-    "dataLIF": "10.0.0.3",
-    "svm": "svm_iscsi",
-    "useCHAP": true,
-    "chapInitiatorSecret": "cl9qxIm36DKyawxy",
-    "chapTargetInitiatorSecret": "rqxigXgkesIpwxyz",
-    "chapTargetUsername": "iJF4heBRT0TCwxyz",
-    "chapUsername": "uh2aNCLSd6cNwxyz",
-    "igroupName": "trident",
-    "username": "vsadmin",
-    "password": "password",
-
-    "defaults": {
-          "spaceAllocation": "false",
-          "encryption": "false",
-          "qosPolicy": "standard"
-    },
-    "labels":{"store": "san_store", "kubernetes-cluster": "prod-cluster-1"},
-    "region": "us_east_1",
-    "storage": [
-        {
-            "labels":{"protection":"gold", "creditpoints":"40000"},
-            "zone":"us_east_1a",
-            "defaults": {
-                "spaceAllocation": "true",
-                "encryption": "true",
-                "adaptiveQosPolicy": "adaptive-extreme"
-            }
-        },
-        {
-            "labels":{"protection":"silver", "creditpoints":"20000"},
-            "zone":"us_east_1b",
-            "defaults": {
-                "spaceAllocation": "false",
-                "encryption": "true",
-                "qosPolicy": "premium"
-            }
-        },
-        {
-            "labels":{"protection":"bronze", "creditpoints":"5000"},
-            "zone":"us_east_1c",
-            "defaults": {
-                "spaceAllocation": "true",
-                "encryption": "false"
-            }
-        }
-    ]
-}
+---
+version: 1
+storageDriverName: ontap-san
+managementLIF: 10.0.0.1
+dataLIF: 10.0.0.3
+svm: svm_iscsi
+useCHAP: true
+chapInitiatorSecret: cl9qxIm36DKyawxy
+chapTargetInitiatorSecret: rqxigXgkesIpwxyz
+chapTargetUsername: iJF4heBRT0TCwxyz
+chapUsername: uh2aNCLSd6cNwxyz
+igroupName: trident
+username: vsadmin
+password: password
+defaults:
+  spaceAllocation: 'false'
+  encryption: 'false'
+  qosPolicy: standard
+labels:
+  store: san_store
+  kubernetes-cluster: prod-cluster-1
+region: us_east_1
+storage:
+- labels:
+    protection: gold
+    creditpoints: '40000'
+  zone: us_east_1a
+  defaults:
+    spaceAllocation: 'true'
+    encryption: 'true'
+    adaptiveQosPolicy: adaptive-extreme
+- labels:
+    protection: silver
+    creditpoints: '20000'
+  zone: us_east_1b
+  defaults:
+    spaceAllocation: 'false'
+    encryption: 'true'
+    qosPolicy: premium
+- labels:
+    protection: bronze
+    creditpoints: '5000'
+  zone: us_east_1c
+  defaults:
+    spaceAllocation: 'true'
+    encryption: 'false'
 ----
 次に 'ONTAP-SAN-エコノミー ・ドライバの iSCSI の例を示します
 
 [listing]
 ----
-{
-    "version": 1,
-    "storageDriverName": "ontap-san-economy",
-    "managementLIF": "10.0.0.1",
-    "svm": "svm_iscsi_eco",
-    "useCHAP": true,
-    "chapInitiatorSecret": "cl9qxIm36DKyawxy",
-    "chapTargetInitiatorSecret": "rqxigXgkesIpwxyz",
-    "chapTargetUsername": "iJF4heBRT0TCwxyz",
-    "chapUsername": "uh2aNCLSd6cNwxyz",
-    "igroupName": "trident",
-    "username": "vsadmin",
-    "password": "password",
-
-    "defaults": {
-          "spaceAllocation": "false",
-          "encryption": "false"
-    },
-    "labels":{"store":"san_economy_store"},
-    "region": "us_east_1",
-    "storage": [
-        {
-            "labels":{"app":"oracledb", "cost":"30"},
-            "zone":"us_east_1a",
-            "defaults": {
-                "spaceAllocation": "true",
-                "encryption": "true"
-            }
-        },
-        {
-            "labels":{"app":"postgresdb", "cost":"20"},
-            "zone":"us_east_1b",
-            "defaults": {
-                "spaceAllocation": "false",
-                "encryption": "true"
-            }
-        },
-        {
-            "labels":{"app":"mysqldb", "cost":"10"},
-            "zone":"us_east_1c",
-            "defaults": {
-                "spaceAllocation": "true",
-                "encryption": "false"
-            }
-        }
-    ]
-}
+---
+version: 1
+storageDriverName: ontap-san-economy
+managementLIF: 10.0.0.1
+svm: svm_iscsi_eco
+useCHAP: true
+chapInitiatorSecret: cl9qxIm36DKyawxy
+chapTargetInitiatorSecret: rqxigXgkesIpwxyz
+chapTargetUsername: iJF4heBRT0TCwxyz
+chapUsername: uh2aNCLSd6cNwxyz
+igroupName: trident
+username: vsadmin
+password: password
+defaults:
+  spaceAllocation: 'false'
+  encryption: 'false'
+labels:
+  store: san_economy_store
+region: us_east_1
+storage:
+- labels:
+    app: oracledb
+    cost: '30'
+  zone: us_east_1a
+  defaults:
+    spaceAllocation: 'true'
+    encryption: 'true'
+- labels:
+    app: postgresdb
+    cost: '20'
+  zone: us_east_1b
+  defaults:
+    spaceAllocation: 'false'
+    encryption: 'true'
+- labels:
+    app: mysqldb
+    cost: '10'
+  zone: us_east_1c
+  defaults:
+    spaceAllocation: 'true'
+    encryption: 'false'
 ----
 
 

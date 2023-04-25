@@ -59,6 +59,25 @@ NOTE: ファイルシステムにアクセスできる任意の場所から SSH 
 
 . 次の例に示すように、証明書と管理 LIF の DNS 名を使用してバックエンドファイルを作成します。
 +
+[role="tabbed-block"]
+====
+.YAML
+--
+[listing]
+----
+---
+version: 1
+storageDriverName: ontap-san
+backendName: customBackendName
+managementLIF: svm-XXXXXXXXXXXXXXXXX.fs-XXXXXXXXXXXXXXXXX.fsx.us-east-2.aws.internal
+svm: svm01
+clientCertificate: ZXR0ZXJwYXB...ICMgJ3BhcGVyc2
+clientPrivateKey: vciwKIyAgZG...0cnksIGRlc2NyaX
+trustedCACertificate: zcyBbaG...b3Igb3duIGNsYXNz
+----
+--
+.JSON
+--
 [listing]
 ----
 {
@@ -69,9 +88,12 @@ NOTE: ファイルシステムにアクセスできる任意の場所から SSH 
   "svm": "svm01",
   "clientCertificate": "ZXR0ZXJwYXB...ICMgJ3BhcGVyc2",
   "clientPrivateKey": "vciwKIyAgZG...0cnksIGRlc2NyaX",
-  "trustedCACertificate": "zcyBbaG...b3Igb3duIGNsYXNz",
+  "trustedCACertificate": "zcyBbaG...b3Igb3duIGNsYXNz"
  }
+
 ----
+--
+====
 +
 バックエンドの作成については、次のリンクを参照してください。
 

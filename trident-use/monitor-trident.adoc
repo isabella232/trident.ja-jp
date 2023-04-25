@@ -148,27 +148,22 @@ Astra Trident から送信されるペイロードの例を次に示します。
 
 [listing]
 ----
-{
-  "items": [
-    {
-      "backendUUID": "ff3852e1-18a5-4df4-b2d3-f59f829627ed",
-      "protocol": "file",
-      "config": {
-        "version": 1,
-        "storageDriverName": "ontap-nas",
-        "debug": false,
-        "debugTraceFlags": null,
-        "disableDelete": false,
-        "serialNumbers": [
-          "nwkvzfanek_SN"
-        ],
-        "limitVolumeSize": ""
-      },
-      "state": "online",
-      "online": true
-    }
-  ]
-}
+---
+items:
+- backendUUID: ff3852e1-18a5-4df4-b2d3-f59f829627ed
+  protocol: file
+  config:
+    version: 1
+    storageDriverName: ontap-nas
+    debug: false
+    debugTraceFlags:
+    disableDelete: false
+    serialNumbers:
+    - nwkvzfanek_SN
+    limitVolumeSize: ''
+  state: online
+  online: true
+
 ----
 * AutoSupport メッセージは、ネットアップの AutoSupport エンドポイントに送信されます。プライベートレジストリを使用してコンテナイメージを格納している場合は '--image_registry' フラグを使用できます
 * インストール YAML ファイルを生成してプロキシ URL を設定することもできます。これは 'tridentctl install --generate-custom-yaml を使用して YAML ファイルを作成し 'trident-deployment.yaml の trident-autosupport コンテナに --proxy-url 引数を追加することによって実行できます

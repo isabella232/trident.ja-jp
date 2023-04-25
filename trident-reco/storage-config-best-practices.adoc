@@ -129,32 +129,25 @@ QoS ポリシーグループを作成するときは、次の点に注意して�
 
 [listing]
 ----
-  {
-    "version": 1,
-    "storageDriverName": "ontap-nas",
-    "managementLIF": "0.0.0.0",
-    "dataLIF": "0.0.0.0",
-    "svm": "svm0",
-    "username": "user",
-    "password": "pass",
-    "defaults": {
-      "qosPolicy": "standard-pg"
-    },
-    "storage": [
-      {
-        "labels": {"performance": "extreme"},
-        "defaults": {
-          "adaptiveQosPolicy": "extremely-adaptive-pg"
-        }
-      },
-      {
-        "labels": {"performance": "premium"},
-        "defaults": {
-          "qosPolicy": "premium-pg"
-        }
-      }
-    ]
-  }
+  ---
+version: 1
+storageDriverName: ontap-nas
+managementLIF: 0.0.0.0
+dataLIF: 0.0.0.0
+svm: svm0
+username: user
+password: pass
+defaults:
+  qosPolicy: standard-pg
+storage:
+- labels:
+    performance: extreme
+  defaults:
+    adaptiveQosPolicy: extremely-adaptive-pg
+- labels:
+    performance: premium
+  defaults:
+    qosPolicy: premium-pg
 ----
 * ボリュームごとにポリシーグループを適用して、各ボリュームがポリシーグループの指定に従ってスループット全体を取得するようにします。共有ポリシーグループはサポートされません。
 

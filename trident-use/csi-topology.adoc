@@ -55,6 +55,29 @@ Astra Trident ストレージバックエンドは、アベイラビリティゾ
 
 バックエンド定義の例を次に示します。
 
+[role="tabbed-block"]
+====
+.YAML
+--
+[listing]
+----
+---
+version: 1
+storageDriverName: ontap-san
+backendName: san-backend-us-east1
+managementLIF: 192.168.27.5
+svm: iscsi_svm
+username: admin
+password: password
+supportedTopologies:
+- topology.kubernetes.io/region: us-east1
+  topology.kubernetes.io/zone: us-east1-a
+- topology.kubernetes.io/region: us-east1
+  topology.kubernetes.io/zone: us-east1-b
+----
+--
+.JSON
+--
 [listing]
 ----
 {
@@ -71,6 +94,8 @@ Astra Trident ストレージバックエンドは、アベイラビリティゾ
 ]
 }
 ----
+--
+====
 
 NOTE: 「 upportedTopologies 」は、バックエンドごとにリージョンとゾーンのリストを提供するために使用されます。これらのリージョンとゾーンは、 StorageClass で指定できる許容値のリストを表します。バックエンドで提供されるリージョンとゾーンのサブセットを含む StorageClasses の場合、 Astra Trident がバックエンドにボリュームを作成します。
 
@@ -78,36 +103,34 @@ NOTE: 「 upportedTopologies 」は、バックエンドごとにリージョン
 
 [listing]
 ----
-{"version": 1,
-"storageDriverName": "ontap-nas",
-"backendName": "nas-backend-us-central1",
-"managementLIF": "172.16.238.5",
-"svm": "nfs_svm",
-"username": "admin",
-"password": "password",
-"supportedTopologies": [
-      {"topology.kubernetes.io/region": "us-central1", "topology.kubernetes.io/zone": "us-central1-a"},
-      {"topology.kubernetes.io/region": "us-central1", "topology.kubernetes.io/zone": "us-central1-b"}
-    ]
-"storage": [
-   {
-       "labels": {"workload":"production"},
-        "region": "Iowa-DC",
-        "zone": "Iowa-DC-A",
-        "supportedTopologies": [
-            {"topology.kubernetes.io/region": "us-central1", "topology.kubernetes.io/zone": "us-central1-a"}
-        ]
-    },
-    {
-        "labels": {"workload":"dev"},
-         "region": "Iowa-DC",
-         "zone": "Iowa-DC-B",
-         "supportedTopologies": [
-             {"topology.kubernetes.io/region": "us-central1", "topology.kubernetes.io/zone": "us-central1-b"}
-         ]
-     }
-]
-}
+---
+version: 1
+storageDriverName: ontap-nas
+backendName: nas-backend-us-central1
+managementLIF: 172.16.238.5
+svm: nfs_svm
+username: admin
+password: password
+supportedTopologies:
+- topology.kubernetes.io/region: us-central1
+  topology.kubernetes.io/zone: us-central1-a
+- topology.kubernetes.io/region: us-central1
+  topology.kubernetes.io/zone: us-central1-b
+storage:
+- labels:
+    workload: production
+  region: Iowa-DC
+  zone: Iowa-DC-A
+  supportedTopologies:
+  - topology.kubernetes.io/region: us-central1
+    topology.kubernetes.io/zone: us-central1-a
+- labels:
+    workload: dev
+  region: Iowa-DC
+  zone: Iowa-DC-B
+  supportedTopologies:
+  - topology.kubernetes.io/region: us-central1
+    topology.kubernetes.io/zone: us-central1-b
 ----
 この例では、「 re Gion 」および「 zone 」ラベルはストレージプールの場所を表しています。「 topology.efix/region' 」と「 topology.uns.io/zone 」は、ストレージプールの消費元を決定します。
 

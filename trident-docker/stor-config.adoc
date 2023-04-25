@@ -28,7 +28,7 @@ Astra Trident 構成で使用できる設定オプションを確認してくだ
 | 「バージョン」  a| 
 構成ファイルのバージョン番号
  a| 
-1.
+`1`
 
 
 
@@ -41,16 +41,16 @@ Astra Trident 構成で使用できる設定オプションを確認してくだ
 
 
 | 'toragePrefix'  a| 
-ボリューム名のオプションのプレフィックス。デフォルト：「 netappdvp_」 。
+ボリューム名のオプションのプレフィックス。デフォルト： `netappdvp_`。
  a| 
-ステージング _
+`staging_`
 
 
 
 | 「 limitVolumeSize 」と入力します  a| 
 ボリュームサイズに関するオプションの制限。デフォルト：「」（適用されていない）
  a| 
-10G
+`10g`
 
 |===
 
@@ -64,9 +64,9 @@ TIP: Element バックエンドには 'toragePrefix' （デフォルトを含む
 
 
 | 「 size 」  a| 
-新しいボリュームのオプションのデフォルトサイズ。デフォルト：「 1G 」
+新しいボリュームのオプションのデフォルトサイズ。デフォルト： `1G`
  a| 
-10G
+`10G`
 
 |===
 
@@ -83,7 +83,7 @@ ONTAP を使用する場合は、上記のグローバル構成値に加えて�
 | 「管理 LIF 」  a| 
 ONTAP 管理 LIF の IP アドレス。Fully Qualified Domain Name （ FQDN ；完全修飾ドメイン名）を指定できます。
  a| 
-10.0.0.1
+`10.0.0.1`
 
 
 
@@ -94,70 +94,70 @@ ONTAP 管理 LIF の IP アドレス。Fully Qualified Domain Name （ FQDN ；�
 
 * ONTAP SANドライバ*: iSCSIには指定しないでくださいAstra Tridentが使用 link:https://docs.netapp.com/us-en/ontap/san-admin/selective-lun-map-concept.html["ONTAP の選択的LUNマップ"^] iSCSI LIFを検出するには、マルチパスセッションを確立する必要があります。の場合は警告が生成されます `dataLIF` は明示的に定義されます。
  a| 
-10.0.0.2
+`10.0.0.2`
 
 
 
 | 'VM'  a| 
 使用する Storage Virtual Machine （管理 LIF がクラスタ LIF である場合は必須）
  a| 
-SVM_NFS の場合
+`svm_nfs`
 
 
 
 | 「ユーザ名」  a| 
 ストレージデバイスに接続するユーザ名
  a| 
-vsadmin
+`vsadmin`
 
 
 
 | 「 password 」と入力します  a| 
 ストレージ・デバイスに接続するためのパスワード
  a| 
-秘密
+`secret`
 
 
 
 | 「集約」  a| 
 プロビジョニング用のアグリゲート（オプション。設定する場合は SVM に割り当てる必要があります）。「 ONTAP-NAS-flexgroup 」ドライバの場合、このオプションは無視されます。SVM に割り当てられたすべてのアグリゲートを使用して FlexGroup ボリュームがプロビジョニングされます。
  a| 
-aggr1
+`aggr1`
 
 
 
 | 「 AggreglimitateUsage 」と入力します  a| 
 オプション。使用率がこの割合を超えている場合は、プロビジョニングを失敗させます
  a| 
-75%
+`75%`
 
 
 
 | 「 nfsvMountOptions 」のように入力します  a| 
 NFS マウントオプションのきめ細かな制御。デフォルトは「 -o nfsvers=3 」です。* 「 ONTAP-NAS' 」および「 ONTAP-NAS-エコノミー 」ドライバ専用です。 https://www.netapp.com/pdf.html?item=/media/10720-tr-4067.pdf["ここでは、 NFS ホストの設定情報を参照してください"^]。
  a| 
--o nfsvers=4
+`-o nfsvers=4`
 
 
 
 | 「 igroupName 」と入力します  a| 
-プラグインで使用される igroup 。デフォルトは「 netappdvp 」です。* 「 ONTAP-SAN'd river 」のみ利用可能です。
+プラグインで使用されるigroup。デフォルトはです `netappdvp`。* 「 ONTAP-SAN'd river 」のみ利用可能です。
  a| 
-myigroup と入力します
+`myigroup`
 
 
 
 | 「 limitVolumeSize 」と入力します  a| 
 最大要求可能ボリュームサイズと qtree 親ボリュームサイズ。* 「 ONTAP-NAS-エコノミー 」ドライバの場合、このオプションにより、作成する FlexVol のサイズも制限されます。 *
  a| 
-300g
+`300g`
 
 
 
 | qtreesPerFlexvol`  a| 
 FlexVol あたりの最大 qtree 数は [50 、 300] の範囲で指定する必要があります。デフォルトは 200 です。*「 ONTAP-NAS-エコノミー 」ドライバの場合、このオプションを使用すると、 FlexVol あたりの最大数をカスタマイズできます。
  a| 
-300
+`300`
 
 |===
 作成するすべてのボリュームでデフォルトのオプションを指定しなくても済むようになっています。
@@ -168,30 +168,30 @@ FlexVol あたりの最大 qtree 数は [50 、 300] の範囲で指定する必
 
 
 | 「平和のための準備」を参照してください  a| 
-スペースリザベーションモード：「 none 」（シンプロビジョニング）または「 volume 」（シック）
+スペースリザベーションモード `none` （シンプロビジョニング）または `volume` （シック）
  a| 
-なし
+「 NONE 」
 
 
 
 | 「ナプショットポリシー」  a| 
-使用する Snapshot ポリシー。デフォルトは「 none 」です。
+使用するSnapshotポリシー。デフォルトはです `none`
  a| 
-なし
+「 NONE 」
 
 
 
 | 「スナップショット予約」  a| 
-Snapshot リザーブの割合。 ONTAP のデフォルトを受け入れる場合は、デフォルトで「」になります
+Snapshotリザーブの割合。デフォルトはONTAP のデフォルトをそのまま使用する場合はです
  a| 
-10.
+`10`
 
 
 
 | 'plitOnClone  a| 
-作成時にクローンを親からスプリットします。デフォルトは「 false 」です。
+作成時に親からクローンをスプリットします。デフォルトはです `false`
  a| 
-いいえ
+「偽」
 
 
 
@@ -207,23 +207,23 @@ NAEがバックエンドで有効になっている場合は、Astra Tridentで�
 
 
 | 「 unixPermissions 」  a| 
-プロビジョニングされた NFS ボリューム用の NAS オプション。デフォルトは「 777 」
+プロビジョニングされたNFSボリュームのNASオプション。デフォルトはです `777`
  a| 
-777
+`777`
 
 
 
 | 「スナップショット方向」  a| 
-「 .snapshot 」ディレクトリにアクセスするための NAS オプション。デフォルトは「 false 」です。
+にアクセスするためのNASオプション `.snapshot` ディレクトリ。デフォルトはです `false`
  a| 
-正しいです
+「真」
 
 
 
 | 「 exportPolicy 」と入力します  a| 
-NFS エクスポートポリシーで使用する NAS オプション。デフォルトは「 default 」
+NFSエクスポートポリシーで使用するNASオプション。デフォルトはです `default`
  a| 
-デフォルト
+`default`
 
 
 
@@ -237,16 +237,16 @@ NFSのサポート `mixed` および `unix` セキュリティ形式デフォル
 
 
 | 「 filesystemtype 」です  a| 
-SAN オプション：ファイルシステムタイプを選択します。デフォルトは「 ext4 」です。
+ファイルシステムタイプを選択するためのSANオプション。デフォルトはです `ext4`
  a| 
-XFS
+`xfs`
 
 
 
 | 階層ポリシー  a| 
-使用する階層化ポリシー。デフォルトは「 none 」です。 ONTAP 9.5 より前の SVM-DR 構成では「 snapshot-only 」です
+使用する階層化ポリシー。デフォルトはです `none`; `snapshot-only` ONTAP 9.5より前のSVM-DR構成の場合
  a| 
-なし
+「 NONE 」
 
 |===
 
@@ -395,14 +395,14 @@ iSCSI の IP アドレスとポート
 | 「 tenantname 」  a| 
 使用する SolidFire テナント（見つからない場合に作成）
  a| 
-Docker です
+`docker`
 
 
 
 | 「 InitiatorIFCace 」  a| 
 iSCSI トラフィックをデフォルト以外のインターフェイスに制限する場合は、インターフェイスを指定します
  a| 
-デフォルト
+`default`
 
 
 
@@ -416,7 +416,7 @@ QoS の仕様
 | 「 LegacyNamePrefix 」のように入力します  a| 
 アップグレードされた Trident インストールのプレフィックス。1.3.2 より前のバージョンの Trident を使用していて、既存のボリュームをアップグレードする場合は、この値を設定して、ボリューム名メソッドを使用してマッピングされた古いボリュームにアクセスする必要があります。
  a| 
-「 netappdvp - 」
+`netappdvp-`
 
 |===
 「 olidfire -san 」ドライバは Docker Swarm をサポートしていません。

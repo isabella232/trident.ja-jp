@@ -40,6 +40,16 @@ Trident が ONTAP バックエンドと通信するには、 SVM を対象とし
 
 バックエンド定義の例は次のようになります。
 
+[role="tabbed-block"]
+====
+.YAML
+--
+'''
+バージョン：1 backendName：ExampleBackend storageDriverName：ontap-san managementLIF：10.0.0.1 dataLIF：10.0.0.2 SVM：svm_nfs username：vsadmin password：password
+
+--
+.JSON
+--
 [listing]
 ----
 {
@@ -50,9 +60,12 @@ Trident が ONTAP バックエンドと通信するには、 SVM を対象とし
   "dataLIF": "10.0.0.2",
   "svm": "svm_nfs",
   "username": "vsadmin",
-  "password": "password",
+  "password": "password"
 }
+
 ----
+--
+====
 バックエンド定義は、クレデンシャルがプレーンテキストで保存される唯一の場所であることに注意してください。バックエンドが作成されると、ユーザ名とパスワードが Base64 でエンコードされ、 Kubernetes シークレットとして格納されます。クレデンシャルの知識が必要なのは、バックエンドの作成または更新だけです。この処理は管理者専用で、 Kubernetes / ストレージ管理者が実行します。
 
 
@@ -194,25 +207,24 @@ Astra Trident が CSI Provisioner として実行されない場合は、 Kubern
 
 == 双方向 CHAP を使用して接続を認証します
 
-Astra Trident は 'ONTAP-SAN' ドライバと 'ONTAP-SAN-エコノミー ドライバの双方向 CHAP を使用して iSCSI セッションを認証できますこれには ' バックエンド定義で useCHAP オプションを有効にする必要がありますtrue に設定すると 'Astra Trident は SVM のデフォルトイニシエータセキュリティを双方向 CHAP に構成し ' バックエンドファイルからのユーザ名とシークレットを設定します接続の認証には双方向 CHAP を使用することを推奨します。次の設定例を参照してください。
+Astra Tridentは、に対して双方向CHAPを使用してiSCSIセッションを認証できます `ontap-san` および `ontap-san-economy` ドライバ。これには、を有効にする必要があり `useCHAP` バックエンド定義のオプション。に設定すると `true`、Astra Tridentは、SVMのデフォルトのイニシエータセキュリティを双方向CHAPに設定し、バックエンドファイルからのユーザ名とシークレットを設定します。接続の認証には双方向 CHAP を使用することを推奨します。次の設定例を参照してください。
 
 [listing]
 ----
-{
-    "version": 1,
-    "storageDriverName": "ontap-san",
-    "backendName": "ontap_san_chap",
-    "managementLIF": "192.168.0.135",
-    "svm": "ontap_iscsi_svm",
-    "useCHAP": true,
-    "username": "vsadmin",
-    "password": "password",
-    "igroupName": "trident",
-    "chapInitiatorSecret": "cl9qxIm36DKyawxy",
-    "chapTargetInitiatorSecret": "rqxigXgkesIpwxyz",
-    "chapTargetUsername": "iJF4heBRT0TCwxyz",
-    "chapUsername": "uh2aNCLSd6cNwxyz",
-}
+---
+version: 1
+storageDriverName: ontap-san
+backendName: ontap_san_chap
+managementLIF: 192.168.0.135
+svm: ontap_iscsi_svm
+useCHAP: true
+username: vsadmin
+password: password
+igroupName: trident
+chapInitiatorSecret: cl9qxIm36DKyawxy
+chapTargetInitiatorSecret: rqxigXgkesIpwxyz
+chapTargetUsername: iJF4heBRT0TCwxyz
+chapUsername: uh2aNCLSd6cNwxyz
 ----
 
 WARNING: 「 useCHAP 」パラメータは、 1 回だけ設定できるブール型のオプションです。デフォルトでは false に設定されています。true に設定したあとで、 false に設定することはできません。
