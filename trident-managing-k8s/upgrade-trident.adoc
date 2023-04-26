@@ -32,7 +32,7 @@ Astra Tridentバージョンは日付ベースです `YY.MM` 命名規則。「Y
 [WARNING]
 ====
 * バージョン19.04以前のアップグレードでは、Astra TridentメタデータをIT所有から移行する必要があります `etcd` をCRDオブジェクトに追加します。リリースのマニュアルを参照して、アップグレードの仕組みを確認してください。
-* アップグレードするときは、この作業を行うことが重要です `parameter.fsType` インチ `StorageClasses` Astra Tridentが使用。削除して再作成することができます `StorageClasses` 実行前のボリュームの中断はなし。これは、強制の ** 要件 ** です https://kubernetes.io/docs/tasks/configure-pod-container/security-context/["セキュリティコンテキスト"^] SAN ボリュームの場合。。 https://github.com/NetApp/trident/tree/master/trident-installer/sample-input["入力例："^] directory には、などの例があります[`storage-class-basic.yaml.templ`^]および[`storage-class-bronze-default.yaml`^]をクリックします。詳細については、を参照してください link:../trident-rn.html["既知の問題"]。
+* アップグレードするときは、この作業を行うことが重要です `parameter.fsType` インチ `StorageClasses` Astra Tridentが使用。削除して再作成することができます `StorageClasses` 実行前のボリュームの中断はなし。これは、SANボリュームに対してhttps://kubernetes.io/docs/tasks/configure-pod-container/security-context/[securityコンテキスト^]を適用するための**要件**です。https://github.com/NetApp/trident/tree/master/trident-installer/sample-input[sample input^]ディレクトリには、https://github.com/NetApp/trident/blob/master/trident-installer/sample-input/storage-class-samples/storage-class-basic.yaml.templなどの例が含まれています[`storage-class-basic.yaml.templ`^）とリンク：https://github.com/NetApp/trident/blob/master/trident-installer/sample-input/storage-class-samples/storage-class-bronze-default.yaml[`storage-class-bronze-default.yaml`^]をクリックします。詳細については、を参照してください link:../trident-rn.html["既知の問題"]。
 
 
 ====

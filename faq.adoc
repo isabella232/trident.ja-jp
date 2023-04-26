@@ -310,7 +310,7 @@ Astra Trident でプロビジョニングしたボリュームに対して UNIX 
 
 === ボリュームをプロビジョニングする際に、明示的な ONTAP NFS マウントオプションを設定するにはどうすればよいですか。
 
-Trident では、デフォルトでマウントオプションが Kubernetes でどの値にも設定されていません。Kubernetes ストレージクラスでマウントオプションを指定するには、次の例を実行します https://github.com/NetApp/trident/blob/master/trident-installer/sample-input/storage-class-ontapnas-k8s1.8-mountoptions.yaml#L6["こちらをご覧ください"^]。
+Trident では、デフォルトでマウントオプションが Kubernetes でどの値にも設定されていません。Kubernetes ストレージクラスでマウントオプションを指定するには、次の例を実行します link:https://github.com/NetApp/trident/blob/master/trident-installer/sample-input/storage-class-samples/storage-class-ontapnas-k8s1.8-mountoptions.yaml["こちらをご覧ください"^]。
 
 
 

@@ -63,7 +63,7 @@ tridentctl を使用してインストールされます::
 
 * バックエンド定義に「 debugTraceFlags 」を含めると、バックエンドごとにデバッグログを取得することもできます。たとえば、 Trident ログで API 呼び出しとメソッドの逆数を取得するには、「 `debugTraceFlags: {"API":true,"method" :true,}` を指定します。既存のバックエンドには 'tridentctl backend update で構成された 'ebugTraceFlags' を設定できます
 * RedHat CoreOS を使用する場合は 'iscsid がワーカー・ノードで有効になっており ' デフォルトで起動されていることを確認しますこの設定には、 OpenShift MachineConfig を使用するか、イグニッションテンプレートを変更します。
-* Trident をで使用する際によく発生する問題です https://azure.microsoft.com/en-us/services/netapp/["Azure NetApp Files の特長"] テナントとクライアントのシークレットが、必要な権限がないアプリケーションの登録から取得された場合です。Trident の要件の詳細については、を参照してください link:../trident-backend/anf.html["Azure NetApp Files の特長"] 設定
+* Trident をで使用する際によく発生する問題です https://azure.microsoft.com/en-us/services/netapp/["Azure NetApp Files の特長"] テナントとクライアントのシークレットが、必要な権限がないアプリケーションの登録から取得された場合です。Trident の要件の詳細については、を参照してください link:../trident-use/anf.html["Azure NetApp Files の特長"] 設定
 * コンテナへの PV のマウントに問題がある場合は 'rpcbind' がインストールされていて実行されていることを確認してくださいホスト OS に必要なパッケージ・マネージャを使用して 'rpcbind' が実行されているかどうかを確認しますrpcbind サービスのステータスは 'systemctl status rpcbind' またはそれに相当する処理を実行することで確認できます
 * Trident バックエンドが、以前に作業したことがあるにもかかわらず「 failed 」状態であると報告した場合は、バックエンドに関連付けられている SVM/admin クレデンシャルの変更が原因である可能性があります。「 tridentctl update backend 」または Trident ポッドのバウンスを使用してバックエンド情報を更新すると、この問題は修正されます。
 * Kubernetes クラスタや Trident をアップグレードしてベータ版のボリューム Snapshot を使用する場合は、既存の alpha スナップショット CRS がすべて削除されていることを確認してください。次に 'tridentctl コマンドを使用して ' アルファスナップショットの CRD を削除できますを参照してください https://netapp.io/2020/01/30/alpha-to-beta-snapshots/["この blog"] アルファスナップショットの移行手順を理解する。

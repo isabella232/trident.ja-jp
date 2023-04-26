@@ -28,7 +28,7 @@ NOTE: 「 WaitForFirstConsumer 」バインディングモードでは、トポ�
 .必要なもの
 CSI トポロジを使用するには、次のものが必要です。
 
-* を実行するKubernetesクラスタ link:requirements.html["サポートされるKubernetesバージョン"]
+* を実行するKubernetesクラスタ link:../trident-get-started/requirements.html["サポートされるKubernetesバージョン"]
 +
 [listing]
 ----
