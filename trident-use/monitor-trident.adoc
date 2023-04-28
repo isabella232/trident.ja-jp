@@ -11,7 +11,12 @@ summary: Astra Trident は、一連の Prometheus 指標エンドポイントを
 :imagesdir: ../media/
 
 
-Astra Trident は、 Astra Trident のパフォーマンスを監視するために使用できる一連の Prometheus 指標エンドポイントを提供します。
+[role="lead"]
+Astra Tridentは、Astra Tridentのパフォーマンス監視に使用できるPrometheus指標エンドポイントのセットを提供します。
+
+
+
+== 概要
 
 Astra Trident が提供する指標を使用すると、次のことが可能になります。
 

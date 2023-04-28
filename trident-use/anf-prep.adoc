@@ -15,11 +15,11 @@ summary: ANFバックエンドを設定する前に、次の要件を満たし�
 Azure NetApp Files バックエンドを設定する前に、次の要件を満たしていることを確認する必要があります。
 
 
-NOTE: Azure NetApp Files を初めてまたは新しい場所で使用する場合は、Azure NetApp Files をセットアップしてNFSボリュームを作成するためにいくつかの初期設定が必要です。を参照してください https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes["Azure：Azure NetApp Files をセットアップし、NFSボリュームを作成します"^]。
-
-
 
 == NFSボリュームとSMBボリュームの前提条件
+
+
+NOTE: Azure NetApp Files を初めてまたは新しい場所で使用する場合は、Azure NetApp Files をセットアップしてNFSボリュームを作成するためにいくつかの初期設定が必要です。を参照してください https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes["Azure：Azure NetApp Files をセットアップし、NFSボリュームを作成します"^]。
 
 を設定して使用します https://azure.microsoft.com/en-us/services/netapp/["Azure NetApp Files の特長"^] バックエンドには次のものが必要です。
 

@@ -11,6 +11,7 @@ summary: ONTAP SAN ドライバを作成して Astra Trident インストール�
 :imagesdir: ../media/
 
 
+[role="lead"]
 ONTAP SAN ドライバを作成して Astra Trident インストールで使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。
 
 
@@ -27,7 +28,7 @@ ONTAP SAN ドライバを作成して Astra Trident インストールで使用�
 | 「バージョン」 |  | 常に 1 
 
 
-| 'torageDriverName' | ストレージドライバの名前 | 「 ONTAP-NAS 」、「 ONTAP-NAS-エコノミー 」、「 ONTAP-NAS-flexgroup 」、「 ONTAP-SAN 」、「 ONTAP-SAN-エコノミー 」 
+| 'torageDriverName' | ストレージドライバの名前 | `ontap-nas`、 `ontap-nas-economy`、 `ontap-nas-flexgroup`、 `ontap-san`、 `ontap-san-economy` 
 
 
 | backendName` | カスタム名またはストレージバックエンド | ドライバ名 + "_" + データ LIF 
@@ -39,7 +40,7 @@ ONTAP SAN ドライバを作成して Astra Trident インストールで使用�
 | 「重複排除 | プロトコル LIF の IP アドレス。* iSCSIには指定しないでください。* Astra Tridentが使用します link:https://docs.netapp.com/us-en/ontap/san-admin/selective-lun-map-concept.html["ONTAP の選択的LUNマップ"^] iSCSI LIFを検出するには、マルチパスセッションを確立する必要があります。の場合は警告が生成されます `dataLIF` は明示的に定義されます。 | SVMの派生物です 
 
 
-| 「 useCHAP 」 | CHAPを使用してONTAP SANドライバのiSCSIを認証します（ブーリアン）。をに設定します `true` Astra Tridentでは、バックエンドで指定されたSVMのデフォルト認証として双方向CHAPを設定して使用します。を参照してください link:ontap-san-prep.html["バックエンドにONTAP SANドライバを設定する準備をします"] を参照してください。 | いいえ 
+| 「 useCHAP 」 | CHAPを使用してONTAP SANドライバのiSCSIを認証します（ブーリアン）。をに設定します `true` Astra Tridentでは、バックエンドで指定されたSVMのデフォルト認証として双方向CHAPを設定して使用します。を参照してください link:ontap-san-prep.html["バックエンドにONTAP SANドライバを設定する準備をします"] を参照してください。 | 「偽」 
 
 
 | 「 chapInitiatorSecret 」 | CHAP イニシエータシークレット。「 useCHAP = TRUE 」の場合は必須 | 「」 
@@ -75,10 +76,7 @@ ONTAP SAN ドライバを作成して Astra Trident インストールで使用�
 | 'VM' | 使用する Storage Virtual Machine | SVM 「管理 LIF 」が指定されている場合に生成されます 
 
 
-| 「 igroupName 」と入力します | SANボリュームで使用するigroupの名前。を参照してください  を参照してください。 | "trident-<backend-UUID> " 
-
-
-| 'toragePrefix' | SVM で新しいボリュームをプロビジョニングする際に使用するプレフィックスを指定します。あとから変更することはできません。このパラメータを更新するには、新しいバックエンドを作成する必要があります。 | Trident 
+| 'toragePrefix' | SVM で新しいボリュームをプロビジョニングする際に使用するプレフィックスを指定します。あとから変更することはできません。このパラメータを更新するには、新しいバックエンドを作成する必要があります。 | `trident` 
 
 
 | 「 AggreglimitateUsage 」と入力します | 使用率がこの割合を超えている場合は、プロビジョニングが失敗します。NetApp ONTAP バックエンドにAmazon FSXを使用している場合は、指定しないでください  `limitAggregateUsage`。提供された `fsxadmin` および `vsadmin` アグリゲートの使用状況を取得し、Astra Tridentを使用して制限するために必要な権限が含まれていない。 | “”（デフォルトでは適用されません） 
@@ -87,30 +85,16 @@ ONTAP SAN ドライバを作成して Astra Trident インストールで使用�
 | 「 limitVolumeSize 」と入力します | 要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します。また、qtreeおよびLUNに対して管理するボリュームの最大サイズを制限します。 | “”（デフォルトでは適用されません） 
 
 
-| 'lunsPerFlexvol | FlexVol あたりの最大 LUN 数。有効な範囲は 50 、 200 です | 100 
+| 'lunsPerFlexvol | FlexVol あたりの最大 LUN 数。有効な範囲は 50 、 200 です | `100` 
 
 
-| 「バグトレースフラグ」 | トラブルシューティング時に使用するデバッグフラグ。例：{"API"：false、"method"：true}は、トラブルシューティングを行って詳細なログダンプが必要な場合を除き、使用しません。 | null 
+| 「バグトレースフラグ」 | トラブルシューティング時に使用するデバッグフラグ。例：{"API"：false、"method"：true}は、トラブルシューティングを行って詳細なログダンプが必要な場合を除き、使用しません。 | `null` 
 
 
 | 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー *
 `useREST` は、**テクニカルプレビュー**として提供されています。テスト環境では、本番環境のワークロードでは推奨されません。に設定すると `true`Astra Tridentは、ONTAP REST APIを使用してバックエンドと通信します。この機能にはONTAP 9.11.1以降が必要です。また、使用するONTAP ログインロールにはへのアクセス権が必要です `ontap` アプリケーション：これは事前定義されたによって満たされます `vsadmin` および `cluster-admin` ロール。
-`useREST` は、MetroCluster ではサポートされていません。 | いいえ 
+`useREST` は、MetroCluster ではサポートされていません。 | 「偽」 
 |===
-
-
-=== の詳細 `igroupName`
-
-`igroupName` ONTAP クラスタですでに作成されているigroupに設定できます。指定しない場合、Astra Tridentはという名前のigroupを自動的に作成します `trident-<backend-UUID>`。
-
-定義済みのigroupNameを指定する場合は、各Kubernetesクラスタで1つのigroupを使用することを推奨します。ただし、SVMが環境間で共有される場合です。これは、Astra TridentがIQNの追加と削除を自動的に管理するために必要です。
-
-* `igroupName` を更新し、Astra Tridentの外部のSVMで作成、管理される新しいigroupを参照できるようになりました。
-* `igroupName` 省略できます。この場合、Astra Tridentが、という名前のigroupを作成して管理します `trident-<backend-UUID>` 自動的に。
-
-
-どちらの場合も、ボリュームの添付ファイルには引き続きアクセスできます。以降のボリューム接続では、更新された igroup が使用されます。この更新によって、バックエンドにあるボリュームへのアクセスが中断されることはありません。
-
 
 
 == ボリュームのプロビジョニング用のバックエンド構成オプション

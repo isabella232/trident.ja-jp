@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-use/trident-fsx.html 
 keywords: Amazon FSx for NetApp ONTAP, FSx for ONTAP, deploy Trident, integrate Trident, Trident 
-summary: Amazon Elastic Kubernetes Service （ EKS ）で実行されている Astra Trident と Amazon ONTAP を使用することで、 ONTAP がサポートするブロックボリュームとファイル永続ボリュームを確実にプロビジョニングできます。 
+summary: Astra TridentとAmazon FSx for NetApp ONTAP を使用すると、Amazon Elastic Kubernetes Service（EKS）で実行されているKubernetesクラスタで、ONTAP を基盤とするブロックおよびファイルの永続ボリュームをプロビジョニングできるようになります。 
 ---
 = Amazon FSX for NetApp ONTAP で Astra Trident を使用
 :hardbreaks:
@@ -13,6 +13,10 @@ summary: Amazon Elastic Kubernetes Service （ EKS ）で実行されている A
 
 [role="lead"]
 https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["NetApp ONTAP 対応の Amazon FSX"^] は、NetApp ONTAP ストレージオペレーティングシステムを基盤とするファイルシステムの起動や実行を可能にする、フルマネージドのAWSサービスです。FSX for ONTAP を使用すると、使い慣れたネットアップの機能、パフォーマンス、管理機能を活用しながら、AWSにデータを格納するためのシンプルさ、即応性、セキュリティ、拡張性を活用できます。FSX for ONTAP は、ONTAP ファイルシステムの機能と管理APIをサポートしています。
+
+
+
+== 概要
 
 ファイルシステムは、オンプレミスの ONTAP クラスタに似た、 Amazon FSX のプライマリリソースです。各 SVM 内には、ファイルとフォルダをファイルシステムに格納するデータコンテナである 1 つ以上のボリュームを作成できます。Amazon FSX for NetApp ONTAP を使用すると、 Data ONTAP はクラウド内の管理対象ファイルシステムとして提供されます。新しいファイルシステムのタイプは * NetApp ONTAP * です。
 
@@ -28,7 +32,6 @@ NetApp ONTAP 用の Amazon FSX では、を使用します https://docs.netapp.c
 +
 ** SMBボリュームは、を使用してサポートされます `ontap-nas` ドライバーのみ。
 ** Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート
-** Astra TridentはWindows ARM アーキテクチャをサポートしていません。
 
 
 * 自動バックアップが有効になっているAmazon FSXファイルシステムで作成されたボリュームはTridentで削除できません。PVC を削除するには、 PV と ONTAP ボリュームの FSX を手動で削除する必要があります。この問題 を回避するには、次の手順

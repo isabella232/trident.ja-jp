@@ -10,6 +10,9 @@ settings:
   versions:
   - name: Astra Trident
     url: "/trident"
+    version-number: '23.04'
+  - name: Astra Trident
+    url: "/trident-2301"
     version-number: '23.01'
   - name: Astra Trident
     url: "/trident-2210"
@@ -20,16 +23,17 @@ settings:
   - name: Astra Trident
     url: "/trident-2204"
     version-number: '22.04'
-  - name: Astra Trident
-    url: "/trident-2201"
-    version-number: '22.01'
   langs: ja-jp,us-en,ko-kr,zh-cn,zh-tw,de-de,es-es,fr-fr
 sidebar:
   entries:
   - title: Astra Trident のドキュメント
     url: "/index.html"
   - title: リリースノート
-    url: "/trident-rn.html"
+    entries:
+    - title: 新機能
+      url: "/trident-rn.html"
+    - title: 以前のバージョン
+      url: "/earlier-versions.html"
   - section: trident-concepts
   - section: trident-get-started
   - section: trident-managing-k8s
@@ -43,8 +47,6 @@ sidebar:
     url: "/troubleshooting.html"
   - section: trident-reco
   - section: trident-reference
-  - title: 以前のバージョン
-    url: "/earlier-versions.html"
   - title: 法的通知
     url: "/legal-notices.html"
 product-family:

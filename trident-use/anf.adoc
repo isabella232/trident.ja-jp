@@ -11,11 +11,8 @@ summary: Azure NetApp Files （ANF）をAstra Tridentのバックエンドとし
 :imagesdir: ../media/
 
 
+[role="lead"]
 Azure NetApp Files （ANF）をAstra Tridentのバックエンドとして設定できます。ANFバックエンドを使用してNFSボリュームとSMBボリュームを接続できます。
-
-* link:anf-prep.html["準備"]
-* link:anf-examples.html["設定オプションと例"]
-
 
 
 
@@ -23,5 +20,4 @@ Azure NetApp Files （ANF）をAstra Tridentのバックエンドとして設定
 
 * Azure NetApp Files サービスでは、100GB未満のボリュームはサポートされません。100 GB のボリュームが小さい場合は、 Trident が自動的に作成します。
 * Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート
-* Astra TridentはWindows ARM アーキテクチャをサポートしていません。
 

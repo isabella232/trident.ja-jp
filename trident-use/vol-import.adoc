@@ -11,6 +11,7 @@ summary: tridentctl import を使用して、既存のストレージボリュ�
 :imagesdir: ../media/
 
 
+[role="lead"]
 tridentctl import を使用して、既存のストレージボリュームを Kubernetes PV としてインポートできます。
 
 
@@ -151,9 +152,6 @@ Astra Trident は、 1 つの LUN を含む ONTAP SAN FlexVol をインポート
 * 「 -f 」フラグとともに使用する必要がある PVC 定義のパスを指定します。
 * PVC を管理するか、管理対象外にするかを選択します。デフォルトでは、 Trident によって PVC が管理され、バックエンドの FlexVol と LUN の名前が変更されます。アンマネージボリュームとしてインポートするには、「 --no-manage 」フラグを渡します。
 
-
-
-TIP: 管理対象外の「 ONTAP -SAN 」ボリュームをインポートする場合は、 FlexVol 内の LUN が「 lun0 」になっていて、必要なイニシエータを持つ igroup にマッピングされていることを確認する必要があります。Trident が管理対象のインポートに対して自動的に処理します。
 
 次に、 Astra Trident が FlexVol をインポートし、 PVC 定義に関連付けます。Astra Trident は、 FlexVol の名前を「 pvc-<uuid> 」形式に変更し、 FlexVol 内の LUN を「 lun0 」に変更します。
 

@@ -40,52 +40,22 @@ WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra T
 | パラメータ | 説明 | デフォルト 
 
 
-| 「 namespace 」を参照してください | Astra Trident をインストールするネームスペース | デフォルト 
-
-
-| 「バグ」 | Astra Trident のデバッグを有効にします | いいえ 
-
-
-| `windows` | をに設定します `true` Windowsワーカーノードへのインストールを有効にします。 | いいえ 
-
-
-| 「 IPv6 」 | IPv6 経由の Astra Trident をインストール | いいえ 
-
-
-| k8sTimeout | Kubernetes 処理のタイムアウト | 30 秒 
-
-
-| 'ilenceAutosupport | AutoSupport バンドルをネットアップに自動的に送信しない | いいえ 
-
-
-| enableNodePrep | ワーカーノードの依存関係を自動的に管理（ * beta * ） | いいえ 
-
-
-| 「 autosupportImage 」を参照してください | AutoSupport テレメトリのコンテナイメージ | "netapp/trident-autosupport：23.01" 
+| 「 autosupportImage 」を参照してください | AutoSupport テレメトリのコンテナイメージ | "netapp/trident-autosupport：23.04.0" 
 
 
 | 「 autosupportProxy 」と入力します | AutoSupport テレメトリを送信するプロキシのアドレス / ポート | "http://proxy.example.com:8888"[] 
 
 
-| uninstall | Astra Trident のアンインストールに使用するフラグ | いいえ 
+| controller'PluginNodeSelector | Trident Controller CSI プラグインを実行しているポッドの追加ノードセレクタ。の形式はと同じです `pod.spec.nodeSelector`。 | デフォルトはありません。オプションです 
 
 
-| 「 logFormat 」 | Astra Trident のログ形式が使用 [text 、 JSON] | テキスト（ Text ） 
+| controllerPluginTolerations | Trident Controller CSI プラグインを実行しているポッドに対する許容値を上書きします。はと同じ形式です `pod.spec.Tolerations`。 | デフォルトはありません。オプションです 
 
 
-| 「 tridentImage 」のように入力します | インストールする Astra Trident イメージ | 「 NetApp / Trident ： 21.04 」 
+| 「バグ」 | Astra Trident のデバッグを有効にします | 「偽」 
 
 
-| 「 imageRegistry 」と入力します | 内部レジストリへのパス。形式は「 <registry fqdn>[:port][/ssubpath]] 」です | "k83.gcr.io/sig-storage (k8s 1.19+)またはQua.io/k8scsi" 
-
-
-| 「 kubeletDir 」を参照してください | ホスト上の kubelet ディレクトリへのパス | 「 /var/lib/kubelet 」 
-
-
-| 「 wippeout 」 | Astra Trident を完全に削除するために削除するリソースのリスト |  
-
-
-| 「 imagePullSecrets 」 | 内部レジストリからイメージをプルするシークレット |  
+| `enableForceDetach` | `ontap-san` および `ontap-san-economy` のみ。KubernetesのNon-Graceful Node Shutdown（NGN）と連携して、ノードに障害が発生した場合に、マウントされたボリュームを含むワークロードを新しいノードに安全に移行する機能をクラスタ管理者に提供します。*これは23.04の実験的な機能です。*を参照してください <<フォースデタッチの詳細>> を参照してください。 | 「偽」 
 
 
 | `imagePullPolicy` | Tridentオペレータのイメージプルポリシーを設定します。有効な値は次のとおりです。
@@ -107,6 +77,31 @@ WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra T
 |===
 
 NOTE: ポッドパラメータの書式設定の詳細については、を参照してください link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/["ポッドをノードに割り当てます"^]。
+
+
+
+=== フォースデタッチの詳細
+
+では、[強制切り離し]を使用できます `ontap-san` および `ontap-san-economy` のみ。強制接続解除を有効にする前に、Kubernetesクラスタで非グレースフルノードシャットダウン（NGN）を有効にする必要があります。詳細については、を参照してください link:https://kubernetes.io/docs/concepts/architecture/nodes/#non-graceful-node-shutdown["Kubernetes：正常なノードシャットダウンではありません"^]。
+
+
+WARNING: Astra TridentはKubernetes NGNに依存しているため、削除しないでください `out-of-service` 許容できないすべてのワークロードが再スケジュールされるまで、正常でないノードから影響を受けます。汚染を無謀に適用または削除すると、バックエンドのデータ保護が危険にさらされる可能性があります。
+
+Kubernetesクラスタ管理者がを適用したとき `node.kubernetes.io/out-of-service=nodeshutdown:NoExecute` ノードおよびに影響を与えます `enableForceDetach` がに設定されます `true`Astra Tridentがノードのステータスを判断し、次の処理を実行します。
+
+. そのノードにマウントされたボリュームのバックエンドI/Oアクセスを停止します。
+. Astra Tridentノードオブジェクトをにマークします `dirty` (新しい出版物には安全ではありません)。
++
+
+NOTE: Tridentコントローラは、（とマークされたあとに）ノードが再認定されるまで、新しいパブリッシュボリューム要求を拒否します `dirty`をクリックします。マウントされたPVCでスケジュールされているワークロード（クラスタノードが正常で準備が完了したあとも含む）は、Astra Tridentがノードを検証できるまで受け入れられません `clean` (新しい出版物のための安全)。
+
+
+
+ノードの健常性が回復してtaintが削除されると、Astra Tridentは次の処理を実行します。
+
+. ノード上の古い公開パスを特定してクリーンアップします。
+. ノードがに含まれている場合 `cleanable` 状態（out-of-service taintが削除され、ノードがinになっています `Ready` 状態）。古い公開済みパスはすべてクリーンで、Astra Tridentはノードをとして再登録します `clean` 新しいボリュームのノードへの公開を許可します。
+
 
 
 

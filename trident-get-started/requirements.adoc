@@ -23,7 +23,7 @@ Astra Tridentをインストールする前に、次の一般的なシステム�
 .<strong> ：Trident </strong> に関する重要な情報
 [%collapsible%open]
 ====
-* TridentでKubernetes 1.26がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレード
+* TridentでKubernetes 1.27がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレード
 * Astra Tridentは、SAN環境でマルチパス構成を厳密に使用し、推奨される値をに設定します `find_multipaths: no` multipath.confファイル内。
 +
 非マルチパス構成またはを使用 `find_multipaths: yes` または `find_multipaths: smart` multipath.confファイルの値が原因でマウントが失敗します。Tridentはの使用を推奨しています `find_multipaths: no` 21.07リリース以降
@@ -37,16 +37,16 @@ Astra Tridentをインストールする前に、次の一般的なシステム�
 
 Trident Astra は、次のような複数のコンテナエンジンとオーケストレーションツールをサポート
 
-* Anthosオンプレミス（VMware）とAnthos：ベアメタル1.9、1.10、1.11
-* Kubernetes 1.21-1.26
+* Anthosオンプレミス（VMware）とAnthos（ベアメタル1.12
+* Kubernetes 1.21-1.27
 * Mirantis Kubernetes Engine 3.5
 * OpenShift 4.9 ~ 4.12
 
 
 Trident オペレータは、次のリリースでサポートされています。
 
-* Anthosオンプレミス（VMware）とAnthos：ベアメタル1.9、1.10、1.11
-* Kubernetes 1.21-1.26
+* Anthosオンプレミス（VMware）とAnthos（ベアメタル1.12
+* Kubernetes 1.21-1.27
 * OpenShift 4.9 ~ 4.12
 
 
@@ -82,56 +82,56 @@ Astra Trident を使用するには、次のバックエンドを 1 つ以上サ
 
 
 | CSI Trident  a| 
-1.21～1.26
+1.21 ~ 1.27
  a| 
 いいえ
 
 
 
 | ボリューム Snapshot  a| 
-1.21～1.26
+1.21 ~ 1.27
  a| 
 いいえ
 
 
 
 | ボリューム Snapshot からの PVC  a| 
-1.21～1.26
+1.21 ~ 1.27
  a| 
 いいえ
 
 
 
 | iSCSI PV のサイズ変更  a| 
-1.21～1.26
+1.21 ~ 1.27
  a| 
 いいえ
 
 
 
 | ONTAP 双方向 CHAP  a| 
-1.21～1.26
+1.21 ~ 1.27
  a| 
 いいえ
 
 
 
 | 動的エクスポートポリシー  a| 
-1.21～1.26
+1.21 ~ 1.27
  a| 
 いいえ
 
 
 
 | Trident のオペレータ  a| 
-1.21～1.26
+1.21 ~ 1.27
  a| 
 いいえ
 
 
 
 | CSI トポロジ  a| 
-1.21～1.26
+1.21 ~ 1.27
  a| 
 いいえ
 
@@ -142,10 +142,10 @@ Astra Trident を使用するには、次のバックエンドを 1 つ以上サ
 
 Astra Tridentは特定のオペレーティングシステムを正式にサポートしていませんが、動作確認済みのものは次のとおりです。
 
-* OpenShift Container Platform でサポートされている Red Hat CoreOS （ RHCOS ）バージョン
-* RHEL 8以降
-* Ubuntu 22.04以降
-* Windows Server 2019
+* OpenShift Container Platform（AMD64およびARM64）でサポートされているRed Hat CoreOS（RHCOS）のバージョン
+* RHEL 8+（AMD64およびARM64）
+* Ubuntu 22.04以降（AMD64およびARM64）
+* Windows Server 2019（AMD64）
 
 
 デフォルトでは、 Astra Trident はコンテナで実行されるため、任意の Linux ワーカーで実行されます。ただし、その場合、使用するバックエンドに応じて、標準の NFS クライアントまたは iSCSI イニシエータを使用して Astra Trident が提供するボリュームをマウントできる必要があります。
@@ -188,79 +188,92 @@ link:../trident-reference/ports.html["Astra Trident ポート"]
 
 
 | v1.21.0  a| 
-* ネットアップ/ Trident：23.01.1
-* NetApp / Trident - autosupport：23.01
-* k8s.io/sig-storage/csi-Provisioner：v3.4.0
-* k8s.io/sig-storage/csi-attacher:v4.1.0
+* ネットアップ/ Trident：23.04.0
+* netapp / trident-autosupport：23.04
+* k8s.io/sig-storage/csi-provisioner：v3.4.1
+* k8s.io/sig-storage/csi-attacher：v4.2.0
 * k8s.io/sig-storage/csi-resizer：v1.7.0
 * k8s.io/sig-storage/csi-snapshotter：v6.2.1
 * k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0
-* netapp / trident-operator：23.01.1（オプション）
+* netapp / trident-operator：23.04.0（オプション）
 
 
 
 
 | v1.22.0  a| 
-* ネットアップ/ Trident：23.01.1
-* NetApp / Trident - autosupport：23.01
-* k8s.io/sig-storage/csi-Provisioner：v3.4.0
-* k8s.io/sig-storage/csi-attacher:v4.1.0
+* ネットアップ/ Trident：23.04.0
+* netapp / trident-autosupport：23.04
+* k8s.io/sig-storage/csi-provisioner：v3.4.1
+* k8s.io/sig-storage/csi-attacher：v4.2.0
 * k8s.io/sig-storage/csi-resizer：v1.7.0
 * k8s.io/sig-storage/csi-snapshotter：v6.2.1
 * k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0
-* netapp / trident-operator：23.01.1（オプション）
+* netapp / trident-operator：23.04.0（オプション）
 
 
 
 
 | v1.3.0  a| 
-* ネットアップ/ Trident：23.01.1
-* NetApp / Trident - autosupport：23.01
-* k8s.io/sig-storage/csi-Provisioner：v3.4.0
-* k8s.io/sig-storage/csi-attacher:v4.1.0
+* ネットアップ/ Trident：23.04.0
+* netapp / trident-autosupport：23.04
+* k8s.io/sig-storage/csi-provisioner：v3.4.1
+* k8s.io/sig-storage/csi-attacher：v4.2.0
 * k8s.io/sig-storage/csi-resizer：v1.7.0
 * k8s.io/sig-storage/csi-snapshotter：v6.2.1
 * k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0
-* netapp / trident-operator：23.01.1（オプション）
+* netapp / trident-operator：23.04.0（オプション）
 
 
 
 
 | v1.24.0  a| 
-* ネットアップ/ Trident：23.01.1
-* NetApp / Trident - autosupport：23.01
-* k8s.io/sig-storage/csi-Provisioner：v3.4.0
-* k8s.io/sig-storage/csi-attacher:v4.1.0
+* ネットアップ/ Trident：23.04.0
+* netapp / trident-autosupport：23.04
+* k8s.io/sig-storage/csi-provisioner：v3.4.1
+* k8s.io/sig-storage/csi-attacher：v4.2.0
 * k8s.io/sig-storage/csi-resizer：v1.7.0
 * k8s.io/sig-storage/csi-snapshotter：v6.2.1
 * k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0
-* netapp / trident-operator：23.01.1（オプション）
+* netapp / trident-operator：23.04.0（オプション）
 
 
 
 
 | v1.25.0  a| 
-* ネットアップ/ Trident：23.01.1
-* NetApp / Trident - autosupport：23.01
-* k8s.io/sig-storage/csi-Provisioner：v3.4.0
-* k8s.io/sig-storage/csi-attacher:v4.1.0
+* ネットアップ/ Trident：23.04.0
+* netapp / trident-autosupport：23.04
+* k8s.io/sig-storage/csi-provisioner：v3.4.1
+* k8s.io/sig-storage/csi-attacher：v4.2.0
 * k8s.io/sig-storage/csi-resizer：v1.7.0
 * k8s.io/sig-storage/csi-snapshotter：v6.2.1
 * k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0
-* netapp / trident-operator：23.01.1（オプション）
+* netapp / trident-operator：23.04.0（オプション）
 
 
 
 
 | v1.26.0  a| 
-* ネットアップ/ Trident：23.01.1
-* NetApp / Trident - autosupport：23.01
-* k8s.io/sig-storage/csi-Provisioner：v3.4.0
-* k8s.io/sig-storage/csi-attacher:v4.1.0
+* ネットアップ/ Trident：23.04.0
+* netapp / trident-autosupport：23.04
+* k8s.io/sig-storage/csi-provisioner：v3.4.1
+* k8s.io/sig-storage/csi-attacher：v4.2.0
 * k8s.io/sig-storage/csi-resizer：v1.7.0
 * k8s.io/sig-storage/csi-snapshotter：v6.2.1
 * k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0
-* netapp / trident-operator：23.01.1（オプション）
+* netapp / trident-operator：23.04.0（オプション）
+
+
+
+
+| v1.27.0  a| 
+* ネットアップ/ Trident：23.04.0
+* netapp / trident-autosupport：23.04
+* k8s.io/sig-storage/csi-provisioner：v3.4.1
+* k8s.io/sig-storage/csi-attacher：v4.2.0
+* k8s.io/sig-storage/csi-resizer：v1.7.0
+* k8s.io/sig-storage/csi-snapshotter：v6.2.1
+* k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0
+* netapp / trident-operator：23.04.0（オプション）
 
 
 |===

@@ -11,6 +11,7 @@ summary: Astra Trident により、 Kubernetes ユーザは作成後にボリュ
 :imagesdir: ../media/
 
 
+[role="lead"]
 Astra Trident により、 Kubernetes ユーザは作成後にボリュームを拡張できます。ここでは、 iSCSI ボリュームと NFS ボリュームの拡張に必要な設定について説明します。
 
 

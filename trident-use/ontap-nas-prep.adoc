@@ -11,7 +11,12 @@ summary: ONTAP NAS ドライバを使用して ONTAP バックエンドを設定
 :imagesdir: ../media/
 
 
-ONTAP NAS ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。ONTAP バックエンドすべてに対して、 Astra Trident が SVM に少なくとも 1 つのアグリゲートを割り当てておく必要があります。
+[role="lead"]
+ONTAP NAS ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。
+
+
+
+== 概要
 
 ONTAP バックエンドすべてに対して、 Astra Trident が SVM に少なくとも 1 つのアグリゲートを割り当てておく必要があります。
 

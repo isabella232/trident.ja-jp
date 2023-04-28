@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-reco/security-luks.html 
-keywords: security, luks, linux unified key setup, encryption, key rotation, resizing, advanced encryption, rotation, key, passphrase, nist, aes-ni, aes 
+keywords: security, luks, linux unified key setup, encryption, key rotation, resizing, advanced encryption, rotation, key, import 
 summary: Linux Unified Key Setup（LUKS；ユニファイドキーセットアップ）を有効にして、Astra Trident上のONTAP SANおよびONTAP SANエコノミーボリュームを暗号化できます。Astra Tridentは、LUKS暗号化ボリュームのボリュームサイズ変更とキー（パスフレーズ）ローテーションをサポートしています。 
 ---
 = Linux Unified Key Setup（LUKS；統合キーセットアップ）
@@ -92,6 +92,27 @@ stringData:
 
 LUKSで暗号化されたボリュームは、ONTAP の重複排除と圧縮を利用できません。
 
+
+
+== LUKSボリュームをインポートするためのバックエンド構成
+
+LUKSボリュームをインポートするには、を設定する必要があります `luksEncryption` 終了：(`true` バックエンドにあります。。 `luksEncryption` optionを指定すると、ボリュームがLUKS準拠かどうかがAstra Tridentに通知されます (`true`）またはLUKS準拠ではありません (`false`）をクリックします。
+
+[listing]
+----
+version: 1
+storageDriverName: ontap-san
+managementLIF: 10.0.0.1
+dataLIF: 10.0.0.2
+svm: trident_svm
+username: admin
+password: password
+defaults:
+  luksEncryption: 'true'
+  spaceAllocation: 'false'
+  snapshotPolicy: default
+  snapshotReserve: '10'
+----
 
 
 == LUKSパスフレーズをローテーションします

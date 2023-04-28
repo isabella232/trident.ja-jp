@@ -4,7 +4,7 @@ permalink: trident-rn.html
 keywords: 'what"s new, new features, enhancements, known issues, resolved issues, troubleshooting' 
 summary: ネットアップは、製品やサービスの改善と強化を継続的に行っています。最新バージョンの Astra Trident の機能、拡張機能、バグ修正の一部を以下に示します。 
 ---
-= リリースノート
+= 新機能
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -19,7 +19,57 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 
 
 
-== 23.01.1の新機能
+== 23.04の新機能
+
+
+IMPORTANT: ONTAP-SAN-*ボリュームの強制的なボリューム接続解除は、非グレースフルノードシャットダウン機能のゲートが有効になっているKubernetesバージョンでのみサポートされます。[Force detach]は、インストール時にを使用して有効にする必要があります `--enable-force-detach` Tridentインストーラのフラグ。
+
+
+
+=== の修正
+
+* Tridentのオペレータが、仕様で指定されている場合にインストールにIPv6 localhostを使用するように修正しました。
+* Trident Operatorクラスタロールの権限が固定され、バンドルの権限（link:https://github.com/NetApp/trident/issues/799["問題 #799"^]）。
+* RWXモードで複数のノードにrawブロックボリュームを接続することで問題 を修正。
+* SMBボリュームのFlexGroup クローニングのサポートとボリュームインポートが修正されました。
+* Tridentコントローラがすぐにシャットダウンできない問題を修正問題 しました（link:https://github.com/NetApp/trident/issues/811["問題 #811"]）。
+* ONTAP-SAN-*ドライバでプロビジョニングされた指定したLUNに関連付けられているすべてのigroup名を一覧表示する修正を追加しました。
+* 外部プロセスを完了まで実行できるようにする修正を追加しました。
+* s390アーキテクチャ（link:https://github.com/NetApp/trident/issues/537["問題 #537"]）。
+* ボリュームマウント処理中の誤ったログレベルを修正しました（link:https://github.com/NetApp/trident/issues/781["問題 #781"]）。
+* 固定電位タイプアサーションエラー（link:https://github.com/NetApp/trident/issues/802["問題 #802"]）。
+
+
+
+
+=== 拡張機能
+
+* Kubernetes：
++
+** Kubernetes 1.27のサポートを追加。
+** LUKSボリュームのインポートのサポートが追加されました。
+** ReadWriteOncePod PVCアクセスモードのサポートが追加されました。
+** ノードの正常でないシャットダウン時にONTAP-SAN-*ボリュームで強制的に接続解除がサポートされるようになりました。
+** すべてのontap-san-*ボリュームでノード単位のigroupを使用するようになりました。LUNはigroupにマッピングされるだけで、それらのノードにアクティブにパブリッシュされるため、セキュリティ体制が強化されます。アクティブなワークロードに影響を与えることなく既存のボリュームを安全であるとTridentが判断した場合、必要に応じて新しいigroupスキームに切り替えます（link:https://github.com/NetApp/trident/issues/758["問題 #758"]）。
+** Tridentで管理されていないigroupをONTAP-SAN-*バックエンドからクリーンアップし、Tridentのセキュリティを強化
+
+
+* ストレージドライバontap-nas-economyとontap-nas-flexgroupに、Amazon FSxによるSMBボリュームのサポートが追加されました。
+* ontap-nas、ontap-nas-economy、ontap-nas-flexgroupストレージドライバでSMB共有のサポートが追加されました。
+* arm64ノードのサポートを追加しましたlink:https://github.com/NetApp/trident/issues/732["問題 #732"]）。
+* 最初にAPIサーバを非アクティブ化することで、Tridentが手順 をシャットダウンできるようになりましたlink:https://github.com/NetApp/trident/issues/811["問題 #811"]）。
+* Windowsおよびarm64ホストのクロスプラットフォームビルドサポートをMakefileに追加しました。build.mdを参照してください。
+
+
+
+
+=== 非推奨
+
+** Kubernetes：** ONTAP-SANおよびONTAP-SAN-economyドライバ（link:https://github.com/NetApp/trident/issues/758["問題 #758"]）。
+
+
+
+== 23.01.1の変更点
 
 
 
@@ -37,7 +87,7 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 == 23.01の変更点
 
 
-IMPORTANT: TridentでKubernetes 1.26がサポートされるようになりました。Kubernetesをアップグレードする前にAstra Tridentをアップグレードしてください。
+IMPORTANT: TridentでKubernetes 1.27がサポートされるようになりました。Kubernetesをアップグレードする前にAstra Tridentをアップグレードしてください。
 
 
 
@@ -152,7 +202,7 @@ IMPORTANT: TridentでKubernetes 1.26がサポートされるようになりま�
 === 拡張機能
 
 * CSIイメージのデフォルトレジストリとして、k8s .gcr.ioからregistry.k8s .ioに移行します
-* ONTAP SANボリュームでは、ノード単位のigroupが使用され、LUNがigroupにマッピングされると同時に、これらのノードにアクティブに公開されてセキュリティ体制が強化されます。Tridentがアクティブなワークロードに影響を与えずに安全であると判断した場合、既存のボリュームは新しいigroupスキームに適宜切り替えられます。
+* ONTAP SANボリュームでは、ノード単位のigroupが使用され、LUNがigroupにマッピングされると同時に、これらのノードにアクティブに公開されてセキュリティ体制が強化されます。既存のボリュームは、アクティブなワークロードに影響を与えずに安全であるとAstra Tridentが判断したときに、必要に応じて新しいigroupスキームに切り替えられます。
 * TridentのインストールにResourceQuotaが含まれ、PriorityClassの消費がデフォルトで制限されたときにTrident DemonSetがスケジュールされるようになりました。
 * ANFドライバへのネットワーク機能のサポートが追加されました。（link:https://github.com/NetApp/trident/issues/717["GitHub問題 #717"^])
 * ONTAP ドライバにTech Previewの自動MetroCluster スイッチオーバー検出機能を追加。（link:https://github.com/NetApp/trident/issues/228["GitHub問題 #228"^])

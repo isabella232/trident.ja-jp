@@ -11,15 +11,24 @@ summary: ネットアップが提供する Trident インストールで Element
 :imagesdir: ../media/
 
 
+[role="lead"]
 ネットアップが提供する Trident インストールで Element バックエンドを作成して使用する方法をご確認ください。
 
-.必要なもの
+
+
+== 作業を開始する前に
+
+Elementバックエンドを作成する前に、次の情報が必要になります。
+
 * Element ソフトウェアを実行する、サポート対象のストレージシステム。
 * NetApp HCI / SolidFire クラスタ管理者またはボリュームを管理できるテナントユーザのクレデンシャル。
 * すべての Kubernetes ワーカーノードに適切な iSCSI ツールをインストールする必要があります。を参照してください link:../trident-use/worker-node-prep.html["ワーカーノードの準備情報"]。
 
 
-.知っておくべきこと
+
+
+== ボリュームモード
+
 'olidfire -SAN' ストレージ・ドライバは ' ファイル・モードとブロック・モードの両方をサポートしています「 Filesystem 」 volumeMode の場合、 Astra Trident はボリュームを作成し、ファイルシステムを作成します。ファイルシステムのタイプは StorageClass で指定されます。
 
 [cols="5"]

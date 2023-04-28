@@ -141,9 +141,13 @@ NFS マウントオプションのきめ細かな制御。デフォルトは「 
 
 
 | 「 igroupName 」と入力します  a| 
-プラグインで使用されるigroup。デフォルトはです `netappdvp`。* 「 ONTAP-SAN'd river 」のみ利用可能です。
+Astra Tridentはノード単位で作成、管理します `igroups` として `netappdvp`。
+
+この値は変更したり省略したりすることはできません。
+
+*でのみ使用できます `ontap-san` ドライバ*。
  a| 
-`myigroup`
+`netappdvp`
 
 
 
@@ -348,7 +352,7 @@ FlexGroup と FlexGroup に適したワークロードの詳細については�
     "username": "vsadmin",
     "password": "password",
     "aggregate": "aggr1",
-    "igroupName": "myigroup"
+    "igroupName": "netappdvp"
 }
 ----
 *NFS は 'ONTAP-SAN-エコノミー ドライバーの例です
@@ -364,7 +368,7 @@ FlexGroup と FlexGroup に適したワークロードの詳細については�
     "username": "vsadmin",
     "password": "password",
     "aggregate": "aggr1",
-    "igroupName": "myigroup"
+    "igroupName": "netappdvp"
 }
 ----
 

@@ -16,14 +16,14 @@ Tridentオペレータを導入し、Helmを使用してAstra Tridentをイン�
 
 
 
-== Astra Trident 23.01に関する重要な情報
+== Astra Trident 23.04に関する重要な情報
 
 * Astra Tridentに関する次の重要な情報をお読みください。*
 
 .<strong> ：Trident </strong> に関する重要な情報
 [%collapsible%open]
 ====
-* TridentでKubernetes 1.26がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレード
+* TridentでKubernetes 1.27がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレード
 * Astra Tridentは、SAN環境でマルチパス構成を厳密に使用し、推奨される値をに設定します `find_multipaths: no` multipath.confファイル内。
 +
 非マルチパス構成またはを使用 `find_multipaths: yes` または `find_multipaths: smart` multipath.confファイルの値が原因でマウントが失敗します。Tridentはの使用を推奨しています `find_multipaths: no` 21.07リリース以降
@@ -49,11 +49,11 @@ Tridentの使用 link:https://artifacthub.io/packages/helm/netapp-trident/triden
 ----
 helm repo add netapp-trident https://netapp.github.io/trident-helm-chart
 ----
-. 使用 `helm install` をクリックし、次の例に示すように、導入環境の名前を指定します `23.01.1` は、インストールするAstra Tridentのバージョンです。
+. 使用 `helm install` をクリックし、次の例に示すように、導入環境の名前を指定します `23.04.0` は、インストールするAstra Tridentのバージョンです。
 +
 [listing]
 ----
-helm install <name> netapp-trident/trident-operator --version 23.01.1 --create-namespace --namespace <trident-namespace>
+helm install <name> netapp-trident/trident-operator --version 23.04.0 --create-namespace --namespace <trident-namespace>
 ----
 +
 
@@ -83,11 +83,11 @@ NOTE: すでにTridentの名前空間を作成している場合'--create-namesp
 コマンドラインでオーバーライドを指定します。
 
 |===
-たとえば、のデフォルト値を変更するには、のように指定します `debug`をクリックし、次のコマンドを実行します `--set` コマンドを入力します `23.01.1` は、インストールするAstra Tridentのバージョンです。
+たとえば、のデフォルト値を変更するには、のように指定します `debug`をクリックし、次のコマンドを実行します `--set` コマンドを入力します `23.04.0` は、インストールするAstra Tridentのバージョンです。
 
 [listing]
 ----
-helm install <name> netapp-trident/trident-operator --version 23.01.1  --create-namespace --namespace --set tridentDebug=true
+helm install <name> netapp-trident/trident-operator --version 23.04.0  --create-namespace --namespace --set tridentDebug=true
 ----
 
 

@@ -11,6 +11,7 @@ summary: tridentctl を使用してバックエンド管理操作を実行する
 :imagesdir: ../media/
 
 
+[role="lead"]
 tridentctl を使用してバックエンド管理操作を実行する方法について説明します
 
 

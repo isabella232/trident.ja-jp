@@ -11,7 +11,14 @@ summary: Astra Trident では、 CSI トポロジ機能を利用することに�
 :imagesdir: ../media/
 
 
-Astra Trident では、を使用して、 Kubernetes クラスタ内にあるノードにボリュームを選択的に作成して接続できます https://kubernetes-csi.github.io/docs/topology.html["CSI トポロジ機能"^]。CSI トポロジ機能を使用すると、領域およびアベイラビリティゾーンに基づいて、ボリュームへのアクセスをノードのサブセットに制限できます。現在、クラウドプロバイダは、 Kubernetes 管理者がゾーンベースのノードを生成できるようになっています。ノードは、リージョンによって異なるアベイラビリティゾーンに配置することも、リージョンによって配置することもできます。マルチゾーンアーキテクチャでワークロード用のボリュームをプロビジョニングするために、 Astra Trident は CSI トポロジを使用します。
+[role="lead"]
+Astra Trident では、を使用して、 Kubernetes クラスタ内にあるノードにボリュームを選択的に作成して接続できます https://kubernetes-csi.github.io/docs/topology.html["CSI トポロジ機能"^]。
+
+
+
+== 概要
+
+CSI トポロジ機能を使用すると、領域およびアベイラビリティゾーンに基づいて、ボリュームへのアクセスをノードのサブセットに制限できます。現在、クラウドプロバイダは、 Kubernetes 管理者がゾーンベースのノードを生成できるようになっています。ノードは、リージョンによって異なるアベイラビリティゾーンに配置することも、リージョンによって配置することもできます。マルチゾーンアーキテクチャでワークロード用のボリュームをプロビジョニングするために、 Astra Trident は CSI トポロジを使用します。
 
 
 TIP: CSI トポロジ機能の詳細については、を参照してください https://kubernetes.io/blog/2018/10/11/topology-aware-volume-provisioning-in-kubernetes/["こちらをご覧ください"^]。

@@ -11,7 +11,14 @@ summary: Astra Trident は、ボリュームを管理するための機能を複
 :imagesdir: ../media/
 
 
+[role="lead"]
 Trident がボリュームを管理するための各種機能をご紹介します。
+
+
+
+== ボリュームの管理
+
+Astra Tridentを使用してボリュームを管理する方法については、以下を参照してください。
 
 * link:csi-topology.html["CSI トポロジを使用します"^]
 * link:vol-snapshots.html["スナップショットを操作します"^]

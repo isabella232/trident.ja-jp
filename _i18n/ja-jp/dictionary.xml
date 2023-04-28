@@ -1087,42 +1087,18 @@
   <block id="13c852fce58f7c6981fa0a952dcd76af" category="summary">Trident オペレータは 'TridentOrchestrator 仕様の属性を使用して 'Astra Trident のインストール方法をカスタマイズできます</block>
   <block id="83f499a540b1323009c200d6f8cc9396" category="cell">パラメータ</block>
   <block id="7a1920d61156abc05a60135aefe8bc67" category="cell">デフォルト</block>
-  <block id="f3f30d479f6e3b393d917a3b2f88c770" category="cell">「 namespace 」を参照してください</block>
-  <block id="c9db68ea6cff44f42ac5acbbfccec399" category="cell">Astra Trident をインストールするネームスペース</block>
-  <block id="9aa82da0cffe247b84587c1cc8e32746" category="cell">デフォルト</block>
   <block id="a67cf6b087ff88dbfacec8375928995c" category="cell">「バグ」</block>
   <block id="4f72bc786a1a01d5a1a8bc09d33334cc" category="cell">Astra Trident のデバッグを有効にします</block>
   <block id="68934a3e9455fa72420237eb05902327" category="cell">いいえ</block>
-  <block id="3dd791c4864e77ae6cf11572e2d7b374" category="cell">IPv6 経由の Astra Trident をインストール</block>
-  <block id="077e99fe42ced522b462656cffffe09c" category="cell">k8sTimeout</block>
-  <block id="4448b73eac083e33b7142f0e5790fac5" category="cell">Kubernetes 処理のタイムアウト</block>
-  <block id="e4d71bf2abad047425f4463e27bb83b0" category="cell">30 秒</block>
-  <block id="42cf123e93ecc5c0297652edbc547fc0" category="cell">'ilenceAutosupport</block>
-  <block id="4a213b7c3b997ffb0794b25909381d16" category="cell">AutoSupport バンドルをネットアップに自動的に送信しない</block>
-  <block id="34d0f4a447cd1d7f59000d3be2c39320" category="cell">enableNodePrep</block>
-  <block id="2472256a6487b0917d32f6a044a4e0ac" category="cell">ワーカーノードの依存関係を自動的に管理（ * beta * ）</block>
   <block id="2bccac20e55391730a985f9819e1cc41" category="cell">「 autosupportImage 」を参照してください</block>
   <block id="84448c234dfdfd2a7367341fd4b56a80" category="cell">AutoSupport テレメトリのコンテナイメージ</block>
   <block id="f4a6821b04b9ce6b90148068341347b6" category="cell">「 autosupportProxy 」と入力します</block>
-  <block id="7f54ca385f028308d19e228ce0534a47" category="cell">AutoSupport テレメトリを送信するプロキシのアドレス / ポート</block>
   <block id="256acfe307251e7444859851d87d5735" category="cell"><block ref="256acfe307251e7444859851d87d5735" category="inline-link-rx"></block></block>
   <block id="e9f06180af644cfa6e5d20bd67c03bc5" category="cell">uninstall</block>
-  <block id="076bc379a24183ce77834bac007ca852" category="cell">Astra Trident のアンインストールに使用するフラグ</block>
-  <block id="cad060d2f14dbf08315c20014ed31daa" category="cell">「 logFormat 」</block>
-  <block id="acfc4a8e6d53bad27d4e2d393bfff61e" category="cell">Astra Trident のログ形式が使用 [text 、 JSON]</block>
-  <block id="20cd815523e5806aec29a57282b0d49f" category="cell">テキスト（ Text ）</block>
   <block id="7610c5cc7910022402c4fbd450d889ce" category="cell">「 tridentImage 」のように入力します</block>
-  <block id="20f408a3276af1f7f1bf02ba374786ca" category="cell">インストールする Astra Trident イメージ</block>
-  <block id="896185b87765c519346253a5f54ecbe4" category="cell">「 NetApp / Trident ： 21.04 」</block>
   <block id="8088435dc0e1c8b85217d850d3e7a602" category="cell">「 imageRegistry 」と入力します</block>
-  <block id="4f25f4cca5c1939f4a728d2678e719f7" category="cell">内部レジストリへのパス。形式は「 &lt;registry fqdn&gt;[:port][/ssubpath]] 」です</block>
   <block id="e6b96cbb467923e86672bb25db5ecebb" category="cell">「 kubeletDir 」を参照してください</block>
-  <block id="31aad37dce0c28e12908582a0d63736a" category="cell">ホスト上の kubelet ディレクトリへのパス</block>
-  <block id="5b9febd4bd647dae5abfddaf99b9c540" category="cell">「 /var/lib/kubelet 」</block>
-  <block id="b6e0e2c4168573f0ed61c842470342ba" category="cell">「 wippeout 」</block>
-  <block id="4e33345575b5a443dec89767624a1ee8" category="cell">Astra Trident を完全に削除するために削除するリソースのリスト</block>
   <block id="2d30d1348c4d2533a165827a22516caa" category="cell">「 imagePullSecrets 」</block>
-  <block id="f73bb4a0bc9913e7fc6db5f9e5f2afeb" category="cell">内部レジストリからイメージをプルするシークレット</block>
   <block id="5a2ebfb8baa378cfcfcba58bbb1380c2" category="doc">要件</block>
   <block id="c777be7f669397b0a376fe32ca5cd9c3" category="section-title">サポートされるフロントエンド（オーケストレーションツール）</block>
   <block id="74aefc05d193afd5c50a0df882997656" category="paragraph">Trident Astra は、次のような複数のコンテナエンジンとオーケストレーションツールをサポート</block>
@@ -1266,8 +1242,6 @@
   <block id="a61ed3c1ecae587dbee1f2c0ace81e3b" category="paragraph">バックエンドの作成に失敗した場合は、バックエンドの設定に何か問題があります。次のコマンドを実行すると、ログを表示して原因を特定できます。</block>
   <block id="8427b84145b88f048d5caa532324cd11" category="paragraph">構成ファイルで問題を特定して修正したら、 create コマンドを再度実行できます。</block>
   <block id="8f828c7344e7fe65d66237a25193068b" category="summary">ONTAP SAN ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。</block>
-  <block id="9a5f09cf66e692efdae493ce4c9aa64f" category="doc">準備</block>
-  <block id="b5c795328aa98beaf5bdc15b54a533c1" category="paragraph">ONTAP SAN ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。ONTAP バックエンドすべてに対して、 Astra Trident が SVM に少なくとも 1 つのアグリゲートを割り当てておく必要があります。</block>
   <block id="5475028f502d04bc17cdfdf613d28cbf" category="paragraph">複数のドライバを実行し、 1 つまたは複数のドライバを参照するストレージクラスを作成することもできます。たとえば 'ONTAP-SAN' ドライバを使用する「 -dev 」クラスと 'ONTAP-SAN-エコノミー 'one を使用する「デフォルト」クラスを設定できます</block>
   <block id="c75f7811d70d17dbcd88e9d03752cbed" category="section-title">認証</block>
   <block id="51e35cec1e001fb8abfbe474a18dd282" category="paragraph">Astra Trident には、 ONTAP バックエンドを認証する 2 つのモードがあります。</block>
@@ -1293,13 +1267,6 @@
   <block id="2ab8ad0fce083cd02635b9126cf4353c" category="section-title">認証方法を更新するか、クレデンシャルをローテーションして</block>
   <block id="5e36c3d66bd47ae551071244dc48df17" category="admonition">パスワードのローテーションを実行する際には、ストレージ管理者が最初に ONTAP でユーザのパスワードを更新する必要があります。この後にバックエンドアップデートが続きます。証明書のローテーションを実行する際に、複数の証明書をユーザに追加することができます。その後、バックエンドが更新されて新しい証明書が使用されるようになります。この証明書に続く古い証明書は、 ONTAP クラスタから削除できます。</block>
   <block id="6819218365fe3a3d66752f663feecddb" category="paragraph">バックエンドを更新しても、すでに作成されているボリュームへのアクセスは中断されず、その後のボリューム接続にも影響しません。バックエンドの更新が成功した場合、 Astra Trident が ONTAP バックエンドと通信し、以降のボリューム処理を処理できることを示しています。</block>
-  <block id="93a4f17ec735c794a2d38eb0d9dc736b" category="section-title">igroup を指定します</block>
-  <block id="f66329c2f28d3aade033dade4fa02359" category="paragraph">Astra Trident は、 igroup を使用して、プロビジョニングするボリューム（ LUN ）へのアクセスを制御します。管理者はバックエンドに igroup を指定する方法として、次の 2 つを選択できます。</block>
-  <block id="caf7ba3262c90c77b09b7d53946b7be4" category="list-text">Astra Trident では、バックエンドごとに igroup を自動的に作成、管理できます。バックエンド定義に igroupName が含まれていない場合、 Astra Trident は、 SVM 上に trident-&lt;backend-UUID&gt; という名前の igroup を作成します。これにより、各バックエンドに専用の igroup が割り当てられ、 Kubernetes ノードの IQN の自動追加や削除が処理されます。</block>
-  <block id="b325b5680680ba28771d11978100bf3a" category="list-text">また、事前に作成された igroup もバックエンドの定義で提供できます。これは 'igroupName'config パラメータを使用して実行できますAstra Trident が、 Kubernetes ノードの IQN を既存の igroup に追加または削除します。</block>
-  <block id="ccdb9f53393401f058dcfc9c1de74547" category="paragraph">igroupName が定義されているバックエンドの場合 'igroupName を tridentctl バックエンド・アップデートで削除して 'Astra Trident の自動ハンドル・ igroup を持つことができますすでにワークロードに接続されているボリュームへのアクセスが中断されることはありません。今後作成される igroup Astra Trident を使用して接続を処理します。</block>
-  <block id="8841675f2e0dbba5719034b41ac52435" category="admonition">Astra Trident の一意のインスタンスごとに igroup を専用にすることを推奨します。これは、 Kubernetes 管理者とストレージ管理者にとって有益です。CSI Trident は、クラスタノード IQN の igroup への追加と削除を自動化し、管理を大幅に簡易化します。Kubernetes 環境（および Astra Trident インストール）全体で同じ SVM を使用する場合、専用の igroup を使用することで、ある Kubernetes クラスタに対する変更が、別の Kubernetes クラスタに関連付けられた igroup に影響しないようにできます。また、 Kubernetes クラスタ内の各ノードに一意の IQN を設定することも重要です。前述のように、 Astra Trident は IQN の追加と削除を自動的に処理します。ホスト間で IQN を再使用すると、ホスト間で誤って認識されて LUN にアクセスできないような、望ましくないシナリオが発生する可能性があります。</block>
-  <block id="3882232e20d620974a87db190a124fe7" category="paragraph">Astra Trident が CSI Provisioner として実行されない場合は、 Kubernetes クラスタ内のすべてのワーカーノードからの iSCSI IQN を含むように、 igroup を手動で更新する必要があります。Kubernetes クラスタに参加するノードの IQN を igroup に追加する必要があります。同様に、 Kubernetes クラスタから削除されたノードの IQN を igroup から削除する必要があります。</block>
   <block id="42f93278b0d15c8d0f6613813bf586d5" category="section-title">双方向 CHAP を使用して接続を認証します</block>
   <block id="12dd7bfa072b5a1eecf975f6a5a6eaa7" category="admonition">「 useCHAP 」パラメータは、 1 回だけ設定できるブール型のオプションです。デフォルトでは false に設定されています。true に設定したあとで、 false に設定することはできません。</block>
   <block id="bc601528678aeeb582101ed205a054bc" category="paragraph">「 useCHAP=true' に加えて、「 chapInitiatorSecret 」、「 chapTargetInitiatorSecret 」、「 chapTargetUsername 」、および「 chapUsername 」フィールドもバックエンド定義に含める必要があります。シークレットは 'tridentctl update を実行してバックエンドを作成した後に変更できます</block>
@@ -1376,7 +1343,6 @@
   <block id="e395471eab1d4c8fbc8452e98a95d0c5" category="list-text">インポートする必要がある FlexVol の名前を指定します。この FlexVol には、インポートが必要な LUN が 1 つしか含まれていないことに注意してください。</block>
   <block id="9e6bd670c6fd6b2808fae744834b7675" category="list-text">「 -f 」フラグとともに使用する必要がある PVC 定義のパスを指定します。</block>
   <block id="36b577af0f959f68e5e66336695e816c" category="list-text">PVC を管理するか、管理対象外にするかを選択します。デフォルトでは、 Trident によって PVC が管理され、バックエンドの FlexVol と LUN の名前が変更されます。アンマネージボリュームとしてインポートするには、「 --no-manage 」フラグを渡します。</block>
-  <block id="f898748ff73fc5faf70687cbb0051311" category="admonition">管理対象外の「 ONTAP -SAN 」ボリュームをインポートする場合は、 FlexVol 内の LUN が「 lun0 」になっていて、必要なイニシエータを持つ igroup にマッピングされていることを確認する必要があります。Trident が管理対象のインポートに対して自動的に処理します。</block>
   <block id="66f7455d3b73d0f9938704ee67b1f38a" category="paragraph">次に、 Astra Trident が FlexVol をインポートし、 PVC 定義に関連付けます。Astra Trident は、 FlexVol の名前を「 pvc-&lt;uuid&gt; 」形式に変更し、 FlexVol 内の LUN を「 lun0 」に変更します。</block>
   <block id="2d37ad5bcf7d115e10de14a38db72232" category="admonition">既存のアクティブな接続がないボリュームをインポートすることを推奨します。アクティブに使用されているボリュームをインポートする場合は、最初にボリュームをクローニングしてからインポートを実行します。</block>
   <block id="72b3664e6e381ccc62031c13f7ad6df9" category="paragraph">「 ONTAP_SAN_DEFAULT' バックエンドにある「 ONTAP-SAN-managed 」 FlexVol をインポートするには、「 tridentctl import 」コマンドを次のように実行します。</block>
@@ -1387,7 +1353,6 @@
   <block id="e8945ce1398c6d24aa1d518bca08034c" category="paragraph">ボリューム・パスが importvol1' の 'azurenetappfiles_40517' というバックエンドにある azure-netapp-files' ボリュームをインポートするには ' 次のコマンドを実行します</block>
   <block id="c3417eb755bee1658ae5b42ff2115193" category="admonition">ANF ボリュームのボリュームパスは、 / のあとのマウントパスにあります。たとえば ' マウント・パスが 10.0.0.2::/importvol1 の場合 ' ボリューム・パスは importvol1 になります</block>
   <block id="e4f61797b38c111b04c612b285a06659" category="summary">ONTAP NAS ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。</block>
-  <block id="9bc537b16cee9c42d1e2aa0048a2c426" category="paragraph">ONTAP NAS ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。ONTAP バックエンドすべてに対して、 Astra Trident が SVM に少なくとも 1 つのアグリゲートを割り当てておく必要があります。</block>
   <block id="00b8b321c68facfb94b31690cbd23e00" category="paragraph">ONTAP バックエンドすべてに対して、 Astra Trident が SVM に少なくとも 1 つのアグリゲートを割り当てておく必要があります。</block>
   <block id="c6cd2f38be30f5256f7116692ab56edd" category="paragraph">複数のドライバを実行し、 1 つまたは複数のドライバを参照するストレージクラスを作成することもできます。たとえば 'ONTAP-NAS' ドライバを使用する Gold クラスと 'ONTAP-NAS-エコノミー 'one を使用する Bronze クラスを構成できます</block>
   <block id="07b434b23f63ca6490df33b213599320" category="section-title">NFS エクスポートポリシーを管理します</block>
@@ -1440,7 +1405,6 @@
   <block id="972abf48cbbadbcd573754140d35e19a" category="cell">使用する Storage Virtual Machine</block>
   <block id="ef65dd3301d78701f7cfcf8a01834f2f" category="cell">SVM 「管理 LIF 」が指定されている場合に生成されます</block>
   <block id="3b890f58db76bb3003ada171cd18c4db" category="cell">「 igroupName 」と入力します</block>
-  <block id="1c59f4b76e4f9bf529f88205cd0a8ac6" category="cell">"trident-&lt;backend-UUID&gt; "</block>
   <block id="c08068da3c5d19547544c4bd424a6b76" category="cell">'toragePrefix'</block>
   <block id="e3f688f3aa653574b3253640aa98f47c" category="cell">SVM で新しいボリュームをプロビジョニングする際に使用するプレフィックスを指定します。設定後に更新することはできません</block>
   <block id="a996d2f8e072c583d6cc26aa1e4aba87" category="cell">Trident</block>
@@ -1450,7 +1414,6 @@
   <block id="79892588cbecd0b88729ea1a55b2a3a4" category="cell">FlexVol あたりの最大 LUN 数。有効な範囲は 50 、 200 です</block>
   <block id="2d782f413944b272c911c548418a18a3" category="cell">100</block>
   <block id="f703d18584e163e18762e4dc13ad96a0" category="cell">「 useREST` 」</block>
-  <block id="73e65f4bf1c67cf81e3531ab80adee7e" category="paragraph">どちらの場合も、ボリュームの添付ファイルには引き続きアクセスできます。以降のボリューム接続では、更新された igroup が使用されます。この更新によって、バックエンドにあるボリュームへのアクセスが中断されることはありません。</block>
   <block id="193a49bcfb561fea878daa5efe72cad9" category="section-title">ボリュームのプロビジョニング用のバックエンド構成オプション</block>
   <block id="a0ee23c5b4cbd6a28a4143933891f927" category="cell">「平和の配分」</block>
   <block id="26161d08a960162cd8633d0e23058aed" category="cell">space-allocation for LUN のコマンドを指定します</block>
@@ -1492,9 +1455,6 @@
   <block id="f00b69018be0961b32ee24ec54fb56d1" category="section-title">バックエンドを StorageClasses にマッピングします</block>
   <block id="ef1161058705470bb877fbce688eea9e" category="summary">ONTAP SAN ドライバを使用して ONTAP バックエンドを設定する方法について説明します。</block>
   <block id="31e8c05beab321d1465fc4c3f77e991a" category="doc">バックエンドに ONTAP SAN ドライバを設定します</block>
-  <block id="6c728e8788471413351ba9fcd26ca76e" category="list-text"><block ref="6c728e8788471413351ba9fcd26ca76e" category="inline-link-macro-rx"></block></block>
-  <block id="e5fc4f2bd89271cfb112e8b768f74dde" category="inline-link-macro">設定と例</block>
-  <block id="874216718c1d50bbd2aa417449058e46" category="list-text"><block ref="874216718c1d50bbd2aa417449058e46" category="inline-link-macro-rx"></block></block>
   <block id="ce8828fc10a926c196951c9bdd0d534d" category="section-title">ユーザ権限</block>
   <block id="96c17dbe45e7351fb2a4f71956c25e0c" category="paragraph">Astra Trident は、 ONTAP 管理者または SVM 管理者のいずれかとして実行されることを想定しています。通常は、「 admin 」クラスタユーザまたは「 vsadmin 」 SVM ユーザを使用するか、同じロールを持つ別の名前のユーザを使用します。Amazon FSX for NetApp ONTAP 環境では、 Astra Trident は、 ONTAP 管理者または SVM 管理者として、クラスタ「 fsxadmin 」ユーザまたは「 vsadmin 」 SVM ユーザ、または同じロールを持つ別の名前のユーザを実行する必要があります。「 fsxadmin 」ユーザは、クラスタ管理ユーザの限定的な代替ユーザです。</block>
   <block id="4937b52eb2cb058f225b69b2caafaf29" category="admonition">limitAggregateUsage パラメータを使用する場合は、クラスタ管理者権限が必要です。Amazon FSX for NetApp ONTAP を Astra Trident とともに使用する場合、「 limitAggregateUsage 」パラメータは「 vsadmin 」および「 fsxadmin 」ユーザアカウントでは機能しません。このパラメータを指定すると設定処理は失敗します。</block>
@@ -1599,7 +1559,6 @@
   <block id="7b7587593fc7d381339d450faa35dfa9" category="paragraph">イベントログの詳細を取得するには、「 kubectl -n trident describe describe tbc &lt;tbc -cr-name&gt; 」コマンドを実行します。</block>
   <block id="6dc07da7e54d697726bb349fb693fa8b" category="inline-link-macro">こちらを参照してください</block>
   <block id="c732962a4a01ea5f406ec66e50e98903" category="admonition">tridentctl を使用して ' 関連付けられた TridentBackendConfig' オブジェクトを含むバックエンドを更新または削除することはできません「 tridentctl 」と「 TridentBackendConfig 」の切り替えに関連する手順を理解するには、次の手順に従います。 <block ref="8d6bc70a41f48e3f72c3f5ea8752090b" category="inline-link-macro-rx"></block>。</block>
-  <block id="99c7791f20f0d41bd8f14c11e666a405" category="summary">Amazon Elastic Kubernetes Service （ EKS ）で実行されている Astra Trident と Amazon ONTAP を使用することで、 ONTAP がサポートするブロックボリュームとファイル永続ボリュームを確実にプロビジョニングできます。</block>
   <block id="337de5d45c69b1e4dcf87a8e7ec9ff76" category="doc">Amazon FSX for NetApp ONTAP で Astra Trident を使用</block>
   <block id="7eb620c879218a348ba0e9afaedf6b01" category="paragraph">ファイルシステムは、オンプレミスの ONTAP クラスタに似た、 Amazon FSX のプライマリリソースです。各 SVM 内には、ファイルとフォルダをファイルシステムに格納するデータコンテナである 1 つ以上のボリュームを作成できます。Amazon FSX for NetApp ONTAP を使用すると、 Data ONTAP はクラウド内の管理対象ファイルシステムとして提供されます。新しいファイルシステムのタイプは * NetApp ONTAP * です。</block>
   <block id="ff27e75635c1ff1e88fbc656b16e56ce" category="section-title">Astra Trident の詳細をご確認ください</block>
@@ -1637,7 +1596,6 @@
   <block id="c0417f5bbd54c5dc1c3704d6b566fcf3" category="list-text"><block ref="c0417f5bbd54c5dc1c3704d6b566fcf3" category="inline-link-macro-rx"></block></block>
   <block id="8b7b728c6a1e7accd6148646ba730e77" category="summary">Astra Trident でバックエンドを管理するさまざまな方法をご確認ください。</block>
   <block id="4342473e01edd2e1440b8b76076f4c9e" category="doc">バックエンド管理オプション間を移動します</block>
-  <block id="207aacc2f1990ce861bf20cfcd0ca067" category="paragraph">Astra Trident でバックエンドを管理するさまざまな方法をご確認ください。「 TridentBackendConfig 」が導入されたことで、管理者はバックエンドを 2 つの方法で管理できるようになりました。これには、次のような質問があります。</block>
   <block id="a7b407f571446f9f4a30f63e8160784a" category="list-text">tridentctl を使用して作成したバックエンドは 'TridentBackendConfig' で管理できますか</block>
   <block id="3e1fc11d05c13404995af2b9fda64675" category="list-text">「 TridentBackendConfig 」を使用して作成したバックエンドは、「 tridentctl 」を使用して管理できますか。</block>
   <block id="d6da18e16f248df47ee8e5139ef0156a" category="paragraph">このセクションでは 'tridentBackendConfig' オブジェクトを作成して Kubernetes インターフェイスから直接 'tridentctl を使用して作成されたバックエンドの管理に必要な手順について説明します</block>
@@ -1690,7 +1648,6 @@
   <block id="e00013adda7b5901ea3e44ae300fd73d" category="paragraph">これは、「 TridentBackendConfig 」を使用して作成されたバックエンドにも適用されます。</block>
   <block id="bc960ce53bb0d62c44b5a3f212c279d3" category="summary">ストレージクラスを作成したり、ストレージクラスを削除したり、既存のストレージクラスを表示したりできます。</block>
   <block id="e8b9c3a9859a62e9a58431c3b61f75d5" category="doc">ストレージクラスを管理する</block>
-  <block id="5802c976ee5f858f76699af5294812e6" category="paragraph">ストレージクラスの作成、ストレージクラスの削除、および既存のストレージクラスの表示に関する情報を検索します。</block>
   <block id="e123173acd76721f31496874fd778eca" category="section-title">ストレージクラスを設計する</block>
   <block id="a9a4b52c93b141ba28676afe58a5900d" category="paragraph">を参照してください <block ref="5a81d2db77288939223c6a591fc3991d" category="inline-link-macro-rx"></block> ストレージクラスとその設定方法の詳細については、を参照してください。</block>
   <block id="14f4c7abe09c4481722f1fa6563f2604" category="section-title">ストレージクラスを作成する。</block>
@@ -1760,7 +1717,6 @@
   <block id="5878b59fb3a8430928026b63b5ca336f" category="paragraph">構成ファイルで問題を特定して修正したら、 update コマンドを再実行できます。</block>
   <block id="bee1e2306bc7054ee443dc651eae90de" category="summary">Astra Trident は、一連の Prometheus 指標エンドポイントを提供し、 Astra Trident のパフォーマンスの監視に使用できます。</block>
   <block id="44a004cad6eb7ea8839aaa8754ead178" category="doc">Astra Trident を監視</block>
-  <block id="3f8e7343fbab71427901476dc4eb0cf3" category="paragraph">Astra Trident は、 Astra Trident のパフォーマンスを監視するために使用できる一連の Prometheus 指標エンドポイントを提供します。</block>
   <block id="c827f266cf12e05adc1fe95215415abf" category="paragraph">Astra Trident が提供する指標を使用すると、次のことが可能になります。</block>
   <block id="6111d709595b0a106ff313a249eb9d92" category="list-text">Astra Trident の健常性と設定を保持処理が成功した方法と、想定どおりにバックエンドと通信できるかどうかを調べることができます。</block>
   <block id="64dbac0ca36d9b1f6a8cf1e8a0123261" category="list-text">バックエンドの使用状況の情報を調べて、バックエンドでプロビジョニングされているボリュームの数や消費されているスペースなどを確認します。</block>
@@ -1861,7 +1817,6 @@
   <block id="d7f015aa2f1d488e17e175dac6de3149" category="list-text"><block ref="d7f015aa2f1d488e17e175dac6de3149" category="inline-link-macro-rx"></block></block>
   <block id="24ca391029d6df294c5d5b8f1fe5b4eb" category="summary">ONTAP NAS ドライバを使用した ONTAP バックエンドの設定について説明します。</block>
   <block id="0f5dc79c8003190ab8f758b1748ba0d8" category="summary">ネットアップは、製品やサービスの改善と強化を継続的に行っています。最新バージョンの Astra Trident の機能、拡張機能、バグ修正の一部を以下に示します。</block>
-  <block id="5dd03e8d039863e563e049be198c3fd3" category="doc">リリースノート</block>
   <block id="2e6ce374ac42de81aea6a3d682b92e33" category="paragraph">リリースノートでは、最新バージョンの Astra Trident の新機能、拡張機能、およびバグ修正に関する情報を提供しています。</block>
   <block id="e4c4d344a524d21b898e4d04b6539aa7" category="admonition">インストーラ zip ファイルに含まれている Linux の tridentctl バイナリは ' テスト済みでサポートされているバージョンですzip ファイルの「 /extras 」部分に含まれている「 macos 」バイナリはテストされておらず、サポートされていないことに注意してください。</block>
   <block id="41cf959adc98386b54829d71a6ed5d37" category="section-title">の修正</block>
@@ -1908,22 +1863,6 @@
   <block id="193bfae1ebda99fb7289c66fa69395a0" category="list-text"><block ref="193bfae1ebda99fb7289c66fa69395a0" category="inline-link-rx"></block></block>
   <block id="cba2c660d905f83e39a0d1771286c9e7" category="inline-link">Astra Trident 21.01</block>
   <block id="97f32ab1a5165dc49105dca53b9f4de7" category="list-text"><block ref="97f32ab1a5165dc49105dca53b9f4de7" category="inline-link-rx"></block></block>
-  <block id="727d2d1e15a5c7260e90c50b1c250a4c" category="inline-link">Astra Trident 20.10</block>
-  <block id="8a0315074645cbbab67a7445dcdf42f2" category="list-text"><block ref="8a0315074645cbbab67a7445dcdf42f2" category="inline-link-rx"></block></block>
-  <block id="bad2b8fa41c05085668e48d7c14968dc" category="inline-link">Astra Trident 20.07</block>
-  <block id="449d7e957347de63ee3d9841c40b4e7f" category="list-text"><block ref="449d7e957347de63ee3d9841c40b4e7f" category="inline-link-rx"></block></block>
-  <block id="7c0a09ca9ea4472728e4661755a43c6b" category="inline-link">Astra Trident 20.04</block>
-  <block id="8a72b28486832ed8c725617460afbdcb" category="list-text"><block ref="8a72b28486832ed8c725617460afbdcb" category="inline-link-rx"></block></block>
-  <block id="1dc5429c6c86712d7628beb5652a0e2e" category="inline-link">Astra Trident 20.01</block>
-  <block id="23204facdc38bad335a6afce81db0827" category="list-text"><block ref="23204facdc38bad335a6afce81db0827" category="inline-link-rx"></block></block>
-  <block id="5b2d210bf907d26b59abbaa0e22fbbe6" category="inline-link">Astra Trident 19.10</block>
-  <block id="3377906a52734323c44c8f31b2d29e63" category="list-text"><block ref="3377906a52734323c44c8f31b2d29e63" category="inline-link-rx"></block></block>
-  <block id="f1d7fe87216a18ff3ffcfa98d6065689" category="inline-link">Astra Trident 19.07</block>
-  <block id="12e29d431cea2700aa9d89e0c89e67bc" category="list-text"><block ref="12e29d431cea2700aa9d89e0c89e67bc" category="inline-link-rx"></block></block>
-  <block id="fe4bdabecc64b786523a3d86bb1f9cfd" category="inline-link">Astra Trident 19.04</block>
-  <block id="e43783d5a51a10670edf444f0b58b6af" category="list-text"><block ref="e43783d5a51a10670edf444f0b58b6af" category="inline-link-rx"></block></block>
-  <block id="5e152ff33f3262612abc4b942db27ad1" category="inline-link">Astra Trident 19.01</block>
-  <block id="977636e26059252def0425dca74811ef" category="list-text"><block ref="977636e26059252def0425dca74811ef" category="inline-link-rx"></block></block>
   <block id="d2eb05d1990246a079aeb2f56e3a4237" category="paragraph">Astra Trident の複数のインスタンスを同じホストで同時に実行できます。これにより、複数のストレージシステムとストレージタイプへの同時接続が可能になり、 Docker ボリュームに使用するストレージをカスタマイズできます。</block>
   <block id="89bcbd8e4ba49b7310e9fa748e878c4b" category="inline-link-macro">導入の前提条件</block>
   <block id="88f0ab229fa9d759d74fcf6ab7cc17b1" category="section-title">Docker Managed Plugin メソッド（バージョン 1.13 / 17.03 以降）</block>
@@ -2253,7 +2192,6 @@
   <block id="d7c32cb5ff2be4aaff3a8eaea9d18e0d" category="list-text">SVM 名を指定しなかった場合に問題が検出されないという問題を修正しました（ GitHub 問題 612 ）。</block>
   <block id="a55b7ee69c26277a1088efc103e15297" category="paragraph">使用可能なコマンドとグローバルオプションは次のとおりです。</block>
   <block id="94912f7fb206038e8527957b44dfbf25" category="paragraph">すべての Trident ポッドが再起動されます。これには数秒かかることがあります。これを確認するには 'kubectl get pod -n trident' の出力の 'age' 列を確認します</block>
-  <block id="597a56086e1f9d7ca5e8f55c40a0153a" category="list-text">OpenShift Container Platform でサポートされている Red Hat CoreOS （ RHCOS ）バージョン</block>
   <block id="73e93ad328287e5ce4c06228cfdba2bf" category="cell">v1.3.0</block>
   <block id="08ee53e1d5cefb7967a295e98036598e" category="cell">.snapshot ディレクトリの表示を制御します</block>
   <block id="016a4b469916e37291cfe2f7fab49aaf" category="cell">「 resourceGroups 」</block>
@@ -2307,8 +2245,6 @@
   <block id="7213ed07f5b718aa66cfac350f023a77" category="list-text">すでにインポートされているボリュームをインポートしようとすると、 EOF 問題 が返され、 PVC は保留状態になります。（<block ref="b9a2290d6389b9a605883cda4e717749" category="inline-link-macro-rx"></block>)</block>
   <block id="c28d8c94f865f3ef7e4b01a157510ef6" category="list-text">Fixed 問題 ： Astra Trident では、 SolidFire ボリュームで作成される Snapshot が 32 個を超えるとパフォーマンスが低下します。</block>
   <block id="d0aaca968285d0d47ea0c5a0f7b9bab5" category="list-text">SSL 証明書の作成時に SHA-1 を SHA-256 に置き換えました。</block>
-  <block id="92e6030d252cfd43e0567e282a0d2c9b" category="paragraph">Astra Trident では、を使用して、 Kubernetes クラスタ内にあるノードにボリュームを選択的に作成して接続できます<block ref="80b9a4f4a1bc9851317207ee3477041a" category="inline-link-rx"></block>。CSI トポロジ機能を使用すると、領域およびアベイラビリティゾーンに基づいて、ボリュームへのアクセスをノードのサブセットに制限できます。現在、クラウドプロバイダは、 Kubernetes 管理者がゾーンベースのノードを生成できるようになっています。ノードは、リージョンによって異なるアベイラビリティゾーンに配置することも、リージョンによって配置することもできます。マルチゾーンアーキテクチャでワークロード用のボリュームをプロビジョニングするために、 Astra Trident は CSI トポロジを使用します。</block>
-  <block id="d293f031e5664526b25f3a65012401b7" category="cell">「 IPv6 」</block>
   <block id="997cff957213b9212a22d7cac2b4275d" category="list-text">生成された証明書を使用して認証をテストONTAP 管理 LIF &gt; と &lt;vserver name&gt; は、管理 LIF の IP アドレスおよび SVM 名に置き換えてください。LIF のサービスポリシーが「 default-data-management 」に設定されていることを確認する必要があります。</block>
   <block id="1e6c7220f5d4eb181d67b4d5043336f5" category="paragraph">Amazon Elastic Kubernetes Service （ EKS ）で実行されている Astra Trident と Amazon FSX for NetApp ONTAP を使用すると、 ONTAP がサポートするブロックボリュームとファイル永続ボリュームを確実にプロビジョニングできます。</block>
   <block id="10b862795141355be1c179a2f878f507" category="list-text">ONTAP ファイル・システム用の FSX を作成する場合は '**Quick create** を使用しないでくださいクイック作成ワークフローでは、自動バックアップが有効になり、オプトアウトオプションはありません。</block>
@@ -2373,7 +2309,6 @@
   <block id="5a333b18a215ecfd4457ba0e1732654b" category="section-title">Tridentは、負荷共有ミラーが設定されているSVMでボリュームをプロビジョニングできますか。</block>
   <block id="0e7629426b9d7596800cd5d72f558a7f" category="paragraph">負荷共有ミラーは、NFS経由でデータを提供するSVMのルートボリューム用に作成できます。ONTAP は、Tridentによって作成されたボリュームの負荷共有ミラーを自動的に更新します。ボリュームのマウントが遅延する可能性があります。Tridentを使用して複数のボリュームを作成する場合、ボリュームをプロビジョニングする方法は、負荷共有ミラーを更新するONTAP によって異なります。</block>
   <block id="d5d195efeafde24a6a22effd3dd39339" category="list-text">認証情報ベース：ファイルシステムには「 fsxadmin 」ユーザを、 SVM には「 vsadmin 」ユーザを使用できます。</block>
-  <block id="0b4a92a731cb582bd951a7aa481f0602" category="list-text">Anthosオンプレミス（VMware）とAnthos：ベアメタル1.9、1.10、1.11</block>
   <block id="7d3f46589c43a64fd040e4f0e0691a86" category="inline-link-macro">Helmチャート</block>
   <block id="c9ffe59301b588bbc33bb004cfd312ee" category="section-title">Tridentオペレータを導入し、Helmを使用してAstra Tridentをインストール</block>
   <block id="1ea1b160621872df5909653ebde1bf7f" category="paragraph">既存のバックエンドを更新して、クレデンシャルベースの方式と証明書ベースの方式を切り替えることができます。ただし、一度にサポートされる認証方法は1つだけです。別の認証方式に切り替えるには、バックエンド設定から既存の方式を削除する必要があります。</block>
@@ -2384,7 +2319,6 @@
   <block id="412427d9207c4cc4b01539aff3c50e7c" category="cell">「ネットワーク機能」</block>
   <block id="6dc4cb19f2792a3eadfa64d4b4b6d177" category="paragraph">すべてのKubernetesワーカーノードに適切なNFSツールをインストールしておく必要があります。を参照してください <block ref="f1f954e59a21e3ffe189e77dd2ee9f86" category="inline-link-macro-rx"></block> 詳細：</block>
   <block id="6adbf3424e5de1b4e2baad3b4d632c4a" category="paragraph">既存のバックエンドを更新して、別の認証方法を使用したり、クレデンシャルをローテーションしたりできます。これはどちらの方法でも機能します。ユーザ名とパスワードを使用するバックエンドは証明書を使用するように更新できますが、証明書を使用するバックエンドはユーザ名とパスワードに基づいて更新できます。これを行うには、既存の認証方法を削除して、新しい認証方法を追加する必要があります。次に'必要なパラメータを含む更新されたbackend.jsonファイルを使用して'tridentctl backend updateを実行します</block>
-  <block id="da5e3ce6518bd669264e1e0768c2d9f1" category="paragraph">すべてのKubernetesワーカーノードに適切なiSCSIツールをインストールしておく必要があります。を参照してください <block ref="f1f954e59a21e3ffe189e77dd2ee9f86" category="inline-link-macro-rx"></block> 詳細：</block>
   <block id="880cacf6429ab3c253b14beac8b73951" category="summary">Kubernetesポッドのセキュリティ標準（PSS）とポッドのセキュリティポリシー（PSP）によって、権限レベルが定義され、ポッドの動作が制限されます。また、OpenShift Security Context Constraints（SCC）でも、OpenShift Kubernetes Engine固有のポッド制限を定義します。このカスタマイズを行うために、Astra Tridentはインストール時に特定の権限を有効にします。</block>
   <block id="bc3c69459955aa51e6720ee4098db2c2" category="doc">PODセキュリティ標準（PSS）およびセキュリティコンテキストの制約（SCC）</block>
   <block id="9d482ecca4ba8a41fd8e1180c97a4b97" category="paragraph">Kubernetesポッドのセキュリティ標準（PSS）とポッドのセキュリティポリシー（PSP）によって、権限レベルが定義され、ポッドの動作が制限されます。また、OpenShift Security Context Constraints（SCC）でも、OpenShift Kubernetes Engine固有のポッド制限を定義します。このカスタマイズを行うために、Astra Tridentはインストール時に特定の権限を有効にします。次のセクションでは、Astra Tridentによって設定された権限の詳細を説明します。</block>
@@ -2503,7 +2437,6 @@
   <block id="dbcf7f603282c175a634104f7dbd55f2" category="paragraph">まれに'ResourceQuotaオブジェクトが作成された後にインストールが失敗する場合は'最初に実行します <block ref="3bd802fb95da78515b3c3d98916ee73c" category="inline-link-macro-rx"></block> を再インストールします。</block>
   <block id="c4af59b1638f70f51816423f72df4dba" category="paragraph">それでも解決しない場合は'ResourceQuotaオブジェクトを手動で削除します</block>
   <block id="ba991f2f6d0f733e9b8a2136cedc99b2" category="paragraph">独自のリソース割り当てを制御する場合は、コマンドを使用してAstraのResourceQuotaオブジェクトを削除できます。</block>
-  <block id="9337cac2cd1105449cd4e78ff2a353a4" category="cell">"k83.gcr.io/sig-storage (k8s 1.19+)またはQua.io/k8scsi"</block>
   <block id="702fa57eedc6ee8490a7294016f8b14f" category="list-text">trident-resourcesequota.yaml</block>
   <block id="6b51834314ece904405eb0ce1a6e6bd8" category="list-text">NetApp HCI / Elementソフトウェア11以降</block>
   <block id="468bc1e7f7712a8dc9b91d063523cdff" category="cell">v1.24.0</block>
@@ -2513,7 +2446,6 @@
   <block id="0ae28ee1c5edfd4bee3e296a8261ed8b" category="inline-link-macro">GitHub問題 #736</block>
   <block id="69ce5488c3078e15fc6e51116d1d17ba" category="list-text">非CHAPパスのエラーを処理する問題 を修正したため、失敗した場合kubeletが再試行されるようになりました。 <block ref="a21b5d75e3a2341288a5ed769d7d4ca2" category="inline-link-macro-rx"></block>)</block>
   <block id="701ba87ab75dde70f4604769defc7d00" category="list-text">CSIイメージのデフォルトレジストリとして、k8s .gcr.ioからregistry.k8s .ioに移行します</block>
-  <block id="95b61962ec35cc252a4791e4101c5aaa" category="list-text">ONTAP SANボリュームでは、ノード単位のigroupが使用され、LUNがigroupにマッピングされると同時に、これらのノードにアクティブに公開されてセキュリティ体制が強化されます。Tridentがアクティブなワークロードに影響を与えずに安全であると判断した場合、既存のボリュームは新しいigroupスキームに適宜切り替えられます。</block>
   <block id="90e3cd7cff1c9f6f4b8d2a509b127d44" category="list-text">TridentのインストールにResourceQuotaが含まれ、PriorityClassの消費がデフォルトで制限されたときにTrident DemonSetがスケジュールされるようになりました。</block>
   <block id="838a6d7e89b7c366cfc25d3b2115b901" category="inline-link-macro">GitHub問題 #717</block>
   <block id="83a65beedcdd811d7b3b4fe9d2c4614f" category="list-text">ANFドライバへのネットワーク機能のサポートが追加されました。（<block ref="e0e89f8bd936a5eb3adce74cac88eab0" category="inline-link-macro-rx"></block>)</block>
@@ -2625,10 +2557,8 @@
   <block id="071d9becf308917b53d70c09e7da51b6" category="list-text">サポートされているネットアップストレージシステムへのアクセス。</block>
   <block id="19eb712f406fc64109f96d9cf4055cb9" category="list-text">Kubernetesワーカーノードすべてからボリュームをマウントできます。</block>
   <block id="5f35b91e200cda68bf700d65b89c2c73" category="list-text">を搭載したLinuxホスト<block ref="0f12ee5c9f1dd90158580f1c292b0d37" prefix=" " category="inline-code"></block> （または<block ref="fb024832e51eb5f6da9113a745f1eb59" prefix=" " category="inline-code"></block>OpenShiftを使用している場合）Kubernetesクラスタを管理するようにインストールおよび設定します。</block>
-  <block id="c1c8ac442a800bb41f1cc1dc1350132e" category="admonition">WindowsノードでAstra Tridentを実行できるようにするには、を追加します<block ref="636d7cccc33f77beafb20be9cf83cd53" prefix=" " category="inline-code"></block> インストールコマンドへのフラグ：<block ref="a240440622dae805c5d62a3c17f5f51e" prefix=" " category="inline-code"></block>。</block>
   <block id="50f33d14f129e4548c1c270fd6725a78" category="section-title">設定オプション</block>
   <block id="05f901da7fdacb9ca59e3d7e2d40f98d" category="cell"><block ref="0f4137ed1502b5045d6083aa258b5c42" prefix="" category="inline-code"></block></block>
-  <block id="fbbd7b4b14060c4fdb02f92c4c08e702" category="cell">をに設定します<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> Windowsワーカーノードへのインストールを有効にします。</block>
   <block id="a3ff66cf5848a34d56915c8e879a5d52" category="section-title">構成例</block>
   <block id="a6ba054ae6c021e3bc8a173393842c3d" category="paragraph">上記の属性は、を定義するときに使用できます<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> をクリックして、インストールをカスタマイズします。</block>
   <block id="3dabf672facbe8c5e2eeff030c2b8520" category="example-title">例1：基本的なカスタム構成</block>
@@ -2690,7 +2620,6 @@
   <block id="eb89f16d07a93fa10a31ec6309045fe9" category="doc">ONTAP のSAN構成オプションと例</block>
   <block id="b8ae61dc50cf8e8b79e68bc4a8d36393" category="cell"><block ref="0f179ba2bc32ab5d8f60692f5b800c86" prefix="" category="inline-code"></block></block>
   <block id="a56dcba8eacdac67fb510e1434d560d8" category="inline-link-macro">Linux Unified Key Setup（LUKS；統合キーセットアップ）を使用</block>
-  <block id="8f145066de3f0e0a9d2e9cc5bf6f09f5" category="doc">ONTAP NASバックエンドを設定します</block>
   <block id="fd05c90de484dbc1cb963df796886af4" category="doc">ONTAP NASドライバを使用してバックエンドを設定する準備をします</block>
   <block id="481e993a13f6d4f981acc2da60465e2a" category="summary">ANF用のNFSとSMBのバックエンド構成オプションについて説明し、設定例を確認してください。</block>
   <block id="17a48ec106d5505e674ccdf56fce1058" category="doc">Azure NetApp Files バックエンド構成のオプションと例</block>
@@ -2726,11 +2655,9 @@
   <block id="c51cc3b801a879870aea846bdde1c7a3" category="section-title">バックエンドを作成します</block>
   <block id="7d8058d93ec1d95c673d83bf303326ff" category="doc">ONTAP NASの設定オプションと例</block>
   <block id="618a7676e411bbfbd9dbdb2411019951" category="summary">Azure NetApp Files （ANF）をAstra Tridentのバックエンドとして設定できます。ANFバックエンドを使用してNASボリュームとSMBボリュームを接続できます。</block>
-  <block id="9d556ecfb4757173c93a34a5466447d7" category="list-text"><block ref="9d556ecfb4757173c93a34a5466447d7" category="inline-link-macro-rx"></block></block>
   <block id="ea61e2c2ff507048203824add1eb7c21" category="section-title">考慮事項</block>
   <block id="8f395c84ad002394e9f070a25937dcc4" category="list-text">Azure NetApp Files サービスでは、100GB未満のボリュームはサポートされません。100 GB のボリュームが小さい場合は、 Trident が自動的に作成します。</block>
   <block id="1cf44a6bee7fa333861e5d0042926fb5" category="list-text">Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート</block>
-  <block id="279096894abe6299537e865410f3d494" category="list-text">Astra TridentはWindows ARM アーキテクチャをサポートしていません。</block>
   <block id="ef0f938ae67a04ac3370fe516c2a6baf" category="list-text">Kubernetes 1.25のサポートが追加されました。Kubernetes 1.25にアップグレードする前に、Astra Tridentを22.10にアップグレードする必要があります。</block>
   <block id="d041a310ba7cc2599250e64801594107" category="list-text">のサポートが追加されました <block ref="ca184a2eda203b6d98158bdf24e5cf7d" category="inline-link-macro-rx"></block>。</block>
   <block id="adbfe36f6399f2846983b2901604a962" category="list-text">を追加しました <block ref="40be42d37bc6014716dcd0a1d368ffb5" category="inline-link-macro-rx"></block> を使用する<block ref="bc5779a2d33eeb1304bae57f15920cfc" prefix=" " category="inline-code"></block> ストレージドライバ。</block>
@@ -2775,7 +2702,6 @@
   <block id="26dbe1fe275b741e7240a373222d3480" category="paragraph">CRD を使用する Astra Trident リリースに移行する場合は、ダウングレードを検討する必要があります。Astra Tridentは、ステートの維持にCRDを使用するため、作成されたすべてのストレージエンティティ（バックエンド、ストレージクラス、PV、ボリュームスナップショット）には、に書き込まれるデータではなく、関連するCRDオブジェクトが含まれています<block ref="47cb44be55a0dffa15dfc900a4c687be" prefix=" " category="inline-code"></block> PV（以前にインストールしたAstra Tridentのバージョンで使用）新しく作成された PVS 、バックエンド、およびストレージクラスはすべて CRD オブジェクトとして管理されます。</block>
   <block id="06b33bc9cc124539c964174ecd43eb43" category="paragraph">CRD（19.07以降）を使用して実行されているAstra Tridentのバージョンのダウングレードのみを試みます。これにより、ダウングレードの実行後に、現在のAstra Tridentリリースで実行された処理を確認できます。</block>
   <block id="c27e444dab3a08bf8ec59794897c1a27" category="inline-link-macro">サポートされるKubernetesバージョン</block>
-  <block id="482d7c15b1a7200b3981ee1f99a86fef" category="list-text"><block ref="482d7c15b1a7200b3981ee1f99a86fef" category="inline-link-macro-rx"></block></block>
   <block id="756efcb3a97cdd37e8b34de3913c3d8f" category="paragraph">を参照してください <block ref="18d5551396fb2ce2e009cfdb709e4875" category="inline-link-macro-rx"></block>。前提条件を満たしていることを確認したら、 Astra Trident を導入する準備ができました。</block>
   <block id="0d41f8565b8b74a59fc029ccf2becd83" category="list-text">マネージドプラグインシステムを使用して Astra Trident を起動交換してください<block ref="3d689bd3819ead35ed794427bd12f459" prefix=" " category="inline-code"></block> 使用しているプラグインのバージョン（xxx.xxx.xxx.xxx）を使用している必要があります。</block>
   <block id="4f0e7dc30ffb3e25e75331c9afb2243a" category="cell">ボリュームモード</block>
@@ -2824,7 +2750,6 @@
   <block id="81801ea9aa153d054652d45bc18af0a7" category="section-title"><block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix="" category="inline-code"></block> 双方向CHAPを備えたドライバ</block>
   <block id="5d49eece8e9afa44ffdead9ff18462be" category="section-title"><block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix="" category="inline-code"></block> ドライバ</block>
   <block id="19ef07597f79648211dbed100709836b" category="section-title">バックエンドを更新して追加<block ref="1f2a94e142bf020b1f7c6297ec12413f" prefix=" " category="inline-code"></block></block>
-  <block id="004d3e2a4856b16f30a875347fa180b1" category="paragraph-title">知っておくべきこと</block>
   <block id="891d26d5e7410db6c0a971245c6025c0" category="section-title">例1：のバックエンド構成<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block> 3種類のボリュームを備えたドライバ</block>
   <block id="4a8519b09a0b2a70d40200e88ec2c5dc" category="section-title"><block ref="caafdf62a2c609bfa5316118231a1007" prefix="" category="inline-code"></block> ドライバ</block>
   <block id="454631312fab234fc91bb2f85a751fac" category="section-title"><block ref="913a4b06671d1e04e6582a85afe3abbe" prefix="" category="inline-code"></block></block>
@@ -2886,7 +2811,6 @@
   <block id="35aa4a2a819e526c2e930e487df8d423" category="list-text"><block ref="35aa4a2a819e526c2e930e487df8d423" category="inline-link-macro-rx"></block></block>
   <block id="19476662cd814e0aa085eca121de89b8" category="inline-link-macro">ボリュームSnapshotクラス</block>
   <block id="d63cadc96caf4b05f8fa532b08e889da" category="list-text"><block ref="d63cadc96caf4b05f8fa532b08e889da" category="inline-link-macro-rx"></block></block>
-  <block id="31f8757839909e87266f2b53482c86ef" category="list-text">Windows Server 2019</block>
   <block id="3b64653c97a388d828849314b6a1b383" category="cell">プールのラベル値は次のとおりです。</block>
   <block id="6da89265a9a8b0b28eb4946bb2ec0c6d" category="cell">一致</block>
   <block id="ecf92052d55345fee4602d9eb8c22063" category="cell">一致しません</block>
@@ -2905,8 +2829,6 @@
   <block id="054b5072368dea4f8748909c16c7de98" category="cell">シック：All ONTAP ；thin：All ONTAP &amp; solidfire-san-SAN</block>
   <block id="dbdc06f8742b98dcacdf7fdb1af111ea" category="paragraph">ONTAPNAS、ONTAPNASエコノミー、ONTAP-NAS-flexgroup、ONTAPSAN、solidfire-san-SAN、solidfire-san-SAN、GCP-cvs、azure-NetApp-files、ONTAP-SAN-bエコノミー</block>
   <block id="f888aa18c19e41f8c1263fa99ca8b94c" category="cell">solidfire-san-group、ontap/nas、ontap -nas-エコノミー、ontap -nas-flexgroup、ontap -san、ONTAP - SAN -経済性</block>
-  <block id="a64f78ea5d42780118e8f5c7f6cfdcbb" category="list-text"><block ref="a64f78ea5d42780118e8f5c7f6cfdcbb" category="inline-link-macro-rx"></block></block>
-  <block id="65a38da8aec2b99cf44dbf919fbd6991" category="list-text"><block ref="65a38da8aec2b99cf44dbf919fbd6991" category="inline-link-macro-rx"></block></block>
   <block id="05a2712653dfbf7d695c18242d9848e6" category="paragraph">RHEL 8以降</block>
   <block id="bba4e1b8d8614fe9da2d67e2dcef4b52" category="paragraph"><block ref="8321592ce24c8a122ecf26a63cfca407" prefix="" category="inline-code"></block>、<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block>、<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block>、<block ref="844e84da8e822b4a33c4d8188da97937" prefix=" " category="inline-code"></block>、<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block></block>
   <block id="c95cada2a569592345ebc18e5ef4c7aa" category="paragraph">プロトコル LIF の IP アドレス。</block>
@@ -2926,7 +2848,6 @@
   <block id="9899a49139c92dc0ebfa6808b9d83291" category="section-title">Astra Trident 23.01に関する重要な情報</block>
   <block id="d883ab5f686800bc89cab8e6bd776c10" category="paragraph">* Astra Tridentに関する次の重要な情報をお読みください。*</block>
   <block id="92b6d6e1b0bf78702d88ede445c4256f" category="example-title">&lt;strong&gt; ：Trident &lt;/strong&gt; に関する重要な情報</block>
-  <block id="bdae2123f4237558f3521f7e74c70955" category="list-text">TridentでKubernetes 1.26がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレード</block>
   <block id="7416271d47db3d82227ab2164e43c75c" category="list-text">Astra Tridentは、SAN環境でマルチパス構成を厳密に使用し、推奨される値をに設定します<block ref="db729c5c8df447087e5a84b961df14f6" prefix=" " category="inline-code"></block> multipath.confファイル内。</block>
   <block id="2f5480efe7a0a4b0cffbf110abec11c2" category="paragraph">Tridentの使用 <block ref="cdacb2b0d49176a3c0d8cc9d693de833" category="inline-link-macro-rx"></block> Tridentオペレータを導入し、Tridentを一度にインストールできます。</block>
   <block id="3342f1a2f74c6062a39d3076c35c5a5b" category="inline-link-macro">インストールの概要</block>
@@ -3003,11 +2924,9 @@
   <block id="aa7d43663995cc5a82e0608e61443ac2" category="list-text">オペレータベースの導入環境で、削除して代わりにを使用する場合は<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> Astra Tridentを導入するには、まずを編集する必要があります<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> をクリックして設定します<block ref="f41a95848a012f4f1a6550ce79c588aa" prefix=" " category="inline-code"></block> Astra Tridentをアンインストールする方法次に、を削除します<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> オペレータによる導入も可能です。その後、を使用してをインストールできます<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>。</block>
   <block id="e77325ac6e155cf5d14c756f1d64333f" category="list-text">オペレータベースの手動導入環境で、HelmベースのTridentオペレータ環境を使用する場合は、最初に手動でオペレータをアンインストールしてからHelmインストールを実行する必要があります。これにより、 Helm は必要なラベルとアノテーションを使用して Trident オペレータを導入できます。これを行わないと、 Helm ベースの Trident オペレータの導入が失敗し、ラベル検証エラーとアノテーション検証エラーが表示されます。を使用する場合は<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>- Helmベースの展開を使用すると、問題を発生させずに導入できます。</block>
   <block id="901977c62370814085e1228ede1e5919" category="summary">Astra Tridentをインストールする前に、次の一般的なシステム要件を確認してください。個 々 のバックエンドには追加の要件がある場合があり</block>
-  <block id="40d52435469b4eba3a63775d6170cf3e" category="list-text">Kubernetes 1.21-1.26</block>
   <block id="020762714bd7a4355a1abeca3c382c18" category="list-text">OpenShift 4.9 ~ 4.12</block>
   <block id="0ffed9ae8c0b8e64c5dc8cba81c4fe34" category="list-text">FAS/AFF / Select 9.5以降</block>
   <block id="6286d1b386e84c92fae11f2bcb9ceecd" category="paragraph">次の表は、このリリースの Astra Trident で利用できる機能と、サポートする Kubernetes のバージョンをまとめたものです。</block>
-  <block id="db9435acb142577b87827261ece9f934" category="paragraph">1.21～1.26</block>
   <block id="6726c1f070eb0e4315bf3ec874a13f78" category="paragraph">Astra Tridentは特定のオペレーティングシステムを正式にサポートしていませんが、動作確認済みのものは次のとおりです。</block>
   <block id="f8b1c66e563136ad12055c2d31964acc" category="paragraph">Kubernetesクラスタ内のすべてのワーカーノードが、ポッド用にプロビジョニングしたボリュームをマウントできる必要があります。ワーカーノードを準備するには、ドライバの選択に基づいてNFSツールまたはiSCSIツールをインストールする必要があります。</block>
   <block id="f36d25716a4b2c466ddcb8065bef3ae6" category="paragraph"><block ref="f36d25716a4b2c466ddcb8065bef3ae6" category="inline-link-macro-rx"></block></block>
@@ -3015,9 +2934,6 @@
   <block id="50823ee9226376c44bfb71c334ee2f3f" category="paragraph"><block ref="50823ee9226376c44bfb71c334ee2f3f" category="inline-link-macro-rx"></block></block>
   <block id="29dcef620f05a3eaaf13d29d1f14e860" category="paragraph">Astra Tridentが通信するには、特定のポートへのアクセスが必要です。</block>
   <block id="b2dabe4b341f1e163a7ba3f3553d6b1b" category="paragraph"><block ref="b2dabe4b341f1e163a7ba3f3553d6b1b" category="inline-link-macro-rx"></block></block>
-  <block id="9f523c82aa6c2773a498c832177d2ae0" category="list-text">NetApp / Trident - autosupport：23.01</block>
-  <block id="3cfdc4b11ed575c2d8bbcea1746d0976" category="list-text">k8s.io/sig-storage/csi-Provisioner：v3.4.0</block>
-  <block id="57ad3884258dc4fe04c11750b8222daa" category="list-text">k8s.io/sig-storage/csi-attacher:v4.1.0</block>
   <block id="7f7b6bf613e5a94b472dc4003c3c9d47" category="list-text">k8s.io/sig-storage/csi-resizer：v1.7.0</block>
   <block id="bc5a94d13573ba35693929cfc2df5614" category="list-text">k8s.io/sig-storage/csi-snapshotter：v6.2.1</block>
   <block id="938a05d206d8fc8b1d8a4342f0a74da0" category="list-text">k8s.io/sig-storage/csi-node-driver-registrar: v2.7.0</block>
@@ -3115,7 +3031,6 @@
   <block id="c5fbf8cba91fd09257dab41143773a09" category="paragraph">Astra Trident は四半期ごとにリリースサイクルを実施し、毎年 4 つのメジャーリリースをリリースしています。各新しいリリースは、以前のリリースに基づいてビルドされ、新機能とパフォーマンスの強化に加え、バグの修正や改善点が追加されています。ネットアップでは、Astra Tridentの新機能を活用するために、1年に1回以上アップグレードすることを推奨しています。</block>
   <block id="61f660050f0deffc4b168fe9b8118e83" category="section-title">バージョンを選択します</block>
   <block id="ecab08714a2cb76336fb5fe50c888c56" category="paragraph">Astra Tridentバージョンは日付ベースです<block ref="fb6921a005d395f9482cdac0306d4935" prefix=" " category="inline-code"></block> 命名規則。「YY」は年の最後の2桁、「MM」は月です。ドットリリースは、の後に続きます<block ref="d93ec759c4a0e8c1cf9c7653b2939656" prefix=" " category="inline-code"></block> 条約。ここで、「X」はパッチレベルです。アップグレード前のバージョンに基づいて、アップグレード後のバージョンを選択します。</block>
-  <block id="b6d54dfe9998fc2d718d82ced3bad520" category="list-text">インストールされているバージョンの4リリースウィンドウ内にある任意のターゲットリリースに直接アップグレードできます。たとえば、22.01から23.01に直接アップグレードできます(22.01.1などのドットリリースを含む)。</block>
   <block id="3c64b9fcc6316f2fb3e86bb37ec1e046" category="list-text">以前のリリースを使用している場合は、具体的な手順について、該当するリリースのドキュメントを参照してアップグレードを実行してください。そのためには、最初に 4 つのリリースウィンドウに対応する最新リリースにアップグレードする必要があります。たとえば'18.07を実行していて'20.07リリースにアップグレードする場合は'次のように複数ステップのアップグレードプロセスを実行します</block>
   <block id="b42882f59822357cae71c7deef14a306" category="list-text">最初のアップグレードは 18.07 から 19.07 へ。</block>
   <block id="3cf66ab24f2bf4b09d48a150a9e60aff" category="list-text">バージョン19.04以前のアップグレードでは、Astra TridentメタデータをIT所有から移行する必要があります<block ref="a226e9fbdfc1c8dd7e7fef4d333f86ed" prefix=" " category="inline-code"></block> をCRDオブジェクトに追加します。リリースのマニュアルを参照して、アップグレードの仕組みを確認してください。</block>
@@ -3137,7 +3052,6 @@
   <block id="50bfc8fc0d5fc544b43965b0746d1411" category="paragraph">クラスタを対象としたTridentのオペレータ環境をアップグレードする手順は、次のとおりです。すべてのAstra Tridentバージョン21.01以降では、クラスタを対象とした演算子を使用します。</block>
   <block id="811eaf5a7a011a3e3c605acd9ea6d5fb" category="list-text">現在の Astra Trident インスタンスのインストールに使用した Trident オペレータを削除たとえば、22.01からアップグレードする場合は、次のコマンドを実行します。</block>
   <block id="bdae3121e140e5325fd05919c86dd97f" category="list-text">を使用して初期インストールをカスタマイズした場合<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> 属性を編集できます<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> インストールパラメータを変更するオブジェクト。これには、ミラーリングされたTridentおよびCSIイメージレジストリをオフラインモードに指定したり、デバッグログを有効にしたり、イメージプルシークレットを指定したりするための変更が含まれます。</block>
-  <block id="bd4060a8e80dfbd6f1540226cbeae99b" category="list-text">環境に適したバンドルYAMLファイルとAstra Tridentバージョンを使用してAstra Tridentをインストールします。たとえば、Kubernetes 1.26用にAstra Trident 23.01をインストールする場合は、次のコマンドを実行します。</block>
   <block id="40b88899eb3616ad98776b847e919324" category="paragraph">Tridentでは、オペレータのインストールやKubernetesバージョンに関連するオブジェクトの作成に使用できるバンドルファイルが提供されています。</block>
   <block id="c80acc2d3549dd5f3d193892334b8fae" category="paragraph">Tridentのオペレータが、既存のAstra Tridentインストールを特定し、オペレータと同じバージョンにアップグレードします。</block>
   <block id="1e09cc3768e537466d645c037041bffc" category="paragraph">名前空間を対象とした演算子（バージョン20.07～20.10）を使用してインストールされたAstra Tridentのインスタンスからアップグレードするには、次の手順を実行します。</block>
@@ -3148,7 +3062,6 @@
   <block id="b0f8c567e856516aabf80f916e995d4f" category="paragraph">初期インストール時にデフォルト以外のオプションを設定した場合（TridentイメージおよびCSIイメージのプライベートなミラーレジストリを指定するなど）は、を使用します<block ref="8b5806248570dbb13e7d3bc5e6c0ee37" prefix=" " category="inline-code"></block> これらのオプションがupgradeコマンドに含まれるようにするため、それらのオプションの値をdefaultにリセットします。</block>
   <block id="3d0107bfa0874592e9dc04f9869b604b" category="list-text">を実行します<block ref="cd4140d3de30b520500459331d08d2bf" prefix=" " category="inline-code"></block> グラフとアプリのバージョンが両方ともアップグレードされていることを確認します。を実行します<block ref="3e725291d4b17065fdcd321172fcfae3" prefix=" " category="inline-code"></block> デバッグメッセージを確認します。</block>
   <block id="d72f42539c286d006f46f1ddbcfc9ad0" category="paragraph">からTridentの最新リリースにアップグレードできます<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> インストール：</block>
-  <block id="ce56959e2e76e7128bc8744171874942" category="paragraph">Astra Trident 23.01を実行していない場合は、以前のリリースのドキュメントを参照できます。バージョンセレクタを使用して、最新バージョンと以前の4つのバージョンを切り替えることも、以下のリンクを使用することもできます。</block>
   <block id="3fe5d266a33f137293c314a2e334b611" category="inline-link">Trident 10月22日</block>
   <block id="9fefe9ff51badc61edd8a36c8240aa29" category="list-text"><block ref="9fefe9ff51badc61edd8a36c8240aa29" category="inline-link-rx"></block></block>
   <block id="55559f520040667d3f8931728b37ef07" category="paragraph">21.07より前のリリースでは、レガシードキュメントサイトにリダイレクトします。</block>
@@ -3314,8 +3227,6 @@
   <block id="e4f84f59067aa8e22119bf499379385a" category="inline-link-macro">FSX（ONTAP の構成オプションと例）</block>
   <block id="ca088cbb36bbab4b23e57d63d95a628c" category="list-text">バックエンドを作成する際に、SMBボリュームを指定するように次の項目を設定する必要があります。ONTAP バックエンド構成オプションのすべてのFSXについては、を参照してください <block ref="dd05fa371cf4b2c8377b8b4b261a8edd" category="inline-link-macro-rx"></block>。</block>
   <block id="7bb910e3cf11d0b34ca215aa399d3f23" category="cell"><block ref="5910159ef86741f119f7574a9064b5b0" prefix="" category="inline-code"></block></block>
-  <block id="7a17b79b33ad0814114d5c433d21f0e8" category="cell">共有フォルダMicrosoft管理コンソールを使用して作成したSMB共有の名前。たとえば、「smb-share」と入力します。* SMBボリュームに必要です。*</block>
-  <block id="595b9128da266e4c0415d8a11362e974" category="cell">「smb共有」</block>
   <block id="3b84c7b88317953423192c633a83db9f" category="cell">*をに設定する必要があります<block ref="79e0f325804dafbdaef73b3b17c0fd8d" prefix=" " category="inline-code"></block>.* nullの場合、デフォルトはです<block ref="2521ef5d58fc027d3121662b7d8f9ac2" prefix=" " category="inline-code"></block>。</block>
   <block id="1928bae58ae496b53ef1a163c3dbeeb4" category="cell">新しいボリュームのモード。* SMBボリュームは空にしておく必要があります。*</block>
   <block id="ded47128219e64b5f24343dab357151b" category="admonition">Astra Tridentでは空白が強制される<block ref="7cfbb6f07899c8071ff38e69dca190e2" prefix=" " category="inline-code"></block> を作成します。iSCSIバックエンドの場合は、適用することを推奨します<block ref="01cd995fd9a843d3ca767e057de28873" prefix=" " category="inline-code"></block> ストレージクラス。既存のストレージクラスを削除して、で再作成する必要があります<block ref="01cd995fd9a843d3ca767e057de28873" prefix=" " category="inline-code"></block> 指定された。</block>
@@ -3326,17 +3237,11 @@
   <block id="2da9f60cc5b99a5987580c38e6db0842" category="cell">信頼された CA 証明書の Base64 エンコード値。任意。証明書ベースの認証に使用されます。</block>
   <block id="394d848f17683e31e21f6cde5fd9e3e4" category="cell">ONTAP クラスタとの通信に必要なユーザ名。クレデンシャルベースの認証に使用されます。</block>
   <block id="6f0acf4836d44b03512e1caa0d774777" category="cell">ONTAP クラスタとの通信にパスワードが必要です。クレデンシャルベースの認証に使用されます。</block>
-  <block id="389db483158927a67353b09e0ce89d85" category="cell">SANボリュームで使用するigroupの名前。を参照してください <block ref="6e67b5ef9818d5ee50372d568636cd92" category="inline-xref-macro-rx"></block> を参照してください。</block>
   <block id="a0de2cc0c77c388210e1f48423eea29c" category="cell">SVM で新しいボリュームをプロビジョニングする際に使用するプレフィックスを指定します。あとから変更することはできません。このパラメータを更新するには、新しいバックエンドを作成する必要があります。</block>
   <block id="e54cbd8ca5da26dc7e4be3bbfd23467e" category="cell">使用率がこの割合を超えている場合は、プロビジョニングが失敗します。NetApp ONTAP バックエンドにAmazon FSXを使用している場合は、指定しないでください <block ref="d57551b1efacf8a7be84b4d10c5a6e99" prefix=" " category="inline-code"></block>。提供された<block ref="679500f227997b45be97e3ca8115c678" prefix=" " category="inline-code"></block> および<block ref="6173aa5206484b5224450952747c7148" prefix=" " category="inline-code"></block> アグリゲートの使用状況を取得し、Astra Tridentを使用して制限するために必要な権限が含まれていない。</block>
   <block id="f804cd6668c0728e26448509210268d3" category="cell">要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します。また、qtreeおよびLUNに対して管理するボリュームの最大サイズを制限します。</block>
   <block id="b3a74fee006256ec5d63fe251b553f1d" category="cell">トラブルシューティング時に使用するデバッグフラグ。例：{"API"：false、"method"：true}は、トラブルシューティングを行って詳細なログダンプが必要な場合を除き、使用しません。</block>
   <block id="cc30671ec52693851659adb7020e02b1" category="cell">ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー *<block ref="14d839191d1ecf387a15b5b0c802a8ae" prefix=" " category="inline-code"></block> は、**テクニカルプレビュー**として提供されています。テスト環境では、本番環境のワークロードでは推奨されません。に設定すると<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>Astra Tridentは、ONTAP REST APIを使用してバックエンドと通信します。この機能にはONTAP 9.11.1以降が必要です。また、使用するONTAP ログインロールにはへのアクセス権が必要です<block ref="a9ba4dc88fa11d44cc7c0c918d174778" prefix=" " category="inline-code"></block> アプリケーション：これは事前定義されたによって満たされます<block ref="6173aa5206484b5224450952747c7148" prefix=" " category="inline-code"></block> および<block ref="fdb6ba311fad29ec53069808f10ebef4" prefix=" " category="inline-code"></block> ロール。<block ref="14d839191d1ecf387a15b5b0c802a8ae" prefix=" " category="inline-code"></block> は、MetroCluster ではサポートされていません。</block>
-  <block id="ceff62705abadd1abc0e2d8f1a40ea35" category="section-title">の詳細<block ref="9d8592d88bbb76c68c01d830f091dacc" prefix=" " category="inline-code"></block></block>
-  <block id="7038c8ee6b987228eae45aa3f990a3de" category="paragraph"><block ref="9d8592d88bbb76c68c01d830f091dacc" prefix="" category="inline-code"></block> ONTAP クラスタですでに作成されているigroupに設定できます。指定しない場合、Astra Tridentはという名前のigroupを自動的に作成します<block ref="7c79ab6d4da823d54e29bcbb64f38eef" prefix=" " category="inline-code"></block>。</block>
-  <block id="60f33a20147fc20d3d7707e50d1c0a9a" category="paragraph">定義済みのigroupNameを指定する場合は、各Kubernetesクラスタで1つのigroupを使用することを推奨します。ただし、SVMが環境間で共有される場合です。これは、Astra TridentがIQNの追加と削除を自動的に管理するために必要です。</block>
-  <block id="3f4c75b40f8732fcb4f838d7f1b21a76" category="list-text"><block ref="9d8592d88bbb76c68c01d830f091dacc" prefix="" category="inline-code"></block> を更新し、Astra Tridentの外部のSVMで作成、管理される新しいigroupを参照できるようになりました。</block>
-  <block id="1b4b9a9a67369e93e8c38ee61a36dd5d" category="list-text"><block ref="9d8592d88bbb76c68c01d830f091dacc" prefix="" category="inline-code"></block> 省略できます。この場合、Astra Tridentが、という名前のigroupを作成して管理します<block ref="7c79ab6d4da823d54e29bcbb64f38eef" prefix=" " category="inline-code"></block> 自動的に。</block>
   <block id="c59183b2f668b355e81e7bb1256f92b3" category="paragraph">これらのオプションを使用して、のデフォルトプロビジョニングを制御できます<block ref="a4a918a45181164207929d52aec36aec" prefix=" " category="inline-code"></block> 設定のセクション。例については、以下の設定例を参照してください。</block>
   <block id="d4fbfa2dd496728ba6294eb840ce25eb" category="cell">作成したボリュームに割り当てる QoS ポリシーグループ。ストレージプール / バックエンドごとに QOSPolicy または adaptiveQosPolicy のいずれかを選択します。Trident が Astra で QoS ポリシーグループを使用するには、 ONTAP 9.8 以降が必要です。非共有のQoSポリシーグループを使用して、各コンスティチュエントに個別にポリシーグループを適用することを推奨します。共有 QoS ポリシーグループにより、すべてのワークロードの合計スループットに対して上限が適用されます。</block>
   <block id="b71ccf1062cee8c376a7eb37e3c42603" category="cell">LUKS暗号化を有効にします。を参照してください <block ref="569f9f91cdcc19909b8acbf6f423daf7" category="inline-link-macro-rx"></block>。</block>
@@ -3384,16 +3289,11 @@
   <block id="b8c7e19ba614c29878588409008e29c6" category="cell">クラスタまたはSVMに接続するためのユーザ名。クレデンシャルベースの認証に使用されます。たとえば、vsadminのように指定します。</block>
   <block id="9a2486a943ad2a4c99f2797d6984f3d0" category="cell">クラスタまたはSVMに接続するためのパスワード。クレデンシャルベースの認証に使用されます。</block>
   <block id="6018b4c39d938c6589decae81b54c6f0" category="cell">SVM管理LIFが指定されている場合に生成されます。</block>
-  <block id="6b249375261ddb13a77410698978d6e4" category="cell">SANボリュームで使用するigroupの名前。を参照してください <block ref="6e67b5ef9818d5ee50372d568636cd92" category="inline-xref-macro-rx"></block>。</block>
   <block id="4cba35e041b22828be7c835295ee9102" category="cell">SVM で新しいボリュームをプロビジョニングする際に使用するプレフィックスを指定します。作成後に変更することはできません。このパラメータを更新するには、新しいバックエンドを作成する必要があります。</block>
   <block id="2b3e2c0490ded1bc79028dd367358b9d" category="cell">* NetApp ONTAP にはAmazon FSXを指定しないでください。*提供されている<block ref="679500f227997b45be97e3ca8115c678" prefix=" " category="inline-code"></block> および<block ref="6173aa5206484b5224450952747c7148" prefix=" " category="inline-code"></block> アグリゲートの使用状況を取得し、Astra Tridentを使用して制限するために必要な権限が含まれていない。</block>
   <block id="86f4c9647fe8f4c500055c772753cc6f" category="cell">使用しないでください。</block>
   <block id="bd4c4a75acd87c86694e9aca1e4050e2" category="cell">FlexVol あたりの最大LUN数。有効な範囲は50、200です。SANのみ。</block>
-  <block id="e70237f69c6dce25fd2312b8d7f00b1e" category="cell">"100"</block>
   <block id="e939be085c2babe4ff0f08e09d0cdfd2" category="cell">NFSボリュームまたはSMBボリュームの作成を設定オプションはです<block ref="2521ef5d58fc027d3121662b7d8f9ac2" prefix=" " category="inline-code"></block>、<block ref="79e0f325804dafbdaef73b3b17c0fd8d" prefix=" " category="inline-code"></block>、またはnull。*をに設定する必要があります<block ref="79e0f325804dafbdaef73b3b17c0fd8d" prefix=" " category="inline-code"></block> SMBボリューム。*をnullに設定すると、デフォルトでNFSボリュームが使用されます。</block>
-  <block id="b993677cdfb69bee31dd375d27acbb2d" category="cell">"NFS"</block>
-  <block id="89ffa293e05655bd6be9d422345be38a" category="cell">"200"</block>
-  <block id="be01424702282a8710bfaa63381e0ef3" category="cell">共有フォルダMicrosoft管理コンソールを使用して作成したSMB共有の名前。* SMBボリュームに必要です。*</block>
   <block id="2ab2b81dde76a2ec7ed3798f1538f823" category="cell">ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー *<block ref="14d839191d1ecf387a15b5b0c802a8ae" prefix=" " category="inline-code"></block> は、**テクニカルプレビュー**として提供されています。テスト環境では、本番環境のワークロードでは推奨されません。に設定すると<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>Astra Tridentは、ONTAP REST APIを使用してバックエンドと通信します。この機能にはONTAP 9.11.1以降が必要です。また、使用するONTAP ログインロールにはへのアクセス権が必要です<block ref="a9ba4dc88fa11d44cc7c0c918d174778" prefix=" " category="inline-code"></block> アプリケーション：これは事前定義されたによって満たされます<block ref="6173aa5206484b5224450952747c7148" prefix=" " category="inline-code"></block> および<block ref="fdb6ba311fad29ec53069808f10ebef4" prefix=" " category="inline-code"></block> ロール。</block>
   <block id="f9d8bcec134b3ae3cb7aaac7048373ee" category="cell">作成したボリュームに割り当てる QoS ポリシーグループ。ストレージプールまたはバックエンドごとに、QOSPolicyまたはadaptiveQosPolicyのいずれかを選択します。Trident が Astra で QoS ポリシーグループを使用するには、 ONTAP 9.8 以降が必要です。非共有のQoSポリシーグループを使用して、各コンスティチュエントに個別にポリシーグループを適用することを推奨します。共有 QoS ポリシーグループにより、すべてのワークロードの合計スループットに対して上限が適用されます。</block>
   <block id="a8fe789c9febc6b76736fb83c90df2b7" category="cell">アダプティブ QoS ポリシーグループ：作成したボリュームに割り当てます。ストレージプールまたはバックエンドごとに、QOSPolicyまたはadaptiveQosPolicyのいずれかを選択します。経済性に影響する ONTAP - NAS ではサポートされません。</block>
@@ -3444,9 +3344,6 @@
   <block id="8a6b9ec0e0eb9c6a3e520af66cffd466" category="paragraph">以下に示すバックエンド定義ファイルの例では、すべてのストレージプールに対して特定のデフォルトが設定されています。これにより、が設定されます<block ref="599dcce2998a6b40b1e38e8c6006cb0a" prefix=" " category="inline-code"></block> シルバー。仮想プールは、で定義されます<block ref="ddecebdea58b5f264d27f1f7909bab74" prefix=" " category="inline-code"></block> セクション。この例では、一部のストレージプールで独自のタイプが設定されており、一部のプールでは上記で設定したデフォルト値が上書きされます。</block>
   <block id="d17a2942ee77aa1532660a5f0cf0d6e5" category="paragraph">最初のストレージクラス <block ref="166028d9a95f5465a6ae917e6e089ce6" prefix="(" category="inline-code"></block>）を選択すると、最初の仮想プールにマッピングされます。ゴールドのパフォーマンスを提供する唯一のプール<block ref="89bf6c97f9a3eaea76c86df0086361bc" prefix=" " category="inline-code"></block> 金の。最後のストレージクラス <block ref="b4457b3eeca98cadb51648f8fcef36cb" prefix="(" category="inline-code"></block>）Silverパフォーマンスを提供するストレージプールをすべて特定します。Tridentが、どの仮想プールを選択するかを判断し、ストレージ要件を確実に満たすようにします。</block>
   <block id="7ac6994e44af62a9075fd956e72ee6fb" category="paragraph">バックエンド定義は、クレデンシャルがプレーンテキストで保存される唯一の場所であることに注意してください。バックエンドが作成されると、ユーザ名とパスワードが Base64 でエンコードされ、 Kubernetes シークレットとして格納されます。クレデンシャルの知識が必要なのは、バックエンドの作成または更新だけです。この処理は管理者専用で、 Kubernetes / ストレージ管理者が実行します。</block>
-  <block id="35bcb7d2979b78f60085f17523608cf1" category="paragraph">Astra Trident が CSI Provisioner として機能するように設定されている場合、 Kubernetes ノード IQN は自動的に igroup に追加 / 削除されます。ノードがKubernetesクラスタに追加されると、<block ref="d9585690fd147c34fbd50c487a3520de" prefix=" " category="inline-code"></block> DemonSetによってポッドが展開されます <block ref="0acec1d7908eca40437167858e728fbb" prefix="(" category="inline-code"></block> 23.01以前のバージョンまたは<block ref="15c091a8dab608815c71eeaab69b4bef" prefix=" " category="inline-code"></block> 23.01以降で）新しく追加したノードで、新しいノードを登録してボリュームを接続できるようにします。ノード IQN もバックエンドの igroup に追加されます。ノードが遮断され、削除され、 Kubernetes から削除された場合も、同様の手順で IQN の削除が処理されます。</block>
-  <block id="f94dd4e5d427f6c27039ff57630f0cac" category="list-text">へのイニシエータの追加の管理<block ref="9d8592d88bbb76c68c01d830f091dacc" prefix=" " category="inline-code"></block> バックエンドで提供されます。指定しない場合、デフォルトはです<block ref="47cb44be55a0dffa15dfc900a4c687be" prefix=" " category="inline-code"></block>。</block>
-  <block id="02ef3639dafcd40b1745b539a10d1cae" category="sidebar">23.01リリースの重要な情報</block>
   <block id="f1fe71442cd08e74d342114df7ee1551" category="sidebar">Astra Trident をインストール</block>
   <block id="46921a75e8534ad7d1c379a9e3aec033" category="sidebar">インストールの概要</block>
   <block id="3183dc3907c0b67930b221a316c94cb2" category="sidebar">Tridentオペレータを使用してインストール</block>
@@ -3460,7 +3357,6 @@
   <block id="6fc0b7515ecca271c88eae4a685da613" category="sidebar">NetApp HCI またはSolidFire</block>
   <block id="60be48bb4b3314965bf50e88e7ae728c" category="sidebar">Amazon FSX for ONTAP を統合します</block>
   <block id="ea3d51fb2b16acb7cb260f25bc8965b1" category="sidebar">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。</block>
-  <block id="784060ce5e49eff75eaca62337b5ff53" category="list-text">Ubuntu 22.04以降</block>
   <block id="e267c2490c7d73d0ffa909b77267cfaf" category="inline-link-macro">Astra Controlレプリケーションの前提条件</block>
   <block id="9814801b0db6e324ebd72f671418de64" category="paragraph">Astra Controlは、で作成したボリュームに対して、シームレスな保護、ディザスタリカバリ、および移動（Kubernetesクラスタ間でボリュームを移動）を提供します<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block>、<block ref="844e84da8e822b4a33c4d8188da97937" prefix=" " category="inline-code"></block>および<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block> ドライバ。を参照してください <block ref="dfc981ac97be73172a3119f3b831eaf8" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="783c2760a502e1f1537de458c9dceb7a" category="list-text">を使用する必要があります<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block> データ保護、ディザスタリカバリ、モビリティを必要とする本番環境のワークロード向けのサービスです。</block>
@@ -3490,26 +3386,10 @@
   <block id="d0ebde94f92d8c1bae0c6660a5847bba" category="paragraph">。 <block ref="57de9a35aeedde82408b1e047030d221" category="inline-link-macro-rx"></block> 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。更新<block ref="7b4b81fb05ca7f2a09fe73526ac95482" prefix=" " category="inline-code"></block> レジストリ設定に基づいて追加の場所の仕様を追加します。</block>
   <block id="5295ac8fb520b71deb8a1b57857b2562" category="section-title">手順6：を作成します<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> Tridentをインストール</block>
   <block id="4498f168dfd139c5a90c6acd3ab09109" category="summary">永続ボリューム（PVS）のKubernetesボリュームSnapshot（ボリュームSnapshot）を作成して、Astra Tridentボリュームのポイントインタイムコピーを保持できます。また、既存のボリュームSnapshotから、_ clone__という名前の新しいボリュームを作成することもできます。ボリュームSnapshotは、でサポートされます<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block>、<block ref="844e84da8e822b4a33c4d8188da97937" prefix=" " category="inline-code"></block>、<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block>、<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block>、<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block>、<block ref="5935ea92cdd7d975b4e764b429f21c01" prefix=" " category="inline-code"></block>および<block ref="bc5779a2d33eeb1304bae57f15920cfc" prefix=" " category="inline-code"></block> ドライバ。</block>
-  <block id="92b68d4329b2a9fc7b9ee50887fa9ec6" category="list-text">Kubernetes 1.24以前を実行しているクラスタの場合は、を使用します <block ref="2c09ae1e37416ff80fc94f3f18fdf365" category="inline-link-macro-rx"></block>。</block>
-  <block id="03b6416b48c9b688f320942620efba7e" category="list-text">Kubernetes 1.25以上を実行するクラスタの場合は、を使用します <block ref="5ca76d6130b1f129b38438a336b9aeba" category="inline-link-macro-rx"></block>。</block>
-  <block id="6ec38de91afa570e5d065616a4c39792" category="admonition">クラスタを対象としたオペレータをインストールすると、の移行が開始されます<block ref="4cb15aa30ce0ec4747b372d6d2a5e637" prefix=" " category="inline-code"></block> オブジェクトの移動先<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> オブジェクトを削除します<block ref="4cb15aa30ce0ec4747b372d6d2a5e637" prefix=" " category="inline-code"></block> オブジェクトと<block ref="297dc4adc64c26ae2fd6a1039d00ccb0" prefix=" " category="inline-code"></block> CRD、およびAstra Tridentを、使用しているクラスタ対象オペレータのバージョンにアップグレードします。次の例では、Tridentが23.01.1にアップグレードされています。</block>
-  <block id="612553699f2d5ae7962eb8012bc5c571" category="list-text">を使用します<block ref="cd01e1bae83933b9c59c914bc71332ac" prefix=" " category="inline-code"></block> コマンドを入力します<block ref="66cf366135b1928fa4812c3e0e41d022" prefix=" " category="inline-code"></block> アップグレード後のバージョンが反映されます。</block>
   <block id="a6074ca03f6e3e76478b45e15e021b31" category="list-text">を実行します<block ref="9936810e5a43f0fece4628cd1a22fb4d" prefix=" " category="inline-code"></block> 従来のAstra TridentボリュームをCSI仕様にアップグレードするコマンド。</block>
   <block id="ea7cc85727ac6a0761c52685cce336be" category="list-text">Tridentの以前のバージョンにダウングレードする場合は、最初にを実行します<block ref="ac8650577d1b744589a6a11b60ac38c7" prefix=" " category="inline-code"></block> Tridentを削除するコマンド。必要なをダウンロードします<block ref="f3d78353f8dac3e49bbefeb5f6a2383b" category="inline-link-rx"></block> を使用してをインストールします<block ref="430bf77bee6c59d385d4194f84c21b16" prefix=" " category="inline-code"></block> コマンドを実行します新しい PVS が作成されておらず、既存の PVS / バックエンド / ストレージクラスに変更がない場合にのみ、ダウングレードを検討してください。Tridentは現在、状態を維持するためにSSDを使用しているため、作成されたすべてのストレージエンティティ（バックエンド、ストレージクラス、PVS、ボリュームSnapshot）にはが含まれています<block ref="816158c49c5f4417bf3b0f9c644e722e" prefix=" " category="inline-code"></block> 以前にインストールされたTridentのバージョンで使用されていたPVに書き込まれるデータではありません。* 以前のバージョンに戻すと、新しく作成した PVS は使用できなくなります。 * バックエンド、 PVS 、ストレージクラス、ボリュームスナップショット（作成 / 更新 / 削除）などのオブジェクトに加えた変更は、ダウングレード時に Trident に表示されません * 。以前のバージョンの Trident で使用されていた PV は、 Trident から見ることができます。以前のバージョンに戻しても、アップグレードされていないかぎり、以前のリリースを使用してすでに作成された PVS へのアクセスは中断されません。</block>
-  <block id="1ee41f7caab6c354f41f4a101afa7e89" category="summary">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。** Astra Trident 23.01.1へのアップグレードに関する重要な情報については、リリースノートをご覧ください。**</block>
-  <block id="386e03ca533890432e529f451049f72e" category="doc">Astra Trident 23.01.1のドキュメント</block>
-  <block id="f312617dd7f60d9446faf3c7633872e1" category="cell">"netapp/trident-autosupport：23.01"</block>
-  <block id="7cbcc2cc19b88ed72e268f9d84bb67af" category="list-text">使用<block ref="0562418e6d9a76d0dd22b2f186a2203d" prefix=" " category="inline-code"></block> 展開およびイメージレジストリの場所の名前を指定します。。 <block ref="57de9a35aeedde82408b1e047030d221" category="inline-link-macro-rx"></block> 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例では、<block ref="5035e9d03d7081c7c67f5a557f1b864f" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
-  <block id="a6427845d2f49762a708df9e6cda9fea" category="paragraph">たとえば、のデフォルト値を変更するには、のように指定します<block ref="ad42f6697b035b7580e4fef93be20b4d" prefix=" " category="inline-code"></block>をクリックし、次のコマンドを実行します<block ref="8b5806248570dbb13e7d3bc5e6c0ee37" prefix=" " category="inline-code"></block> コマンドを入力します<block ref="5035e9d03d7081c7c67f5a557f1b864f" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
   <block id="43e6c0a141c1737a96917c56c7e22a73" category="inline-link-macro">&lt;block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category='inline-code'/&gt; を使用したインストール</block>
   <block id="1a2de31d648d8c09e5c2a9257a5ad67b" category="paragraph">既存の環境をアップグレードする必要がある場合や、高度にカスタマイズすることを検討している場合は、アップグレードを検討する必要があります <block ref="e214bf159dbaf6573cfe15f1373b92db" category="inline-link-macro-rx"></block>。これは、従来の方法であった Astra Trident を導入する方法です。</block>
-  <block id="71611ffeb9c4b65c1c227f6f6840db4e" category="paragraph">インチ<block ref="02f3115b006f7541a477d52ea8c0f861" prefix=" " category="inline-code"></block>、を更新します<block ref="82a0d8d270200f472862eabbfab72b13" prefix=" " category="inline-code"></block> イメージレジストリの場所を反映します。。 <block ref="57de9a35aeedde82408b1e047030d221" category="inline-link-macro-rx"></block> 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例：</block>
-  <block id="938ddddcbba42304d938dc5b673d0202" category="list-text"><block ref="e76c7fdd8a19469fd094094b1b37cd96" prefix="" category="inline-code"></block> すべての画像が1つのレジストリにある場合。</block>
-  <block id="4072e310ea82b48de23cd7a2e5dd7f30" category="list-text"><block ref="73f61ffa3e846a43a284493b64e0b302" prefix="" category="inline-code"></block> TridentイメージがCSIイメージとは別のレジストリにある場合。</block>
-  <block id="3b8d0cc1623ab5e024e4c6c92a96c0a3" category="list-text">使用<block ref="0562418e6d9a76d0dd22b2f186a2203d" prefix=" " category="inline-code"></block> をクリックし、次の例に示すように、導入環境の名前を指定します<block ref="5035e9d03d7081c7c67f5a557f1b864f" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
-  <block id="5e3673cc108f69c1b1e37872c6e40a61" category="list-text">ネットアップ/ Trident：23.01.1</block>
-  <block id="f4be622ffc379faa9b3471e5e49fce94" category="list-text">netapp / trident-operator：23.01.1（オプション）</block>
-  <block id="76013b8f9b5c6b4b507fa479343e856f" category="section-title">23.01.1の新機能</block>
   <block id="19466ff921af5aa01da62b42cdaaf617" category="list-text">Tridentのオペレータが、仕様で指定されている場合にインストールにIPv6 localhostを使用するように修正しました。</block>
   <block id="5b313836498a7a26e99e4f084ee1baec" category="inline-link-macro">問題 #799</block>
   <block id="b2fc842cefdc715af09b8d184e09db56" category="list-text">Trident Operatorクラスタロールの権限が、バンドルの権限と同期されるように修正されました <block ref="25d51e363866fb30c759c73e05114b0d" category="inline-link-macro-rx"></block>。</block>
@@ -3517,7 +3397,6 @@
   <block id="3a35c66b59df0fa02e2490983b964261" category="list-text">RWXモードで複数のノードにrawブロックボリュームを接続することで問題 を修正。</block>
   <block id="21b2b5bca26be7b23af4468b85c68b34" category="list-text">SMBボリュームのFlexGroup クローニングのサポートとボリュームインポートが修正されました。</block>
   <block id="190a9f9a8311c8a23bff1fd7a5693342" category="section-title">23.01の変更点</block>
-  <block id="8b418db90259290a719e83f1a2509366" category="admonition">TridentでKubernetes 1.26がサポートされるようになりました。Kubernetesをアップグレードする前にAstra Tridentをアップグレードしてください。</block>
   <block id="1cb76b1c7887cad1e077a4cbdc765b9b" category="list-text">Astra Tridentのバージョンを確認します。</block>
   <block id="705dbdc50888270bf4b0230d75c7ae1d" category="paragraph">Tridentオペレータは、の属性を使用してAstra Tridentのインストールをカスタマイズできます<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> 仕様インストールをカスタマイズする場合は、それ以上のカスタマイズが必要です<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> 引数allow、使用を検討してください<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> 必要に応じて変更するカスタムYAMLマニフェストを生成します。</block>
   <block id="a5199cf0d9f113491f9efa18f3bee2e1" category="section-title">コントローラポッドとノードポッドについて</block>
@@ -3636,8 +3515,6 @@
   <block id="fc3424ba1777889d0d49ea7f5a675c9e" category="paragraph"><block ref="70d2c7701d2837552c0a38c02a326592" prefix="" category="inline-code"></block></block>
   <block id="e84b7103384d0a3393c0847330716669" category="paragraph"><block ref="f819de81247be4a5428dc0e169de28b8" prefix="" category="inline-code"></block></block>
   <block id="7dd39afeb1c0b05aac5f4bf6fbd94990" category="paragraph"><block ref="301c869c551e12d862ab0291837102a0" prefix="" category="inline-code"></block></block>
-  <block id="cddf719b813056497a40cf1934f91af3" category="paragraph">プラグインで使用されるigroup。デフォルトはです<block ref="e77a1bd34ff5793aca292b38d23bc2c9" prefix=" " category="inline-code"></block>。* 「 ONTAP-SAN'd river 」のみ利用可能です。</block>
-  <block id="53f20dcb83975ae9823682474c74acd6" category="paragraph"><block ref="79e762988462f6f8da9becfbfd789755" prefix="" category="inline-code"></block></block>
   <block id="98ce75f2128e52057c9dbf00a9eb2736" category="paragraph"><block ref="f07e606cfe25ac6fb07d9c4af941d9a2" prefix="" category="inline-code"></block></block>
   <block id="1ae6e291c93a6d5962af8004aecd9c4c" category="paragraph"><block ref="94f6d7e04a4d452035300f18b984988c" prefix="" category="inline-code"></block></block>
   <block id="af2bffb136dd0c22342ad9cb06187197" category="paragraph">スペースリザベーションモード<block ref="334c4a4c42fdb79d7ebc3e73b517e6f8" prefix=" " category="inline-code"></block> （シンプロビジョニング）または<block ref="210ab9e731c9c36c2c38db15c28a8d1c" prefix=" " category="inline-code"></block> （シック）</block>
@@ -3660,4 +3537,121 @@
   <block id="419c95e5a9e44d427f99debdcf0550c7" category="list-text">Trident をで使用する際によく発生する問題です<block ref="4568986ef6397d7c901269fc0e190ede" category="inline-link-rx"></block> テナントとクライアントのシークレットが、必要な権限がないアプリケーションの登録から取得された場合です。Trident の要件の詳細については、を参照してください <block ref="cd38c25b6345abc8733d2ef72739cd97" category="inline-link-macro-rx"></block> 設定</block>
   <block id="39f6252eef9409d5d917e183e971d71d" category="list-text">アップグレードするときは、この作業を行うことが重要です<block ref="f6e7f85d8aee15940665bf722f7afac2" prefix=" " category="inline-code"></block> インチ<block ref="f652904c3bfb48fb25a0a75f485f0ff6" prefix=" " category="inline-code"></block> Astra Tridentが使用。削除して再作成することができます<block ref="f652904c3bfb48fb25a0a75f485f0ff6" prefix=" " category="inline-code"></block> 実行前のボリュームの中断はなし。これは、SANボリュームに対してhttps://kubernetes.io/docs/tasks/configure-pod-container/security-context/[securityコンテキスト^]を適用するための**要件**です。https://github.com/NetApp/trident/tree/master/trident-installer/sample-input[sample input^]ディレクトリには、https://github.com/NetApp/trident/blob/master/trident-installer/sample-input/storage-class-samples/storage-class-basic.yaml.templなどの例が含まれています<block ref="9abb8c7777ddb413820ee07d5d93aa4a" prefix="[" category="inline-code"></block>^）とリンク：https://github.com/NetApp/trident/blob/master/trident-installer/sample-input/storage-class-samples/storage-class-bronze-default.yaml<block ref="69ae2d9a6d831af7488e53fec053b77e" prefix="[" category="inline-code"></block>^]をクリックします。詳細については、を参照してください <block ref="04cf7258a315ca08f4b436c194fef69d" category="inline-link-macro-rx"></block>。</block>
   <block id="1dedbfd605df8b562acc8f759a8e9acc" category="list-text">を実行するKubernetesクラスタ <block ref="229e1052bb9ecd8cf2680d6f44691174" category="inline-link-macro-rx"></block></block>
+  <block id="17c5eeb01739643b5aef94fe18b6c849" category="paragraph">バージョンセレクタを使用して、最新バージョンと以前の4つのバージョンを切り替えることも、以下のリンクを使用することもできます。</block>
+  <block id="78038c97749fe61b1148a68a71c14a02" category="inline-link-macro">Astra Tridentのリリースとサポートのライフサイクル</block>
+  <block id="3a1fdf1059d780b17a5dd3ecba99371d" category="paragraph">Astra Trident 23.04を実行していない場合は、以前のリリースのドキュメントをベースに提供しています <block ref="ec2082dc40596525d1bb212183949428" category="inline-link-macro-rx"></block>。</block>
+  <block id="4693b2393d80830cd4f198db20bf2b72" category="inline-link">Astra Trident 23.01</block>
+  <block id="cd494508ccf1cdc45163d6d9d0f401ff" category="list-text"><block ref="cd494508ccf1cdc45163d6d9d0f401ff" category="inline-link-rx"></block></block>
+  <block id="eab0706ece21a2a7fba820bf95d759fe" category="section-title">Astra Trident 23.04に関する重要な情報</block>
+  <block id="2122a8acb599837078e6b76436e892c4" category="list-text">TridentでKubernetes 1.27がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレード</block>
+  <block id="5934d78c1e4b16833d855fae6656a994" category="list-text">使用<block ref="0562418e6d9a76d0dd22b2f186a2203d" prefix=" " category="inline-code"></block> をクリックし、次の例に示すように、導入環境の名前を指定します<block ref="fc54aba0c9f6c2fff98f4890349f656c" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
+  <block id="177f0526bba4e516b4db5c3a74252bbd" category="paragraph">たとえば、のデフォルト値を変更するには、のように指定します<block ref="ad42f6697b035b7580e4fef93be20b4d" prefix=" " category="inline-code"></block>をクリックし、次のコマンドを実行します<block ref="8b5806248570dbb13e7d3bc5e6c0ee37" prefix=" " category="inline-code"></block> コマンドを入力します<block ref="fc54aba0c9f6c2fff98f4890349f656c" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
+  <block id="40991bba76926bfbcf7fb0b9c207187f" category="list-text">Anthosオンプレミス（VMware）とAnthos（ベアメタル1.12</block>
+  <block id="10ba3564f65dbf6cec8650972c26ea30" category="list-text">Kubernetes 1.21-1.27</block>
+  <block id="fe74bcccaeacaddf91b58dec28fef5be" category="paragraph">1.21 ~ 1.27</block>
+  <block id="362997bacf08e019288e372d8ae1f070" category="list-text">OpenShift Container Platform（AMD64およびARM64）でサポートされているRed Hat CoreOS（RHCOS）のバージョン</block>
+  <block id="a3460163c4a2854c79a419dda57ac917" category="list-text">RHEL 8+（AMD64およびARM64）</block>
+  <block id="f51a58a0cffb9f9953edce6411578b53" category="list-text">Ubuntu 22.04以降（AMD64およびARM64）</block>
+  <block id="1285a056fd837828136d15f7e76d09cc" category="list-text">Windows Server 2019（AMD64）</block>
+  <block id="491d412c8451b30af0235ea14c6884ce" category="list-text">ネットアップ/ Trident：23.04.0</block>
+  <block id="e1c8364426dfd7c124c013720fd79184" category="list-text">netapp / trident-autosupport：23.04</block>
+  <block id="f74c1ba486136c87105b3ee7c6b4a588" category="list-text">k8s.io/sig-storage/csi-provisioner：v3.4.1</block>
+  <block id="69e020afa682d186164750d700cc7b94" category="list-text">k8s.io/sig-storage/csi-attacher：v4.2.0</block>
+  <block id="1ee49b3835b8025abda346d6f4263ac9" category="list-text">netapp / trident-operator：23.04.0（オプション）</block>
+  <block id="b38420e98813aed20daa115db2ac94a9" category="cell">v1.27.0</block>
+  <block id="1ff1fd258a61bd04eee000a1fb6131fa" category="example-title">例1：WindowsノードでAstra Tridentの実行を有効にします</block>
+  <block id="f53514cf8829a41463c245b088ae732e" category="paragraph">WindowsノードでAstra Tridentを実行できるようにするには、次の手順を実行します。</block>
+  <block id="a921baa9e8c81f13d59fed4fce57ec88" category="example-title">例2：強制切り離しを有効にします</block>
+  <block id="c5b5b00ff1b3a892c8694ab932cbf9ca" category="paragraph">強制切り離しの詳細については、を参照してください <block ref="63cac71755fb6ef1f1fea34cf4037121" category="inline-link-macro-rx"></block>。</block>
+  <block id="27855a2d0ff79cc3ecf0f08e67257b0a" category="list-text">使用<block ref="0562418e6d9a76d0dd22b2f186a2203d" prefix=" " category="inline-code"></block> 展開およびイメージレジストリの場所の名前を指定します。。 <block ref="57de9a35aeedde82408b1e047030d221" category="inline-link-macro-rx"></block> 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例では、<block ref="fc54aba0c9f6c2fff98f4890349f656c" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
+  <block id="59bc75fa0b7e5b671e40873619ac96a7" category="cell">"netapp/trident-autosupport：23.04.0"</block>
+  <block id="85be37285c336ae757f07d58eb0d7ea2" category="cell">AutoSupport テレメトリを送信するプロキシのアドレス / ポート</block>
+  <block id="33fb79e5ddc4ef005332c52292e20c59" category="cell">Trident Controller CSI プラグインを実行しているポッドの追加ノードセレクタ。の形式はと同じです<block ref="6ae8be3433bfc36ced79a1271e6ebf11" prefix=" " category="inline-code"></block>。</block>
+  <block id="4a1522be236156dbc873375541a627e1" category="cell">Trident Controller CSI プラグインを実行しているポッドに対する許容値を上書きします。はと同じ形式です<block ref="f1fa64fcf5077601cb803e995a51fa4f" prefix=" " category="inline-code"></block>。</block>
+  <block id="30042512b273723cf2eec336b6576d84" category="cell"><block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix="" category="inline-code"></block> および<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block> のみ。KubernetesのNon-Graceful Node Shutdown（NGN）と連携して、ノードに障害が発生した場合に、マウントされたボリュームを含むワークロードを新しいノードに安全に移行する機能をクラスタ管理者に提供します。*これは23.04の実験的な機能です。*を参照してください <block ref="620ff2552a2d798650bb027eb1271b17" category="inline-xref-macro-rx"></block> を参照してください。</block>
+  <block id="38a0b9f59e6fe23e1617dc0e78498afe" category="section-title">フォースデタッチの詳細</block>
+  <block id="20c0c9efee2da2645ec0eefaf3c75d8c" category="inline-link-macro">Kubernetes：正常なノードシャットダウンではありません</block>
+  <block id="c2b73a5f3aeb6a0120f6d516eaedfceb" category="paragraph">では、[強制切り離し]を使用できます<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block> および<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block> のみ。強制接続解除を有効にする前に、Kubernetesクラスタで非グレースフルノードシャットダウン（NGN）を有効にする必要があります。詳細については、を参照してください <block ref="1da18b4f36c698c06b8a402542c42858" category="inline-link-macro-rx"></block>。</block>
+  <block id="388f611a7cb1d3b4a55895211f24e657" category="admonition">Astra TridentはKubernetes NGNに依存しているため、削除しないでください<block ref="2ea3337d8d7fc43880e82df308aa0f16" prefix=" " category="inline-code"></block> 許容できないすべてのワークロードが再スケジュールされるまで、正常でないノードから影響を受けます。汚染を無謀に適用または削除すると、バックエンドのデータ保護が危険にさらされる可能性があります。</block>
+  <block id="0490d92bd49cf4ca0e3d1454b8166318" category="paragraph">Kubernetesクラスタ管理者がを適用したとき<block ref="7b58fe53e2e4b586e9605f1371e1ebf3" prefix=" " category="inline-code"></block> ノードおよびに影響を与えます<block ref="badc795d88a7db6cc65d56bc758b3ea4" prefix=" " category="inline-code"></block> がに設定されます<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>Astra Tridentがノードのステータスを判断し、次の処理を実行します。</block>
+  <block id="5a46bcb638ad3abfd754aecfb450a781" category="list-text">そのノードにマウントされたボリュームのバックエンドI/Oアクセスを停止します。</block>
+  <block id="9e359eb51c11b0162faa185a9f2e6132" category="list-text">Astra Tridentノードオブジェクトをにマークします<block ref="32478ef751ab0a81974a3aa8569607b9" prefix=" " category="inline-code"></block> (新しい出版物には安全ではありません)。</block>
+  <block id="dea3db0d9b1c1d5a2c070829016eb1d9" category="admonition">Tridentコントローラは、（とマークされたあとに）ノードが再認定されるまで、新しいパブリッシュボリューム要求を拒否します<block ref="32478ef751ab0a81974a3aa8569607b9" prefix=" " category="inline-code"></block>をクリックします。マウントされたPVCでスケジュールされているワークロード（クラスタノードが正常で準備が完了したあとも含む）は、Astra Tridentがノードを検証できるまで受け入れられません<block ref="123402c04dcfb6625f688f771a5fc05d" prefix=" " category="inline-code"></block> (新しい出版物のための安全)。</block>
+  <block id="2f2c77c0463a5147779a2fe92fffee6d" category="paragraph">ノードの健常性が回復してtaintが削除されると、Astra Tridentは次の処理を実行します。</block>
+  <block id="8f57f52b7233aecf56728bcd48d3a51c" category="list-text">ノード上の古い公開パスを特定してクリーンアップします。</block>
+  <block id="a36983f9842a4a5cf4db7f9d23253de0" category="list-text">ノードがに含まれている場合<block ref="4304fb35c4cdfa886970499304f2aaba" prefix=" " category="inline-code"></block> 状態（out-of-service taintが削除され、ノードがinになっています<block ref="e7d31fc0602fb2ede144d18cdffd816b" prefix=" " category="inline-code"></block> 状態）。古い公開済みパスはすべてクリーンで、Astra Tridentはノードをとして再登録します<block ref="123402c04dcfb6625f688f771a5fc05d" prefix=" " category="inline-code"></block> 新しいボリュームのノードへの公開を許可します。</block>
+  <block id="00be8b5bb428d40a01f22c5dfaced5bc" category="paragraph">インチ<block ref="02f3115b006f7541a477d52ea8c0f861" prefix=" " category="inline-code"></block>、を更新します<block ref="5e146ae3f34d00ee9d9dfd14adb077b2" prefix=" " category="inline-code"></block> イメージレジストリの場所を反映します。。 <block ref="57de9a35aeedde82408b1e047030d221" category="inline-link-macro-rx"></block> 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例：</block>
+  <block id="e93860a0ea424a0e69abe92f2da77d80" category="list-text"><block ref="7c512d5013550eab761c07cf420c0618" prefix="" category="inline-code"></block> すべての画像が1つのレジストリにある場合。</block>
+  <block id="a986eb4e954c9ef61b993f620528b25b" category="list-text"><block ref="2e87742ef58dd6e98b2afaaddbe68076" prefix="" category="inline-code"></block> TridentイメージがCSIイメージとは別のレジストリにある場合。</block>
+  <block id="ff2f82c9a6feb21071dcbdc520c67b89" category="list-text">環境に適したバンドルYAMLファイルとAstra Tridentバージョンを使用してAstra Tridentをインストールします。たとえば、Kubernetes 1.27用Astra Trident 23.04をインストールする場合は、次のコマンドを実行します。</block>
+  <block id="8242b9562bf03173e7ab7ebe91136717" category="list-text">Kubernetes 1.24以前を実行しているクラスタの場合は、を使用します <block ref="fca96f50bbc5cba400ec0352141eeed0" category="inline-link-macro-rx"></block>。</block>
+  <block id="9d09cc8d1806a36c8229ace5be55429d" category="list-text">Kubernetes 1.25以上を実行するクラスタの場合は、を使用します <block ref="3f9cbdeaab0f584d6abcc4282318bea8" category="inline-link-macro-rx"></block>。</block>
+  <block id="5d52721879cc96347aaf4163e6a19e02" category="admonition">クラスタを対象としたオペレータをインストールすると、の移行が開始されます<block ref="4cb15aa30ce0ec4747b372d6d2a5e637" prefix=" " category="inline-code"></block> オブジェクトの移動先<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> オブジェクトを削除します<block ref="4cb15aa30ce0ec4747b372d6d2a5e637" prefix=" " category="inline-code"></block> オブジェクトと<block ref="297dc4adc64c26ae2fd6a1039d00ccb0" prefix=" " category="inline-code"></block> CRD、およびAstra Tridentを、使用しているクラスタ対象オペレータのバージョンにアップグレードします。次の例では、Tridentが23.04.0にアップグレードされています。</block>
+  <block id="ad3ec9af70c3860794540db75d9807c6" category="list-text">を使用します<block ref="cd01e1bae83933b9c59c914bc71332ac" prefix=" " category="inline-code"></block> コマンドを入力します<block ref="56c028cf1def4066f6a4728f90b9dbf8" prefix=" " category="inline-code"></block> アップグレード後のバージョンが反映されます。</block>
+  <block id="17a3cc50f8070f6f8ca4c0aaf627cd51" category="list-text">インストールされているバージョンの4リリースウィンドウ内にある任意のターゲットリリースに直接アップグレードできます。たとえば、22.04（22.04.1などのDOTリリースを含む）から23.04に直接アップグレードできます。</block>
+  <block id="beee3e754bb36e7321f32ad13d4ac60a" category="paragraph">すべてのKubernetesワーカーノードに適切なiSCSIツールをインストールしておく必要があります。を参照してください <block ref="9e8cf70fcb465bf1907b585f74e9e1a6" category="inline-link-macro-rx"></block> を参照してください。</block>
+  <block id="37225474f75e9da42c0f924ba87b113a" category="cell"><block ref="8321592ce24c8a122ecf26a63cfca407" prefix="" category="inline-code"></block>、<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block>、<block ref="844e84da8e822b4a33c4d8188da97937" prefix=" " category="inline-code"></block>、<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block>、<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block></block>
+  <block id="56d1e7863190cbf5e7689e2821d0959e" category="cell"><block ref="47cb44be55a0dffa15dfc900a4c687be" prefix="" category="inline-code"></block></block>
+  <block id="3bc2d9079510db6d0570883494bc5984" category="cell"><block ref="f899139df5e1059396431415e770c6dd" prefix="" category="inline-code"></block></block>
+  <block id="06daeb0fdb584c4694891d290310e1ed" category="cell"><block ref="3644a684f98ea8fe223c713b77189a77" prefix="" category="inline-code"></block></block>
+  <block id="429970b7b8d395eb00181a72bc544fba" category="cell">共有フォルダのMicrosoft管理コンソールを使用して作成したSMB共有の名前を指定するか、Astra TridentによるSMB共有の作成を許可する共有名を指定できます。または、パラメータを空白のままにして、ボリュームへの共有アクセスを禁止することもできます。</block>
+  <block id="996a57df5a7c8752e8bc23b6af020be4" category="cell">状況<block ref="0a236e7685e50a59df980d0a30929d6c" prefix=" " category="inline-code"></block> はです<block ref="334c4a4c42fdb79d7ebc3e73b517e6f8" prefix=" " category="inline-code"></block>、<block ref="2954e92a9b4d0e998fe4893f8141649a" prefix=" " category="inline-code"></block> 「」</block>
+  <block id="58c09f2c9581bc7c58c32116266b6d8f" category="cell">使用する階層化ポリシー<block ref="334c4a4c42fdb79d7ebc3e73b517e6f8" prefix=" " category="inline-code"></block></block>
+  <block id="49ed5b3ecd0e966bec6b74083f06599e" category="cell"><block ref="8805d416ce540c5f2df34af5b18d742b" prefix="" category="inline-code"></block> ONTAP 9.5より前のSVM-DR構成の場合</block>
+  <block id="6792aad2d8c086a9d25f5ad8ec090f35" category="paragraph">Elementバックエンドを作成する前に、次の情報が必要になります。</block>
+  <block id="4e121ce555fa114069539035adefe18e" category="section-title">ボリュームモード</block>
+  <block id="690b3c7311638da5eef87f5e07aa1258" category="section-title">ボリュームの管理</block>
+  <block id="24da0fbaaa9930515c555e7019db09d2" category="paragraph">Astra Tridentを使用してボリュームを管理する方法については、以下を参照してください。</block>
+  <block id="00a9bbaf4185978435bd4d6cb7aba6c4" category="summary">Astra TridentとAmazon FSx for NetApp ONTAP を使用すると、Amazon Elastic Kubernetes Service（EKS）で実行されているKubernetesクラスタで、ONTAP を基盤とするブロックおよびファイルの永続ボリュームをプロビジョニングできるようになります。</block>
+  <block id="5178ad00e596ece0be9aceff179b4303" category="paragraph">Astra Tridentは、Astra Tridentのパフォーマンス監視に使用できるPrometheus指標エンドポイントのセットを提供します。</block>
+  <block id="51e6d748c5af856ade589011dc2c7e85" category="cell"><block ref="37a6259cc0c1dae299a7866489dff0bd" prefix="" category="inline-code"></block></block>
+  <block id="ddbd2735bfb88c5da807f77f6fe5f6c8" category="doc">ONTAP NASドライバの概要</block>
+  <block id="dd972e44915c7a0884edd58e9d839295" category="section-title">ONTAP NASドライバに関する重要な情報</block>
+  <block id="482723983a4f2af954e36ff41e567451" category="section-title">既知の制限</block>
+  <block id="1faffcbb00c529812b5526b1b22b2b56" category="paragraph">を作成するには、SVMでNFSプロトコルとSMB / CIFSプロトコルの両方を設定する必要があります<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> オンプレミスのONTAP 用のSMBボリューム。これらのプロトコルのいずれかを設定しないと、原因 SMBボリュームの作成が失敗します。</block>
+  <block id="5cc1e28c0d7b6c40ca94aacb554b31ca" category="doc">ONTAP SANドライバの概要</block>
+  <block id="7771a46320e96de2bde6598540ad4d52" category="section-title">ONTAP SANドライバに関する重要な情報</block>
+  <block id="904628b57a33f3a2f6d71a6d991e15c6" category="paragraph">Astra Trident では、を使用して、 Kubernetes クラスタ内にあるノードにボリュームを選択的に作成して接続できます<block ref="80b9a4f4a1bc9851317207ee3477041a" category="inline-link-rx"></block>。</block>
+  <block id="3eba7c2a6bd35cbac350dcbfb90408f6" category="paragraph">CSI トポロジ機能を使用すると、領域およびアベイラビリティゾーンに基づいて、ボリュームへのアクセスをノードのサブセットに制限できます。現在、クラウドプロバイダは、 Kubernetes 管理者がゾーンベースのノードを生成できるようになっています。ノードは、リージョンによって異なるアベイラビリティゾーンに配置することも、リージョンによって配置することもできます。マルチゾーンアーキテクチャでワークロード用のボリュームをプロビジョニングするために、 Astra Trident は CSI トポロジを使用します。</block>
+  <block id="4ba6a75e6aacbc3737630ba55916cd27" category="section-title">バックエンドを管理するためのオプション</block>
+  <block id="798f4548a52b3c91b25609a82ff6a12e" category="paragraph">を導入しました<block ref="913a4b06671d1e04e6582a85afe3abbe" prefix=" " category="inline-code"></block>管理者は現在、バックエンドを2つの方法で管理できるようになっています。これには、次のような質問があります。</block>
+  <block id="8e523fab738ccb6504fc60551cbaefdf" category="paragraph">Astra Tridentはノード単位で作成、管理します<block ref="58f3779afe9da9ffdc085dc3064306f7" prefix=" " category="inline-code"></block> として<block ref="e77a1bd34ff5793aca292b38d23bc2c9" prefix=" " category="inline-code"></block>。</block>
+  <block id="0ee19d4be17e297cfb39c398cb268b5e" category="paragraph">この値は変更したり省略したりすることはできません。</block>
+  <block id="07d41595da50d0c332f22902db2f76d8" category="paragraph">*でのみ使用できます<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block> ドライバ*。</block>
+  <block id="684a16b15a51568bcdd546607176bd57" category="paragraph"><block ref="e77a1bd34ff5793aca292b38d23bc2c9" prefix="" category="inline-code"></block></block>
+  <block id="ab946346d7b6ebd4a84d96bb78dcd833" category="section-title">LUKSボリュームをインポートするためのバックエンド構成</block>
+  <block id="6159e851594f646ce383a87fc615fbd1" category="paragraph">LUKSボリュームをインポートするには、を設定する必要があります<block ref="0f179ba2bc32ab5d8f60692f5b800c86" prefix=" " category="inline-code"></block> 終了：<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> バックエンドにあります。。<block ref="0f179ba2bc32ab5d8f60692f5b800c86" prefix=" " category="inline-code"></block> optionを指定すると、ボリュームがLUKS準拠かどうかがAstra Tridentに通知されます <block ref="b326b5062b2f0e69046810717534cb09" prefix="(" category="inline-code"></block>）またはLUKS準拠ではありません <block ref="68934a3e9455fa72420237eb05902327" prefix="(" category="inline-code"></block>）をクリックします。</block>
+  <block id="240fa413bb5a8b96728ba9bb20f953bc" category="summary">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。** Astra Trident 23.04へのアップグレードに関する重要な情報については、リリースノートをご覧ください。**</block>
+  <block id="75a6a3af601d4175be90ebfbdcaead5f" category="doc">Astra Trident 23.04のドキュメント</block>
+  <block id="490414e0366b091220802d406e52c076" category="doc">新機能</block>
+  <block id="0dcdbeca28e29fdc0076d56763410520" category="section-title">23.04の新機能</block>
+  <block id="3317f97754f7308b6a0e2a12c0241d39" category="admonition">ONTAP-SAN-*ボリュームの強制的なボリューム接続解除は、非グレースフルノードシャットダウン機能のゲートが有効になっているKubernetesバージョンでのみサポートされます。[Force detach]は、インストール時にを使用して有効にする必要があります<block ref="d75e90115a6343745df96039920422fc" prefix=" " category="inline-code"></block> Tridentインストーラのフラグ。</block>
+  <block id="8743cc1328bba53ea356fd3e593a3f9c" category="list-text">Trident Operatorクラスタロールの権限が固定され、バンドルの権限（<block ref="25d51e363866fb30c759c73e05114b0d" category="inline-link-macro-rx"></block>）。</block>
+  <block id="c16e7ed05955f3a772cc5e37988626a6" category="inline-link-macro">問題 #811</block>
+  <block id="c8b742414af3be73bd16e0c1ed978ae5" category="list-text">Tridentコントローラがすぐにシャットダウンできない問題を修正問題 しました（<block ref="6916c682464f601a812aa726b7255568" category="inline-link-macro-rx"></block>）。</block>
+  <block id="e82b00f6dda8d75f6267522d6e8e21b3" category="list-text">ONTAP-SAN-*ドライバでプロビジョニングされた指定したLUNに関連付けられているすべてのigroup名を一覧表示する修正を追加しました。</block>
+  <block id="3f32e3199847516d3773942171a3320e" category="inline-link-macro">問題 #537</block>
+  <block id="8ac5248178b612abfaaec81ca7b06c94" category="list-text">s390アーキテクチャ（<block ref="a2e3737cce03fa6e94f8357a427b1da2" category="inline-link-macro-rx"></block>）。</block>
+  <block id="70d039054d2873e8b0f28587cb19086a" category="inline-link-macro">問題 #781</block>
+  <block id="48b91d8b8b87d6d8c95cbc34bbae12e7" category="list-text">ボリュームマウント処理中の誤ったログレベルを修正しました（<block ref="8bb65f034421623db4038f879681c20b" category="inline-link-macro-rx"></block>）。</block>
+  <block id="6c85ef6d99d7dc6999989d8228ad56d9" category="inline-link-macro">問題 #802</block>
+  <block id="6edadfcf2d991f369cdf934677bb161a" category="list-text">固定電位タイプアサーションエラー（<block ref="e6bc1d779eb6c87e7246c3841e50b482" category="inline-link-macro-rx"></block>）。</block>
+  <block id="afcf8fa41398f15ad38c5874372e9b4c" category="list-text">Kubernetes 1.27のサポートを追加。</block>
+  <block id="67db0e94c8905c93eda71f86cb532e07" category="list-text">LUKSボリュームのインポートのサポートが追加されました。</block>
+  <block id="6de845032edacfacdf7599428fce6ce3" category="list-text">ReadWriteOncePod PVCアクセスモードのサポートが追加されました。</block>
+  <block id="9297bb6ec4e523b7875643c53cc9f528" category="list-text">ノードの正常でないシャットダウン時にONTAP-SAN-*ボリュームで強制的に接続解除がサポートされるようになりました。</block>
+  <block id="bf75c88234d165d6aa37891adda4465a" category="inline-link-macro">問題 #758</block>
+  <block id="8ba74f6fd31160a630f1dc4eeb7d2e20" category="list-text">すべてのontap-san-*ボリュームでノード単位のigroupを使用するようになりました。LUNはigroupにマッピングされるだけで、それらのノードにアクティブにパブリッシュされるため、セキュリティ体制が強化されます。アクティブなワークロードに影響を与えることなく既存のボリュームを安全であるとTridentが判断した場合、必要に応じて新しいigroupスキームに切り替えます（<block ref="9c63b965233843690f19867523ba780c" category="inline-link-macro-rx"></block>）。</block>
+  <block id="79e79d7d8fe825308bd0e601daaa1131" category="list-text">Tridentで管理されていないigroupをONTAP-SAN-*バックエンドからクリーンアップし、Tridentのセキュリティを強化</block>
+  <block id="18596399dedf47a387f514e9c9862876" category="list-text">ストレージドライバontap-nas-economyとontap-nas-flexgroupに、Amazon FSxによるSMBボリュームのサポートが追加されました。</block>
+  <block id="42bbebea36c49138518f54240583f571" category="list-text">ontap-nas、ontap-nas-economy、ontap-nas-flexgroupストレージドライバでSMB共有のサポートが追加されました。</block>
+  <block id="4332590e7a6bcbdc2a06dc0e18c0731b" category="inline-link-macro">問題 #732</block>
+  <block id="5a8fc8277a0f6ed003c225aa1e7c48b6" category="list-text">arm64ノードのサポートを追加しました<block ref="c2778c70230759cdeecc0357ca334a05" category="inline-link-macro-rx"></block>）。</block>
+  <block id="69ef45b431e1a60332ee3ce7e1a67645" category="list-text">最初にAPIサーバを非アクティブ化することで、Tridentが手順 をシャットダウンできるようになりました<block ref="6916c682464f601a812aa726b7255568" category="inline-link-macro-rx"></block>）。</block>
+  <block id="be70537c794b0fc1d909e1bf6ffbbc59" category="list-text">Windowsおよびarm64ホストのクロスプラットフォームビルドサポートをMakefileに追加しました。build.mdを参照してください。</block>
+  <block id="6f03549bdf867b6dbabec83da444ffcf" category="paragraph">** Kubernetes：** ONTAP-SANおよびONTAP-SAN-economyドライバ（<block ref="9c63b965233843690f19867523ba780c" category="inline-link-macro-rx"></block>）。</block>
+  <block id="7558c614baceb6010756b848dd26325e" category="section-title">23.01.1の変更点</block>
+  <block id="d7393ea674321a4e126b601e3097f2ec" category="admonition">TridentでKubernetes 1.27がサポートされるようになりました。Kubernetesをアップグレードする前にAstra Tridentをアップグレードしてください。</block>
+  <block id="99836a64b28c522e35a15aa0a4b39257" category="list-text">ONTAP SANボリュームでは、ノード単位のigroupが使用され、LUNがigroupにマッピングされると同時に、これらのノードにアクティブに公開されてセキュリティ体制が強化されます。既存のボリュームは、アクティブなワークロードに影響を与えずに安全であるとAstra Tridentが判断したときに、必要に応じて新しいigroupスキームに切り替えられます。</block>
+  <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">新機能</block>
 </blocks>
