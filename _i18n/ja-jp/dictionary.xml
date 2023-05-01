@@ -1354,7 +1354,6 @@
   <block id="c3417eb755bee1658ae5b42ff2115193" category="admonition">ANF ボリュームのボリュームパスは、 / のあとのマウントパスにあります。たとえば ' マウント・パスが 10.0.0.2::/importvol1 の場合 ' ボリューム・パスは importvol1 になります</block>
   <block id="e4f61797b38c111b04c612b285a06659" category="summary">ONTAP NAS ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。</block>
   <block id="00b8b321c68facfb94b31690cbd23e00" category="paragraph">ONTAP バックエンドすべてに対して、 Astra Trident が SVM に少なくとも 1 つのアグリゲートを割り当てておく必要があります。</block>
-  <block id="c6cd2f38be30f5256f7116692ab56edd" category="paragraph">複数のドライバを実行し、 1 つまたは複数のドライバを参照するストレージクラスを作成することもできます。たとえば 'ONTAP-NAS' ドライバを使用する Gold クラスと 'ONTAP-NAS-エコノミー 'one を使用する Bronze クラスを構成できます</block>
   <block id="07b434b23f63ca6490df33b213599320" category="section-title">NFS エクスポートポリシーを管理します</block>
   <block id="9d66483f8378ffe30cde84e1b6dbf484" category="paragraph">Astra Trident は、 NFS エクスポートポリシーを使用して、プロビジョニングするボリュームへのアクセスを制御します。</block>
   <block id="a297d9b7dbc393d5e8a5b3f98bcc9337" category="paragraph">Astra Trident には、エクスポートポリシーを使用する際に次の 2 つのオプションがあります。</block>
@@ -3654,4 +3653,5 @@
   <block id="d7393ea674321a4e126b601e3097f2ec" category="admonition">TridentでKubernetes 1.27がサポートされるようになりました。Kubernetesをアップグレードする前にAstra Tridentをアップグレードしてください。</block>
   <block id="99836a64b28c522e35a15aa0a4b39257" category="list-text">ONTAP SANボリュームでは、ノード単位のigroupが使用され、LUNがigroupにマッピングされると同時に、これらのノードにアクティブに公開されてセキュリティ体制が強化されます。既存のボリュームは、アクティブなワークロードに影響を与えずに安全であるとAstra Tridentが判断したときに、必要に応じて新しいigroupスキームに切り替えられます。</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">新機能</block>
+  <block id="ffd4000c9e43a23d97e231d47f99dcd4" category="list-text">複数のドライバを実行し、どちらか一方を参照するストレージクラスを作成できます。たとえば、を使用するGoldクラスを設定できます<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block> ドライバとを使用するBronzeクラス<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 1つ。</block>
 </blocks>
