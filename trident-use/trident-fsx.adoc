@@ -12,7 +12,7 @@ summary: Astra TridentとAmazon FSx for NetApp ONTAP を使用すると、Amazon
 
 
 [role="lead"]
-https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["NetApp ONTAP 対応の Amazon FSX"^] は、NetApp ONTAP ストレージオペレーティングシステムを基盤とするファイルシステムの起動や実行を可能にする、フルマネージドのAWSサービスです。FSX for ONTAP を使用すると、使い慣れたネットアップの機能、パフォーマンス、管理機能を活用しながら、AWSにデータを格納するためのシンプルさ、即応性、セキュリティ、拡張性を活用できます。FSX for ONTAP は、ONTAP ファイルシステムの機能と管理APIをサポートしています。
+https://["NetApp ONTAP 対応の Amazon FSX"^] は、NetApp ONTAP ストレージオペレーティングシステムを基盤とするファイルシステムの起動や実行を可能にする、フルマネージドのAWSサービスです。FSX for ONTAP を使用すると、使い慣れたネットアップの機能、パフォーマンス、管理機能を活用しながら、AWSにデータを格納するためのシンプルさ、即応性、セキュリティ、拡張性を活用できます。FSX for ONTAP は、ONTAP ファイルシステムの機能と管理APIをサポートしています。
 
 
 
@@ -22,7 +22,7 @@ https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["NetApp
 
 Amazon Elastic Kubernetes Service （ EKS ）で実行されている Astra Trident と Amazon FSX for NetApp ONTAP を使用すると、 ONTAP がサポートするブロックボリュームとファイル永続ボリュームを確実にプロビジョニングできます。
 
-NetApp ONTAP 用の Amazon FSX では、を使用します https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mgng-stor-tier-fp/GUID-5A78F93F-7539-4840-AB0B-4A6E3252CF84.html["FabricPool"^] ストレージ階層を管理します。データへのアクセス頻度に基づいて階層にデータを格納することができます。
+NetApp ONTAP 用の Amazon FSX では、を使用します https://["FabricPool"^] ストレージ階層を管理します。データへのアクセス頻度に基づいて階層にデータを格納することができます。
 
 
 
@@ -86,6 +86,6 @@ WARNING: Astra Tridentは `vsadmin` SVMユーザまたは同じロールを持�
 
 == 詳細については、こちらをご覧ください
 
-* https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["Amazon FSX for NetApp ONTAP のドキュメント"^]
-* https://www.netapp.com/blog/amazon-fsx-for-netapp-ontap/["Amazon FSX for NetApp ONTAP に関するブログ記事です"^]
+* https://["Amazon FSX for NetApp ONTAP のドキュメント"^]
+* https://["Amazon FSX for NetApp ONTAP に関するブログ記事です"^]
 

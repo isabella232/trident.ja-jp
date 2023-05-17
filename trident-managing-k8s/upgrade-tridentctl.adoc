@@ -20,8 +20,8 @@ summary: 'tridentctl を使用して " 既存の Astra Trident インストー�
 
 最新リリースの Astra Trident にアップグレードする際は、次の点を考慮してください。
 
-* Trident 20.01 以降では、のベータ版のみが提供されます https://kubernetes.io/docs/concepts/storage/volume-snapshots/["ボリューム Snapshot"^] がサポートされます。Kubernetes 管理者は、従来のアルファスナップショットを保持するために、アルファスナップショットオブジェクトを安全にバックアップするか、ベータ版に変換するように注意する必要があります。
-* ボリュームスナップショットのベータリリースでは、一連の新しい CRD とスナップショットコントローラが導入されています。どちらも Astra Trident をインストールする前にセットアップする必要があります。 https://netapp.io/2020/01/30/alpha-to-beta-snapshots/["この blog"^] alpha ボリュームの Snapshot をベータ版に移行する手順について説明します。
+* Trident 20.01 以降では、のベータ版のみが提供されます https://["ボリューム Snapshot"^] がサポートされます。Kubernetes 管理者は、従来のアルファスナップショットを保持するために、アルファスナップショットオブジェクトを安全にバックアップするか、ベータ版に変換するように注意する必要があります。
+* ボリュームスナップショットのベータリリースでは、一連の新しい CRD とスナップショットコントローラが導入されています。どちらも Astra Trident をインストールする前にセットアップする必要があります。 https://["この blog"^] alpha ボリュームの Snapshot をベータ版に移行する手順について説明します。
 * Astra Trident のアンインストールと再インストールはアップグレードとして機能します。Trident をアンインストールしても、 Astra Trident 環境で使用されている Persistent Volume Claim （ PVC ；永続的ボリューム要求）と Persistent Volume （ PV ；永続的ボリューム）は削除されません。Astra Trident がオフラインの間は、すでにプロビジョニング済みの PVS を引き続き使用でき、 Astra Trident は、オンラインに戻った時点で作成された PVC に対してボリュームをプロビジョニングします。
 
 

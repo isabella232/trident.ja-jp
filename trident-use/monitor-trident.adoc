@@ -31,14 +31,14 @@ NOTE: デフォルトでは 'Trident のメトリックは '/metrics エンド�
 
 .必要なもの
 * Astra Trident がインストールされた Kubernetes クラスタ
-* Prometheus インスタンス。これは a である場合もある https://github.com/prometheus-operator/prometheus-operator["コンテナ化された Prometheus 環境"^] または、 Prometheus をとして実行することもできます https://prometheus.io/download/["ネイティブアプリケーション"^]。
+* Prometheus インスタンス。これは a である場合もある https://["コンテナ化された Prometheus 環境"^] または、 Prometheus をとして実行することもできます https://["ネイティブアプリケーション"^]。
 
 
 
 
 == 手順 1 ： Prometheus ターゲットを定義する
 
-Prometheus ターゲットを定義して指標を収集し、 Astra Trident が管理するバックエンド、作成するボリュームなどの情報を取得する必要があります。これ https://netapp.io/2020/02/20/prometheus-and-trident/["ブログ"^] Prometheus と Grafana を Astra Trident とともに使用して指標を取得する方法について説明します。ブログでは、 Kubernetes クラスタでオペレータとして Prometheus を実行する方法と、 Astra Trident のメトリックを取得する ServiceMonitor を作成する方法について説明しています。
+Prometheus ターゲットを定義して指標を収集し、 Astra Trident が管理するバックエンド、作成するボリュームなどの情報を取得する必要があります。これ https://["ブログ"^] Prometheus と Grafana を Astra Trident とともに使用して指標を取得する方法について説明します。ブログでは、 Kubernetes クラスタでオペレータとして Prometheus を実行する方法と、 Astra Trident のメトリックを取得する ServiceMonitor を作成する方法について説明しています。
 
 
 
@@ -69,7 +69,7 @@ metadata:
 ----
 この ServiceMonitor 定義は 'trident-csi サービスから返されたメトリックを取得し ' 特にサービスの 'm etrics エンドポイントを探しますその結果、 Prometheus は Astra Trident の指標を理解するように設定されました。
 
-kubelet は、 Astra Trident から直接利用できるメトリックに加えて、独自のメトリック・エンドポイントを通じて多くの「 kubeet_volume_* 」メトリックを公開しています。Kubelet では、接続されているボリュームに関する情報、およびポッドと、それが処理するその他の内部処理を確認できます。を参照してください https://kubernetes.io/docs/concepts/cluster-administration/monitoring/["こちらをご覧ください"^]。
+kubelet は、 Astra Trident から直接利用できるメトリックに加えて、独自のメトリック・エンドポイントを通じて多くの「 kubeet_volume_* 」メトリックを公開しています。Kubelet では、接続されているボリュームに関する情報、およびポッドと、それが処理するその他の内部処理を確認できます。を参照してください https://["こちらをご覧ください"^]。
 
 
 
@@ -143,10 +143,10 @@ kubelet_volume_stats_used_bytes / kubelet_volume_stats_capacity_bytes * 100
 デフォルトでは、 Astra Trident は Prometheus 指標と基本バックエンド情報を毎日定期的にネットアップに送信します。
 
 * Astra Trident が Prometheus 指標と基本バックエンド情報をネットアップに送信しないようにするには、 Astra Trident のインストール時に「 --silence -autosupport 」フラグを渡します。
-* Astra Trident は 'tridentctl send AutoSupport を介してコンテナ・ログをオンデマンドでネットアップ・サポートに送信することもできますAstra Trident をトリガーしてログをアップロードする必要があります。ログを送信する前に、ネットアップのに同意する必要がありますhttps://www.netapp.com/company/legal/privacy-policy/["プライバシーポリシー"^]。
+* Astra Trident は 'tridentctl send AutoSupport を介してコンテナ・ログをオンデマンドでネットアップ・サポートに送信することもできますAstra Trident をトリガーしてログをアップロードする必要があります。ログを送信する前に、ネットアップのに同意する必要がありますhttps://["プライバシーポリシー"^]。
 * 指定しないと、 Astra Trident は過去 24 時間からログを取得します。
-* ログの保持期間は、で指定できます `--since` フラグ。例： `tridentctl send autosupport --since=1h`。この情報は、を介して収集および送信されます `trident-autosupport` TridentがAstraと一緒にインストールされるコンテナ。コンテナイメージは、で取得できます https://hub.docker.com/r/netapp/trident-autosupport["Trident AutoSupport の略"^]。
-* Trident AutoSupport は、個人情報（ PII ）や個人情報を収集または送信しません。それにはが付いています https://www.netapp.com/us/media/enduser-license-agreement-worldwide.pdf["EULA"^] これは Trident コンテナイメージ自体には該当しません。ネットアップのデータセキュリティと信頼に対する取り組みの詳細を確認できます https://www.netapp.com/us/company/trust-center/index.aspx["こちらをご覧ください"^]。
+* ログの保持期間は、で指定できます `--since` フラグ。例： `tridentctl send autosupport --since=1h`。この情報は、を介して収集および送信されます `trident-autosupport` TridentがAstraと一緒にインストールされるコンテナ。コンテナイメージは、で取得できます https://["Trident AutoSupport の略"^]。
+* Trident AutoSupport は、個人情報（ PII ）や個人情報を収集または送信しません。それにはが付いています https://["EULA"^] これは Trident コンテナイメージ自体には該当しません。ネットアップのデータセキュリティと信頼に対する取り組みの詳細を確認できます https://["こちらをご覧ください"^]。
 
 
 Astra Trident から送信されるペイロードの例を次に示します。

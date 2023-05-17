@@ -47,7 +47,7 @@ systemctl restart docker
 docker --version
 ----
 +
-バージョンが最新でない場合は、 https://docs.docker.com/engine/install/["インストール環境をインストールまたは更新します"^]。
+バージョンが最新でない場合は、 https://["インストール環境をインストールまたは更新します"^]。
 
 
 
@@ -135,7 +135,7 @@ docker --version
 curl -fsSL https://get.docker.com/ | sh
 ----
 +
-または https://docs.docker.com/engine/install/["ご使用のディストリビューションの指示に従ってください"^]。
+または https://["ご使用のディストリビューションの指示に従ってください"^]。
 
 . NFS または iSCSI がシステムに対して設定されていることを確認します。
 

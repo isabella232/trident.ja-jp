@@ -42,7 +42,7 @@ summary: 'Tridentは、Tridentオペレータ（手動またはHelmを使用）�
 * Kubernetesワーカーノードすべてからボリュームをマウントできます。
 * を搭載したLinuxホスト `kubectl` （または `oc`OpenShiftを使用している場合）Kubernetesクラスタを管理するようにインストールおよび設定します。
 * 。 `KUBECONFIG` Kubernetesクラスタ構成を参照するように設定された環境変数。
-* Kubernetes と Docker Enterprise を併用する場合は、 https://docs.docker.com/ee/ucp/user-access/cli/["CLI へのアクセスを有効にする手順は、ユーザが行ってください"^]。
+* Kubernetes と Docker Enterprise を併用する場合は、 https://["CLI へのアクセスを有効にする手順は、ユーザが行ってください"^]。
 
 
 
