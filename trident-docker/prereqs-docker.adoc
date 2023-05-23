@@ -19,7 +19,7 @@ Trident を導入するには、必要なプロトコルをホストにインス
 == 要件を確認します
 
 * の導入がすべてを満たしていることを確認します link:../trident-get-started/requirements.html["要件"]。
-* サポートされているバージョンの Docker がインストールされていることを確認します。Docker のバージョンが最新でない場合は、 https://["インストールまたは更新します"^]。
+* サポートされているバージョンの Docker がインストールされていることを確認します。Docker のバージョンが最新でない場合は、 https://docs.docker.com/engine/install/["インストールまたは更新します"^]。
 +
 [listing]
 ----

@@ -12,4 +12,4 @@ summary: Kubernetes システムの構成要素の詳細をご確認ください
 
 
 [role="lead"]
-のコンポーネントの詳細については、を参照してください https://["Kubernetes システム"^]。
+のコンポーネントの詳細については、を参照してください https://kubernetes.io/docs/concepts/["Kubernetes システム"^]。

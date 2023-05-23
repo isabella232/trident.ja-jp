@@ -134,7 +134,7 @@ ONTAP 管理 LIF の IP アドレス。Fully Qualified Domain Name （ FQDN ；�
 
 
 | 「 nfsvMountOptions 」のように入力します  a| 
-NFS マウントオプションのきめ細かな制御。デフォルトは「 -o nfsvers=3 」です。* 「 ONTAP-NAS' 」および「 ONTAP-NAS-エコノミー 」ドライバ専用です。 https://["ここでは、 NFS ホストの設定情報を参照してください"^]。
+NFS マウントオプションのきめ細かな制御。デフォルトは「 -o nfsvers=3 」です。* 「 ONTAP-NAS' 」および「 ONTAP-NAS-エコノミー 」ドライバ専用です。 https://www.netapp.com/pdf.html?item=/media/10720-tr-4067.pdf["ここでは、 NFS ホストの設定情報を参照してください"^]。
  a| 
 `-o nfsvers=4`
 
@@ -277,7 +277,7 @@ NOTE: Swarm は複数のノード間でのボリューム作成のオーケス�
 * FlexGroup Volume ではクローニングはサポートされていません。
 
 
-FlexGroup と FlexGroup に適したワークロードの詳細については、を参照してください https://["『 NetApp FlexGroup Volume Best Practices and Implementation Guide 』にある、ボリュームへの移行に関するセクション"^]。
+FlexGroup と FlexGroup に適したワークロードの詳細については、を参照してください https://www.netapp.com/pdf.html?item=/media/12385-tr4571pdf.pdf["『 NetApp FlexGroup Volume Best Practices and Implementation Guide 』にある、ボリュームへの移行に関するセクション"^]。
 
 同じ環境で高度な機能と大規模な拡張性を実現するために 'ONTAP-NAS' を使用して Docker Volume Plugin の複数のインスタンスを実行し ' もう 1 つは「 ONTAP-NAS-エコノミー 」を使用して実行できます
 

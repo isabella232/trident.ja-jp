@@ -12,7 +12,7 @@ summary: Astra Trident では、 CSI トポロジ機能を利用することに�
 
 
 [role="lead"]
-Astra Trident では、を使用して、 Kubernetes クラスタ内にあるノードにボリュームを選択的に作成して接続できます https://["CSI トポロジ機能"^]。
+Astra Trident では、を使用して、 Kubernetes クラスタ内にあるノードにボリュームを選択的に作成して接続できます https://kubernetes-csi.github.io/docs/topology.html["CSI トポロジ機能"^]。
 
 
 
@@ -21,7 +21,7 @@ Astra Trident では、を使用して、 Kubernetes クラスタ内にあるノ
 CSI トポロジ機能を使用すると、領域およびアベイラビリティゾーンに基づいて、ボリュームへのアクセスをノードのサブセットに制限できます。現在、クラウドプロバイダは、 Kubernetes 管理者がゾーンベースのノードを生成できるようになっています。ノードは、リージョンによって異なるアベイラビリティゾーンに配置することも、リージョンによって配置することもできます。マルチゾーンアーキテクチャでワークロード用のボリュームをプロビジョニングするために、 Astra Trident は CSI トポロジを使用します。
 
 
-TIP: CSI トポロジ機能の詳細については、を参照してください https://["こちらをご覧ください"^]。
+TIP: CSI トポロジ機能の詳細については、を参照してください https://kubernetes.io/blog/2018/10/11/topology-aware-volume-provisioning-in-kubernetes/["こちらをご覧ください"^]。
 
 Kubernetes には、 2 つの固有のボリュームバインドモードがあります。
 
@@ -289,8 +289,8 @@ pvc-san   Bound    pvc-ecb1e1a0-840c-463b-8b65-b3d033e2e62b   300Mi      RWO    
 
 == 詳細については、こちらをご覧ください
 
-* https://["コンテナのリソースを管理"^]
-* https://["ノードセレクタ"^]
-* https://["アフィニティと非アフィニティ"^]
-* https://["塗料および耐性"^]
+* https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/["コンテナのリソースを管理"^]
+* https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector["ノードセレクタ"^]
+* https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity["アフィニティと非アフィニティ"^]
+* https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/["塗料および耐性"^]
 

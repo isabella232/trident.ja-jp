@@ -17,7 +17,7 @@ summary:
 
 == 著作権
 
-http://[]
+http://www.netapp.com/us/legal/copyright.aspx[]
 
 
 
@@ -25,7 +25,7 @@ http://[]
 
 NetApp 、 NetApp のロゴ、および NetApp の商標ページに記載されているマークは、 NetApp, Inc. の商標です。その他の会社名および製品名は、それぞれの所有者の商標である場合があります。
 
-http://[]
+http://www.netapp.com/us/legal/netapptmlist.aspx[]
 
 
 
@@ -33,16 +33,16 @@ http://[]
 
 ネットアップが所有する特許の最新リストは、次のサイトで入手できます。
 
-https://[]
+https://www.netapp.com/us/media/patents-page.pdf[]
 
 
 
 == プライバシーポリシー
 
-https://[]
+https://www.netapp.com/us/legal/privacypolicy/index.aspx[]
 
 
 
 == オープンソース
 
-ネットアップの Astra Trident 向けソフトウェアで使用されているサードパーティの著作権とライセンスは、の各リリースの通知ファイルで確認できます https://[]。
+ネットアップの Astra Trident 向けソフトウェアで使用されているサードパーティの著作権とライセンスは、の各リリースの通知ファイルで確認できます https://github.com/NetApp/trident/[]。

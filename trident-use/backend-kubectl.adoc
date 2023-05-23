@@ -49,7 +49,7 @@ spec:
   credentials:
     name: backend-tbc-ontap-san-secret
 ----
-の例を確認することもできます https://["Trident インストーラ"^] 目的のストレージプラットフォーム / サービスの設定例を示すディレクトリ。
+の例を確認することもできます https://github.com/NetApp/trident/tree/stable/v21.07/trident-installer/sample-input/backends-samples["Trident インストーラ"^] 目的のストレージプラットフォーム / サービスの設定例を示すディレクトリ。
 
 「 PEC 」は、バックエンド固有の設定パラメータをとります。この例では ' バックエンドは 'ONTAP-SAN' ストレージ・ドライバを使用し ' ここで表に示す構成パラメータを使用します使用するストレージドライバの設定オプションの一覧については、を参照してください link:backends.html["ストレージドライバのバックエンド設定情報"^]。
 
@@ -76,7 +76,7 @@ TIP: tridentctl で作成されたバックエンドには 'TridentBackendConfig
 
 kubectl' を使用して新しいバックエンドを作成するには ' 次の手順を実行する必要があります
 
-. を作成します https://["Kubernetes Secret"^]。シークレットには、ストレージクラスタ / サービスと通信するために Trident から必要なクレデンシャルが含まれています。
+. を作成します https://kubernetes.io/docs/concepts/configuration/secret/["Kubernetes Secret"^]。シークレットには、ストレージクラスタ / サービスと通信するために Trident から必要なクレデンシャルが含まれています。
 . 「 TridentBackendConfig 」オブジェクトを作成します。ストレージクラスタ / サービスの詳細を指定し、前の手順で作成したシークレットを参照します。
 
 

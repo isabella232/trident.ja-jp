@@ -12,7 +12,7 @@ summary: Trident へのシンプルなアクセスを提供するコマンドラ
 
 
 [role="lead"]
-。 https://["Trident インストーラバンドル"^] Astra Trident へのシンプルなアクセスを提供するコマンドラインユーティリティ「 tridentctl 」が含まれています。十分な権限を持つ Kubernetes ユーザは、このロールを使用して Astra Trident をインストールしたり、 Astra Trident ポッドが含まれるネームスペースを直接管理したりできます。
+。 https://github.com/NetApp/trident/releases["Trident インストーラバンドル"^] Astra Trident へのシンプルなアクセスを提供するコマンドラインユーティリティ「 tridentctl 」が含まれています。十分な権限を持つ Kubernetes ユーザは、このロールを使用して Astra Trident をインストールしたり、 Astra Trident ポッドが含まれるネームスペースを直接管理したりできます。
 
 
 

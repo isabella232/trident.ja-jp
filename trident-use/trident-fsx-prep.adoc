@@ -22,7 +22,7 @@ Amazon Elastic Kubernetes Service（EKS）で実行されているKubernetesク�
 * 準備されているワーカーノード link:worker-node-prep.html["NFSまたはiSCSI"]。
 +
 
-NOTE: Amazon LinuxおよびUbuntuで必要なノードの準備手順を実行します https://["Amazon Machine Images の略"^] （ AMIS ） EKS の AMI タイプに応じて異なります。
+NOTE: Amazon LinuxおよびUbuntuで必要なノードの準備手順を実行します https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html["Amazon Machine Images の略"^] （ AMIS ） EKS の AMI タイプに応じて異なります。
 
 
 

@@ -73,13 +73,13 @@ cluster1::*> volume snapshot restore -vserver vs0 -volume vol3 -snapshot vol3_sn
 データのレプリケートは、ストレージアレイの障害によるデータ損失から保護する上で重要な役割を果たします。
 
 
-NOTE: ONTAP レプリケーションテクノロジの詳細については、を参照してください https://["ONTAP のドキュメント"^]。
+NOTE: ONTAP レプリケーションテクノロジの詳細については、を参照してください https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/GUID-A9A2F347-3E05-4F80-9E9C-CEF8F0A2F8E1.html["ONTAP のドキュメント"^]。
 
 
 
 === SnapMirror Storage Virtual Machine （ SVM ）レプリケーション
 
-を使用できます https://["SnapMirror"^] 設定とそのボリュームを含む SVM 全体をレプリケートすること。災害が発生した場合は、 SnapMirror デスティネーション SVM をアクティブ化してデータの提供を開始できます。システムがリストアされたら、プライマリに戻すことができます。
+を使用できます https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/GUID-8B187484-883D-4BB4-A1BC-35AC278BF4DC.html["SnapMirror"^] 設定とそのボリュームを含む SVM 全体をレプリケートすること。災害が発生した場合は、 SnapMirror デスティネーション SVM をアクティブ化してデータの提供を開始できます。システムがリストアされたら、プライマリに戻すことができます。
 
 Astra Trident は、レプリケーション関係自体を構成できないため、ストレージ管理者は ONTAP の SnapMirror SVM レプリケーション機能を使用して、ボリュームをディザスタリカバリ（ DR ）デスティネーションに自動的にレプリケートできます。
 
@@ -131,7 +131,7 @@ ONTAP の SnapMirror ボリュームレプリケーションのセットアッ�
 
 * ボリュームが配置されているクラスタとボリュームからデータを提供する SVM 間のピアリングを設定します。
 * 関係の動作を制御する SnapMirror ポリシーを作成し、その関係の設定属性を指定します。
-* を使用して、デスティネーションボリュームとソースボリューム間の SnapMirror 関係を作成します https://["d9934e78a9254dde4a227181c30fa2d2"^] をクリックし、適切な SnapMirror ポリシーを割り当てます。
+* を使用して、デスティネーションボリュームとソースボリューム間の SnapMirror 関係を作成します https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-cmpr-970/snapmirror__create.html["d9934e78a9254dde4a227181c30fa2d2"^] をクリックし、適切な SnapMirror ポリシーを割り当てます。
 * SnapMirror 関係の作成後、ソースボリュームからデスティネーションボリュームへのベースライン転送が完了するように、関係を初期化します。
 
 

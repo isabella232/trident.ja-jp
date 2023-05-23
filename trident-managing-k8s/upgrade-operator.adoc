@@ -26,12 +26,12 @@ summary: 既存の Astra Trident インストールは、オペレータが簡�
 * CSI Trident をアンインストールしても、インストールからのメタデータが保持されている場合は、オペレータを使用してアップグレードできます。
 * 特定の Kubernetes クラスタ内のすべてのネームスペースに存在する Trident のは、 1 つの Astra だけです。
 * Kubernetesクラスタを使用して実行する必要があります link:../trident-get-started/requirements.html["サポートされるKubernetesバージョン"]。
-* アルファスナップショットの CRD が存在する場合は、 tridentctl を使用して削除してください。これにより、アルファスナップショット仕様の CRD が削除されます。削除または移行が必要な既存のスナップショットについては、を参照してください https://["この blog"^]。
+* アルファスナップショットの CRD が存在する場合は、 tridentctl を使用して削除してください。これにより、アルファスナップショット仕様の CRD が削除されます。削除または移行が必要な既存のスナップショットについては、を参照してください https://netapp.io/2020/01/30/alpha-to-beta-snapshots/["この blog"^]。
 
 
 [WARNING]
 ====
-* OpenShift Container Platformで演算子を使用してTridentをアップグレードする場合は、Trident 21.01.1以降にアップグレードする必要があります。21.01.0 でリリースされた Trident オペレータには、 21.01.1 で修正された既知の問題が含まれています。詳細については、を参照してください https://["GitHub の問題の詳細"^]。
+* OpenShift Container Platformで演算子を使用してTridentをアップグレードする場合は、Trident 21.01.1以降にアップグレードする必要があります。21.01.0 でリリースされた Trident オペレータには、 21.01.1 で修正された既知の問題が含まれています。詳細については、を参照してください https://github.com/NetApp/trident/issues/517["GitHub の問題の詳細"^]。
 * etcd' ベースの Trident リリース（ 19.04 以前）を使用している場合は、 Trident のアップグレードにオペレータを使用しないでください。
 
 
@@ -95,7 +95,7 @@ Version:  v20.10.1
 ----
 +
 
-NOTE: ステータスに「更新中」と表示される場合は、続行する前に解決してください。可能なステータス値のリストについては、を参照してください https://["こちらをご覧ください"^]。
+NOTE: ステータスに「更新中」と表示される場合は、続行する前に解決してください。可能なステータス値のリストについては、を参照してください https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html["こちらをご覧ください"^]。
 
 . Trident インストーラに付属のマニフェストを使用して、「 TridentOrchestrator 」 CRD を作成します。
 +

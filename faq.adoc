@@ -141,7 +141,7 @@ Astra Trident はオープンソースであり、無償で提供されますが
 サポートケースを作成するには、次のいずれかを実行します。
 
 . サポートアカウントマネージャーに連絡して、チケットの発行に関するサポートを受けてください。
-. 連絡してサポートケースを作成します https://["ネットアップサポート"^]。
+. 連絡してサポートケースを作成します https://www.netapp.com/company/contact-us/support/["ネットアップサポート"^]。
 
 
 
@@ -154,13 +154,13 @@ tridentctl logs-a を実行して ' サポートバンドルを作成できま�
 
 === 新しい機能のリクエストを発行する必要がある場合は、どうすればよいですか。
 
-に問題を作成します https://["Astra Trident Github"^] そして、概要の件名と問題に「 * RFE * 」と明記してください。
+に問題を作成します https://github.com/NetApp/trident["Astra Trident Github"^] そして、概要の件名と問題に「 * RFE * 」と明記してください。
 
 
 
 === 不具合を発生させる場所
 
-に問題を作成します https://["Astra Trident Github"^]。問題に関連する必要なすべての情報とログを記録しておいてください。
+に問題を作成します https://github.com/NetApp/trident["Astra Trident Github"^]。問題に関連する必要なすべての情報とログを記録しておいてください。
 
 
 
