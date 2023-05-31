@@ -8,7 +8,7 @@ entries:
   url: "/trident-reco/storage-config-best-practices.html"
 - title: Trident を統合
   url: "/trident-reco/integrate-trident.html"
-- title: データ保護
+- title: データ保護とディザスタリカバリ
   url: "/trident-reco/backup.html"
 - title: セキュリティ
   entries:

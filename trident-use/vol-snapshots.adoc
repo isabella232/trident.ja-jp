@@ -162,6 +162,21 @@ NOTE: 必要に応じて、を開きます `deploy/kubernetes/snapshot-controlle
 
 
 
+== Snapshotを使用してボリュームデータをリカバリします
+
+snapshotディレクトリは、を使用してプロビジョニングされるボリュームの互換性を最大限に高めるため、デフォルトでは非表示になっています `ontap-nas` および `ontap-nas-economy` ドライバ。を有効にします `.snapshot` スナップショットからデータを直接リカバリするディレクトリ。
+
+ボリュームを以前のSnapshotに記録されている状態にリストアするには、ボリュームSnapshotリストアONTAP CLIを使用します。
+
+[listing]
+----
+cluster1::*> volume snapshot restore -vserver vs0 -volume vol3 -snapshot vol3_snap_archive
+----
+
+NOTE: Snapshotコピーをリストアすると、既存のボリューム設定が上書きされます。Snapshotコピーの作成後にボリュームデータに加えた変更は失われます。
+
+
+
 == 関連リンク
 
 * link:../trident-concepts/snapshots.html["ボリューム Snapshot"]
