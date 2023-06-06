@@ -51,9 +51,17 @@ Trident が ONTAP バックエンドと通信するには、 SVM を対象とし
 ====
 .YAML
 --
-'''
-バージョン：1 backendName：ExampleBackend storageDriverName：ontap-san managementLIF：10.0.0.1 SVM：svm_nfs username：vsadmin password：password
-
+[listing]
+----
+---
+version: 1
+backendName: ExampleBackend
+storageDriverName: ontap-san
+managementLIF: 10.0.0.1
+svm: svm_nfs
+username: vsadmin
+password: password
+----
 --
 .JSON
 --
