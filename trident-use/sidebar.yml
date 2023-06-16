@@ -54,7 +54,6 @@ entries:
 - title: ストレージクラスを管理する
   url: "/trident-use/manage-stor-class.html"
 - title: ボリューム操作を実行する
-  url: "/trident-use/vol-operations.html"
   entries:
   - title: CSI トポロジを使用します
     url: "/trident-use/csi-topology.html"
