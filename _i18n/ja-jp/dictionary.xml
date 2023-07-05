@@ -760,9 +760,7 @@
   <block id="a20b570eccfacf0ac4684823643f91a1" category="paragraph">PV は 'NetApp.io/trident プロビジョニングツールを使用して作成されたものであり 'NFS タイプのものですAstra Trident が提供する新機能をすべてサポートするには、この PV を CSI タイプにアップグレードする必要があります。</block>
   <block id="c18e246999f594d4fb39c857bcdd1e09" category="list-text">kubectl describe pv を実行して、ボリュームが CSI ボリュームであることを確認します。</block>
   <block id="fb741f44b40455e466443f8f96ace85e" category="paragraph">このようにして、 Astra Trident によって作成された NFS/iSCSI タイプのボリュームを、ボリューム単位で CSI タイプにアップグレードできます。</block>
-  <block id="48dec026afe488df8faca35c5c3a39ea" category="summary">Trident 環境で Element バックエンドを作成して使用する方法について説明します。</block>
   <block id="f58e95baa778c9a2bd1a4597fb49d9b7" category="doc">ONTAP ドライバ</block>
-  <block id="0e842f431ce1b4dfb57598e5682e3adc" category="paragraph">Astra Trident は、 ONTAP クラスタとの通信に使用する 5 つの ONTAP ストレージドライバを提供します。各ドライバーがボリュームの作成、アクセス制御、機能をどのように処理するかについて、詳細をご覧ください。</block>
   <block id="48cf24486d9a8e65a142b25682f19949" category="cell">ドライバ</block>
   <block id="888a77f5ac0748b6c8001822417df8b6" category="cell">プロトコル</block>
   <block id="1b5e109e8afd1f9b7f5bbf951eea3442" category="cell">ボリュームモード</block>
@@ -2572,7 +2570,6 @@
   <block id="38b6e376f2701385062dee4bb00e03d2" category="summary">Astra Tridentインストーラを使用して、導入をカスタマイズできます。</block>
   <block id="0dabff490bbf6c7e308950959cc5a024" category="section-title">インストーラの詳細を確認してください</block>
   <block id="1637137b97f70f3de86dbf02ba8c262b" category="paragraph">Astra Tridentインストーラを使用して、属性をカスタマイズできます。たとえば、Tridentイメージをプライベートリポジトリにコピーした場合は、を使用してイメージ名を指定できます<block ref="00e6ff45e8bcc6b9e35e9c68d8d5135c" prefix=" " category="inline-code"></block>。Tridentイメージと必要なCSIサイドカーイメージをプライベートリポジトリにコピーした場合は、を使用してリポジトリの場所を指定することを推奨します<block ref="53b228c1c8295f49b0c35325e14fcd6a" prefix=" " category="inline-code"></block> スイッチ。の形式を指定します<block ref="c4c34dc2c7d5cb25c084ca11127ba1c6" prefix=" " category="inline-code"></block>。</block>
-  <block id="5e3a3cabc9ba472e33de86a5a8f32dcd" category="section-title">ONTAP ストレージドライバについて説明します</block>
   <block id="99c850b82f45e568828f2a8c5ab8f94d" category="section-title">ボリュームアクセスグループについて学習する</block>
   <block id="7c14ddfe8f627e4786f4da7cd4cea9ba" category="section-title">ストレージクラスの関連付け</block>
   <block id="ab4589eca69db942d79a0dbbd9ec8399" category="section-title">ボリュームの作成</block>
@@ -2595,7 +2592,6 @@
   <block id="4f0e7dc30ffb3e25e75331c9afb2243a" category="cell">ボリュームモード</block>
   <block id="28c142639a9bbdd526b8eb986c13907d" category="paragraph">ファイルシステムなし。rawブロックデバイスです</block>
   <block id="0453a3e06be842b09a9479fe06f0dd13" category="paragraph">rwxはファイルシステムボリュームモードでは使用できません。</block>
-  <block id="04de2f1b0cab8344abeded774f82f9d5" category="admonition">ONTAP バックエンドは、セキュリティロール（ユーザ名とパスワード）のログインクレデンシャル、またはONTAP クラスタにインストールされている秘密鍵と証明書を使用して認証できます。を使用して既存のバックエンドを更新し、認証モードを移行することができます<block ref="defd1e55f93269ac9278afc086951ba8" prefix=" " category="inline-code"></block>。</block>
   <block id="964ea71824e902693c3ef56b57cf78be" category="summary">Tridentを使用すると、プライマリネームスペースにボリュームを作成し、1つ以上のセカンダリネームスペースで共有できます。</block>
   <block id="98f770b0af18ca763421bac22b4b6805" category="section-title">の機能</block>
   <block id="8ff961668c6784e84b25c265cbb629d7" category="paragraph">ネームスペース間のボリュームアクセスの詳細については、次の資料を参照してください。</block>
@@ -3659,4 +3655,11 @@
   <block id="8eb8a41b260e1d77c7ffe733b87d87a1" category="list-text">docker.io/netapp/trident-operator：23.04.0（オプション）</block>
   <block id="0b8ca2be5f4fe564fb8e843cbc53703d" category="admonition">GKE環境でオンデマンドボリュームスナップショットを作成する場合は、スナップショットコントローラを作成しないでください。GKEでは、内蔵の非表示のスナップショットコントローラを使用します。</block>
   <block id="dfbfe722a0ce7e388b78027f9cfed8dd" category="paragraph">。<block ref="e2d45d57c7e2941b65c6ccd64af4223e" prefix=" " category="inline-code"></block> Astra Trident CSIドライバを指します。<block ref="98e7d6463271d7848db255ae6467817a" prefix=" " category="inline-code"></block> は、です<block ref="f2a6c498fb90ee345d997f888fce3b18" prefix=" " category="inline-code"></block> または<block ref="afece4245269582cb2f1009d4fb52047" prefix=" " category="inline-code"></block>。に設定すると<block ref="afece4245269582cb2f1009d4fb52047" prefix=" " category="inline-code"></block>を使用すると、ストレージクラスタの基盤となる物理Snapshotが、の場合でも保持されます<block ref="310a3378435f31620fbc3e7831ac7286" prefix=" " category="inline-code"></block> オブジェクトが削除された。</block>
+  <block id="1f0c7a14cb87fb29a7346e9b4c770751" category="summary">Astra Trident は、 ONTAP クラスタとの通信に使用する 5 つの ONTAP ストレージドライバを提供します。</block>
+  <block id="99379de626bf97f4e3e66d3a8cdb8802" category="section-title">Astra Controlでサポートされるドライバ</block>
+  <block id="9e5914532c650440b8c559c303ae8e04" category="section-title">ONTAP向けAstra Tridentストレージドライバ</block>
+  <block id="bff3ebc4ae5702fb7f811ba9acabc13a" category="paragraph">Astra Tridentは、ONTAPクラスタと通信するための次のストレージドライバを提供します。サポートされているアクセスモードは、_ReadWriteOnce_(RWO)、_ReadOnlyMany_(ROX)、_ReadWriteMany_(RWX)、_ReadWriteOncePod_(RWOP)です。</block>
+  <block id="ad90b7d29d0d8a9c746868fe1f38ca90" category="paragraph">RWO、ROX、RWX、RWOP</block>
+  <block id="96b38cb92e67a8f09c2d13169b8bb555" category="paragraph">RWO、ROX、RWOP</block>
+  <block id="a38f7647d54be4cddc3f0b8e4c746caa" category="admonition">ONTAPバックエンドの認証には、セキュリティロール（ユーザ名とパスワード）のログインクレデンシャル、またはONTAPクラスタにインストールされている秘密鍵と証明書を使用します。を使用して既存のバックエンドを更新し、認証モードを移行することができます<block ref="defd1e55f93269ac9278afc086951ba8" prefix=" " category="inline-code"></block>。</block>
 </blocks>

@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: trident-concepts/ontap-drivers.html 
-keywords: trident backend, AFF, FAS, ONTAP Select, Cloud, Amazon FSx for NetApp ONTAP, drivers, ONTAP drivers 
-summary: Trident 環境で Element バックエンドを作成して使用する方法について説明します。 
+keywords: trident backend, AFF, FAS, ONTAP Select, Cloud, Amazon FSx for NetApp ONTAP, drivers, ONTAP drivers, access modes, rwo, rwx, rwp, rwop 
+summary: Astra Trident は、 ONTAP クラスタとの通信に使用する 5 つの ONTAP ストレージドライバを提供します。 
 ---
 = ONTAP ドライバ
 :hardbreaks:
@@ -12,16 +12,16 @@ summary: Trident 環境で Element バックエンドを作成して使用する
 
 
 [role="lead"]
-Astra Trident は、 ONTAP クラスタとの通信に使用する 5 つの ONTAP ストレージドライバを提供します。各ドライバーがボリュームの作成、アクセス制御、機能をどのように処理するかについて、詳細をご覧ください。
+Astra Trident は、 ONTAP クラスタとの通信に使用する 5 つの ONTAP ストレージドライバを提供します。
 
 
 
-== ONTAP ストレージドライバについて説明します
+== Astra Controlでサポートされるドライバ
+
+Astra Controlは、で作成したボリュームに対して、シームレスな保護、ディザスタリカバリ、および移動（Kubernetesクラスタ間でボリュームを移動）を提供します `ontap-nas`、 `ontap-nas-flexgroup`および `ontap-san` ドライバ。を参照してください link:https://docs.netapp.com/us-en/astra-control-center/use/replicate_snapmirror.html#replication-prerequisites["Astra Controlレプリケーションの前提条件"^] を参照してください。
 
 [WARNING]
 ====
-Astra Controlは、で作成したボリュームに対して、シームレスな保護、ディザスタリカバリ、および移動（Kubernetesクラスタ間でボリュームを移動）を提供します `ontap-nas`、 `ontap-nas-flexgroup`および `ontap-san` ドライバ。を参照してください link:https://docs.netapp.com/us-en/astra-control-center/use/replicate_snapmirror.html#replication-prerequisites["Astra Controlレプリケーションの前提条件"^] を参照してください。
-
 * を使用する必要があります `ontap-nas` データ保護、ディザスタリカバリ、モビリティを必要とする本番環境のワークロード向けのサービスです。
 * 使用 `ontap-san-economy` 想定されるボリューム使用量がONTAP でサポートされる量よりも大幅に多い場合
 * 使用 `ontap-nas-economy` 想定されるボリューム使用量が、ONTAP でサポートされるおよびよりも大幅に多い場合にのみ該当します `ontap-san-economy` ドライバは使用できません。
@@ -29,7 +29,13 @@ Astra Controlは、で作成したボリュームに対して、シームレス�
 
 
 ====
-[cols="5"]
+
+
+== ONTAP向けAstra Tridentストレージドライバ
+
+Astra Tridentは、ONTAPクラスタと通信するための次のストレージドライバを提供します。サポートされているアクセスモードは、_ReadWriteOnce_(RWO)、_ReadOnlyMany_(ROX)、_ReadWriteMany_(RWX)、_ReadWriteOncePod_(RWOP)です。
+
+[cols="2, 1, 1, 2, 2"]
 |===
 | ドライバ | プロトコル | ボリュームモード | サポートされているアクセスモード | サポートされるファイルシステム 
 
@@ -39,7 +45,7 @@ NFS
  a| 
 ファイルシステム
  a| 
-RWO 、 ROX 、 RWX
+RWO、ROX、RWX、RWOP
  a| 
 "" 、 NFS です
 
@@ -61,7 +67,7 @@ NFS
  a| 
 ファイルシステム
  a| 
-RWO 、 ROX 、 RWX
+RWO、ROX、RWX、RWOP
  a| 
 "" 、 NFS です
 
@@ -72,7 +78,7 @@ iSCSI
  a| 
 ブロック
  a| 
-RWO 、 ROX 、 RWX
+RWO、ROX、RWX、RWOP
  a| 
 ファイルシステムなし。rawブロックデバイスです
 
@@ -83,7 +89,7 @@ iSCSI
  a| 
 ファイルシステム
  a| 
-RWO 、 ROX
+RWO、ROX、RWOP
 
 rwxはファイルシステムボリュームモードでは使用できません。
  a| 
@@ -96,7 +102,7 @@ iSCSI
  a| 
 ブロック
  a| 
-RWO 、 ROX 、 RWX
+RWO、ROX、RWX、RWOP
  a| 
 ファイルシステムなし。rawブロックデバイスです
 
@@ -107,7 +113,7 @@ iSCSI
  a| 
 ファイルシステム
  a| 
-RWO 、 ROX
+RWO、ROX、RWOP
 
 rwxはファイルシステムボリュームモードでは使用できません。
  a| 
@@ -115,4 +121,4 @@ rwxはファイルシステムボリュームモードでは使用できませ�
 
 |===
 
-NOTE: ONTAP バックエンドは、セキュリティロール（ユーザ名とパスワード）のログインクレデンシャル、またはONTAP クラスタにインストールされている秘密鍵と証明書を使用して認証できます。を使用して既存のバックエンドを更新し、認証モードを移行することができます `tridentctl update backend`。
+NOTE: ONTAPバックエンドの認証には、セキュリティロール（ユーザ名とパスワード）のログインクレデンシャル、またはONTAPクラスタにインストールされている秘密鍵と証明書を使用します。を使用して既存のバックエンドを更新し、認証モードを移行することができます `tridentctl update backend`。
