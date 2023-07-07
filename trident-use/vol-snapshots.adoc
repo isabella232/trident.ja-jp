@@ -103,7 +103,7 @@ Status:
 
 == 手順 3 ：ボリューム Snapshot から PVC を作成します
 
-次に、Snapshotを使用してPVCを作成する例を示します。
+この例では、スナップショットを使用してPVCを作成します。
 
 [listing]
 ----
@@ -127,7 +127,13 @@ spec:
 「 dataSource 」は、「 PVC1-SNAP 」という名前のボリューム Snapshot をデータのソースとして使用して PVC を作成する必要があることを示します。このコマンドを実行すると、 Astra Trident が Snapshot から PVC を作成するように指示します。作成された PVC は、ポッドに接続して、他の PVC と同様に使用できます。
 
 
-NOTE: スナップショットが関連付けられている永続ボリュームを削除すると、対応する Trident ボリュームが「削除状態」に更新されます。Astra Trident ボリュームを削除するには、ボリュームの Snapshot を削除する必要があります。
+WARNING: PVCは、と同じネームスペースに作成する必要があります `dataSource`。
+
+
+
+== Snapshotを含むPVを削除しています
+
+スナップショットが関連付けられている永続ボリュームを削除すると、対応する Trident ボリュームが「削除状態」に更新されます。ボリュームSnapshotを削除してAstra Tridentボリュームを削除します。
 
 
 

@@ -1698,7 +1698,6 @@
   <block id="b3841b02d7da01fde480332e3295a08e" category="paragraph">「スナップショットコンテンツ名」は、このスナップショットを提供する VolumeSnapshotContent オブジェクトを識別します。' 使用準備完了 ' パラメータは ' スナップショットを使用して新しい PVC を作成できることを示します</block>
   <block id="7957320b126678e9b713ef146b3ac009" category="section-title">手順 3 ：ボリューム Snapshot から PVC を作成します</block>
   <block id="2592284f87bba60e4c05337a134ef047" category="paragraph">「 dataSource 」は、「 PVC1-SNAP 」という名前のボリューム Snapshot をデータのソースとして使用して PVC を作成する必要があることを示します。このコマンドを実行すると、 Astra Trident が Snapshot から PVC を作成するように指示します。作成された PVC は、ポッドに接続して、他の PVC と同様に使用できます。</block>
-  <block id="bda01e3aa44c411129a6fbf29445bfb4" category="admonition">スナップショットが関連付けられている永続ボリュームを削除すると、対応する Trident ボリュームが「削除状態」に更新されます。Astra Trident ボリュームを削除するには、ボリュームの Snapshot を削除する必要があります。</block>
   <block id="87dc0337d3ded2211d9b01c32e22d90d" category="doc">バックエンドを設定</block>
   <block id="2acbb5dd492d792d00383b0c76ade4ad" category="list-text"><block ref="2acbb5dd492d792d00383b0c76ade4ad" category="inline-link-macro-rx"></block></block>
   <block id="252e63ff646a0204671ca04a26b88e06" category="inline-link-macro">Cloud Volumes Service for Google Cloud Platform バックエンドを設定します</block>
@@ -2683,7 +2682,6 @@
   <block id="ce43eda1a51d5de70f422e14ca195db3" category="paragraph">詳細については、link：./trident-reference/objects.html#Kubernetes -volumesnapshotclass-objectsを参照してください<block ref="19476662cd814e0aa085eca121de89b8" prefix="[" category="inline-code"></block>]。</block>
   <block id="a599393b295f7ad56a8c7f1d327290de" category="paragraph">次に、既存のPVCのスナップショットを作成する例を示します。</block>
   <block id="4191daf22334ac03a54cdf8adbfd6dfe" category="paragraph">この例では、という名前のPVCに対してスナップショットが作成されます<block ref="30520f4f96804df83914260b79f55962" prefix=" " category="inline-code"></block> Snapshotの名前はに設定されます<block ref="2599ab7993e15386327b6345bc1cc4e1" prefix=" " category="inline-code"></block>。</block>
-  <block id="b2b2f8b28370c274887f8aa2f82bb5d4" category="paragraph">次に、Snapshotを使用してPVCを作成する例を示します。</block>
   <block id="f6bd0d7447ff66cc6b859603a88fbde9" category="section-title">関連リンク</block>
   <block id="35aa4a2a819e526c2e930e487df8d423" category="list-text"><block ref="35aa4a2a819e526c2e930e487df8d423" category="inline-link-macro-rx"></block></block>
   <block id="19476662cd814e0aa085eca121de89b8" category="inline-link-macro">ボリュームSnapshotクラス</block>
@@ -3662,4 +3660,8 @@
   <block id="ad90b7d29d0d8a9c746868fe1f38ca90" category="paragraph">RWO、ROX、RWX、RWOP</block>
   <block id="96b38cb92e67a8f09c2d13169b8bb555" category="paragraph">RWO、ROX、RWOP</block>
   <block id="a38f7647d54be4cddc3f0b8e4c746caa" category="admonition">ONTAPバックエンドの認証には、セキュリティロール（ユーザ名とパスワード）のログインクレデンシャル、またはONTAPクラスタにインストールされている秘密鍵と証明書を使用します。を使用して既存のバックエンドを更新し、認証モードを移行することができます<block ref="defd1e55f93269ac9278afc086951ba8" prefix=" " category="inline-code"></block>。</block>
+  <block id="ec777b0a7c2a3d6602a440dae083b7c3" category="paragraph">この例では、スナップショットを使用してPVCを作成します。</block>
+  <block id="5e4708ea6e1c08a91834bc9405f43f5d" category="admonition">PVCは、と同じネームスペースに作成する必要があります<block ref="d9d448f70687a1aa1f12b2f5ddaa4977" prefix=" " category="inline-code"></block>。</block>
+  <block id="32945bec28dab31706e6de80b1c28cc4" category="section-title">Snapshotを含むPVを削除しています</block>
+  <block id="f28228f84cb57be6c4037bf94a6afbd2" category="paragraph">スナップショットが関連付けられている永続ボリュームを削除すると、対応する Trident ボリュームが「削除状態」に更新されます。ボリュームSnapshotを削除してAstra Tridentボリュームを削除します。</block>
 </blocks>
