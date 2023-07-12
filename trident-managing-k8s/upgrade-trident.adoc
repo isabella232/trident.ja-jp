@@ -16,7 +16,30 @@ Astra Trident は四半期ごとにリリースサイクルを実施し、毎年
 
 
 
-== バージョンを選択します
+== アップグレード前の考慮事項
+
+最新リリースの Astra Trident にアップグレードする際は、次の点を考慮してください。
+
+* 特定のKubernetesクラスタ内のすべてのネームスペースには、Astra Tridentインスタンスを1つだけインストールする必要があります。
+* Trident 20.01 以降では、のベータ版のみが提供されます https://kubernetes.io/docs/concepts/storage/volume-snapshots/["ボリューム Snapshot"^] がサポートされます。Kubernetes 管理者は、従来のアルファスナップショットを保持するために、アルファスナップショットオブジェクトを安全にバックアップするか、ベータ版に変換するように注意する必要があります。
++
+** CSI のボリュームスナップショットは、 Kubernetes 1.20 以降の GA 機能になりました。アップグレードする前に、を使用してアルファスナップショットCRDを削除する必要があります `tridentctl obliviate alpha-snapshot-crd` アルファスナップショット仕様のCRDを削除します。
+** ボリュームSnapshotのベータリリースでは、一連のCRDとSnapshotコントローラが変更されています。どちらもAstra Tridentをアップグレードする前にセットアップする必要があります。
+** 詳細については、を参照してください link:https://netapp.io/2020/01/30/alpha-to-beta-snapshots/["Kubernetesクラスタをアップグレードする前に知っておくべきこと"^]。
+
+
+* バージョン19.04以前からのアップグレードでは、いずれもAstra Tridentメタデータを自社から移行する必要があります `etcd` をCRDオブジェクトに追加します。を確認します link:https://docs.netapp.com/us-en/trident/earlier-versions.html["Astra Tridentリリースに固有のドキュメント"] を参照して、アップグレードの仕組みを確認してください。
+* アップグレードするときは、この作業を行うことが重要です `parameter.fsType` インチ `StorageClasses` Astra Tridentが使用。削除して再作成することができます `StorageClasses` 実行前のボリュームの中断はなし。
++
+** これは、強制の ** 要件 ** です https://kubernetes.io/docs/tasks/configure-pod-container/security-context/["セキュリティコンテキスト"^] SAN ボリュームの場合。
+** https://github.com/NetApp/trident/tree/master/trident-installer/sample-input[sample input^]ディレクトリには、https://github.com/NetApp/trident/blob/master/trident-installer/sample-input/storage-class-samples/storage-class-basic.yaml.templなどの例が含まれています[`storage-class-basic.yaml.templ`^）とリンク：https://github.com/NetApp/trident/blob/master/trident-installer/sample-input/storage-class-samples/storage-class-bronze-default.yaml[`storage-class-bronze-default.yaml`^]をクリックします。詳細については、を参照してください link:../trident-rn.html["既知の問題"]。
+
+
+
+
+
+
+== ステップ1：バージョンを選択します
 
 Astra Tridentバージョンは日付ベースです `YY.MM` 命名規則。「YY」は年の最後の2桁、「MM」は月です。ドットリリースは、の後に続きます `YY.MM.X` 条約。ここで、「X」はパッチレベルです。アップグレード前のバージョンに基づいて、アップグレード後のバージョンを選択します。
 
@@ -29,31 +52,75 @@ Astra Tridentバージョンは日付ベースです `YY.MM` 命名規則。「Y
 
 
 
-[WARNING]
-====
-* バージョン19.04以前のアップグレードでは、Astra TridentメタデータをIT所有から移行する必要があります `etcd` をCRDオブジェクトに追加します。リリースのマニュアルを参照して、アップグレードの仕組みを確認してください。
-* アップグレードするときは、この作業を行うことが重要です `parameter.fsType` インチ `StorageClasses` Astra Tridentが使用。削除して再作成することができます `StorageClasses` 実行前のボリュームの中断はなし。これは、SANボリュームに対してhttps://kubernetes.io/docs/tasks/configure-pod-container/security-context/[securityコンテキスト^]を適用するための**要件**です。https://github.com/NetApp/trident/tree/master/trident-installer/sample-input[sample input^]ディレクトリには、https://github.com/NetApp/trident/blob/master/trident-installer/sample-input/storage-class-samples/storage-class-basic.yaml.templなどの例が含まれています[`storage-class-basic.yaml.templ`^）とリンク：https://github.com/NetApp/trident/blob/master/trident-installer/sample-input/storage-class-samples/storage-class-bronze-default.yaml[`storage-class-bronze-default.yaml`^]をクリックします。詳細については、を参照してください link:../trident-rn.html["既知の問題"]。
 
-
-====
-
-
-== アップグレードオプションを選択します
-
-Tridentをアップグレードする方法は2つあります。通常は、初期インストールに使用したものと同じオプションを使用しますが、使用することもできます link:../trident-get-started/kubernetes-deploy.html#moving-between-installation-methods["インストール方法を切り替えます"]。
-
-* link:upgrade-operator.html["Tridentオペレータを使用してアップグレード"]
-* 
+NOTE: OpenShift Container PlatformでTridentオペレータを使用してアップグレードする場合は、Trident 21.01.1以降にアップグレードする必要があります。21.01.0 でリリースされた Trident オペレータには、 21.01.1 で修正された既知の問題が含まれています。詳細については、を参照してください https://github.com/NetApp/trident/issues/517["GitHub の問題の詳細"^]。
 
 
 
-WARNING: CSI のボリュームスナップショットは、 Kubernetes 1.20 以降の GA 機能になりました。Astra Trident をアップグレードする場合、アップグレードを実行する前に、以前のスナップショット CRS と CRD （ボリューム Snapshot クラス、ボリューム Snapshot 、ボリューム Snapshot コンテンツ）をすべて削除する必要があります。を参照してください https://netapp.io/2020/01/30/alpha-to-beta-snapshots/["この blog"^] アルファスナップショットを beta/GA 仕様に移行する手順を理解する。
+== ステップ2:元のインストール方法を決定します
+
+通常は、最初のインストールと同じ方法でアップグレードする必要がありますが、可能です link:../trident-get-started/kubernetes-deploy.html#moving-between-installation-methods["インストール方法を切り替えます"]。
+
+Astra Tridentの最初のインストールに使用したバージョンを確認するには、次の手順を実行します。
+
+. 使用 `kubectl get pods - trident` ポッドを検査するために。
++
+** オペレータポッドがない場合は、を使用してAstra Tridentがインストールされています `tridentctl`。
+** オペレータポッドがある場合、Astra Tridentは手動またはHelmを使用してインストールされています。
+
+
+. オペレータポッドがある場合は、を使用します `kubectl describe tproc trident` をクリックし、Helmを使用してAstra Tridentがインストールされたかどうかを確認します。
++
+** Helmラベルがある場合は、Helmを使用してAstra Tridentがインストールされています。
+** Helmラベルがない場合は、Astra TridentをTridentオペレータを使用して手動でインストールしています。
+
+
+
+
+
+
+== ステップ3：アップグレード方法を選択します
+
+Astra Tridentは2つの方法でアップグレードできます。
+
+
+
+=== オペレータを使用してアップグレードするタイミング
+
+可能です link:upgrade-operator.html["Tridentオペレータを使用してアップグレードします"] 次の場合：
+
+* オペレータまたはを使用してAstra Tridentを最初にインストールした `tridentctl`。
+* CSI Tridentをアンインストールしても、インストールのメタデータは保持されます。
+* CSIベースのAstra Tridentがインストールされている。の19.07以降のすべてのリリースはCSIベースです。Tridentネームスペース内のポッドを調べてバージョンを確認できます。
++
+** 23.01より前のバージョンでは、次の名前が使用されていました。 `trident-csi-*`
+** 23.01以降でポッドの命名には次のものが使用されます。
++
+*** `trident-controller-<generated id>` コントローラポッドの場合
+*** `trident-node-<operating system>-<generated id>` ノードポッドの場合
+*** `trident-operator-<generated id>` オペレータポッド用
+
+
+
+
+
+
+
+WARNING: etcd' ベースの Trident リリース（ 19.04 以前）を使用している場合は、 Trident のアップグレードにオペレータを使用しないでください。
+
+
+
+=== を使用してアップグレードするタイミング `tridentctl`
+
+可能です  「tridenctl」を使用してAstra Tridentを最初にインストールした場合。
+
+`tridentctl` は従来のAstra Tridentのインストール方法であり、複雑なカスタマイズを必要とするお客様に最適なオプションを提供します。詳細については、を参照してください link:..trident-get-started/kubernetes-deploy.html#choose-your-installation-method["インストール方法を選択します"]。
 
 
 
 == 演算子に変更があります
 
-Astra Trident の 21.01 リリースでは、アーキテクチャに関する次のような重要な変更がオペレータに導入されています。
+Astra Tridentの21.01リリースでは、運用者のアーキテクチャが次のように変更されました。
 
 * 演算子は * cluster を対象とした * になりました。Trident 演算子の以前のインスタンス（バージョン 20.04 ～ 20.10 ）は、 * 名前空間スコープ * でした。クラスタを対象としたオペレータが有利な理由は次のとおりです。
 +

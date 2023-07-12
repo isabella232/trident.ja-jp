@@ -118,8 +118,8 @@ kubectl kustomize deploy/ > deploy/<BUNDLE>.yaml
 ====
 Astra Tridentインストーラには、オペレータのインストールや関連オブジェクトの作成に使用できるバンドルファイルが用意されています。このバンドルファイルを使用すると、オペレータを簡単に導入し、デフォルトの設定でAstra Tridentをインストールできます。
 
-** Kubernetes 1.24以前を実行しているクラスタの場合は、を使用します `bundle_pre_1_25.yaml`。
-** Kubernetes 1.25以上を実行するクラスタの場合は、を使用します `bundle_post_1_25.yaml`。
+** クラスタでKubernetes 1.24以前を実行している場合は、を使用します `bundle_pre_1_25.yaml`。
+** クラスタでKubernetes 1.25以降を実行している場合は、を使用します `bundle_post_1_25.yaml`。
 
 
 ====

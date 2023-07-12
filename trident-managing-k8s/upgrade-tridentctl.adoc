@@ -16,27 +16,36 @@ summary: 'tridentctl を使用して " 既存の Astra Trident インストー�
 
 
 
-== アップグレード前の考慮事項
+== を使用してAstra Tridentをアップグレードします `tridentctl`
 
-最新リリースの Astra Trident にアップグレードする際は、次の点を考慮してください。
+Astra Trident のアンインストールと再インストールはアップグレードとして機能します。Trident をアンインストールしても、 Astra Trident 環境で使用されている Persistent Volume Claim （ PVC ；永続的ボリューム要求）と Persistent Volume （ PV ；永続的ボリューム）は削除されません。Astra Trident がオフラインの間は、すでにプロビジョニング済みの PVS を引き続き使用でき、 Astra Trident は、オンラインに戻った時点で作成された PVC に対してボリュームをプロビジョニングします。
 
-* Trident 20.01 以降では、のベータ版のみが提供されます https://kubernetes.io/docs/concepts/storage/volume-snapshots/["ボリューム Snapshot"^] がサポートされます。Kubernetes 管理者は、従来のアルファスナップショットを保持するために、アルファスナップショットオブジェクトを安全にバックアップするか、ベータ版に変換するように注意する必要があります。
-* ボリュームスナップショットのベータリリースでは、一連の新しい CRD とスナップショットコントローラが導入されています。どちらも Astra Trident をインストールする前にセットアップする必要があります。 https://netapp.io/2020/01/30/alpha-to-beta-snapshots/["この blog"^] alpha ボリュームの Snapshot をベータ版に移行する手順について説明します。
-* Astra Trident のアンインストールと再インストールはアップグレードとして機能します。Trident をアンインストールしても、 Astra Trident 環境で使用されている Persistent Volume Claim （ PVC ；永続的ボリューム要求）と Persistent Volume （ PV ；永続的ボリューム）は削除されません。Astra Trident がオフラインの間は、すでにプロビジョニング済みの PVS を引き続き使用でき、 Astra Trident は、オンラインに戻った時点で作成された PVC に対してボリュームをプロビジョニングします。
+.作業を開始する前に
+レビュー link:upgrade-trident.html#select-an-upgrade-method["アップグレード方法を選択します"] を使用してアップグレードする前に `tridentctl`。
+
+.手順
+. のアンインストールコマンドを実行します `tridentctl` CRDと関連オブジェクトを除くAstra Tridentに関連付けられているすべてのリソースを削除する。
++
+[listing]
+----
+./tridentctl uninstall -n <namespace>
+----
+. Astra Tridentを再インストールします。を参照してください link:..trident-get-started/kubernetes-deploy-tridentctl.html["tridentctl を使用して Astra Trident をインストールします"]。
 
 
 
-IMPORTANT: Astra Trident をアップグレードするときは、アップグレードプロセスを中断しないでください。インストーラが実行されていることを確認します。
+IMPORTANT: アップグレードプロセスを中断しないでください。インストーラが完了するまで実行されることを確認します。
 
 
 
-== アップグレード後の次の手順
+== を使用してボリュームをアップグレードする `tridentctl`
 
-新しい Trident リリース（ On-Demand Volume Snapshots など）で利用できる豊富な機能を活用するには、「 tridentctl upgrade 」コマンドを使用してボリュームをアップグレードします。
+アップグレード後は、新しいTridentリリースで提供される豊富な機能（オンデマンドのボリュームSnapshotなど）を利用できます。を使用してボリュームをアップグレードできます `tridentctl upgrade` コマンドを実行します
 
-レガシーボリュームがある場合は、それらのボリュームを NFS/iSCSI タイプから CSI タイプにアップグレードして、 Astra Trident のすべての新機能を使用できるようにする必要があります。Trident によってプロビジョニングされたレガシー PV は、従来の機能セットをサポートします。
+レガシーボリュームがある場合は、NFSまたはiSCSIタイプからCSIタイプにアップグレードして、Astra Tridentのすべての新機能を使用する必要があります。Trident によってプロビジョニングされたレガシー PV は、従来の機能セットをサポートします。
 
-CSI タイプにボリュームをアップグレードする場合は、次の点を考慮してください。
+.作業を開始する前に
+ボリュームをCSIタイプにアップグレードすることを決定する前に、次の点を考慮してください。
 
 * 場合によっては、すべてのボリュームをアップグレードする必要はありません。以前に作成したボリュームには引き続きアクセスでき、正常に機能します。
 * PV は、アップグレード時に展開 / 起動可能セットの一部としてマウントできます。展開 / 起動セットを停止する必要はありません。
@@ -44,12 +53,7 @@ CSI タイプにボリュームをアップグレードする場合は、次の�
 * アップグレードできるのは、 PVC にバインドされているボリュームだけです。PVC にバインドされていないボリュームは、アップグレード前に削除およびインポートする必要があります。
 
 
-
-
-=== ボリュームのアップグレードの例
-
-次の例は、ボリュームのアップグレードを実行する方法を示しています。
-
+.手順
 . kubectl get pv を実行して PVS を一覧表示します
 +
 [listing]
@@ -145,7 +149,4 @@ Source:
                            protocol=file
 Events:                <none>
 ----
-+
-このようにして、 Astra Trident によって作成された NFS/iSCSI タイプのボリュームを、ボリューム単位で CSI タイプにアップグレードできます。
-
 
