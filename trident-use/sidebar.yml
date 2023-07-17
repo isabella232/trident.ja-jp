@@ -5,8 +5,9 @@ entries:
 - title: ワーカーノードを準備します
   url: "/trident-use/worker-node-prep.html"
 - title: バックエンドを設定
-  url: "/trident-use/backends.html"
   entries:
+  - title: 概要
+    url: "/trident-use/backends.html"
   - title: Azure NetApp Files の特長
     entries:
     - title: 概要
