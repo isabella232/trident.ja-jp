@@ -99,7 +99,30 @@ Astra Tridentインストーラには、オペレータのインストールや�
 * クラスタでKubernetes 1.25以降を実行している場合は、を使用します `bundle_post_1_25.yaml`。
 
 
-Tridentのインストーラがオペレータをに導入します `trident` ネームスペース：状況に応じて `trident` ネームスペースが存在しません。を使用してください `kubectl apply -f deploy/namespace.yaml` をクリックして作成します。
+.作業を開始する前に
+* デフォルトでは、Tridentのインストーラによって `trident` ネームスペース：状況に応じて `trident` ネームスペースが存在しません。次を使用して作成してください：
++
+[listing]
+----
+kubectl apply -f deploy/namespace.yaml
+----
+* オペレータを以外のネームスペースに配置する場合 `trident` 名前空間、更新 `serviceaccount.yaml`、 `clusterrolebinding.yaml` および `operator.yaml` を使用してバンドルファイルを生成します `kustomization.yaml`。
++
+.. を作成します `kustomization.yaml` 次のコマンドを使用して、_<bundle>_ is `bundle_pre_1_25` または `bundle_post_1_25` 使用しているKubernetesのバージョンに基づきます。
++
+[listing]
+----
+cp kustomization_<bundle>.yaml kustomization.yaml
+----
+.. 次のコマンドを使用してバンドルをコンパイルします。WHERE_STORE_IS <bundle> `bundle_pre_1_25` または `bundle_post_1_25` 使用しているKubernetesのバージョンに基づきます。
++
+[listing]
+----
+kubectl kustomize deploy/ > deploy/<bundle>.yaml
+----
+
+
+
 
 .手順
 . リソースを作成し、オペレータを配置します。
@@ -108,24 +131,11 @@ Tridentのインストーラがオペレータをに導入します `trident` �
 ----
 kubectl create -f deploy/<bundle>.yaml
 ----
-+
-[NOTE]
-====
-オペレータを以外のネームスペースに配置する場合 `trident` 名前空間、更新 `serviceaccount.yaml`、 `clusterrolebinding.yaml` および `operator.yaml` を使用してバンドルファイルを生成します `kustomization.yaml`：
-
-[listing]
-----
-kubectl kustomize deploy/ > deploy/<bundle>.yaml
-----
-====
-. オペレータが配備されたことを確認します
+. operator、deployment、およびReplicaSetsが作成されたことを確認します。
 +
 [listing]
 ----
-kubectl get deployment -n <operator-namespace>
-
-NAME               READY   UP-TO-DATE   AVAILABLE   AGE
-trident-operator   1/1     1            1           3m
+kubectl get all -n <operator-namespace>
 ----
 
 
