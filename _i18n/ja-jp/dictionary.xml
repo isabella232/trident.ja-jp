@@ -1226,7 +1226,6 @@
   <block id="5f48c343984786005c9830d96c6fca87" category="doc">ボリュームをインポート</block>
   <block id="76057e180d7b3edcebaa935c7ccab687" category="paragraph">PVC と PV にアノテーションが追加されます。このアノテーションは、ボリュームがインポートされたこと、および PVC と PV が管理されていることを示す二重の目的を果たします。このアノテーションは変更または削除しないでください。</block>
   <block id="1b539ba5a07e124e582b2e4bfc489200" category="paragraph">「 ontap/nas 」ドライバで作成される各ボリュームは、 ONTAP クラスタ上の FlexVol です。「 ontap/nas 」ドライバを使用して FlexVol をインポートする方法は同じです。ONTAP クラスタにすでに存在する FlexVol は 'ONTAP-NAS'PVC としてインポートできます同様に、 FlexGroup ボリュームは「 ONTAP-NAS-flexgroup 」 PVC としてインポートできます。</block>
-  <block id="e4f61797b38c111b04c612b285a06659" category="summary">ONTAP NAS ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。</block>
   <block id="00b8b321c68facfb94b31690cbd23e00" category="paragraph">ONTAP バックエンドすべてに対して、 Astra Trident が SVM に少なくとも 1 つのアグリゲートを割り当てておく必要があります。</block>
   <block id="07b434b23f63ca6490df33b213599320" category="section-title">NFS エクスポートポリシーを管理します</block>
   <block id="9d66483f8378ffe30cde84e1b6dbf484" category="paragraph">Astra Trident は、 NFS エクスポートポリシーを使用して、プロビジョニングするボリュームへのアクセスを制御します。</block>
@@ -1441,7 +1440,6 @@
   <block id="e42b07a9f050ef51ea1211004a50f223" category="list-text">「 ONTAP-NAS-flexgroup 」：プロビジョニングされた各 PV は、 NetApp ONTAP FlexGroup ボリューム用の完全な Amazon FSX です。</block>
   <block id="ed2536bee60113131cf25b2de3ec8734" category="list-text">証明書ベース： Astra Trident は、 SVM にインストールされている証明書を使用して、 FSX ファイルシステムの SVM と通信します。</block>
   <block id="80d13d3dbe137e8fb646193f275eceeb" category="list-text">既存の Amazon EKS クラスタまたは 'kubectl' がインストールされた自己管理型 Kubernetes クラスタ</block>
-  <block id="52d48fdd62aa109d7f163f0ef8a31b83" category="list-text">クラスタのワーカーノードからアクセスできる、 NetApp ONTAP ファイルシステムと Storage Virtual Machine （ SVM ）用の既存の Amazon FSX 。</block>
   <block id="fe914214000491758957f04647f8da36" category="inline-link">Amazon Machine Images の略</block>
   <block id="3e25473814d436a2ebac91120e147b0b" category="admonition">ファイルシステムにアクセスできる任意の場所から SSH を使用して、ファイルシステムにログイン（証明書をインストールする場合など）できます。「 fsxadmin 」ユーザ、ファイルシステムの作成時に設定したパスワード、「 aws FSX describe -file-systems 」の管理 DNS 名を使用します。</block>
   <block id="860958fe641e0edbd80fe522c36d0560" category="list-text">次の例に示すように、証明書と管理 LIF の DNS 名を使用してバックエンドファイルを作成します。</block>
@@ -1653,7 +1651,6 @@
   <block id="e43b3577dd4b74a4cfa994a56e8138b8" category="paragraph">この構成は、 ANF の利用を開始して何を試してみるときに理想的ですが、実際には、プロビジョニングするボリュームの範囲をさらに設定することを検討しています。</block>
   <block id="725ae241ec74eed978f0b099030236b8" category="section-title">例 3 ：高度な設定</block>
   <block id="a83f4a534ccef7ac1d209fb0015cd907" category="paragraph">このバックエンド構成は、ボリュームの配置を単一のサブネットにまで適用する手間をさらに削減し、一部のボリュームプロビジョニングのデフォルト設定も変更します。</block>
-  <block id="0cc7642bbaf969ea355ea12764841c91" category="summary">ONTAP NAS ドライバを作成して Astra Trident インストールで使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。</block>
   <block id="a0f3a965c12688befda99da850903dcb" category="cell">「 autoExportPolicy 」を参照してください</block>
   <block id="b4ad0dff08149092bc3e4b16572af575" category="cell">「 autoExportCI` 」</block>
   <block id="e537a193eb90bd46a645ce750bb5f3fc" category="cell">[0.0.0.0/0] 、 [::/0]</block>
@@ -3382,7 +3379,6 @@
   <block id="56d1e7863190cbf5e7689e2821d0959e" category="cell"><block ref="47cb44be55a0dffa15dfc900a4c687be" prefix="" category="inline-code"></block></block>
   <block id="3bc2d9079510db6d0570883494bc5984" category="cell"><block ref="f899139df5e1059396431415e770c6dd" prefix="" category="inline-code"></block></block>
   <block id="06daeb0fdb584c4694891d290310e1ed" category="cell"><block ref="3644a684f98ea8fe223c713b77189a77" prefix="" category="inline-code"></block></block>
-  <block id="429970b7b8d395eb00181a72bc544fba" category="cell">共有フォルダのMicrosoft管理コンソールを使用して作成したSMB共有の名前を指定するか、Astra TridentによるSMB共有の作成を許可する共有名を指定できます。または、パラメータを空白のままにして、ボリュームへの共有アクセスを禁止することもできます。</block>
   <block id="996a57df5a7c8752e8bc23b6af020be4" category="cell">状況<block ref="0a236e7685e50a59df980d0a30929d6c" prefix=" " category="inline-code"></block> はです<block ref="334c4a4c42fdb79d7ebc3e73b517e6f8" prefix=" " category="inline-code"></block>、<block ref="2954e92a9b4d0e998fe4893f8141649a" prefix=" " category="inline-code"></block> 「」</block>
   <block id="58c09f2c9581bc7c58c32116266b6d8f" category="cell">使用する階層化ポリシー<block ref="334c4a4c42fdb79d7ebc3e73b517e6f8" prefix=" " category="inline-code"></block></block>
   <block id="49ed5b3ecd0e966bec6b74083f06599e" category="cell"><block ref="8805d416ce540c5f2df34af5b18d742b" prefix="" category="inline-code"></block> ONTAP 9.5より前のSVM-DR構成の場合</block>
@@ -3395,7 +3391,6 @@
   <block id="51e6d748c5af856ade589011dc2c7e85" category="cell"><block ref="37a6259cc0c1dae299a7866489dff0bd" prefix="" category="inline-code"></block></block>
   <block id="ddbd2735bfb88c5da807f77f6fe5f6c8" category="doc">ONTAP NASドライバの概要</block>
   <block id="dd972e44915c7a0884edd58e9d839295" category="section-title">ONTAP NASドライバに関する重要な情報</block>
-  <block id="482723983a4f2af954e36ff41e567451" category="section-title">既知の制限</block>
   <block id="1faffcbb00c529812b5526b1b22b2b56" category="paragraph">を作成するには、SVMでNFSプロトコルとSMB / CIFSプロトコルの両方を設定する必要があります<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> オンプレミスのONTAP 用のSMBボリューム。これらのプロトコルのいずれかを設定しないと、原因 SMBボリュームの作成が失敗します。</block>
   <block id="5cc1e28c0d7b6c40ca94aacb554b31ca" category="doc">ONTAP SANドライバの概要</block>
   <block id="7771a46320e96de2bde6598540ad4d52" category="section-title">ONTAP SANドライバに関する重要な情報</block>
@@ -3666,17 +3661,8 @@
   <block id="8d23be098d49e797284393a4c1479c53" category="list-text">Tridentが目的のバージョンにアップグレードされたことを確認</block>
   <block id="210f1e5eca9c602b1282553f342448ae" category="list-text">クラスタでKubernetes 1.24以前を実行している場合は、を使用します<block ref="bd2cc8575fe69c7f775292759380c838" prefix=" " category="inline-code"></block>。</block>
   <block id="e4941fda44f66f353885d1a37ca63e2b" category="list-text">クラスタでKubernetes 1.25以降を実行している場合は、を使用します<block ref="5a02ebff4889c2de0379a0fb10bed282" prefix=" " category="inline-code"></block>。</block>
-  <block id="3e040e84a22403c3248ead0be2dc0526" category="example-title">ONTAP NASエコノミーの最小構成例</block>
-  <block id="e3e188b2454bb98544f5a561eb702093" category="paragraph">これは、<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> ドライバ。</block>
-  <block id="547c5a9ffcb66d79e8281ae67244522e" category="example-title">ONTAP NAS FlexGroupの最小構成例</block>
-  <block id="a5536d1d72396572e5c419b1a5bc2130" category="paragraph">これは、<block ref="844e84da8e822b4a33c4d8188da97937" prefix=" " category="inline-code"></block> ドライバ。</block>
   <block id="dacbfb309aa16cb942510c02c224fdbc" category="example-title">証明書ベースの認証の例</block>
   <block id="60eac39d4383fedcc1df436a2d0e856d" category="paragraph">この基本的な設定例では、<block ref="79fffaff4013c1e8c508e76646eca77b" prefix=" " category="inline-code"></block>、<block ref="19dce7ac7f5290fc8fa218ad0c858df5" prefix=" " category="inline-code"></block>および<block ref="8468461bca00a47ab5ddba2afc45f52c" prefix=" " category="inline-code"></block> （信頼されたCAを使用している場合はオプション）がに入力されます<block ref="9c15d32711e9ef8c6f76deda35452e13" prefix=" " category="inline-code"></block> およびは、クライアント証明書、秘密鍵、信頼されたCA証明書のbase64エンコード値をそれぞれ取得します。</block>
-  <block id="1ce00ab507a065e4febc57b244e25d18" category="example-title">自動エクスポートポリシーの例</block>
-  <block id="ff5bc16abc09d38f1f879df4cd475d3b" category="paragraph">この例では、動的なエクスポートポリシーを使用してエクスポートポリシーを自動的に作成および管理するようにAstra Tridentに指示します。これは、でも同様に機能します<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> および<block ref="844e84da8e822b4a33c4d8188da97937" prefix=" " category="inline-code"></block> ドライバ。</block>
-  <block id="dd3bd0fc6b509b65dab3730c8d094c7b" category="example-title">IPv6アドレスの使用例</block>
-  <block id="ee8af8063e9ea3725931d232730b8a8e" category="example-title">SMBボリュームを使用したAmazon FSx for ONTAPの例</block>
-  <block id="2fd88f3466754282c283514ecc0a70a1" category="paragraph">この例では、SMBボリュームを使用してAmazon FSx for ONTAPバックエンドを作成します。</block>
   <block id="71b79981e733eabd769324fa40c8fa6d" category="paragraph">以下に示すサンプルのバックエンド定義ファイルでは、次のような特定のデフォルトがすべてのストレージプールに設定されています。<block ref="cae77b049bf504af7afc43b99b6c5213" prefix=" " category="inline-code"></block> 「なし」の場合は、<block ref="45922ba6ba8428764f22ed06f814c762" prefix=" " category="inline-code"></block> との誤り<block ref="5bdf74912a51c34815f11e9a3d20b609" prefix=" " category="inline-code"></block> 実行されます。仮想プールは、ストレージセクションで定義します。</block>
   <block id="71fcdf20b31ca43f6ef64c06530f313d" category="paragraph">これらの例では、一部のストレージプールが独自の<block ref="cae77b049bf504af7afc43b99b6c5213" prefix=" " category="inline-code"></block>、<block ref="45922ba6ba8428764f22ed06f814c762" prefix=" " category="inline-code"></block>および<block ref="5bdf74912a51c34815f11e9a3d20b609" prefix=" " category="inline-code"></block> 値、および一部のプールはデフォルト値よりも優先されます。</block>
   <block id="574e53d92fdeaac37ba2d879a9b88f12" category="example-title">ONTAP NASの例</block>
@@ -3711,4 +3697,44 @@
   <block id="c6c7f5dc0544ce8f73992592be4fa6f0" category="list-text">を作成します<block ref="67b2cc1cd5b1570014463995fb2ada61" prefix=" " category="inline-code"></block> 次のコマンドを使用して、_&lt;bundle&gt;_ is<block ref="b30cd2dae2689e160b36283c2657caa5" prefix=" " category="inline-code"></block> または<block ref="e4384751f7a5be47c7eaafbdfc116ab5" prefix=" " category="inline-code"></block> 使用しているKubernetesのバージョンに基づきます。</block>
   <block id="34e1bffd3ed9e5b9d2d9cec17fd7eadf" category="list-text">次のコマンドを使用してバンドルをコンパイルします。WHERE_STORE_IS &lt;bundle&gt;<block ref="b30cd2dae2689e160b36283c2657caa5" prefix=" " category="inline-code"></block> または<block ref="e4384751f7a5be47c7eaafbdfc116ab5" prefix=" " category="inline-code"></block> 使用しているKubernetesのバージョンに基づきます。</block>
   <block id="806742cccf8380250ffb871d582a0a03" category="list-text">operator、deployment、およびReplicaSetsが作成されたことを確認します。</block>
+  <block id="9b800ce65251b771d0eb86610e11f6b0" category="list-text">クラスタのワーカーノードから到達可能な既存のAmazon FSx for NetApp ONTAPファイルシステムおよびStorage Virtual Machine（SVM）。</block>
+  <block id="888a040cbb1dfe496b305a27374a73a5" category="list-text">Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポートを参照してください <block ref="688177e6b45c5d27a545463079c58d82" category="inline-xref-macro-rx"></block> を参照してください。</block>
+  <block id="f55c34459cf261d1102750bcbde548d8" category="paragraph">SMBボリュームをプロビジョニングする前に<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block> ドライバー、あなたは以下を持っている必要があります。</block>
+  <block id="0533fb8f0faef28ecb6da05caf5fd644" category="cell">次のいずれかを指定できます。Microsoft管理コンソールまたはONTAP CLIを使用して作成されたSMB共有の名前、またはAstra TridentでSMB共有を作成できるようにする名前。
+
+このパラメータは、Amazon FSx for ONTAPバックエンドに必要です。</block>
+  <block id="433d29840a179b402df37de14e4679f3" category="summary">Astra Tridentのインストール環境でONTAP NASドライバを作成して使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。</block>
+  <block id="9b59e3a675bc9ca359f3369591ee7df3" category="cell">Microsoft管理コンソールまたはONTAP CLIを使用して作成されたSMB共有の名前、Astra TridentでSMB共有を作成できる名前、ボリュームへの共有アクセスを禁止する場合はパラメータを空白のままにすることができます。
+
+オンプレミスのONTAPでは、このパラメータはオプションです。
+
+このパラメータはAmazon FSx for ONTAPバックエンドで必須であり、空にすることはできません。</block>
+  <block id="8bf31f01da88d12bf642a85ce9b3d644" category="example-title">最小限の構成 &lt;code&gt;ontap-nas-economy&lt;/code&gt;</block>
+  <block id="a48054bf8652cee4ee1d7dd8f08ffa1f" category="example-title">最小限の構成 &lt;code&gt;ontap-nas-flexgroup&lt;/code&gt;</block>
+  <block id="7cf30ff82fa389224936afba832f444f" category="example-title">SMBボリュームの最小限の設定</block>
+  <block id="e7a2472a002479764cade728d64dcd9e" category="example-title">証明書ベースの認証</block>
+  <block id="78e5b29e139db71ceb7ca6bc99b5e228" category="paragraph">これは、バックエンドの最小限の設定例です。<block ref="79fffaff4013c1e8c508e76646eca77b" prefix=" " category="inline-code"></block>、<block ref="19dce7ac7f5290fc8fa218ad0c858df5" prefix=" " category="inline-code"></block>および<block ref="8468461bca00a47ab5ddba2afc45f52c" prefix=" " category="inline-code"></block> （信頼されたCAを使用している場合はオプション）がに入力されます<block ref="9c15d32711e9ef8c6f76deda35452e13" prefix=" " category="inline-code"></block> およびは、クライアント証明書、秘密鍵、信頼されたCA証明書のbase64エンコード値をそれぞれ取得します。</block>
+  <block id="30cc3e263c594cde4b2a573283348bb1" category="example-title">自動エクスポートポリシー</block>
+  <block id="8c35a9f7d631f51e05811b36617db641" category="paragraph">この例は、動的なエクスポートポリシーを使用してエクスポートポリシーを自動的に作成および管理するように Astra Trident に指示する方法を示しています。これは、でも同様に機能します<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> および<block ref="844e84da8e822b4a33c4d8188da97937" prefix=" " category="inline-code"></block> ドライバ。</block>
+  <block id="85435c5aae5ecdb04ef9ad8f7d48e88a" category="example-title">IPv6アドレスを使用している</block>
+  <block id="4627b40a8eea6e0ef04368d12d76d239" category="example-title">SMBボリュームを使用したAmazon FSx for ONTAP</block>
+  <block id="33ef55e82416e2c1c4beb9cba9560b02" category="paragraph">。<block ref="5910159ef86741f119f7574a9064b5b0" prefix=" " category="inline-code"></block> SMBボリュームを使用するFSx for ONTAPの場合、パラメータは必須です。</block>
+  <block id="ef0e40b987d8b9ad523bdde2bba5157a" category="summary">ONTAP NASドライバでONTAPバックエンドを設定するための要件、認証オプション、およびエクスポートポリシーを理解します。</block>
+  <block id="c63609aba869239be30364b58d99b1a3" category="section-title">ONTAPバックエンドの認証</block>
+  <block id="e5fdb627c170dc14e3873b3da32f3aa5" category="paragraph">多少の準備が必要な場合は、次のツールを使用してSMBボリュームをプロビジョニングできます。<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block> ドライバ。</block>
+  <block id="8de0a7910b914d44521684fe2a3a28c6" category="paragraph">SMBボリュームをプロビジョニングする前に、以下を準備しておく必要があります。</block>
+  <block id="ff8c6e3b6971ed699a5dc2e00455aa82" category="list-text">オンプレミスのONTAPの場合は、必要に応じてSMB共有を作成するか、Astra TridentでSMB共有を作成できます。</block>
+  <block id="6a402202521e2168a911181e81c72faf" category="admonition">Amazon FSx for ONTAPにはSMB共有が必要です。</block>
+  <block id="7f7041fc0ca0e00f3d3e39e4ce4a5149" category="paragraph">SMB管理共有は、のいずれかの方法で作成できます <block ref="364bc251e9c8cfbf6ce258767d17d682" category="inline-link-macro-rx"></block> 共有フォルダスナップインまたはONTAP CLIを使用します。ONTAP CLIを使用してSMB共有を作成するには、次の手順を実行します</block>
+  <block id="00aa30f1783ef69183794c0da05e43b5" category="cell"><block ref="5910159ef86741f119f7574a9064b5b0" prefix="" category="inline-code"></block>
+Microsoft管理コンソールまたはONTAP CLIを使用して作成されたSMB共有の名前、Astra TridentでSMB共有を作成できる名前、ボリュームへの共有アクセスを禁止する場合はパラメータを空白のままにすることができます。
+
+オンプレミスのONTAPでは、このパラメータはオプションです。
+
+このパラメータはAmazon FSx for ONTAPバックエンドで必須であり、空にすることはできません。</block>
+  <block id="a513707a481ff6afe9846fefc6411bca" category="paragraph">Tridentは、通常はを使用して、ONTAP 管理者またはSVM管理者のどちらかとして実行される必要があります<block ref="21232f297a57a5a743894a0e4a801fc3" prefix=" " category="inline-code"></block> クラスタユーザまたはです<block ref="6173aa5206484b5224450952747c7148" prefix=" " category="inline-code"></block> SVMユーザ、または同じロールを持つ別の名前のユーザ。</block>
+  <block id="624061180b7b402618e3add29c08bd51" category="paragraph">Amazon FSX for NetApp ONTAP 環境では、Astra Tridentは、クラスタを使用して、ONTAP 管理者またはSVM管理者のどちらかとして実行されるものと想定しています<block ref="679500f227997b45be97e3ca8115c678" prefix=" " category="inline-code"></block> ユーザまたはです<block ref="6173aa5206484b5224450952747c7148" prefix=" " category="inline-code"></block> SVMユーザ、または同じロールを持つ別の名前のユーザ。。<block ref="679500f227997b45be97e3ca8115c678" prefix=" " category="inline-code"></block> このユーザは、クラスタ管理者ユーザを限定的に置き換えるものです。</block>
+  <block id="7d159230ccaa721872f31bf9be31afeb" category="paragraph">ONTAP内でTridentドライバが使用できる、より制限の厳しいロールを作成することは可能ですが、推奨しません。Trident の新リリースでは、多くの場合、考慮すべき API が追加で必要になるため、アップグレードが難しく、エラーも起こりやすくなります。</block>
+  <block id="37a679c38162162811d93d22ba8f5b4a" category="paragraph">ONTAP SANドライバでONTAPバックエンドを構成するための要件と認証オプションを理解します。</block>
+  <block id="7fbe6e40125b7d1b2f5c5c05044e7526" category="section-title">証明書ベースの認証を有効にします</block>
 </blocks>

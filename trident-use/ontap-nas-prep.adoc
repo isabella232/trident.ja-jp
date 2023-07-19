@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-use/ontap-nas-prep.html 
 keywords: trident backend, ontap nas, ontap-nas, ontap-nas-economy, ontap-nas-flexgroups 
-summary: ONTAP NAS ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。 
+summary: ONTAP NASドライバでONTAPバックエンドを設定するための要件、認証オプション、およびエクスポートポリシーを理解します。 
 ---
 = ONTAP NASドライバを使用してバックエンドを設定する準備をします
 :hardbreaks:
@@ -12,21 +12,21 @@ summary: ONTAP NAS ドライバを使用して ONTAP バックエンドを設定
 
 
 [role="lead"]
-ONTAP NAS ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。
+ONTAP NASドライバでONTAPバックエンドを設定するための要件、認証オプション、およびエクスポートポリシーを理解します。
 
 
 
-== 考慮事項
+== 要件
 
 * ONTAP バックエンドすべてに対して、 Astra Trident が SVM に少なくとも 1 つのアグリゲートを割り当てておく必要があります。
 * 複数のドライバを実行し、どちらか一方を参照するストレージクラスを作成できます。たとえば、を使用するGoldクラスを設定できます `ontap-nas` ドライバとを使用するBronzeクラス `ontap-nas-economy` 1つ。
 * すべてのKubernetesワーカーノードに適切なNFSツールをインストールしておく必要があります。を参照してください link:worker-node-prep.html["こちらをご覧ください"] 詳細：
-* Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート
+* Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポートを参照してください <<SMBボリュームをプロビジョニングする準備をします>> を参照してください。
 
 
 
 
-== 認証
+== ONTAPバックエンドの認証
 
 Astra Trident には、 ONTAP バックエンドを認証する 2 つのモードがあります。
 
@@ -288,3 +288,79 @@ items:
 NOTE: 自動管理されたエクスポートポリシーを使用してバックエンドを削除すると、動的に作成されたエクスポートポリシーが削除されます。バックエンドが再作成されると、そのバックエンドは新しいバックエンドとして扱われ、新しいエクスポートポリシーが作成されます。
 
 ライブノードの IP アドレスが更新された場合は、ノード上の Astra Trident ポッドを再起動する必要があります。Trident が管理するバックエンドのエクスポートポリシーを更新して、この IP の変更を反映させます。
+
+
+
+== SMBボリュームをプロビジョニングする準備をします
+
+多少の準備が必要な場合は、次のツールを使用してSMBボリュームをプロビジョニングできます。 `ontap-nas` ドライバ。
+
+
+WARNING: を作成するには、SVMでNFSプロトコルとSMB / CIFSプロトコルの両方を設定する必要があります `ontap-nas-economy` オンプレミスのONTAP 用のSMBボリューム。これらのプロトコルのいずれかを設定しないと、原因 SMBボリュームの作成が失敗します。
+
+.作業を開始する前に
+SMBボリュームをプロビジョニングする前に、以下を準備しておく必要があります。
+
+* Linuxコントローラノードと少なくとも1つのWindowsワーカーノードでWindows Server 2019を実行しているKubernetesクラスタ。Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート
+* Active Directoryのクレデンシャルを含むAstra Tridentのシークレットが少なくとも1つ必要です。シークレットを生成します `smbcreds`：
++
+[listing]
+----
+kubectl create secret generic smbcreds --from-literal username=user --from-literal password='password'
+----
+* Windowsサービスとして設定されたCSIプロキシ。を設定します `csi-proxy`を参照してください link:https://github.com/kubernetes-csi/csi-proxy["GitHub: CSIプロキシ"^] または link:https://github.com/Azure/aks-engine/blob/master/docs/topics/csi-proxy-windows.md["GitHub: Windows向けCSIプロキシ"^] Windowsで実行されているKubernetesノードの場合。
+
+
+.手順
+. オンプレミスのONTAPの場合は、必要に応じてSMB共有を作成するか、Astra TridentでSMB共有を作成できます。
++
+
+NOTE: Amazon FSx for ONTAPにはSMB共有が必要です。
+
++
+SMB管理共有は、のいずれかの方法で作成できます link:https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/what-is-microsoft-management-console["Microsoft管理コンソール"^] 共有フォルダスナップインまたはONTAP CLIを使用します。ONTAP CLIを使用してSMB共有を作成するには、次の手順を実行します
+
++
+.. 必要に応じて、共有のディレクトリパス構造を作成します。
++
+。 `vserver cifs share create` コマンドは、共有の作成時に-pathオプションで指定されているパスを確認します。指定したパスが存在しない場合、コマンドは失敗します。
+
+.. 指定したSVMに関連付けられているSMB共有を作成します。
++
+[listing]
+----
+vserver cifs share create -vserver vserver_name -share-name share_name -path path [-share-properties share_properties,...] [other_attributes] [-comment text]
+----
+.. 共有が作成されたことを確認します。
++
+[listing]
+----
+vserver cifs share show -share-name share_name
+----
++
+
+NOTE: を参照してください link:https://docs.netapp.com/us-en/ontap/smb-config/create-share-task.html["SMB 共有を作成"^] 詳細については、
+
+
+
+. バックエンドを作成する際に、SMBボリュームを指定するように次の項目を設定する必要があります。ONTAP バックエンド構成オプションのすべてのFSXについては、を参照してください link:trident-fsx-examples.html["FSX（ONTAP の構成オプションと例）"]。
++
+[cols="3"]
+|===
+| パラメータ | 説明 | 例 
+
+
+| `smbShare`
+Microsoft管理コンソールまたはONTAP CLIを使用して作成されたSMB共有の名前、Astra TridentでSMB共有を作成できる名前、ボリュームへの共有アクセスを禁止する場合はパラメータを空白のままにすることができます。
+
+オンプレミスのONTAPでは、このパラメータはオプションです。
+
+このパラメータはAmazon FSx for ONTAPバックエンドで必須であり、空にすることはできません。 | `smb-share` | `nasType` 
+
+
+| *をに設定する必要があります `smb`.* nullの場合、デフォルトはです `nfs`。 | `smb` | 'ecurityStyle' 
+
+
+| 新しいボリュームのセキュリティ形式。*をに設定する必要があります `ntfs` または `mixed` SMBボリューム* | `ntfs` または `mixed` SMBボリュームの場合 | 「 unixPermissions 」 
+|===
+

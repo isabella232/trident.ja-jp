@@ -12,11 +12,11 @@ summary: ONTAP SAN ドライバを使用して ONTAP バックエンドを設定
 
 
 [role="lead"]
-ONTAP SAN ドライバを使用して ONTAP バックエンドを設定するための準備方法について説明します。
+ONTAP SANドライバでONTAPバックエンドを構成するための要件と認証オプションを理解します。
 
 
 
-== 概要
+== 要件
 
 ONTAP バックエンドすべてに対して、 Astra Trident が SVM に少なくとも 1 つのアグリゲートを割り当てておく必要があります。
 
@@ -26,7 +26,7 @@ ONTAP バックエンドすべてに対して、 Astra Trident が SVM に少な
 
 
 
-== 認証
+== ONTAPバックエンドの認証
 
 Astra Trident には、 ONTAP バックエンドを認証する 2 つのモードがあります。
 

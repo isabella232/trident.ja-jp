@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-use/ontap-nas-examples.html 
 keywords: map backends, storage classes, trident backend, ontap-nas, ontap-nas-economy, ontap-nas-flexgroups, options, storageclasses, fsx 
-summary: ONTAP NAS ドライバを作成して Astra Trident インストールで使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。 
+summary: Astra Tridentのインストール環境でONTAP NASドライバを作成して使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。 
 ---
 = ONTAP NASの設定オプションと例
 :hardbreaks:
@@ -12,7 +12,7 @@ summary: ONTAP NAS ドライバを作成して Astra Trident インストール�
 
 
 [role="lead"]
-ONTAP NAS ドライバを作成して Astra Trident インストールで使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。
+Astra Tridentのインストール環境でONTAP NASドライバを作成して使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。
 
 
 
@@ -94,7 +94,11 @@ ONTAP NAS ドライバを作成して Astra Trident インストールで使用�
 | qtreesPerFlexvol` | FlexVol あたりの最大 qtree 数。有効な範囲は [50 、 300] です。 | 200 
 
 
-| `smbShare` | 共有フォルダのMicrosoft管理コンソールを使用して作成したSMB共有の名前を指定するか、Astra TridentによるSMB共有の作成を許可する共有名を指定できます。または、パラメータを空白のままにして、ボリュームへの共有アクセスを禁止することもできます。 | `smb-share` 
+| `smbShare` | Microsoft管理コンソールまたはONTAP CLIを使用して作成されたSMB共有の名前、Astra TridentでSMB共有を作成できる名前、ボリュームへの共有アクセスを禁止する場合はパラメータを空白のままにすることができます。
+
+オンプレミスのONTAPでは、このパラメータはオプションです。
+
+このパラメータはAmazon FSx for ONTAPバックエンドで必須であり、空にすることはできません。 | `smb-share` 
 
 
 | 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー *
@@ -210,11 +214,9 @@ image::../media/volume-show-nas.png[に、 volume show コマンドの出力を�
 
 NOTE: ネットアップ ONTAP で Trident を使用している場合は、 IP アドレスではなく LIF の DNS 名を指定することを推奨します。
 
-.ONTAP NASエコノミーの最小構成例
+.最小限の構成 <code>ontap-nas-economy</code>
 [%collapsible%open]
 ====
-これは、 `ontap-nas-economy` ドライバ。
-
 [listing]
 ----
 ---
@@ -224,14 +226,12 @@ managementLIF: 10.0.0.1
 dataLIF: 10.0.0.2
 svm: svm_nfs
 username: vsadmin
-password: <password>
+password: password
 ----
 ====
-.ONTAP NAS FlexGroupの最小構成例
+.最小限の構成 <code>ontap-nas-flexgroup</code>
 [%collapsible%open]
 ====
-これは、 `ontap-nas-flexgroup` ドライバ。
-
 [listing]
 ----
 ---
@@ -241,13 +241,33 @@ managementLIF: 10.0.0.1
 dataLIF: 10.0.0.2
 svm: svm_nfs
 username: vsadmin
-password: <password>
+password: password
 ----
 ====
-.証明書ベースの認証の例
+.SMBボリュームの最小限の設定
 [%collapsible%open]
 ====
-この基本的な設定例では、 `clientCertificate`、 `clientPrivateKey`および `trustedCACertificate` （信頼されたCAを使用している場合はオプション）がに入力されます `backend.json` およびは、クライアント証明書、秘密鍵、信頼されたCA証明書のbase64エンコード値をそれぞれ取得します。
+[listing]
+----
+
+---
+version: 1
+backendName: ExampleBackend
+storageDriverName: ontap-nas
+managementLIF: 10.0.0.1
+nasType: smb
+securityStyle: ntfs
+unixPermissions: ""
+dataLIF: 10.0.0.2
+svm: svm_nfs
+username: vsadmin
+password: password
+----
+====
+.証明書ベースの認証
+[%collapsible%open]
+====
+これは、バックエンドの最小限の設定例です。 `clientCertificate`、 `clientPrivateKey`および `trustedCACertificate` （信頼されたCAを使用している場合はオプション）がに入力されます `backend.json` およびは、クライアント証明書、秘密鍵、信頼されたCA証明書のbase64エンコード値をそれぞれ取得します。
 
 [listing]
 ----
@@ -264,10 +284,10 @@ trustedCACertificate: zcyBbaG...b3Igb3duIGNsYXNz
 storagePrefix: myPrefix_
 ----
 ====
-.自動エクスポートポリシーの例
+.自動エクスポートポリシー
 [%collapsible%open]
 ====
-この例では、動的なエクスポートポリシーを使用してエクスポートポリシーを自動的に作成および管理するようにAstra Tridentに指示します。これは、でも同様に機能します `ontap-nas-economy` および `ontap-nas-flexgroup` ドライバ。
+この例は、動的なエクスポートポリシーを使用してエクスポートポリシーを自動的に作成および管理するように Astra Trident に指示する方法を示しています。これは、でも同様に機能します `ontap-nas-economy` および `ontap-nas-flexgroup` ドライバ。
 
 [listing]
 ----
@@ -284,11 +304,11 @@ autoExportPolicy: true
 autoExportCIDRs:
 - 10.0.0.0/24
 username: admin
-password: <password>
+password: password
 nfsMountOptions: nfsvers=4
 ----
 ====
-.IPv6アドレスの使用例
+.IPv6アドレスを使用している
 [%collapsible%open]
 ====
 この例は、を示しています `managementLIF` IPv6アドレスを使用している。
@@ -305,14 +325,13 @@ labels:
   backend: test1-ontap-ipv6
 svm: nas_ipv6_svm
 username: vsadmin
-password: <password>
-
+password: password
 ----
 ====
-.SMBボリュームを使用したAmazon FSx for ONTAPの例
+.SMBボリュームを使用したAmazon FSx for ONTAP
 [%collapsible%open]
 ====
-この例では、SMBボリュームを使用してAmazon FSx for ONTAPバックエンドを作成します。
+。 `smbShare` SMBボリュームを使用するFSx for ONTAPの場合、パラメータは必須です。
 
 [listing]
 ----
@@ -324,6 +343,7 @@ managementLIF: example.mgmt.fqdn.aws.com
 nasType: smb
 dataLIF: 10.0.0.15
 svm: nfs_svm
+smbShare: smb-share
 clientCertificate: ZXR0ZXJwYXB...ICMgJ3BhcGVyc2
 clientPrivateKey: vciwKIyAgZG...0cnksIGRlc2NyaX
 trustedCACertificate: zcyBbaG...b3Igb3duIGNsYXNz
