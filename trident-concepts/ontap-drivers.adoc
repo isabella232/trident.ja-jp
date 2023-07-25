@@ -42,34 +42,37 @@ Astra Tridentは、ONTAPクラスタと通信するための次のストレー�
 
 | 「 ONTAP - NAS 」  a| 
 NFS
+SMB
  a| 
 ファイルシステム
  a| 
 RWO、ROX、RWX、RWOP
  a| 
-"" 、 NFS です
+""、NFS、SMB
 
 
 
 | 「 ONTAP - NAS - エコノミー」  a| 
 NFS
+SMB
  a| 
 ファイルシステム
  a| 
 RWO、ROX、RWX、RWOP
  a| 
-"" 、 NFS です
+""、NFS、SMB
 
 
 
 | 「 ONTAP-NAS-flexgroup 」  a| 
 NFS
+SMB
  a| 
 ファイルシステム
  a| 
 RWO、ROX、RWX、RWOP
  a| 
-"" 、 NFS です
+""、NFS、SMB
 
 
 

@@ -749,7 +749,6 @@
   <block id="d5e2d9f8d8f10044e38b71b49e675d2e" category="cell">サポートされているアクセスモード</block>
   <block id="15971126972a002fcddb2c507534e371" category="cell">サポートされるファイルシステム</block>
   <block id="ac52cf637478f3656a1fdee5c02324fd" category="paragraph">ファイルシステム</block>
-  <block id="9f47e55b538b64923f2ee8c19bc6887a" category="paragraph">"" 、 NFS です</block>
   <block id="e1e4c8c9ccd9fc39c391da4bcd093fb2" category="paragraph">ブロック</block>
   <block id="aa91b58ced7ef060eb0e27ac4e1d18a8" category="paragraph">RWO 、 ROX 、 RWX</block>
   <block id="0b86d82002caac6130185da4ef1be67e" category="paragraph">RWO 、 ROX</block>
@@ -3737,4 +3736,7 @@ Microsoft管理コンソールまたはONTAP CLIを使用して作成されたSM
   <block id="7d159230ccaa721872f31bf9be31afeb" category="paragraph">ONTAP内でTridentドライバが使用できる、より制限の厳しいロールを作成することは可能ですが、推奨しません。Trident の新リリースでは、多くの場合、考慮すべき API が追加で必要になるため、アップグレードが難しく、エラーも起こりやすくなります。</block>
   <block id="37a679c38162162811d93d22ba8f5b4a" category="paragraph">ONTAP SANドライバでONTAPバックエンドを構成するための要件と認証オプションを理解します。</block>
   <block id="7fbe6e40125b7d1b2f5c5c05044e7526" category="section-title">証明書ベースの認証を有効にします</block>
+  <block id="3262251091b863054cfabf046c0e3493" category="paragraph">NFS
+SMB</block>
+  <block id="7f4a1ee6a22ce0658ba6215c997ba8d8" category="paragraph">""、NFS、SMB</block>
 </blocks>
