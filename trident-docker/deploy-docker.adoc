@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-docker/deploy-docker.html 
 keywords: deploy, astra trident, trident for docker, docker 
-summary: Astra Trident for Docker は、ネットアップのストレージプラットフォーム向けの Docker エコシステムとの直接統合を実現します。ストレージプラットフォームから Docker ホストまで、ストレージリソースのプロビジョニングと管理をサポートします。また、将来プラットフォームを追加するためのフレームワークもサポートします。 
+summary: Docker向けAstra Tridentは、NetAppストレージプラットフォーム向けのDockerエコシステムと直接統合できます。ストレージプラットフォームから Docker ホストまで、ストレージリソースのプロビジョニングと管理をサポートします。また、将来プラットフォームを追加するためのフレームワークもサポートします。 
 ---
 = Astra Trident を導入
 :hardbreaks:
@@ -12,7 +12,7 @@ summary: Astra Trident for Docker は、ネットアップのストレージプ�
 
 
 [role="lead"]
-Astra Trident for Docker は、ネットアップのストレージプラットフォーム向けの Docker エコシステムとの直接統合を実現します。ストレージプラットフォームから Docker ホストまで、ストレージリソースのプロビジョニングと管理をサポートします。また、将来プラットフォームを追加するためのフレームワークもサポートします。
+Docker向けAstra Tridentは、NetAppストレージプラットフォーム向けのDockerエコシステムと直接統合できます。ストレージプラットフォームから Docker ホストまで、ストレージリソースのプロビジョニングと管理をサポートします。また、将来プラットフォームを追加するためのフレームワークもサポートします。
 
 Astra Trident の複数のインスタンスを同じホストで同時に実行できます。これにより、複数のストレージシステムとストレージタイプへの同時接続が可能になり、 Docker ボリュームに使用するストレージをカスタマイズできます。
 

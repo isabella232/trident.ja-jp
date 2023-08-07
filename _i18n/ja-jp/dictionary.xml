@@ -1958,7 +1958,6 @@
   <block id="dbe38f4f0d856b41827e6e4531720a5e" category="list-text">--kubbelet-dir` フラグは kubelet ディレクトリの場所に設定する必要があります。デフォルトでは、これは /var/vcap/data/kubelet` です。</block>
   <block id="4dc3529fbf05312075f0aa52f9c0908e" category="paragraph">--kubbelet-dir' を使用して kubelet の場所を指定することは、 Trident Operator 、 Helm 、および tridentctl の展開で動作することが知られています。</block>
   <block id="8fad5c21cf613e120f249eadc62cda2f" category="paragraph">Astra Trident は、 Google Kubernetes Engine （ GKE ）、 Amazon Elastic Kubernetes Services （ EKS ）、 Azure Kubernetes Service （ AKS ）、 Rancher 、 VMware Tanzu Portfolio など、フルマネージドで自己管理型の Kubernetes サービスが数多く提供されています。</block>
-  <block id="82720d84ad009f069fd0b2cfaf6c3dac" category="summary">Astra Trident for Docker は、ネットアップのストレージプラットフォーム向けの Docker エコシステムとの直接統合を実現します。ストレージプラットフォームから Docker ホストまで、ストレージリソースのプロビジョニングと管理をサポートします。また、将来プラットフォームを追加するためのフレームワークもサポートします。</block>
   <block id="6798a0701cedf1202e1d70210a3a9a83" category="paragraph">「 ONTAP-NAS` 」、「 ONTAP-SAN」 、「 solidfire-san-」 、「 GCP-cvs ストレージドライバ」を使用する場合、 Astra Trident はボリュームのクローンを作成できます。「 ONTAP-NAS-flexgroup 」または「 ONTAP-NAS-エコノミー 」ドライバを使用する場合、クローニングはサポートされません。既存のボリュームから新しいボリュームを作成すると、新しい Snapshot が作成されます。</block>
   <block id="a264f15eaddf1d50155847119366be6b" category="list-text">「 ONTAP-NAS」 、「 ONTAP-SAN」 、「 GCP-CVS 」、「 azure-NetApp-files 」ドライバの場合、各永続ボリューム（ PV ）は FlexVol にマッピングされます。その結果、ボリューム Snapshot はネットアップ Snapshot として作成されます。NetApp のスナップショット・テクノロジーは ' 競合するスナップショット・テクノロジーよりも高い安定性 ' 拡張性 ' リカバリ性 ' パフォーマンスを提供しますSnapshot コピーは、作成時とストレージスペースの両方で非常に効率的です。</block>
   <block id="ec2577b4770848fd294d6ca069c34a43" category="paragraph">Astra Trident は 'ONTAP-NAS''ONTAP-NAS-Bエコノミー 'ONTAP-NAS-flexp`'GCP-cvs`'Azure-NetApp-files' バックエンドでプロビジョニングされた NFS PVS のボリューム拡張をサポートしています</block>
@@ -3803,4 +3802,5 @@ Yesfootnote: 5[]：Astra Tridentによるサポート</block>
   <block id="62486fa65fc31c383ace8989549632ad" category="sidebar">スナップショットの使用</block>
   <block id="143c9ea21ac76ba425aa94411fbba07b" category="sidebar">Astra Tridentの概要</block>
   <block id="ab09b43d2faaea1b49257d5a973eae0e" category="sidebar">Astra Tridentの管理と監視</block>
+  <block id="ee4c63201b5c5c6c9da139c0a39bcb7b" category="summary">Docker向けAstra Tridentは、NetAppストレージプラットフォーム向けのDockerエコシステムと直接統合できます。ストレージプラットフォームから Docker ホストまで、ストレージリソースのプロビジョニングと管理をサポートします。また、将来プラットフォームを追加するためのフレームワークもサポートします。</block>
 </blocks>
