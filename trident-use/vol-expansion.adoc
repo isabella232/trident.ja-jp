@@ -23,24 +23,11 @@ CSI プロビジョニングを使用して、 iSCSI Persistent Volume （ PV �
 
 NOTE: iSCSI ボリュームの拡張は 'ONTAP-SAN''ONTAP-SAN-エコノミー ''olidfire-SAN' ドライバによってサポートされており 'Kubernetes 1.16 以降が必要です
 
-.概要
-iSCSI PV の拡張には、次の手順が含まれます。
-
-* StorageClass 定義を編集して 'allowVolumeExpansion フィールドを true に設定します
-* PVC 定義を編集し 'PEC.resources.requests.storage を更新して ' 新たに必要とされるサイズを反映しますこれは ' 元のサイズより大きくなければなりません
-* サイズを変更するには、 PV をポッドに接続する必要があります。iSCSI PV のサイズ変更には、次の 2 つのシナリオがあります。
-+
-** PV がポッドに接続されている場合、 Astra Trident はストレージバックエンドのボリュームを拡張し、デバイスを再スキャンし、ファイルシステムのサイズを変更します。
-** 未接続の PV のサイズを変更しようとすると、 Astra Trident がストレージバックエンドのボリュームを拡張します。PVC がポッドにバインドされると、 Trident はデバイスを再スキャンし、ファイルシステムのサイズを変更します。展開操作が正常に完了すると、 Kubernetes は PVC サイズを更新します。
-
-
-
-
-次の例は、 iSCSI PVS の仕組みを示しています。
-
 
 
 === 手順 1 ：ボリュームの拡張をサポートするようにストレージクラスを設定する
+
+StorageClass定義を編集して `allowVolumeExpansion` フィールドからに移動します `true`。
 
 [listing]
 ----
@@ -60,6 +47,8 @@ allowVolumeExpansion: True
 
 
 === 手順 2 ：作成した StorageClass を使用して PVC を作成します
+
+PVC定義を編集し、 `spec.resources.requests.storage` 新たに必要となったサイズを反映するには、元のサイズよりも大きくする必要があります。
 
 [listing]
 ----
@@ -91,6 +80,12 @@ pvc-8a814d62-bd58-4253-b0d1-82f2885db671   1Gi        RWO            Delete     
 
 
 === 手順 3 ： PVC を接続するポッドを定義します
+
+サイズを変更するポッドにPVを接続します。iSCSI PV のサイズ変更には、次の 2 つのシナリオがあります。
+
+* PV がポッドに接続されている場合、 Astra Trident はストレージバックエンドのボリュームを拡張し、デバイスを再スキャンし、ファイルシステムのサイズを変更します。
+* 未接続の PV のサイズを変更しようとすると、 Astra Trident がストレージバックエンドのボリュームを拡張します。PVC がポッドにバインドされると、 Trident はデバイスを再スキャンし、ファイルシステムのサイズを変更します。展開操作が正常に完了すると、 Kubernetes は PVC サイズを更新します。
+
 
 この例では、ポッドが作成され、「 1-pvc 」が使用されます。
 

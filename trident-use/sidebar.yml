@@ -4,7 +4,7 @@ title: Astra Trident を使用
 entries:
 - title: ワーカーノードを準備します
   url: "/trident-use/worker-node-prep.html"
-- title: バックエンドを設定
+- title: バックエンドの構成と管理
   entries:
   - title: 概要
     url: "/trident-use/backends.html"
@@ -44,27 +44,33 @@ entries:
       url: "/trident-use/trident-fsx-prep.html"
     - title: 設定オプションと例
       url: "/trident-use/trident-fsx-examples.html"
-- title: kubectl を使用してバックエンドを作成します
-  url: "/trident-use/backend-kubectl.html"
-- title: kubectl を使用してバックエンド管理を実行します
-  url: "/trident-use/backend_ops_kubectl.html"
-- title: tridentctl を使用してバックエンド管理を実行します
-  url: "/trident-use/backend_ops_tridentctl.html"
-- title: バックエンド管理オプション間を移動します
-  url: "/trident-use/backend_options.html"
-- title: ストレージクラスを管理する
-  url: "/trident-use/manage-stor-class.html"
-- title: ボリューム操作を実行する
+  - title: kubectl を使用してバックエンドを作成します
+    url: "/trident-use/backend-kubectl.html"
+  - title: バックエンドの管理
+    entries:
+    - title: kubectlでバックエンドを管理
+      url: "/trident-use/backend_ops_kubectl.html"
+    - title: tridentctlによるバックエンドの管理
+      url: "/trident-use/backend_ops_tridentctl.html"
+    - title: バックエンド管理オプション間を移動します
+      url: "/trident-use/backend_options.html"
+- title: ストレージクラスの作成と管理
   entries:
-  - title: CSI トポロジを使用します
-    url: "/trident-use/csi-topology.html"
-  - title: スナップショットを操作します
-    url: "/trident-use/vol-snapshots.html"
+  - title: ストレージクラスを作成する。
+    url: "/trident-use/create-stor-class.html"
+  - title: ストレージクラスを管理する
+    url: "/trident-use/manage-stor-class.html"
+- title: ボリュームのプロビジョニングと管理
+  entries:
+  - title: ボリュームをプロビジョニングする
+    url: "/trident-use/vol-provision.html"
   - title: ボリュームを展開します
     url: "/trident-use/vol-expansion.html"
   - title: ボリュームをインポート
     url: "/trident-use/vol-import.html"
-- title: ネームスペース間でNFSボリュームを共有します
-  url: "/trident-use/volume-share.html"
-- title: Astra Trident を監視
-  url: "/trident-use/monitor-trident.html"
+  - title: ネームスペース間でNFSボリュームを共有します
+    url: "/trident-use/volume-share.html"
+  - title: CSI トポロジを使用します
+    url: "/trident-use/csi-topology.html"
+  - title: スナップショットの使用
+    url: "/trident-use/vol-snapshots.html"

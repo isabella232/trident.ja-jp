@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: trident-use/manage-stor-class.html 
 keywords: storage class, manage storage class, storage classes, kubernetes storage classes 
-summary: ストレージクラスを作成したり、ストレージクラスを削除したり、既存のストレージクラスを表示したりできます。 
+summary: 既存のストレージクラスを表示したり、デフォルトのストレージクラスを設定したり、ストレージクラスバックエンドを識別したり、ストレージクラスを削除したりできます。 
 ---
 = ストレージクラスを管理する
 :hardbreaks:
@@ -12,42 +12,7 @@ summary: ストレージクラスを作成したり、ストレージクラス�
 
 
 [role="lead"]
-ストレージクラスを作成したり、ストレージクラスを削除したり、既存のストレージクラスを表示したりできます。
-
-
-
-== ストレージクラスを設計する
-
-を参照してください link:../trident-reference/objects.html["こちらをご覧ください"^] ストレージクラスとその設定方法の詳細については、を参照してください。
-
-
-
-== ストレージクラスを作成する。
-
-ストレージクラスファイルが作成されたら、次のコマンドを実行します。
-
-[listing]
-----
-kubectl create -f <storage-class-file>
-----
-「 <storage-class-file> 」は、ストレージクラスのファイル名に置き換える必要があります。
-
-
-
-== ストレージクラスを削除する
-
-Kubernetes からストレージクラスを削除するには、次のコマンドを実行します。
-
-[listing]
-----
-kubectl delete storageclass <storage-class>
-----
-「 <storage-class> 」は、ご使用のストレージクラスに置き換えてください。
-
-このストレージクラスで作成された永続ボリュームには変更はなく、 Astra Trident によって引き続き管理されます。
-
-
-NOTE: Astra Tridentでは空白が強制される `fsType` を作成します。iSCSIバックエンドの場合は、適用することを推奨します `parameters.fsType` ストレージクラス。既存のストレージクラスを削除して、で再作成する必要があります `parameters.fsType` 指定された。
+既存のストレージクラスを表示したり、デフォルトのストレージクラスを設定したり、ストレージクラスバックエンドを識別したり、ストレージクラスを削除したりできます。
 
 
 
@@ -105,7 +70,7 @@ kubectl patch storageclass <storage-class-name> -p '{"metadata": {"annotations":
 また、このアノテーションが含まれている Trident インストーラバンドルにも例があります。
 
 
-NOTE: クラスタには、常に 1 つのデフォルトストレージクラスだけを設定してください。Kubernetes では、技術的に複数のストレージを使用することはできますが、デフォルトのストレージクラスがまったくない場合と同様に動作します。
+NOTE: クラスタ内のデフォルトのストレージクラスは一度に1つだけにしてください。Kubernetes では、技術的に複数のストレージを使用することはできますが、デフォルトのストレージクラスがまったくない場合と同様に動作します。
 
 
 
@@ -117,3 +82,19 @@ NOTE: クラスタには、常に 1 つのデフォルトストレージクラ�
 ----
 tridentctl get storageclass -o json | jq  '[.items[] | {storageClass: .Config.name, backends: [.storage]|unique}]'
 ----
+
+
+== ストレージクラスを削除する
+
+Kubernetes からストレージクラスを削除するには、次のコマンドを実行します。
+
+[listing]
+----
+kubectl delete storageclass <storage-class>
+----
+「 <storage-class> 」は、ご使用のストレージクラスに置き換えてください。
+
+このストレージクラスで作成された永続ボリュームには変更はなく、 Astra Trident によって引き続き管理されます。
+
+
+NOTE: Astra Tridentでは空白が強制される `fsType` を作成します。iSCSIバックエンドの場合は、適用することを推奨します `parameters.fsType` ストレージクラス。既存のストレージクラスを削除して、で再作成する必要があります `parameters.fsType` 指定された。

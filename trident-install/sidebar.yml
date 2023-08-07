@@ -1,0 +1,24 @@
+---
+section: trident-install
+title: Astra Trident をインストール
+entries:
+- title: インストールの概要
+  url: "/trident-get-started/kubernetes-deploy.html"
+- title: Tridentオペレータを使用してインストール
+  entries:
+  - title: Tridentオペレータを手動で導入（標準）
+    url: "/trident-get-started/kubernetes-deploy-operator.html"
+  - title: Tridentオペレータを手動で導入（オフライン）
+    url: "/trident-get-started/kubernetes-deploy-operator-mirror.html"
+  - title: Trident Helmチャートを使用（標準）
+    url: "/trident-get-started/kubernetes-deploy-helm.html"
+  - title: Trident Helmチャートを使用（オフライン）
+    url: "/trident-get-started/kubernetes-deploy-helm-mirror.html"
+  - title: Tridentオペレータのインストールをカスタマイズ
+    url: "/trident-get-started/kubernetes-customize-deploy.html"
+- title: tridentctlを使用してインストールします
+  entries:
+  - title: tridentctlを使用してインストールします
+    url: "/trident-get-started/kubernetes-deploy-tridentctl.html"
+  - title: tridentctlのインストールをカスタマイズします
+    url: "/trident-get-started/kubernetes-customize-deploy-tridentctl.html"

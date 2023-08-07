@@ -16,24 +16,12 @@ Astra Trident は、 ONTAP クラスタとの通信に使用する 5 つの ONTA
 
 
 
-== Astra Controlでサポートされるドライバ
-
-Astra Controlは、で作成したボリュームに対して、シームレスな保護、ディザスタリカバリ、および移動（Kubernetesクラスタ間でボリュームを移動）を提供します `ontap-nas`、 `ontap-nas-flexgroup`および `ontap-san` ドライバ。を参照してください link:https://docs.netapp.com/us-en/astra-control-center/use/replicate_snapmirror.html#replication-prerequisites["Astra Controlレプリケーションの前提条件"^] を参照してください。
-
-[WARNING]
-====
-* を使用する必要があります `ontap-nas` データ保護、ディザスタリカバリ、モビリティを必要とする本番環境のワークロード向けのサービスです。
-* 使用 `ontap-san-economy` 想定されるボリューム使用量がONTAP でサポートされる量よりも大幅に多い場合
-* 使用 `ontap-nas-economy` 想定されるボリューム使用量が、ONTAP でサポートされるおよびよりも大幅に多い場合にのみ該当します `ontap-san-economy` ドライバは使用できません。
-* 使用しないでください `ontap-nas-economy` データ保護、ディザスタリカバリ、モビリティのニーズが予想される場合。
-
-
-====
-
-
 == ONTAP向けAstra Tridentストレージドライバ
 
 Astra Tridentは、ONTAPクラスタと通信するための次のストレージドライバを提供します。サポートされているアクセスモードは、_ReadWriteOnce_(RWO)、_ReadOnlyMany_(ROX)、_ReadWriteMany_(RWX)、_ReadWriteOncePod_(RWOP)です。
+
+
+IMPORTANT: 保護、リカバリ、モビリティにAstra Controlを使用している場合は、 <<Astra Controlドライバの互換性>>。
 
 [cols="2, 1, 1, 2, 2"]
 |===
@@ -124,4 +112,20 @@ rwxはファイルシステムボリュームモードでは使用できませ�
 
 |===
 
-NOTE: ONTAPバックエンドの認証には、セキュリティロール（ユーザ名とパスワード）のログインクレデンシャル、またはONTAPクラスタにインストールされている秘密鍵と証明書を使用します。を使用して既存のバックエンドを更新し、認証モードを移行することができます `tridentctl update backend`。
+NOTE: ONTAPバックエンドの認証には、セキュリティロール（ユーザ名とパスワード）のログインクレデンシャル、またはONTAPクラスタにインストールされている秘密鍵と証明書を使用できます。を使用して既存のバックエンドを更新し、認証モードを移行することができます `tridentctl update backend`。
+
+
+
+== Astra Controlドライバの互換性
+
+Astra Controlは、で作成したボリュームに対して、シームレスな保護、ディザスタリカバリ、および移動（Kubernetesクラスタ間でボリュームを移動）を提供します `ontap-nas`、 `ontap-nas-flexgroup`および `ontap-san` ドライバ。を参照してください link:https://docs.netapp.com/us-en/astra-control-center/use/replicate_snapmirror.html#replication-prerequisites["Astra Controlレプリケーションの前提条件"^] を参照してください。
+
+[WARNING]
+====
+* を使用する必要があります `ontap-nas` データ保護、ディザスタリカバリ、モビリティを必要とする本番環境のワークロード向けのサービスです。
+* 使用 `ontap-san-economy` 想定されるボリューム使用量がONTAP でサポートされる量よりも大幅に多い場合
+* 使用 `ontap-nas-economy` 想定されるボリューム使用量が、ONTAP でサポートされるおよびよりも大幅に多い場合にのみ該当します `ontap-san-economy` ドライバは使用できません。
+* 使用しないでください `ontap-nas-economy` データ保護、ディザスタリカバリ、モビリティのニーズが予想される場合。
+
+
+====

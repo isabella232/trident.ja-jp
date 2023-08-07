@@ -159,13 +159,12 @@ Usage:
 ----
 フラグ：
 
-* `--autosupport-image string` ： AutoSupport Telemetry のコンテナイメージ（デフォルトは「 NetApp/trident autosupport ： 20.07.0 」）。
+* ``--autosupport-image string`：AutoSupportテレメトリ用のコンテナイメージ（デフォルトは「NetApp/Trident autosupport：<current-version>」）。
 * `-- autosupport - proxy string` : AutoSupport Telemetry を送信するためのプロキシのアドレス / ポート。
-* `--csI`: CSI Trident をインストールします (Kubernetes 1.13 のみをオーバーライドしますが、機能ゲートが必要です ) 。
 * `--enable-node-prep : 必要なパッケージをノードにインストールしようとします
 * ``--generate-custom-yaml `: インストールしないで YAML ファイルを生成します。
 * `-h, --help`: インストールのヘルプ。
-* `--http-request-timeout`: Trident コントローラの REST API の HTTP 要求タイムアウトをオーバーライドします ( デフォルトは 1 分 30s) 。
+* ``--http-request-timeout`：TridentコントローラのREST APIのHTTP要求タイムアウトを上書きします（デフォルトは1m30秒）。
 * `-- image-registry string : 内部イメージレジストリのアドレス / ポート。
 * `--k8s-timeout duration`: すべての Kubernetes 操作のタイムアウト ( デフォルトは 3m0s)
 * `-- kubbelet-dir string`: kubelet の内部状態のホストの場所 ( デフォルトは /var/lib/kubbelet") 。
@@ -238,19 +237,6 @@ Usage:
   tridentctl update [option]
 ----
 利用可能なオプション : backend`: Astra Trident のバックエンドを更新します。
-
-
-
-== `upgrade`
-
-'upgrade' コマンドを実行して 'Astra Trident のリソースをアップグレードできます
-
-[listing]
-----
-Usage:
-tridentctl upgrade [option]
-----
-使用可能なオプション : volume 'NFS/iSCSI から CSI に 1 つ以上の永続ボリュームをアップグレードします
 
 
 

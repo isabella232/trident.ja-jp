@@ -19,7 +19,82 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 
 
 
-== 23.04の新機能
+== 23.07の新機能
+
+
+
+=== の修正
+
+
+
+==== Kubernetes
+
+* Tridentのアップグレードを修正し、古いポッドが終了状態で停止（link:https://github.com/NetApp/trident/issues/740["問題#740"^]）。
+* 「transient-trident-version-pod」の定義に公差を追加（link:https://github.com/NetApp/trident/issues/795["問題#795"^]）。
+
+
+
+
+==== Astra Trident
+
+* ノードステージング操作中にゴーストiSCSIデバイスを識別して修正するためのLUN属性を取得するときに、LUNシリアル番号が照会されるようにするためのONTAP ZAPI要求を修正しました。
+* ストレージドライバコード（link:https://github.com/NetApp/trident/issues/816["問題#816"^]）。
+* use-rest = trueを指定してONTAPドライバを使用すると、クォータのサイズが修正されました。
+* ONTAP-SAN-EconomyでLUNクローンを固定作成
+* パブリッシュ情報フィールドを元に戻す `rawDevicePath` 終了： `devicePath`;データの取り込みとリカバリのためのロジックを追加(場合によっては) `devicePath` フィールド。
+
+
+
+
+=== 拡張機能
+
+
+
+==== Kubernetes
+
+* 事前プロビジョニングされたSnapshotのインポートのサポートが追加されました。
+* 最小限の導入とデーモン設定のLinux権限（link:https://github.com/NetApp/trident/issues/817["問題#817"^]）。
+
+
+
+
+==== Astra Trident
+
+* 「online」ボリュームおよびSnapshotの状態フィールドが報告されなくなりました。
+* ONTAPバックエンドがオフラインの場合は、バックエンドの状態を更新します（link:https://github.com/NetApp/trident/issues/801["問題#801"^]、 link:https://github.com/NetApp/trident/issues/543["#543"^]）。
+* LUNシリアル番号は、ControllerVolumePublishワークフロー中に常に取得および公開されます。
+* iSCSIマルチパスデバイスのシリアル番号とサイズを確認するロジックが追加されました。
+* 正しいマルチパスデバイスがステージングされていないことを確認するための、iSCSIボリュームの追加検証。
+
+
+
+
+==== 実験的強化
+
+ONTAP-SANドライバでのNVMe over TCPのテクニカルプレビューのサポートを追加。
+
+
+
+==== ドキュメント
+
+組織とフォーマットの多くの改善が行われました。
+
+
+
+=== 非推奨
+
+
+
+==== Kubernetes
+
+* v1beta1スナップショットのサポートが削除されました。
+* CSI以前のボリュームとストレージクラスのサポートが削除されました。
+* サポートされるKubernetesの最小要件を1.22に更新。
+
+
+
+
+== 23.04の変更点
 
 
 IMPORTANT: ONTAP-SAN-*ボリュームの強制的なボリューム接続解除は、非グレースフルノードシャットダウン機能のゲートが有効になっているKubernetesバージョンでのみサポートされます。[Force detach]は、インストール時にを使用して有効にする必要があります `--enable-force-detach` Tridentインストーラのフラグ。

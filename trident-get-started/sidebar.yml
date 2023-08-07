@@ -2,7 +2,25 @@
 section: trident-get-started
 title: はじめに
 entries:
-- title: ぜひお試しください
+- title: Astra Trident の詳細をご確認ください
+  entries:
+  - title: Astra Tridentの概要
+    url: "/trident-get-started/intro.html"
+  - title: Astra Tridentのアーキテクチャ
+    url: "/trident-get-started/architecture.html"
+  - title: 概念
+    entries:
+    - title: ONTAP ドライバ
+      url: "/trident-concepts/ontap-drivers.html"
+    - title: プロビジョニング
+      url: "/trident-concepts/provisioning.html"
+    - title: ボリューム Snapshot
+      url: "/trident-concepts/snapshots.html"
+    - title: 仮想プール
+      url: "/trident-concepts/virtual-storage-pool.html"
+    - title: ボリュームアクセスグループ
+      url: "/trident-concepts/vol-access-groups.html"
+- title: クイックスタート
   url: "/trident-get-started/quickstart.html"
 - title: 要件
   url: "/trident-get-started/requirements.html"
@@ -28,5 +46,3 @@ entries:
       url: "/trident-get-started/kubernetes-deploy-tridentctl.html"
     - title: tridentctlのインストールをカスタマイズします
       url: "/trident-get-started/kubernetes-customize-deploy-tridentctl.html"
-- title: 次の手順
-  url: "/trident-get-started/kubernetes-postdeployment.html"

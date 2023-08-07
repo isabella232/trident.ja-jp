@@ -4,7 +4,7 @@ permalink: trident-get-started/quickstart.html
 keywords: kubernetes cluster, simple installation, Kubernetes installation 
 summary: Kubernetes の使用を開始したばかりの場合は、手順に従って Kubernetes をインストールして試してください。この説明では、 Trident をデモ用に統合できるベアボーンのシングルノードクラスタについて説明しています。 
 ---
-= ぜひお試しください
+= Astra Tridentのクイックスタート
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -12,17 +12,51 @@ summary: Kubernetes の使用を開始したばかりの場合は、手順に従
 
 
 [role="lead"]
-ネットアップでは、リクエストに応じてすぐに使用できるラボイメージを提供しています link:https://www.netapp.com/us/try-and-buy/test-drive/index.aspx["ネットアップのテスト用ドライブ"^]。
+Astra Tridentをインストールすれば、数ステップでストレージリソースの管理を開始できます。作業を開始する前に、 link:requirements.html["Astra Trident の要件"]。
+
+
+NOTE: Dockerについては、を参照してください。 link:../trident-docker/deploy-docker.html["Trident for Docker が必要です"]。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"] Astra Trident をインストール
+[role="quick-margin-para"]
+Astra Tridentには、さまざまな環境や組織に最適化された複数のインストール方法とモードが用意されています。
+
+[role="quick-margin-para"]
+link:../trident-get-started/kubernetes-deploy.html["Astra Trident をインストール"]
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"] ワーカーノードを準備します
+[role="quick-margin-para"]
+Kubernetesクラスタ内のすべてのワーカーノードが、ポッド用にプロビジョニングしたボリュームをマウントできる必要があります。
+
+[role="quick-margin-para"]
+link:../trident-use/worker-node-prep.html["ワーカーノードを準備します"]
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"] バックエンドを作成します
+[role="quick-margin-para"]
+バックエンドは、 Astra Trident とストレージシステムの関係を定義します。Trident がストレージシステムとの通信方法を Trident から指示し、 Astra Trident がボリュームをプロビジョニングする方法も解説します。
+
+[role="quick-margin-para"]
+link:../trident-use/backends.html["バックエンドの設定"] ストレージシステム
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."] Kubernetesストレージクラスの作成
+[role="quick-margin-para"]
+Kubernetes StorageClassオブジェクトでは、Astra Tridentがプロビジョニングツールとして指定され、カスタマイズ可能な属性を使用してボリュームをプロビジョニングするためのストレージクラスを作成できます。Astra Tridentは、Astra Tridentプロビジョニングツールを指定する、Kubernetesオブジェクト用の一致するストレージクラスを作成します。
+
+[role="quick-margin-para"]
+link:../trident-use/create-stor-class.html["ストレージクラスを作成する。"]
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"] ボリュームをプロビジョニングする
+[role="quick-margin-para"]
+A_PersistentVolume_（PV）は、Kubernetesクラスタ上のクラスタ管理者がプロビジョニングする物理ストレージリソースです。_PersistentVolumeClaim_（PVC）は、クラスタ上のPersistentVolumeへのアクセス要求です。
+
+[role="quick-margin-para"]
+設定したKubernetes StorageClassを使用してPVへのアクセスを要求するPersistentVolume（PV）とPersistentVolumeClaim（PVC）を作成します。その後、PVをポッドにマウントできます。
+
+[role="quick-margin-para"]
+link:../trident-use/vol-provision.html["ボリュームをプロビジョニングする"]
 
 
 
-== 試乗について学びます
+== 次の手順
 
-テストドライブは、 3 ノードの Kubernetes クラスタと Astra Trident がインストールおよび設定されたサンドボックス環境を提供します。Astra Trident をよく理解し、機能を調べるのに最適な方法です。
-
-もう 1 つのオプションは、を参照することです link:https://kubernetes.io/docs/setup/independent/install-kubeadm/["kubeadm インストールガイド"] Kubernetes が提供します。
-
-
-NOTE: 本番環境では、この手順で構築した Kubernetes クラスタを使用しないでください。本番環境向けのクラスタを作成するには、ディストリビューションに付属の本番環境導入ガイドを使用します。
-
-Kubernetes を初めて使用する場合は、概念とツールについて理解しておいてください link:https://kubernetes.io/docs/home/["こちらをご覧ください"^]。
+バックエンドの追加、ストレージクラスの管理、バックエンドの管理、ボリューム処理の実行が可能になりました。

@@ -80,10 +80,7 @@ Trident では、標準仕様に加えて、バックエンド構成で設定し
 
 Trident では CSI 仕様を使用したボリュームスナップショットの作成がサポートされています。ボリュームスナップショットを作成し、それをデータソースとして使用して既存の PVC のクローンを作成できます。これにより、 PVS のポイントインタイムコピーを Kubernetes にスナップショットの形で公開できます。作成した Snapshot を使用して新しい PVS を作成できます。「 +On-Demand Volume Snapshots + 」を見て、これがどのように機能するかを確認してください。
 
-Trident には ' クローン作成用の cloneFromPVC' および 'plitOnClone' 注釈も用意されていますCSI 実装（ Kubernetes 1.13 以前）を使用しなくても、または Kubernetes リリースがベータ版のボリュームスナップショット（ Kubernetes 1.16 以前）をサポートしていない場合は、これらのアノテーションを使用して PVC のクローンを作成できます。Trident 19.10 は、 PVC からのクローニングの CSI ワークフローをサポートしていることに注意してください。
-
-
-NOTE: CSI Trident では 'cloneFromPVC' および 'plitOnClone' 注釈を使用できますまた ' 従来の CSI 以外のフロントエンドも使用できます
+Tridentが提供するのも `cloneFromPVC` および `splitOnClone` クローンを作成するためのアノテーションこれらの注釈を使用して、CSI実装を使用せずにPVCのクローンを作成できます。
 
 例 : ユーザがすでに「 m ysql 」という PVC を持っている場合、ユーザは「 trident.netapp.io/cloneFromPVC: mysql 」などの注釈を使用して「 m ysqlclone 」という新しい PVC を作成できます。このアノテーションセットを使用すると、 Trident はボリュームをゼロからプロビジョニングするのではなく、 MySQL PVC に対応するボリュームのクローンを作成します。
 
@@ -94,7 +91,7 @@ NOTE: CSI Trident では 'cloneFromPVC' および 'plitOnClone' 注釈を使用�
 * また 'ONTAP-NAS' および 'ONTAP-SAN' ドライバを使用すると 'pvc 注釈 trident.netapp.io/splitOnClone` を trident.netapp.io/cloneFromPVC` と組み合わせて設定することが望ましい場合がありますTrident は 'trident.netapp.io/splitOnClone` を true に設定した場合 ' クローン・ボリュームを親ボリュームからスプリットするため ' 一部のストレージ効率を失うことなく ' クローン・ボリュームのライフサイクルを親ボリュームから完全に分離しますtrident.netapp.io/splitOnClone` を設定したり 'false に設定したりしないと ' 親ボリュームとクローンボリューム間の依存関係を作成する代わりに ' バックエンドでのスペース消費が削減されますこれにより ' クローンを最初に削除しない限り ' 親ボリュームを削除できなくなりますクローンをスプリットするシナリオでは、空のデータベースボリュームをクローニングする方法が効果的です。このシナリオでは、ボリュームとそのクローンで使用するデータベースボリュームのサイズが大きく異なっており、 ONTAP ではストレージ効率化のメリットはありません。
 
 
-「 sample-input' 」ディレクトリには、 Trident で使用する PVC 定義の例が含まれています。Trident ボリュームに関連するパラメータと設定の完全な概要については、 Trident ボリュームオブジェクトを参照してください。
+。 `sample-input` Directoryには、Tridentで使用するPVC定義の例が含まれています。を参照してください  をクリックして、Tridentボリュームに関連付けられているパラメータと設定の完全な概要を確認します。
 
 
 
@@ -291,20 +288,19 @@ Kubernetes カスタムリソースは、管理者が定義した Kubernetes API
 
 カスタムリソース定義（ CRD ）と関連するオブジェクトメタデータは、 Kubernetes によってメタデータストアに格納されます。これにより、 Trident の独立したストアが不要になります。
 
-19.07 リリース以降、 Trident は多数の「 CustomResourceDefinition 」オブジェクトを使用して、 Trident バックエンド、 Trident ストレージクラス、 Trident ボリュームなどの Trident オブジェクトの ID を保持します。これらのオブジェクトは Trident によって管理されます。また、 CSI のボリュームスナップショットフレームワークには、ボリュームスナップショットの定義に必要ないくつかの SSD が導入されています。
+Astra Tridentが使用 `CustomResourceDefinition` Tridentバックエンド、Tridentストレージクラス、Tridentボリュームなど、TridentオブジェクトのIDを保持するオブジェクト。これらのオブジェクトは Trident によって管理されます。また、 CSI のボリュームスナップショットフレームワークには、ボリュームスナップショットの定義に必要ないくつかの SSD が導入されています。
 
 CRD は Kubernetes の構成要素です。上記で定義したリソースのオブジェクトは Trident によって作成されます。簡単な例として 'tridentctl' を使用してバックエンドを作成すると ' 対応する tridentBackendsCRD オブジェクトが Kubernetes によって消費されるように作成されます
 
 Trident の CRD については、次の点に注意してください。
 
 * Trident をインストールすると、一連の CRD が作成され、他のリソースタイプと同様に使用できるようになります。
-* Trident の以前のバージョンからアップグレードする場合（ステートを維持するために「 etcd」 を使用したもの）、 Trident インストーラは「 etcd' キーバリューデータストア」からデータを移行し、対応する CRD オブジェクトを作成します。
 * tridentctl uninstall コマンドを使用して Trident をアンインストールすると、 Trident ポッドは削除されますが、作成された CRD はクリーンアップされません。を参照してください link:../trident-managing-k8s/uninstall-trident.html["Trident をアンインストールします"] Trident を完全に削除して再構成する方法を理解する。
 
 
 
 
-== Trident `StorageClass` オブジェクト
+== Astra Trident `StorageClass` オブジェクト
 
 Trident は 'Kubernetes のプロビジョニング・フィールドに csi.trident.netapp.io`/`netapp.io/trident` を指定する 'S torageClass' オブジェクトに一致するストレージ・クラスを作成しますストレージクラス名は、そのストレージクラスが表す Kubernetes の「 torageClass 」オブジェクトの名前と一致します。
 
@@ -317,7 +313,7 @@ REST API を使用して、ストレージクラスを直接定義するスト�
 
 
 
-== Trident バックエンドオブジェクト
+== Astra Tridentバックエンドオブジェクト
 
 バックエンドとは、 Trident がボリュームをプロビジョニングする際にストレージプロバイダを表します。 1 つの Trident インスタンスであらゆる数のバックエンドを管理できます。
 
@@ -328,7 +324,7 @@ NOTE: これは、自分で作成および管理する 2 つのオブジェク�
 
 
 
-== Trident `StoragePool` オブジェクト
+== Astra Trident `StoragePool` オブジェクト
 
 ストレージプールは、各バックエンドでのプロビジョニングに使用できる個別の場所を表します。ONTAP の場合、これらは SVM 内のアグリゲートに対応します。NetApp HCI / SolidFire では、管理者が指定した QoS 帯域に対応します。Cloud Volumes Service の場合、これらはクラウドプロバイダのリージョンに対応します。各ストレージプールには、パフォーマンス特性とデータ保護特性を定義するストレージ属性があります。
 
@@ -336,16 +332,17 @@ NOTE: これは、自分で作成および管理する 2 つのオブジェク�
 
 
 
-== Trident `Volume` オブジェクト
+== Astra Trident `Volume` オブジェクト
 
 ボリュームは、 NFS 共有や iSCSI LUN などのバックエンドエンドエンドエンドポイントで構成される、プロビジョニングの基本単位です。Kubernetes では ' これらは 'PersistentVolumes' に直接対応しますボリュームを作成するときは、そのボリュームにストレージクラスが含まれていることを確認します。このクラスによって、ボリュームをプロビジョニングできる場所とサイズが決まります。
 
+[NOTE]
+====
+* Kubernetes では、これらのオブジェクトが自動的に管理されます。Trident がプロビジョニングしたものを表示できます。
+* 関連付けられた Snapshot がある PV を削除すると、対応する Trident ボリュームが * Deleting * 状態に更新されます。Trident ボリュームを削除するには、ボリュームの Snapshot を削除する必要があります。
 
-NOTE: Kubernetes では、これらのオブジェクトが自動的に管理されます。Trident がプロビジョニングしたものを表示できます。
 
-
-TIP: 関連付けられた Snapshot がある PV を削除すると、対応する Trident ボリュームが * Deleting * 状態に更新されます。Trident ボリュームを削除するには、ボリュームの Snapshot を削除する必要があります。
-
+====
 ボリューム構成は、プロビジョニングされたボリュームに必要なプロパティを定義します。
 
 [cols=",,,"]
@@ -403,7 +400,7 @@ Trident は ' ボリュームの作成時に internalName を生成しますこ�
 
 
 
-== Trident `Snapshot` オブジェクト
+== Astra Trident `Snapshot` オブジェクト
 
 Snapshot はボリュームのポイントインタイムコピーで、新しいボリュームのプロビジョニングやリストア状態に使用できます。Kubernetes では ' これらは 'VolumeSnapshotContent' オブジェクトに直接対応します各 Snapshot には、 Snapshot のデータのソースであるボリュームが関連付けられます。
 

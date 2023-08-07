@@ -147,8 +147,8 @@ curl -fsSL https://get.docker.com/ | sh
 +
 [listing]
 ----
-wget https://github.com/NetApp/trident/releases/download/v23.04.0/trident-installer-23.04.0.tar.gz
-tar zxf trident-installer-23.04.0.tar.gz
+wget https://github.com/NetApp/trident/releases/download/v23.07.0/trident-installer-23.07.0.tar.gz
+tar zxf trident-installer-23.07.0.tar.gz
 ----
 .. ビンパス内の場所に移動します。
 +
@@ -183,7 +183,7 @@ EOF
 ----
 
 
-. バイナリを配置して構成ファイルを作成したら、必要な構成ファイルを使用して Trident デーモンを開始します。
+. バイナリを配置して構成ファイルを作成したら、目的の構成ファイルを使用してTridentデーモンを起動します。
 +
 [listing]
 ----

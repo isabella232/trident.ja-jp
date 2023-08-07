@@ -46,7 +46,7 @@ tridentctl get コマンドを使用して 'Astra Trident の構成に関する�
 
 === Astra Trident を使用してストレージをプロビジョニングする方法に関するメトリクスを取得できますか。
 
-はい。Trident 20.01 には、管理対象のバックエンドの数、プロビジョニングされたボリュームの数、消費されたバイト数など、 Astra Trident の動作に関する情報を収集するために使用できる Prometheus エンドポイントが導入されています。また、 Cloud Insights を使用して監視と分析を行うこともできます。
+はい。Prometheusエンドポイント：管理対象のバックエンド数、プロビジョニングされたボリューム数、消費されたバイト数など、Astra Tridentの処理に関する情報を収集できます。を使用することもできます link:https://docs.netapp.com/us-en/cloudinsights/["Cloud Insights の機能です"^] 監視と分析に使用します。
 
 
 
@@ -57,12 +57,6 @@ tridentctl get コマンドを使用して 'Astra Trident の構成に関する�
 
 
 == Kubernetes クラスタに Astra Trident をインストールして使用
-
-
-
-=== のサポート対象のバージョンを指定します `etcd`？
-
-Astra Trident はもはや「 etcd 」を必要としない。状態を維持するために CRD を使用します。
 
 
 
@@ -220,19 +214,13 @@ Trident ポッドが削除されても、データは失われません。Triden
 
 === Astra Trident が ONTAP バックエンドに CHAP を設定できるか。
 
-はい。20.04 以降、 Astra Trident は ONTAP バックエンドに対して双方向 CHAP をサポートします。バックエンド構成では 'useCHAP =true' を設定する必要があります
+はい。Astra Tridentでは、ONTAPバックエンドの双方向CHAPがサポートされます。これには設定が必要です `useCHAP=true` バックエンド構成
 
 
 
 === Astra Trident を使用してエクスポートポリシーを管理するにはどうすればよいですか。
 
-Astra Trident では、バージョン 20.04 以降からエクスポートポリシーを動的に作成、管理できます。これにより、ストレージ管理者はバックエンド構成に 1 つ以上の CIDR ブロックを指定でき、 Trident では、その範囲に含まれるノード IP を作成したエクスポートポリシーに追加できます。このようにして、 Astra Trident は特定の CIDR 内に IP アドレスが割り当てられたノードのルールの追加と削除を自動的に管理します。この機能には CSI Trident が必要です。
-
-
-
-=== データ LIF にポートを指定できるか。
-
-Astra Trident 19.01 以降では、 DataLIF にポートを指定できます。「 backend.json 」ファイルに「 managementlif 」として設定します。 <IP アドレス >:<port>`` 。たとえば、管理 LIF の IP アドレスが 192.0.2.1 で、ポートが 1000 の場合、「 managementlif 」：「 192.0.2.1 ： 1000」 を設定します。
+Astra Trident では、バージョン 20.04 以降からエクスポートポリシーを動的に作成、管理できます。これにより、ストレージ管理者はバックエンド構成に 1 つ以上の CIDR ブロックを指定でき、 Trident では、その範囲に含まれるノード IP を作成したエクスポートポリシーに追加できます。このようにして、 Astra Trident は特定の CIDR 内に IP アドレスが割り当てられたノードのルールの追加と削除を自動的に管理します。
 
 
 
@@ -354,12 +342,6 @@ Kubernetes では、バージョン 1.10 以降、 PVC 保護が自動的に有�
 
 
 
-=== Astra Trident の外部で作成したボリュームを Astra Trident にインポートできますか。
-
-19.04 以降では、ボリュームインポート機能を使用してボリュームを Kubernetes に移行できます。
-
-
-
 === ボリュームが SnapMirror データ保護（ DP ）モードまたはオフラインモードの間にインポートできますか。
 
 外部ボリュームが DP モードになっているかオフラインになっている場合、ボリュームのインポートは失敗します。次のエラーメッセージが表示されます。
@@ -369,12 +351,6 @@ Kubernetes では、バージョン 1.10 以降、 PVC 保護が自動的に有�
 Error: could not import volume: volume import failed to get size of volume: volume <name> was not found (400 Bad Request) command terminated with exit code 1.
 Make sure to remove the DP mode or put the volume online before importing the volume.
 ----
-
-
-=== Astra Trident によって作成された iSCSI PVC を拡張できますか。
-
-Trident 19.10 は CSI プロビジョニング担当者を使用した iSCSI PVS の拡張をサポートしています。
-
 
 
 === リソースクォータをネットアップクラスタに変換する方法

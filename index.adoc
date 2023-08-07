@@ -2,9 +2,9 @@
 layout: landing-page 
 sidebar: sidebar 
 permalink: index.html 
-summary: Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。** Astra Trident 23.04へのアップグレードに関する重要な情報については、リリースノートをご覧ください。** 
+summary: Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。** Astra Trident 23.07へのアップグレードに関する重要な情報については、リリースノートをご覧ください。** 
 ---
-= Astra Trident 23.04のドキュメント
+= Astra Trident 23.07ドキュメント
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

@@ -40,7 +40,7 @@ WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra T
 | パラメータ | 説明 | デフォルト 
 
 
-| 「 autosupportImage 」を参照してください | AutoSupport テレメトリのコンテナイメージ | "netapp/trident-autosupport：23.04.0" 
+| 「 autosupportImage 」を参照してください | AutoSupport テレメトリのコンテナイメージ | "netapp/trident-autosupport：23.07.0" 
 
 
 | 「 autosupportProxy 」と入力します | AutoSupport テレメトリを送信するプロキシのアドレス / ポート | "http://proxy.example.com:8888"[] 

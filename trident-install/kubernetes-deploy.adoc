@@ -16,7 +16,7 @@ summary: 'Tridentは、Tridentオペレータ（手動またはHelmを使用）�
 
 
 
-== Astra Trident 23.04に関する重要な情報
+== Astra Tridentに関する重要な情報23.07
 
 * Astra Tridentに関する次の重要な情報をお読みください。*
 
@@ -74,6 +74,12 @@ Tridentオペレータが、Kubernetesのバージョンに応じて次のオブ
 
 
 ====
+.<strong>リソースアカウンタビリティ</strong>
+[%collapsible]
+====
+クラスタを対象としたTridentオペレータは、Astra Tridentインストールに関連するリソースをクラスタレベルで管理します。これにより、ネームスペースを対象とした演算子を使用してクラスタを対象としたリソースを管理する際に発生する可能性のあるエラーを軽減できます。これは、自己修復とパッチ適用に不可欠です。
+
+====
 .<strong> 自己回復機能</strong>
 [%collapsible]
 ====
@@ -91,7 +97,13 @@ OperatorはAstra Tridentのインストールを監視し、導入が削除さ�
 ----
 kubectl patch torc <trident-orchestrator-name> -n trident --type=merge -p '{"spec":{"debug":true}}'
 ----
-TridentOrchestrator が更新されると、オペレータは既存のインストールの更新とパッチを処理します。これにより、新しいポッドの作成がトリガーされ、それに応じてインストールが変更される場合があります。
+実行後 `TridentOrchestrator` が更新され、オペレータが既存のインストールの更新とパッチを処理します。これにより、新しいポッドが作成され、それに応じてインストールが変更される可能性があります。
+
+====
+.<strong>クリーン再インストール</strong>
+[%collapsible]
+====
+クラスタを対象としたTridentオペレータを使用すると、クラスタを対象としたリソースを完全に削除できます。Astra Tridentを完全にアンインストールして簡単に再インストールできます。
 
 ====
 .<strong> Kubernetesの自動アップグレード処理</strong>

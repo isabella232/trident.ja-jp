@@ -67,7 +67,12 @@ Astra Trident は、 ONTAP 向けに 2 つの SAN ドライバを提供してい
 | 「 ONTAP - SAN - エコノミー」 | はい。 | はい。 | ○脚注： 4[] | はい。 | ○脚注： 3[] | はい。 | ○脚注： 3[] 
 |===
 [verse]
-上記の表の脚注： 1 [ ]:Astra Trident 脚注で管理されていません。 2[ ]:Astra Trident で管理されていますが、 PV レベルの細かい脚注ではできません。説明： 4[] ： Raw ブロックボリュームの脚注： 5 [ ]Trident でサポートされています。 CSI でサポートされています
+上記の表の脚注：
+Yesfootnote:1[]：Astra Tridentで管理されない
+Yesfootnote: 2[]：Astra Tridentが管理しますが、PV Granularは管理しません
+Yesfootnote: 3[]：Astra Tridentで管理されず、PV Granularでは管理されない
+Yesfootnote:4[]:raw-blockボリュームでサポート
+Yesfootnote: 5[]：Astra Tridentによるサポート
 
 PV に細分化されていない機能は FlexVol 全体に適用され、 PVS （共有 FlexVol 内の qtree または LUN ）にはすべて共通のスケジュールが適用されます。
 

@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: trident-use/vol-snapshots.html 
-keywords: volumes, on-demand volume snapshots, create snapshots, backends, kubernetes, create PVCs, PVCs 
-summary: '永続ボリューム（PVS）のKubernetesボリュームSnapshot（ボリュームSnapshot）を作成して、Astra Tridentボリュームのポイントインタイムコピーを保持できます。また、既存のボリュームSnapshotから、_ clone__という名前の新しいボリュームを作成することもできます。ボリュームSnapshotは、でサポートされます `ontap-nas`、 `ontap-nas-flexgroup`、 `ontap-san`、 `ontap-san-economy`、 `solidfire-san`、 `gcp-cvs`および `azure-netapp-files` ドライバ。' 
+keywords: volumes, on-demand volume snapshots, create snapshots, backends, kubernetes, create PVCs, PVCs, snapshot, volume snapshot, import snapshot, recover data 
+summary: 永続ボリューム（PV）のKubernetesボリュームSnapshotを使用すると、ボリュームのポイントインタイムコピーを作成できます。Astra Tridentを使用して作成したボリュームのSnapshotの作成、Astra Trident外で作成したSnapshotのインポート、既存のSnapshotから新しいボリュームの作成、Snapshotからボリュームデータをリカバリできます。 
 ---
 = スナップショットを操作します
 :hardbreaks:
@@ -12,22 +12,33 @@ summary: '永続ボリューム（PVS）のKubernetesボリュームSnapshot（�
 
 
 [role="lead"]
-永続ボリューム（PVS）のKubernetesボリュームSnapshot（ボリュームSnapshot）を作成して、Astra Tridentボリュームのポイントインタイムコピーを保持できます。また、既存のボリュームSnapshotから、_ clone__という名前の新しいボリュームを作成することもできます。ボリュームSnapshotは、でサポートされます `ontap-nas`、 `ontap-nas-flexgroup`、 `ontap-san`、 `ontap-san-economy`、 `solidfire-san`、 `gcp-cvs`および `azure-netapp-files` ドライバ。
+永続ボリューム（PV）のKubernetesボリュームSnapshotを使用すると、ボリュームのポイントインタイムコピーを作成できます。Astra Tridentを使用して作成したボリュームのSnapshotの作成、Astra Trident外で作成したSnapshotのインポート、既存のSnapshotから新しいボリュームの作成、Snapshotからボリュームデータをリカバリできます。
+
+
+
+== 概要
+
+ボリュームSnapshotは、でサポートされます `ontap-nas`、 `ontap-nas-flexgroup`、 `ontap-san`、 `ontap-san-economy`、 `solidfire-san`、 `gcp-cvs`および `azure-netapp-files` ドライバ。
 
 .作業を開始する前に
-外部スナップショットコントローラとカスタムリソース定義（CRD）が必要です。Kubernetesオーケストレーションツール（例：Kubeadm、GKE、OpenShift）の役割を担っています。
+スナップショットを操作するには、外部スナップショットコントローラとカスタムリソース定義（CRD）が必要です。Kubernetesオーケストレーションツール（例：Kubeadm、GKE、OpenShift）の役割を担っています。
 
-KubernetesディストリビューションにスナップショットコントローラとCRDが含まれていない場合は、を参照してください <<ボリュームSnapshotコントローラを導入する>>。
+KubernetesディストリビューションにスナップショットコントローラとCRDが含まれていない場合は、を参照してください <<ボリュームSnapshotコントローラの導入>>。
 
 
 NOTE: GKE環境でオンデマンドボリュームスナップショットを作成する場合は、スナップショットコントローラを作成しないでください。GKEでは、内蔵の非表示のスナップショットコントローラを使用します。
 
 
 
-== 手順1：を作成します `VolumeSnapshotClass`
+== ボリューム Snapshot を作成します
 
-次の例は、ボリュームSnapshotクラスを作成します。
-
+.手順
+. を作成します `VolumeSnapshotClass`。詳細については、を参照してください link:../trident-reference/objects.html#kubernetes-volumesnapshotclass-objects["ボリュームSnapshotクラス"]。
++
+** 。 `driver` Astra Trident CSIドライバを指します。
+** `deletionPolicy` は、です `Delete` または `Retain`。に設定すると `Retain`を使用すると、ストレージクラスタの基盤となる物理Snapshotが、の場合でも保持されます `VolumeSnapshot` オブジェクトが削除された。
++
+.例
 [listing]
 ----
 cat snap-sc.yaml
@@ -38,16 +49,13 @@ metadata:
 driver: csi.trident.netapp.io
 deletionPolicy: Delete
 ----
-。 `driver` Astra Trident CSIドライバを指します。 `deletionPolicy` は、です `Delete` または `Retain`。に設定すると `Retain`を使用すると、ストレージクラスタの基盤となる物理Snapshotが、の場合でも保持されます `VolumeSnapshot` オブジェクトが削除された。
-
-詳細については、link：./trident-reference/objects.html#Kubernetes -volumesnapshotclass-objectsを参照してください[`VolumeSnapshotClass`]。
 
 
-
-== 手順 2 ：既存の PVC のスナップショットを作成します
-
-次に、既存のPVCのスナップショットを作成する例を示します。
-
+. 既存のPVCのスナップショットを作成します。
++
+.例
+** 次に、既存のPVCのスナップショットを作成する例を示します。
++
 [listing]
 ----
 cat snap.yaml
@@ -60,8 +68,8 @@ spec:
   source:
     persistentVolumeClaimName: pvc1
 ----
-この例では、という名前のPVCに対してスナップショットが作成されます `pvc1` Snapshotの名前はに設定されます `pvc1-snap`。
-
+** 次の例は、という名前のPVCのボリュームSnapshotオブジェクトを作成します。 `pvc1` Snapshotの名前はに設定されます `pvc1-snap`。ボリュームSnapshotはPVCに似ており、に関連付けられています `VolumeSnapshotContent` 実際のスナップショットを表すオブジェクト。
++
 [listing]
 ----
 kubectl create -f snap.yaml
@@ -71,10 +79,8 @@ kubectl get volumesnapshots
 NAME                   AGE
 pvc1-snap              50s
 ----
-これにより 'VolumeSnapshot' オブジェクトが作成されましたVolumeSnapshot は PVC に似ており、実際のスナップショットを表す「 VolumeSnapshotContent 」オブジェクトに関連付けられています。
-
-「 PVC1-SNAP 」ボリューム Snapshot の「 VolumeSnapshotContent 」オブジェクトを指定することができます。
-
+** 次の情報を確認できます。 `VolumeSnapshotContent` のオブジェクト `pvc1-snap` ボリュームSnapshot。ボリュームSnapshotの詳細を定義します。。 `Snapshot Content Name` このSnapshotを提供するVolumeSnapshotContentオブジェクトを特定します。。 `Ready To Use` パラメータは、スナップショットを使用して新しいPVCを作成できることを示します。
++
 [listing]
 ----
 kubectl describe volumesnapshots pvc1-snap
@@ -97,13 +103,17 @@ Status:
 .
 .
 ----
-「スナップショットコンテンツ名」は、このスナップショットを提供する VolumeSnapshotContent オブジェクトを識別します。' 使用準備完了 ' パラメータは ' スナップショットを使用して新しい PVC を作成できることを示します
 
 
 
-== 手順 3 ：ボリューム Snapshot から PVC を作成します
 
-この例では、スナップショットを使用してPVCを作成します。
+
+
+== ボリュームSnapshotからPVCを作成
+
+を使用できます `dataSource` という名前のVolumeSnapshotを使用してPVCを作成するには `<pvc-name>` データのソースとして。作成された PVC は、ポッドに接続して、他の PVC と同様に使用できます。
+
+次に、を使用してPVCを作成する例を示します。 `pvc1-snap` をデータソースとして使用します。
 
 [listing]
 ----
@@ -124,20 +134,127 @@ spec:
     kind: VolumeSnapshot
     apiGroup: snapshot.storage.k8s.io
 ----
-「 dataSource 」は、「 PVC1-SNAP 」という名前のボリューム Snapshot をデータのソースとして使用して PVC を作成する必要があることを示します。このコマンドを実行すると、 Astra Trident が Snapshot から PVC を作成するように指示します。作成された PVC は、ポッドに接続して、他の PVC と同様に使用できます。
-
 
 WARNING: PVCは、と同じネームスペースに作成する必要があります `dataSource`。
 
 
 
-== Snapshotを含むPVを削除しています
+== ボリュームSnapshotのインポート
+
+Astra Tridentは以下をサポートします。 link:https://kubernetes.io/docs/concepts/storage/volume-snapshots/#static["Kubernetesの事前プロビジョニングされたSnapshotプロセス"^] クラスタ管理者が `VolumeSnapshotContent` また、Astra Trident以外で作成されたSnapshotも利用できます。
+
+Astra Tridentは、ボリュームSnapshotをインポートするためにPV名とVolumeSnapshotContentアノテーションを使用して内部Snapshotを特定し、作成するTridentSnapshot CRに名前を付けます。
+
+
+NOTE: Snapshotには親ボリュームが必要です。
+
+.手順
+. *クラスタ管理者：* `VolumeSnapshotContent` バックエンドスナップショットを参照しています。
++
+** 。 `VolumeSnapshotContent` アノテーションは `trident.netapp.io/internalSnapshotName: <backend-snapshot-name>`。
+** 。 `snapshotHandle` はである必要があります `<pv-name>/<VolumeSnapshotContent-name>`。Astra Tridentに提供される唯一の情報は、 `ListSnapshots` 電話だ
++
+.例
+次の例では、 `VolumeSnapshotContent` （バックエンドSnapshot用） `snap-01` および `volumeSnapshotRef` 名前付き `test-snapshot`。
+
++
+[listing]
+----
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotContent
+metadata:
+  name: my-trident-snapshot-content
+  annotations:
+    trident.netapp.io/internalSnapshotName: snap-01  # This represents the name of the snapshot on the backend
+spec:
+  deletionPolicy: Retain
+  driver: csi.trident.netapp.io
+  source:
+    snapshotHandle: pvc-3e5cda7a-200b-46ab-b5d0-c9cd8db2cc01/my-trident-snapshot-content  # This is the only information provided to Trident in the ListSnapshots call
+  volumeSnapshotRef:
+    name: test-snapshot
+    namespace: default
+----
++
+
+NOTE: 。 `volumeSnapshotRef` CRの名前に制約があるため、名前がバックエンドスナップショット名と常に一致しているとは限りません。
+
+
+
+. *クラスタ管理者：*バインド `VolumeSnapshot` に移動します `VolumeSnapshotContent` ここで、 `volumeSnapshotContentName` はで指定した名前です。 `volumeSnapshotRef`。
++
+.例
+次の例は、ボリュームSnapshotをバインドします。 `test-snapshot` に移動します `VolumeSnapshotContent` 名前付き `my-trident-snapshot-content`。
+
++
+[listing]
+----
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: test-snapshot
+  namespace: default
+spec:
+  source:
+    volumeSnapshotContentName: my-trident-snapshot-content
+----
+. *内部処理（アクションは不要）：*外部スナップショッタは新しく作成されたVolumeSnapshotContentを確認し、 `ListSnapshots` 電話だAstra Tridentが `TridentSnapshot`。
++
+** 外部スナップショットは、 `VolumeSnapshotContent` 終了： `readyToUse` ボリュームSnapshotを `true`。
+** Tridentのリターン `readyToUse=true`。
+
+
+. *任意のユーザー：* `PersistentVolumeClaim` 新しい `VolumeSnapshot`を参照してください `spec.dataSource` （または `spec.dataSourceRef`）nameは `VolumeSnapshot` 名前。
++
+.例
+次に、を参照するPVCを作成する例を示します。 `test-snapshot` ボリュームSnapshot：
+
++
+[listing]
+----
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-from-snap
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: simple-sc
+  resources:
+    requests:
+      storage: 1Gi
+  dataSource:
+    name: test-snapshot
+    namespace: default
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
+----
+
+
+
+
+== Snapshotを使用してボリュームデータをリカバリします
+
+snapshotディレクトリは、を使用してプロビジョニングされるボリュームの互換性を最大限に高めるため、デフォルトでは非表示になっています `ontap-nas` および `ontap-nas-economy` ドライバ。を有効にします `.snapshot` スナップショットからデータを直接リカバリするディレクトリ。
+
+ボリュームを以前のSnapshotに記録されている状態にリストアするには、ボリュームSnapshotリストアONTAP CLIを使用します。
+
+[listing]
+----
+cluster1::*> volume snapshot restore -vserver vs0 -volume vol3 -snapshot vol3_snap_archive
+----
+
+NOTE: Snapshotコピーをリストアすると、既存のボリューム設定が上書きされます。Snapshotコピーの作成後にボリュームデータに加えた変更は失われます。
+
+
+
+== Snapshotが関連付けられているPVを削除する
 
 スナップショットが関連付けられている永続ボリュームを削除すると、対応する Trident ボリュームが「削除状態」に更新されます。ボリュームSnapshotを削除してAstra Tridentボリュームを削除します。
 
 
 
-== ボリュームSnapshotコントローラを導入する
+== ボリュームSnapshotコントローラの導入
 
 KubernetesディストリビューションにスナップショットコントローラとCRDが含まれていない場合は、次のように導入できます。
 
@@ -165,21 +282,6 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snaps
 NOTE: 必要に応じて、を開きます `deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml` およびを更新します `namespace` に移動します。
 
 
-
-
-
-== Snapshotを使用してボリュームデータをリカバリします
-
-snapshotディレクトリは、を使用してプロビジョニングされるボリュームの互換性を最大限に高めるため、デフォルトでは非表示になっています `ontap-nas` および `ontap-nas-economy` ドライバ。を有効にします `.snapshot` スナップショットからデータを直接リカバリするディレクトリ。
-
-ボリュームを以前のSnapshotに記録されている状態にリストアするには、ボリュームSnapshotリストアONTAP CLIを使用します。
-
-[listing]
-----
-cluster1::*> volume snapshot restore -vserver vs0 -volume vol3 -snapshot vol3_snap_archive
-----
-
-NOTE: Snapshotコピーをリストアすると、既存のボリューム設定が上書きされます。Snapshotコピーの作成後にボリュームデータに加えた変更は失われます。
 
 
 

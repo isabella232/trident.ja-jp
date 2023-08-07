@@ -12,13 +12,11 @@ indexpage:
   - title: はじめに
     links:
     - title: Astra Trident の詳細をご確認ください
-      url: "/trident-concepts/intro.html"
+      url: "/trident-get-started/intro.html"
     - title: 要件
       url: "/trident-get-started/requirements.html"
-    - title: ぜひお試しください
+    - title: クイックスタート
       url: "/trident-get-started/quickstart.html"
-    - title: よく寄せられる質問
-      url: "/faq.html"
   - title: Astra Trident を導入
     links:
     - title: Trident オペレータとともに導入
@@ -43,8 +41,6 @@ indexpage:
       url: "/trident-use/manage-stor-class.html"
     - title: ボリューム操作を実行する
       url: "/trident-use/vol-operations.html"
-    - title: Astra Trident を監視
-      url: "/trident-use/monitor-trident.html"
   - title: デモチュートリアル
     links:
     - title: Astra Trident のビデオ

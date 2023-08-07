@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: trident-get-started/kubernetes-deploy-operator.html 
-keywords: deploy, astra trident, methods, operator, tridentctl, registry, registries 
-summary: Tridentオペレータが手動で導入してAstra Tridentをインストールできます。このプロセスでは、環境 をインストールする際に、Astra Tridentで必要なコンテナイメージがプライベートレジストリに格納されません。 
+permalink: trident-get-started/kubernetes-deploy-operator-mirror.html 
+keywords: deploy, astra trident, methods, operator, tridentctl, mirrored, registry, registries 
+summary: Tridentオペレータが手動で導入してAstra Tridentをインストールできます。このプロセスでは、環境 をインストールする際に、Astra Tridentで必要なコンテナイメージがプライベートレジストリに格納されます。 
 ---
-= Tridentオペレータを手動で導入（標準モード）
+= Tridentオペレータを手動で導入（オフラインモード）
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -12,11 +12,11 @@ summary: Tridentオペレータが手動で導入してAstra Tridentをインス
 
 
 [role="lead"]
-Tridentオペレータが手動で導入してAstra Tridentをインストールできます。このプロセスでは、環境 をインストールする際に、Astra Tridentで必要なコンテナイメージがプライベートレジストリに格納されません。プライベートイメージレジストリがある場合は、を使用します link:kubernetes-deploy-operator-mirror.html["オフライン導入のプロセス"]。
+Tridentオペレータが手動で導入してAstra Tridentをインストールできます。このプロセスでは、環境 をインストールする際に、Astra Tridentで必要なコンテナイメージがプライベートレジストリに格納されます。プライベートイメージレジストリがない場合は、を使用します link:kubernetes-deploy-operator.html["標準的な導入のプロセス"]。
 
 
 
-== Astra Trident 23.04に関する重要な情報
+== Astra Tridentに関する重要な情報23.07
 
 * Astra Tridentに関する次の重要な情報をお読みください。*
 
@@ -38,7 +38,7 @@ Tridentオペレータが手動で導入してAstra Tridentをインストール
 レビュー link:../trident-get-started/kubernetes-deploy.html["インストールの概要"] インストールの前提条件を満たし、環境に適したインストールオプションを選択していることを確認します。
 
 .作業を開始する前に
-インストールを開始する前に、Linuxホストにログインして、管理が機能していることを確認します。 link:requirements.html["サポートされる Kubernetes クラスタ"^] 必要な権限があることを確認します。
+Linuxホストにログインして、管理が機能していることとを確認します link:requirements.html["サポートされる Kubernetes クラスタ"^] 必要な権限があることを確認します。
 
 
 NOTE: OpenShift では、以降のすべての例で「 kubectl 」ではなく「 OC 」を使用し、「 OC login-u SYSTEM ： admin 」または「 OC login-u kube-admin 」を実行して最初に「 *system:admin 」としてログインします。
@@ -75,23 +75,33 @@ Astra Tridentインストーラパッケージには、Tridentオペレータの
 
 [listing]
 ----
-wget https://github.com/NetApp/trident/releases/download/v23.04.0/trident-installer-23.04.0.tar.gz
-tar -xf trident-installer-23.04.0.tar.gz
+wget https://github.com/NetApp/trident/releases/download/v23.07.0/trident-installer-23.07.0.tar.gz
+tar -xf trident-installer-23.07.0.tar.gz
 cd trident-installer
 ----
 
 
 === 手順2：を作成します `TridentOrchestrator` CRD
 
-を作成します `TridentOrchestrator` カスタムリソース定義（CRD）。を作成します `TridentOrchestrator` カスタムリソース。で適切なCRD YAMLバージョンを使用します `deploy/crds` を作成します `TridentOrchestrator` CRD。
+を作成します `TridentOrchestrator` カスタムリソース定義（CRD）。を作成します `TridentOrchestrator` カスタムリソース。で適切なCRD YAMLバージョンを使用します `deploy/crds` を作成します `TridentOrchestrator` CRD：
 
 [listing]
 ----
-kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml
+kubectl create -f deploy/crds/<VERSION>.yaml
 ----
 
 
-=== 手順3：Tridentのオペレータを導入する
+=== 手順3：オペレータのレジストリの場所を更新します
+
+インチ `/deploy/operator.yaml`、を更新します `image: docker.io/netapp/trident-operator:23.07.0` イメージレジストリの場所を反映します。。 link:../trident-get-started/requirements.html#container-images-and-corresponding-kubernetes-versions["TridentとCSIの画像"] 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例：
+
+* `image: <your-registry>/trident-operator:23.07.0` すべての画像が1つのレジストリにある場合。
+* `image: <your-registry>/netapp/trident-operator:23.07.0` TridentイメージがCSIイメージとは別のレジストリにある場合。
+
+
+
+
+=== ステップ4：Tridentオペレータを導入
 
 Astra Tridentインストーラには、オペレータのインストールや関連オブジェクトの作成に使用できるバンドルファイルが用意されています。このバンドルファイルを使用すると、オペレータを簡単に導入し、デフォルトの設定でAstra Tridentをインストールできます。
 
@@ -129,7 +139,7 @@ kubectl kustomize deploy/ > deploy/<bundle>.yaml
 +
 [listing]
 ----
-kubectl create -f deploy/<bundle>.yaml
+kubectl kustomize deploy/ > deploy/<bundle>.yaml
 ----
 . operator、deployment、およびReplicaSetsが作成されたことを確認します。
 +
@@ -144,9 +154,38 @@ IMPORTANT: Kubernetes クラスタには、オペレータのインスタンス�
 
 
 
-=== 手順4：を作成します `TridentOrchestrator` Tridentをインストール
+=== 手順5:でイメージレジストリの場所を更新します `TridentOrchestrator`
 
-これで、を作成できます `TridentOrchestrator` Astra Tridentを導入必要に応じて、を実行できます link:kubernetes-customize-deploy.html["Tridentのインストールをカスタマイズ"] で属性を使用する `TridentOrchestrator` 仕様
+。 link:../trident-get-started/requirements.html#container-images-and-corresponding-kubernetes-versions["TridentとCSIの画像"] 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。更新 `deploy/crds/tridentorchestrator_cr.yaml` レジストリ設定に基づいて追加の場所の仕様を追加します。
+
+[role="tabbed-block"]
+====
+.1つのレジストリ内のイメージ
+--
+[listing]
+----
+imageRegistry: "<your-registry>"
+autosupportImage: "<your-registry>/trident-autosupport:23.07"
+tridentImage: "<your-registry>/trident:23.07.0"
+----
+--
+.異なるレジストリ内の画像
+--
+を追加する必要があります `sig-storage` に移動します `imageRegistry` 別のレジストリの場所を使用します。
+
+[listing]
+----
+imageRegistry: "<your-registry>/sig-storage"
+autosupportImage: "<your-registry>/netapp/trident-autosupport:23.07"
+tridentImage: "<your-registry>/netapp/trident:23.07.0"
+----
+--
+====
+
+
+=== 手順6：を作成します `TridentOrchestrator` Tridentをインストール
+
+これで、を作成できます `TridentOrchestrator` Astra Tridentを導入必要に応じて、さらに行うことができます link:kubernetes-customize-deploy.html["Tridentのインストールをカスタマイズ"] で属性を使用する `TridentOrchestrator` 仕様次の例は、TridentイメージとCSIイメージが異なるレジストリにあるインストールを示しています。
 
 [listing]
 ----
@@ -163,26 +202,32 @@ API Version: trident.netapp.io/v1
 Kind:        TridentOrchestrator
 ...
 Spec:
-  Debug:     true
-  Namespace: trident
+  Autosupport Image:  <your-registry>/netapp/trident-autosupport:23.07
+  Debug:              true
+  Image Registry:     <your-registry>/sig-storage
+  Namespace:          trident
+  Trident Image:      <your-registry>/netapp/trident:23.07.0
 Status:
   Current Installation Params:
-    IPv6:                      false
+    IPv6:                       false
     Autosupport Hostname:
-    Autosupport Image:         netapp/trident-autosupport:23.04
+    Autosupport Image:          <your-registry>/netapp/trident-autosupport:23.07
     Autosupport Proxy:
     Autosupport Serial Number:
-    Debug:                     true
+    Debug:                      true
+    Http Request Timeout:       90s
     Image Pull Secrets:
-    Image Registry:
+    Image Registry:       <your-registry>/sig-storage
     k8sTimeout:           30
     Kubelet Dir:          /var/lib/kubelet
     Log Format:           text
+    Probe Port:           17546
     Silence Autosupport:  false
-    Trident Image:        netapp/trident:23.04.0
-  Message:                  Trident installed  Namespace:                trident
-  Status:                   Installed
-  Version:                  v23.04.0
+    Trident Image:        <your-registry>/netapp/trident:23.07.0
+  Message:                Trident installed
+  Namespace:              trident
+  Status:                 Installed
+  Version:                v23.07.0
 Events:
     Type Reason Age From Message ---- ------ ---- ---- -------Normal
     Installing 74s trident-operator.netapp.io Installing Trident Normal
@@ -255,11 +300,6 @@ trident-operator-766f7b8658-ldzsv          1/1     Running   0           3m
 +----------------+----------------+
 | SERVER VERSION | CLIENT VERSION |
 +----------------+----------------+
-| 23.04.0        | 23.04.0        |
+| 23.07.0        | 23.07.0        |
 +----------------+----------------+
 ----
-
-
-== 次のステップ
-
-できるようになりました。 link:kubernetes-postdeployment.html["バックエンドとストレージクラスを作成し、ボリュームをプロビジョニングして、ポッドにボリュームをマウントします"]。

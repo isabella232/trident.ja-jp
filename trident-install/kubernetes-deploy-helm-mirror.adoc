@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: trident-get-started/kubernetes-deploy-helm.html 
-keywords: deploy, astra trident, operator, helm, helm chart, configuration, values, standard, registry 
-summary: Tridentオペレータを導入し、Helmを使用してAstra Tridentをインストールできます。このプロセスでは、環境 をインストールする際に、Astra Tridentで必要なコンテナイメージがプライベートレジストリに格納されません。 
+permalink: trident-get-started/kubernetes-deploy-helm-mirror.html 
+keywords: deploy, astra trident, operator, helm, helm chart, configuration, values, offline, air gap, gap, registry 
+summary: Tridentオペレータを導入し、Helmを使用してAstra Tridentをインストールできます。このプロセスでは、環境 をインストールする際に、Astra Tridentで必要なコンテナイメージがプライベートレジストリに格納されます。 
 ---
-= Helm（標準モード）を使用してTridentを導入
+= Helm（オフラインモード）を使用したTridentのオペレータの導入
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -12,11 +12,11 @@ summary: Tridentオペレータを導入し、Helmを使用してAstra Trident�
 
 
 [role="lead"]
-Tridentオペレータを導入し、Helmを使用してAstra Tridentをインストールできます。このプロセスでは、環境 をインストールする際に、Astra Tridentで必要なコンテナイメージがプライベートレジストリに格納されません。プライベートイメージレジストリがある場合は、を使用します link:kubernetes-deploy-helm-mirror.html["オフライン導入のプロセス"]。
+Tridentオペレータを導入し、Helmを使用してAstra Tridentをインストールできます。このプロセスでは、環境 をインストールする際に、Astra Tridentで必要なコンテナイメージがプライベートレジストリに格納されます。プライベートイメージレジストリがない場合は、を使用します link:kubernetes-deploy-helm.html["標準的な導入のプロセス"]。
 
 
 
-== Astra Trident 23.04に関する重要な情報
+== Astra Tridentに関する重要な情報23.07
 
 * Astra Tridentに関する次の重要な情報をお読みください。*
 
@@ -49,12 +49,27 @@ Tridentの使用 link:https://artifacthub.io/packages/helm/netapp-trident/triden
 ----
 helm repo add netapp-trident https://netapp.github.io/trident-helm-chart
 ----
-. 使用 `helm install` をクリックし、次の例に示すように、導入環境の名前を指定します `23.04.0` は、インストールするAstra Tridentのバージョンです。
+. 使用 `helm install` 展開およびイメージレジストリの場所の名前を指定します。。 link:../trident-get-started/requirements.html#container-images-and-corresponding-kubernetes-versions["TridentとCSIの画像"] 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例では、 `23.07.0` は、インストールするAstra Tridentのバージョンです。
 +
+[role="tabbed-block"]
+====
+.1つのレジストリ内のイメージ
+--
 [listing]
 ----
-helm install <name> netapp-trident/trident-operator --version 23.04.0 --create-namespace --namespace <trident-namespace>
+helm install <name> netapp-trident/trident-operator --version 23.07.0 --set imageRegistry=<your-registry> --create-namespace --namespace <trident-namespace>
 ----
+--
+.異なるレジストリ内の画像
+--
+を追加する必要があります `sig-storage` に移動します `imageRegistry` 別のレジストリの場所を使用します。
+
+[listing]
+----
+helm install <name> netapp-trident/trident-operator --version 23.07.0 --set imageRegistry=<your-registry>/sig-storage --set operatorImage=<your-registry>/netapp/trident-operator:23.07.0 --set tridentAutosupportImage=<your-registry>/netapp/trident-autosupport:23.07 --set tridentImage=<your-registry>/netapp/trident:23.07.0 --create-namespace --namespace <trident-namespace>
+----
+--
+====
 +
 
 NOTE: すでにTridentの名前空間を作成している場合'--create-namespaceパラメータは追加の名前空間を作成しません
@@ -83,11 +98,11 @@ NOTE: すでにTridentの名前空間を作成している場合'--create-namesp
 コマンドラインでオーバーライドを指定します。
 
 |===
-たとえば、のデフォルト値を変更するには、のように指定します `debug`をクリックし、次のコマンドを実行します `--set` コマンドを入力します `23.04.0` は、インストールするAstra Tridentのバージョンです。
+たとえば、のデフォルト値を変更するには、のように指定します `debug`をクリックし、次のコマンドを実行します `--set` コマンドを入力します `23.07.0` は、インストールするAstra Tridentのバージョンです。
 
 [listing]
 ----
-helm install <name> netapp-trident/trident-operator --version 23.04.0  --create-namespace --namespace --set tridentDebug=true
+helm install <name> netapp-trident/trident-operator --version 23.07.0  --create-namespace --namespace --set tridentDebug=true
 ----
 
 
@@ -206,18 +221,4 @@ helm install <name> netapp-trident/trident-operator --version 23.04.0  --create-
 |===
 
 
-=== コントローラポッドとノードポッドについて
-
-Astra Tridentは、単一のコントローラポッドと、クラスタ内の各ワーカーノード上のノードポッドとして実行されます。Astra Tridentボリュームをマウントするすべてのホストでノードポッドが実行されている必要があります。
-
-Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/["ノードセレクタ"^] および link:https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/["寛容さと汚れ"^] は、特定のノードまたは優先ノードで実行されるようにポッドを制限するために使用されます。「ControllerPlugin」およびを使用します `NodePlugin`を使用すると、拘束とオーバーライドを指定できます。
-
-* コントローラプラグインは、Snapshotやサイズ変更などのボリュームのプロビジョニングと管理を処理します。
-* ノードプラグインによって、ノードへのストレージの接続が処理されます。
-
-
-
-
 == 次のステップ
-
-できるようになりました。 link:kubernetes-postdeployment.html["バックエンドとストレージクラスを作成し、ボリュームをプロビジョニングして、ポッドにボリュームをマウントします"]。
