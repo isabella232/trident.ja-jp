@@ -113,6 +113,9 @@ Status:
 
 を使用できます `dataSource` という名前のVolumeSnapshotを使用してPVCを作成するには `<pvc-name>` データのソースとして。作成された PVC は、ポッドに接続して、他の PVC と同様に使用できます。
 
+
+WARNING: PVCは、と同じネームスペースに作成する必要があります `dataSource`。
+
 次に、を使用してPVCを作成する例を示します。 `pvc1-snap` をデータソースとして使用します。
 
 [listing]
@@ -134,9 +137,6 @@ spec:
     kind: VolumeSnapshot
     apiGroup: snapshot.storage.k8s.io
 ----
-
-WARNING: PVCは、と同じネームスペースに作成する必要があります `dataSource`。
-
 
 
 == ボリュームSnapshotのインポート
