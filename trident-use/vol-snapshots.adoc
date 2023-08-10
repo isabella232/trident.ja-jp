@@ -114,7 +114,7 @@ Status:
 を使用できます `dataSource` という名前のVolumeSnapshotを使用してPVCを作成するには `<pvc-name>` データのソースとして。作成された PVC は、ポッドに接続して、他の PVC と同様に使用できます。
 
 
-WARNING: PVCは、と同じネームスペースに作成する必要があります `dataSource`。
+WARNING: PVCはソースボリュームと同じバックエンドに作成されます。を参照してください link:https://kb.netapp.com/Cloud/Astra/Trident/Creating_a_PVC_from_a_Trident_PVC_Snapshot_cannot_be_created_in_an_alternate_backend["KB：Trident PVCスナップショットからPVCを作成することは代替バックエンドではできない"^]。
 
 次に、を使用してPVCを作成する例を示します。 `pvc1-snap` をデータソースとして使用します。
 
