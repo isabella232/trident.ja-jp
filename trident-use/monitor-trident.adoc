@@ -38,7 +38,7 @@ NOTE: デフォルトでは 'Trident のメトリックは '/metrics エンド�
 
 == 手順 1 ： Prometheus ターゲットを定義する
 
-Prometheus ターゲットを定義して指標を収集し、 Astra Trident が管理するバックエンド、作成するボリュームなどの情報を取得する必要があります。これ https://netapp.io/2020/02/20/prometheus-and-trident/["ブログ"^] Prometheus と Grafana を Astra Trident とともに使用して指標を取得する方法について説明します。ブログでは、 Kubernetes クラスタでオペレータとして Prometheus を実行する方法と、 Astra Trident のメトリックを取得する ServiceMonitor を作成する方法について説明しています。
+Prometheus ターゲットを定義して指標を収集し、 Astra Trident が管理するバックエンド、作成するボリュームなどの情報を取得する必要があります。これ https://netapp.io/2020/02/20/prometheus-and-trident/["ブログ"^] Prometheus と Grafana を Astra Trident とともに使用して指標を取得する方法について説明します。このブログでは、KubernetesクラスタのオペレータとしてPrometheusを実行する方法と、Astra Tridentの指標を取得するためのServiceMonitorの作成について説明しています。
 
 
 

@@ -32,7 +32,7 @@ Astra Trident でバックエンドを管理するさまざまな方法をご確
 
 これは、次のシナリオに該当します。
 
-* 「 tridentBackendConfig 」を持たない既存のバックエンドは、「 tridentctl 」で作成されています。
+* 既存のバックエンドには `TridentBackendConfig` を使用して作成されたためです `tridentctl`。
 * 「 tridentctl 」で作成された新しいバックエンドと、その他の「 TridentBackendConfig 」オブジェクトが存在します。
 
 
@@ -229,7 +229,7 @@ tridentctl get backend ontap-san-backend -n trident
 | ontap-san-backend | ontap-san      | 81abcb27-ea63-49bb-b606-0a5315ac5f82 | online |      33 |
 +-------------------+----------------+--------------------------------------+--------+---------+
 ----
-出力からは、「 TridentBackendConfig 」が正常に作成され、バックエンドにバインドされていることがわかります（バックエンドの UUID を確認してください）。
+出力からはそのことがわかります `TridentBackendConfig` は正常に作成され、バックエンドにバインドされています（バックエンドのUUIDを確認してください）。
 
 
 

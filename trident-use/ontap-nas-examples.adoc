@@ -43,7 +43,9 @@ Astra Tridentのインストール環境でONTAP NASドライバを作成して�
 | 「 autoExportPolicy 」を参照してください | エクスポートポリシーの自動作成と更新を有効にします[ブーリアン]。を使用する `autoExportPolicy` および `autoExportCIDRs` ネットアップのAstra Tridentなら、エクスポートポリシーを自動的に管理できます。 | いいえ 
 
 
-| 「 autoExportCI` 」 | KubernetesのノードIPをいつからフィルタリングするかを示すCIDRsのリスト `autoExportPolicy` が有効になります。を使用する `autoExportPolicy` および `autoExportCIDRs` ネットアップのAstra Tridentなら、エクスポートポリシーを自動的に管理できます。 | [0.0.0.0/0] 、 [::/0] 
+| 「 autoExportCI` 」 | KubernetesのノードIPをフィルタリングするCIDRのリスト `autoExportPolicy` が有効になります。
+
+を使用する `autoExportPolicy` および `autoExportCIDRs` ネットアップのAstra Tridentなら、エクスポートポリシーを自動的に管理できます。 | [0.0.0.0/0] 、 [::/0] 
 
 
 | 「ラベル」 | ボリュームに適用する任意の JSON 形式のラベルのセット | 「」 

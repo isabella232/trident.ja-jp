@@ -86,7 +86,7 @@ Astra Trident は Kubernetes API Server からデータを読み取り、アプ�
 
 === Astra Trident で使用されるロールと権限を教えてください。
 
-Trident インストーラが Kubernetes ClusterRole を作成します。このロールには、 Kubernetes クラスタの PersistentVolume 、 PersistentVolumeClaim 、 StorageClass 、 Secret の各リソースへのアクセス権があります。を参照してください link:https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"]。
+TridentインストーラによってKubernetes ClusterRoleが作成され、KubernetesクラスタのPersistentVolume、PersistentVolumeClaim、StorageClass、およびSecretリソースに特定のアクセス権が付与されます。を参照してください link:https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"]。
 
 
 
@@ -164,9 +164,9 @@ tridentctl logs-a を実行して ' サポートバンドルを作成できま�
 
 
 
-=== ストレージシステムのパスワードが変更され、 Astra Trident が機能しなくなった場合、どのように回復すればよいですか。
+=== ストレージシステムのパスワードが変更され、Astra Tridentが機能しなくなったため、どのようにリカバリすればよいですか？
 
-バックエンドのパスワードを tridentctl update backend myBackend-f </path/to_new_backend.json >-n trident` で更新します。この例の「 m yBackend` 」をバックエンド名に置き換え、「 /path/to _new_backend.json 」を正しい「 backend.json 」ファイルへのパスに置き換えます。
+バックエンドのパスワードを `tridentctl update backend myBackend -f </path/to_new_backend.json> -n trident`。交換してください `myBackend` この例では、バックエンド名にとを指定しています ``/path/to_new_backend.json` と入力します `backend.json` ファイル。
 
 
 
@@ -178,7 +178,7 @@ Trident が Kubernetes ノードを検出できない場合、次の 2 つのケ
 
 === Trident ポッドが破損すると、データは失われますか？
 
-Trident ポッドが削除されても、データは失われません。Trident のメタデータは、 CRD オブジェクトに格納されます。Trident によってプロビジョニングされた PVS はすべて正常に機能します。
+Trident ポッドが削除されても、データは失われません。TridentのメタデータはCRDオブジェクトに格納されます。Trident によってプロビジョニングされた PVS はすべて正常に機能します。
 
 
 
