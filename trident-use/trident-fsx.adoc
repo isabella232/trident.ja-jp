@@ -58,7 +58,7 @@ image:screenshot-fsx-backup-disable.png["自動バックアップを無効にし
 * 「 ONTAP-NAS-flexgroup 」：プロビジョニングされた各 PV は、 NetApp ONTAP FlexGroup ボリューム用の完全な Amazon FSX です。
 
 
-ドライバーの詳細については、を参照してください link:../trident-concepts/ontap-drivers.html["ONTAP ドライバ"]。
+ドライバーの詳細については、を参照してください link:../trident-use/ontap-nas.html.html["NASドライバ"] および link:../trident-use/ontap-san.html.html["SANドライバ"]。
 
 
 

@@ -10,8 +10,6 @@ entries:
     url: "/trident-get-started/architecture.html"
   - title: 概念
     entries:
-    - title: ONTAP ドライバ
-      url: "/trident-concepts/ontap-drivers.html"
     - title: プロビジョニング
       url: "/trident-concepts/provisioning.html"
     - title: ボリューム Snapshot

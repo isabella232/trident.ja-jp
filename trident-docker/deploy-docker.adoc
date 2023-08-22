@@ -191,7 +191,7 @@ sudo trident --config=/etc/netappdvp/ontap-nas.json
 ----
 +
 
-NOTE: 指定しないかぎり、ボリュームドライバのデフォルト名は「 netapp 」です。
+NOTE: 指定されていない場合、ボリュームドライバのデフォルト名は「NetApp」です。
 
 +
 デーモンが開始されたら、 Docker CLI インターフェイスを使用してボリュームを作成および管理できます

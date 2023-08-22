@@ -279,7 +279,7 @@ IMPORTANT: TridentでKubernetes 1.27がサポートされるようになりま�
 * CSIイメージのデフォルトレジストリとして、k8s .gcr.ioからregistry.k8s .ioに移行します
 * ONTAP SANボリュームでは、ノード単位のigroupが使用され、LUNがigroupにマッピングされると同時に、これらのノードにアクティブに公開されてセキュリティ体制が強化されます。既存のボリュームは、アクティブなワークロードに影響を与えずに安全であるとAstra Tridentが判断したときに、必要に応じて新しいigroupスキームに切り替えられます。
 * TridentのインストールにResourceQuotaが含まれ、PriorityClassの消費がデフォルトで制限されたときにTrident DemonSetがスケジュールされるようになりました。
-* ANFドライバへのネットワーク機能のサポートが追加されました。（link:https://github.com/NetApp/trident/issues/717["GitHub問題 #717"^])
+* Azure NetApp Filesドライバにネットワーク機能のサポートが追加されました。（link:https://github.com/NetApp/trident/issues/717["GitHub問題 #717"^])
 * ONTAP ドライバにTech Previewの自動MetroCluster スイッチオーバー検出機能を追加。（link:https://github.com/NetApp/trident/issues/228["GitHub問題 #228"^])
 
 
@@ -330,7 +330,7 @@ IMPORTANT: 以前のリリースの Trident からアップグレードして Az
 * 削除したノードでボリュームを非公開にする問題 を修正しました。（link:https://github.com/NetApp/trident/issues/691["GitHub 問題 #691"^])
 * ブロックデバイスでのファイルシステムの不整合の処理が追加されました。（link:https://github.com/NetApp/trident/issues/656["GitHub問題 #656"^])
 * インストール時に「 imageRegistry 」フラグを設定するときに、自動サポートイメージをプルする問題 を修正しました。（link:https://github.com/NetApp/trident/issues/715["GitHub問題 #715"^])
-* ANF ドライバが複数のエクスポートルールでボリュームのクローニングに失敗した修正済み問題 。
+* Azure NetApp Filesドライバが複数のエクスポートルールを含むボリュームのクローンを作成できない問題を修正しました問題。
 
 
 
@@ -375,8 +375,8 @@ E シリーズドライバ（ 20.07 以降無効）が削除されました。
 * すでにインポートされているボリュームをインポートしようとすると、 EOF 問題 が返され、 PVC は保留状態になります。（link:https://github.com/NetApp/trident/issues/489["GitHub 問題 #489"])
 * Fixed 問題 ： Astra Trident では、 SolidFire ボリュームで作成される Snapshot が 32 個を超えるとパフォーマンスが低下します。
 * SSL 証明書の作成時に SHA-1 を SHA-256 に置き換えました。
-* リソース名が重複して 1 箇所に操作が制限されるように ANF ドライバを修正しました。
-* リソース名が重複して 1 箇所に操作が制限されるように ANF ドライバを修正しました。
+* リソース名の重複を許可し、操作を単一の場所に制限するためのAzure NetApp Filesドライバを修正しました。
+* リソース名の重複を許可し、操作を単一の場所に制限するためのAzure NetApp Filesドライバを修正しました。
 
 
 
@@ -390,7 +390,7 @@ E シリーズドライバ（ 20.07 以降無効）が削除されました。
 
 
 * GCP ドライバでリージョン間のボリュームを許可します。（link:https://github.com/NetApp/trident/issues/633["GitHub 問題 #633"^])
-* ANF ボリュームでの「 unixPermissions 」オプションのサポートが追加されました。（link:https://github.com/NetApp/trident/issues/666["GitHub 問題 #666"^])
+* Azure NetApp Filesボリュームに「unixPermissions」オプションがサポートされるようになりました。（link:https://github.com/NetApp/trident/issues/666["GitHub 問題 #666"^])
 
 
 
