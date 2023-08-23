@@ -1255,7 +1255,6 @@
   <block id="486632f7d2196e772b742db4a4a0ad7c" category="inline-link-macro">Astra Trident を導入</block>
   <block id="55449fd175613962d882ab450cfc5f3c" category="inline-link">FabricPool</block>
   <block id="d07e2d99267e4fc3c508f6701be977b4" category="paragraph">NetApp ONTAP 用の Amazon FSX では、を使用します<block ref="d1584952da6bdedb0a24d5dbd43ce0bf" category="inline-link-rx"></block> ストレージ階層を管理します。データへのアクセス頻度に基づいて階層にデータを格納することができます。</block>
-  <block id="8e64a609e66214066595e6300aaab281" category="section-title">ドライバ</block>
   <block id="79a4618bb191cb293c330f8189531a13" category="list-text">「 ONTAP-SAN」 ：プロビジョニングされる各 PV は、 NetApp ONTAP ボリューム用の独自の Amazon FSX 内の LUN です。</block>
   <block id="b8f98ceeb9b158e8af3527fce91e9e57" category="list-text">「 ONTAP と SAN の経済性」：プロビジョニングされた各 PV は、 NetApp ONTAP ボリュームの Amazon FSX ごとに構成可能な数の LUN を持つ LUN です。</block>
   <block id="a5bc2c9e7628ac6c73838f9fea0e6ed6" category="list-text">「 ONTAP-NAS' ：プロビジョニングされた各 PV は、 NetApp ONTAP ボリューム用の完全な Amazon FSX です。</block>
@@ -3808,7 +3807,6 @@ Yesfootnote: 5[]：Astra Tridentによるサポート</block>
   <block id="2d5e7b30bb6eb1bd6091005422150b91" category="paragraph">。<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block> ストレージドライバは、_file_and_block_volumeモードをサポートしています。をクリックします<block ref="ac52cf637478f3656a1fdee5c02324fd" prefix=" " category="inline-code"></block> volumeMode、Astra Tridentがボリュームを作成し、ファイルシステムを作成ファイルシステムのタイプは StorageClass で指定されます。</block>
   <block id="f5aa1832e32f2b8d7a7f22d8e36a4617" category="inline-link-macro">NASドライバ</block>
   <block id="de9e7e8f2c463ef15bebdbf8d2d1aa6d" category="inline-link-macro">SANドライバ</block>
-  <block id="b49ccad583187aa8103775031d346d4a" category="paragraph">ドライバーの詳細については、を参照してください <block ref="94749ac9904f861b1290f2feae976582" category="inline-link-macro-rx"></block> および <block ref="5475edaa4f9b7b7cc2309add6d5e3cd5" category="inline-link-macro-rx"></block>。</block>
   <block id="8126e96f64b1a5de24d4cf6e4b09b986" category="section-title">Google Cloudドライバの詳細</block>
   <block id="9393948ed1be0af0cfb3d99e3248301a" category="paragraph">Astra Tridentの特長<block ref="5935ea92cdd7d975b4e764b429f21c01" prefix=" " category="inline-code"></block> クラスタと通信するドライバ。サポートされているアクセスモードは、_ReadWriteOnce_(RWO)、_ReadOnlyMany_(ROX)、_ReadWriteMany_(RWX)、_ReadWriteOncePod_(RWOP)です。</block>
   <block id="9aa82da0cffe247b84587c1cc8e32746" category="cell">デフォルト</block>
@@ -3819,4 +3817,6 @@ Yesfootnote: 5[]：Astra Tridentによるサポート</block>
   <block id="1d61f4e1411b6940bc918fb56346f64d" category="list-text">リソース名の重複を許可し、操作を単一の場所に制限するためのAzure NetApp Filesドライバを修正しました。</block>
   <block id="409ee85d2342bf416b29a45a7b9c4e59" category="list-text">Azure NetApp Filesボリュームに「unixPermissions」オプションがサポートされるようになりました。（<block ref="b2ee1a79cce917ad1d60b3bec442914a" category="inline-link-macro-rx"></block>)</block>
   <block id="9f65455ce006fe56e7588e4e14f1edb8" category="paragraph">サービスクラスをエミュレートするための仮想プールを設計できます。Cloud Volume Service for Azure NetApp Files の仮想プール実装を使用して、さまざまなサービスクラスをセットアップする方法を見ていきましょう。Azure NetApp Filesバックエンドには、異なるパフォーマンスレベルを表す複数のラベルを設定します。設定<block ref="28277e44c5db61612accdf326d137e96" prefix=" " category="inline-code"></block> 適切なパフォーマンスレベルを考慮し、各ラベルの下にその他の必要な側面を追加します。次に、異なる仮想プールにマッピングするさまざまなKubernetesストレージクラスを作成します。を使用する<block ref="bed471c4a88e25ac9a7e4a7b980700a8" prefix=" " category="inline-code"></block> 各StorageClassは、ボリュームのホストに使用できる仮想プールを呼び出します。</block>
+  <block id="42f3b65b98b18c792b7b5534e40d2646" category="section-title">FSx for ONTAPドライバの詳細</block>
+  <block id="9b82ca4e89dcaf4cecf50467b6126909" category="paragraph">ドライバーの詳細については、を参照してください <block ref="4093b6d0ce8cf414637a02002d2b0376" category="inline-link-macro-rx"></block> および <block ref="276422a40a581e9842304216329765d5" category="inline-link-macro-rx"></block>。</block>
 </blocks>
