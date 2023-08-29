@@ -14,8 +14,10 @@ summary: Astra Tridentのアンインストールには、Astra Tridentのイン
 [role="lead"]
 Astra Tridentのアンインストールには、Astra Tridentのインストールと同じ方法を使用する必要があります。
 
+.このタスクについて
+* アップグレード、依存関係の問題、アップグレードの失敗や不完全な完了後に観察されたバグの修正が必要な場合は、Astra Tridentをアンインストールし、該当する手順を使用して以前のバージョンを再インストールする必要があります。 link:../earlier-versions.html["バージョン"]。これは、以前のバージョンに_downgrade_toを実行するための唯一の推奨方法です。
+* アップグレードと再インストールを簡単に行うため、Astra Tridentをアンインストールしても、Astra Tridentで作成されたCRDや関連オブジェクトは削除されません。Astra Tridentとそのすべてのデータを完全に削除する必要がある場合は、を参照してください。 link:../troubleshooting.html#completely-remove-astra-trident-and-crds["Astra TridentとCRDを完全に削除"]。
 
-NOTE: アップグレード、依存関係の問題、アップグレードの失敗や不完全な完了後に観察されたバグの修正が必要な場合は、Astra Tridentをアンインストールし、該当する手順を使用して以前のバージョンを再インストールする必要があります。 link:../earlier-versions.html["バージョン"]。これは、以前のバージョンに_downgrade_toを実行するための唯一の推奨方法です。
 
 .作業を開始する前に
 Kubernetesクラスタの運用を停止する場合は、Astra Tridentで作成されたボリュームを使用するすべてのアプリケーションをアンインストールする前に削除する必要があります。これにより、PVCが削除される前にKubernetesノードで非公開になります。
@@ -63,21 +65,7 @@ kubectl patch torc <trident-orchestrator-name> --type=merge -p '{"spec":{"uninst
 ** uninstall` フラグが 'true' に設定されている場合、 Trident オペレータは Trident をアンインストールしますが、 TridentOrchestrator 自体は削除しません。Trident を再度インストールする場合は、 TridentOrchestrator をクリーンアップして新しい Trident を作成する必要があります。
 
 
-* **削除 `TridentOrchestrator`:**を削除する `TridentOrchestrator` Astra Tridentの導入に使用したCRでは、Tridentをアンインストールするようオペレータに指示します。
-+
-** オペレータがの削除を処理します `TridentOrchestrator` さらに、Astra Tridentの導入とデプロイを削除し、インストールの一部として作成したTridentポッドを削除します。
-** Astra TridentをアンインストールしてAstra Trident（作成されたCRDを含む）を完全に削除するには、 `TridentOrchestrator` を渡します `wipeout` オプション以降のインストールは新規インストールとして扱われます。
-+
-[listing]
-----
-kubectl patch torc <trident-orchestrator-name> --type=merge -p '{"spec":{"wipeout":["crds"],"uninstall":true}}'
-----
-+
-
-WARNING: この操作は元に戻せません。Astra Tridentを新規にインストールする必要がないかぎり、CRDを完全消去しないでください。たとえば、直前のバージョン以外のバージョンに移動する場合などです。
-
-
-
+* **削除 `TridentOrchestrator`:**を削除する `TridentOrchestrator` Astra Tridentの導入に使用したCRでは、Tridentをアンインストールするようオペレータに指示します。オペレータがの削除を処理します `TridentOrchestrator` さらに、Astra Tridentの導入とデプロイを削除し、インストールの一部として作成したTridentポッドを削除します。
 
 
 
@@ -101,10 +89,9 @@ release "trident" uninstalled
 
 == のアンインストール `tridentctl` インストール
 
-を使用します `uninstall` のコマンド `tridentctl` CRDと関連オブジェクトを除くAstra Tridentに関連付けられているすべてのリソースを削除する。これにより、インストーラを再実行してより新しいバージョンに更新するのが簡単になります。
+を使用します `uninstall` のコマンド `tridentctl` CRDと関連オブジェクトを除くAstra Tridentに関連付けられているすべてのリソースを削除する。
 
 [listing]
 ----
 ./tridentctl uninstall -n <namespace>
 ----
-Astra Trident の完全な削除を実行するには、 Astra Trident によって作成された CRD のフィナライザを削除し、 CRD を削除する必要があります。
