@@ -3435,14 +3435,12 @@ SMB</block>
   <block id="aa919adfeb24335f206c7d14733b5a18" category="list-text">OpenShift 4.10-4.13</block>
   <block id="a5fd2691a6a5df653970895b1c5045ed" category="inline-link-macro">Helmインストールのアップグレード</block>
   <block id="e94d606eb30ec23b1c90bde5c842bbd7" category="admonition">Astra TridentがインストールされているKubernetesクラスタを1.24から1.25以降にアップグレードする前に、を参照してください <block ref="1b428bb9b9fe27db6cd8932526864634" category="inline-link-macro-rx"></block>。</block>
-  <block id="1d4f06912da8045a9e27bb431e271b06" category="list-text">Docker.io / NetApp / Trident：23.07.0</block>
   <block id="bdecef051e32495c339265b13937fdd2" category="list-text">docker.io / netapp/trident-autosupport：23.07</block>
   <block id="9b99c0d216202fb5b3542f33737fc7cd" category="list-text">registry.k8s.io/sig-storage/csi-provisioner：v3.5.0</block>
   <block id="51c642e645718f28d506b2bf03ecad77" category="list-text">registry.k8s.io/sig-storage/csi-attacher：v4.3.0</block>
   <block id="2b137b6d62621064ff952b61fea42b29" category="list-text">registry.k8s.io/sig-storage/csi-resizer：v1.8.0</block>
   <block id="18a8e4619e4059aeaf215a48da7867f9" category="list-text">registry.k8s.io/sig-storage/csi-snapshotter：v6.2.2</block>
   <block id="20388ac1d79215adf3bb812d9291e0be" category="list-text">registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.8.0</block>
-  <block id="38001668e093faa1f515c9af2b7b9df3" category="list-text">docker.io/netapp/trident-operator：23.07.0（オプション）</block>
   <block id="a97fcb333111f781986275ea628fc4da" category="summary">Astra Tridentは、単一のコントローラポッドと、クラスタ内の各ワーカーノード上のノードポッドとして実行されます。Astra Tridentボリュームをマウントするすべてのホストでノードポッドが実行されている必要があります。</block>
   <block id="26ad893be275d6f4dd0e2992250c147f" category="inline-link-macro">Kubernetes CSIサイドカーコンテナ</block>
   <block id="db4723304a1add25b171bb663d394c84" category="paragraph">Astra Tridentを単一システムとして導入 <block ref="7f05a5daccc48435b05c14a7b739fa36" category="inline-xref-macro-rx"></block> および1つ以上 <block ref="8642ddce0d2b15cad48dfefb369d4c89" category="inline-xref-macro-rx"></block> Kubernetesクラスタ上で、標準のKUBSI_CSI Sidecar Containers_を使用してCSIプラグインの導入を簡素化します。 <block ref="c1b69fa7e0376b667b144d553d4653a8" category="inline-link-macro-rx"></block> Kubernetes Storageコミュニティが管理しています。</block>
@@ -3511,7 +3509,6 @@ SMB</block>
   <block id="46792977f68671d8fa16e6cf46018cf1" category="paragraph">はい。Prometheusエンドポイント：管理対象のバックエンド数、プロビジョニングされたボリューム数、消費されたバイト数など、Astra Tridentの処理に関する情報を収集できます。を使用することもできます <block ref="7a2477b8055ecdaa4bd473b0556bcb2a" category="inline-link-macro-rx"></block> 監視と分析に使用します。</block>
   <block id="8bcc65cd81ef7ffed875ca40674efa09" category="paragraph">はい。Astra Tridentでは、ONTAPバックエンドの双方向CHAPがサポートされます。これには設定が必要です<block ref="68978ccf4ed83900c8dd27558ca5ec18" prefix=" " category="inline-code"></block> バックエンド構成</block>
   <block id="10318a43fca1fe376b7af5445f41fec8" category="paragraph">Astra Trident では、バージョン 20.04 以降からエクスポートポリシーを動的に作成、管理できます。これにより、ストレージ管理者はバックエンド構成に 1 つ以上の CIDR ブロックを指定でき、 Trident では、その範囲に含まれるノード IP を作成したエクスポートポリシーに追加できます。このようにして、 Astra Trident は特定の CIDR 内に IP アドレスが割り当てられたノードのルールの追加と削除を自動的に管理します。</block>
-  <block id="6f6ab4c1fa489654339d3d3534ef7ac1" category="section-title">23.07の新機能</block>
   <block id="63bfc0691d397470e5b0b05f2a9bcbe4" category="inline-link-macro">問題#740</block>
   <block id="c8af8b49eb3be9ce411280db66de8a12" category="list-text">Tridentのアップグレードを修正し、古いポッドが終了状態で停止（<block ref="6f993c83118cc4a1dd5351c8501e26c9" category="inline-link-macro-rx"></block>）。</block>
   <block id="cf182305f6f941fa317842399de1ca4a" category="inline-link-macro">問題#795</block>
@@ -3569,13 +3566,6 @@ Yesfootnote: 5[]：Astra Tridentによるサポート</block>
   <block id="33ab2c3f94452baf7f17dab03982edfb" category="paragraph">実行後<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> が更新され、オペレータが既存のインストールの更新とパッチを処理します。これにより、新しいポッドが作成され、それに応じてインストールが変更される可能性があります。</block>
   <block id="ac0482b416d6b2d907db760f79e018a7" category="example-title">&lt;strong&gt;クリーン再インストール&lt;/strong&gt;</block>
   <block id="ae2cbb250a37c9e09570ff02857e4cbe" category="paragraph">クラスタを対象としたTridentオペレータを使用すると、クラスタを対象としたリソースを完全に削除できます。Astra Tridentを完全にアンインストールして簡単に再インストールできます。</block>
-  <block id="58adb7cccefd9a346c2be3710e91b747" category="paragraph">インチ<block ref="02f3115b006f7541a477d52ea8c0f861" prefix=" " category="inline-code"></block>、を更新します<block ref="cf80b2245b8ccbb73b34094f00cbcc21" prefix=" " category="inline-code"></block> イメージレジストリの場所を反映します。。 <block ref="57de9a35aeedde82408b1e047030d221" category="inline-link-macro-rx"></block> 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例：</block>
-  <block id="2d008e1d915d9b251a5e120ad5c776c9" category="list-text"><block ref="bada3baa231c033f7966b583361af3fe" prefix="" category="inline-code"></block> すべての画像が1つのレジストリにある場合。</block>
-  <block id="27e8b9a0239d8ed6a54bf0dcacfa3b6a" category="list-text"><block ref="421883c4d8ce52c54b8b38f8629dbea4" prefix="" category="inline-code"></block> TridentイメージがCSIイメージとは別のレジストリにある場合。</block>
-  <block id="3adf178faa369e6adca8ba4f90a4da5a" category="cell">"netapp/trident-autosupport：23.07.0"</block>
-  <block id="8dee7812f6df7ba4bf257ed7c44a1c24" category="list-text">使用<block ref="0562418e6d9a76d0dd22b2f186a2203d" prefix=" " category="inline-code"></block> 展開およびイメージレジストリの場所の名前を指定します。。 <block ref="57de9a35aeedde82408b1e047030d221" category="inline-link-macro-rx"></block> 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例では、<block ref="e43c70c154432522a389a51dc9db6b94" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
-  <block id="9c4627bfa8fc4ce825f994a7fa076a21" category="paragraph">たとえば、のデフォルト値を変更するには、のように指定します<block ref="ad42f6697b035b7580e4fef93be20b4d" prefix=" " category="inline-code"></block>をクリックし、次のコマンドを実行します<block ref="8b5806248570dbb13e7d3bc5e6c0ee37" prefix=" " category="inline-code"></block> コマンドを入力します<block ref="e43c70c154432522a389a51dc9db6b94" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
-  <block id="88ba3642863c5a71202aa4c6374d8bc1" category="list-text">使用<block ref="0562418e6d9a76d0dd22b2f186a2203d" prefix=" " category="inline-code"></block> をクリックし、次の例に示すように、導入環境の名前を指定します<block ref="e43c70c154432522a389a51dc9db6b94" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
   <block id="8e2504f56599a577cd2bbee322a41d4e" category="paragraph">Astra Trident は四半期ごとにリリースサイクルを実施し、毎年 4 つのメジャーリリースをリリースしています。新しいリリースは、以前のリリースに基づいて構築され、新機能、パフォーマンスの強化、バグの修正、および改善が提供されます。ネットアップでは、Astra Tridentの新機能を活用するために、1年に1回以上アップグレードすることを推奨しています。</block>
   <block id="4aa39142850a8999e9a4e9350f8bfbe9" category="list-text">Astra Trident 23.07以降では、v1ボリュームSnapshotが必要です。アルファSnapshotまたはベータSnapshotはサポートされなくなりました。</block>
   <block id="34c1edfb4ac8581528c3791be680aeb3" category="inline-link-macro">CVS サービスタイプ</block>
@@ -3595,10 +3585,8 @@ Yesfootnote: 5[]：Astra Tridentによるサポート</block>
   <block id="14d76a1fc05dcace5308e48b3d9bad49" category="admonition">レビューすることをお勧めします <block ref="4185c20447fb5f0bb4f33698bfd20d27" category="inline-link-macro-rx"></block> オペレータでアップグレードする前に。</block>
   <block id="a18aa1b83c1605570c9c2911c5180a7b" category="inline-link-macro">&lt;block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category='inline-code'/&gt; を使用してアップグレードする</block>
   <block id="3b2fa532fe7cebc94d245316f8af8ab4" category="list-text"><block ref="fd3f4a100d968c915adb11c8797ef5d2" category="inline-link-macro-rx"></block></block>
-  <block id="6aad08817d6b182ee6b1acc7aafa477d" category="summary">Tridentオペレータを使用してAstra Tridentをアップグレードする前に、アップグレード中に発生するバックグラウンドプロセスを理解しておく必要があります。これには、Tridentコントローラ、コントローラポッドとノードポッド、およびノードデーモンセットに対する変更が含まれます。</block>
   <block id="3d40f2a5a694e68fd88105fc4f5ee0d4" category="section-title">Tridentオペレータのアップグレード処理</block>
   <block id="74e51c48d68796e06830c062f5c955c1" category="inline-link-macro">Tridentオペレータを使用するメリット</block>
-  <block id="6aa98fad75f40fc5fb71337ec9a87097" category="paragraph">多数のうちの1つ <block ref="1294f86abdf2591159d9dd04918b1092" category="inline-link-macro-rx"></block> Astra Tridentのインストールとアップグレードは、既存のマウントボリュームを停止することなく、Astra TridentとKubernetesのオブジェクトを自動的に処理します。TridentオペレータはKubernetesクラスタと通信して次のことを行います。</block>
   <block id="1a1508da73374db3dd227799f48fdf63" category="list-text">Trident Controller環境とノードデーモンセットを削除して再作成します。</block>
   <block id="88b9e59609789e4bf00d72c8be9dd376" category="list-text">TridentコントローラポッドとTridentノードポッドを新しいバージョンに置き換えます。</block>
   <block id="6d3156de6583a452ead75c70c186fcb8" category="list-text">更新されていないノードは、残りのノードの更新を妨げません。</block>
@@ -3640,7 +3628,6 @@ Yesfootnote: 5[]：Astra Tridentによるサポート</block>
   <block id="0af6b3e2ec6d581f66df3a49e97c5c55" category="list-text">現在の Astra Trident インスタンスのインストールに使用した Trident オペレータを削除たとえば、23.04からアップグレードする場合は、次のコマンドを実行します。</block>
   <block id="300b059e0bac5cb2864932371a494a8a" category="list-text">環境に適したバンドルYAMLファイルとAstra Tridentバージョンを使用してAstra Tridentをインストールします。たとえば、Kubernetes 1.27用のAstra Trident 23.07をインストールする場合は、次のコマンドを実行します。</block>
   <block id="3ae662c67d403e6230b019a96e787b63" category="paragraph">Astra Trident Helmのインストールをアップグレードできます。</block>
-  <block id="e28e33b86151b7658043f95e918ff9f9" category="list-text">を使用します<block ref="cd01e1bae83933b9c59c914bc71332ac" prefix=" " category="inline-code"></block> コマンドを入力します<block ref="c6c90f744176bcd7236a56b72a9688e3" prefix=" " category="inline-code"></block> アップグレード後のバージョンが反映されます。</block>
   <block id="613909529798c8a2543da8e954e5d742" category="section-title">からのアップグレード<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> Tridentオペレータへのインストール</block>
   <block id="9142b40107d9c5a0b86ef0ce8c25a88b" category="paragraph">からTridentの最新リリースにアップグレードできます<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> インストール：既存のバックエンドとPVCは自動的に使用可能になります。</block>
   <block id="89b46b05bfce8415b6a6373a93a0b04e" category="admonition">インストール方法を切り替える前に、 <block ref="d7d87809bc6e1001ccd94c7433d28fd5" category="inline-link-macro-rx"></block></block>
@@ -3858,4 +3845,21 @@ Fully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定で�
   <block id="1ce00ab507a065e4febc57b244e25d18" category="example-title">自動エクスポートポリシーの例</block>
   <block id="5ef13a507a243e20eb0469a9d7670527" category="example-title">IPv6アドレスの例</block>
   <block id="ee8af8063e9ea3725931d232730b8a8e" category="example-title">SMBボリュームを使用したAmazon FSx for ONTAPの例</block>
+  <block id="4c7a5aa32bd20cc1e93c16706345fc24" category="list-text">Docker.io / NetApp / Trident：23.07.1</block>
+  <block id="8f4c6bec9339a74c71de885862e0c35a" category="list-text">docker.io/netapp/trident-operator：23.07.1（オプション）</block>
+  <block id="af35b81563dca040d2036ccc5fdf5cbf" category="summary">Tridentオペレータを使用してAstra Tridentをアップグレードする前に、アップグレード中に発生するバックグラウンドプロセスを理解しておく必要があります。これには、Tridentコントローラ、コントローラポッドとノードポッド、およびローリング更新を可能にするノードデーモンセットに対する変更が含まれます。</block>
+  <block id="99c73e527698ab76b32674b7e9dd4708" category="inline-link-macro">ローリング更新</block>
+  <block id="bec1352836ad67ce44ee000c83d4dae1" category="paragraph">多数のうちの1つ <block ref="1294f86abdf2591159d9dd04918b1092" category="inline-link-macro-rx"></block> Astra Tridentのインストールとアップグレードは、既存のマウントボリュームを停止することなく、Astra TridentとKubernetesのオブジェクトを自動的に処理します。これにより、Astra Tridentはダウンタイムなしでアップグレードをサポートできます。 <block ref="c0fb6b6f12bb8ae805a97690328ec023" category="inline-link-macro-rx"></block>。TridentオペレータはKubernetesクラスタと通信して次のことを行います。</block>
+  <block id="cf2f4ee3dd2f4847e4871244b9ac51df" category="list-text">を使用します<block ref="cd01e1bae83933b9c59c914bc71332ac" prefix=" " category="inline-code"></block> コマンドを入力します<block ref="d6a197586cce49153cfbfb94bb2e9941" prefix=" " category="inline-code"></block> アップグレード後のバージョンが反映されます。</block>
+  <block id="c8f1fdceb105d8331cbfc9721c6bc44f" category="list-text">使用<block ref="0562418e6d9a76d0dd22b2f186a2203d" prefix=" " category="inline-code"></block> 展開およびイメージレジストリの場所の名前を指定します。。 <block ref="57de9a35aeedde82408b1e047030d221" category="inline-link-macro-rx"></block> 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例では、<block ref="87b2b8072e7d5f7e6e968a7c49bdc4a2" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
+  <block id="d466de3460bd819fa8eb16bf42b1db7e" category="paragraph">たとえば、のデフォルト値を変更するには、のように指定します<block ref="ad42f6697b035b7580e4fef93be20b4d" prefix=" " category="inline-code"></block>をクリックし、次のコマンドを実行します<block ref="8b5806248570dbb13e7d3bc5e6c0ee37" prefix=" " category="inline-code"></block> コマンドを入力します<block ref="87b2b8072e7d5f7e6e968a7c49bdc4a2" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
+  <block id="780123b705b81f6d4b816faff5e82117" category="section-title">Astra Trident 23.07.1に関する重要な情報</block>
+  <block id="b2527de2557e527d4be043e1c86bc69c" category="list-text">使用<block ref="0562418e6d9a76d0dd22b2f186a2203d" prefix=" " category="inline-code"></block> をクリックし、次の例に示すように、導入環境の名前を指定します<block ref="87b2b8072e7d5f7e6e968a7c49bdc4a2" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
+  <block id="6e0b20191589c60f116864ba4a9f6450" category="paragraph">インチ<block ref="02f3115b006f7541a477d52ea8c0f861" prefix=" " category="inline-code"></block>、を更新します<block ref="948b8261d6bd10eba9190981601c0915" prefix=" " category="inline-code"></block> イメージレジストリの場所を反映します。。 <block ref="57de9a35aeedde82408b1e047030d221" category="inline-link-macro-rx"></block> 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例：</block>
+  <block id="d265ac83a999c5664002082de4a65e05" category="list-text"><block ref="40ecbfec412666aee449608e50f67b87" prefix="" category="inline-code"></block> すべての画像が1つのレジストリにある場合。</block>
+  <block id="183ccfb0be6f36dfc545d9bf582a1180" category="list-text"><block ref="d3a400126b30a5fb9f887818fc7e1f04" prefix="" category="inline-code"></block> TridentイメージがCSIイメージとは別のレジストリにある場合。</block>
+  <block id="d06187756592965157c9f1bc4fc51a9c" category="cell">"netapp/trident-autosupport：23.07"</block>
+  <block id="b686eadf7765eed3e9de8f9cbded0fe8" category="section-title">23.07.1の新機能</block>
+  <block id="06918a8f55f386d79e64a70ca217b501" category="paragraph">* Kubernetes：*ダウンタイムゼロのアップグレードをサポートするためのデーモンセットの削除を修正（<block ref="6f993c83118cc4a1dd5351c8501e26c9" category="inline-link-macro-rx"></block>）。</block>
+  <block id="ca6a658f1db1af30f178530c90cbe8fc" category="section-title">23.07の変更点</block>
 </blocks>

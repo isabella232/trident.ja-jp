@@ -19,7 +19,13 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 
 
 
-== 23.07の新機能
+== 23.07.1の新機能
+
+* Kubernetes：*ダウンタイムゼロのアップグレードをサポートするためのデーモンセットの削除を修正（link:https://github.com/NetApp/trident/issues/740["問題#740"^]）。
+
+
+
+== 23.07の変更点
 
 
 

@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: trident-managing-k8s/upgrade-operator-overview.html 
-keywords: upgrade, trident, operator, helm, controller, daemonset, node pods 
-summary: Tridentオペレータを使用してAstra Tridentをアップグレードする前に、アップグレード中に発生するバックグラウンドプロセスを理解しておく必要があります。これには、Tridentコントローラ、コントローラポッドとノードポッド、およびノードデーモンセットに対する変更が含まれます。 
+keywords: upgrade, trident, operator, helm, controller, daemonset, node pods, rolling upgrade, zero downtime 
+summary: Tridentオペレータを使用してAstra Tridentをアップグレードする前に、アップグレード中に発生するバックグラウンドプロセスを理解しておく必要があります。これには、Tridentコントローラ、コントローラポッドとノードポッド、およびローリング更新を可能にするノードデーモンセットに対する変更が含まれます。 
 ---
 = オペレータのアップグレードワークフローについて理解する
 :hardbreaks:
@@ -12,13 +12,13 @@ summary: Tridentオペレータを使用してAstra Tridentをアップグレー
 
 
 [role="lead"]
-Tridentオペレータを使用してAstra Tridentをアップグレードする前に、アップグレード中に発生するバックグラウンドプロセスを理解しておく必要があります。これには、Tridentコントローラ、コントローラポッドとノードポッド、およびノードデーモンセットに対する変更が含まれます。
+Tridentオペレータを使用してAstra Tridentをアップグレードする前に、アップグレード中に発生するバックグラウンドプロセスを理解しておく必要があります。これには、Tridentコントローラ、コントローラポッドとノードポッド、およびローリング更新を可能にするノードデーモンセットに対する変更が含まれます。
 
 
 
 == Tridentオペレータのアップグレード処理
 
-多数のうちの1つ link:../trident-get-started/kubernetes-deploy.html["Tridentオペレータを使用するメリット"] Astra Tridentのインストールとアップグレードは、既存のマウントボリュームを停止することなく、Astra TridentとKubernetesのオブジェクトを自動的に処理します。TridentオペレータはKubernetesクラスタと通信して次のことを行います。
+多数のうちの1つ link:../trident-get-started/kubernetes-deploy.html["Tridentオペレータを使用するメリット"] Astra Tridentのインストールとアップグレードは、既存のマウントボリュームを停止することなく、Astra TridentとKubernetesのオブジェクトを自動的に処理します。これにより、Astra Tridentはダウンタイムなしでアップグレードをサポートできます。 link:https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/["ローリング更新"^]。TridentオペレータはKubernetesクラスタと通信して次のことを行います。
 
 * Trident Controller環境とノードデーモンセットを削除して再作成します。
 * TridentコントローラポッドとTridentノードポッドを新しいバージョンに置き換えます。

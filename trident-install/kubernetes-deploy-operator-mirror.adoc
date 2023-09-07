@@ -75,8 +75,8 @@ Astra Tridentインストーラパッケージには、Tridentオペレータの
 
 [listing]
 ----
-wget https://github.com/NetApp/trident/releases/download/v23.07.0/trident-installer-23.07.0.tar.gz
-tar -xf trident-installer-23.07.0.tar.gz
+wget https://github.com/NetApp/trident/releases/download/v23.07.1/trident-installer-23.07.1.tar.gz
+tar -xf trident-installer-23.07.1.tar.gz
 cd trident-installer
 ----
 
@@ -93,10 +93,10 @@ kubectl create -f deploy/crds/<VERSION>.yaml
 
 === 手順3：オペレータのレジストリの場所を更新します
 
-インチ `/deploy/operator.yaml`、を更新します `image: docker.io/netapp/trident-operator:23.07.0` イメージレジストリの場所を反映します。。 link:../trident-get-started/requirements.html#container-images-and-corresponding-kubernetes-versions["TridentとCSIの画像"] 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例：
+インチ `/deploy/operator.yaml`、を更新します `image: docker.io/netapp/trident-operator:23.07.1` イメージレジストリの場所を反映します。。 link:../trident-get-started/requirements.html#container-images-and-corresponding-kubernetes-versions["TridentとCSIの画像"] 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例：
 
-* `image: <your-registry>/trident-operator:23.07.0` すべての画像が1つのレジストリにある場合。
-* `image: <your-registry>/netapp/trident-operator:23.07.0` TridentイメージがCSIイメージとは別のレジストリにある場合。
+* `image: <your-registry>/trident-operator:23.07.1` すべての画像が1つのレジストリにある場合。
+* `image: <your-registry>/netapp/trident-operator:23.07.1` TridentイメージがCSIイメージとは別のレジストリにある場合。
 
 
 
@@ -166,7 +166,7 @@ IMPORTANT: Kubernetes クラスタには、オペレータのインスタンス�
 ----
 imageRegistry: "<your-registry>"
 autosupportImage: "<your-registry>/trident-autosupport:23.07"
-tridentImage: "<your-registry>/trident:23.07.0"
+tridentImage: "<your-registry>/trident:23.07.1"
 ----
 --
 .異なるレジストリ内の画像
@@ -177,7 +177,7 @@ tridentImage: "<your-registry>/trident:23.07.0"
 ----
 imageRegistry: "<your-registry>/sig-storage"
 autosupportImage: "<your-registry>/netapp/trident-autosupport:23.07"
-tridentImage: "<your-registry>/netapp/trident:23.07.0"
+tridentImage: "<your-registry>/netapp/trident:23.07.1"
 ----
 --
 ====
@@ -206,7 +206,7 @@ Spec:
   Debug:              true
   Image Registry:     <your-registry>/sig-storage
   Namespace:          trident
-  Trident Image:      <your-registry>/netapp/trident:23.07.0
+  Trident Image:      <your-registry>/netapp/trident:23.07.1
 Status:
   Current Installation Params:
     IPv6:                       false
@@ -223,11 +223,11 @@ Status:
     Log Format:           text
     Probe Port:           17546
     Silence Autosupport:  false
-    Trident Image:        <your-registry>/netapp/trident:23.07.0
+    Trident Image:        <your-registry>/netapp/trident:23.07.1
   Message:                Trident installed
   Namespace:              trident
   Status:                 Installed
-  Version:                v23.07.0
+  Version:                v23.07.1
 Events:
     Type Reason Age From Message ---- ------ ---- ---- -------Normal
     Installing 74s trident-operator.netapp.io Installing Trident Normal
@@ -300,6 +300,6 @@ trident-operator-766f7b8658-ldzsv          1/1     Running   0           3m
 +----------------+----------------+
 | SERVER VERSION | CLIENT VERSION |
 +----------------+----------------+
-| 23.07.0        | 23.07.0        |
+| 23.07.1        | 23.07.1        |
 +----------------+----------------+
 ----

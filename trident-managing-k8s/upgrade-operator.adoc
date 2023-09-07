@@ -52,7 +52,7 @@ kubectl delete -f 23.04/trident-installer/deploy/bundle.yaml -n trident
 +
 [listing]
 ----
-kubectl create -f 23.07.0/trident-installer/deploy/bundle_post_1_25.yaml -n trident
+kubectl create -f 23.07.1/trident-installer/deploy/bundle_post_1_25.yaml -n trident
 ----
 
 
@@ -67,11 +67,11 @@ WARNING: Astra TridentがインストールされているKubernetesクラスタ
 
 .手順
 . 最新の Astra Trident リリースをダウンロード
-. を使用します `helm upgrade` コマンドを入力します `trident-operator-23.07.0.tgz` アップグレード後のバージョンが反映されます。
+. を使用します `helm upgrade` コマンドを入力します `trident-operator-23.07.1.tgz` アップグレード後のバージョンが反映されます。
 +
 [listing]
 ----
-helm upgrade <name> trident-operator-23.07.0.tgz
+helm upgrade <name> trident-operator-23.07.1.tgz
 ----
 +
 [NOTE]
@@ -82,7 +82,7 @@ helm upgrade <name> trident-operator-23.07.0.tgz
 
 [listing]
 ----
-helm upgrade <name> trident-operator-23.07.0-custom.tgz --set tridentDebug=true
+helm upgrade <name> trident-operator-23.07.1-custom.tgz --set tridentDebug=true
 ----
 ====
 . を実行します `helm list` グラフとアプリのバージョンが両方ともアップグレードされていることを確認します。を実行します `tridentctl logs` デバッグメッセージを確認します。
@@ -102,11 +102,11 @@ NOTE: インストール方法を切り替える前に、 link:../trident-get-st
 +
 [listing]
 ----
-# Download the release required [23.07.0]
-mkdir 23.07.0
-cd 23.07.0
-wget https://github.com/NetApp/trident/releases/download/v22.01.1/trident-installer-23.07.0.tar.gz
-tar -xf trident-installer-23.07.0.tar.gz
+# Download the release required [23.07.1]
+mkdir 23.07.1
+cd 23.07.1
+wget https://github.com/NetApp/trident/releases/download/v22.01.1/trident-installer-23.07.1.tar.gz
+tar -xf trident-installer-23.07.1.tar.gz
 cd trident-installer
 ----
 . マニフェストから「 tridentオーケストラ 」 CRD を作成します。
@@ -163,6 +163,6 @@ kubectl describe torc trident | grep Message -A 3
 Message:                Trident installed
 Namespace:              trident
 Status:                 Installed
-Version:                v23.07.0
+Version:                v23.07.1
 ----
 
