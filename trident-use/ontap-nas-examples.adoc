@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-use/ontap-nas-examples.html 
-keywords: map backends, storage classes, trident backend, ontap-nas, ontap-nas-economy, ontap-nas-flexgroups, options, storageclasses, fsx 
+keywords: map backends, storage classes, trident backend, ontap-nas, ontap-nas-economy, ontap-nas-flexgroups, options, storageclasses, fsx, metrocluster 
 summary: Astra Tridentのインストール環境でONTAP NASドライバを作成して使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。 
 ---
 = ONTAP NASの設定オプションと例
@@ -12,7 +12,7 @@ summary: Astra Tridentのインストール環境でONTAP NASドライバを作�
 
 
 [role="lead"]
-Astra Tridentのインストール環境でONTAP NASドライバを作成して使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。
+Astra Tridentのインストール環境でONTAP NASドライバを作成して使用する方法について説明します。このセクションでは、バックエンドの構成例と、バックエンドをStorageClassesにマッピングするための詳細を示します。
 
 
 
@@ -20,7 +20,7 @@ Astra Tridentのインストール環境でONTAP NASドライバを作成して�
 
 バックエンド設定オプションについては、次の表を参照してください。
 
-[cols="3"]
+[cols="1,3,2"]
 |===
 | パラメータ | 説明 | デフォルト 
 
@@ -34,10 +34,29 @@ Astra Tridentのインストール環境でONTAP NASドライバを作成して�
 | backendName` | カスタム名またはストレージバックエンド | ドライバ名 + "_" + データ LIF 
 
 
-| 「管理 LIF 」 | クラスタ管理LIFまたはSVM管理LIFのIPアドレス：シームレスなMetroCluster スイッチオーバーを実現するには、SVM管理LIFを指定する必要があります。Fully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定できます。を使用してAstra Tridentをインストールした場合、IPv6アドレスを使用するようにを設定できます `--use-ipv6` フラグ。IPv6アドレスは、[28e8：d9fb：a825：b7bf：69a8：d02f：9e7b：3555]などの角かっこで定義する必要があります。 | 「 10.0.0.1 」、「 [2001:1234:abcd::fefe] 」 
+| 「管理 LIF 」 | クラスタ管理 LIF または SVM 管理 LIF の IP アドレス
+
+Fully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定できます。
+
+を使用してAstra Tridentをインストールした場合、IPv6アドレスを使用するようにを設定できます `--use-ipv6` フラグ。IPv6アドレスは、次のように角かっこで定義する必要があります。 `[28e8:d9fb:a825:b7bf:69a8:d02f:9e7b:3555]`。
+
+シームレスなMetroClusterスイッチオーバーについては、を参照してください。 <<mcc-best>>。 | 「 10.0.0.1 」、「 [2001:1234:abcd::fefe] 」 
 
 
-| 「重複排除 | プロトコル LIF の IP アドレス。を指定することを推奨します `dataLIF`。指定しない場合は、Astra TridentがSVMからデータLIFを取得します。NFSマウント処理に使用するFully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定して、ラウンドロビンDNSを作成して複数のデータLIF間で負荷を分散することができます。初期設定後に変更できます。を参照してください 。を使用してAstra Tridentをインストールした場合、IPv6アドレスを使用するようにを設定できます `--use-ipv6` フラグ。IPv6アドレスは、[28e8：d9fb：a825：b7bf：69a8：d02f：9e7b：3555]などの角かっこで定義する必要があります。 | 指定されたアドレス、または指定されていない場合はSVMから取得されるアドレス（非推奨） 
+| 「重複排除 | プロトコル LIF の IP アドレス。
+
+を指定することを推奨します `dataLIF`。指定しない場合は、Astra TridentがSVMからデータLIFを取得します。NFSマウント処理に使用するFully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定して、ラウンドロビンDNSを作成して複数のデータLIF間で負荷を分散することができます。
+
+初期設定後に変更できます。を参照してください 。
+
+を使用してAstra Tridentをインストールした場合、IPv6アドレスを使用するようにを設定できます `--use-ipv6` フラグ。IPv6アドレスは、次のように角かっこで定義する必要があります。 `[28e8:d9fb:a825:b7bf:69a8:d02f:9e7b:3555]`。
+
+* MetroClusterの場合は省略してください。* <<mcc-best>>。 | 指定されたアドレス、または指定されていない場合はSVMから取得されるアドレス（非推奨） 
+
+
+| 'VM' | 使用する Storage Virtual Machine
+
+* MetroClusterの場合は省略してください。* <<mcc-best>>。 | SVM 「管理 LIF 」が指定されている場合に生成されます 
 
 
 | 「 autoExportPolicy 」を参照してください | エクスポートポリシーの自動作成と更新を有効にします[ブーリアン]。を使用する `autoExportPolicy` および `autoExportCIDRs` ネットアップのAstra Tridentなら、エクスポートポリシーを自動的に管理できます。 | いいえ 
@@ -64,9 +83,6 @@ Astra Tridentのインストール環境でONTAP NASドライバを作成して�
 
 
 | 「 password 」と入力します | クラスタ / SVM に接続するためのパスワード。クレデンシャルベースの認証に使用されます |  
-
-
-| 'VM' | 使用する Storage Virtual Machine | SVM 「管理 LIF 」が指定されている場合に生成されます 
 
 
 | 'toragePrefix' | SVM で新しいボリュームをプロビジョニングする際に使用するプレフィックスを指定します。設定後に更新することはできません | Trident 
@@ -109,11 +125,11 @@ Astra Tridentのインストール環境でONTAP NASドライバを作成して�
 |===
 
 
-=== ボリュームのプロビジョニング用のバックエンド構成オプション
+== ボリュームのプロビジョニング用のバックエンド構成オプション
 
 これらのオプションを使用して、のデフォルトプロビジョニングを制御できます `defaults` 設定のセクション。例については、以下の設定例を参照してください。
 
-[cols="3"]
+[cols="1,3,2"]
 |===
 | パラメータ | 説明 | デフォルト 
 
@@ -161,7 +177,7 @@ NOTE: Trident が Astra で QoS ポリシーグループを使用するには、
 
 
 
-==== ボリュームプロビジョニングの例
+=== ボリュームプロビジョニングの例
 
 デフォルトが定義されている例を次に示します。
 
@@ -216,8 +232,8 @@ image::../media/volume-show-nas.png[に、 volume show コマンドの出力を�
 
 NOTE: ネットアップ ONTAP で Trident を使用している場合は、 IP アドレスではなく LIF の DNS 名を指定することを推奨します。
 
-.最小限の構成 <code>ontap-nas-economy</code>
-[%collapsible%open]
+.ONTAP NASエコノミーの例
+[%collapsible]
 ====
 [listing]
 ----
@@ -231,8 +247,8 @@ username: vsadmin
 password: password
 ----
 ====
-.最小限の構成 <code>ontap-nas-flexgroup</code>
-[%collapsible%open]
+.ONTAP NAS FlexGroupの例
+[%collapsible]
 ====
 [listing]
 ----
@@ -246,8 +262,25 @@ username: vsadmin
 password: password
 ----
 ====
-.SMBボリュームの最小限の設定
-[%collapsible%open]
+.MetroClusterの例
+[#mcc-best%collapsible]
+====
+スイッチオーバーやスイッチバックの実行中にバックエンド定義を手動で更新する必要がないようにバックエンドを設定できます。 link:../trident-reco/backup.html#svm-replication-and-recovery["SVMのレプリケーションとリカバリ"]。
+
+シームレスなスイッチオーバーとスイッチバックを実現するには、 `managementLIF` を省略します。 `dataLIF` および `svm` パラメータ例：
+
+[listing]
+----
+---
+version: 1
+storageDriverName: ontap-nas
+managementLIF: 192.168.1.66
+username: vsadmin
+password: password
+----
+====
+.SMBボリュームの例
+[%collapsible]
 ====
 [listing]
 ----
@@ -266,8 +299,8 @@ username: vsadmin
 password: password
 ----
 ====
-.証明書ベースの認証
-[%collapsible%open]
+.証明書ベースの認証の例
+[%collapsible]
 ====
 これは、バックエンドの最小限の設定例です。 `clientCertificate`、 `clientPrivateKey`および `trustedCACertificate` （信頼されたCAを使用している場合はオプション）がに入力されます `backend.json` およびは、クライアント証明書、秘密鍵、信頼されたCA証明書のbase64エンコード値をそれぞれ取得します。
 
@@ -286,8 +319,8 @@ trustedCACertificate: zcyBbaG...b3Igb3duIGNsYXNz
 storagePrefix: myPrefix_
 ----
 ====
-.自動エクスポートポリシー
-[%collapsible%open]
+.自動エクスポートポリシーの例
+[%collapsible]
 ====
 この例は、動的なエクスポートポリシーを使用してエクスポートポリシーを自動的に作成および管理するように Astra Trident に指示する方法を示しています。これは、でも同様に機能します `ontap-nas-economy` および `ontap-nas-flexgroup` ドライバ。
 
@@ -310,8 +343,8 @@ password: password
 nfsMountOptions: nfsvers=4
 ----
 ====
-.IPv6アドレスを使用している
-[%collapsible%open]
+.IPv6アドレスの例
+[%collapsible]
 ====
 この例は、を示しています `managementLIF` IPv6アドレスを使用している。
 
@@ -330,8 +363,8 @@ username: vsadmin
 password: password
 ----
 ====
-.SMBボリュームを使用したAmazon FSx for ONTAP
-[%collapsible%open]
+.SMBボリュームを使用したAmazon FSx for ONTAPの例
+[%collapsible]
 ====
 。 `smbShare` SMBボリュームを使用するFSx for ONTAPの場合、パラメータは必須です。
 

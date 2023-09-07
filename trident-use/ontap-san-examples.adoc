@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-use/ontap-san-examples.html 
-keywords: map backends, storage classes, trident backend, ontap san, ontap san economy, options, storageclasses, fsx 
+keywords: map backends, storage classes, trident backend, ontap san, ontap san economy, options, storageclasses, fsx, metrocluster 
 summary: ONTAP SAN ドライバを作成して Astra Trident インストールで使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。 
 ---
 = ONTAP のSAN構成オプションと例
@@ -12,7 +12,7 @@ summary: ONTAP SAN ドライバを作成して Astra Trident インストール�
 
 
 [role="lead"]
-ONTAP SAN ドライバを作成して Astra Trident インストールで使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。
+Astra Tridentのインストール環境でONTAP SANドライバを作成して使用する方法をご紹介します。このセクションでは、バックエンドの構成例と、バックエンドをStorageClassesにマッピングするための詳細を示します。
 
 
 
@@ -20,7 +20,7 @@ ONTAP SAN ドライバを作成して Astra Trident インストールで使用�
 
 バックエンド設定オプションについては、次の表を参照してください。
 
-[cols="3"]
+[cols="1,3,2"]
 |===
 | パラメータ | 説明 | デフォルト 
 
@@ -34,10 +34,25 @@ ONTAP SAN ドライバを作成して Astra Trident インストールで使用�
 | backendName` | カスタム名またはストレージバックエンド | ドライバ名 + "_" + データ LIF 
 
 
-| 「管理 LIF 」 | クラスタ管理LIFまたはSVM管理LIFのIPアドレス：シームレスなMetroCluster スイッチオーバーを実現するには、SVM管理LIFを指定する必要があります。Fully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定できます。を使用してAstra Tridentをインストールした場合、IPv6アドレスを使用するようにを設定できます `--use-ipv6` フラグ。IPv6アドレスは、[28e8：d9fb：a825：b7bf：69a8：d02f：9e7b：3555]などの角かっこで定義する必要があります。 | 「 10.0.0.1 」、「 [2001:1234:abcd::fefe] 」 
+| 「管理 LIF 」 | クラスタ管理LIFまたはSVM管理LIFのIPアドレス。
+
+Fully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定できます。
+
+を使用してAstra Tridentをインストールした場合、IPv6アドレスを使用するようにを設定できます `--use-ipv6` フラグ。IPv6アドレスは、次のように角かっこで定義する必要があります。 `[28e8:d9fb:a825:b7bf:69a8:d02f:9e7b:3555]`。
+
+シームレスなMetroClusterスイッチオーバーについては、を参照してください。 <<mcc-best>>。 | 「 10.0.0.1 」、「 [2001:1234:abcd::fefe] 」 
 
 
-| 「重複排除 | プロトコル LIF の IP アドレス。* iSCSIには指定しないでください。* Astra Tridentが使用します link:https://docs.netapp.com/us-en/ontap/san-admin/selective-lun-map-concept.html["ONTAP の選択的LUNマップ"^] iSCSI LIFを検出するには、マルチパスセッションを確立する必要があります。の場合は警告が生成されます `dataLIF` は明示的に定義されます。 | SVMの派生物です 
+| 「重複排除 | プロトコル LIF の IP アドレス。
+
+* iSCSIには指定しないでください。* Astra Tridentが使用します link:https://docs.netapp.com/us-en/ontap/san-admin/selective-lun-map-concept.html["ONTAP の選択的LUNマップ"^] iSCSI LIFを検出するには、マルチパスセッションを確立する必要があります。の場合は警告が生成されます `dataLIF` は明示的に定義されます。
+
+* MetroClusterの場合は省略してください。* <<mcc-best>>。 | SVMの派生物です 
+
+
+| 'VM' | 使用する Storage Virtual Machine
+
+* MetroClusterの場合は省略してください。* <<mcc-best>>。 | SVM 「管理 LIF 」が指定されている場合に生成されます 
 
 
 | 「 useCHAP 」 | CHAPを使用してONTAP SANドライバのiSCSIを認証します（ブーリアン）。をに設定します `true` Astra Tridentでは、バックエンドで指定されたSVMのデフォルト認証として双方向CHAPを設定して使用します。を参照してください link:ontap-san-prep.html["バックエンドにONTAP SANドライバを設定する準備をします"] を参照してください。 | 「偽」 
@@ -71,9 +86,6 @@ ONTAP SAN ドライバを作成して Astra Trident インストールで使用�
 
 
 | 「 password 」と入力します | ONTAP クラスタとの通信にパスワードが必要です。クレデンシャルベースの認証に使用されます。 | 「」 
-
-
-| 'VM' | 使用する Storage Virtual Machine | SVM 「管理 LIF 」が指定されている場合に生成されます 
 
 
 | 'toragePrefix' | SVM で新しいボリュームをプロビジョニングする際に使用するプレフィックスを指定します。あとから変更することはできません。このパラメータを更新するには、新しいバックエンドを作成する必要があります。 | `trident` 
@@ -192,8 +204,8 @@ image::../media/vol-show-san.png[に、 volume show コマンドの出力を示�
 
 NOTE: Amazon FSx on NetApp ONTAPとAstra Tridentを使用している場合は、IPアドレスではなく、LIFのDNS名を指定することを推奨します。
 
-.ONTAP SANの最小構成の例
-[%collapsible%open]
+.ONTAP SANの例
+[%collapsible]
 ====
 これは、 `ontap-san` ドライバ。
 
@@ -211,8 +223,8 @@ username: vsadmin
 password: <password>
 ----
 ====
-.ONTAP SANエコノミーの最小構成の例
-[%collapsible%open]
+.ONTAP SANの経済性の例
+[%collapsible]
 ====
 [listing]
 ----
@@ -225,8 +237,25 @@ username: vsadmin
 password: <password>
 ----
 ====
+.MetroClusterの例
+[#mcc-best%collapsible]
+====
+スイッチオーバーやスイッチバックの実行中にバックエンド定義を手動で更新する必要がないようにバックエンドを設定できます。 link:../trident-reco/backup.html#svm-replication-and-recovery["SVMのレプリケーションとリカバリ"]。
+
+シームレスなスイッチオーバーとスイッチバックを実現するには、 `managementLIF` を省略します。 `dataLIF` および `svm` パラメータ例：
+
+[listing]
+----
+---
+version: 1
+storageDriverName: ontap-san
+managementLIF: 192.168.1.66
+username: vsadmin
+password: password
+----
+====
 .証明書ベースの認証の例
-[%collapsible%open]
+[%collapsible]
 ====
 この基本的な設定例では、 `clientCertificate`、 `clientPrivateKey`および `trustedCACertificate` （信頼されたCAを使用している場合はオプション）がに入力されます `backend.json` およびは、クライアント証明書、秘密鍵、信頼されたCA証明書のbase64エンコード値をそれぞれ取得します。
 
@@ -249,7 +278,7 @@ trustedCACertificate: zcyBbaG...b3Igb3duIGNsYXNz
 ----
 ====
 .双方向CHAPの例
-[%collapsible%open]
+[%collapsible]
 ====
 次の例では、 `useCHAP` をに設定します `true`。
 
@@ -300,7 +329,7 @@ Astra Tridentは、[Comments]フィールドにプロビジョニングラベル
 これらの例では、一部のストレージプールが独自の `spaceReserve`、 `spaceAllocation`および `encryption` 値、および一部のプールはデフォルト値よりも優先されます。
 
 .ONTAP SANの例
-[%collapsible%open]
+[%collapsible]
 ====
 [listing]
 ----
@@ -351,7 +380,7 @@ storage:
 ----
 ====
 .ONTAP SANの経済性の例
-[%collapsible%open]
+[%collapsible]
 ====
 [listing]
 ----

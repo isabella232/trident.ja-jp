@@ -47,25 +47,33 @@ tridentctl get backend -n trident` または tridentctl get backend -o yaml -n t
 バックエンドを更新する理由はいくつかあります。
 
 * ストレージシステムのクレデンシャルが変更されている。クレデンシャルを更新するには、「 TridentBackendConfig 」オブジェクトで使用される Kubernetes Secret を更新する必要があります。Astra Trident が、提供された最新のクレデンシャルでバックエンドを自動的に更新次のコマンドを実行して、 Kubernetes Secret を更新します。
-
-
++
 [listing]
 ----
 kubectl apply -f <updated-secret-file.yaml> -n trident
 ----
-* パラメータ（使用する ONTAP SVM の名前など）を更新する必要があります。この場合 'TridentBackendConfig' オブジェクトは Kubernetes を介して直接更新できます
-
-
+* パラメータ（使用する ONTAP SVM の名前など）を更新する必要があります。
++
+** 更新できます `TridentBackendConfig` 次のコマンドを使用して、Kubernetesから直接オブジェクトを作成します。
++
 [listing]
 ----
 kubectl apply -f <updated-backend-file.yaml>
 ----
-または、次のコマンドを実行して、既存の「 TridentBackendConfig 」 CR に変更を加えます。
-
+** または、既存の `TridentBackendConfig` 次のコマンドを使用してCRを実行します。
++
 [listing]
 ----
 kubectl edit tbc <tbc-name> -n trident
 ----
-バックエンドの更新に失敗した場合、バックエンドは最後の既知の設定のまま残ります。ログを表示して原因を確認するには、「 kubectl get tbc <tbc-name> -o yaml -n trident` または「 kubectl describe tbc <tbc-name> -n trident` 」を実行します。
 
-構成ファイルで問題を特定して修正したら、 update コマンドを再実行できます。
+
+
+
+[NOTE]
+====
+* バックエンドの更新に失敗した場合、バックエンドは最後の既知の設定のまま残ります。ログを表示して原因を確認するには、「 kubectl get tbc <tbc-name> -o yaml -n trident` または「 kubectl describe tbc <tbc-name> -n trident` 」を実行します。
+* 構成ファイルで問題を特定して修正したら、 update コマンドを再実行できます。
+
+
+====
