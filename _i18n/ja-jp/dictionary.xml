@@ -267,7 +267,6 @@
   <block id="f67af493d1fd83b472d5f27307b2f3d9" category="paragraph">ボリュームスナップショット要求が受信されると、 Trident はバックエンドでのボリュームのスナップショット作成を自動的に管理し、ユニークな「 VolumeSnapshotContent 」オブジェクトを作成することによってスナップショットを公開します。既存の PVC からスナップショットを作成し、新しい PVC を作成するときにスナップショットを DataSource として使用できます。</block>
   <block id="53847015682974d066a919b1b45a44a5" category="admonition">VolumeSnapshot のライフサイクルはソース PVC とは無関係です。ソース PVC が削除されても、スナップショットは維持されます。スナップショットが関連付けられている PVC を削除すると、 Trident はその PVC のバッキングボリュームを *Deleting* 状態でマークしますが、完全には削除しません。関連付けられている Snapshot がすべて削除されると、ボリュームは削除されます。</block>
   <block id="e562bdcf97dce6973a736651f45eb054" category="paragraph">Kubernetes の「 VolumeSnapshotContent 」オブジェクトは、すでにプロビジョニングされているボリュームから取得されたスナップショットを表します。これは「 PersistentVolume 」と似ており、ストレージ・クラスタ上でプロビジョニングされた Snapshot を表します。「 PersistentVolumeClaim 」および「 PersistentVolume 」オブジェクトと同様に、スナップショットが作成されると、「 VolumeContent Snapshot」 オブジェクトは「 VolumeSnapshot 」オブジェクトへの 1 対 1 のマッピングを保持します。これは、スナップショットの作成を要求しました。</block>
-  <block id="ca8035550d447392debfcaeb62855bd3" category="admonition">Trident は「 VolumeSnapshotContent 」オブジェクトを作成し、プロビジョニングするボリュームに基づいて自動的に Kubernetes クラスタに登録します。自分で管理することは想定されていません。</block>
   <block id="af741aec1c66e51c00d35a38f92471de" category="paragraph">「 VolumeSnapshotContent 」オブジェクトには、スナップショットを一意に識別する詳細（「 napshotHandle 」など）が含まれています。この「 napshotHandle 」は、 PV の名前と「 VolumeSnapshotContent 」オブジェクトの名前を組み合わせた一意のものです。</block>
   <block id="b22c73e808eef321ee9941ec2e58b64f" category="paragraph">Trident では、スナップショット要求を受信すると、バックエンドにスナップショットが作成されます。スナップショットが作成されると、 Trident は「 VolumeSnapshotContent 」オブジェクトを構成し、そのスナップショットを Kubernetes API に公開します。</block>
   <block id="7c43d52062b795d2d8e7f33b9dbbf671" category="paragraph">Kubernetes カスタムリソースは、管理者が定義した Kubernetes API 内のエンドポイントであり、類似するオブジェクトのグループ化に使用されます。Kubernetes では、オブジェクトのコレクションを格納するためのカスタムリソースの作成をサポートしています。これらのリソース定義を取得するには 'kubectl get CRDs' を実行します</block>
@@ -645,7 +644,6 @@
   <block id="f71fd95d4de4797557e6830c1448c945" category="summary">tridentctl を使用して ' 既存の Astra Trident インストールを簡単にアップグレードできます</block>
   <block id="6224e22d5a77816dd8b659c25a3f88a5" category="paragraph">最新リリースの Astra Trident にアップグレードする際は、次の点を考慮してください。</block>
   <block id="4ff0a9f6065b24ce3d325bad3223f4e2" category="paragraph">Astra Trident のアンインストールと再インストールはアップグレードとして機能します。Trident をアンインストールしても、 Astra Trident 環境で使用されている Persistent Volume Claim （ PVC ；永続的ボリューム要求）と Persistent Volume （ PV ；永続的ボリューム）は削除されません。Astra Trident がオフラインの間は、すでにプロビジョニング済みの PVS を引き続き使用でき、 Astra Trident は、オンラインに戻った時点で作成された PVC に対してボリュームをプロビジョニングします。</block>
-  <block id="f58e95baa778c9a2bd1a4597fb49d9b7" category="doc">ONTAP ドライバ</block>
   <block id="48cf24486d9a8e65a142b25682f19949" category="cell">ドライバ</block>
   <block id="888a77f5ac0748b6c8001822417df8b6" category="cell">プロトコル</block>
   <block id="1b5e109e8afd1f9b7f5bbf951eea3442" category="cell">ボリュームモード</block>
@@ -1073,7 +1071,6 @@
   <block id="920708f6d71767dcff22f9e43b4ec0c0" category="paragraph">ライブノードの IP アドレスが更新された場合は、ノード上の Astra Trident ポッドを再起動する必要があります。Trident が管理するバックエンドのエクスポートポリシーを更新して、この IP の変更を反映させます。</block>
   <block id="5f3124ab7224f89a36fbb64fd2ebda15" category="summary">ONTAP SAN ドライバを作成して Astra Trident インストールで使用する方法をご確認ください。このセクションでは、バックエンド構成の例と、バックエンドをストレージクラスにマッピングする方法を詳しく説明します。</block>
   <block id="19ce3b2e7823907e5153f00fe04f64f7" category="doc">設定オプションと例</block>
-  <block id="a85f55a18073767a4945eac810e72cb2" category="cell">「 ONTAP-NAS 」、「 ONTAP-NAS-エコノミー 」、「 ONTAP-NAS-flexgroup 」、「 ONTAP-SAN 」、「 ONTAP-SAN-エコノミー 」</block>
   <block id="237d7a1666794b0937adde704bb4795c" category="cell">ドライバ名 + "_" + データ LIF</block>
   <block id="07c54fe26be1e43601e99cd9d4fbe262" category="cell">「管理 LIF 」</block>
   <block id="c560b8d02093547d93a87c72d8b16eaf" category="cell">「 10.0.0.1 」、「 [2001:1234:abcd::fefe] 」</block>
@@ -1104,20 +1101,15 @@
   <block id="3b890f58db76bb3003ada171cd18c4db" category="cell">「 igroupName 」と入力します</block>
   <block id="c08068da3c5d19547544c4bd424a6b76" category="cell">'toragePrefix'</block>
   <block id="e3f688f3aa653574b3253640aa98f47c" category="cell">SVM で新しいボリュームをプロビジョニングする際に使用するプレフィックスを指定します。設定後に更新することはできません</block>
-  <block id="a996d2f8e072c583d6cc26aa1e4aba87" category="cell">Trident</block>
   <block id="12d2394af47293b12d6b5f411f99a6d1" category="cell">「 AggreglimitateUsage 」と入力します</block>
-  <block id="9d96dfa28e7454a1119de523123a1e05" category="cell">“”（デフォルトでは適用されません）</block>
   <block id="c9a303edbc714d051896c3a678e59a8a" category="cell">'lunsPerFlexvol</block>
   <block id="79892588cbecd0b88729ea1a55b2a3a4" category="cell">FlexVol あたりの最大 LUN 数。有効な範囲は 50 、 200 です</block>
-  <block id="2d782f413944b272c911c548418a18a3" category="cell">100</block>
   <block id="f703d18584e163e18762e4dc13ad96a0" category="cell">「 useREST` 」</block>
   <block id="193a49bcfb561fea878daa5efe72cad9" category="section-title">ボリュームのプロビジョニング用のバックエンド構成オプション</block>
   <block id="a0ee23c5b4cbd6a28a4143933891f927" category="cell">「平和の配分」</block>
   <block id="26161d08a960162cd8633d0e23058aed" category="cell">space-allocation for LUN のコマンドを指定します</block>
-  <block id="3be488c6a2bc52ceb7e8685ca24927d7" category="cell">正しいです</block>
   <block id="a6bddf19eed00dbe2199864dee8454ce" category="cell">「平和のための準備」を参照してください</block>
   <block id="3bce5b103341500856287f5347e19f28" category="cell">スペースリザベーションモード：「 none 」（シン）または「 volume 」（シック）</block>
-  <block id="e84c56670c389b09fcad5da7309a165b" category="cell">なし</block>
   <block id="0ec3875cf79264e4689a646be2f704b6" category="cell">「ナプショットポリシー」</block>
   <block id="77f69e470b8766d2dc5df4b7f469ed72" category="cell">使用する Snapshot ポリシー</block>
   <block id="84d2c2c768bd1900489bad5fb46b4aac" category="cell">「 QOSPolicy 」</block>
@@ -1125,16 +1117,12 @@
   <block id="952e3a12d35e717bf86a6000b0c08976" category="cell">「 adaptiveQosPolicy 」を参照してください</block>
   <block id="036c0eabd455d8a92d350429f2f5747e" category="cell">アダプティブ QoS ポリシーグループ：作成したボリュームに割り当てます。ストレージプール / バックエンドごとに QOSPolicy または adaptiveQosPolicy のいずれかを選択します</block>
   <block id="11f9fcd55c1d81cf352f86fe4cdfd444" category="cell">スナップショット "0" 用に予約されたボリュームの割合</block>
-  <block id="af6626456fa359992271ea88de34094f" category="cell">「 napshotPolicy 」が「 none 」の場合、それ以外の場合は「」</block>
   <block id="4be01095ce6e500084fc427e5dec61ac" category="cell">'plitOnClone</block>
   <block id="6f5c0c94b1a17baffd2c33facaa10db6" category="cell">作成時にクローンを親からスプリットします</block>
-  <block id="19b4c847405d74614976bd1228f59c9f" category="cell">いいえ</block>
   <block id="b091cbafedf94db98f17823d044434bd" category="cell">「暗号化」</block>
   <block id="a463baaf6666da7178b6fc6a3c8a3fee" category="cell">'ecurityStyle'</block>
   <block id="41da49bdd3fd88b2ddc6be7d6df1b335" category="cell">新しいボリュームのセキュリティ形式</block>
   <block id="31aa018945eb62580d68d360cba8ba54" category="cell">階層ポリシー</block>
-  <block id="592a5879ac095ef6ca504cc43a9d7939" category="cell">「なし」を使用する階層化ポリシー</block>
-  <block id="ee6508d5290be6edafccc6e0f471f120" category="cell">ONTAP 9.5 よりも前の SVM-DR 構成の「スナップショットのみ」</block>
   <block id="99c2306b30b8939278f0f817230f3573" category="admonition">Trident が Astra で QoS ポリシーグループを使用するには、 ONTAP 9.8 以降が必要です。共有されない QoS ポリシーグループを使用して、各コンスティチュエントに個別にポリシーグループを適用することを推奨します。共有 QoS ポリシーグループにより、すべてのワークロードの合計スループットに対して上限が適用されます。</block>
   <block id="fab51d2bc90465982b0994bc86e69db9" category="admonition">「 'SAN 」ドライバを使用して作成されたすべてのボリュームに対して 'Astra Trident は 'LUN のメタデータに対応するために FlexVol にさらに 10% の容量を追加しますLUN は、ユーザが PVC で要求したサイズとまったく同じサイズでプロビジョニングされます。Astra Trident が FlexVol に 10% を追加（ ONTAP で利用可能なサイズとして表示）ユーザには、要求した使用可能容量が割り当てられます。また、利用可能なスペースがフルに活用されていないかぎり、 LUN が読み取り専用になることもありません。これは、 ONTAP と SAN の経済性には該当しません。</block>
   <block id="824d88f50ab9e39778b0ef5bc2516b2f" category="paragraph">「スナップショット予約」を定義するバックエンドの場合、 Astra Trident は次のようにボリュームのサイズを計算します。</block>
@@ -1458,12 +1446,9 @@
   <block id="a83f4a534ccef7ac1d209fb0015cd907" category="paragraph">このバックエンド構成は、ボリュームの配置を単一のサブネットにまで適用する手間をさらに削減し、一部のボリュームプロビジョニングのデフォルト設定も変更します。</block>
   <block id="a0f3a965c12688befda99da850903dcb" category="cell">「 autoExportPolicy 」を参照してください</block>
   <block id="b4ad0dff08149092bc3e4b16572af575" category="cell">「 autoExportCI` 」</block>
-  <block id="e537a193eb90bd46a645ce750bb5f3fc" category="cell">[0.0.0.0/0] 、 [::/0]</block>
   <block id="07f6b23cad3d6da54012935ff972affe" category="cell">qtreesPerFlexvol`</block>
   <block id="a13306f726fdf72d2d992a7ebdc63b1b" category="cell">FlexVol あたりの最大 qtree 数。有効な範囲は [50 、 300] です。</block>
-  <block id="28326357ec2f8c06e01271c4ee2201f1" category="cell">200</block>
   <block id="3e9a232d025270ed6767c385b8291871" category="cell">新しいボリュームのモード</block>
-  <block id="2907de5eba980e910513008165ea2c2b" category="cell">「 .snapshot 」ディレクトリの表示を制御します</block>
   <block id="c1a0e97f953c948568aed6c134fc9711" category="cell">使用するエクスポートポリシー</block>
   <block id="06602e99c8d46d601029e6dd0b37e3f8" category="paragraph">「 ONTAP-NAS' 」と「 ONTAP-NAS-flexgroups' では、 Astra Trident は新しい計算を使用して、 FlexVol がスナップショット予約の割合と PVC で正しくサイズ設定されるようにします。ユーザが PVC を要求すると、 Astra Trident は、新しい計算を使用して、より多くのスペースを持つ元の FlexVol を作成します。この計算により、ユーザは要求された PVC 内の書き込み可能なスペースを受信し、要求されたスペースよりも少ないスペースを確保できます。v21.07 より前のバージョンでは、ユーザが PVC を要求すると（ 5GiB など）、 snapshotReserve が 50% に設定されている場合、書き込み可能なスペースは 2.5GiB のみになります。これは、ユーザが要求したボリューム全体が「 SnapshotReserve 」であるためです。Trident 21.07 では、ユーザが要求するのは書き込み可能なスペースであり、 Astra Trident は「 napshotReserve 」の値をボリューム全体の割合で定義します。これは「 ONTAP-NAS-エコノミー 」には適用されません。この機能の仕組みについては、次の例を参照してください。</block>
   <block id="86ec808b80973d24eadfc617926f534e" category="paragraph">計算は次のとおりです。</block>
@@ -2311,7 +2296,6 @@
   <block id="0d41f8565b8b74a59fc029ccf2becd83" category="list-text">マネージドプラグインシステムを使用して Astra Trident を起動交換してください<block ref="3d689bd3819ead35ed794427bd12f459" prefix=" " category="inline-code"></block> 使用しているプラグインのバージョン（xxx.xxx.xxx.xxx）を使用している必要があります。</block>
   <block id="4f0e7dc30ffb3e25e75331c9afb2243a" category="cell">ボリュームモード</block>
   <block id="28c142639a9bbdd526b8eb986c13907d" category="paragraph">ファイルシステムなし。rawブロックデバイスです</block>
-  <block id="0453a3e06be842b09a9479fe06f0dd13" category="paragraph">rwxはファイルシステムボリュームモードでは使用できません。</block>
   <block id="964ea71824e902693c3ef56b57cf78be" category="summary">Tridentを使用すると、プライマリネームスペースにボリュームを作成し、1つ以上のセカンダリネームスペースで共有できます。</block>
   <block id="98f770b0af18ca763421bac22b4b6805" category="section-title">の機能</block>
   <block id="8ff961668c6784e84b25c265cbb629d7" category="paragraph">ネームスペース間のボリュームアクセスの詳細については、次の資料を参照してください。</block>
@@ -2767,14 +2751,12 @@
   <block id="a0de2cc0c77c388210e1f48423eea29c" category="cell">SVM で新しいボリュームをプロビジョニングする際に使用するプレフィックスを指定します。あとから変更することはできません。このパラメータを更新するには、新しいバックエンドを作成する必要があります。</block>
   <block id="e54cbd8ca5da26dc7e4be3bbfd23467e" category="cell">使用率がこの割合を超えている場合は、プロビジョニングが失敗します。NetApp ONTAP バックエンドにAmazon FSXを使用している場合は、指定しないでください <block ref="d57551b1efacf8a7be84b4d10c5a6e99" prefix=" " category="inline-code"></block>。提供された<block ref="679500f227997b45be97e3ca8115c678" prefix=" " category="inline-code"></block> および<block ref="6173aa5206484b5224450952747c7148" prefix=" " category="inline-code"></block> アグリゲートの使用状況を取得し、Astra Tridentを使用して制限するために必要な権限が含まれていない。</block>
   <block id="f804cd6668c0728e26448509210268d3" category="cell">要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します。また、qtreeおよびLUNに対して管理するボリュームの最大サイズを制限します。</block>
-  <block id="b3a74fee006256ec5d63fe251b553f1d" category="cell">トラブルシューティング時に使用するデバッグフラグ。例：{"API"：false、"method"：true}は、トラブルシューティングを行って詳細なログダンプが必要な場合を除き、使用しません。</block>
   <block id="cc30671ec52693851659adb7020e02b1" category="cell">ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー *<block ref="14d839191d1ecf387a15b5b0c802a8ae" prefix=" " category="inline-code"></block> は、**テクニカルプレビュー**として提供されています。テスト環境では、本番環境のワークロードでは推奨されません。に設定すると<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>Astra Tridentは、ONTAP REST APIを使用してバックエンドと通信します。この機能にはONTAP 9.11.1以降が必要です。また、使用するONTAP ログインロールにはへのアクセス権が必要です<block ref="a9ba4dc88fa11d44cc7c0c918d174778" prefix=" " category="inline-code"></block> アプリケーション：これは事前定義されたによって満たされます<block ref="6173aa5206484b5224450952747c7148" prefix=" " category="inline-code"></block> および<block ref="fdb6ba311fad29ec53069808f10ebef4" prefix=" " category="inline-code"></block> ロール。<block ref="14d839191d1ecf387a15b5b0c802a8ae" prefix=" " category="inline-code"></block> は、MetroCluster ではサポートされていません。</block>
   <block id="c59183b2f668b355e81e7bb1256f92b3" category="paragraph">これらのオプションを使用して、のデフォルトプロビジョニングを制御できます<block ref="a4a918a45181164207929d52aec36aec" prefix=" " category="inline-code"></block> 設定のセクション。例については、以下の設定例を参照してください。</block>
   <block id="d4fbfa2dd496728ba6294eb840ce25eb" category="cell">作成したボリュームに割り当てる QoS ポリシーグループ。ストレージプール / バックエンドごとに QOSPolicy または adaptiveQosPolicy のいずれかを選択します。Trident が Astra で QoS ポリシーグループを使用するには、 ONTAP 9.8 以降が必要です。非共有のQoSポリシーグループを使用して、各コンスティチュエントに個別にポリシーグループを適用することを推奨します。共有 QoS ポリシーグループにより、すべてのワークロードの合計スループットに対して上限が適用されます。</block>
   <block id="b71ccf1062cee8c376a7eb37e3c42603" category="cell">LUKS暗号化を有効にします。を参照してください <block ref="569f9f91cdcc19909b8acbf6f423daf7" category="inline-link-macro-rx"></block>。</block>
   <block id="e62f5d0a5a95571e25197caafe78cd98" category="section-title">ボリュームプロビジョニングの例</block>
   <block id="1b9ef354b22d8a8b125247fd538da4b2" category="section-title">仮想プールを使用するバックエンドの例</block>
-  <block id="dbd1f003df542a684d9c10246dc8a88f" category="paragraph">Astra Tridentは、[Comments]フィールドにプロビジョニングラベルを設定します。FlexVol にコメントが設定されます。Astra Tridentは、プロビジョニング時に仮想プール上にあるすべてのラベルをストレージボリュームにコピーします。ストレージ管理者は、仮想プールごとにラベルを定義したり、ボリュームをラベルでグループ化したりできます。</block>
   <block id="615c9f89b360c50cfba2b2de02584387" category="paragraph">次のStorageClass定義は、上記の仮想プールを参照しています。を使用する<block ref="bed471c4a88e25ac9a7e4a7b980700a8" prefix=" " category="inline-code"></block> 各ストレージクラスは、ボリュームのホストに使用できる仮想プールを呼び出します。ボリュームには、選択した仮想プール内で定義された要素があります。</block>
   <block id="065b7cc24b33be7af1e15f59024402d2" category="paragraph">Tridentが、どの仮想プールを選択するかを判断し、ストレージ要件を確実に満たすようにします。</block>
   <block id="c632eed28bf53466df8b8a33aedab3af" category="list-text">仮想プール（存在する場合）は、元のバックエンドと同じ順序である必要があります。</block>
@@ -2785,9 +2767,7 @@
   <block id="9f0e1cc91ea4107261588e8f1bd02d07" category="cell">要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します。また、qtreeおよびLUN用に管理するボリュームの最大サイズも制限します<block ref="8b08152c170e621ffcc8bfac7c4d6785" prefix=" " category="inline-code"></block> オプションを使用すると、FlexVol あたりの最大qtree数をカスタマイズできます。</block>
   <block id="5c8b39f8ec19acb1fddb0b5c021f090d" category="cell">トラブルシューティング時に使用するデバッグフラグ。例：{"API"：false、"method"：true}は使用されません<block ref="effa2d809c72dcb6cce15a1e0b040e63" prefix=" " category="inline-code"></block> トラブルシューティングを実行していて、詳細なログダンプが必要な場合を除きます。</block>
   <block id="b660669829d401dc613c20939ed01e6e" category="cell">NFSマウントオプションをカンマで区切ったリスト。Kubernetes永続ボリュームのマウントオプションは通常はストレージクラスで指定されますが、ストレージクラスでマウントオプションが指定されていない場合、Astra Tridentはストレージバックエンドの構成ファイルで指定されているマウントオプションを使用します。ストレージクラスや構成ファイルにマウントオプションが指定されていない場合、Astra Tridentは関連付けられた永続的ボリュームにマウントオプションを設定しません。</block>
-  <block id="a2b63939d1ced2a10bc8dec4d3ef2604" category="cell">NFSボリュームの場合は「777」、SMBボリュームの場合は空（該当なし）</block>
   <block id="0275de02c3bba722f4540469d23cc535" category="paragraph">この例は、を示しています<block ref="a6ea6092cb7b9c5f31909eb4be8fa5ea" prefix=" " category="inline-code"></block> IPv6アドレスを使用している。</block>
-  <block id="bc0c77920482bbcdc79d8f24445101e0" category="paragraph">Astra Tridentは、[Comments]フィールドにプロビジョニングラベルを設定します。のFlexVol にコメントが設定されています<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block> またはFlexGroup for<block ref="844e84da8e822b4a33c4d8188da97937" prefix=" " category="inline-code"></block>。Astra Tridentは、プロビジョニング時に仮想プール上にあるすべてのラベルをストレージボリュームにコピーします。ストレージ管理者は、仮想プールごとにラベルを定義したり、ボリュームをラベルでグループ化したりできます。</block>
   <block id="0bd54df5242a2a2e9eca045fc695b41f" category="section-title">更新<block ref="ea76b2438eb5996eb2c347e7341ed59a" prefix=" " category="inline-code"></block> 初期設定後</block>
   <block id="d0b121ba3c5e39bba858ccfcf5a75957" category="paragraph">初期設定後にデータLIFを変更するには、次のコマンドを実行して、更新されたデータLIFを新しいバックエンドJSONファイルに指定します。</block>
   <block id="3fa13ec46a3746ee36c97d65fa53f096" category="admonition">PVCが1つ以上のポッドに接続されている場合は、対応するすべてのポッドを停止してから、新しいデータLIFを有効にするために稼働状態に戻す必要があります。</block>
@@ -2864,9 +2844,6 @@
   <block id="ea3d51fb2b16acb7cb260f25bc8965b1" category="sidebar">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。</block>
   <block id="e267c2490c7d73d0ffa909b77267cfaf" category="inline-link-macro">Astra Controlレプリケーションの前提条件</block>
   <block id="9814801b0db6e324ebd72f671418de64" category="paragraph">Astra Controlは、で作成したボリュームに対して、シームレスな保護、ディザスタリカバリ、および移動（Kubernetesクラスタ間でボリュームを移動）を提供します<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block>、<block ref="844e84da8e822b4a33c4d8188da97937" prefix=" " category="inline-code"></block>および<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block> ドライバ。を参照してください <block ref="dfc981ac97be73172a3119f3b831eaf8" category="inline-link-macro-rx"></block> を参照してください。</block>
-  <block id="783c2760a502e1f1537de458c9dceb7a" category="list-text">を使用する必要があります<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block> データ保護、ディザスタリカバリ、モビリティを必要とする本番環境のワークロード向けのサービスです。</block>
-  <block id="a743248a7032cdf1d468935cf180bdee" category="list-text">使用<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block> 想定されるボリューム使用量がONTAP でサポートされる量よりも大幅に多い場合</block>
-  <block id="0655cc918eb576b740cfd35bbff9c8ac" category="list-text">使用<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 想定されるボリューム使用量が、ONTAP でサポートされるおよびよりも大幅に多い場合にのみ該当します<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block> ドライバは使用できません。</block>
   <block id="df7dec428425115b59101028bbebe58c" category="list-text">使用しないでください<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> データ保護、ディザスタリカバリ、モビリティのニーズが予想される場合。</block>
   <block id="f5d176b3de4662ca3603a69ab08bc166" category="paragraph">プロビジョニングされたNFSボリュームにアクセスするためのNASオプション。</block>
   <block id="053b422d907cb55ac105c173adde1080" category="paragraph">NFSのサポート<block ref="1d770934d44de09b0d24f04fd01708ba" prefix=" " category="inline-code"></block> および<block ref="4913a9178621eadcdf191db17915fbcb" prefix=" " category="inline-code"></block> セキュリティ形式デフォルトはです<block ref="4913a9178621eadcdf191db17915fbcb" prefix=" " category="inline-code"></block>。</block>
@@ -3243,11 +3220,7 @@
   <block id="1cfd9b4e20d41cdca62f758d3b0cb58b" category="paragraph-title">Azure NetApp Filesの例</block>
   <block id="bd46b0a8c2c4c89a60ee85052ad2dd0e" category="paragraph">次に、をインポートする例を示します<block ref="bc5779a2d33eeb1304bae57f15920cfc" prefix=" " category="inline-code"></block> バックエンドのボリューム<block ref="d8dd89ab9d39f5487714722f9becb468" prefix=" " category="inline-code"></block> を指定します<block ref="062b749476713f7b5bbc675159e90bad" prefix=" " category="inline-code"></block>。</block>
   <block id="0b8ca2be5f4fe564fb8e843cbc53703d" category="admonition">GKE環境でオンデマンドボリュームスナップショットを作成する場合は、スナップショットコントローラを作成しないでください。GKEでは、内蔵の非表示のスナップショットコントローラを使用します。</block>
-  <block id="1f0c7a14cb87fb29a7346e9b4c770751" category="summary">Astra Trident は、 ONTAP クラスタとの通信に使用する 5 つの ONTAP ストレージドライバを提供します。</block>
-  <block id="9e5914532c650440b8c559c303ae8e04" category="section-title">ONTAP向けAstra Tridentストレージドライバ</block>
-  <block id="bff3ebc4ae5702fb7f811ba9acabc13a" category="paragraph">Astra Tridentは、ONTAPクラスタと通信するための次のストレージドライバを提供します。サポートされているアクセスモードは、_ReadWriteOnce_(RWO)、_ReadOnlyMany_(ROX)、_ReadWriteMany_(RWX)、_ReadWriteOncePod_(RWOP)です。</block>
   <block id="ad90b7d29d0d8a9c746868fe1f38ca90" category="paragraph">RWO、ROX、RWX、RWOP</block>
-  <block id="96b38cb92e67a8f09c2d13169b8bb555" category="paragraph">RWO、ROX、RWOP</block>
   <block id="f28228f84cb57be6c4037bf94a6afbd2" category="paragraph">スナップショットが関連付けられている永続ボリュームを削除すると、対応する Trident ボリュームが「削除状態」に更新されます。ボリュームSnapshotを削除してAstra Tridentボリュームを削除します。</block>
   <block id="f736607140d617c85245dd139003582e" category="list-text">特定のKubernetesクラスタ内のすべてのネームスペースには、Astra Tridentインスタンスを1つだけインストールする必要があります。</block>
   <block id="69bdd71a77ecd87974ee464a579ebc8f" category="list-text">アップグレードするときは、この作業を行うことが重要です<block ref="f6e7f85d8aee15940665bf722f7afac2" prefix=" " category="inline-code"></block> インチ<block ref="f652904c3bfb48fb25a0a75f485f0ff6" prefix=" " category="inline-code"></block> Astra Tridentが使用。削除して再作成することができます<block ref="f652904c3bfb48fb25a0a75f485f0ff6" prefix=" " category="inline-code"></block> 実行前のボリュームの中断はなし。</block>
@@ -3343,7 +3316,6 @@ Microsoft管理コンソールまたはONTAP CLIを使用して作成されたSM
   <block id="7fbe6e40125b7d1b2f5c5c05044e7526" category="section-title">証明書ベースの認証を有効にします</block>
   <block id="3262251091b863054cfabf046c0e3493" category="paragraph">NFS
 SMB</block>
-  <block id="7f4a1ee6a22ce0658ba6215c997ba8d8" category="paragraph">""、NFS、SMB</block>
   <block id="e8a058c8c47f6e4976a9fc5b5c00ec92" category="summary">設定したKubernetes StorageClassを使用してPVへのアクセスを要求するPersistentVolume（PV）とPersistentVolumeClaim（PVC）を作成します。その後、PVをポッドにマウントできます。</block>
   <block id="a3b7bd8edd528214a68ac3ceb5c9935c" category="doc">ボリュームをプロビジョニングする</block>
   <block id="5ba2aa62f23a406454c266617a909b2c" category="inline-link-macro">永続ボリューム_</block>
@@ -3399,21 +3371,8 @@ SMB</block>
   <block id="8d9f716dc04d23bb9af0a64fef3bbbd9" category="paragraph">次に、を使用してPVCを作成する例を示します。<block ref="2599ab7993e15386327b6345bc1cc4e1" prefix=" " category="inline-code"></block> をデータソースとして使用します。</block>
   <block id="c2d480d58505386b1609d69c842aaf44" category="section-title">ボリュームSnapshotのインポート</block>
   <block id="868f2cc6f424bbd531c3ac4f053a8125" category="inline-link-macro">Kubernetesの事前プロビジョニングされたSnapshotプロセス</block>
-  <block id="4310796b4ecbee0387355c47d26e79f6" category="paragraph">Astra Tridentは以下をサポートします。 <block ref="a3174ff04e144786ca73f65ec9b76f58" category="inline-link-macro-rx"></block> クラスタ管理者が<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> また、Astra Trident以外で作成されたSnapshotも利用できます。</block>
-  <block id="1e0e621824f4773df03d972d64c7892c" category="paragraph">Astra Tridentは、ボリュームSnapshotをインポートするためにPV名とVolumeSnapshotContentアノテーションを使用して内部Snapshotを特定し、作成するTridentSnapshot CRに名前を付けます。</block>
-  <block id="861e4c53fb0c4a84065e8b437db9f614" category="admonition">Snapshotには親ボリュームが必要です。</block>
-  <block id="72aec08b3316c218c1f87677e0a51ed0" category="list-text">*クラスタ管理者：*<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> バックエンドスナップショットを参照しています。</block>
-  <block id="c202fb047149bdb0116d555ea38063d1" category="list-text">。<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> アノテーションは<block ref="a9a33d21059c79525ad20995b3255379" prefix=" " category="inline-code"></block>。</block>
-  <block id="a2d471e4f64ec00dc1822cec2fd5995b" category="list-text">。<block ref="39133e4ee9648ecb1a2dae934a22788a" prefix=" " category="inline-code"></block> はである必要があります<block ref="6ae97f23de0ab758768fc09b1f363e79" prefix=" " category="inline-code"></block>。Astra Tridentに提供される唯一の情報は、<block ref="b4dfa9524f461a609ad4726f69b847e9" prefix=" " category="inline-code"></block> 電話だ</block>
-  <block id="bddec5d361b469ba15d203f21980b727" category="paragraph">次の例では、<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> （バックエンドSnapshot用）<block ref="82645407d5a235bd775551b0a8455cd1" prefix=" " category="inline-code"></block> および<block ref="2348ca4190691eced72fb5d6eeba6ae6" prefix=" " category="inline-code"></block> 名前付き<block ref="8da549176ef577547f8791c32a1da91a" prefix=" " category="inline-code"></block>。</block>
-  <block id="f2048b2fb4bf379591abc388d9eade66" category="admonition">。<block ref="2348ca4190691eced72fb5d6eeba6ae6" prefix=" " category="inline-code"></block> CRの名前に制約があるため、名前がバックエンドスナップショット名と常に一致しているとは限りません。</block>
-  <block id="e3631e30d03158f2ee7f5abe3814ae2c" category="list-text">*クラスタ管理者：*バインド<block ref="310a3378435f31620fbc3e7831ac7286" prefix=" " category="inline-code"></block> に移動します<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> ここで、<block ref="ac2950be4b8a710dd81ec4c2cff071da" prefix=" " category="inline-code"></block> はで指定した名前です。<block ref="2348ca4190691eced72fb5d6eeba6ae6" prefix=" " category="inline-code"></block>。</block>
-  <block id="60648a03d093f2a24b63474813c14f83" category="paragraph">次の例は、ボリュームSnapshotをバインドします。<block ref="8da549176ef577547f8791c32a1da91a" prefix=" " category="inline-code"></block> に移動します<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> 名前付き<block ref="5509d2df2b7e97b55de9ac8c06cfc6e1" prefix=" " category="inline-code"></block>。</block>
-  <block id="481efebb9fccb590cd87e8ac2f5dec96" category="list-text">*内部処理（アクションは不要）：*外部スナップショッタは新しく作成されたVolumeSnapshotContentを確認し、<block ref="b4dfa9524f461a609ad4726f69b847e9" prefix=" " category="inline-code"></block> 電話だAstra Tridentが<block ref="9a303ae09fee10afe60e5fd9e00e5e45" prefix=" " category="inline-code"></block>。</block>
-  <block id="373ac13882294b603bb64da84dc4fae5" category="list-text">外部スナップショットは、<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> 終了：<block ref="bdc3aa73b1bbfc0b0212a8f6a8bb2077" prefix=" " category="inline-code"></block> ボリュームSnapshotを<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>。</block>
   <block id="f6e6b6f8bbabf2b4d61efaa16f96f7c7" category="list-text">Tridentのリターン<block ref="0253f5e864e2646df8eab03ca4f066ee" prefix=" " category="inline-code"></block>。</block>
   <block id="2fae3f8997b56adf73a63fcf9e10a75d" category="list-text">*任意のユーザー：*<block ref="2b3f8e4d49589c4452db0a07d619d824" prefix=" " category="inline-code"></block> 新しい<block ref="310a3378435f31620fbc3e7831ac7286" prefix=" " category="inline-code"></block>を参照してください<block ref="be455c19a1930c91806853db05c277d9" prefix=" " category="inline-code"></block> （または<block ref="43cbd4bd62b601d2f5e0b618220b0f44" prefix=" " category="inline-code"></block>）nameは<block ref="310a3378435f31620fbc3e7831ac7286" prefix=" " category="inline-code"></block> 名前。</block>
-  <block id="dbb9cfb0687e7c3a92a94550713c8e6d" category="paragraph">次に、を参照するPVCを作成する例を示します。<block ref="8da549176ef577547f8791c32a1da91a" prefix=" " category="inline-code"></block> ボリュームSnapshot：</block>
   <block id="35d57da577b5f55299f7644e8b2de091" category="section-title">Snapshotが関連付けられているPVを削除する</block>
   <block id="b1bc7c11251b98a19ba1fc0ad08275ed" category="section-title">ボリュームSnapshotコントローラの導入</block>
   <block id="785a74cfc0b587326abdc91a50fc4a95" category="paragraph">Astra Tridentでは、ONTAPバックエンドのエクスポートポリシーを動的に管理できます。これにより、ストレージ管理者は、明示的なルールを手動で定義するのではなく、ワーカーノードの IP で許容されるアドレススペースを指定できます。エクスポートポリシーの管理が大幅に簡易化され、エクスポートポリシーを変更しても、ストレージクラスタに対する手動の操作は不要になります。さらに、この方法を使用すると、ストレージクラスタへのアクセスを指定した範囲内のIPを持つワーカーノードだけに制限できるため、きめ細かい管理が可能になります。</block>
@@ -3500,7 +3459,6 @@ SMB</block>
   <block id="fcf85cd17f22ed47dfe9169453e44dc1" category="paragraph">Astra Tridentは、設定されたアクセスグループに新しいボリュームを関連付けますが、アクセスグループ自体の作成や管理は行いません。アクセスグループには、ストレージバックエンドをAstra Tridentに追加する前に存在している必要があります。また、そのバックエンドでプロビジョニングされたボリュームをマウントできる可能性があるKubernetesクラスタ内のすべてのノードのiSCSI IQNが含まれている必要があります。ほとんどのインストール環境では、クラスタ内のすべてのワーカーノードがこれに含まれます。</block>
   <block id="ca3c25915a30bef4ec583f6082477acf" category="paragraph">デフォルト設定を使用している設定から変更する場合<block ref="47cb44be55a0dffa15dfc900a4c687be" prefix=" " category="inline-code"></block> 他のユーザも使用するアクセスグループには、のIDを追加します<block ref="47cb44be55a0dffa15dfc900a4c687be" prefix=" " category="inline-code"></block> リスト内のアクセスグループ。</block>
   <block id="88e4f10ca85b56deb88df953f1b028c9" category="admonition">保護、リカバリ、モビリティにAstra Controlを使用している場合は、 <block ref="655b383e69b0d2ae89ad0b4bf7e37964" category="inline-xref-macro-rx"></block>。</block>
-  <block id="5e5ae25254f91097d911b58f235c0657" category="admonition">ONTAPバックエンドの認証には、セキュリティロール（ユーザ名とパスワード）のログインクレデンシャル、またはONTAPクラスタにインストールされている秘密鍵と証明書を使用できます。を使用して既存のバックエンドを更新し、認証モードを移行することができます<block ref="defd1e55f93269ac9278afc086951ba8" prefix=" " category="inline-code"></block>。</block>
   <block id="c6891a9678e67fff611982bdd3dc5a4d" category="section-title">Astra Controlドライバの互換性</block>
   <block id="b2edeceecc054572188ee3b08cd58c64" category="list-text">バイナリを配置して構成ファイルを作成したら、目的の構成ファイルを使用してTridentデーモンを起動します。</block>
   <block id="ed79382c003eb221606454bd2116c86f" category="summary">Astra Trident は、ネットアップが管理しているオープンソースのストレージプロビジョニングおよびオーケストレーションツールです。このコンテナを使用すると、 Docker と Kubernetes で管理されるコンテナ化アプリケーション用のストレージボリュームを作成できます。** Astra Trident 23.07へのアップグレードに関する重要な情報については、リリースノートをご覧ください。**</block>
@@ -3619,7 +3577,6 @@ Yesfootnote: 5[]：Astra Tridentによるサポート</block>
   <block id="7a15e63f1d0efc213151254bbc1b2d0d" category="doc">Tridentオペレータのインストールをアップグレード</block>
   <block id="0f443eb922735ce52f2b490ffca00e49" category="paragraph">Astra Tridentは、Tridentオペレータを使用して手動またはHelmを使用してアップグレードできます。Tridentオペレータのインストール環境から別のTridentオペレータのインストール環境へのアップグレード、または<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> Tridentオペレータバージョンへのインストールレビュー <block ref="5cffa5fbe758cc3901f0e33c78b29d1b" category="inline-link-macro-rx"></block> Tridentオペレータのインストールをアップグレードする前に</block>
   <block id="3ef75911ec16a9d0ba70cfd4e68dcb71" category="section-title">手動インストールのアップグレード</block>
-  <block id="5ed69ef07355e375ad2d6619b584ffe9" category="paragraph">クラスタを対象としたTridentオペレータのインストールから、クラスタを対象とした別のTridentオペレータのインストールにアップグレードできます。すべてのAstra Tridentバージョン21.01以降では、クラスタを対象とした演算子を使用します。</block>
   <block id="b0e74afe1fdeb605b5c47b501c43b71b" category="inline-link-macro">インストールされているバージョン</block>
   <block id="4642420c93e6091ce8421e89a16fd80d" category="admonition">ネームスペースを対象としたオペレータ（バージョン20.07~20.10）を使用してインストールされたAstra Tridentからアップグレードするには、次のアップグレード手順を使用してください： <block ref="567dd1ff029f25a404a69ff1e3c8d83b" category="inline-link-macro-rx"></block> 実績があります。</block>
   <block id="eb7a4fa3d9aff7ec5b23abb8b82d516b" category="paragraph">Tridentにはバンドルファイルが用意されています。このファイルを使用して、オペレータをインストールしたり、Kubernetesバージョンに対応する関連オブジェクトを作成したりできます。</block>
@@ -3865,4 +3822,42 @@ Fully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定で�
   <block id="57154d2dcf591aaa3d4dcbfbba196075" category="inline-link-macro">サポートされるONTAPの制限</block>
   <block id="7fe76f1189ac93d41118f7ba3e36e3ab" category="list-text">使用<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block> 永続的ボリュームの使用数が次の値よりも多いと予想される場合のみ <block ref="e5997a58d747f862af8a862cd1b54e31" category="inline-link-macro-rx"></block>。</block>
   <block id="a6b18abf4de4d534121b0cca3b164d74" category="list-text">使用<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 永続的ボリュームの使用数が次の値よりも多いと予想される場合のみ <block ref="e5997a58d747f862af8a862cd1b54e31" category="inline-link-macro-rx"></block> および<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block> ドライバは使用できません。</block>
+  <block id="aa33f1094363f0d5dc3ca342e19ec6e0" category="paragraph">クラスタを対象としたTridentオペレータインストールから、クラスタを対象とした別のTridentオペレータインストールにアップグレードできます。すべてのAstra Tridentバージョン21.01以降では、クラスタを対象とした演算子を使用します。</block>
+  <block id="2dd987ed7fd9d4bf9fb445cc7738223b" category="paragraph">Astra Tridentは以下をサポートします。 <block ref="a3174ff04e144786ca73f65ec9b76f58" category="inline-link-macro-rx"></block> クラスタ管理者が<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> Astra Tridentの外部で作成されたオブジェクトとSnapshotをインポート</block>
+  <block id="44028ad7f17b2bd495c04edf7e9e6b36" category="paragraph">Astra TridentでSnapshotの親ボリュームが作成またはインポートされている必要があります。</block>
+  <block id="60f1523169568857649514e4ad6e4f40" category="list-text">*クラスタ管理者：*<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> バックエンドスナップショットを参照するオブジェクト。これにより、Astra TridentでSnapshotワークフローが開始されます。</block>
+  <block id="44ce6c838becb17913e38bbe2b0096fe" category="list-text">バックエンドスナップショットの名前を<block ref="4ab6864fc58ecd8b598ee10dfe2ac311" prefix=" " category="inline-code"></block> として<block ref="d42b3f1355513faa92e8e6b438dffc73" prefix=" " category="inline-code"></block>。</block>
+  <block id="4f45cf3342acaba38e45ce6b09a79e04" category="list-text">を指定します<block ref="62c99546614b1610927a47ea682b6d63" prefix=" " category="inline-code"></block> インチ<block ref="39133e4ee9648ecb1a2dae934a22788a" prefix=" " category="inline-code"></block>。Astra Tridentに提供される唯一の情報は、<block ref="b4dfa9524f461a609ad4726f69b847e9" prefix=" " category="inline-code"></block> 電話だ</block>
+  <block id="e0668acdd6b1e131a130998184f4f7fc" category="admonition">。<block ref="8773ea16ee304585aa1da2afd8f25434" prefix=" " category="inline-code"></block> CRの命名規則のため、バックエンドスナップショット名が常に一致するとは限りません。</block>
+  <block id="90a9b62f2d9107ff002b3ffcff75c334" category="paragraph">次の例では、<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> バックエンドスナップショットを参照するオブジェクト<block ref="82645407d5a235bd775551b0a8455cd1" prefix=" " category="inline-code"></block>。</block>
+  <block id="b385a638aafc60dc851702d7207b1460" category="list-text">*クラスタ管理者：*<block ref="310a3378435f31620fbc3e7831ac7286" prefix=" " category="inline-code"></block> を参照するCR<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> オブジェクト。これにより、<block ref="310a3378435f31620fbc3e7831ac7286" prefix=" " category="inline-code"></block> 指定された名前空間内。</block>
+  <block id="4fd027fecd2883c25a41ecd68536b1d6" category="paragraph">次の例では、<block ref="310a3378435f31620fbc3e7831ac7286" prefix=" " category="inline-code"></block> CR名<block ref="117b36cc8905f43e1ffd580e8b17723b" prefix=" " category="inline-code"></block> を参照しています。<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> 名前付き<block ref="ae79a6ea6405531b451963557819c96a" prefix=" " category="inline-code"></block>。</block>
+  <block id="b44a9af30767857be583043a573285f8" category="list-text">*内部処理（アクション不要）：*外部スナップショットは、新しく作成されたスナップショットを認識します。<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> を実行します。<block ref="b4dfa9524f461a609ad4726f69b847e9" prefix=" " category="inline-code"></block> 電話だAstra Tridentが<block ref="9a303ae09fee10afe60e5fd9e00e5e45" prefix=" " category="inline-code"></block>。</block>
+  <block id="92aa04a2cf75f40187ef422ef48baa9f" category="list-text">外部スナップショットは、<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> 終了：<block ref="bdc3aa73b1bbfc0b0212a8f6a8bb2077" prefix=" " category="inline-code"></block> および<block ref="310a3378435f31620fbc3e7831ac7286" prefix=" " category="inline-code"></block> 終了：<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>。</block>
+  <block id="5581736d9cc57d1f1193e52f799c03b2" category="paragraph">次に、を参照するPVCを作成する例を示します。<block ref="310a3378435f31620fbc3e7831ac7286" prefix=" " category="inline-code"></block> 名前付き<block ref="117b36cc8905f43e1ffd580e8b17723b" prefix=" " category="inline-code"></block>。</block>
+  <block id="a288b0971f8f6c63f5e6510bcebf421b" category="cell">ドライバ名+"_"+ dataLIF</block>
+  <block id="280a6a6866847c57b1a98bbcdc929268" category="cell">""（デフォルトでは適用されません）</block>
+  <block id="3eeb940d8060411516e1578a9fd70a15" category="cell">トラブルシューティング時に使用するデバッグフラグ。例：｛"api"：false、"method"：true｝
+
+トラブルシューティングを行い、詳細なログダンプが必要な場合を除き、は使用しないでください。</block>
+  <block id="ebc576222020c2a2ae2fc769169f1d2a" category="cell">"正しい"</block>
+  <block id="c41b872c22969c2098a0056121589349" category="cell">スペースリザベーションモード：「none」（シン）または「volume」（シック）</block>
+  <block id="f6d62a8e69201d3806ac1ef24ec64c4d" category="cell">"なし"</block>
+  <block id="6b3e1a8dae111668b3e4e13c5949a7c0" category="cell">次の場合は「0」<block ref="0a236e7685e50a59df980d0a30929d6c" prefix=" " category="inline-code"></block> は「none」、それ以外の場合は「」です。</block>
+  <block id="7639141e9ab9cd89ef8bc0b16fd34e6a" category="cell">「none」を使用する階層化ポリシー</block>
+  <block id="07b6e78dbb76bc803c585f0e0579de56" category="cell">ONTAP 9.5より前のSVM-DR設定の場合は「snapshot-only」</block>
+  <block id="472f537653935d084b34d91ce4119f17" category="paragraph">Astra Tridentでは、[Comments]フィールドにプロビジョニングラベルが設定されます。FlexVol にコメントが設定されます。Astra Tridentは、プロビジョニング時に仮想プール上にあるすべてのラベルをストレージボリュームにコピーします。ストレージ管理者は、仮想プールごとにラベルを定義したり、ボリュームをラベルでグループ化したりできます。</block>
+  <block id="a486595fa1d9f349d9f9385ef2cb39f0" category="cell">「ontap-nas」、「ontap-nas-economy」、「ontap-nas-flexgroup」、「ontap-san」、「ontap-san-economy」</block>
+  <block id="e50e8adc0d4818a8ed496eb95b3aea51" category="cell">["0.0.0.0/0","::/0"]'</block>
+  <block id="86780ad6247dfbcd90ca1455ee592852" category="cell">"トライデント"</block>
+  <block id="e70237f69c6dce25fd2312b8d7f00b1e" category="cell">"100"</block>
+  <block id="7e6a32bd8074b1aa2c8c0d2529140ae4" category="cell">トラブルシューティング時に使用するデバッグフラグ。例：｛"api"：false、"method"：true｝
+
+使用しないでください<block ref="effa2d809c72dcb6cce15a1e0b040e63" prefix=" " category="inline-code"></block> トラブルシューティングを実行していて、詳細なログダンプが必要な場合を除きます。</block>
+  <block id="89ffa293e05655bd6be9d422345be38a" category="cell">"200"</block>
+  <block id="3eda001907760c018e29ddf4cb7aa3c8" category="cell">NFSボリュームの場合は「777」、SMBボリュームの場合は空（該当なし）</block>
+  <block id="7e8aabb1dc00b7d4aac6d0876f6507f4" category="cell">にアクセスする権限を管理します。<block ref="a15da8cecb1f1192c4d913b8ba676121" prefix=" " category="inline-code"></block> ディレクトリ</block>
+  <block id="5f04fbb334c6fb8030146ad8f76a953a" category="paragraph">Astra Tridentでは、[Comments]フィールドにプロビジョニングラベルが設定されます。コメントは次のFlexVolに設定されています：<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block> またはFlexGroup for<block ref="844e84da8e822b4a33c4d8188da97937" prefix=" " category="inline-code"></block>。Astra Tridentは、プロビジョニング時に仮想プール上にあるすべてのラベルをストレージボリュームにコピーします。ストレージ管理者は、仮想プールごとにラベルを定義したり、ボリュームをラベルでグループ化したりできます。</block>
+  <block id="aea10b5a282698ad4477a7113234ae65" category="inline-link-macro">ボリュームSnapshotのインポート</block>
+  <block id="4999635328ae714b8eb5f24934a24943" category="admonition">通常は、<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> オブジェクト。ただし、次の場合は例外です。 <block ref="0b4cdf17ac3e4123330cb8e51ec533a2" category="inline-link-macro-rx"></block> Astra Trident以外で作成</block>
 </blocks>

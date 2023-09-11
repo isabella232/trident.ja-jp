@@ -31,7 +31,7 @@ Astra Tridentのインストール環境でONTAP SANドライバを作成して�
 | 'torageDriverName' | ストレージドライバの名前 | `ontap-nas`、 `ontap-nas-economy`、 `ontap-nas-flexgroup`、 `ontap-san`、 `ontap-san-economy` 
 
 
-| backendName` | カスタム名またはストレージバックエンド | ドライバ名 + "_" + データ LIF 
+| backendName` | カスタム名またはストレージバックエンド | ドライバ名+"_"+ dataLIF 
 
 
 | 「管理 LIF 」 | クラスタ管理LIFまたはSVM管理LIFのIPアドレス。
@@ -58,49 +58,54 @@ Fully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定で�
 | 「 useCHAP 」 | CHAPを使用してONTAP SANドライバのiSCSIを認証します（ブーリアン）。をに設定します `true` Astra Tridentでは、バックエンドで指定されたSVMのデフォルト認証として双方向CHAPを設定して使用します。を参照してください link:ontap-san-prep.html["バックエンドにONTAP SANドライバを設定する準備をします"] を参照してください。 | 「偽」 
 
 
-| 「 chapInitiatorSecret 」 | CHAP イニシエータシークレット。「 useCHAP = TRUE 」の場合は必須 | 「」 
+| 「 chapInitiatorSecret 」 | CHAP イニシエータシークレット。「 useCHAP = TRUE 」の場合は必須 | "" 
 
 
-| 「ラベル」 | ボリュームに適用する任意の JSON 形式のラベルのセット | 「」 
+| 「ラベル」 | ボリュームに適用する任意の JSON 形式のラベルのセット | "" 
 
 
-| 「 chapTargetInitiatorSecret 」 | CHAP ターゲットイニシエータシークレット。「 useCHAP = TRUE 」の場合は必須 | 「」 
+| 「 chapTargetInitiatorSecret 」 | CHAP ターゲットイニシエータシークレット。「 useCHAP = TRUE 」の場合は必須 | "" 
 
 
-| 「 chapUsername 」 | インバウンドユーザ名。「 useCHAP = TRUE 」の場合は必須 | 「」 
+| 「 chapUsername 」 | インバウンドユーザ名。「 useCHAP = TRUE 」の場合は必須 | "" 
 
 
-| 「 chapTargetUsername 」 | ターゲットユーザ名。「 useCHAP = TRUE 」の場合は必須 | 「」 
+| 「 chapTargetUsername 」 | ターゲットユーザ名。「 useCHAP = TRUE 」の場合は必須 | "" 
 
 
-| 「 clientCertificate 」をクリックします | クライアント証明書の Base64 エンコード値。証明書ベースの認証に使用されます | 「」 
+| 「 clientCertificate 」をクリックします | クライアント証明書の Base64 エンコード値。証明書ベースの認証に使用されます | "" 
 
 
-| 「 clientPrivateKey 」 | クライアント秘密鍵の Base64 エンコード値。証明書ベースの認証に使用されます | 「」 
+| 「 clientPrivateKey 」 | クライアント秘密鍵の Base64 エンコード値。証明書ベースの認証に使用されます | "" 
 
 
-| 「 trustedCacertifate 」 | 信頼された CA 証明書の Base64 エンコード値。任意。証明書ベースの認証に使用されます。 | 「」 
+| 「 trustedCacertifate 」 | 信頼された CA 証明書の Base64 エンコード値。任意。証明書ベースの認証に使用されます。 | "" 
 
 
-| 「ユーザ名」 | ONTAP クラスタとの通信に必要なユーザ名。クレデンシャルベースの認証に使用されます。 | 「」 
+| 「ユーザ名」 | ONTAP クラスタとの通信に必要なユーザ名。クレデンシャルベースの認証に使用されます。 | "" 
 
 
-| 「 password 」と入力します | ONTAP クラスタとの通信にパスワードが必要です。クレデンシャルベースの認証に使用されます。 | 「」 
+| 「 password 」と入力します | ONTAP クラスタとの通信にパスワードが必要です。クレデンシャルベースの認証に使用されます。 | "" 
+
+
+| 'VM' | 使用する Storage Virtual Machine | SVM 「管理 LIF 」が指定されている場合に生成されます 
 
 
 | 'toragePrefix' | SVM で新しいボリュームをプロビジョニングする際に使用するプレフィックスを指定します。あとから変更することはできません。このパラメータを更新するには、新しいバックエンドを作成する必要があります。 | `trident` 
 
 
-| 「 AggreglimitateUsage 」と入力します | 使用率がこの割合を超えている場合は、プロビジョニングが失敗します。NetApp ONTAP バックエンドにAmazon FSXを使用している場合は、指定しないでください  `limitAggregateUsage`。提供された `fsxadmin` および `vsadmin` アグリゲートの使用状況を取得し、Astra Tridentを使用して制限するために必要な権限が含まれていない。 | “”（デフォルトでは適用されません） 
+| 「 AggreglimitateUsage 」と入力します | 使用率がこの割合を超えている場合は、プロビジョニングが失敗します。NetApp ONTAP バックエンドにAmazon FSXを使用している場合は、指定しないでください  `limitAggregateUsage`。提供された `fsxadmin` および `vsadmin` アグリゲートの使用状況を取得し、Astra Tridentを使用して制限するために必要な権限が含まれていない。 | "" （デフォルトでは適用されません） 
 
 
-| 「 limitVolumeSize 」と入力します | 要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します。また、qtreeおよびLUNに対して管理するボリュームの最大サイズを制限します。 | “”（デフォルトでは適用されません） 
+| 「 limitVolumeSize 」と入力します | 要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します。また、qtreeおよびLUNに対して管理するボリュームの最大サイズを制限します。 | ""（デフォルトでは適用されません） 
 
 
 | 'lunsPerFlexvol | FlexVol あたりの最大 LUN 数。有効な範囲は 50 、 200 です | `100` 
 
 
-| 「バグトレースフラグ」 | トラブルシューティング時に使用するデバッグフラグ。例：{"API"：false、"method"：true}は、トラブルシューティングを行って詳細なログダンプが必要な場合を除き、使用しません。 | `null` 
+| 「バグトレースフラグ」 | トラブルシューティング時に使用するデバッグフラグ。例：｛"api"：false、"method"：true｝
+
+トラブルシューティングを行い、詳細なログダンプが必要な場合を除き、は使用しないでください。 | `null` 
 
 
 | 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー *
@@ -118,22 +123,22 @@ Fully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定で�
 | パラメータ | 説明 | デフォルト 
 
 
-| 「平和の配分」 | space-allocation for LUN のコマンドを指定します | 正しいです 
+| 「平和の配分」 | space-allocation for LUN のコマンドを指定します | "正しい" 
 
 
-| 「平和のための準備」を参照してください | スペースリザベーションモード：「 none 」（シン）または「 volume 」（シック） | なし 
+| 「平和のための準備」を参照してください | スペースリザベーションモード：「none」（シン）または「volume」（シック） | "なし" 
 
 
-| 「ナプショットポリシー」 | 使用する Snapshot ポリシー | なし 
+| 「ナプショットポリシー」 | 使用する Snapshot ポリシー | "なし" 
 
 
-| 「 QOSPolicy 」 | 作成したボリュームに割り当てる QoS ポリシーグループ。ストレージプール / バックエンドごとに QOSPolicy または adaptiveQosPolicy のいずれかを選択します。Trident が Astra で QoS ポリシーグループを使用するには、 ONTAP 9.8 以降が必要です。非共有のQoSポリシーグループを使用して、各コンスティチュエントに個別にポリシーグループを適用することを推奨します。共有 QoS ポリシーグループにより、すべてのワークロードの合計スループットに対して上限が適用されます。 | 「」 
+| 「 QOSPolicy 」 | 作成したボリュームに割り当てる QoS ポリシーグループ。ストレージプール / バックエンドごとに QOSPolicy または adaptiveQosPolicy のいずれかを選択します。Trident が Astra で QoS ポリシーグループを使用するには、 ONTAP 9.8 以降が必要です。非共有のQoSポリシーグループを使用して、各コンスティチュエントに個別にポリシーグループを適用することを推奨します。共有 QoS ポリシーグループにより、すべてのワークロードの合計スループットに対して上限が適用されます。 | "" 
 
 
-| 「 adaptiveQosPolicy 」を参照してください | アダプティブ QoS ポリシーグループ：作成したボリュームに割り当てます。ストレージプール / バックエンドごとに QOSPolicy または adaptiveQosPolicy のいずれかを選択します | 「」 
+| 「 adaptiveQosPolicy 」を参照してください | アダプティブ QoS ポリシーグループ：作成したボリュームに割り当てます。ストレージプール / バックエンドごとに QOSPolicy または adaptiveQosPolicy のいずれかを選択します | "" 
 
 
-| 「スナップショット予約」 | スナップショット "0" 用に予約されたボリュームの割合 | 「 napshotPolicy 」が「 none 」の場合、それ以外の場合は「」 
+| 「スナップショット予約」 | Snapshot 用にリザーブされているボリュームの割合 | 次の場合は「0」 `snapshotPolicy` は「none」、それ以外の場合は「」です。 
 
 
 | 'plitOnClone | 作成時にクローンを親からスプリットします | いいえ 
@@ -148,7 +153,7 @@ Fully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定で�
 | 'ecurityStyle' | 新しいボリュームのセキュリティ形式 | `unix` 
 
 
-| 階層ポリシー | 「なし」を使用する階層化ポリシー | ONTAP 9.5 よりも前の SVM-DR 構成の「スナップショットのみ」 
+| 階層ポリシー | 「none」を使用する階層化ポリシー | ONTAP 9.5より前のSVM-DR設定の場合は「snapshot-only」 
 |===
 
 
@@ -324,7 +329,7 @@ password: <password>
 
 これらのサンプルバックエンド定義ファイルでは、次のような特定のデフォルトがすべてのストレージプールに設定されています。 `spaceReserve` 「なし」の場合は、 `spaceAllocation` との誤り `encryption` 実行されます。仮想プールは、ストレージセクションで定義します。
 
-Astra Tridentは、[Comments]フィールドにプロビジョニングラベルを設定します。FlexVol にコメントが設定されます。Astra Tridentは、プロビジョニング時に仮想プール上にあるすべてのラベルをストレージボリュームにコピーします。ストレージ管理者は、仮想プールごとにラベルを定義したり、ボリュームをラベルでグループ化したりできます。
+Astra Tridentでは、[Comments]フィールドにプロビジョニングラベルが設定されます。FlexVol にコメントが設定されます。Astra Tridentは、プロビジョニング時に仮想プール上にあるすべてのラベルをストレージボリュームにコピーします。ストレージ管理者は、仮想プールごとにラベルを定義したり、ボリュームをラベルでグループ化したりできます。
 
 これらの例では、一部のストレージプールが独自の `spaceReserve`、 `spaceAllocation`および `encryption` 値、および一部のプールはデフォルト値よりも優先されます。
 

@@ -141,21 +141,23 @@ spec:
 
 == ボリュームSnapshotのインポート
 
-Astra Tridentは以下をサポートします。 link:https://kubernetes.io/docs/concepts/storage/volume-snapshots/#static["Kubernetesの事前プロビジョニングされたSnapshotプロセス"^] クラスタ管理者が `VolumeSnapshotContent` また、Astra Trident以外で作成されたSnapshotも利用できます。
+Astra Tridentは以下をサポートします。 link:https://kubernetes.io/docs/concepts/storage/volume-snapshots/#static["Kubernetesの事前プロビジョニングされたSnapshotプロセス"^] クラスタ管理者が `VolumeSnapshotContent` Astra Tridentの外部で作成されたオブジェクトとSnapshotをインポート
 
-Astra Tridentは、ボリュームSnapshotをインポートするためにPV名とVolumeSnapshotContentアノテーションを使用して内部Snapshotを特定し、作成するTridentSnapshot CRに名前を付けます。
-
-
-NOTE: Snapshotには親ボリュームが必要です。
+.作業を開始する前に
+Astra TridentでSnapshotの親ボリュームが作成またはインポートされている必要があります。
 
 .手順
-. *クラスタ管理者：* `VolumeSnapshotContent` バックエンドスナップショットを参照しています。
+. *クラスタ管理者：* `VolumeSnapshotContent` バックエンドスナップショットを参照するオブジェクト。これにより、Astra TridentでSnapshotワークフローが開始されます。
 +
-** 。 `VolumeSnapshotContent` アノテーションは `trident.netapp.io/internalSnapshotName: <backend-snapshot-name>`。
-** 。 `snapshotHandle` はである必要があります `<pv-name>/<VolumeSnapshotContent-name>`。Astra Tridentに提供される唯一の情報は、 `ListSnapshots` 電話だ
+** バックエンドスナップショットの名前を `annotations` として `trident.netapp.io/internalSnapshotName: <"backend-snapshot-name">`。
+** を指定します `<name-of-parent-volume-in-trident>/<volume-snapshot-content-name>` インチ `snapshotHandle`。Astra Tridentに提供される唯一の情報は、 `ListSnapshots` 電話だ
++
+
+NOTE: 。 `<volumeSnapshotContentName>` CRの命名規則のため、バックエンドスナップショット名が常に一致するとは限りません。
+
 +
 .例
-次の例では、 `VolumeSnapshotContent` （バックエンドSnapshot用） `snap-01` および `volumeSnapshotRef` 名前付き `test-snapshot`。
+次の例では、 `VolumeSnapshotContent` バックエンドスナップショットを参照するオブジェクト `snap-01`。
 
 +
 [listing]
@@ -163,28 +165,21 @@ NOTE: Snapshotには親ボリュームが必要です。
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshotContent
 metadata:
-  name: my-trident-snapshot-content
+  name: import-snap-content
   annotations:
-    trident.netapp.io/internalSnapshotName: snap-01  # This represents the name of the snapshot on the backend
+    trident.netapp.io/internalSnapshotName: "snap-01"  # This is the name of the snapshot on the backend
 spec:
   deletionPolicy: Retain
   driver: csi.trident.netapp.io
   source:
-    snapshotHandle: pvc-3e5cda7a-200b-46ab-b5d0-c9cd8db2cc01/my-trident-snapshot-content  # This is the only information provided to Trident in the ListSnapshots call
-  volumeSnapshotRef:
-    name: test-snapshot
-    namespace: default
+    snapshotHandle: pvc-f71223b5-23b9-4235-bbfe-e269ac7b84b0/import-snap-content # <import PV name or source PV name>/<volume-snapshot-content-name>
 ----
-+
-
-NOTE: 。 `volumeSnapshotRef` CRの名前に制約があるため、名前がバックエンドスナップショット名と常に一致しているとは限りません。
 
 
-
-. *クラスタ管理者：*バインド `VolumeSnapshot` に移動します `VolumeSnapshotContent` ここで、 `volumeSnapshotContentName` はで指定した名前です。 `volumeSnapshotRef`。
+. *クラスタ管理者：* `VolumeSnapshot` を参照するCR `VolumeSnapshotContent` オブジェクト。これにより、 `VolumeSnapshot` 指定された名前空間内。
 +
 .例
-次の例は、ボリュームSnapshotをバインドします。 `test-snapshot` に移動します `VolumeSnapshotContent` 名前付き `my-trident-snapshot-content`。
+次の例では、 `VolumeSnapshot` CR名 `import-snap` を参照しています。 `VolumeSnapshotContent` 名前付き `import-snap-content`。
 
 +
 [listing]
@@ -192,22 +187,22 @@ NOTE: 。 `volumeSnapshotRef` CRの名前に制約があるため、名前がバ
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
-  name: test-snapshot
-  namespace: default
+  name: import-snap
 spec:
+  # volumeSnapshotClassName: csi-snapclass (not required for pre-provisioned or imported snapshots)
   source:
-    volumeSnapshotContentName: my-trident-snapshot-content
+    volumeSnapshotContentName: import-snap-content
 ----
-. *内部処理（アクションは不要）：*外部スナップショッタは新しく作成されたVolumeSnapshotContentを確認し、 `ListSnapshots` 電話だAstra Tridentが `TridentSnapshot`。
+. *内部処理（アクション不要）：*外部スナップショットは、新しく作成されたスナップショットを認識します。 `VolumeSnapshotContent` を実行します。 `ListSnapshots` 電話だAstra Tridentが `TridentSnapshot`。
 +
-** 外部スナップショットは、 `VolumeSnapshotContent` 終了： `readyToUse` ボリュームSnapshotを `true`。
+** 外部スナップショットは、 `VolumeSnapshotContent` 終了： `readyToUse` および `VolumeSnapshot` 終了： `true`。
 ** Tridentのリターン `readyToUse=true`。
 
 
 . *任意のユーザー：* `PersistentVolumeClaim` 新しい `VolumeSnapshot`を参照してください `spec.dataSource` （または `spec.dataSourceRef`）nameは `VolumeSnapshot` 名前。
 +
 .例
-次に、を参照するPVCを作成する例を示します。 `test-snapshot` ボリュームSnapshot：
+次に、を参照するPVCを作成する例を示します。 `VolumeSnapshot` 名前付き `import-snap`。
 
 +
 [listing]
@@ -224,8 +219,7 @@ spec:
     requests:
       storage: 1Gi
   dataSource:
-    name: test-snapshot
-    namespace: default
+    name: import-snap
     kind: VolumeSnapshot
     apiGroup: snapshot.storage.k8s.io
 ----
