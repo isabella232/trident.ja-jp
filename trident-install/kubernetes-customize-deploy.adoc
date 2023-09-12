@@ -35,27 +35,62 @@ WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra T
 
 このテーブルの詳細 `TridentOrchestrator` 属性。
 
-[cols="3"]
+[cols="1,2,1"]
 |===
 | パラメータ | 説明 | デフォルト 
+
+
+| `namespace` | Astra Trident をインストールするネームスペース | デフォルト 
+
+
+| 「バグ」 | Astra Trident のデバッグを有効にします | いいえ 
+
+
+| `enableForceDetach` | `ontap-san` および `ontap-san-economy` のみ。KubernetesのNon-Graceful Node Shutdown（NGN）と連携して、ノードに障害が発生した場合に、マウントされたボリュームを含むワークロードを新しいノードに安全に移行する機能をクラスタ管理者に提供します。*これは23.04の実験的な機能です。*を参照してください <<フォースデタッチの詳細>> を参照してください。 | 「偽」 
+
+
+| `windows` | をに設定します `true` Windowsワーカーノードへのインストールを有効にします。 | いいえ 
+
+
+| `useIPv6` | IPv6 経由の Astra Trident をインストール | いいえ 
+
+
+| `k8sTimeout` | Kubernetes 処理のタイムアウト | 30 秒 
+
+
+| `silenceAutosupport` | AutoSupportバンドルをNetAppに送信しない
+自動 | いいえ 
 
 
 | 「 autosupportImage 」を参照してください | AutoSupport テレメトリのコンテナイメージ | "netapp/trident-autosupport：23.07" 
 
 
-| 「 autosupportProxy 」と入力します | AutoSupport テレメトリを送信するプロキシのアドレス / ポート | "http://proxy.example.com:8888"[] 
+| 「 autosupportProxy 」と入力します | AutoSupportを送信するためのプロキシのアドレス/ポート
+テレメータ | "http://proxy.example.com:8888"[] 
 
 
-| controller'PluginNodeSelector | Trident Controller CSI プラグインを実行しているポッドの追加ノードセレクタ。の形式はと同じです `pod.spec.nodeSelector`。 | デフォルトはありません。オプションです 
+| uninstall | Astra Trident のアンインストールに使用するフラグ | いいえ 
 
 
-| controllerPluginTolerations | Trident Controller CSI プラグインを実行しているポッドに対する許容値を上書きします。はと同じ形式です `pod.spec.Tolerations`。 | デフォルトはありません。オプションです 
+| `logFormat` | Astra Trident のログ形式が使用 [text 、 JSON] | テキスト（ Text ） 
 
 
-| 「バグ」 | Astra Trident のデバッグを有効にします | 「偽」 
+| 「 tridentImage 」のように入力します | インストールする Astra Trident イメージ | "NetApp/Trident：23.07" 
 
 
-| `enableForceDetach` | `ontap-san` および `ontap-san-economy` のみ。KubernetesのNon-Graceful Node Shutdown（NGN）と連携して、ノードに障害が発生した場合に、マウントされたボリュームを含むワークロードを新しいノードに安全に移行する機能をクラスタ管理者に提供します。*これは23.04の実験的な機能です。*を参照してください <<フォースデタッチの詳細>> を参照してください。 | 「偽」 
+| 「 imageRegistry 」と入力します | 形式の内部レジストリへのパス
+`<registry FQDN>[:port][/subpath]` | 「k8s.gcr.io/sig-storage」（k8s 1.19以降）
+または"quay.io/k8scsi" 
+
+
+| 「 kubeletDir 」を参照してください | ホスト上の kubelet ディレクトリへのパス | "/var/lib/kubeelet" 
+
+
+| `wipeout` | 完全な削除を実行するために削除するリソースのリスト
+Astra Trident |  
+
+
+| 「 imagePullSecrets 」 | 内部レジストリからイメージをプルするシークレット |  
 
 
 | `imagePullPolicy` | Tridentオペレータのイメージプルポリシーを設定します。有効な値は次のとおりです。
@@ -64,16 +99,16 @@ WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra T
 `Never` 画像を絶対に引き出さないでください。 | `IfNotPresent` 
 
 
-| controller'PluginNodeSelector | ポッド用の追加のノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。 | デフォルトはありません。オプションです 
+| controller'PluginNodeSelector | ポッド用の追加のノードセレクタ。	の形式はと同じです `pod.spec.nodeSelector`。 | デフォルトはありません。オプションです 
 
 
-| controllerPluginTolerations | ポッドに対するKubernetesの許容範囲を上書きします。POD .spec.Toleratations と同じ形式を使用します。 | デフォルトはありません。オプションです 
+| controllerPluginTolerations | ポッドに対するKubernetesの許容範囲を上書きします。はと同じ形式です `pod.spec.Tolerations`。 | デフォルトはありません。オプションです 
 
 
-| 「 nodePluginNodeSelector 」 | ポッド用の追加のノードセレクタ。pod.spec.nodeSelector と同じ形式を使用します。 | デフォルトはありません。オプションです 
+| 「 nodePluginNodeSelector 」 | ポッド用の追加のノードセレクタ。の形式はと同じです `pod.spec.nodeSelector`。 | デフォルトはありません。オプションです 
 
 
-| 「 nodePluginTolerations` 」 | ポッドに対するKubernetesの許容範囲を上書きします。POD .spec.Toleratations と同じ形式を使用します。 | デフォルトはありません。オプションです 
+| 「 nodePluginTolerations` 」 | ポッドに対するKubernetesの許容範囲を上書きします。はと同じ形式です `pod.spec.Tolerations`。 | デフォルトはありません。オプションです 
 |===
 
 NOTE: ポッドパラメータの書式設定の詳細については、を参照してください link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/["ポッドをノードに割り当てます"^]。
