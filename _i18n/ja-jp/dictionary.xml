@@ -635,8 +635,6 @@
   <block id="06da281bf5e01c3c59892dc886cd0067" category="list-text">Astra Trident をインストールするための TridentOrchestrator CR を作成します。</block>
   <block id="43f17763173fe230bdd78477152f5f7d" category="inline-link-macro">Astra Trident をアンインストール</block>
   <block id="8656f6a3d04342ff6248bd7d32949c2a" category="paragraph">Helm を使用して Astra Trident をインストールした場合は 'helm uninstall を使用してアンインストールできます</block>
-  <block id="c416a70504ae36e8cfbf555ad0d13ab9" category="paragraph">Operator を使用して Astra Trident をインストールした場合、次のいずれかの方法で Trident をアンインストールできます。</block>
-  <block id="245e84de93b9b41f643f9e737c17e702" category="paragraph">uninstall` フラグが 'true' に設定されている場合、 Trident オペレータは Trident をアンインストールしますが、 TridentOrchestrator 自体は削除しません。Trident を再度インストールする場合は、 TridentOrchestrator をクリーンアップして新しい Trident を作成する必要があります。</block>
   <block id="3bda6d3452a50ffddd40bb74b05d6c50" category="summary">Astra Trident は四半期ごとにリリースサイクルを実施し、毎年 4 つのメジャーリリースをリリースしています。各新しいリリースは、以前のリリースに基づいてビルドされ、新機能とパフォーマンスの強化に加え、バグの修正や改善点が追加されています。Astra Trident の新機能を活用するには、 1 年に 1 回以上アップグレードすることを推奨します。</block>
   <block id="3386987a97643481040e99019808e020" category="doc">Astra Trident をアップグレード</block>
   <block id="558ab0bef1894a7a726109d36632d09d" category="inline-link-macro">既知の問題</block>
@@ -3570,8 +3568,6 @@ Yesfootnote: 5[]：Astra Tridentによるサポート</block>
   <block id="426346b94737adca6c2d979d911464ef" category="section-title">Tridentオペレータのインストールをアンインストールする</block>
   <block id="253ead25988bfe2dee06d2227693e39d" category="paragraph">Tridentオペレータのインストールは手動でアンインストールすることも、Helmを使用してアンインストールすることもできます。</block>
   <block id="2985edaba812b8b31d08cc8513fee0a3" category="section-title">手動インストールのアンインストール</block>
-  <block id="932d8e226d5e26c888990ae2e734feb8" category="list-text">**編集<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> アンインストールフラグを設定するには：**を編集できます<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> をクリックして設定します<block ref="f41a95848a012f4f1a6550ce79c588aa" prefix=" " category="inline-code"></block>。</block>
-  <block id="d7348a31cc49a1353d8a060756d323e4" category="list-text">を編集します<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> CRおよびを設定します<block ref="fe98497efedbe156ecc4b953aea77e07" prefix=" " category="inline-code"></block> 次のようなフラグを設定します。</block>
   <block id="55f6e2744208ccefe34f3e05ced2c988" category="section-title">Helmインストールのアンインストール</block>
   <block id="99dec4df69ba043a5eb3118e1e0b364e" category="section-title">のアンインストール<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> インストール</block>
   <block id="7a15e63f1d0efc213151254bbc1b2d0d" category="doc">Tridentオペレータのインストールをアップグレード</block>
@@ -3756,8 +3752,6 @@ Fully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定で�
   <block id="fed6290ac938ca603cf5f4f680802954" category="open-title">&lt;code&gt;tridentctl&lt;/code&gt;</block>
   <block id="cc40bbe559f5f0b7306a8ae2941647b5" category="paragraph">Astra Tridentのアンインストール後にCRDを完全に削除するには<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block></block>
   <block id="660807cada2c8061fb92638cfe0568d0" category="list-text">アップグレードと再インストールを簡単に行うため、Astra Tridentをアンインストールしても、Astra Tridentで作成されたCRDや関連オブジェクトは削除されません。Astra Tridentとそのすべてのデータを完全に削除する必要がある場合は、を参照してください。 <block ref="9d95a644de0932ac2f909a32a488bd14" category="inline-link-macro-rx"></block>。</block>
-  <block id="3277c9131339b6e3e8b8401d060b2ace" category="list-text">**削除<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block>:**を削除する<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> Astra Tridentの導入に使用したCRでは、Tridentをアンインストールするようオペレータに指示します。オペレータがの削除を処理します<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> さらに、Astra Tridentの導入とデプロイを削除し、インストールの一部として作成したTridentポッドを削除します。</block>
-  <block id="d92f992bb942ae97af56a9921f1fb6d0" category="paragraph">を使用します<block ref="fe98497efedbe156ecc4b953aea77e07" prefix=" " category="inline-code"></block> のコマンド<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> CRDと関連オブジェクトを除くAstra Tridentに関連付けられているすべてのリソースを削除する。</block>
   <block id="88251b113e3f1da4ba88b0d4283d23ed" category="paragraph">Astra Tridentのインストール環境でONTAP SANドライバを作成して使用する方法をご紹介します。このセクションでは、バックエンドの構成例と、バックエンドをStorageClassesにマッピングするための詳細を示します。</block>
   <block id="00100eed0a9df5b2142497897b426d44" category="cell">クラスタ管理LIFまたはSVM管理LIFのIPアドレス。
 
@@ -3816,7 +3810,6 @@ Fully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定で�
   <block id="d265ac83a999c5664002082de4a65e05" category="list-text"><block ref="40ecbfec412666aee449608e50f67b87" prefix="" category="inline-code"></block> すべての画像が1つのレジストリにある場合。</block>
   <block id="183ccfb0be6f36dfc545d9bf582a1180" category="list-text"><block ref="d3a400126b30a5fb9f887818fc7e1f04" prefix="" category="inline-code"></block> TridentイメージがCSIイメージとは別のレジストリにある場合。</block>
   <block id="d06187756592965157c9f1bc4fc51a9c" category="cell">"netapp/trident-autosupport：23.07"</block>
-  <block id="b686eadf7765eed3e9de8f9cbded0fe8" category="section-title">23.07.1の新機能</block>
   <block id="06918a8f55f386d79e64a70ca217b501" category="paragraph">* Kubernetes：*ダウンタイムゼロのアップグレードをサポートするためのデーモンセットの削除を修正（<block ref="6f993c83118cc4a1dd5351c8501e26c9" category="inline-link-macro-rx"></block>）。</block>
   <block id="ca6a658f1db1af30f178530c90cbe8fc" category="section-title">23.07の変更点</block>
   <block id="57154d2dcf591aaa3d4dcbfbba196075" category="inline-link-macro">サポートされるONTAPの制限</block>
@@ -3860,4 +3853,10 @@ Fully Qualified Domain Name（FQDN；完全修飾ドメイン名）を指定で�
   <block id="5f04fbb334c6fb8030146ad8f76a953a" category="paragraph">Astra Tridentでは、[Comments]フィールドにプロビジョニングラベルが設定されます。コメントは次のFlexVolに設定されています：<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block> またはFlexGroup for<block ref="844e84da8e822b4a33c4d8188da97937" prefix=" " category="inline-code"></block>。Astra Tridentは、プロビジョニング時に仮想プール上にあるすべてのラベルをストレージボリュームにコピーします。ストレージ管理者は、仮想プールごとにラベルを定義したり、ボリュームをラベルでグループ化したりできます。</block>
   <block id="aea10b5a282698ad4477a7113234ae65" category="inline-link-macro">ボリュームSnapshotのインポート</block>
   <block id="4999635328ae714b8eb5f24934a24943" category="admonition">通常は、<block ref="d6a1ae997b76c43d7aaf3b22e620401e" prefix=" " category="inline-code"></block> オブジェクト。ただし、次の場合は例外です。 <block ref="0b4cdf17ac3e4123330cb8e51ec533a2" category="inline-link-macro-rx"></block> Astra Trident以外で作成</block>
+  <block id="4aa76d97b44b3ff21dced31974f437dc" category="paragraph">オペレータを使用してAstra Tridentをインストールした場合は、次のいずれかの方法でアンインストールできます。</block>
+  <block id="6418f8ccde0bb975a1ad82cf1d5250c6" category="list-text">**編集<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> CRを実行し、アンインストールフラグを設定します**：</block>
+  <block id="30abd17d4913fab8af9d1efd63c15f9c" category="paragraph">をクリックします<block ref="fe98497efedbe156ecc4b953aea77e07" prefix=" " category="inline-code"></block> フラグはに設定されています<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>は、TridentオペレータがTridentをアンインストールしますが、TridentOrchestrator自体は削除されません。Trident を再度インストールする場合は、 TridentOrchestrator をクリーンアップして新しい Trident を作成する必要があります。</block>
+  <block id="0b5b18e58101a5fdc2d3618c85a04814" category="list-text">**削除<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block>**：<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> Astra Tridentの導入に使用したCRでは、Tridentをアンインストールするようオペレータに指示します。オペレータがの削除を処理します<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> さらに、Astra Tridentの導入とデプロイを削除し、インストールの一部として作成したTridentポッドを削除します。</block>
+  <block id="566ef0ea3e228b1c501652e83def2c9d" category="paragraph">を使用します<block ref="fe98497efedbe156ecc4b953aea77e07" prefix=" " category="inline-code"></block> のコマンド<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> CRDと関連オブジェクトを除くAstra Tridentに関連付けられているすべてのリソースを削除するには、次の手順を実行します。</block>
+  <block id="3d11c687c20c6a6a9fec2b3d07f861f0" category="section-title">23.07.1の新機能</block>
 </blocks>

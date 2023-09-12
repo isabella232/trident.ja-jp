@@ -44,10 +44,9 @@ Tridentにはバンドルファイルが用意されています。このファ�
 +
 [listing]
 ----
-kubectl delete -f 23.04/trident-installer/deploy/bundle.yaml -n trident
+kubectl delete -f 23.04/trident-installer/deploy/<bundle-name.yaml> -n trident
 ----
 . を使用して初期インストールをカスタマイズした場合 `TridentOrchestrator` 属性を編集できます `TridentOrchestrator` インストールパラメータを変更するオブジェクト。これには、ミラーリングされたTridentおよびCSIイメージレジストリをオフラインモードに指定したり、デバッグログを有効にしたり、イメージプルシークレットを指定したりするための変更が含まれます。
-. 環境に適したバンドルYAMLファイルとAstra Tridentバージョンを使用してAstra Tridentをインストールします。たとえば、Kubernetes 1.27用のAstra Trident 23.07をインストールする場合は、次のコマンドを実行します。
 . 環境に適したバンドルYAMLファイルとAstra Tridentバージョンを使用してAstra Tridentをインストールします。たとえば、Kubernetes 1.27用のAstra Trident 23.07をインストールする場合は、次のコマンドを実行します。
 +
 [listing]
@@ -119,7 +118,7 @@ kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.1
 +
 [listing]
 ----
-kubectl create -f deploy/<BUNDLE.YAML>
+kubectl create -f deploy/<bundle-name.yaml>
 
 serviceaccount/trident-operator created
 clusterrole.rbac.authorization.k8s.io/trident-operator created

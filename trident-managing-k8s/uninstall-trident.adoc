@@ -52,20 +52,18 @@ Tridentオペレータのインストールは手動でアンインストール�
 
 === 手動インストールのアンインストール
 
-Operator を使用して Astra Trident をインストールした場合、次のいずれかの方法で Trident をアンインストールできます。
+オペレータを使用してAstra Tridentをインストールした場合は、次のいずれかの方法でアンインストールできます。
 
-* **編集 `TridentOrchestrator` アンインストールフラグを設定するには：**を編集できます `TridentOrchestrator` をクリックして設定します `spec.uninstall=true`。
-+
-** を編集します `TridentOrchestrator` CRおよびを設定します `uninstall` 次のようなフラグを設定します。
+. **編集 `TridentOrchestrator` CRを実行し、アンインストールフラグを設定します**：
 +
 [listing]
 ----
 kubectl patch torc <trident-orchestrator-name> --type=merge -p '{"spec":{"uninstall":true}}'
 ----
-** uninstall` フラグが 'true' に設定されている場合、 Trident オペレータは Trident をアンインストールしますが、 TridentOrchestrator 自体は削除しません。Trident を再度インストールする場合は、 TridentOrchestrator をクリーンアップして新しい Trident を作成する必要があります。
++
+をクリックします `uninstall` フラグはに設定されています `true`は、TridentオペレータがTridentをアンインストールしますが、TridentOrchestrator自体は削除されません。Trident を再度インストールする場合は、 TridentOrchestrator をクリーンアップして新しい Trident を作成する必要があります。
 
-
-* **削除 `TridentOrchestrator`:**を削除する `TridentOrchestrator` Astra Tridentの導入に使用したCRでは、Tridentをアンインストールするようオペレータに指示します。オペレータがの削除を処理します `TridentOrchestrator` さらに、Astra Tridentの導入とデプロイを削除し、インストールの一部として作成したTridentポッドを削除します。
+. **削除 `TridentOrchestrator`**： `TridentOrchestrator` Astra Tridentの導入に使用したCRでは、Tridentをアンインストールするようオペレータに指示します。オペレータがの削除を処理します `TridentOrchestrator` さらに、Astra Tridentの導入とデプロイを削除し、インストールの一部として作成したTridentポッドを削除します。
 
 
 
@@ -89,7 +87,7 @@ release "trident" uninstalled
 
 == のアンインストール `tridentctl` インストール
 
-を使用します `uninstall` のコマンド `tridentctl` CRDと関連オブジェクトを除くAstra Tridentに関連付けられているすべてのリソースを削除する。
+を使用します `uninstall` のコマンド `tridentctl` CRDと関連オブジェクトを除くAstra Tridentに関連付けられているすべてのリソースを削除するには、次の手順を実行します。
 
 [listing]
 ----
