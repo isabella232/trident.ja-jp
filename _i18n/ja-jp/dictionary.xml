@@ -737,7 +737,6 @@
   <block id="3de05f78e401869f4630ec8cabf339df" category="section-title">古いバージョンから新しいバージョンに直接アップグレードできますか（いくつかのバージョンはスキップします）？</block>
   <block id="ce44cbbc54839f39b351c091b0e3caa5" category="paragraph">ネットアップでは、 Astra Trident のメジャーリリースから次回のメジャーリリースへのアップグレードをサポートしています。バージョン 18.xx から 19.xx 、 19.xx から 20.xx にアップグレードできます。本番環境の導入前に、ラボでアップグレードをテストする必要があります。</block>
   <block id="0399b9e6348e554937a4d65efc97a1b8" category="section-title">Trident を以前のリリースにダウングレードできますか。</block>
-  <block id="d307563c01953bd90a41ddd049f96d51" category="inline-link-macro">ダウングレードに関するセクション</block>
   <block id="ba9c59aa9d07b25e124dcf6ca88d689a" category="section-title">バックエンドとボリュームを管理</block>
   <block id="ffe72215dff9a93d62ee68905212025e" category="section-title">ONTAP バックエンド定義ファイルに管理 LIF とデータ LIF の両方を定義する必要がありますか。</block>
   <block id="f3997f0b9446951754e665cfe7591cef" category="section-title">Astra Trident が ONTAP バックエンドに CHAP を設定できるか。</block>
@@ -1875,7 +1874,6 @@
   <block id="cce5aa9218d4019d57adcf814d7189c1" category="paragraph"><block ref="cce5aa9218d4019d57adcf814d7189c1" category="inline-image-macro-rx" type="image"></block></block>
   <block id="45b09f7cb3dcbe0274eef2b3fce46bea" category="paragraph">はい、 Astra Trident はオフラインでインストールできます。を参照してください <block ref="4a2b27d6d4bc3dd7ae85bfd131d50753" category="inline-link-macro-rx"></block>。</block>
   <block id="0f43ba8a9cfc14b033c2c652f53bfcb9" category="paragraph">必要に応じて、マニフェストファイルである Astra Trident のインストールに使用するものをローカルで生成して変更できます。を参照してください <block ref="7a68296d6f600eac17d317743bea0050" category="inline-link-macro-rx"></block>。</block>
-  <block id="72fec731c958562fd09df08eef5fbb89" category="paragraph">ダウングレードする場合は、いくつかの要因を評価する必要があります。を参照してください <block ref="ea621a0de3f004c488ea799d0fd7e41d" category="inline-link-macro-rx"></block>。</block>
   <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="paragraph">著作権に関する声明、商標、特許などにアクセスできます。</block>
   <block id="6016a2b341113bf496b719905398ecd2" category="section-title">著作権</block>
   <block id="126a02652da6de02962cf1b654fd6376" category="section-title">商標</block>
@@ -3884,4 +3882,6 @@ Astra Trident</block>
   <block id="d64d0e5bb5a552ae4986a713f41c8fc3" category="cell">ポッド用の追加のノードセレクタ。	の形式はと同じです<block ref="6ae8be3433bfc36ced79a1271e6ebf11" prefix=" " category="inline-code"></block>。</block>
   <block id="875ce721843c20d7f9aae240673ed68b" category="cell">ポッドに対するKubernetesの許容範囲を上書きします。はと同じ形式です<block ref="f1fa64fcf5077601cb803e995a51fa4f" prefix=" " category="inline-code"></block>。</block>
   <block id="00e8e1706119ce5300bdc9141ececc37" category="cell">ポッド用の追加のノードセレクタ。の形式はと同じです<block ref="6ae8be3433bfc36ced79a1271e6ebf11" prefix=" " category="inline-code"></block>。</block>
+  <block id="7786076739da628161f45de338cd6e69" category="inline-link-macro">Astra Tridentをアンインストールします</block>
+  <block id="bc2d347a4b0e30ef46f4d91b07267ca7" category="paragraph">アップグレード、依存関係の問題、またはアップグレードの失敗または不完全な実行後に確認されたバグの修正が必要な場合は、次の手順を実行してください。 <block ref="b6be8ee390417a446f993452ffee9585" category="inline-link-macro-rx"></block> そのバージョンに対応する手順を使用して、以前のバージョンを再インストールします。これは、以前のバージョンにダウングレードするための唯一の推奨方法です。</block>
 </blocks>

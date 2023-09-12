@@ -194,7 +194,7 @@ Trident ポッドが削除されても、データは失われません。Triden
 
 === Trident を以前のリリースにダウングレードできますか。
 
-ダウングレードする場合は、いくつかの要因を評価する必要があります。を参照してください link:https://docs.netapp.com/us-en/trident/trident-managing-k8s/downgrade-trident.html["ダウングレードに関するセクション"]。
+アップグレード、依存関係の問題、またはアップグレードの失敗または不完全な実行後に確認されたバグの修正が必要な場合は、次の手順を実行してください。 link:../trident-managing-k8s/uninstall-trident.html["Astra Tridentをアンインストールします"] そのバージョンに対応する手順を使用して、以前のバージョンを再インストールします。これは、以前のバージョンにダウングレードするための唯一の推奨方法です。
 
 
 
