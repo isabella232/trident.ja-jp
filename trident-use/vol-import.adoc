@@ -245,7 +245,7 @@ tridentctl import volume gcpcvs_YEppr adroit-jolly-swift -f <path-to-pvc-file> -
 
 === Azure NetApp Files の特長
 
-Astra Tridentでは、を使用したボリュームインポートがサポートされます `azure-netapp-files` および `azure-netapp-files-subvolume` ドライバ。
+Astra Tridentでは、を使用したボリュームインポートがサポートされます `azure-netapp-files` ドライバ。
 
 
 NOTE: Azure NetApp Filesボリュームをインポートするには、ボリュームパスでボリュームを特定します。ボリュームパスは、ボリュームのエクスポートパスののに続く部分です `:/`。たとえば、マウントパスがの場合などです `10.0.0.2:/importvol1`、ボリュームのパスはです `importvol1`。
