@@ -12,7 +12,7 @@ summary: Kubernetes の使用を開始したばかりの場合は、手順に従
 
 
 [role="lead"]
-Astra Tridentをインストールすれば、数ステップでストレージリソースの管理を開始できます。作業を開始する前に、 link:requirements.html["Astra Trident の要件"]。
+Astra Tridentをインストールすると、わずかな手順でストレージリソースの管理を開始できます。作業を開始する前に、 link:requirements.html["Astra Trident の要件"]。
 
 
 NOTE: Dockerについては、を参照してください。 link:../trident-docker/deploy-docker.html["Trident for Docker が必要です"]。

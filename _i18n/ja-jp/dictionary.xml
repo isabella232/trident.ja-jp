@@ -1922,7 +1922,6 @@
   <block id="7335992f174c029a990442aca68aacbd" category="admonition">クレデンシャルと証明書の両方を*指定しようとすると、バックエンドの作成が失敗し、構成ファイルに複数の認証方法が指定されているというエラーが表示されます。</block>
   <block id="d1914bc190cdc3bc9eee6db0c81021bc" category="section-title">ノードサービスの検出</block>
   <block id="2b6ab5193160f5eaca51526b15f27e3a" category="admonition">ノードサービス検出で検出されたサービスが特定されますが、サービスが適切に設定されていることは保証されませ逆に、検出されたサービスがない場合も、ボリュームのマウントが失敗する保証はありません。</block>
-  <block id="66896c99fb06e0b6c86498b249f8217a" category="cell">要求されたボリュームサイズがこの値を超えている場合、プロビジョニングが失敗します。</block>
   <block id="412427d9207c4cc4b01539aff3c50e7c" category="cell">「ネットワーク機能」</block>
   <block id="6dc4cb19f2792a3eadfa64d4b4b6d177" category="paragraph">すべてのKubernetesワーカーノードに適切なNFSツールをインストールしておく必要があります。を参照してください <block ref="f1f954e59a21e3ffe189e77dd2ee9f86" category="inline-link-macro-rx"></block> 詳細：</block>
   <block id="6adbf3424e5de1b4e2baad3b4d632c4a" category="paragraph">既存のバックエンドを更新して、別の認証方法を使用したり、クレデンシャルをローテーションしたりできます。これはどちらの方法でも機能します。ユーザ名とパスワードを使用するバックエンドは証明書を使用するように更新できますが、証明書を使用するバックエンドはユーザ名とパスワードに基づいて更新できます。これを行うには、既存の認証方法を削除して、新しい認証方法を追加する必要があります。次に'必要なパラメータを含む更新されたbackend.jsonファイルを使用して'tridentctl backend updateを実行します</block>
@@ -3427,7 +3426,6 @@ SMB</block>
   <block id="80f4cfbe493e12651c3514c9481ce1ee" category="admonition">これらの手順を使用して構築したKubernetesクラスタは、本番環境では使用しないでください。本番環境向けクラスタ向けに、ディストリビューションから提供されている本番環境導入ガイドを使用します。</block>
   <block id="46e28df17b257e6671b042b98bd37787" category="list-text"><block ref="46e28df17b257e6671b042b98bd37787" category="inline-link-rx"></block></block>
   <block id="fac0082fb8411565f3d5cb3788a17b17" category="doc">Astra Tridentのクイックスタート</block>
-  <block id="4b7a06bf8d901036491a46c6f14175e3" category="paragraph">Astra Tridentをインストールすれば、数ステップでストレージリソースの管理を開始できます。作業を開始する前に、 <block ref="a7c0f3baef818cf2a5323d10b9f5ac94" category="inline-link-macro-rx"></block>。</block>
   <block id="9a052cea99f186c7d930a0041b20a79b" category="admonition">Dockerについては、を参照してください。 <block ref="934c01af2efea144da6665bf428d8f6d" category="inline-link-macro-rx"></block>。</block>
   <block id="b0434693308513b990bcffe2314d6fb5" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block> Astra Trident をインストール</block>
   <block id="c8fce1b550592f1b2285ab7a61547927" category="paragraph">Astra Tridentには、さまざまな環境や組織に最適化された複数のインストール方法とモードが用意されています。</block>
@@ -3882,4 +3880,5 @@ Astra Trident</block>
   <block id="7786076739da628161f45de338cd6e69" category="inline-link-macro">Astra Tridentをアンインストールします</block>
   <block id="bc2d347a4b0e30ef46f4d91b07267ca7" category="paragraph">アップグレード、依存関係の問題、またはアップグレードの失敗または不完全な実行後に確認されたバグの修正が必要な場合は、次の手順を実行してください。 <block ref="b6be8ee390417a446f993452ffee9585" category="inline-link-macro-rx"></block> そのバージョンに対応する手順を使用して、以前のバージョンを再インストールします。これは、以前のバージョンにダウングレードするための唯一の推奨方法です。</block>
   <block id="5d935b9f26b929d94ae4b4f04c74ee28" category="paragraph">Astra Tridentでは、を使用したボリュームインポートがサポートされます<block ref="bc5779a2d33eeb1304bae57f15920cfc" prefix=" " category="inline-code"></block> ドライバ。</block>
+  <block id="0ff441b997c776ccd29f05b449a5f4fb" category="paragraph">Astra Tridentをインストールすると、わずかな手順でストレージリソースの管理を開始できます。作業を開始する前に、 <block ref="a7c0f3baef818cf2a5323d10b9f5ac94" category="inline-link-macro-rx"></block>。</block>
 </blocks>
