@@ -106,7 +106,7 @@ NOTE: を指定した場合 `-identity-preserve true`デスティネーション
 
 Astra TridentではSnapMirrorレプリケーション関係を設定できませんが、ストレージ管理者はを使用できます link:https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-disaster-recovery-concept.html["ONTAP SnapMirrorのレプリケーションとリカバリ"^] Astra Tridentで作成されたボリュームをレプリケート
 
-リカバリしたボリュームは、を使用してAstra Tridentにインポートできます link:trident-use/vol-import.adoc["tridentctlボリュームインポート"]。
+リカバリしたボリュームは、次のコマンドを使用してAstra Tridentにインポートできます： link:../trident-use/vol-import.html["tridentctlボリュームインポート"]。
 
 
 NOTE: ではインポートはサポートされていません `ontap-nas-economy`、  `ontap-san-economy`または `ontap-flexgroup-economy` ドライバ。
@@ -119,7 +119,7 @@ NOTE: ではインポートはサポートされていません `ontap-nas-econo
 
 * 永続ボリューム（PV）のKubernetesボリュームSnapshotを作成するための外部のSnapshotコントローラとCRD。
 +
-link:trident-use/vol-snapshots.adoc["ボリューム Snapshot"]
+link:../trident-use/vol-snapshots.html["ボリューム Snapshot"]
 
 * ONTAP Snapshot：ボリュームの内容全体のリストア、または個 々 のファイルまたはLUNのリカバリに使用します。
 +

@@ -2117,7 +2117,6 @@
   <block id="2bc97a247278d92f5552529c55ab7f0d" category="paragraph">新しいボリュームでNetApp Volume Encryption（NVE）を有効にします。デフォルトは「false」です。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。</block>
   <block id="17d79009c5c2bb6bd570bb6f87552a2d" category="paragraph">Astra Trident は、 NFS と iSCSI PVS のサイズ変更をサポートしています。これにより、ユーザは Kubernetes レイヤを介してボリュームのサイズを直接変更できます。ボリュームを拡張できるのは、 ONTAP 、 SolidFire / NetApp HCI 、 Cloud Volumes Service バックエンドなど、主要なすべてのネットアップストレージプラットフォームです。後で拡張できるようにするには ' ボリュームに関連づけられたストレージ・クラスで 'allowVolumeExpansion を true に設定します永続ボリュームのサイズを変更する必要がある場合は、 Persistent Volume Claim の「 PEC.resources.request.storage 」注釈を必要なボリュームサイズに編集します。Tridentによって、ストレージクラスタ上のボリュームのサイズが自動的に変更されます。</block>
   <block id="ee3d8ea22d8bf88f2f7fcd6d6dbf26d2" category="paragraph">この指標サービスは、 OpenShift クラスタのステータス、リソース利用率、可用性に関する重要な情報を管理者に提供します。ポッドの自動拡張機能にも必要であり、多くの組織では、チャージバックやショーバックのアプリケーションに指標サービスのデータを使用しています。</block>
-  <block id="f21f22dde0e0692333a7a28cce456b08" category="sidebar">すべてのAstraドキュメント</block>
   <block id="06d5b814514e67e2a36b491b2493aed1" category="paragraph">ここに記載された推奨事項を参考に、Astra Tridentのインストールを安全に行ってください。</block>
   <block id="252ee40ccbd23adc008945e85af83513" category="section-title">NVEおよびNAEでAstra Tridentを使用する</block>
   <block id="676ad90ce2543d29917d8a5a6fc02e01" category="inline-link-macro">ONTAP NASの構成オプション</block>
@@ -3139,12 +3138,10 @@
   <block id="815f28e53ebfb423dfe835a845095bf6" category="inline-link-macro">ONTAP SnapMirrorのレプリケーションとリカバリ</block>
   <block id="a5217e87e9aef874c28773b5774ecf37" category="paragraph">Astra TridentではSnapMirrorレプリケーション関係を設定できませんが、ストレージ管理者はを使用できます <block ref="c3487d6df2463efc752acd6f5cc45a1f" category="inline-link-macro-rx"></block> Astra Tridentで作成されたボリュームをレプリケート</block>
   <block id="c3c343b5a84229bd5095fd09f2afc5f5" category="inline-link-macro">tridentctlボリュームインポート</block>
-  <block id="5b570015a3a6711227cf6a2802ccd0d7" category="paragraph">リカバリしたボリュームは、を使用してAstra Tridentにインポートできます <block ref="d8ad77887a2224df2faf4f1df578e333" category="inline-link-macro-rx"></block>。</block>
   <block id="d8d9dfeae772da34290b750d0f848a26" category="admonition">ではインポートはサポートされていません<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block>、 <block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block>または<block ref="70d5dbddc55e3700ddbc8d21f0de22a3" prefix=" " category="inline-code"></block> ドライバ。</block>
   <block id="b489b293d6cbe8b86835d3cac8c315fb" category="section-title">Snapshotデータの保護</block>
   <block id="f332d72a4b78e34e31131f3a98c98053" category="paragraph">次のコマンドを使用してデータを保護およびリストアできます。</block>
   <block id="97fb495fd3b6672c40bb0092ca102eca" category="list-text">永続ボリューム（PV）のKubernetesボリュームSnapshotを作成するための外部のSnapshotコントローラとCRD。</block>
-  <block id="cb55f92ada2ab9103f2202b5e32b90c2" category="paragraph"><block ref="cb55f92ada2ab9103f2202b5e32b90c2" category="inline-link-macro-rx"></block></block>
   <block id="83cd672b9742ba621e93a8b69c4ab2d4" category="list-text">ONTAP Snapshot：ボリュームの内容全体のリストア、または個 々 のファイルまたはLUNのリカバリに使用します。</block>
   <block id="ad336d1fccea3e918d07055edac855a3" category="inline-link-macro">ONTAPスナップショット</block>
   <block id="0cb949d1baa06577db93328185a8f24d" category="paragraph"><block ref="0cb949d1baa06577db93328185a8f24d" category="inline-link-macro-rx"></block></block>
@@ -3881,4 +3878,6 @@ Astra Trident</block>
   <block id="bc2d347a4b0e30ef46f4d91b07267ca7" category="paragraph">アップグレード、依存関係の問題、またはアップグレードの失敗または不完全な実行後に確認されたバグの修正が必要な場合は、次の手順を実行してください。 <block ref="b6be8ee390417a446f993452ffee9585" category="inline-link-macro-rx"></block> そのバージョンに対応する手順を使用して、以前のバージョンを再インストールします。これは、以前のバージョンにダウングレードするための唯一の推奨方法です。</block>
   <block id="5d935b9f26b929d94ae4b4f04c74ee28" category="paragraph">Astra Tridentでは、を使用したボリュームインポートがサポートされます<block ref="bc5779a2d33eeb1304bae57f15920cfc" prefix=" " category="inline-code"></block> ドライバ。</block>
   <block id="0ff441b997c776ccd29f05b449a5f4fb" category="paragraph">Astra Tridentをインストールすると、わずかな手順でストレージリソースの管理を開始できます。作業を開始する前に、 <block ref="a7c0f3baef818cf2a5323d10b9f5ac94" category="inline-link-macro-rx"></block>。</block>
+  <block id="d055d4dfcb35cd1eea7b3d52e42a8924" category="paragraph">リカバリしたボリュームは、次のコマンドを使用してAstra Tridentにインポートできます： <block ref="b0a81d9cb6f9ea994a428f959b11d3c6" category="inline-link-macro-rx"></block>。</block>
+  <block id="4227c1b28cc9c04bf3552b7aae57fc3c" category="paragraph"><block ref="4227c1b28cc9c04bf3552b7aae57fc3c" category="inline-link-macro-rx"></block></block>
 </blocks>
