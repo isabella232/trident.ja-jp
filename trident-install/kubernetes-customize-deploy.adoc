@@ -52,7 +52,7 @@ WARNING: `spec.namespace` は、で指定します `TridentOrchestrator` Astra T
 | `windows` | をに設定します `true` Windowsワーカーノードへのインストールを有効にします。 | いいえ 
 
 
-| `useIPv6` | IPv6 経由の Astra Trident をインストール | いいえ 
+| `IPv6` | IPv6 経由の Astra Trident をインストール | いいえ 
 
 
 | `k8sTimeout` | Kubernetes 処理のタイムアウト | 30 秒 
