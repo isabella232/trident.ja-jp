@@ -159,23 +159,23 @@ Usage:
 ----
 フラグ：
 
-* ``--autosupport-image string`：AutoSupportテレメトリ用のコンテナイメージ（デフォルトは「NetApp/Trident autosupport：<current-version>」）。
-* `-- autosupport - proxy string` : AutoSupport Telemetry を送信するためのプロキシのアドレス / ポート。
-* `--enable-node-prep : 必要なパッケージをノードにインストールしようとします
-* ``--generate-custom-yaml `: インストールしないで YAML ファイルを生成します。
-* `-h, --help`: インストールのヘルプ。
-* ``--http-request-timeout`：TridentコントローラのREST APIのHTTP要求タイムアウトを上書きします（デフォルトは1m30秒）。
-* `-- image-registry string : 内部イメージレジストリのアドレス / ポート。
-* `--k8s-timeout duration`: すべての Kubernetes 操作のタイムアウト ( デフォルトは 3m0s)
-* `-- kubbelet-dir string`: kubelet の内部状態のホストの場所 ( デフォルトは /var/lib/kubbelet") 。
-* `--log-format string`: Astra Trident のログ形式 (text,JSON] ( デフォルトは "text") 。
-* `--pv string`: Astra Trident が使用するレガシー PV の名前は、存在しないことを確認します ( デフォルトは "trident") 。
-* `--pvc string`: Astra Trident が使用する従来の PVC の名前は、存在しないことを確認します ( デフォルトは "trident") 。
-* `--silence -autosupport` ： AutoSupport バンドルを自動的にネットアップに送信しないでください ( デフォルトは true) 。
-* `-- silent` : インストール中のほとんどの出力を無効にしなさい。
-* `--trident-image string`: インストールする Astra Trident イメージ。
-* `--use-custom-yaml `: setup ディレクトリに存在する既存の YAML ファイルを使用します。
-* `--use-ipv6` ： Astra Trident のコミュニケーションに IPv6 を使用します。
+* `--autosupport-image string`：AutoSupportテレメトリ用のコンテナイメージ（デフォルトは「NetApp/Trident autosupport：<current-version>」）。
+* `--autosupport-proxy string`：AutoSupport テレメトリを送信するプロキシのアドレス/ポート。
+* `--enable-node-prep`：ノードに必要なパッケージをインストールします。
+* `--generate-custom-yaml`:インストールを行わずにYAMLファイルを生成します。
+* `-h, --help`:インストールのヘルプ。
+* `--http-request-timeout`：TridentコントローラのREST APIのHTTP要求タイムアウトを上書きします（デフォルトは1m30秒）。
+* `--image-registry string`:内部イメージレジストリのアドレス/ポート。
+* `--k8s-timeout duration`：すべてのKubernetes処理のタイムアウト（デフォルトは3分0）。
+* `--kubelet-dir string`: kubeletの内部状態のホストの場所(デフォルトは/var/lib/kubelet )
+* `--log-format string`: Astra Tridentのログ形式(テキスト、JSON](デフォルトは「text」)。
+* `--pv string`: Astra Tridentが使用するレガシーPVの名前は、存在しないことを確認します(デフォルトは"trident")。
+* `--pvc string`：Astra Tridentで使用されている従来のPVCの名前。このPVCが存在しないことを確認します（デフォルトは「trident」）。
+* `--silence-autosupport`：AutoSupport バンドルを自動的にネットアップに送信しない（デフォルトはtrue）。
+* `--silent`:インストール中は、ほとんどの出力を無効にします。
+* `--trident-image string`：インストールするAstra Tridentのイメージ
+* `--use-custom-yaml`: setupディレクトリに存在する既存のYAMLファイルを使用します。
+* `--use-ipv6`：Astra Tridentの通信にIPv6を使用
 
 
 
