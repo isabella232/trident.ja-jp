@@ -3545,7 +3545,6 @@ Yesfootnote: 5[]：Astra Tridentによるサポート</block>
   <block id="0832423fdef6d1073376febeafb11832" category="list-text">クラスタでKubernetes 1.24以前を実行している場合は、を使用します <block ref="8b8083e47d4f32cbe1da275ad704ec28" category="inline-link-macro-rx"></block>。</block>
   <block id="4ac6364736606467ebc3be7abadfb0ef" category="list-text">クラスタでKubernetes 1.25以降を実行している場合は、を使用します <block ref="44d1f465bf50a20fa85c56cfe0e1804f" category="inline-link-macro-rx"></block>。</block>
   <block id="0af6b3e2ec6d581f66df3a49e97c5c55" category="list-text">現在の Astra Trident インスタンスのインストールに使用した Trident オペレータを削除たとえば、23.04からアップグレードする場合は、次のコマンドを実行します。</block>
-  <block id="300b059e0bac5cb2864932371a494a8a" category="list-text">環境に適したバンドルYAMLファイルとAstra Tridentバージョンを使用してAstra Tridentをインストールします。たとえば、Kubernetes 1.27用のAstra Trident 23.07をインストールする場合は、次のコマンドを実行します。</block>
   <block id="3ae662c67d403e6230b019a96e787b63" category="paragraph">Astra Trident Helmのインストールをアップグレードできます。</block>
   <block id="613909529798c8a2543da8e954e5d742" category="section-title">からのアップグレード<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> Tridentオペレータへのインストール</block>
   <block id="9142b40107d9c5a0b86ef0ce8c25a88b" category="paragraph">からTridentの最新リリースにアップグレードできます<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> インストール：既存のバックエンドとPVCは自動的に使用可能になります。</block>
@@ -3886,4 +3885,5 @@ IPv6フラグを使用してAstra Tridentをインストールした場合は、
   <block id="22948ed4deb04f4041cba28bf7536c9a" category="list-text"><block ref="356c2fa7142c3aee4cd6204d96ea0890" prefix="" category="inline-code"></block>：インストールするAstra Tridentのイメージ</block>
   <block id="c739dc3ddc713880b7989d4cb214b126" category="list-text"><block ref="8026926641b283123174e50f80da83de" prefix="" category="inline-code"></block>: setupディレクトリに存在する既存のYAMLファイルを使用します。</block>
   <block id="b4a7a23f7c478405b46b2605053c1b1c" category="list-text"><block ref="4a4ef9f92e69acc000120379678aadcf" prefix="" category="inline-code"></block>：Astra Tridentの通信にIPv6を使用</block>
+  <block id="131adabe09344184458d12d3b2b31dc0" category="list-text">環境に応じた適切なバンドルYAMLファイルを使用してAstra Tridentをインストール<block ref="98f5e7907d122797ada0893820664b60" prefix=" " category="inline-code"></block> はです<block ref="bd2cc8575fe69c7f775292759380c838" prefix=" " category="inline-code"></block> または<block ref="5a02ebff4889c2de0379a0fb10bed282" prefix=" " category="inline-code"></block> 使用しているKubernetesのバージョンに基づきます。たとえば、Astra Trident 23.07をインストールする場合は、次のコマンドを実行します。</block>
 </blocks>
