@@ -162,7 +162,7 @@ INFO Trident uninstallation succeeded.
 Astra Tridentと作成されたCRDと関連するカスタムリソースをすべて完全に削除できます。
 
 
-WARNING: この操作は元に戻せません。Astra Tridentを完全に新規にインストールする場合を除き、この作業は行わないでください。CRDを削除せずにAstra Tridentをアンインストールする方法については、を参照してください。 link:../trident-managing-k8s/uninstall-trident.html["Astra Trident をアンインストール"]。
+WARNING: この操作は元に戻せません。Astra Tridentを完全に新規にインストールする場合を除き、この作業は行わないでください。CRDを削除せずにAstra Tridentをアンインストールする方法については、を参照してください。 link:trident-managing-k8s/uninstall-trident.html["Astra Trident をアンインストール"]。
 
 [role="tabbed-block"]
 ====

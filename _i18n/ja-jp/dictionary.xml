@@ -3702,7 +3702,6 @@ Yesfootnote: 5[]：Astra Tridentによるサポート</block>
   <block id="629ac35dda697ad18f8fef7094213871" category="list-text">以前のバージョンのTridentにダウングレードする場合は、<block ref="ac8650577d1b744589a6a11b60ac38c7" prefix=" " category="inline-code"></block> Tridentを削除するコマンド。必要なをダウンロードします<block ref="f3d78353f8dac3e49bbefeb5f6a2383b" category="inline-link-rx"></block> を使用してをインストールします<block ref="430bf77bee6c59d385d4194f84c21b16" prefix=" " category="inline-code"></block> コマンドを実行します</block>
   <block id="2a1db8dc71dec3264e9155d610575785" category="section-title">Astra TridentとCRDを完全に削除</block>
   <block id="de752588132c292a8a12ad2441fbf43c" category="paragraph">Astra Tridentと作成されたCRDと関連するカスタムリソースをすべて完全に削除できます。</block>
-  <block id="90dc0d986558510d55c898cb62f4f2d5" category="admonition">この操作は元に戻せません。Astra Tridentを完全に新規にインストールする場合を除き、この作業は行わないでください。CRDを削除せずにAstra Tridentをアンインストールする方法については、を参照してください。 <block ref="6b2eb9a0745ceac90657a4978cb010ca" category="inline-link-macro-rx"></block>。</block>
   <block id="4f5dbc74e3448e08fe0e7bfd62876fc8" category="open-title">Trident オペレータ</block>
   <block id="f4508049a2ac2bdb5cb9fde92120497a" category="paragraph">Astra Tridentをアンインストールし、Tridentオペレータを使用してCRDを完全に削除するには、次の手順を実行します。</block>
   <block id="152090ff5e9a05ea7e1cf0c248449638" category="open-title">Helm</block>
@@ -3886,4 +3885,5 @@ IPv6フラグを使用してAstra Tridentをインストールした場合は、
   <block id="c739dc3ddc713880b7989d4cb214b126" category="list-text"><block ref="8026926641b283123174e50f80da83de" prefix="" category="inline-code"></block>: setupディレクトリに存在する既存のYAMLファイルを使用します。</block>
   <block id="b4a7a23f7c478405b46b2605053c1b1c" category="list-text"><block ref="4a4ef9f92e69acc000120379678aadcf" prefix="" category="inline-code"></block>：Astra Tridentの通信にIPv6を使用</block>
   <block id="131adabe09344184458d12d3b2b31dc0" category="list-text">環境に応じた適切なバンドルYAMLファイルを使用してAstra Tridentをインストール<block ref="98f5e7907d122797ada0893820664b60" prefix=" " category="inline-code"></block> はです<block ref="bd2cc8575fe69c7f775292759380c838" prefix=" " category="inline-code"></block> または<block ref="5a02ebff4889c2de0379a0fb10bed282" prefix=" " category="inline-code"></block> 使用しているKubernetesのバージョンに基づきます。たとえば、Astra Trident 23.07をインストールする場合は、次のコマンドを実行します。</block>
+  <block id="c2246b326c72ec59a183d35d55147b05" category="admonition">この操作は元に戻せません。Astra Tridentを完全に新規にインストールする場合を除き、この作業は行わないでください。CRDを削除せずにAstra Tridentをアンインストールする方法については、を参照してください。 <block ref="3ac8f1f328a77d784290ca23df4860e6" category="inline-link-macro-rx"></block>。</block>
 </blocks>
