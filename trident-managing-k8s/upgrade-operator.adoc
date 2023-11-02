@@ -47,7 +47,7 @@ Tridentにはバンドルファイルが用意されています。このファ�
 kubectl delete -f 23.04/trident-installer/deploy/<bundle.yaml> -n trident
 ----
 . を使用して初期インストールをカスタマイズした場合 `TridentOrchestrator` 属性を編集できます `TridentOrchestrator` インストールパラメータを変更するオブジェクト。これには、ミラーリングされたTridentおよびCSIイメージレジストリをオフラインモードに指定したり、デバッグログを有効にしたり、イメージプルシークレットを指定したりするための変更が含まれます。
-. 環境に応じた適切なバンドルYAMLファイルを使用してAstra Tridentをインストール `<bundle.yaml>` はです
+. 環境に応じた適切なバンドルYAMLファイルを使用してAstra Tridentをインストールします（_YAML <bundle.yaml>_は
 `bundle_pre_1_25.yaml` または `bundle_post_1_25.yaml` 使用しているKubernetesのバージョンに基づきます。たとえば、Astra Trident 23.07をインストールする場合は、次のコマンドを実行します。
 +
 [listing]

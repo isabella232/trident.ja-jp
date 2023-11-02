@@ -108,17 +108,17 @@ kubectl apply -f deploy/namespace.yaml
 ----
 * オペレータを以外のネームスペースに配置する場合 `trident` 名前空間、更新 `serviceaccount.yaml`、 `clusterrolebinding.yaml` および `operator.yaml` を使用してバンドルファイルを生成します `kustomization.yaml`。
 +
-.. を作成します `kustomization.yaml` 次のコマンドを使用して、_<bundle>_ is `bundle_pre_1_25` または `bundle_post_1_25` 使用しているKubernetesのバージョンに基づきます。
+.. を作成します `kustomization.yaml` 次のコマンドを使用して、_<bundle.yaml>_ is `bundle_pre_1_25.yaml` または `bundle_post_1_25.yaml` 使用しているKubernetesのバージョンに基づきます。
 +
 [listing]
 ----
-cp kustomization_<bundle>.yaml kustomization.yaml
+cp deploy/kustomization_<bundle.yaml> deploy/kustomization.yaml
 ----
-.. 次のコマンドを使用してバンドルをコンパイルします。WHERE_STORE_IS <bundle> `bundle_pre_1_25` または `bundle_post_1_25` 使用しているKubernetesのバージョンに基づきます。
+.. 次のコマンドを使用してバンドルをコンパイルします。WHERE_STORE_IS <bundle.yaml> `bundle_pre_1_25.yaml` または `bundle_post_1_25.yaml` 使用しているKubernetesのバージョンに基づきます。
 +
 [listing]
 ----
-kubectl kustomize deploy/ > deploy/<bundle>.yaml
+kubectl kustomize deploy/ > deploy/<bundle.yaml>
 ----
 
 
@@ -129,7 +129,7 @@ kubectl kustomize deploy/ > deploy/<bundle>.yaml
 +
 [listing]
 ----
-kubectl create -f deploy/<bundle>.yaml
+kubectl create -f deploy/<bundle.yaml>
 ----
 . operator、deployment、およびReplicaSetsが作成されたことを確認します。
 +
