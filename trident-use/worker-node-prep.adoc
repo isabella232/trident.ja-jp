@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-use/worker-node-prep.html 
-keywords: storage class, manage storage class, storage classes, kubernetes storage classes, worker node, nfs, iscsi, kubernetes clusters, self-healing, healing 
+keywords: storage class, manage storage class, storage classes, kubernetes storage classes, worker node, nfs, iscsi, kubernetes clusters, self-healing, healing, nvme, tcp 
 summary: Kubernetes クラスタ内のすべてのワーカーノードが、ポッド用にプロビジョニングしたボリュームをマウントできる必要があります。いずれかのバックエンドに ONTAP-NAS 、 ONTAP-NAS-エコノミー 、 ONTAP-NAS-flexgroup ドライバを使用している場合は、ワーカーノードに NFS ツールが必要です。それ以外の場合は iSCSI ツールが必要です。 
 ---
 = ワーカーノードを準備します
@@ -12,22 +12,25 @@ summary: Kubernetes クラスタ内のすべてのワーカーノードが、ポ
 
 
 [role="lead"]
-Kubernetesクラスタ内のすべてのワーカーノードが、ポッド用にプロビジョニングしたボリュームをマウントできる必要があります。ワーカーノードを準備するには、ドライバの選択に基づいてNFSツールまたはiSCSIツールをインストールする必要があります。
+Kubernetesクラスタ内のすべてのワーカーノードが、ポッド用にプロビジョニングしたボリュームをマウントできる必要があります。ワーカーノードを準備するには、ドライバの選択に基づいて、NFS、iSCSI、またはNVMe/TCPのいずれかのツールをインストールする必要があります。
 
 
 
 == 適切なツールを選択する
 
-ドライバを組み合わせて使用する場合は、NFSツールとiSCSIツールをインストールする必要があります。
+ドライバを組み合わせて使用している場合は、ドライバに必要なすべてのツールをインストールする必要があります。最新バージョンのRedHat CoreOSには、デフォルトでツールがインストールされています。
 
 .NFSツール
-NFSツールを使用している場合は、次の手順でインストールします。 `ontap-nas`、 `ontap-nas-economy`、 `ontap-nas-flexgroup`、 `azure-netapp-files`、 `gcp-cvs`
+NFSツールを使用している場合は、次の手順でインストールします。 `ontap-nas`、 `ontap-nas-economy`、 `ontap-nas-flexgroup`、 `azure-netapp-files`、 `gcp-cvs`。
 
 .iSCSIツール
-使用する場合はiSCSIツールをインストールします。 `ontap-san`、 `ontap-san-economy`、 `solidfire-san`
+使用する場合はiSCSIツールをインストールします。 `ontap-san`、 `ontap-san-economy`、 `solidfire-san`。
+
+.NVMeツール
+NVMeツールをインストールする（使用している場合） `ontap-san` Non-Volatile Memory Express（NVMe）over TCP（NVMe/TCP）プロトコルの場合。
 
 
-NOTE: 最新バージョンのRed Hat CoreOSには、デフォルトでNFSとiSCSIがインストールされています。
+NOTE: NVMe/TCPにはONTAP 9.12以降を推奨します。
 
 
 
@@ -228,3 +231,50 @@ NOTE: Ubuntu 18.04 では 'iSCSI デーモンを起動するために 'open-iscs
 ====
 
 WARNING: iSCSIツールをインストールしたあとにワーカーノードをリブートして、コンテナにボリュームを接続する際の障害を回避します。
+
+
+
+== NVMe/TCPホリユウム
+
+オペレーティングシステムに対応したコマンドを使用してNVMeツールをインストールします。
+
+[NOTE]
+====
+* NVMeにはRHEL 9以降が必要です。
+* Kubernetesノードのカーネルバージョンが古すぎる場合や、使用しているカーネルバージョンに対応するNVMeパッケージがない場合は、ノードのカーネルバージョンをNVMeパッケージで更新しなければならないことがあります。
+
+
+====
+[role="tabbed-block"]
+====
+.RHEL 9
+--
+[listing]
+----
+sudo yum install nvme-cli
+sudo yum install linux-modules-extra-$(uname -r)
+sudo modprobe nvme-tcp
+----
+--
+.Ubuntu
+--
+[listing]
+----
+sudo apt install nvme-cli
+sudo apt -y install linux-modules-extra-$(uname -r)
+sudo modprobe nvme-tcp
+----
+--
+====
+
+
+=== インストールを確認します
+
+インストールが完了したら、次のコマンドを使用して、Kubernetesクラスタ内の各ノードに一意のNQNが割り当てられていることを確認します。
+
+[listing]
+----
+cat /etc/nvme/hostnqn
+----
+
+WARNING: Astra Tridentは、 `ctrl_device_tmo` NVMeがダウンしてもパスを諦めないようにするための値。この設定は変更しないでください。

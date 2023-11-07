@@ -16,7 +16,7 @@ Tridentオペレータを導入し、Helmを使用してAstra Tridentをイン�
 
 
 
-== Astra Trident 23.07.1に関する重要な情報
+== Astra Tridentに関する重要な情報23.10
 
 * Astra Tridentに関する次の重要な情報をお読みください。*
 
@@ -49,11 +49,11 @@ Tridentの使用 link:https://artifacthub.io/packages/helm/netapp-trident/triden
 ----
 helm repo add netapp-trident https://netapp.github.io/trident-helm-chart
 ----
-. 使用 `helm install` をクリックし、次の例に示すように、導入環境の名前を指定します `23.07.1` は、インストールするAstra Tridentのバージョンです。
+. 使用 `helm install` をクリックし、次の例に示すように、導入環境の名前を指定します `23.10.0` は、インストールするAstra Tridentのバージョンです。
 +
 [listing]
 ----
-helm install <name> netapp-trident/trident-operator --version 23.07.1 --create-namespace --namespace <trident-namespace>
+helm install <name> netapp-trident/trident-operator --version 23.10.0 --create-namespace --namespace <trident-namespace>
 ----
 +
 
@@ -83,11 +83,11 @@ NOTE: すでにTridentの名前空間を作成している場合'--create-namesp
 コマンドラインでオーバーライドを指定します。
 
 |===
-たとえば、のデフォルト値を変更するには、のように指定します `debug`をクリックし、次のコマンドを実行します `--set` コマンドを入力します `23.07.1` は、インストールするAstra Tridentのバージョンです。
+たとえば、のデフォルト値を変更するには、のように指定します `debug`をクリックし、次のコマンドを実行します `--set` コマンドを入力します `23.10.0` は、インストールするAstra Tridentのバージョンです。
 
 [listing]
 ----
-helm install <name> netapp-trident/trident-operator --version 23.07.1  --create-namespace --namespace trident --set tridentDebug=true
+helm install <name> netapp-trident/trident-operator --version 23.10.0  --create-namespace --namespace trident --set tridentDebug=true
 ----
 
 
@@ -95,7 +95,7 @@ helm install <name> netapp-trident/trident-operator --version 23.07.1  --create-
 
 このテーブルと `values.yaml` Helmチャートの一部であるファイルには、キーとそのデフォルト値のリストが表示されます。
 
-[cols="3"]
+[cols="1,2,1"]
 |===
 | オプション | 説明 | デフォルト 
 
@@ -127,7 +127,7 @@ helm install <name> netapp-trident/trident-operator --version 23.07.1  --create-
 | `tridentNodePluginTolerations` | ポッドに対するKubernetesの許容範囲を上書きします。を参照してください <<コントローラポッドとノードポッドについて>> を参照してください。 |  
 
 
-| 「 imageRegistry 」と入力します | のレジストリを指定します `trident-operator`、 `trident`、およびその他の画像。デフォルトをそのまま使用する場合は、空のままにします。 | "" 
+| 「 imageRegistry 」と入力します | のレジストリを指定します `trident-operator`、 `trident`、およびその他の画像。デフォルトをそのまま使用する場合は、空のままにします。 | `""` 
 
 
 | `imagePullPolicy` | のイメージプルポリシーを設定します `trident-operator`。 | `IfNotPresent` 
@@ -136,7 +136,7 @@ helm install <name> netapp-trident/trident-operator --version 23.07.1  --create-
 | 「 imagePullSecrets 」 | のイメージプルシークレットを設定します `trident-operator`、 `trident`、およびその他の画像。 |  
 
 
-| 「 kubeletDir 」を参照してください | kubeletの内部状態のホスト位置を上書きできます。 | '"/var/lib/kubeelet"' 
+| 「 kubeletDir 」を参照してください | kubeletの内部状態のホスト位置を上書きできます。 | `"/var/lib/kubelet"` 
 
 
 | `operatorLogLevel` | Tridentオペレータのログレベルを次のように設定できます。 `trace`、 `debug`、 `info`、 `warn`、 `error`または `fatal`。 | `"info"` 
@@ -145,10 +145,10 @@ helm install <name> netapp-trident/trident-operator --version 23.07.1  --create-
 | `operatorDebug` | Tridentオペレータのログレベルをdebugに設定できます。 | 「真」 
 
 
-| `operatorImage` | のイメージを完全に上書きできます `trident-operator`。 | "" 
+| `operatorImage` | のイメージを完全に上書きできます `trident-operator`。 | `""` 
 
 
-| `operatorImageTag` | のタグを上書きできます `trident-operator` イメージ（Image）： | "" 
+| `operatorImageTag` | のタグを上書きできます `trident-operator` イメージ（Image）： | `""` 
 
 
 | `tridentIPv6` | IPv6クラスタでAstra Tridentを動作させることができます。 | 「偽」 
@@ -166,7 +166,7 @@ helm install <name> netapp-trident/trident-operator --version 23.07.1  --create-
 | `tridentAutosupportImageTag` | Astra Trident AutoSupport コンテナのイメージのタグを上書きできます。 | `<version>` 
 
 
-| `tridentAutosupportProxy` | Astra TridentのAutoSupport コンテナがHTTPプロキシ経由で自宅に通信できるようになります。 | "" 
+| `tridentAutosupportProxy` | Astra TridentのAutoSupport コンテナがHTTPプロキシ経由で自宅に通信できるようになります。 | `""` 
 
 
 | `tridentLogFormat` | Astra Tridentのログ形式を設定します (`text` または `json`）。 | `"text"` 
@@ -181,19 +181,19 @@ helm install <name> netapp-trident/trident-operator --version 23.07.1  --create-
 | `tridentDebug` | Astra Tridentのログレベルをに設定できます `debug`。 | 「偽」 
 
 
-| `tridentLogWorkflows` | 特定のAstra Tridentワークフローを有効にして、トレースロギングやログ抑制を実行できます。 | "" 
+| `tridentLogWorkflows` | 特定のAstra Tridentワークフローを有効にして、トレースロギングやログ抑制を実行できます。 | `""` 
 
 
-| `tridentLogLayers` | 特定のAstra Tridentレイヤでトレースロギングやログ抑制を有効にできます。 | "" 
+| `tridentLogLayers` | 特定のAstra Tridentレイヤでトレースロギングやログ抑制を有効にできます。 | `""` 
 
 
-| 「 tridentImage 」のように入力します | Astra Tridentのイメージを完全に上書きできます。 | "" 
+| 「 tridentImage 」のように入力します | Astra Tridentのイメージを完全に上書きできます。 | `""` 
 
 
-| `tridentImageTag` | Astra Tridentのイメージのタグを上書きできます。 | "" 
+| `tridentImageTag` | Astra Tridentのイメージのタグを上書きできます。 | `""` 
 
 
-| `tridentProbePort` | Kubernetesの活性/準備プローブに使用されるデフォルトポートを上書きできます。 | "" 
+| `tridentProbePort` | Kubernetesの活性/準備プローブに使用されるデフォルトポートを上書きできます。 | `""` 
 
 
 | `windows` | WindowsワーカーノードにAstra Tridentをインストールできます。 | 「偽」 
@@ -203,6 +203,9 @@ helm install <name> netapp-trident/trident-operator --version 23.07.1  --create-
 
 
 | `excludePodSecurityPolicy` | オペレータポッドのセキュリティポリシーを作成から除外します。 | 「偽」 
+
+
+| `cloudProvider` | をに設定します `"Azure"` AKSクラスタで管理対象IDを使用する場合。 | `""` 
 |===
 
 

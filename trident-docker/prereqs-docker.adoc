@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-docker/prereqs-docker.html 
-keywords: deploy, astra trident, docker, trident for docker, nfs, iscsi, protcol, nfs protocol, iscsi protocol, configure host, host config 
+keywords: deploy, astra trident, docker, trident for docker, nfs, iscsi, protcol, nfs protocol, iscsi protocol, configure host, host config, nvme/tcp, nvme 
 summary: Trident を導入するには、必要なプロトコルをホストにインストールして設定しておく必要があります。 
 ---
 = 導入の前提条件
@@ -25,90 +25,168 @@ Trident を導入するには、必要なプロトコルをホストにインス
 ----
 docker --version
 ----
-* プロトコルの前提条件がホストにインストールされ、設定されていることを確認します。
-
-
-[cols="3*"]
-|===
-| プロトコル | オペレーティングシステム | コマンド 
-
-
-| NFS  a| 
-RHEL 8以降
- a| 
-'sudo yum install -y nfs-utils'
+* プロトコルの前提条件がホストにインストールおよび設定されていることを確認します。
 
 
 
-| NFS  a| 
-Ubuntu
- a| 
-'UDO apt-get install-y nfs-common
+
+=== NFSツール
+
+オペレーティングシステム用のコマンドを使用して、NFSツールをインストールします。
+
+[role="tabbed-block"]
+====
+.RHEL 8以降
+--
+[listing]
+----
+sudo yum install -y nfs-utils
+----
+--
+.Ubuntu
+--
+[listing]
+----
+sudo apt-get install -y nfs-common
+----
+--
+====
+
+WARNING: NFSツールをインストールしたあとにワーカーノードをリブートして、コンテナにボリュームを接続する際の障害を回避します。
 
 
 
-| iSCSI  a| 
-RHEL 8以降
- a| 
+=== iSCSIツール
+
+使用しているオペレーティングシステム用のコマンドを使用して、iSCSIツールをインストールします。
+
+[role="tabbed-block"]
+====
+.RHEL 8以降
+--
 . 次のシステムパッケージをインストールします。
 +
-'sudo yum install -y lsscsi iscsi-initiator-utils SG3_utils device-mapper-multipath`
-
+[listing]
+----
+sudo yum install -y lsscsi iscsi-initiator-utils sg3_utils device-mapper-multipath
+----
 . iscsi-initiator-utils のバージョンが 6.2.0.874-2.el7 以降であることを確認します。
 +
-「 rpm -q iscsi-initiator-utils 」のように入力します
-
+[listing]
+----
+rpm -q iscsi-initiator-utils
+----
 . スキャンを手動に設定：
 +
-'sudo sed-i'/ ^ \ （ node.session.scan\).*/\1 = manual/ '/etc/iscsi/iscsid.conf
-
+[listing]
+----
+sudo sed -i 's/^\(node.session.scan\).*/\1 = manual/' /etc/iscsi/iscsid.conf
+----
 . マルチパスを有効化：
 +
-'UDO mpathconf--enable --with _multipathd y -- find _multipaths n
-
+[listing]
+----
+sudo mpathconf --enable --with_multipathd y --find_multipaths n
+----
 +
 
 NOTE: 「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults 」に含まれていることを確認します。
 
 . 「 iscsid 」と「 multipathd 」が実行されていることを確認します。
 +
-'sudo systemctl enable -- 現在 iscsid multipathd
-
+[listing]
+----
+sudo systemctl enable --now iscsid multipathd
+----
 . 'iSCSI' を有効にして開始します
 +
-'sudo systemctl enable -- 現在の iSCSI
+[listing]
+----
+sudo systemctl enable --now iscsi
+----
 
 
-
-
-
-| iSCSI  a| 
-Ubuntu
- a| 
+--
+.Ubuntu
+--
 . 次のシステムパッケージをインストールします。
 +
-'UDO apt-get install-y open-iscsi lsscsi SG3-utils multipath-tools scsitools'
-
+[listing]
+----
+sudo apt-get install -y open-iscsi lsscsi sg3-utils multipath-tools scsitools
+----
 . open-iscsi バージョンが 2.0.874-5ubuntu2.10 以降（ bionic の場合）または 2.0.874-7.1ubuntu6.1 以降（ Focal の場合）であることを確認します。
 +
-`d pkg -l open-iscsi`
-
+[listing]
+----
+dpkg -l open-iscsi
+----
 . スキャンを手動に設定：
 +
-'sudo sed-i'/ ^ \ （ node.session.scan\).*/\1 = manual/ '/etc/iscsi/iscsid.conf
-
+[listing]
+----
+sudo sed -i 's/^\(node.session.scan\).*/\1 = manual/' /etc/iscsi/iscsid.conf
+----
 . マルチパスを有効化：
 +
-'sudo tee//etc/multipath.conf <-' EOF ' defaults ｛ user_friendy_names yes find _multipaths no ｝ EOF sudo systemctl enable -- 今では multipath-tools.service sudo service multipath-tools restart'
-
+[listing]
+----
+sudo tee /etc/multipath.conf <<-'EOF'
+defaults {
+    user_friendly_names yes
+    find_multipaths no
+}
+EOF
+sudo systemctl enable --now multipath-tools.service
+sudo service multipath-tools restart
+----
 +
 
 NOTE: 「 /etc/multipath.conf 」に「 find _ multipaths no 」が「 defVaults 」に含まれていることを確認します。
 
 . 「 open-iSCSI」 および「マルチパスツール」が有効で実行されていることを確認します。
 +
-'sudo systemctl status multipath-tools `sudo systemctl enable -- 現在の open-iscsi.service` 'udo systemctl status open-iscsi'
+[listing]
+----
+sudo systemctl status multipath-tools
+sudo systemctl enable --now open-iscsi.service
+sudo systemctl status open-iscsi
+----
 
 
+--
+====
 
-|===
+
+== NVMeツール
+
+オペレーティングシステムに対応したコマンドを使用してNVMeツールをインストールします。
+
+[NOTE]
+====
+* NVMeにはRHEL 9以降が必要です。
+* Kubernetesノードのカーネルバージョンが古すぎる場合や、使用しているカーネルバージョンに対応するNVMeパッケージがない場合は、ノードのカーネルバージョンをNVMeパッケージで更新しなければならないことがあります。
+
+
+====
+[role="tabbed-block"]
+====
+.RHEL 9
+--
+[listing]
+----
+sudo yum install nvme-cli
+sudo yum install linux-modules-extra-$(uname -r)
+sudo modprobe nvme-tcp
+----
+--
+.Ubuntu
+--
+[listing]
+----
+sudo apt install nvme-cli
+sudo apt -y install linux-modules-extra-$(uname -r)
+sudo modprobe nvme-tcp
+----
+--
+====

@@ -39,22 +39,32 @@ Azure NetApp Filesバックエンドには、次の設定オプションがあ�
 | backendName` | カスタム名またはストレージバックエンド | ドライバ名 + "_" + ランダムな文字 
 
 
-| ' スクリプト ID' 。 | Azure サブスクリプションのサブスクリプション ID |  
+| ' スクリプト ID' 。 | Azure サブスクリプションのサブスクリプション ID
+
+AKSクラスタで管理IDが有効になっている場合はオプションです。 |  
 
 
-| 「 tenantID 」。 | アプリケーション登録からのテナント ID |  
+| 「 tenantID 」。 | アプリケーション登録からのテナント ID
+
+AKSクラスタで管理IDが有効になっている場合はオプションです。 |  
 
 
-| 「 clientID 」。 | アプリケーション登録からのクライアント ID |  
+| 「 clientID 」。 | アプリケーション登録からのクライアント ID
+
+AKSクラスタで管理IDが有効になっている場合はオプションです。 |  
 
 
-| 「 clientSecret 」を入力します。 | アプリケーション登録からのクライアントシークレット |  
+| 「 clientSecret 」を入力します。 | アプリケーション登録からのクライアントシークレット
+
+AKSクラスタで管理IDが有効になっている場合はオプションです。 |  
 
 
 | 「サービスレベル」 | 「標準」、「プレミアム」、「ウルトラ」のいずれかです | "" （ランダム） 
 
 
-| 「ロケーション」 | 新しいボリュームを作成する Azure の場所の名前 |  
+| 「ロケーション」 | 新しいボリュームを作成する Azure の場所の名前
+
+AKSクラスタで管理IDが有効になっている場合はオプションです。 |  
 
 
 | 「 resourceGroups 」 | 検出されたリソースをフィルタリングするためのリソースグループのリスト | "[]" （フィルタなし） 
@@ -145,8 +155,10 @@ PVCの作成時に「No capacity pools found」エラーが表示される場合
 
 == 構成例
 
-.例 1 ：最小限の構成
-[%collapsible%open]
+次の例は、ほとんどのパラメータをデフォルトのままにする基本的な設定を示しています。これは、バックエンドを定義する最も簡単な方法です。
+
+.最小限の構成
+[%collapsible]
 ====
 これは、バックエンドの絶対的な最小構成です。この構成では、Astra Tridentが設定された場所のAzure NetApp Filesに委譲されたすべてのNetAppアカウント、容量プール、サブネットを検出し、それらのプールとサブネットの1つに新しいボリュームをランダムに配置します。理由 `nasType` は省略されています `nfs` デフォルトが適用され、バックエンドがNFSボリュームにプロビジョニングされます。
 
@@ -164,8 +176,30 @@ clientSecret: SECRET
 location: eastus
 ----
 ====
-.例 2 ：容量プールフィルタを使用した特定のサービスレベル設定
-[%collapsible%open]
+.AKSの管理対象ID
+[%collapsible]
+====
+このバックエンド構成では、 `subscriptionID`、 `tenantID`、 `clientID`および `clientSecret`は、管理対象IDを使用する場合はオプションです。
+
+[listing]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentBackendConfig
+metadata:
+  name: backend-tbc-anf-1
+  namespace: trident
+spec:
+  version: 1
+  storageDriverName: azure-netapp-files
+  capacityPools: ["ultra-pool"]
+  resourceGroups: ["aks-ami-eastus-rg"]
+  netappAccounts: ["smb-na"]
+  virtualNetwork: eastus-prod-vnet
+  subnet: eastus-anf-subnet
+----
+====
+.容量プールフィルタを使用した特定のサービスレベル構成
+[%collapsible]
 ====
 このバックエンド構成では、Azureにボリュームが配置されます `eastus` の場所 `Ultra` 容量プール：Astra Tridentは、その場所のAzure NetApp Filesに委譲されているすべてのサブネットを自動的に検出し、そのいずれかに新しいボリュームをランダムに配置します。
 
@@ -185,8 +219,8 @@ capacityPools:
 - application-group-1/account-1/ultra-2
 ----
 ====
-.例 3 ：高度な設定
-[%collapsible%open]
+.高度な設定
+[%collapsible]
 ====
 このバックエンド構成は、ボリュームの配置を単一のサブネットにまで適用する手間をさらに削減し、一部のボリュームプロビジョニングのデフォルト設定も変更します。
 
@@ -217,8 +251,8 @@ defaults:
 
 ----
 ====
-.例4：仮想プールの構成
-[%collapsible%open]
+.仮想プール構成
+[%collapsible]
 ====
 このバックエンド構成では、 1 つのファイルに複数のストレージプールを定義します。これは、異なるサービスレベルをサポートする複数の容量プールがあり、それらを表すストレージクラスを Kubernetes で作成する場合に便利です。プールを区別するために、仮想プールのラベルを使用しました `performance`。
 
@@ -307,8 +341,8 @@ allowVolumeExpansion: true
 
 を使用します `nasType`、 `node-stage-secret-name`および  `node-stage-secret-namespace`を使用して、SMBボリュームを指定し、必要なActive Directoryクレデンシャルを指定できます。
 
-.例1：デフォルトネームスペースの基本設定
-[%collapsible%open]
+.デフォルトネームスペースの基本設定
+[%collapsible]
 ====
 [listing]
 ----
@@ -325,8 +359,8 @@ parameters:
 
 ----
 ====
-.例2：ネームスペースごとに異なるシークレットを使用する
-[%collapsible%open]
+.ネームスペースごとに異なるシークレットを使用する
+[%collapsible]
 ====
 [listing]
 ----
@@ -342,8 +376,8 @@ parameters:
   csi.storage.k8s.io/node-stage-secret-namespace: ${pvc.namespace}
 ----
 ====
-.例3：ボリュームごとに異なるシークレットを使用する
-[%collapsible%open]
+.ボリュームごとに異なるシークレットを使用する
+[%collapsible]
 ====
 [listing]
 ----
@@ -360,7 +394,7 @@ parameters:
 ----
 ====
 
-NOTE: `nasType: `smb` SMBボリュームをサポートするプールでフィルタリングします。 `nasType: `nfs` または `nasType: `null` NFSプールに対してフィルタを適用します。
+NOTE: `nasType: smb` SMBボリュームをサポートするプールでフィルタリングします。 `nasType: nfs` または `nasType: null` NFSプールに対してフィルタを適用します。
 
 
 

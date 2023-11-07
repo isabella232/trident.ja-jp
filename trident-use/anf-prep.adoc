@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: trident-use/anf-prep.html 
-keywords: trident backend, azure netapp files, smb volumes, smb, windows, active directory, csi proxy 
+keywords: trident backend, azure netapp files, smb volumes, smb, windows, active directory, csi proxy, aks, managed identities 
 summary: Azure NetApp Files バックエンドを設定する前に、次の要件を満たしていることを確認する必要があります。 
 ---
 = Azure NetApp Files バックエンドを設定する準備をします
@@ -18,10 +18,12 @@ Azure NetApp Files バックエンドを設定する前に、次の要件を満�
 
 == NFSボリュームとSMBボリュームの前提条件
 
-
-NOTE: Azure NetApp Files を初めてまたは新しい場所で使用する場合は、Azure NetApp Files をセットアップしてNFSボリュームを作成するためにいくつかの初期設定が必要です。を参照してください https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes["Azure：Azure NetApp Files をセットアップし、NFSボリュームを作成します"^]。
+Azure NetApp Files を初めてまたは新しい場所で使用する場合は、Azure NetApp Files をセットアップしてNFSボリュームを作成するためにいくつかの初期設定が必要です。を参照してください https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes["Azure：Azure NetApp Files をセットアップし、NFSボリュームを作成します"^]。
 
 を設定して使用します https://azure.microsoft.com/en-us/services/netapp/["Azure NetApp Files の特長"^] バックエンドには次のものが必要です。
+
+
+NOTE: `subscriptionID`、 `tenantID`、 `clientID`、 `location`および `clientSecret` AKSクラスタで管理対象IDを使用する場合はオプションです。
 
 * 容量プール。を参照してください link:https://learn.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool["Microsoft：Azure NetApp Files 用の容量プールを作成します"^]。
 * Azure NetApp Files に委任されたサブネット。を参照してください link:https://learn.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-delegate-subnet["Microsoft：サブネットをAzure NetApp Files に委任します"^]。
@@ -31,6 +33,9 @@ NOTE: Azure NetApp Files を初めてまたは新しい場所で使用する場�
 ** オーナーまたは寄与者のロール link:https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles["Azureで事前定義"^]。
 ** A link:https://learn.microsoft.com/en-us/azure/role-based-access-control/custom-roles-portal["カスタム投稿者ロール"] をサブスクリプションレベルで選択します (`assignableScopes`)以下のアクセス許可は、Astra Tridentが必要とするものに限定されます。カスタムロールを作成したあと、 link:https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal["Azureポータルを使用してロールを割り当てます"^]。
 +
+.カスタムコントリビュータロール
+[%collapsible]
+====
 [source, JSON]
 ----
 {
@@ -73,6 +78,7 @@ NOTE: Azure NetApp Files を初めてまたは新しい場所で使用する場�
     }
 }
 ----
+====
 
 
 * Azureがサポートされます `location` を1つ以上含むデータセンターを展開します link:https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-delegate-subnet["委任されたサブネット"^]。Trident 22.01の時点では `location` パラメータは、バックエンド構成ファイルの最上位にある必須フィールドです。仮想プールで指定された場所の値は無視されます。

@@ -19,7 +19,54 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 
 
 
-== 23.07.1の新機能
+== 23.10の新機能
+
+
+
+=== の修正
+
+* 要求された新しいサイズがontap-nasおよびontap-nas-flexgroupストレージドライバの合計ボリュームサイズよりも小さい場合、ボリュームの拡張が修正されました（link:https://github.com/NetApp/trident/issues/834["問題#834"^]）。
+* ontap-nasおよびontap-nas-flexgroupストレージドライバのインポート時にボリュームの使用可能なサイズのみを表示するための固定ボリュームサイズ（link:https://github.com/NetApp/trident/issues/722["問題#722"^]）。
+* ONTAP-NAS-EconomyのFlexVol名変換が修正されました。
+* ノードのリブート時にWindowsノードでAstra Tridentの初期化問題が発生する問題が修正されました。
+
+
+
+
+=== 拡張機能
+
+
+
+==== Kubernetes
+
+Kubernetes 1.28のサポートを追加。
+
+
+
+==== Astra Trident
+
+* azure-netapp-filesストレージドライバでAzure Managed Identities（AMI）を使用するためのサポートが追加されました。
+* ONTAP-SANドライバでNVMe over TCPのサポートが追加されました。
+* ユーザによってバックエンドがSuspended状態に設定されている場合に、ボリュームのプロビジョニングを一時停止する機能が追加されました（link:https://github.com/NetApp/trident/issues/558["問題#558"^]）。
+
+
+
+
+=== Astra Controlの高度な機能
+
+Astra Trident 23.10では、Astra ControlのライセンスユーザがAstra Control Provisionerと呼ばれる新しいソフトウェアコンポーネントを利用できます。このプロビジョニングツールでは、Astra Tridentだけではサポートされない、高度な管理機能とストレージプロビジョニング機能のスーパーセットを利用できます。23.10リリースでは、次の機能があります。
+
+* ONTAP NAS経済性に優れたドライバベースのストレージバックエンドで、アプリケーションのバックアップとリストアを実現
+* Kerberos 5暗号化によるストレージバックエンドのセキュリティの強化
+* スナップショットを使用したデータリカバリ
+* SnapMirrorの機能拡張
+
+
+link:https://docs.netapp.com/us-en/astra-control-center/release-notes/whats-new.html["Astra Control Provisionerの詳細をご確認ください。"^]
+
+
+
+== 23.07.1の変更点
 
 * Kubernetes：*ダウンタイムゼロのアップグレードをサポートするためのデーモンセットの削除を修正（link:https://github.com/NetApp/trident/issues/740["問題#740"^]）。
 

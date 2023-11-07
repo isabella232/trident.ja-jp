@@ -109,8 +109,15 @@ IPv6フラグを使用してAstra Tridentをインストールした場合は、
 
 
 | 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー *
+
 `useREST` は、**テクニカルプレビュー**として提供されています。テスト環境では、本番環境のワークロードでは推奨されません。に設定すると `true`Astra Tridentは、ONTAP REST APIを使用してバックエンドと通信します。この機能にはONTAP 9.11.1以降が必要です。また、使用するONTAP ログインロールにはへのアクセス権が必要です `ontap` アプリケーション：これは事前定義されたによって満たされます `vsadmin` および `cluster-admin` ロール。
-`useREST` は、MetroCluster ではサポートされていません。 | 「偽」 
+
+`useREST` は、MetroCluster ではサポートされていません。
+
+`useREST` はNVMe/TCPに完全修飾されています。 | 「偽」 
+
+
+| `sanType` | を使用して選択 `iscsi` iSCSIの場合または `nvme` （NVMe/TCPの場合）。 | `iscsi` 空白の場合 
 |===
 
 
@@ -118,7 +125,7 @@ IPv6フラグを使用してAstra Tridentをインストールした場合は、
 
 これらのオプションを使用して、のデフォルトプロビジョニングを制御できます `defaults` 設定のセクション。例については、以下の設定例を参照してください。
 
-[cols="3"]
+[cols="1,3,2"]
 |===
 | パラメータ | 説明 | デフォルト 
 
@@ -147,7 +154,9 @@ IPv6フラグを使用してAstra Tridentをインストールした場合は、
 | 「暗号化」 | 新しいボリュームでNetApp Volume Encryption（NVE）を有効にします。デフォルトは「false」です。このオプションを使用するには、クラスタで NVE のライセンスが設定され、有効になっている必要があります。NAEがバックエンドで有効になっている場合は、Astra TridentでプロビジョニングされたすべてのボリュームがNAEに有効になります。詳細については、以下を参照してください。 link:../trident-reco/security-reco.html["Astra TridentとNVEおよびNAEの相互運用性"]。 | いいえ 
 
 
-| `luksEncryption` | LUKS暗号化を有効にします。を参照してください link:../trident-reco/security-luks.html["Linux Unified Key Setup（LUKS；統合キーセットアップ）を使用"]。 | "" 
+| `luksEncryption` | LUKS暗号化を有効にします。を参照してください link:../trident-reco/security-luks.html["Linux Unified Key Setup（LUKS；統合キーセットアップ）を使用"]。
+
+LUKS暗号化はNVMe/TCPではサポートされません。 | "" 
 
 
 | 'ecurityStyle' | 新しいボリュームのセキュリティ形式 | `unix` 
@@ -323,6 +332,25 @@ username: vsadmin
 password: <password>
 ----
 ====
+.NVMe/TCPの例
+[%collapsible]
+====
+ONTAPバックエンドでNVMeを使用するSVMを設定しておく必要があります。これはNVMe/TCPの基本的なバックエンド構成です。
+
+[listing]
+----
+---
+version: 1
+backendName: NVMeBackend
+storageDriverName: ontap-san
+managementLIF: 10.0.0.1
+svm: svm_nvme
+username: vsadmin
+password: password
+sanType: nvme
+useREST: true
+----
+====
 
 
 == 仮想プールを使用するバックエンドの例
@@ -438,6 +466,32 @@ storage:
     encryption: 'false'
 ----
 ====
+.NVMe/TCPの例
+[%collapsible]
+====
+[listing]
+----
+---
+version: 1
+storageDriverName: ontap-san
+sanType: nvme
+managementLIF: 10.0.0.1
+svm: nvme_svm
+username: vsadmin
+password: <password>
+useREST: true
+defaults:
+  spaceAllocation: 'false'
+  encryption: 'true'
+storage:
+- labels:
+    app: testApp
+    cost: '20'
+  defaults:
+    spaceAllocation: 'false'
+    encryption: 'false'
+----
+====
 
 
 == バックエンドを StorageClasses にマッピングします
@@ -452,7 +506,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: protection-gold
-provisioner: netapp.io/trident
+provisioner: csi.trident.netapp.io
 parameters:
   selector: "protection=gold"
   fsType: "ext4"
@@ -465,7 +519,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: protection-not-gold
-provisioner: netapp.io/trident
+provisioner: csi.trident.netapp.io
 parameters:
   selector: "protection!=gold"
   fsType: "ext4"
@@ -478,7 +532,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: app-mysqldb
-provisioner: netapp.io/trident
+provisioner: csi.trident.netapp.io
 parameters:
   selector: "app=mysqldb"
   fsType: "ext4"
@@ -491,7 +545,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: protection-silver-creditpoints-20k
-provisioner: netapp.io/trident
+provisioner: csi.trident.netapp.io
 parameters:
   selector: "protection=silver; creditpoints=20000"
   fsType: "ext4"
@@ -504,9 +558,23 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: creditpoints-5k
-provisioner: netapp.io/trident
+provisioner: csi.trident.netapp.io
 parameters:
   selector: "creditpoints=5000"
+  fsType: "ext4"
+----
+* 。 `my-test-app-sc` StorageClassはにマッピングされます `testAPP` 内の仮想プール `ontap-san` ドライバ `sanType: nvme`。これは唯一のプールサービスです。 `testApp`。
++
+[listing]
+----
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: my-test-app-sc
+provisioner: csi.trident.netapp.io
+parameters:
+  selector: "app=testApp"
   fsType: "ext4"
 ----
 

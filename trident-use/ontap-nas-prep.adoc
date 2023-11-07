@@ -342,22 +342,24 @@ NOTE: を参照してください link:https://docs.netapp.com/us-en/ontap/smb-c
 
 . バックエンドを作成する際に、SMBボリュームを指定するように次の項目を設定する必要があります。ONTAP バックエンド構成オプションのすべてのFSXについては、を参照してください link:trident-fsx-examples.html["FSX（ONTAP の構成オプションと例）"]。
 +
-[cols="3"]
+[cols="1,2,1"]
 |===
 | パラメータ | 説明 | 例 
 
 
-| `smbShare`
-Microsoft管理コンソールまたはONTAP CLIを使用して作成されたSMB共有の名前、Astra TridentでSMB共有を作成できる名前、ボリュームへの共有アクセスを禁止する場合はパラメータを空白のままにすることができます。
+| `smbShare` | Microsoft管理コンソールまたはONTAP CLIを使用して作成されたSMB共有の名前、Astra TridentでSMB共有を作成できる名前、ボリュームへの共有アクセスを禁止する場合はパラメータを空白のままにすることができます。
 
 オンプレミスのONTAPでは、このパラメータはオプションです。
 
-このパラメータはAmazon FSx for ONTAPバックエンドで必須であり、空にすることはできません。 | `smb-share` | `nasType` 
+このパラメータはAmazon FSx for ONTAPバックエンドで必須であり、空にすることはできません。 | `smb-share` 
 
 
-| *をに設定する必要があります `smb`.* nullの場合、デフォルトはです `nfs`。 | `smb` | 'ecurityStyle' 
+| `nasType` | *をに設定する必要があります `smb`.* nullの場合、デフォルトはです `nfs`。 | `smb` 
 
 
-| 新しいボリュームのセキュリティ形式。*をに設定する必要があります `ntfs` または `mixed` SMBボリューム* | `ntfs` または `mixed` SMBボリュームの場合 | 「 unixPermissions 」 
+| 'ecurityStyle' | 新しいボリュームのセキュリティ形式。*をに設定する必要があります `ntfs` または `mixed` SMBボリューム* | `ntfs` または `mixed` SMBボリュームの場合 
+
+
+| 「 unixPermissions 」 | 新しいボリュームのモード。* SMBボリュームは空にしておく必要があります。* | "" 
 |===
 
