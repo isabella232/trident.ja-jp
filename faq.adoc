@@ -62,7 +62,7 @@ tridentctl get コマンドを使用して 'Astra Trident の構成に関する�
 
 === Astra Trident はプライベートレジストリからのオフラインインストールをサポートしていますか。
 
-はい、 Astra Trident はオフラインでインストールできます。を参照してください link:https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["こちらをご覧ください"]。
+はい、 Astra Trident はオフラインでインストールできます。を参照してください link:trident-get-started/kubernetes-deploy.html["こちらをご覧ください"]。
 
 
 
@@ -86,13 +86,13 @@ Astra Trident は Kubernetes API Server からデータを読み取り、アプ�
 
 === Astra Trident で使用されるロールと権限を教えてください。
 
-TridentインストーラによってKubernetes ClusterRoleが作成され、KubernetesクラスタのPersistentVolume、PersistentVolumeClaim、StorageClass、およびSecretリソースに特定のアクセス権が付与されます。を参照してください link:https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"]。
+TridentインストーラによってKubernetes ClusterRoleが作成され、KubernetesクラスタのPersistentVolume、PersistentVolumeClaim、StorageClass、およびSecretリソースに特定のアクセス権が付与されます。を参照してください link:trident-get-started/kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"]。
 
 
 
 === Astra Trident がインストールに使用するマニフェストファイルをローカルで生成できますか。
 
-必要に応じて、マニフェストファイルである Astra Trident のインストールに使用するものをローカルで生成して変更できます。を参照してください link:https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"]。
+必要に応じて、マニフェストファイルである Astra Trident のインストールに使用するものをローカルで生成して変更できます。を参照してください link:trident-get-started/kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"]。
 
 
 
@@ -310,7 +310,7 @@ Trident では、デフォルトでマウントオプションが Kubernetes で
 
 === ONTAP を使用して Astra Trident 経由でボリューム暗号化を設定する方法を教えてください。
 
-Trident によってプロビジョニングされたボリュームで暗号化を設定するには、バックエンド定義ファイルの暗号化パラメータを使用します。詳細については、以下を参照してください。 link:https://docs.netapp.com/us-en/trident/trident-reco/security-reco.html#use-astra-trident-with-nve-and-nae["Astra TridentとNVEおよびNAEの相互運用性"]
+Trident によってプロビジョニングされたボリュームで暗号化を設定するには、バックエンド定義ファイルの暗号化パラメータを使用します。詳細については、以下を参照してください。 link:trident-reco/security-reco.html#use-astra-trident-with-nve-and-nae["Astra TridentとNVEおよびNAEの相互運用性"]
 
 
 

@@ -1769,8 +1769,6 @@
   <block id="a10ab8f133704d9a58a1dff179ad7f7d" category="list-text">** Standard create** を使用する場合は、自動バックアップを無効にしてください。自動バックアップを無効にすると、 Trident は手動操作なしでボリュームを正常に削除できます。</block>
   <block id="4ef50c481a6113a6276514f572c414d2" category="inline-image-macro">自動バックアップを無効にしている AWS コンソールのスクリーンショット。</block>
   <block id="cce5aa9218d4019d57adcf814d7189c1" category="paragraph"><block ref="cce5aa9218d4019d57adcf814d7189c1" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="45b09f7cb3dcbe0274eef2b3fce46bea" category="paragraph">はい、 Astra Trident はオフラインでインストールできます。を参照してください <block ref="4a2b27d6d4bc3dd7ae85bfd131d50753" category="inline-link-macro-rx"></block>。</block>
-  <block id="0f43ba8a9cfc14b033c2c652f53bfcb9" category="paragraph">必要に応じて、マニフェストファイルである Astra Trident のインストールに使用するものをローカルで生成して変更できます。を参照してください <block ref="7a68296d6f600eac17d317743bea0050" category="inline-link-macro-rx"></block>。</block>
   <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="paragraph">著作権に関する声明、商標、特許などにアクセスできます。</block>
   <block id="6016a2b341113bf496b719905398ecd2" category="section-title">著作権</block>
   <block id="126a02652da6de02962cf1b654fd6376" category="section-title">商標</block>
@@ -2144,7 +2142,6 @@
   <block id="f18a50f02f48551895d57b81dd288142" category="sidebar">ネームスペース間でNFSボリュームを共有します</block>
   <block id="fd1117c82327fbe8671f26e897ceb8f4" category="inline-link-macro">Astra TridentでBlueXPを使用</block>
   <block id="a76a1e164520105317267dc41b95e8ce" category="paragraph">を使用 <block ref="f8c16e8c21124ccc028d2db7fd32a98f" category="inline-link-macro-rx"></block>では、最新バージョンのAstra Tridentにアップグレードし、ストレージクラスを追加して管理し、作業環境に接続し、Cloud Backup Service を使用して永続的ボリュームをバックアップすることができます。BlueXPは、Tridentオペレータを使用したAstra Tridentの導入を、手動またはHelmを使用してサポートしています。</block>
-  <block id="6ce33e8f1e198bf1c3583bc5ef789b75" category="paragraph">Trident によってプロビジョニングされたボリュームで暗号化を設定するには、バックエンド定義ファイルの暗号化パラメータを使用します。詳細については、以下を参照してください。 <block ref="3260a21902518174ce8d9bfef42be276" category="inline-link-macro-rx"></block></block>
   <block id="66f2c42a4ca561f5472459301bc7d096" category="list-text">ONTAP ドライバの自動MetroCluster スイッチオーバー検出機能が一般提供されるようになりました。</block>
   <block id="e87ded5ef8bc8adbc3c135528636f4f2" category="list-text"><block ref="e87ded5ef8bc8adbc3c135528636f4f2" category="inline-link-macro-rx"></block></block>
   <block id="fce586d9f649fb529d0a1846495ba259" category="list-text"><block ref="fce586d9f649fb529d0a1846495ba259" category="inline-link-macro-rx"></block></block>
@@ -3505,7 +3502,6 @@ Yesfootnote: 5[]：Astra Tridentによるサポート</block>
   <block id="40c7465c2468fd6e890691f6cb612731" category="paragraph">アップグレードされた Trident インストールのプレフィックス。1.3.2より前のバージョンのTridentを使用していて、既存のボリュームでアップグレードを実行した場合は、volume-nameメソッドでマッピングされた古いボリュームにアクセスするためにこの値を設定する必要があります。</block>
   <block id="7f86daacf34c67c042470fa9d926ba49" category="paragraph">標準的なロギングレベルでは、ほとんどの問題を診断できます。十分でない場合は、デバッグロギングを有効にすることができます。</block>
   <block id="6bdfdbfc466bb6d93222dbf7b3a374fe" category="list-text">ホストでバイナリ自体を実行している場合、ログはホストの<block ref="849fc2421f236e9c9b49a9d3fed2c404" prefix=" " category="inline-code"></block> ディレクトリ。デバッグロギングを有効にするには、を指定します<block ref="9b945915b0cddbee22047fd529d642f6" prefix=" " category="inline-code"></block> プラグインを実行すると、</block>
-  <block id="856df87d418b99d5e88b1e337987cad3" category="paragraph">TridentインストーラによってKubernetes ClusterRoleが作成され、KubernetesクラスタのPersistentVolume、PersistentVolumeClaim、StorageClass、およびSecretリソースに特定のアクセス権が付与されます。を参照してください <block ref="7a68296d6f600eac17d317743bea0050" category="inline-link-macro-rx"></block>。</block>
   <block id="1a4c36220ae60b6a6a4c2285be05a43a" category="section-title">ストレージシステムのパスワードが変更され、Astra Tridentが機能しなくなったため、どのようにリカバリすればよいですか？</block>
   <block id="a988578d4c176cf950a2211099db7d92" category="paragraph">バックエンドのパスワードを<block ref="00a81aa9b1d406861879017de885e0fb" prefix=" " category="inline-code"></block>。交換してください<block ref="3d9fd17a5232cc24eeeaec2b07af5417" prefix=" " category="inline-code"></block> この例では、バックエンド名にとを指定しています<block ref="27ab7e8dbd45daf638f3144d4891ef3b" prefix=" " category="inline-code"></block> と入力します<block ref="9c15d32711e9ef8c6f76deda35452e13" prefix=" " category="inline-code"></block> ファイル。</block>
   <block id="8cb93d7a514e5569b46cba45dedc7daf" category="paragraph">Trident ポッドが削除されても、データは失われません。TridentのメタデータはCRDオブジェクトに格納されます。Trident によってプロビジョニングされた PVS はすべて正常に機能します。</block>
@@ -4037,4 +4033,8 @@ LUKS暗号化はNVMe/TCPではサポートされません。</block>
   <block id="6933dffe806f29980dbedda6aef6fda7" category="inline-link">Astra Trident 23.07</block>
   <block id="5190d8b9f5b246f225722ffa2f20e6b3" category="list-text"><block ref="5190d8b9f5b246f225722ffa2f20e6b3" category="inline-link-rx"></block></block>
   <block id="0cd8d0588cd2b20face3a0379d38f777" category="admonition">ダイナミックエクスポートポリシーを使用する場合は、Network Address Translation（NAT;ネットワークアドレス変換）を使用しないでください。NATを使用すると、ストレージコントローラは実際のIPホストアドレスではなくフロントエンドのNATアドレスを認識するため、エクスポートルールに一致しない場合はアクセスが拒否されます。</block>
+  <block id="11e8ef6c378ba835810fad2cc65ce5b5" category="paragraph">はい、 Astra Trident はオフラインでインストールできます。を参照してください <block ref="8b57b68a0e3f8b19c1d735a44663ac45" category="inline-link-macro-rx"></block>。</block>
+  <block id="85d1bf3ede0fe784fd2bd122a9f9488f" category="paragraph">TridentインストーラによってKubernetes ClusterRoleが作成され、KubernetesクラスタのPersistentVolume、PersistentVolumeClaim、StorageClass、およびSecretリソースに特定のアクセス権が付与されます。を参照してください <block ref="52b05a1acf0f0f7fbbce1ec1469188fc" category="inline-link-macro-rx"></block>。</block>
+  <block id="5b72286a318e05b9dba4ea3ab28f1892" category="paragraph">必要に応じて、マニフェストファイルである Astra Trident のインストールに使用するものをローカルで生成して変更できます。を参照してください <block ref="52b05a1acf0f0f7fbbce1ec1469188fc" category="inline-link-macro-rx"></block>。</block>
+  <block id="de05556ddd203d92c70611ab918d657a" category="paragraph">Trident によってプロビジョニングされたボリュームで暗号化を設定するには、バックエンド定義ファイルの暗号化パラメータを使用します。詳細については、以下を参照してください。 <block ref="22dccd9f6b27b25deeed93972d237440" category="inline-link-macro-rx"></block></block>
 </blocks>
