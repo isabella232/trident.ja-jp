@@ -8,11 +8,7 @@ entries:
   url: "/trident-reference/rest-api.html"
 - title: コマンドラインオプション
   url: "/trident-reference/trident-cl.html"
-- title: ネットアップの製品が Kubernetes と統合されます
-  url: "/trident-reference/k8s-netapp.html"
 - title: Kubernetes と Astra Trident オブジェクト
   url: "/trident-reference/objects.html"
-- title: Tridentctlを使用したAstra Tridentの管理
-  url: "/trident-reference/tridentctl.html"
 - title: PODセキュリティ標準（PSS）およびセキュリティコンテキストの制約（SCC）
   url: "/trident-reference/pod-security.html"

@@ -26,33 +26,41 @@ REST APIは、Kubernetes以外の環境でAstra Tridentをスタンドアロン�
 
 == REST APIを使用する
 
+これらのAPIの呼び出し方法の例については、デバッグを渡してください (`-d`）フラグ。詳細については、を参照してください link:../trident-managing-k8s/tridentctl.html["Tridentctlを使用したAstra Tridentの管理"]。
+
 API は次のように機能します。
 
 
 
-=== `GET`
+=== 取得
 
-* get<trident-address>/trident/v1/<object-type>: そのタイプのすべてのオブジェクトを一覧表示します。
-* get<trident-address>/trident/v1/< オブジェクトタイプ >/< オブジェクト名 >: 名前付きオブジェクトの詳細を取得します。
-
-
+`GET <trident-address>/trident/v1/<object-type>`:: そのタイプのすべてのオブジェクトを一覧表示します。
+`GET <trident-address>/trident/v1/<object-type>/<object-name>`:: 指定したオブジェクトの詳細を取得します。
 
 
-=== `POST`
 
-'POST <trident-address>/trident/v1/<object-type>` ：指定した型のオブジェクトを作成します。
 
-* オブジェクトを作成するには JSON 構成が必要です。各オブジェクトタイプの仕様については、を参照してください link:tridentctl.html["ce87eb03803d5633c163541464e9e7f2"]。
+=== 投稿（ Post ）
+
+`POST <trident-address>/trident/v1/<object-type>`:: 指定したタイプのオブジェクトを作成します。
++
+--
+* オブジェクトを作成するには JSON 構成が必要です。各オブジェクトタイプの仕様については、を参照してください link:../trident-managing-k8s/tridentctl.html["Tridentctlを使用したAstra Tridentの管理"]。
 * オブジェクトがすでに存在する場合、動作は一定ではありません。バックエンドが既存のオブジェクトを更新しますが、それ以外のすべてのオブジェクトタイプで処理が失敗します。
 
 
+--
 
 
-=== `DELETE`
-
-`D eleet<trident-address>/trident/v1/< オブジェクトタイプ >/< オブジェクト名 >` ：名前付きリソースを削除します。
 
 
-NOTE: バックエンドまたはストレージクラスに関連付けられているボリュームは削除されず、削除されません。詳細については、を参照してください link:tridentctl.html["ce87eb03803d5633c163541464e9e7f2"]。
+=== 削除
 
-これらの API の呼び出し方法の例については 'debug(d`) フラグを渡してください詳細については、を参照してください link:tridentctl.html["ce87eb03803d5633c163541464e9e7f2"]。
+`DELETE <trident-address>/trident/v1/<object-type>/<object-name>`:: 指定したリソースを削除します。
++
+--
+
+NOTE: バックエンドまたはストレージクラスに関連付けられているボリュームは削除されず、削除されません。詳細については、を参照してください link:../trident-managing-k8s/tridentctl.html["Tridentctlを使用したAstra Tridentの管理"]。
+
+--
+

@@ -1,0 +1,249 @@
+---
+sidebar: sidebar 
+permalink: trident-managing-k8s/tridentctl.html 
+keywords: tridentctl, trident, kubernetes, commands, options, usage, flags 
+summary: Trident へのシンプルなアクセスを提供するコマンドラインユーティリティである tridentctl の詳細を確認できます。 
+---
+= Tridentctlを使用したAstra Tridentの管理
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+。 https://github.com/NetApp/trident/releases["Trident インストーラバンドル"^] には、 `tridentctl` Astra Tridentへのシンプルなアクセスを提供するコマンドラインユーティリティ。十分な権限を持つKubernetesユーザは、この権限を使用してAstra Tridentをインストールしたり、Astra Tridentポッドを含むネームスペースを管理したりできます。
+
+
+
+== コマンドとグローバルフラグ
+
+走れ `tridentctl help` 使用可能なコマンドのリストを取得するには `tridentctl` または、 `--help` 特定のコマンドのオプションとフラグのリストを取得するには、任意のコマンドにフラグを付けます。
+
+`tridentctl [command] [--optional-flag]`
+
+Astra Trident `tridentctl` ユーティリティは、次のコマンドとグローバルフラグをサポートしています。
+
+.コマンド
+[%collapsible]
+====
+`create`:: Astra Tridentにリソースを追加
+`delete`:: Astra Tridentから1つ以上のリソースを削除します。
+`get`:: Astra Tridentから1つ以上のリソースを入手します。
+`help`:: 任意のコマンドに関するヘルプ。
+`images`:: Astra Tridentが必要とするコンテナイメージの表を出力します。
+`import`:: 既存のリソースをAstra Tridentにインポート
+`install`:: Astra Trident をインストール
+`logs`:: Astra Tridentからログを出力
+`send`:: Astra Tridentからリソースを送信
+uninstall:: Astra Tridentをアンインストールします。
+`update`:: Astra Tridentでリソースを変更
+`update backend state`:: バックエンド処理を一時的に中断します。
+`upgrade`:: Astra Tridentでリソースをアップグレード
+「バージョン」:: Astra Tridentのバージョンを出力します。
+
+
+====
+.グローバルフラグ
+[%collapsible]
+====
+`-d`、 `--debug`:: デバッグ出力。
+`-h`、 `--help`:: ヘルプ `tridentctl`。
+`-k`、 `--kubeconfig string`:: を指定します。 `KUBECONFIG` コマンドをローカルまたはKubernetesクラスタ間で実行するパス。
++
+--
+
+NOTE: または、 `KUBECONFIG` 特定のKubernetesクラスタと問題をポイントする変数 `tridentctl` そのクラスタにコマンドを送信します。
+
+--
+`-n`、 `--namespace string`:: Astra Trident導入のネームスペース。
+`-o`、 `--output string`:: 出力形式。JSON の 1 つ | yaml | name | wide | ps （デフォルト）。
+`-s`、 `--server string`:: Astra Trident RESTインターフェイスのアドレス/ポート。
++
+--
+
+WARNING: Trident REST インターフェイスは、 127.0.0.1 （ IPv4 の場合）または [::1] （ IPv6 の場合）のみをリスンして処理するように設定できます。
+
+--
+
+
+====
+
+
+== コマンドオプションとフラグ
+
+
+
+=== 作成
+
+を使用します `create` Astra Tridentにリソースを追加するコマンド。
+
+`tridentctl create [option]`
+
+オプション（ Options ）:: `backend`：Astra Tridentにバックエンドを追加
+
+
+
+
+=== 削除
+
+を使用します `delete` コマンドを使用して、Astra Tridentから1つ以上のリソースを削除します。
+
+`tridentctl delete [option]`
+
+オプション（ Options ）:: `backend`：Tridentから1つ以上のストレージバックエンドを削除
+`snapshot`：Astra Tridentから1つ以上のボリュームSnapshotを削除
+`storageclass`：Astra Tridentから1つ以上のストレージクラスを削除
+`volume`：Astra Tridentから1つ以上のストレージボリュームを削除
+
+
+
+
+=== 取得
+
+を使用します `get` Astra Tridentから1つ以上のリソースを取得するためのコマンドです。
+
+`tridentctl get [option]`
+
+オプション（ Options ）:: `backend`：Tridentから1つ以上のストレージバックエンドを取得
+`snapshot`：Astra Tridentから1つ以上のスナップショットを取得
+`storageclass`：Astra Tridentから1つ以上のストレージクラスを取得
+`volume`：Astra Tridentから1つ以上のボリュームを取得
+フラグ:: `-h`、 `--help`：ボリュームのヘルプ。
+`--parentOfSubordinate string`：クエリを下位のソースボリュームに制限します。
+`--subordinateOf string`:クエリをボリュームの下位に制限します。
+
+
+
+
+=== イメージ
+
+使用 `images` Astra Tridentが必要とするコンテナイメージの表を出力するためのフラグ。
+
+`tridentctl images [flags]`
+
+フラグ:: `-h`、 `--help`:画像のヘルプ。
+`-v`、 `--k8s-version string`: Kubernetesクラスタのセマンティックバージョン。
+
+
+
+
+=== ボリュームをインポートします
+
+を使用します `import volume` コマンドを使用して、既存のボリュームをAstra Tridentにインポートします。
+
+`tridentctl import volume <backendName> <volumeName> [flags]`
+
+エイリアス:: `volume`、 `v`
+フラグ:: `-f`、 `--filename string`: YAMLまたはJSON PVCファイルへのパス。
+`-h`、 `--help`：ボリュームのヘルプ。
+`--no-manage`：PV/PVCのみを作成します。ボリュームのライフサイクル管理を想定しないでください。
+
+
+
+
+=== をインストールします
+
+を使用します `install` Astra Tridentのインストールにフラグを付けます。
+
+`tridentctl install [flags]`
+
+フラグ:: `--autosupport-image string`：AutoSupportテレメトリ用のコンテナイメージ（デフォルトは「NetApp/Trident autosupport：<current-version>」）。
+`--autosupport-proxy string`：AutoSupport テレメトリを送信するプロキシのアドレス/ポート。
+`--enable-node-prep`：ノードに必要なパッケージをインストールします。
+`--generate-custom-yaml`:インストールを行わずにYAMLファイルを生成します。
+`-h`、 `--help`:インストールのヘルプ。
+`--http-request-timeout`：TridentコントローラのREST APIのHTTP要求タイムアウトを上書きします（デフォルトは1m30秒）。
+`--image-registry string`:内部イメージレジストリのアドレス/ポート。
+`--k8s-timeout duration`：すべてのKubernetes処理のタイムアウト（デフォルトは3分0）。
+`--kubelet-dir string`: kubeletの内部状態のホストの場所(デフォルトは/var/lib/kubelet )
+`--log-format string`: Astra Tridentのログ形式(テキスト、JSON](デフォルトは「text」)。
+`--pv string`: Astra Tridentが使用するレガシーPVの名前は、存在しないことを確認します(デフォルトは"trident")。
+`--pvc string`：Astra Tridentで使用されている従来のPVCの名前。このPVCが存在しないことを確認します（デフォルトは「trident」）。
+`--silence-autosupport`：AutoSupport バンドルを自動的にネットアップに送信しない（デフォルトはtrue）。
+`--silent`:インストール中は、ほとんどの出力を無効にします。
+`--trident-image string`：インストールするAstra Tridentのイメージ
+`--use-custom-yaml`: setupディレクトリに存在する既存のYAMLファイルを使用します。
+`--use-ipv6`：Astra Tridentの通信にIPv6を使用
+
+
+
+
+=== ログ
+
+使用 `logs` Astra Tridentからログを印刷するためのフラグ。
+
+`tridentctl logs [flags]`
+
+フラグ:: `-a`、 `--archive`：特に指定がないかぎり、すべてのログを含むサポートアーカイブを作成します。
+`-h`、 `--help`:ログのヘルプ。
+`-l`、 `--log string`：Astra Tridentのログが表示されます。trident | auto | trident-operator | all （デフォルトは「 auto 」）のいずれかです。
+`--node string`：ノードポッドログの収集元のKubernetesノード名。
+`-p`、 `--previous`:以前のコンテナインスタンスのログが存在する場合は、それを取得します。
+`--sidecars`:サイドカーコンテナのログを取得します。
+
+
+
+
+=== 送信
+
+を使用します `send` Astra Tridentからリソースを送信するコマンド。
+
+`tridentctl send [option]`
+
+オプション（ Options ）:: `autosupport`：ネットアップにAutoSupport アーカイブを送信します。
+
+
+
+
+=== をアンインストールします
+
+使用 `uninstall` Astra Tridentをアンインストールするためのフラグ。
+
+`tridentctl uninstall [flags]`
+
+フラグ:: `-h, --help`:アンインストールのヘルプ。
+`--silent`:アンインストール中のほとんどの出力を無効にします。
+
+
+
+
+=== 更新
+
+を使用します `update` Astra Tridentでリソースを変更するコマンド。
+
+`tridentctl update [option]`
+
+オプション（ Options ）:: `backend`：Astra Tridentのバックエンドを更新。
+
+
+
+
+=== バックエンドの状態を更新
+
+を使用します `update backend state` バックエンド処理を一時停止または再開するコマンド。
+
+`tridentctl update backend state <backend-name> [flag]`
+
+フラグ:: `-h`、 `--help`:バックエンド状態のヘルプ。
+`--user-state`:に設定 `suspended` バックエンド処理を一時停止します。をに設定します `normal` バックエンド処理を再開します。に設定すると `suspended`：
++
+--
+* `AddVolume`、 `CloneVolume`、 `Import Volume`、 `ResizeVolume` は一時停止しています。
+* `PublishVolume`、 `UnPublishVolume`、 `CreateSnapshot`、 `GetSnapshot`、 `RestoreSnapshot`、 `DeleteSnapshot`、 `RemoveVolume`、 `GetVolumeExternal`、 `ReconcileNodeAccess` 引き続き使用できます。
+
+
+--
+
+
+
+
+=== バージョン
+
+使用 `version` のバージョンを印刷するためのフラグ `tridentctl` 実行中のTridentサービス
+
+`tridentctl version [flags]`
+
+フラグ:: `--client`:クライアントバージョンのみ(サーバは不要)。
+`-h, --help`:バージョンのヘルプ。
+
