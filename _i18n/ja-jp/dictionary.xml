@@ -1547,7 +1547,6 @@
   <block id="9d83b6d2e2b099e63bf8e2fc8c870893" category="list-text">ONTAP バージョン 9.2 以降が必要です。</block>
   <block id="e7c74973b26ad51b9db42a9c347a8cd4" category="list-text">本ドキュメントの執筆時点では、 FlexGroup は NFS v3 のみをサポートしています。</block>
   <block id="02a100b04add3b90fddef64499e825a2" category="list-text">SVM で 64 ビットの NFSv3 ID を有効にすることを推奨します。</block>
-  <block id="496f8625569b787269edab0f3de973da" category="list-text">推奨される最小 FlexGroup サイズは 100GB です。</block>
   <block id="db78b2a7acf43fa03cd95fb3a77c82f9" category="list-text">FlexGroup Volume ではクローニングはサポートされていません。</block>
   <block id="f5ac1e3c252855373c7f660dbd89699d" category="inline-link">『 NetApp FlexGroup Volume Best Practices and Implementation Guide 』にある、ボリュームへの移行に関するセクション</block>
   <block id="df1a7e79743809601db1d20d6a33ae52" category="paragraph">FlexGroup と FlexGroup に適したワークロードの詳細については、を参照してください<block ref="b8a99695d7979127a1cab07b42e22743" category="inline-link-rx"></block>。</block>
@@ -3165,7 +3164,6 @@ SMB</block>
   <block id="a221a060125881c2027807248f8302a2" category="list-text">これはKubernetesオブジェクトなので、<block ref="0f12ee5c9f1dd90158580f1c292b0d37" prefix=" " category="inline-code"></block> をクリックしてKubernetesで作成します。</block>
   <block id="f31a577daf927c7edc5555c9ceabc983" category="section-title">ストレージクラスノサンプル</block>
   <block id="64c314ed1bd24115a72a8a4284115a5c" category="inline-link">特定のバックエンド向けのシンプルなストレージクラス定義</block>
-  <block id="cd05956789bea1b8ca185126ede9bfe6" category="paragraph">Astra Tridentの特長<block ref="fdffa1e2d88d340a5703a5f7123df6a4" category="inline-link-rx"></block>。</block>
   <block id="d9ab9b10b2101546e16eeab0b981d10c" category="paragraph">または、<block ref="9a35c6080acd99f860d0c669b1a980f9" prefix=" " category="inline-code"></block> インストーラに付属しており、<block ref="9c9a0798e59f3f4d7b08e45faef1e131" prefix=" " category="inline-code"></block> ストレージドライバの名前を指定します。</block>
   <block id="ff87ac5778183437377f5f963a3dccac" category="paragraph">StorageClass定義を編集して<block ref="6add71a247c8f4513060920be14857bc" prefix=" " category="inline-code"></block> フィールドからに移動します<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>。</block>
   <block id="efe0663b3e4eed08a4a1b30c3f3a2aac" category="paragraph">PVC定義を編集し、<block ref="02b011e6fe36e26e5f7365ba08bf5a48" prefix=" " category="inline-code"></block> 新たに必要となったサイズを反映するには、元のサイズよりも大きくする必要があります。</block>
@@ -4018,4 +4016,6 @@ LUKS暗号化はNVMe/TCPではサポートされません。</block>
   <block id="dec90c165180e4428352d04efba76d8b" category="list-text">あなたの場合 <block ref="701383cb184d92daac13becc67e9c1be" category="inline-link-macro-rx"></block>を使用できます。<block ref="00f73970d66f7ceaea7519a201d88dc8" prefix=" " category="inline-code"></block> 1つの手順でアップグレードできます。Helmリポジトリを追加しなかった場合、またはHelmリポジトリを使用してアップグレードできない場合は、次の手順を実行します。</block>
   <block id="fd55ae3db3b16ceeb447f43dc713fb27" category="list-text">次のサイトからAstra Tridentの最新リリースをダウンロードしてください： <block ref="6a7c34d1e7545bd3ab5abc336e61eb7f" category="inline-link-macro-rx"></block>。</block>
   <block id="34c5f2f84f16f23213713a6adc11c319" category="admonition">初期インストール時にカスタムオプションを設定した場合（TridentイメージとCSIイメージのプライベートなミラーレジストリの指定など）は、<block ref="cd01e1bae83933b9c59c914bc71332ac" prefix=" " category="inline-code"></block> コマンド<block ref="8b5806248570dbb13e7d3bc5e6c0ee37" prefix=" " category="inline-code"></block> これらのオプションがupgradeコマンドに含まれるようにするため、それらのオプションの値をdefaultにリセットします。</block>
+  <block id="92f2a092c8970a9e6a9a8f5829670977" category="paragraph">Astra Tridentの特長<block ref="78512e06e40b1d6e7b22821168623dd6" category="inline-link-rx"></block>。</block>
+  <block id="20a385c1dc7ef65425669840055b5330" category="list-text">推奨されるFlexGroupメンバー/ボリュームの最小サイズは100GiBです。</block>
 </blocks>

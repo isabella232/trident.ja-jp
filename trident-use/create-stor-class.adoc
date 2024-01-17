@@ -87,7 +87,7 @@ basic-csi    csi.trident.netapp.io   15h
 
 === ストレージクラスノサンプル
 
-Astra Tridentの特長 https://github.com/NetApp/trident/tree/master/trident-installer/sample-input/pvc-samples["特定のバックエンド向けのシンプルなストレージクラス定義"^]。
+Astra Tridentの特長 https://github.com/NetApp/trident/tree/master/trident-installer/sample-input/storage-class-samples["特定のバックエンド向けのシンプルなストレージクラス定義"^]。
 
 または、 `sample-input/storage-class-csi.yaml.templ` インストーラに付属しており、 `__BACKEND_TYPE__` ストレージドライバの名前を指定します。
 
