@@ -4019,7 +4019,6 @@ LUKS暗号化はNVMe/TCPではサポートされません。</block>
   <block id="92f2a092c8970a9e6a9a8f5829670977" category="paragraph">Astra Tridentの特長<block ref="78512e06e40b1d6e7b22821168623dd6" category="inline-link-rx"></block>。</block>
   <block id="20a385c1dc7ef65425669840055b5330" category="list-text">推奨されるFlexGroupメンバー/ボリュームの最小サイズは100GiBです。</block>
   <block id="fd677451fcb2b9e12434f11dd81d463e" category="summary">KubernetesクラスタにAstra Trident EKSアドオンを追加</block>
-  <block id="7300036f416b8655e56df4e850a1edc1" category="doc">EKS cluserでのAstra Trident EKSアドオンバージョン23.10の設定</block>
   <block id="fde605b45abe19dca0689ef0eaa6e384" category="paragraph">Astra Tridentは、KubernetesでのAmazon FSx for NetApp ONTAPストレージ管理を合理化し、開発者や管理者がアプリケーションの導入に集中できるようにします。Astra Trident EKSアドオンには、最新のセキュリティパッチ、バグ修正が含まれており、AWSによってAmazon EKSとの連携が検証されています。EKSアドオンを使用すると、Amazon EKSクラスタの安全性と安定性を一貫して確保し、アドオンのインストール、構成、更新に必要な作業量を削減できます。</block>
   <block id="ee68e5b99222bbc29a480fcb0d1d6ee2" category="section-title">前提条件</block>
   <block id="2f2c25cde4f655e64149cdd745b67001" category="paragraph">AWS EKS用のAstra Tridentアドオンを設定する前に、次の条件を満たしていることを確認してください。</block>
@@ -4047,4 +4046,5 @@ LUKS暗号化はNVMe/TCPではサポートされません。</block>
   <block id="5fef1c4f3767262a0ef823aaa69e1703" category="paragraph-title">CLIを使用してAstra Trident EKSアドオンをアンインストールします。</block>
   <block id="e1f272eb0b2aaba7b1cb689543f653e0" category="paragraph">次のコマンドは、Astra Trident EKSアドオンをアンインストールします。<block ref="09a3e9c644b219341aa6e2e8a8922e59" prefix=" " category="inline-code"></block></block>
   <block id="c6861e88433ccd90f1ce8143d7e5fed0" category="sidebar">EKSクラスタでのAstra Trident EKSアドオンの設定</block>
+  <block id="7ed15597cafdca20d5859b7e394bc0ab" category="doc">EKSクラスタでのAstra Trident EKSアドオンバージョン23.10の設定</block>
 </blocks>
