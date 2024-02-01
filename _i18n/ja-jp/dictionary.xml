@@ -948,7 +948,6 @@
   <block id="27b4a9ed8609e35526601aa8d8be1ab9" category="paragraph">このオプションを指定せずにすでにストレージ・クラスを作成している場合は 'kubectl Edit storageclass を使用して既存のストレージ・クラスを編集するだけで ' ボリュームの拡張が可能になります</block>
   <block id="784f78e647973a0dcfa11b7a028c7eae" category="paragraph">Astra Trident が、この PVC に対して 20MiB の NFS PV を作成する必要があります。</block>
   <block id="3b16cea25bd4a9aaf5a9c3dcc13ea7eb" category="section-title">ステップ 3 ： PV を展開します</block>
-  <block id="e5c2c0bfcfbe01e6174199aaff9616a5" category="paragraph">新しく作成した 20MiB PV のサイズを 1GiB に変更するには、 PVC を編集し、「 pec.resources.request.storage 」を 1GB に設定します。</block>
   <block id="4a59ce1bc63fd7e6333968fb4bbd9d45" category="section-title">手順 4 ：拡張を検証する</block>
   <block id="c70f05fed7c73e0be4a0b24c8532a87c" category="paragraph">PVC 、 PV 、 Astra Trident のボリュームのサイズを確認することで、サイズ変更が正しく機能しているかどうかを検証できます。</block>
   <block id="cf13ba16f33b5f6772614929649be6c2" category="summary">tridentctl import を使用して、既存のストレージボリュームを Kubernetes PV としてインポートできます。</block>
@@ -2113,7 +2112,6 @@
   <block id="c51cc3b801a879870aea846bdde1c7a3" category="section-title">バックエンドを作成します</block>
   <block id="7d8058d93ec1d95c673d83bf303326ff" category="doc">ONTAP NASの設定オプションと例</block>
   <block id="ea61e2c2ff507048203824add1eb7c21" category="section-title">考慮事項</block>
-  <block id="8f395c84ad002394e9f070a25937dcc4" category="list-text">Azure NetApp Files サービスでは、100GB未満のボリュームはサポートされません。100 GB のボリュームが小さい場合は、 Trident が自動的に作成します。</block>
   <block id="1cf44a6bee7fa333861e5d0042926fb5" category="list-text">Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート</block>
   <block id="ef0f938ae67a04ac3370fe516c2a6baf" category="list-text">Kubernetes 1.25のサポートが追加されました。Kubernetes 1.25にアップグレードする前に、Astra Tridentを22.10にアップグレードする必要があります。</block>
   <block id="d041a310ba7cc2599250e64801594107" category="list-text">のサポートが追加されました <block ref="ca184a2eda203b6d98158bdf24e5cf7d" category="inline-link-macro-rx"></block>。</block>
@@ -4047,4 +4045,6 @@ LUKS暗号化はNVMe/TCPではサポートされません。</block>
   <block id="e1f272eb0b2aaba7b1cb689543f653e0" category="paragraph">次のコマンドは、Astra Trident EKSアドオンをアンインストールします。<block ref="09a3e9c644b219341aa6e2e8a8922e59" prefix=" " category="inline-code"></block></block>
   <block id="c6861e88433ccd90f1ce8143d7e5fed0" category="sidebar">EKSクラスタでのAstra Trident EKSアドオンの設定</block>
   <block id="7ed15597cafdca20d5859b7e394bc0ab" category="doc">EKSクラスタでのAstra Trident EKSアドオンバージョン23.10の設定</block>
+  <block id="4262957957c18f0bab73d8ddafcb642f" category="list-text">Azure NetApp Files サービスでは、100GB未満のボリュームはサポートされません。容量の小さいボリュームが要求されると、Astra Tridentによって自動的に100GiBのボリュームが作成されます。</block>
+  <block id="f825c914a8659f5b0de8a9219ab365b6" category="paragraph">新しく作成した20MiBのPVのサイズを1GiBに変更するには、そのPVCを編集してを設定します<block ref="02b011e6fe36e26e5f7365ba08bf5a48" prefix=" " category="inline-code"></block> 1GiBへ：</block>
 </blocks>

@@ -40,7 +40,7 @@ RWO、ROX、RWX、RWOP
 
 === 考慮事項
 
-* Azure NetApp Files サービスでは、100GB未満のボリュームはサポートされません。100 GB のボリュームが小さい場合は、 Trident が自動的に作成します。
+* Azure NetApp Files サービスでは、100GB未満のボリュームはサポートされません。容量の小さいボリュームが要求されると、Astra Tridentによって自動的に100GiBのボリュームが作成されます。
 * Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート
 
 
