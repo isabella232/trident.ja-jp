@@ -16,7 +16,7 @@ Tridentオペレータが手動で導入してAstra Tridentをインストール
 
 
 
-== Astra Tridentに関する重要な情報23.10
+== Astra Tridentに関する重要な情報24.02
 
 * Astra Tridentに関する次の重要な情報をお読みください。*
 
@@ -75,8 +75,8 @@ Astra Tridentインストーラパッケージには、Tridentオペレータの
 
 [listing]
 ----
-wget https://github.com/NetApp/trident/releases/download/v23.10.0/trident-installer-23.10.0.tar.gz
-tar -xf trident-installer-23.10.0.tar.gz
+wget https://github.com/NetApp/trident/releases/download/v24.02.0/trident-installer-24.02.0.tar.gz
+tar -xf trident-installer-24.02.0.tar.gz
 cd trident-installer
 ----
 
@@ -93,10 +93,10 @@ kubectl create -f deploy/crds/<VERSION>.yaml
 
 === 手順3：オペレータのレジストリの場所を更新します
 
-インチ `/deploy/operator.yaml`、を更新します `image: docker.io/netapp/trident-operator:23.10.0` イメージレジストリの場所を反映します。。 link:../trident-get-started/requirements.html#container-images-and-corresponding-kubernetes-versions["TridentとCSIの画像"] 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例：
+インチ `/deploy/operator.yaml`、を更新します `image: docker.io/netapp/trident-operator:24.02.0` イメージレジストリの場所を反映します。。 link:../trident-get-started/requirements.html#container-images-and-corresponding-kubernetes-versions["TridentとCSIの画像"] 1つのレジストリまたは別のレジストリに配置できますが、すべてのCSIイメージは同じレジストリに配置する必要があります。例：
 
-* `image: <your-registry>/trident-operator:23.10.0` すべての画像が1つのレジストリにある場合。
-* `image: <your-registry>/netapp/trident-operator:23.10.0` TridentイメージがCSIイメージとは別のレジストリにある場合。
+* `image: <your-registry>/trident-operator:24.02.0` すべての画像が1つのレジストリにある場合。
+* `image: <your-registry>/netapp/trident-operator:24.02.0` TridentイメージがCSIイメージとは別のレジストリにある場合。
 
 
 
@@ -165,8 +165,8 @@ IMPORTANT: Kubernetes クラスタには、オペレータのインスタンス�
 [listing]
 ----
 imageRegistry: "<your-registry>"
-autosupportImage: "<your-registry>/trident-autosupport:23.10"
-tridentImage: "<your-registry>/trident:23.10.0"
+autosupportImage: "<your-registry>/trident-autosupport:24.02"
+tridentImage: "<your-registry>/trident:24.02.0"
 ----
 --
 .異なるレジストリ内の画像
@@ -176,8 +176,8 @@ tridentImage: "<your-registry>/trident:23.10.0"
 [listing]
 ----
 imageRegistry: "<your-registry>/sig-storage"
-autosupportImage: "<your-registry>/netapp/trident-autosupport:23.10"
-tridentImage: "<your-registry>/netapp/trident:23.10.0"
+autosupportImage: "<your-registry>/netapp/trident-autosupport:24.02"
+tridentImage: "<your-registry>/netapp/trident:24.02.0"
 ----
 --
 ====
@@ -202,16 +202,16 @@ API Version: trident.netapp.io/v1
 Kind:        TridentOrchestrator
 ...
 Spec:
-  Autosupport Image:  <your-registry>/netapp/trident-autosupport:23.10
+  Autosupport Image:  <your-registry>/netapp/trident-autosupport:24.02
   Debug:              true
   Image Registry:     <your-registry>/sig-storage
   Namespace:          trident
-  Trident Image:      <your-registry>/netapp/trident:23.10.0
+  Trident Image:      <your-registry>/netapp/trident:24.02.0
 Status:
   Current Installation Params:
     IPv6:                       false
     Autosupport Hostname:
-    Autosupport Image:          <your-registry>/netapp/trident-autosupport:23.10
+    Autosupport Image:          <your-registry>/netapp/trident-autosupport:24.02
     Autosupport Proxy:
     Autosupport Serial Number:
     Debug:                      true
@@ -223,11 +223,11 @@ Status:
     Log Format:           text
     Probe Port:           17546
     Silence Autosupport:  false
-    Trident Image:        <your-registry>/netapp/trident:23.10.0
+    Trident Image:        <your-registry>/netapp/trident:24.02.0
   Message:                Trident installed
   Namespace:              trident
   Status:                 Installed
-  Version:                v23.10.0
+  Version:                v24.02.0
 Events:
     Type Reason Age From Message ---- ------ ---- ---- -------Normal
     Installing 74s trident-operator.netapp.io Installing Trident Normal
@@ -300,6 +300,6 @@ trident-operator-766f7b8658-ldzsv          1/1     Running   0           3m
 +----------------+----------------+
 | SERVER VERSION | CLIENT VERSION |
 +----------------+----------------+
-| 23.10.0        | 23.10.0        |
+| 24.02.0        | 24.02.0        |
 +----------------+----------------+
 ----

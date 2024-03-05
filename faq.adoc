@@ -62,7 +62,7 @@ tridentctl get コマンドを使用して 'Astra Trident の構成に関する�
 
 === Astra Trident はプライベートレジストリからのオフラインインストールをサポートしていますか。
 
-はい、 Astra Trident はオフラインでインストールできます。を参照してください link:trident-get-started/kubernetes-deploy.html["こちらをご覧ください"]。
+はい、 Astra Trident はオフラインでインストールできます。を参照してください link:../trident-get-started/kubernetes-deploy.html["Astra Tridentのインストール方法をご確認ください"^]。
 
 
 
@@ -86,13 +86,13 @@ Astra Trident は Kubernetes API Server からデータを読み取り、アプ�
 
 === Astra Trident で使用されるロールと権限を教えてください。
 
-TridentインストーラによってKubernetes ClusterRoleが作成され、KubernetesクラスタのPersistentVolume、PersistentVolumeClaim、StorageClass、およびSecretリソースに特定のアクセス権が付与されます。を参照してください link:trident-get-started/kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"]。
+TridentインストーラによってKubernetes ClusterRoleが作成され、KubernetesクラスタのPersistentVolume、PersistentVolumeClaim、StorageClass、およびSecretリソースに特定のアクセス権が付与されます。を参照してください link:../trident-get-started/kubernetes-customize-deploy-tridentctl.html["tridentctlのインストールをカスタマイズします"^]。
 
 
 
 === Astra Trident がインストールに使用するマニフェストファイルをローカルで生成できますか。
 
-必要に応じて、マニフェストファイルである Astra Trident のインストールに使用するものをローカルで生成して変更できます。を参照してください link:trident-get-started/kubernetes-customize-deploy-tridentctl.html["こちらをご覧ください"]。
+必要に応じて、マニフェストファイルである Astra Trident のインストールに使用するものをローカルで生成して変更できます。を参照してください link:trident-get-started/kubernetes-customize-deploy-tridentctl.html["tridentctlのインストールをカスタマイズします"^]。
 
 
 

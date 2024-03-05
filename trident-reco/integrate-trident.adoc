@@ -141,7 +141,7 @@ Astra Tridentがを使用 `gcp-cvs` Google CloudのCloud Volumes Service にリ�
 
 Astra TridentでGoogle Cloudバックエンドを設定するには、と指定する必要があります `projectNumber`、 `apiRegion`および `apiKey` バックエンドファイル内。プロジェクト番号はGoogle Cloudコンソールで確認できます。APIキーは、Google CloudでCloud Volumes Service のAPIアクセスを設定するときに作成したサービスアカウントの秘密鍵ファイルから取得されます。
 
-Google Cloudのサービスタイプとサービスレベルに関するCloud Volumes Service の詳細については、を参照してください link:../trident-use/gcp.html["CVS for GCPのAstra Tridentサポートについてご確認ください"]。
+Google CloudでのCloud Volumes Serviceのサービスタイプとサービスレベルの詳細については、を参照してください。 link:../trident-use/gcp.html["CVS for GCPのAstra Tridentサポートについてご確認ください"]。
 
 [cols="20,10,10,10,10,10,10"]
 |===

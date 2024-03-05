@@ -51,7 +51,7 @@ spec:
 ----
 の例を確認することもできます https://github.com/NetApp/trident/tree/stable/v21.07/trident-installer/sample-input/backends-samples["Trident インストーラ"^] 目的のストレージプラットフォーム / サービスの設定例を示すディレクトリ。
 
-「 PEC 」は、バックエンド固有の設定パラメータをとります。この例では ' バックエンドは 'ONTAP-SAN' ストレージ・ドライバを使用し ' ここで表に示す構成パラメータを使用します使用するストレージドライバの設定オプションの一覧については、を参照してください link:backends.html["ストレージドライバのバックエンド設定情報"^]。
+。 `spec` バックエンド固有の設定パラメータを使用します。この例では、バックエンドはを使用します `ontap-san` storage driverおよびでは、に示す構成パラメータを使用します。ご使用のストレージドライバの設定オプションのリストについては、 link:backends.html["ストレージドライバのバックエンド設定情報"^]。
 
 「 PEC 」セクションには、「 credentials 」フィールドと「 eleetionPolicy 」フィールドも含まれています。これらのフィールドは、「 TridentBackendConfig 」 CR に新しく導入されました。
 

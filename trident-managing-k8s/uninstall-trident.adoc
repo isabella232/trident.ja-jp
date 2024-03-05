@@ -16,7 +16,7 @@ Astra Tridentのアンインストールには、Astra Tridentのインストー
 
 .このタスクについて
 * アップグレード、依存関係の問題、アップグレードの失敗や不完全な完了後に観察されたバグの修正が必要な場合は、Astra Tridentをアンインストールし、該当する手順を使用して以前のバージョンを再インストールする必要があります。 link:../earlier-versions.html["バージョン"]。これは、以前のバージョンに_downgrade_toを実行するための唯一の推奨方法です。
-* アップグレードと再インストールを簡単に行うため、Astra Tridentをアンインストールしても、Astra Tridentで作成されたCRDや関連オブジェクトは削除されません。Astra Tridentとそのすべてのデータを完全に削除する必要がある場合は、を参照してください。 link:../troubleshooting.html#completely-remove-astra-trident-and-crds["Astra TridentとCRDを完全に削除"]。
+* アップグレードと再インストールを簡単に行うため、Astra Tridentをアンインストールしても、Astra Tridentで作成されたCRDや関連オブジェクトは削除されません。Astra Tridentとそのすべてのデータを完全に削除する必要がある場合は、 link:../troubleshooting.html#completely-remove-astra-trident-and-crds["Astra TridentとCRDを完全に削除"]。
 
 
 .作業を開始する前に

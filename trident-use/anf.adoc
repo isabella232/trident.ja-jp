@@ -79,16 +79,81 @@ spec:
 
 [listing]
 ----
-helm install trident trident-operator-23.10.0-custom.tgz --create-namespace --namespace <trident-namespace> --set cloudProvider=$CP
+helm install trident trident-operator-100.2402.0.tgz --create-namespace --namespace <trident-namespace> --set cloudProvider=$CP
 ----
 --
 .<code>tridentctl</code>
 --
-次の例は、Astra Tridentセットをインストールし、 `cloudProvider` フラグの対象 `Azure`：
+次の例では、Astra Tridentをインストールして `cloudProvider` フラグの対象 `Azure`：
 
 [listing]
 ----
 tridentctl install --cloud-provider="Azure" -n trident
+----
+--
+====
+
+
+
+
+== AKSのクラウドID
+
+Cloud Identityを使用すると、Kubernetesポッドは、明示的なAWSクレデンシャルを指定するのではなく、AWS IAMロールとして認証することでAWSリソースにアクセスできます。
+
+AWSでクラウドIDを利用するには、以下が必要です。
+
+* AKSを使用して導入されるKubernetesクラスタ
+* AKS Kubernetesクラスタに設定されたワークロードIDとoidc-issuer
+* Astra Tridentをインストール（以下を含む） `cloudProvider` 指定するには `"Azure"` および `cloudIdentity` ワークロードIDの指定
++
+[role="tabbed-block"]
+====
+.Trident オペレータ
+--
+Tridentオペレータを使用してAstra Tridentをインストールするには、 `tridentorchestrator_cr.yaml` をクリックして設定します `cloudProvider` 終了： `"Azure"` をクリックして設定します `cloudIdentity` 終了： `azure.workload.identity/client-id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx`。
+
+例：
+
+[listing]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  imagePullPolicy: IfNotPresent
+  cloudProvider: "Azure"
+  *cloudIdentity: 'azure.workload.identity/client-id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx'*
+----
+--
+.Helm
+--
+次の環境変数を使用して、* cloud-provider（CP）*フラグと* cloud-identity（CI）*フラグの値を設定します。
+
+`export CP="Azure"`
+`export CI="azure.workload.identity/client-id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"`
+
+次の例では、Astra Tridentとセットをインストールします。 `cloudProvider` 環境変数を使用してAzureに移行 `$CP` をクリックすると、 `cloudIdentity` 環境変数の使用 `$CI`：
+
+[listing]
+----
+helm install trident trident-operator-100.2402.0.tgz --set cloudProvider=$CP --set cloudIdentity=$CI
+----
+--
+.<code>tridentctl</code>
+--
+次の環境変数を使用して、* cloud provider *フラグと* cloud identity *フラグの値を設定します。
+
+`export CP="Azure"`
+`export CI="azure.workload.identity/client-id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"`
+
+次の例では、Astra Tridentをインストールして `cloud-provider` フラグの対象 `$CP`および `cloud-identity` 終了： `$CI`：
+
+[listing]
+----
+tridentctl install --cloud-provider=$CP --cloud-identity="$CI" -n trident
 ----
 --
 ====

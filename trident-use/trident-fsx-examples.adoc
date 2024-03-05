@@ -110,6 +110,25 @@ IPv6フラグを使用してAstra Tridentをインストールした場合は、
 
 | 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー *
 `useREST` は、**テクニカルプレビュー**として提供されています。テスト環境では、本番環境のワークロードでは推奨されません。に設定すると `true`Astra Tridentは、ONTAP REST APIを使用してバックエンドと通信します。この機能にはONTAP 9.11.1以降が必要です。また、使用するONTAP ログインロールにはへのアクセス権が必要です `ontap` アプリケーション：これは事前定義されたによって満たされます `vsadmin` および `cluster-admin` ロール。 | 「偽」 
+
+
+| `aws` | AWS FSx for ONTAPの構成ファイルでは、次の項目を指定できます。
+- `fsxFilesystemID`：AWS FSxファイルシステムのIDを指定します。
+- `apiRegion`：AWS APIリージョン名。
+- `apikey`：AWS APIキー。
+- `secretKey`：AWSシークレットキー。 | ``
+``
+
+
+`""`
+`""`
+`""` 
+
+
+| `credentials` | AWS Secret Managerに保存するFSx SVMのクレデンシャルを指定します。
+- `name`：シークレットのAmazon Resource Name（ARN）。SVMのクレデンシャルが含まれています。
+- `type`:に設定 `awsarn`。
+を参照してください link:https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html["AWS Secrets Managerシークレットの作成"^] を参照してください。 |  
 |===
 
 
@@ -172,8 +191,11 @@ NOTE: PVCが1つ以上のポッドに接続されている場合は、対応す�
 |===
 
 
-== 例
+== 構成例
 
+.SMBホリユウムノストレエシクラスノセツテイ
+[%collapsible]
+====
 を使用します `nasType`、 `node-stage-secret-name`および `node-stage-secret-namespace`を使用して、SMBボリュームを指定し、必要なActive Directoryクレデンシャルを指定できます。SMBボリュームは、を使用してサポートされます `ontap-nas` ドライバーのみ。
 
 [listing]
@@ -189,3 +211,26 @@ parameters:
   csi.storage.k8s.io/node-stage-secret-name: "smbcreds"
   csi.storage.k8s.io/node-stage-secret-namespace: "default"
 ----
+====
+.Secret Managerを使用したAWS FSx for ONTAPの設定
+[%collapsible]
+====
+[listing]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentBackendConfig
+metadata:
+  name: backend-tbc-ontap-nas
+spec:
+  version: 1
+  storageDriverName: ontap-nas
+  backendName: tbc-ontap-nas
+  svm: svm-name
+  aws:
+    fsxFilesystemID: fs-xxxxxxxxxx
+  managementLIF:
+  credentials:
+    name: "arn:aws:secretsmanager:us-west-2:xxxxxxxx:secret:secret-name"
+    type: awsarn
+----
+====

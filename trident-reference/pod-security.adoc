@@ -15,7 +15,7 @@ summary: Kubernetesポッドのセキュリティ標準（PSS）とポッドの�
 Kubernetesポッドのセキュリティ標準（PSS）とポッドのセキュリティポリシー（PSP）によって、権限レベルが定義され、ポッドの動作が制限されます。また、OpenShift Security Context Constraints（SCC）でも、OpenShift Kubernetes Engine固有のポッド制限を定義します。このカスタマイズを行うために、Astra Tridentはインストール時に特定の権限を有効にします。次のセクションでは、Astra Tridentによって設定された権限の詳細を説明します。
 
 
-NOTE: PSSは、Podセキュリティポリシー（PSP）に代わるものです。PSPはKubernetes v1.21で廃止され、v1.25で削除されます。詳細については、を参照してください link:https://kubernetes.io/docs/concepts/security/["Kubernetes：セキュリティ"]。
+NOTE: PSSは、Podセキュリティポリシー（PSP）に代わるものです。PSPはKubernetes v1.21で廃止され、v1.25で削除されます。詳細については、を参照してください。 link:https://kubernetes.io/docs/concepts/security/["Kubernetes：セキュリティ"]。
 
 
 

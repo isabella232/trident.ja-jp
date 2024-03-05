@@ -22,8 +22,6 @@ https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["NetApp
 
 Amazon Elastic Kubernetes Service （ EKS ）で実行されている Astra Trident と Amazon FSX for NetApp ONTAP を使用すると、 ONTAP がサポートするブロックボリュームとファイル永続ボリュームを確実にプロビジョニングできます。
 
-NetApp ONTAP 用の Amazon FSX では、を使用します https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mgng-stor-tier-fp/GUID-5A78F93F-7539-4840-AB0B-4A6E3252CF84.html["FabricPool"^] ストレージ階層を管理します。データへのアクセス頻度に基づいて階層にデータを格納することができます。
-
 
 
 == 考慮事項
@@ -31,17 +29,14 @@ NetApp ONTAP 用の Amazon FSX では、を使用します https://docs.netapp.c
 * SMBボリューム：
 +
 ** SMBボリュームは、を使用してサポートされます `ontap-nas` ドライバーのみ。
+** SMBボリュームはAstra Trident EKSアドオンではサポートされません。
 ** Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート
 
 
-* 自動バックアップが有効になっているAmazon FSXファイルシステムで作成されたボリュームはTridentで削除できません。PVC を削除するには、 PV と ONTAP ボリュームの FSX を手動で削除する必要があります。この問題 を回避するには、次の手順
+* Astra Trident 24.02より前のバージョンでは、自動バックアップが有効になっているAmazon FSxファイルシステム上に作成されたボリュームはTridentで削除できませんでした。Astra Trident 24.02以降でこの問題を無効にするには、 `fsxFilesystemID`、AWS `apiRegion`、AWS `apikey`およびAWS `secretKey` AWS FSx for ONTAPのバックエンド構成ファイルに保存されます。
 +
-** ONTAP ファイル・システム用の FSX を作成する場合は '**Quick create** を使用しないでくださいクイック作成ワークフローでは、自動バックアップが有効になり、オプトアウトオプションはありません。
-** ** Standard create** を使用する場合は、自動バックアップを無効にしてください。自動バックアップを無効にすると、 Trident は手動操作なしでボリュームを正常に削除できます。
-+
-image:screenshot-fsx-backup-disable.png["自動バックアップを無効にしている AWS コンソールのスクリーンショット。"]
 
-
+NOTE: Astra TridentにIAMロールを指定する場合は、 `apiRegion`、 `apiKey`および `secretKey` フィールドをAstra Tridentに明示的に追加詳細については、を参照してください link:../trident-use/trident-fsx-examples.html["FSX（ONTAP の構成オプションと例）"]。
 
 
 
@@ -58,7 +53,7 @@ image:screenshot-fsx-backup-disable.png["自動バックアップを無効にし
 * 「 ONTAP-NAS-flexgroup 」：プロビジョニングされた各 PV は、 NetApp ONTAP FlexGroup ボリューム用の完全な Amazon FSX です。
 
 
-ドライバーの詳細については、を参照してください link:../trident-use/ontap-nas.html["NASドライバ"] および link:../trident-use/ontap-san.html["SANドライバ"]。
+ドライバーの詳細については、を参照してください。 link:../trident-use/ontap-nas.html["NASドライバ"] および link:../trident-use/ontap-san.html["SANドライバ"]。
 
 
 
@@ -80,6 +75,70 @@ WARNING: Astra Tridentは `vsadmin` SVMユーザまたは同じロールを持�
 
 * link:ontap-nas-prep.html["ONTAP NAS認証"]
 * link:ontap-san-prep.html["ONTAP SAN認証"]
+
+
+
+
+== EKSのクラウドID
+
+Cloud Identityを使用すると、Kubernetesポッドは、明示的なAWSクレデンシャルを指定するのではなく、AWS IAMロールとして認証することでAWSリソースにアクセスできます。
+
+AWSでクラウドIDを利用するには、以下が必要です。
+
+* EKSを使用して導入されるKubernetesクラスタ
+* Astra Tridentをインストール（以下を含む） `cloudProvider` シテイ `"AWS"` および `cloudIdentity` AWS IAMロールの指定
++
+[role="tabbed-block"]
+====
+.Trident オペレータ
+--
+Tridentオペレータを使用してAstra Tridentをインストールするには、 `tridentorchestrator_cr.yaml` をクリックして設定します `cloudProvider` 終了： `"AWS"` をクリックして設定します `cloudIdentity` をAWS IAMロールに割り当てます。
+
+例：
+
+[listing]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  imagePullPolicy: IfNotPresent
+  cloudProvider: "AWS"
+  cloudIdentity: "'eks.amazonaws.com/role-arn: arn:aws:iam::123456:role/astratrident-role'"
+----
+--
+.Helm
+--
+次の環境変数を使用して、* cloud provider *フラグと* cloud identity *フラグの値を設定します。
+
+`export CP="AWS"`
+`export CI="'eks.amazonaws.com/role-arn: arn:aws:iam::123456:role/astratrident-role'"`
+
+次の例では、Astra Tridentとセットをインストールします。 `cloudProvider` 終了： `AWS` 環境変数の使用 `$CP` 環境変数を使用して'cloudIdentity'を設定します `$CI`：
+
+[listing]
+----
+helm install trident trident-operator-100.2402.0.tgz --set cloudProvider=$CP --set cloudIdentity=$CI
+----
+--
+.<code>tridentctl</code>
+--
+次の環境変数を使用して、* cloud provider *フラグと* cloud identity *フラグの値を設定します。
+
+`export CP="AWS"`
+`export CI="'eks.amazonaws.com/role-arn: arn:aws:iam::123456:role/astratrident-role'"`
+
+次の例では、Astra Tridentをインストールして `cloud-provider` フラグの対象 `$CP`および `cloud-identity` 終了： `$CI`：
+
+[listing]
+----
+tridentctl install --cloud-provider=$CP --cloud-identity="$CI" -n trident
+----
+--
+====
 
 
 

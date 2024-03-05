@@ -27,7 +27,7 @@ Astra Trident のアンインストールと再インストールはアップグ
 ----
 ./tridentctl uninstall -n <namespace>
 ----
-. Astra Tridentを再インストールします。を参照してください link:..trident-get-started/kubernetes-deploy-tridentctl.html["tridentctl を使用して Astra Trident をインストールします"]。
+. Astra Tridentを再インストールします。を参照してください link:../trident-get-started/kubernetes-deploy-tridentctl.html["tridentctl を使用して Astra Trident をインストールします"]。
 
 
 

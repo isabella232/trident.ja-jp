@@ -223,7 +223,7 @@ excludeStoragePools' パラメータを使用して、 Trident がプロビジ�
 |===
 [TIP]
 ====
-* SAN LUN に必要なファイル・システム・タイプを制御するには 'fsType' パラメータを使用しますまた 'Kubernetes は ' ストレージ・クラスに fsType が存在することも使用して ' ファイル・システムが存在することを示しますボリューム所有権は 'fsType' が設定されている場合に限り 'pod の fsGroup' セキュリティコンテキストを使用して制御できますを参照してください link:https://kubernetes.io/docs/tasks/configure-pod-container/security-context/["Kubernetes ：ポッドまたはコンテナのセキュリティコンテキストを設定します"^] 「 fsGroup 」コンテキストを使用したボリューム所有権の設定の概要については、を参照してください。次の場合にのみ 'fsGroup' 値が適用されます
+* 。 `fsType` パラメータは、SAN LUNに必要なファイルシステムタイプを制御する場合に使用します。また、Kubernetesでは、の機能も使用されます `fsType` ファイルシステムが存在することを示すために、ストレージクラスに格納します。ボリューム所有権は、を使用して制御できます `fsGroup` ポッドのセキュリティコンテキスト（使用する場合のみ） `fsType` が設定されます。を参照してください link:https://kubernetes.io/docs/tasks/configure-pod-container/security-context/["Kubernetes ：ポッドまたはコンテナのセキュリティコンテキストを設定します"^] を使用したボリューム所有権の設定の概要については、を参照してください `fsGroup` コンテキスト（Context）。Kubernetesでが適用されます `fsGroup` 次の場合のみ値を指定します
 +
 ** 「 fsType 」はストレージクラスで設定されます。
 ** PVC アクセスモードは RWO です。
@@ -295,7 +295,7 @@ CRD は Kubernetes の構成要素です。上記で定義したリソースの�
 Trident の CRD については、次の点に注意してください。
 
 * Trident をインストールすると、一連の CRD が作成され、他のリソースタイプと同様に使用できるようになります。
-* tridentctl uninstall コマンドを使用して Trident をアンインストールすると、 Trident ポッドは削除されますが、作成された CRD はクリーンアップされません。を参照してください link:../trident-managing-k8s/uninstall-trident.html["Trident をアンインストールします"] Trident を完全に削除して再構成する方法を理解する。
+* Tridentをアンインストールするには、を使用します `tridentctl uninstall` コマンドであるTridentポッドが削除されましたが、作成されたSSDはクリーンアップされません。を参照してください link:../trident-managing-k8s/uninstall-trident.html["Trident をアンインストールします"] Trident を完全に削除して再構成する方法を理解する。
 
 
 
@@ -320,7 +320,7 @@ REST API を使用して、ストレージクラスを直接定義するスト�
 
 NOTE: これは、自分で作成および管理する 2 つのオブジェクトタイプのうちの 1 つです。もう 1 つは、 Kubernetes の「 torageClass 」オブジェクトです。
 
-これらのオブジェクトの作成方法の詳細については、を参照してください link:../trident-use/backends.html["バックエンドの設定"]。
+これらのオブジェクトの作成方法の詳細については、を参照してください。 link:../trident-use/backends.html["バックエンドの設定"]。
 
 
 
@@ -467,7 +467,7 @@ spec:
          scopeName: PriorityClass
          values: ["system-node-critical"]
 ----
-リソース・クォータの詳細については'を参照してください link:https://kubernetes.io/docs/concepts/policy/resource-quotas/["Kubernetes：リソースクォータ"^]。
+リソースクォータの詳細については、を参照してください。 link:https://kubernetes.io/docs/concepts/policy/resource-quotas/["Kubernetes：リソースクォータ"^]。
 
 
 

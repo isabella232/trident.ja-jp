@@ -45,7 +45,7 @@ API は次のように機能します。
 `POST <trident-address>/trident/v1/<object-type>`:: 指定したタイプのオブジェクトを作成します。
 +
 --
-* オブジェクトを作成するには JSON 構成が必要です。各オブジェクトタイプの仕様については、を参照してください link:../trident-managing-k8s/tridentctl.html["Tridentctlを使用したAstra Tridentの管理"]。
+* オブジェクトを作成するには JSON 構成が必要です。各オブジェクトタイプの仕様については、を参照してください。 link:../trident-managing-k8s/tridentctl.html["Tridentctlを使用したAstra Tridentの管理"]。
 * オブジェクトがすでに存在する場合、動作は一定ではありません。バックエンドが既存のオブジェクトを更新しますが、それ以外のすべてのオブジェクトタイプで処理が失敗します。
 
 

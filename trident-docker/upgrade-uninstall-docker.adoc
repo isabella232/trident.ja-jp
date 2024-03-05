@@ -73,7 +73,7 @@ netapp:latest       my_volume
 
 
 
-IMPORTANT: 古いバージョンの Astra Trident （ 20.10 より前）から Astra Trident 20.10 以降にアップグレードすると、エラーが発生する場合があります。詳細については、を参照してください link:known-issues-docker.html["既知の問題"^]。このエラーが発生した場合は、まずプラグインを無効にしてから、プラグインを削除し、必要な Astra Trident バージョンをインストールします。これには、「 d Occker plugin install NetApp/trident-plugin:20.10 --alias netapp --grant-all -permissions config=config.json 」という追加設定パラメータを渡します
+IMPORTANT: 古いバージョンの Astra Trident （ 20.10 より前）から Astra Trident 20.10 以降にアップグレードすると、エラーが発生する場合があります。詳細については、を参照してください link:known-issues-docker.html["既知の問題"^]。このエラーが発生した場合は、まずプラグインを無効にしてからプラグインを削除し、次に追加のconfigパラメータを渡して、必要なAstra Tridentバージョンをインストールします。 `docker plugin install netapp/trident-plugin:20.10 --alias netapp --grant-all-permissions config=config.json`
 
 
 

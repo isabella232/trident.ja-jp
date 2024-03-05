@@ -69,7 +69,7 @@ metadata:
 ----
 この ServiceMonitor 定義は 'trident-csi サービスから返されたメトリックを取得し ' 特にサービスの 'm etrics エンドポイントを探しますその結果、 Prometheus は Astra Trident の指標を理解するように設定されました。
 
-kubelet は、 Astra Trident から直接利用できるメトリックに加えて、独自のメトリック・エンドポイントを通じて多くの「 kubeet_volume_* 」メトリックを公開しています。Kubelet では、接続されているボリュームに関する情報、およびポッドと、それが処理するその他の内部処理を確認できます。を参照してください https://kubernetes.io/docs/concepts/cluster-administration/monitoring/["こちらをご覧ください"^]。
+Astra Tridentから直接取得できる指標に加えて、kubeletは多くの指標を公開しています `kubelet_volume_*` 独自の指標エンドポイントを使用した指標。Kubelet では、接続されているボリュームに関する情報、およびポッドと、それが処理するその他の内部処理を確認できます。を参照してください https://kubernetes.io/docs/concepts/cluster-administration/monitoring/["こちらをご覧ください"^]。
 
 
 
