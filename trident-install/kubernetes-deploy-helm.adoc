@@ -49,11 +49,11 @@ Tridentの使用 link:https://artifacthub.io/packages/helm/netapp-trident/triden
 ----
 helm repo add netapp-trident https://netapp.github.io/trident-helm-chart
 ----
-. 使用 `helm install` をクリックし、次の例に示すように、導入環境の名前を指定します `24.02.0` は、インストールするAstra Tridentのバージョンです。
+. 使用 `helm install` をクリックし、次の例に示すように、導入環境の名前を指定します `100.2402.0` は、インストールするAstra Tridentのバージョンです。
 +
 [listing]
 ----
-helm install <name> netapp-trident/trident-operator --version 24.02.0 --create-namespace --namespace <trident-namespace>
+helm install <name> netapp-trident/trident-operator --version 100.2402.0 --create-namespace --namespace <trident-namespace>
 ----
 +
 
@@ -83,11 +83,11 @@ NOTE: すでにTridentの名前空間を作成している場合'--create-namesp
 コマンドラインでオーバーライドを指定します。
 
 |===
-たとえば、のデフォルト値を変更するには、のように指定します `debug`をクリックし、次のコマンドを実行します `--set` コマンドを入力します `24.02.0` は、インストールするAstra Tridentのバージョンです。
+たとえば、のデフォルト値を変更するには、のように指定します `debug`をクリックし、次のコマンドを実行します `--set` コマンドを入力します `100.2402.0` は、インストールするAstra Tridentのバージョンです。
 
 [listing]
 ----
-helm install <name> netapp-trident/trident-operator --version 24.02.0  --create-namespace --namespace trident --set tridentDebug=true
+helm install <name> netapp-trident/trident-operator --version 100.2402.0  --create-namespace --namespace trident --set tridentDebug=true
 ----
 
 
