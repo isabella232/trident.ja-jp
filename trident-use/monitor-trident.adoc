@@ -55,17 +55,17 @@ metadata:
   namespace: monitoring
   labels:
       release: prom-operator
-  spec:
-    jobLabel: trident
-    selector:
-      matchLabels:
-        app: controller.csi.trident.netapp.io
-    namespaceSelector:
-      matchNames:
-      - trident
-    endpoints:
-    - port: metrics
-      interval: 15s
+spec:
+  jobLabel: trident
+  selector:
+    matchLabels:
+      app: controller.csi.trident.netapp.io
+  namespaceSelector:
+    matchNames:
+    - trident
+  endpoints:
+  - port: metrics
+    interval: 15s
 ----
 この ServiceMonitor 定義は 'trident-csi サービスから返されたメトリックを取得し ' 特にサービスの 'm etrics エンドポイントを探しますその結果、 Prometheus は Astra Trident の指標を理解するように設定されました。
 

@@ -12,12 +12,6 @@ summary: バージョンセレクタを使用して、最新バージョンと�
 
 
 [role="lead"]
-バージョンセレクタを使用して、最新バージョンと以前の4つのバージョンを切り替えることも、以下のリンクを使用することもできます。
-
-
-
-== 以前のバージョン
-
 Astra Trident 24.02を実行していない場合、以前のリリースのドキュメントは、 link:get-help.html["Astra Tridentのサポートライフサイクル"]。
 
 * https://docs.netapp.com/us-en/trident-2310/index.html["Astra Trident 23.10"^]
