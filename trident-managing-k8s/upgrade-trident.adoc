@@ -62,7 +62,7 @@ Astra Tridentの最初のインストールに使用したバージョンを確�
 ** オペレータポッドがある場合、Astra Tridentは手動またはHelmを使用してインストールされています。
 
 
-. オペレータポッドがある場合は、を使用します `kubectl describe tproc trident` をクリックし、Helmを使用してAstra Tridentがインストールされたかどうかを確認します。
+. オペレータポッドがある場合は、を使用します `kubectl describe torc` をクリックし、Helmを使用してAstra Tridentがインストールされたかどうかを確認します。
 +
 ** Helmラベルがある場合は、Helmを使用してAstra Tridentがインストールされています。
 ** Helmラベルがない場合は、Astra TridentをTridentオペレータを使用して手動でインストールしています。
