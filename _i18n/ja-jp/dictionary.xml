@@ -3813,7 +3813,6 @@ LUKS暗号化はNVMe/TCPではサポートされません。</block>
   <block id="e037ffcaadbce3092a5cf8a87340fd58" category="paragraph">この例では、WindowsワーカーノードにAstra Tridentをインストールします。</block>
   <block id="a998f3ed1c2f0acf96000ec18ff8cb4f" category="paragraph">この例では、AKSクラスタで管理対象IDを有効にするためにAstra Tridentをインストールします。</block>
   <block id="b714bb36b0285d040e315c079c326009" category="list-text">現在の Astra Trident インスタンスのインストールに使用した Trident オペレータを削除たとえば、23.07からアップグレードする場合は、次のコマンドを実行します。</block>
-  <block id="7b136496fce84f19eb2409b46c46f701" category="list-text">21.10から22.10への最初のアップグレード。</block>
   <block id="766995a062c6503acd7ac4752fbb865d" category="inline-link-macro">23.10</block>
   <block id="78c875172f37f031a2632dc008815ee1" category="cell">2026年10月</block>
   <block id="6933dffe806f29980dbedda6aef6fda7" category="inline-link">Astra Trident 23.07</block>
@@ -4032,9 +4031,6 @@ AKSクラスタで管理IDまたはクラウドIDを使用する場合はオプ�
   <block id="6e3e8fb95db896575313140186e26d07" category="list-text">を使用します<block ref="cd01e1bae83933b9c59c914bc71332ac" prefix=" " category="inline-code"></block> コマンドを入力します<block ref="2973e53d04f6e3a0c4071821eb468a8f" prefix=" " category="inline-code"></block> アップグレード後のバージョンが反映されます。</block>
   <block id="733aa7fe5deef27d1cb0828cff0f17bd" category="admonition">インストール方法を切り替える前に、 <block ref="d7d87809bc6e1001ccd94c7433d28fd5" category="inline-link-macro-rx"></block>。</block>
   <block id="948c2cbef9ba6f931735e6eef2d86eba" category="list-text">詳細については、を参照してください <block ref="04cf7258a315ca08f4b436c194fef69d" category="inline-link-macro-rx"></block>。</block>
-  <block id="efb4ad4f97129a41089c72febc546fcc" category="list-text">インストールされているバージョンの4リリースウィンドウ内にある任意のターゲットリリースに直接アップグレードできます。たとえば、22.10（または任意の22.10 DOTリリース）から24.02に直接アップグレードできます。</block>
-  <block id="ff66cf4a4b7b4bc7f3ce15d77bd596a7" category="list-text">4つのリリースウィンドウ以外のリリースからアップグレードする場合は、複数の手順でアップグレードを実行します。のアップグレード手順を使用します。 <block ref="a799aa6eaf3a5192b34ea19f24bb716f" category="inline-link-macro-rx"></block> から、4つのリリースウィンドウに適合する最新のリリースにアップグレードします。たとえば、21.10を実行していて、24.02にアップグレードする場合は、次の手順を実行します。</block>
-  <block id="1de8721bcfd911022f2a86e48f4f3d2b" category="list-text">その後、22.10から24.02にアップグレードします。</block>
   <block id="1eb921add61b9e1c5fcaf8272bb52ec6" category="admonition">OpenShift Container PlatformでTridentオペレータを使用してアップグレードする場合は、Trident 21.01.1以降にアップグレードする必要があります。21.01.0 でリリースされた Trident オペレータには、 21.01.1 で修正された既知の問題が含まれています。詳細については、<block ref="bcebcdd21adcbb3d7c640d63a711c6fb" category="inline-link-rx"></block>。</block>
   <block id="6cf46197d43b0fb353cc1cb55753f51c" category="section-title">Astra Tridentに関する重要な情報24.02</block>
   <block id="10e922f2b5adf15b9f182c7c103f326e" category="cell"><block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix="" category="inline-code"></block> および<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block> のみ。
@@ -4114,4 +4110,8 @@ QoS ポリシーグループはバックエンドまたはストレージプー�
   <block id="4b1c6f609d27cc18df4b1605f9aa7b1b" category="paragraph">たとえば、のデフォルト値を変更するには、のように指定します<block ref="ad42f6697b035b7580e4fef93be20b4d" prefix=" " category="inline-code"></block>をクリックし、次のコマンドを実行します<block ref="8b5806248570dbb13e7d3bc5e6c0ee37" prefix=" " category="inline-code"></block> コマンドを入力します<block ref="32d61ffcee709121c5ce040022324539" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
   <block id="88c15f1888721229de466ebf2206b1c8" category="list-text">使用<block ref="0562418e6d9a76d0dd22b2f186a2203d" prefix=" " category="inline-code"></block> をクリックし、次の例に示すように、導入環境の名前を指定します<block ref="32d61ffcee709121c5ce040022324539" prefix=" " category="inline-code"></block> は、インストールするAstra Tridentのバージョンです。</block>
   <block id="2284dc5d4add6f82e5bc0121aa82a816" category="list-text">azure-netapp-filesストレージドライバでAzure Managed Identities（AMI）を使用するためのサポートが追加されました。</block>
+  <block id="5186dac2db0dc06e7d296c901a018234" category="list-text">インストールされているバージョンの4リリースウィンドウ内にある任意のターゲットリリースに直接アップグレードできます。たとえば、23.01（または任意の23.01 DOTリリース）から24.02に直接アップグレードできます。</block>
+  <block id="a771c1ff0e805ddbac97ebeb73a070d8" category="list-text">4つのリリースウィンドウ以外のリリースからアップグレードする場合は、複数の手順でアップグレードを実行します。のアップグレード手順を使用します。 <block ref="a799aa6eaf3a5192b34ea19f24bb716f" category="inline-link-macro-rx"></block> から、4つのリリースウィンドウに適合する最新のリリースにアップグレードします。たとえば、22.01を実行していて、24.02にアップグレードする場合は、次の手順を実行します。</block>
+  <block id="e5aaee266f7d64bb7199d33750b98122" category="list-text">22.01から23.01への最初のアップグレード。</block>
+  <block id="c6070eb192dc90174ef63a85c1f02d5a" category="list-text">その後、23.01から24.02にアップグレードします。</block>
 </blocks>
