@@ -66,7 +66,7 @@ Astra Trident Helmのインストールをアップグレードできます。
 WARNING: Astra TridentがインストールされているKubernetesクラスタを1.24から1.25以降にアップグレードする場合は、value.yamlを更新して設定する必要があります `excludePodSecurityPolicy` 終了： `true` または、を追加します `--set excludePodSecurityPolicy=true` に移動します `helm upgrade` コマンドを実行してからクラスタをアップグレードしてください。
 
 .手順
-. あなたの場合 link:../trident-get-started/kubernetes-deploy-helm.html#deploy-the-trident-operator-and-install-astra-trident-using-helm["Helmを使用したAstra Tridentのインストール"]を使用できます。 `helm upgrade trident netapp-trident/trident-operator --version 24.02.0` 1つの手順でアップグレードできます。Helmリポジトリを追加しなかった場合、またはHelmリポジトリを使用してアップグレードできない場合は、次の手順を実行します。
+. あなたの場合 link:../trident-get-started/kubernetes-deploy-helm.html#deploy-the-trident-operator-and-install-astra-trident-using-helm["Helmを使用したAstra Tridentのインストール"]を使用できます。 `helm upgrade trident netapp-trident/trident-operator --version 100.2402.0` 1つの手順でアップグレードできます。Helmリポジトリを追加しなかった場合、またはHelmリポジトリを使用してアップグレードできない場合は、次の手順を実行します。
 +
 .. 次のサイトからAstra Tridentの最新リリースをダウンロードしてください： link:https://github.com/NetApp/trident/releases/latest["GitHubの_Assets_sectionを参照してください"^]。
 .. を使用します `helm upgrade` コマンドを入力します `trident-operator-24.02.0.tgz` アップグレード後のバージョンが反映されます。
