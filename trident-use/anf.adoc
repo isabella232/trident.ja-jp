@@ -98,9 +98,9 @@ tridentctl install --cloud-provider="Azure" -n trident
 
 == AKSのクラウドID
 
-Cloud Identityを使用すると、Kubernetesポッドは、明示的なAWSクレデンシャルを指定するのではなく、AWS IAMロールとして認証することでAWSリソースにアクセスできます。
+クラウドIDを使用すると、Kubernetesポッドは、明示的なAzureクレデンシャルを指定するのではなく、ワークロードIDとして認証することでAzureリソースにアクセスできます。
 
-AWSでクラウドIDを利用するには、以下が必要です。
+AzureでクラウドIDを活用するには、以下が必要です。
 
 * AKSを使用して導入されるKubernetesクラスタ
 * AKS Kubernetesクラスタに設定されたワークロードIDとoidc-issuer

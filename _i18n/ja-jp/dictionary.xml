@@ -4115,4 +4115,6 @@ QoS ポリシーグループはバックエンドまたはストレージプー�
   <block id="c6070eb192dc90174ef63a85c1f02d5a" category="list-text">その後、23.01から24.02にアップグレードします。</block>
   <block id="23c22ef5f35b931bceb1aaeffafcb5f4" category="list-text">あなたの場合 <block ref="701383cb184d92daac13becc67e9c1be" category="inline-link-macro-rx"></block>を使用できます。<block ref="f8055407f6b06e8c86fe98fdbd160c87" prefix=" " category="inline-code"></block> 1つの手順でアップグレードできます。Helmリポジトリを追加しなかった場合、またはHelmリポジトリを使用してアップグレードできない場合は、次の手順を実行します。</block>
   <block id="fabc0fa737916420805fcbdf1e73d723" category="list-text">オペレータポッドがある場合は、を使用します<block ref="9ce56b0c50ae80fe754522969b1c96b9" prefix=" " category="inline-code"></block> をクリックし、Helmを使用してAstra Tridentがインストールされたかどうかを確認します。</block>
+  <block id="f77d4be42f8ef9e2474d677786cf6d7a" category="paragraph">クラウドIDを使用すると、Kubernetesポッドは、明示的なAzureクレデンシャルを指定するのではなく、ワークロードIDとして認証することでAzureリソースにアクセスできます。</block>
+  <block id="088be2b53cfa8710d751578d273c4af0" category="paragraph">AzureでクラウドIDを活用するには、以下が必要です。</block>
 </blocks>
