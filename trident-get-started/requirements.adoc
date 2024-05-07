@@ -195,11 +195,11 @@ link:../trident-reference/ports.html["Astra Trident ポート"]
 | v1.3.0  a| 
 * Docker .io / NetApp / Trident：24.02.0
 * docker.io / netapp/trident-autosupport：24.02
-* registry.k8s.io/sig-storage/csi-provisioner：v3.6.0
-* registry.k8s.io/sig-storage/csi-attacher：v4.4.0
-* registry.k8s.io/sig-storage/csi-resizer：v1.9.0
-* registry.k8s.io/sig-storage/csi-snapshotter：v6.3.0
-* registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.9.0
+* registry.k8s.io/sig-storage/csi-provisioner：v4.0.0
+* registry.k8s.io/sig-storage/csi-attacher：v4.5.0
+* registry.k8s.io/sig-storage/csi-resizer：v1.9.3
+* registry.k8s.io/sig-storage/csi-snapshotter：v6.3.3
+* registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.10.0
 * docker.io/netapp/trident-operator：24.02.0（オプション）
 
 
@@ -208,11 +208,11 @@ link:../trident-reference/ports.html["Astra Trident ポート"]
 | v1.24.0  a| 
 * Docker .io / NetApp / Trident：24.02.0
 * docker.io / netapp/trident-autosupport：24.02
-* registry.k8s.io/sig-storage/csi-provisioner：v3.6.0
-* registry.k8s.io/sig-storage/csi-attacher：v4.4.0
-* registry.k8s.io/sig-storage/csi-resizer：v1.9.0
-* registry.k8s.io/sig-storage/csi-snapshotter：v6.3.0
-* registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.9.0
+* registry.k8s.io/sig-storage/csi-provisioner：v4.0.0
+* registry.k8s.io/sig-storage/csi-attacher：v4.5.0
+* registry.k8s.io/sig-storage/csi-resizer：v1.9.3
+* registry.k8s.io/sig-storage/csi-snapshotter：v6.3.3
+* registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.10.0
 * docker.io/netapp/trident-operator：24.02.0（オプション）
 
 
@@ -221,11 +221,11 @@ link:../trident-reference/ports.html["Astra Trident ポート"]
 | v1.25.0  a| 
 * Docker .io / NetApp / Trident：24.02.0
 * docker.io / netapp/trident-autosupport：24.02
-* registry.k8s.io/sig-storage/csi-provisioner：v3.6.0
-* registry.k8s.io/sig-storage/csi-attacher：v4.4.0
-* registry.k8s.io/sig-storage/csi-resizer：v1.9.0
-* registry.k8s.io/sig-storage/csi-snapshotter：v6.3.0
-* registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.9.0
+* registry.k8s.io/sig-storage/csi-provisioner：v4.0.0
+* registry.k8s.io/sig-storage/csi-attacher：v4.5.0
+* registry.k8s.io/sig-storage/csi-resizer：v1.9.3
+* registry.k8s.io/sig-storage/csi-snapshotter：v6.3.3
+* registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.10.0
 * docker.io/netapp/trident-operator：24.02.0（オプション）
 
 
@@ -234,11 +234,11 @@ link:../trident-reference/ports.html["Astra Trident ポート"]
 | v1.26.0  a| 
 * Docker .io / NetApp / Trident：24.02.0
 * docker.io / netapp/trident-autosupport：24.02
-* registry.k8s.io/sig-storage/csi-provisioner：v3.6.0
-* registry.k8s.io/sig-storage/csi-attacher：v4.4.0
-* registry.k8s.io/sig-storage/csi-resizer：v1.9.0
-* registry.k8s.io/sig-storage/csi-snapshotter：v6.3.0
-* registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.9.0
+* registry.k8s.io/sig-storage/csi-provisioner：v4.0.0
+* registry.k8s.io/sig-storage/csi-attacher：v4.5.0
+* registry.k8s.io/sig-storage/csi-resizer：v1.9.3
+* registry.k8s.io/sig-storage/csi-snapshotter：v6.3.3
+* registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.10.0
 * docker.io/netapp/trident-operator：24.02.0（オプション）
 
 
@@ -247,11 +247,11 @@ link:../trident-reference/ports.html["Astra Trident ポート"]
 | v1.27.0  a| 
 * Docker .io / NetApp / Trident：24.02.0
 * docker.io / netapp/trident-autosupport：24.02
-* registry.k8s.io/sig-storage/csi-provisioner：v3.6.0
-* registry.k8s.io/sig-storage/csi-attacher：v4.4.0
-* registry.k8s.io/sig-storage/csi-resizer：v1.9.0
-* registry.k8s.io/sig-storage/csi-snapshotter：v6.3.0
-* registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.9.0
+* registry.k8s.io/sig-storage/csi-provisioner：v4.0.0
+* registry.k8s.io/sig-storage/csi-attacher：v4.5.0
+* registry.k8s.io/sig-storage/csi-resizer：v1.9.3
+* registry.k8s.io/sig-storage/csi-snapshotter：v6.3.3
+* registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.10.0
 * docker.io/netapp/trident-operator：24.02.0（オプション）
 
 
@@ -260,11 +260,11 @@ link:../trident-reference/ports.html["Astra Trident ポート"]
 | v1.28.0  a| 
 * Docker .io / NetApp / Trident：24.02.0
 * docker.io / netapp/trident-autosupport：24.02
-* registry.k8s.io/sig-storage/csi-provisioner：v3.6.0
-* registry.k8s.io/sig-storage/csi-attacher：v4.4.0
-* registry.k8s.io/sig-storage/csi-resizer：v1.9.0
-* registry.k8s.io/sig-storage/csi-snapshotter：v6.3.0
-* registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.9.0
+* registry.k8s.io/sig-storage/csi-provisioner：v4.0.0
+* registry.k8s.io/sig-storage/csi-attacher：v4.5.0
+* registry.k8s.io/sig-storage/csi-resizer：v1.9.3
+* registry.k8s.io/sig-storage/csi-snapshotter：v6.3.3
+* registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.10.0
 * docker.io/netapp/trident-operator：24.02.0（オプション）
 
 
@@ -278,7 +278,7 @@ link:../trident-reference/ports.html["Astra Trident ポート"]
 * registry.k8s.io/sig-storage/csi-resizer：v1.9.3
 * registry.k8s.io/sig-storage/csi-snapshotter：v6.3.3
 * registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.10.0
-* docker.io/netapp/trident-operator：24.02.0 （オプション）
+* docker.io/netapp/trident-operator：24.02.0（オプション）
 
 
 |===
