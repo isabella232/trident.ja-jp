@@ -592,7 +592,6 @@
   <block id="af2a4d2810d86aa0169c117f82682f9a" category="doc">よくある質問</block>
   <block id="96ab491ef73d5db0cd15f55e1552cc22" category="section-title">一般的な質問</block>
   <block id="b34c3d20de0f1b2c7a69bdc59002ad47" category="section-title">Trident がリリースされる頻度を教えてください。</block>
-  <block id="2f55088c7d055eb361252b15d5d7af10" category="paragraph">Trident は、 1 月、 4 月、 7 月、 10 月の 3 カ月ごとにリリースされます。Kubernetes のリリースから 1 カ月後です。</block>
   <block id="15602d1e4b699ebca549a3d953672d8c" category="section-title">Astra Trident は、特定のバージョンの Kubernetes でリリースされたすべての機能をサポートしていますか。</block>
   <block id="d860923e20119473e7f7d50683cb0559" category="paragraph">Astra Trident は、通常、 Kubernetes でアルファ機能をサポートしていません。Trident は、 Kubernetes ベータリリースに続く 2 つの Trident リリースでベータ機能をサポートしています。</block>
   <block id="52ffcf336df0055235949cf324a8624b" category="section-title">Astra Trident には、他のネットアップ製品との依存関係はありますか。</block>
@@ -3275,7 +3274,6 @@ Yesfootnote: 5[]：Astra Tridentによるサポート</block>
   <block id="33ab2c3f94452baf7f17dab03982edfb" category="paragraph">実行後<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> が更新され、オペレータが既存のインストールの更新とパッチを処理します。これにより、新しいポッドが作成され、それに応じてインストールが変更される可能性があります。</block>
   <block id="ac0482b416d6b2d907db760f79e018a7" category="example-title">&lt;strong&gt;クリーン再インストール&lt;/strong&gt;</block>
   <block id="ae2cbb250a37c9e09570ff02857e4cbe" category="paragraph">クラスタを対象としたTridentオペレータを使用すると、クラスタを対象としたリソースを完全に削除できます。Astra Tridentを完全にアンインストールして簡単に再インストールできます。</block>
-  <block id="8e2504f56599a577cd2bbee322a41d4e" category="paragraph">Astra Trident は四半期ごとにリリースサイクルを実施し、毎年 4 つのメジャーリリースをリリースしています。新しいリリースは、以前のリリースに基づいて構築され、新機能、パフォーマンスの強化、バグの修正、および改善が提供されます。ネットアップでは、Astra Tridentの新機能を活用するために、1年に1回以上アップグレードすることを推奨しています。</block>
   <block id="4aa39142850a8999e9a4e9350f8bfbe9" category="list-text">Astra Trident 23.07以降では、v1ボリュームSnapshotが必要です。アルファSnapshotまたはベータSnapshotはサポートされなくなりました。</block>
   <block id="34c1edfb4ac8581528c3791be680aeb3" category="inline-link-macro">CVS サービスタイプ</block>
   <block id="5797c3891863b81173e1bb10d6488a72" category="inline-link-macro">CVSサービスタイプのサンプル</block>
@@ -3767,11 +3765,6 @@ LUKS暗号化はNVMe/TCPではサポートされません。</block>
   <block id="0acb661700c6422ee3bfc29c43c715c6" category="paragraph">非マルチパス構成またはを使用<block ref="a3a1d5b95e345a3db24a5a30e349f699" prefix=" " category="inline-code"></block> または<block ref="e82e6d155396541f07f7347c984444ea" prefix=" " category="inline-code"></block> multipath.confファイルの値が原因でマウントが失敗します。Astra Tridentでは、<block ref="db729c5c8df447087e5a84b961df14f6" prefix=" " category="inline-code"></block> 21.07リリース以降</block>
   <block id="8554748be67b956e550de942edae807d" category="admonition">NVMe/TCPにはRHEL 9以降が必要です。</block>
   <block id="e379ebca8f2245b4a0c32803c6d7f845" category="paragraph">Kubernetesクラスタ内のすべてのワーカーノードが、ポッド用にプロビジョニングしたボリュームをマウントできる必要があります。ワーカーノードを準備するには、ドライバの選択に基づいてNFS、iSCSI、またはNVMeのツールをインストールする必要があります。</block>
-  <block id="f1ddd80e14c81c1d754dfbdb2f850757" category="list-text">registry.k8s.io/sig-storage/csi-provisioner：v3.6.0</block>
-  <block id="9907e74008defde26417cd6b70b41a28" category="list-text">registry.k8s.io/sig-storage/csi-attacher：v4.4.0</block>
-  <block id="0412a949ebb008aa6aa55f27dd6db71c" category="list-text">registry.k8s.io/sig-storage/csi-resizer：v1.9.0</block>
-  <block id="1b18bb70ac8b9e2989b63f692a170f14" category="list-text">registry.k8s.io/sig-storage/csi-snapshotter：v6.3.0</block>
-  <block id="bfcfde74961d9f3991b8fb27f23b564f" category="list-text">registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.9.0</block>
   <block id="df935b95f4f5aa4b8cc6b78b9011196d" category="cell">v1.28.0</block>
   <block id="2564a762d021b4beae21f01627773c0f" category="inline-link-macro">問題#834</block>
   <block id="e53ddb8a6947ad5b93f8c82a86836f16" category="list-text">要求された新しいサイズがontap-nasおよびontap-nas-flexgroupストレージドライバの合計ボリュームサイズよりも小さい場合、ボリュームの拡張が修正されました（<block ref="6140c2bc2ecfc555b47da5841f5fd8ae" category="inline-link-macro-rx"></block>）。</block>
@@ -4083,7 +4076,6 @@ KubernetesのNon-Graceful Node Shutdown（NGN）と連携して、ノードに�
   <block id="e7afa8f188dd7bf2c172108b10e2e2df" category="list-text">registry.k8s.io/sig-storage/csi-resizer：v1.9.3</block>
   <block id="5268a90435480eab7edcef1c31af78ea" category="list-text">registry.k8s.io/sig-storage/csi-snapshotter：v6.3.3</block>
   <block id="dc33446faca12c219dd12f5e1c73cf51" category="list-text">registry.k8s.io/sig-storage/csi-node-driver-registrar：v2.10.0</block>
-  <block id="528d64fadb48dbbc71a3bf878d210988" category="list-text">docker.io/netapp/trident-operator：24.02.0 （オプション）</block>
   <block id="62f429770359674b482a69dc8eb1c822" category="paragraph">Google CloudでのCloud Volumes Serviceのサービスタイプとサービスレベルの詳細については、を参照してください。 <block ref="5b5fd03722abab2c395288a6ee42ad11" category="inline-link-macro-rx"></block>。</block>
   <block id="cb1cfaffdbb4cc0c4c444a11e40e3262" category="paragraph">SANストレージドライバを使用するONTAP バックエンドの場合、Astra Tridentは双方向CHAPを設定し、を使用してCHAPユーザ名とシークレットを管理できます<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>。
 を参照してください <block ref="5cdb093a3afb814148505ae9813b18af" category="inline-link-macro-rx"></block> ONTAP バックエンドで Trident が CHAP を構成する方法をご確認ください。</block>
@@ -4117,4 +4109,6 @@ QoS ポリシーグループはバックエンドまたはストレージプー�
   <block id="fabc0fa737916420805fcbdf1e73d723" category="list-text">オペレータポッドがある場合は、を使用します<block ref="9ce56b0c50ae80fe754522969b1c96b9" prefix=" " category="inline-code"></block> をクリックし、Helmを使用してAstra Tridentがインストールされたかどうかを確認します。</block>
   <block id="f77d4be42f8ef9e2474d677786cf6d7a" category="paragraph">クラウドIDを使用すると、Kubernetesポッドは、明示的なAzureクレデンシャルを指定するのではなく、ワークロードIDとして認証することでAzureリソースにアクセスできます。</block>
   <block id="088be2b53cfa8710d751578d273c4af0" category="paragraph">AzureでクラウドIDを活用するには、以下が必要です。</block>
+  <block id="309d4be2a929a72254d2e0ec91b427b3" category="paragraph">24.02リリース以降、Astra Tridentは2月、6月、10月の4カ月ごとにリリースされます。Kubernetes のリリースから 1 カ月後です。</block>
+  <block id="d9242a3acb300b393c2167774404ecc0" category="paragraph">24.02リリース以降、Astra Tridentのリリースサイクルは4カ月となり、メジャーリリースは暦年に3回提供されます。新しいリリースは、以前のリリースに基づいて構築され、新機能、パフォーマンスの強化、バグの修正、および改善が提供されます。ネットアップでは、Astra Tridentの新機能を活用するために、1年に1回以上アップグレードすることを推奨しています。</block>
 </blocks>
