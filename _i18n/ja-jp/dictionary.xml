@@ -2620,7 +2620,6 @@
   <block id="3f7bf0ef305a15c68efdc95a50750bd0" category="list-text">LUNが見つかりません</block>
   <block id="15ffa30c3d1ab6322e5ff52935a86a50" category="section-title">iSCSIツールをインストール</block>
   <block id="10ff9e1b33974d06317ff739498154ce" category="paragraph">使用しているオペレーティングシステム用のコマンドを使用して、iSCSIツールをインストールします。</block>
-  <block id="0dfbc86ddb50cb439c7039bbf012a2b6" category="admonition">iSCSIツールをインストールしたあとにワーカーノードをリブートして、コンテナにボリュームを接続する際の障害を回避します。</block>
   <block id="baca3a42ff523348689308c7bd411b38" category="paragraph">このバックエンド構成では、 1 つのファイルに複数のストレージプールを定義します。これは、異なるサービスレベルをサポートする複数の容量プールがあり、それらを表すストレージクラスを Kubernetes で作成する場合に便利です。プールを区別するために、仮想プールのラベルを使用しました<block ref="c05f6c233521207f6fe311afef550c3c" prefix=" " category="inline-code"></block>。</block>
   <block id="bfd7bf04b3d28a42267e8d1b30a05f01" category="section-title">例2：のバックエンドとストレージクラスの設定<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block> 仮想プールを備えたドライバ</block>
   <block id="418ff75ccabac38370cc8570721746a3" category="paragraph">この例は、仮想プールとともに、それらを参照するStorageClassesとともに構成されているバックエンド定義ファイルを示しています。</block>
@@ -4061,7 +4060,6 @@ KubernetesのNon-Graceful Node Shutdown（NGN）と連携して、ノードに�
   <block id="bf03aee4d85a6d6ce9b7bb529633da76" category="list-text">TridentでKubernetes 1.29がサポートされるようになりました。Kubernetesをアップグレードする前にAstra Tridentをアップグレードしてください。</block>
   <block id="7cc1edf2116d94e97b8f4a69079de132" category="list-text">Anthosオンプレミス（VMware）とAnthos（ベアメタル1.16）</block>
   <block id="aee0b36180bb530cbb300a23aa045dea" category="list-text">Kubernetes 1.23~1.29</block>
-  <block id="9a9efcd4425c5075e2aae4a65c4d625d" category="list-text">OpenShift 4.10-4.14</block>
   <block id="79b3290789721c34f186b1651a42c3d4" category="paragraph">Astra Tridentは、Google Kubernetes Engine（GKE）、Amazon Elastic Kubernetes Services（EKS）、Azure Kubernetes Service（AKS）、Mirantis Kubernetes Engine（MKE）、Rancher、VMware Tanzu Portfolioなど、他のフルマネージド/自己管理型Kubernetesソリューションとも連携します。</block>
   <block id="eca0dda5d40cf62b4a73c50deab2520c" category="inline-link-macro">KubeVirt</block>
   <block id="6dcbb28bcb406143523df0ce31057e5a" category="paragraph">Astra TridentとONTAPは、 <block ref="98ab68800979b414641691275d2b9c15" category="inline-link-macro-rx"></block>。</block>
@@ -4111,4 +4109,5 @@ QoS ポリシーグループはバックエンドまたはストレージプー�
   <block id="088be2b53cfa8710d751578d273c4af0" category="paragraph">AzureでクラウドIDを活用するには、以下が必要です。</block>
   <block id="309d4be2a929a72254d2e0ec91b427b3" category="paragraph">24.02リリース以降、Astra Tridentは2月、6月、10月の4カ月ごとにリリースされます。Kubernetes のリリースから 1 カ月後です。</block>
   <block id="d9242a3acb300b393c2167774404ecc0" category="paragraph">24.02リリース以降、Astra Tridentのリリースサイクルは4カ月となり、メジャーリリースは暦年に3回提供されます。新しいリリースは、以前のリリースに基づいて構築され、新機能、パフォーマンスの強化、バグの修正、および改善が提供されます。ネットアップでは、Astra Tridentの新機能を活用するために、1年に1回以上アップグレードすることを推奨しています。</block>
+  <block id="21ce5c96d2c133be2c7c77e35247556c" category="list-text">OpenShift 4.10-4.15</block>
 </blocks>

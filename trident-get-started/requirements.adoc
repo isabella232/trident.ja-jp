@@ -39,14 +39,14 @@ Trident Astra は、次のような複数のコンテナエンジンとオーケ
 
 * Anthosオンプレミス（VMware）とAnthos（ベアメタル1.16）
 * Kubernetes 1.23~1.29
-* OpenShift 4.10-4.14
+* OpenShift 4.10-4.15
 
 
 Trident オペレータは、次のリリースでサポートされています。
 
 * Anthosオンプレミス（VMware）とAnthos（ベアメタル1.16）
 * Kubernetes 1.23~1.29
-* OpenShift 4.10-4.14
+* OpenShift 4.10-4.15
 
 
 Astra Tridentは、Google Kubernetes Engine（GKE）、Amazon Elastic Kubernetes Services（EKS）、Azure Kubernetes Service（AKS）、Mirantis Kubernetes Engine（MKE）、Rancher、VMware Tanzu Portfolioなど、他のフルマネージド/自己管理型Kubernetesソリューションとも連携します。
