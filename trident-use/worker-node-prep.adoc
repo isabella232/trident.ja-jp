@@ -21,13 +21,13 @@ Kubernetesクラスタ内のすべてのワーカーノードが、ポッド用�
 ドライバを組み合わせて使用している場合は、ドライバに必要なすべてのツールをインストールする必要があります。最新バージョンのRedHat CoreOSには、デフォルトでツールがインストールされています。
 
 .NFSツール
-NFSツールを使用している場合は、次の手順でインストールします。 `ontap-nas`、 `ontap-nas-economy`、 `ontap-nas-flexgroup`、 `azure-netapp-files`、 `gcp-cvs`。
+link:https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html#nfs-volumes["NFSツールのインストール"] を使用している場合： `ontap-nas`、 `ontap-nas-economy`、 `ontap-nas-flexgroup`、 `azure-netapp-files`、 `gcp-cvs`。
 
 .iSCSIツール
-使用する場合はiSCSIツールをインストールします。 `ontap-san`、 `ontap-san-economy`、 `solidfire-san`。
+link:https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html#install-the-iscsi-tools["iSCSIツールをインストール"] を使用している場合： `ontap-san`、 `ontap-san-economy`、 `solidfire-san`。
 
 .NVMeツール
-NVMeツールをインストールする（使用している場合） `ontap-san` Non-Volatile Memory Express（NVMe）over TCP（NVMe/TCP）プロトコルの場合。
+link:https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html#nvmetcp-volumes["NVMeツールをインストールする"] を使用している場合 `ontap-san` Non-Volatile Memory Express（NVMe）over TCP（NVMe/TCP）プロトコルの場合。
 
 
 NOTE: NVMe/TCPにはONTAP 9.12以降を推奨します。

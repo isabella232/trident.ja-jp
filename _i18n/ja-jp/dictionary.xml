@@ -3111,7 +3111,6 @@ SMB</block>
   <block id="adb998c877c843080cb8c94f182f8b6a" category="paragraph">Kubernetes StorageClassオブジェクトを設定してストレージクラスを作成し、Astra Tridentでボリュームのプロビジョニング方法を指定</block>
   <block id="95d4f411b57eb8201e27fa4636c30816" category="section-title">Kubernetes StorageClassオブジェクトの設定</block>
   <block id="b8d89cc8455fbb137550c0819b7813c8" category="inline-link">Kubernetes StorageClassオブジェクト</block>
-  <block id="b92c56f76eb1fd7e747c63e99a829e57" category="paragraph">。<block ref="da3f7f170e13df7f56e057fc4226aa85" category="inline-link-rx"></block> そのクラスで使用するプロビジョニングツールとしてAstra Tridentを特定し、Astra Tridentにボリュームのプロビジョニング方法を指示します。例：</block>
   <block id="d955a256e02907c43d2afd5bfdb671ea" category="paragraph">StorageClassオブジェクトを作成したら、ストレージクラスを作成できます。 <block ref="1310ad9d78b8b659f76828400b5d8126" category="inline-xref-macro-rx"></block> に、使用または変更できる基本的なサンプルを示します。</block>
   <block id="a221a060125881c2027807248f8302a2" category="list-text">これはKubernetesオブジェクトなので、<block ref="0f12ee5c9f1dd90158580f1c292b0d37" prefix=" " category="inline-code"></block> をクリックしてKubernetesで作成します。</block>
   <block id="f31a577daf927c7edc5555c9ceabc983" category="section-title">ストレージクラスノサンプル</block>
@@ -3315,7 +3314,6 @@ Yesfootnote: 5[]：Astra Tridentによるサポート</block>
   <block id="2985edaba812b8b31d08cc8513fee0a3" category="section-title">手動インストールのアンインストール</block>
   <block id="55f6e2744208ccefe34f3e05ced2c988" category="section-title">Helmインストールのアンインストール</block>
   <block id="99dec4df69ba043a5eb3118e1e0b364e" category="section-title">のアンインストール<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> インストール</block>
-  <block id="7a15e63f1d0efc213151254bbc1b2d0d" category="doc">Tridentオペレータのインストールをアップグレード</block>
   <block id="0f443eb922735ce52f2b490ffca00e49" category="paragraph">Astra Tridentは、Tridentオペレータを使用して手動またはHelmを使用してアップグレードできます。Tridentオペレータのインストール環境から別のTridentオペレータのインストール環境へのアップグレード、または<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> Tridentオペレータバージョンへのインストールレビュー <block ref="5cffa5fbe758cc3901f0e33c78b29d1b" category="inline-link-macro-rx"></block> Tridentオペレータのインストールをアップグレードする前に</block>
   <block id="3ef75911ec16a9d0ba70cfd4e68dcb71" category="section-title">手動インストールのアップグレード</block>
   <block id="b0e74afe1fdeb605b5c47b501c43b71b" category="inline-link-macro">インストールされているバージョン</block>
@@ -3642,9 +3640,6 @@ IPv6フラグを使用してAstra Tridentをインストールした場合は、
   <block id="9b0dbff182f270b33423b281f92bddc2" category="paragraph">を追加します<block ref="a564a902c12941efa27c1d2ea4a19f8e" prefix=" " category="inline-code"></block> サブシステムに戻ります。</block>
   <block id="cedfb4d575651cbf026e87084c68731c" category="paragraph">Kubernetesクラスタ内のすべてのワーカーノードが、ポッド用にプロビジョニングしたボリュームをマウントできる必要があります。ワーカーノードを準備するには、ドライバの選択に基づいて、NFS、iSCSI、またはNVMe/TCPのいずれかのツールをインストールする必要があります。</block>
   <block id="2994aa6a94d7af57a2fb9663129866a9" category="paragraph">ドライバを組み合わせて使用している場合は、ドライバに必要なすべてのツールをインストールする必要があります。最新バージョンのRedHat CoreOSには、デフォルトでツールがインストールされています。</block>
-  <block id="aa49aed8e04b1c60f9adbd7cd8692921" category="paragraph">NFSツールを使用している場合は、次の手順でインストールします。<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block>、<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block>、<block ref="844e84da8e822b4a33c4d8188da97937" prefix=" " category="inline-code"></block>、<block ref="bc5779a2d33eeb1304bae57f15920cfc" prefix=" " category="inline-code"></block>、<block ref="5935ea92cdd7d975b4e764b429f21c01" prefix=" " category="inline-code"></block>。</block>
-  <block id="1680e7d05a214feff31937c344cf7b40" category="paragraph">使用する場合はiSCSIツールをインストールします。<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block>、<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block>、<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block>。</block>
-  <block id="285f743d88da1825f825debafc72b6a6" category="paragraph">NVMeツールをインストールする（使用している場合）<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block> Non-Volatile Memory Express（NVMe）over TCP（NVMe/TCP）プロトコルの場合。</block>
   <block id="bfd6781963e74cc6cfd1f864a28a5b5b" category="admonition">NVMe/TCPにはONTAP 9.12以降を推奨します。</block>
   <block id="4771a9c521a7d39c2dcf6ee71d0ef032" category="section-title">NVMe/TCPホリユウム</block>
   <block id="b15a013c4977a2a96afedafe316664b2" category="section-title">インストールを確認します</block>
@@ -4110,4 +4105,11 @@ QoS ポリシーグループはバックエンドまたはストレージプー�
   <block id="309d4be2a929a72254d2e0ec91b427b3" category="paragraph">24.02リリース以降、Astra Tridentは2月、6月、10月の4カ月ごとにリリースされます。Kubernetes のリリースから 1 カ月後です。</block>
   <block id="d9242a3acb300b393c2167774404ecc0" category="paragraph">24.02リリース以降、Astra Tridentのリリースサイクルは4カ月となり、メジャーリリースは暦年に3回提供されます。新しいリリースは、以前のリリースに基づいて構築され、新機能、パフォーマンスの強化、バグの修正、および改善が提供されます。ネットアップでは、Astra Tridentの新機能を活用するために、1年に1回以上アップグレードすることを推奨しています。</block>
   <block id="21ce5c96d2c133be2c7c77e35247556c" category="list-text">OpenShift 4.10-4.15</block>
+  <block id="32427d4abb52de3afcfa06484384e101" category="doc">Trident OperatorまたはHelmを使用してAstra Tridentのインストールをアップグレード</block>
+  <block id="33176aeb27c41088051f460946356423" category="inline-link-macro">NFSツールのインストール</block>
+  <block id="a0b90bbc60c78003c8f066892446e127" category="paragraph"><block ref="5dac8bb8705e3a30615e678be90a7f1d" category="inline-link-macro-rx"></block> を使用している場合：<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block>、<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block>、<block ref="844e84da8e822b4a33c4d8188da97937" prefix=" " category="inline-code"></block>、<block ref="bc5779a2d33eeb1304bae57f15920cfc" prefix=" " category="inline-code"></block>、<block ref="5935ea92cdd7d975b4e764b429f21c01" prefix=" " category="inline-code"></block>。</block>
+  <block id="dd1774ab705fcc0738f7d5cfa8176115" category="paragraph"><block ref="918981963bb555a1b3a006c12fd13637" category="inline-link-macro-rx"></block> を使用している場合：<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block>、<block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix=" " category="inline-code"></block>、<block ref="c0d2a793e71b152662b3e8cd2da00620" prefix=" " category="inline-code"></block>。</block>
+  <block id="e007fb329975dfac9458f3defd0f7fc1" category="inline-link-macro">NVMeツールをインストールする</block>
+  <block id="fd7af40a7e3f81bfb0a51eac257dc730" category="paragraph"><block ref="8ac92b41418caf5b4c74c2a77a0c349a" category="inline-link-macro-rx"></block> を使用している場合<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block> Non-Volatile Memory Express（NVMe）over TCP（NVMe/TCP）プロトコルの場合。</block>
+  <block id="7e757604a320b645d3e338eaa6d9bca2" category="paragraph">。<block ref="da3f7f170e13df7f56e057fc4226aa85" category="inline-link-rx"></block> そのクラスで使用するプロビジョニングツールとしてAstra Tridentを特定し、Astra Tridentにボリュームのプロビジョニング方法を指示します。例：</block>
 </blocks>
