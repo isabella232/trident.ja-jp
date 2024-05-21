@@ -231,6 +231,48 @@ NOTE: Ubuntu 18.04 では 'iSCSI デーモンを起動するために 'open-iscs
 ====
 
 
+=== iSCSI自己回復の設定または無効化
+
+次のAstra TridentのiSCSI自己修復設定を使用して、古いセッションを修正できます。
+
+* * iSCSIの自己修復間隔*：iSCSIの自己修復を実行する頻度を指定します（デフォルト：5分）。小さい数値を設定することで実行頻度を高めるか、大きい数値を設定することで実行頻度を下げることができます。
+
+
+[NOTE]
+====
+iSCSIの自己修復間隔を0に設定すると、iSCSIの自己修復が完全に停止します。iSCSIの自己修復を無効にすることは推奨しません。iSCSIの自己修復が意図したとおりに機能しない、またはデバッグ目的で機能しない特定のシナリオでのみ無効にする必要があります。
+
+====
+* * iSCSI自己回復待機時間*：正常でないセッションからログアウトして再ログインを試みるまでのiSCSI自己回復の待機時間を決定します（デフォルト：7分）。健全でないと識別されたセッションがログアウトされてから再度ログインしようとするまでの待機時間を長くするか、またはログアウトしてログインしてからログインするまでの時間を短くするように設定できます。
+
+
+[role="tabbed-block"]
+====
+.Helm
+--
+iSCSIの自己修復設定を構成または変更するには、 `iscsiSelfHealingInterval` および `iscsiSelfHealingWaitTime` helmのインストール中またはhelmの更新中のパラメータ。
+
+次の例では、iSCSIの自己修復間隔を3分、自己修復の待機時間を6分に設定しています。
+
+[listing]
+----
+helm install trident trident-operator-100.2402.0.tgz --set iscsiSelfHealingInterval=3m0s --set iscsiSelfHealingWaitTime=6m0s -n trident
+----
+--
+.Tridentctl
+--
+iSCSIの自己修復設定を構成または変更するには、 `iscsi-self-healing-interval` および `iscsi-self-healing-wait-time` tridentctlのインストールまたは更新中のパラメータ。
+
+次の例では、iSCSIの自己修復間隔を3分、自己修復の待機時間を6分に設定しています。
+
+[listing]
+----
+tridentctl install --iscsi-self-healing-interval=3m0s --iscsi-self-healing-wait-time=6m0s -n trident
+----
+--
+====
+
+
 == NVMe/TCPホリユウム
 
 オペレーティングシステムに対応したコマンドを使用してNVMeツールをインストールします。

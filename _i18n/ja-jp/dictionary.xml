@@ -4112,4 +4112,19 @@ QoS ポリシーグループはバックエンドまたはストレージプー�
   <block id="e007fb329975dfac9458f3defd0f7fc1" category="inline-link-macro">NVMeツールをインストールする</block>
   <block id="fd7af40a7e3f81bfb0a51eac257dc730" category="paragraph"><block ref="8ac92b41418caf5b4c74c2a77a0c349a" category="inline-link-macro-rx"></block> を使用している場合<block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix=" " category="inline-code"></block> Non-Volatile Memory Express（NVMe）over TCP（NVMe/TCP）プロトコルの場合。</block>
   <block id="7e757604a320b645d3e338eaa6d9bca2" category="paragraph">。<block ref="da3f7f170e13df7f56e057fc4226aa85" category="inline-link-rx"></block> そのクラスで使用するプロビジョニングツールとしてAstra Tridentを特定し、Astra Tridentにボリュームのプロビジョニング方法を指示します。例：</block>
+  <block id="50f9796c3e95f29464ed077bb59ca6a5" category="cell"><block ref="a1edaea62dbed344534369e9668223b1" prefix="" category="inline-code"></block></block>
+  <block id="d3ee0f95ea35db45a8c5d2deb96b4eb9" category="cell">iSCSIの自己修復が実行される間隔。</block>
+  <block id="d2393ee8411e83742fc73a79660d81ba" category="cell"><block ref="48899b1fc217fef67f8c9c11d2af0800" prefix="" category="inline-code"></block></block>
+  <block id="5368476cef8604c12ee3f8a741319473" category="cell"><block ref="85fc372a514da766ce84a222668f8e62" prefix="" category="inline-code"></block></block>
+  <block id="a5c601ef1c412054e22a761067edb9da" category="cell">iSCSIの自己修復が、ログアウトとその後のログインを実行して古いセッションの解決を開始するまでの時間。</block>
+  <block id="e1bd8a641f8c3114c2698aa76942b621" category="cell"><block ref="4fe853d0c57c2a118a755c207068b052" prefix="" category="inline-code"></block></block>
+  <block id="d03a790fb20fccc8b27cff74c7a10709" category="section-title">iSCSI自己回復の設定または無効化</block>
+  <block id="1c804f3ccd207f84562f1fad6c4d35f5" category="paragraph">次のAstra TridentのiSCSI自己修復設定を使用して、古いセッションを修正できます。</block>
+  <block id="160cc91d68e6399b864fe236e7a6d11e" category="list-text">* iSCSIの自己修復間隔*：iSCSIの自己修復を実行する頻度を指定します（デフォルト：5分）。小さい数値を設定することで実行頻度を高めるか、大きい数値を設定することで実行頻度を下げることができます。</block>
+  <block id="af6999fe88eb0d5f3cf5f3c7570bf014" category="paragraph">iSCSIの自己修復間隔を0に設定すると、iSCSIの自己修復が完全に停止します。iSCSIの自己修復を無効にすることは推奨しません。iSCSIの自己修復が意図したとおりに機能しない、またはデバッグ目的で機能しない特定のシナリオでのみ無効にする必要があります。</block>
+  <block id="fe240a869a7a9e3bdc68d460aa116db2" category="list-text">* iSCSI自己回復待機時間*：正常でないセッションからログアウトして再ログインを試みるまでのiSCSI自己回復の待機時間を決定します（デフォルト：7分）。健全でないと識別されたセッションがログアウトされてから再度ログインしようとするまでの待機時間を長くするか、またはログアウトしてログインしてからログインするまでの時間を短くするように設定できます。</block>
+  <block id="7c3dfaf40c8f6c1208932661e70ca6b2" category="paragraph">iSCSIの自己修復設定を構成または変更するには、<block ref="a1edaea62dbed344534369e9668223b1" prefix=" " category="inline-code"></block> および<block ref="85fc372a514da766ce84a222668f8e62" prefix=" " category="inline-code"></block> helmのインストール中またはhelmの更新中のパラメータ。</block>
+  <block id="ba53a946a5e7dedfdc75a569107f3a66" category="paragraph">次の例では、iSCSIの自己修復間隔を3分、自己修復の待機時間を6分に設定しています。</block>
+  <block id="c67fd1b99934afa248dfeb285a9a4191" category="open-title">Tridentctl</block>
+  <block id="03c688458c87383f238f17223a52f7bd" category="paragraph">iSCSIの自己修復設定を構成または変更するには、<block ref="95df96489cc6481c74d24c1397e3edd9" prefix=" " category="inline-code"></block> および<block ref="4ad3b66813348b71002bd232a403581c" prefix=" " category="inline-code"></block> tridentctlのインストールまたは更新中のパラメータ。</block>
 </blocks>

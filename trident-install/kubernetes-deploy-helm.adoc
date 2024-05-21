@@ -209,6 +209,12 @@ helm install <name> netapp-trident/trident-operator --version 100.2402.0  --crea
 
 
 | `cloudIdentity` | AKSクラスタでクラウドIDを使用する場合は、ワークロードID（「azure.workload.identity/client-id：xxxxxxxxxx-xxxx-xxxxxxx」）に設定します。EKSクラスタでクラウドIDを使用する場合は、AWS IAMロール（「eks.amazonaws.com/role-arn: arn：aws：iam：：123456：role/astratrident-role」）に設定されます。 | `""` 
+
+
+| `iscsiSelfHealingInterval` | iSCSIの自己修復が実行される間隔。 | `5m0s` 
+
+
+| `iscsiSelfHealingWaitTime` | iSCSIの自己修復が、ログアウトとその後のログインを実行して古いセッションの解決を開始するまでの時間。 | `7m0s` 
 |===
 
 
