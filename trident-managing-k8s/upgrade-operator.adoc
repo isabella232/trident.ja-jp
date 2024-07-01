@@ -26,8 +26,8 @@ NOTE: ネームスペースを対象としたオペレータ（バージョン20
 .このタスクについて
 Tridentにはバンドルファイルが用意されています。このファイルを使用して、オペレータをインストールしたり、Kubernetesバージョンに対応する関連オブジェクトを作成したりできます。
 
-* クラスタでKubernetes 1.24以前を実行している場合は、を使用します link:https://github.com/NetApp/trident/tree/stable/v24.02/deploy/bundle_pre_1_25.yaml["Bundle_pre_1_25.yaml"^]。
-* クラスタでKubernetes 1.25以降を実行している場合は、を使用します link:https://github.com/NetApp/trident/tree/stable/v24.02/deploy/bundle_post_1_25.yaml["bundle_post_1_25.yaml"^]。
+* クラスタでKubernetes 1.24を実行している場合は、を使用し link:https://github.com/NetApp/trident/tree/stable/v24.06/deploy/bundle_pre_1_25.yaml["Bundle_pre_1_25.yaml"^]ます。
+* クラスタでKubernetes 1.25以降を実行している場合は、を使用します link:https://github.com/NetApp/trident/tree/stable/v24.06/deploy/bundle_post_1_25.yaml["bundle_post_1_25.yaml"^]。
 
 
 .作業を開始する前に
@@ -47,12 +47,12 @@ Tridentにはバンドルファイルが用意されています。このファ�
 kubectl delete -f 23.07.0/trident-installer/deploy/<bundle.yaml> -n trident
 ----
 . を使用して初期インストールをカスタマイズした場合 `TridentOrchestrator` 属性を編集できます `TridentOrchestrator` インストールパラメータを変更するオブジェクト。これには、ミラーリングされたTridentおよびCSIイメージレジストリをオフラインモードに指定したり、デバッグログを有効にしたり、イメージプルシークレットを指定したりするための変更が含まれます。
-. 環境に応じた適切なバンドルYAMLファイルを使用してAstra Tridentをインストールします（_YAML <bundle.yaml>_は
-`bundle_pre_1_25.yaml` または `bundle_post_1_25.yaml` 使用しているKubernetesのバージョンに基づきます。たとえば、Astra Trident 24.02をインストールする場合は、次のコマンドを実行します。
+. 環境に適したバンドルYAMLファイルを使用してAstra Tridentをインストールします（_YAMLは、または使用している<bundle.yaml>
+`bundle_pre_1_25.yaml` `bundle_post_1_25.yaml` のバージョンに基づいています）。たとえば、Astra Trident 24.06をインストールする場合は、次のコマンドを実行します。
 +
 [listing]
 ----
-kubectl create -f 24.02.0/trident-installer/deploy/<bundle.yaml> -n trident
+kubectl create -f 24.06.0/trident-installer/deploy/<bundle.yaml> -n trident
 ----
 
 
@@ -69,11 +69,11 @@ WARNING: Astra TridentがインストールされているKubernetesクラスタ
 . あなたの場合 link:../trident-get-started/kubernetes-deploy-helm.html#deploy-the-trident-operator-and-install-astra-trident-using-helm["Helmを使用したAstra Tridentのインストール"]を使用できます。 `helm upgrade trident netapp-trident/trident-operator --version 100.2402.0` 1つの手順でアップグレードできます。Helmリポジトリを追加しなかった場合、またはHelmリポジトリを使用してアップグレードできない場合は、次の手順を実行します。
 +
 .. 次のサイトからAstra Tridentの最新リリースをダウンロードしてください： link:https://github.com/NetApp/trident/releases/latest["GitHubの_Assets_sectionを参照してください"^]。
-.. を使用します `helm upgrade` コマンドを入力します `trident-operator-24.02.0.tgz` アップグレード後のバージョンが反映されます。
+.. コマンドを使用し `helm upgrade` ます。は、 `trident-operator-24.06.0.tgz` アップグレード先のバージョンを反映しています。
 +
 [listing]
 ----
-helm upgrade <name> trident-operator-24.02.0.tgz
+helm upgrade <name> trident-operator-24.06.0.tgz
 ----
 +
 
@@ -98,11 +98,11 @@ NOTE: インストール方法を切り替える前に、 link:../trident-get-st
 +
 [listing]
 ----
-# Download the release required [24.020.0]
-mkdir 24.02.0
-cd 24.02.0
-wget https://github.com/NetApp/trident/releases/download/v24.02.0/trident-installer-24.02.0.tar.gz
-tar -xf trident-installer-24.02.0.tar.gz
+# Download the release required [24.060.0]
+mkdir 24.06.0
+cd 24.06.0
+wget https://github.com/NetApp/trident/releases/download/v24.06.0/trident-installer-24.06.0.tar.gz
+tar -xf trident-installer-24.06.0.tar.gz
 cd trident-installer
 ----
 . マニフェストから「 tridentオーケストラ 」 CRD を作成します。
@@ -159,6 +159,6 @@ kubectl describe torc trident | grep Message -A 3
 Message:                Trident installed
 Namespace:              trident
 Status:                 Installed
-Version:                v24.02.0
+Version:                v24.06.0
 ----
 

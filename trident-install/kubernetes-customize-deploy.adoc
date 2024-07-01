@@ -70,7 +70,7 @@ KubernetesのNon-Graceful Node Shutdown（NGN）と連携して、ノードに�
 自動 | 「偽」 
 
 
-| 「 autosupportImage 」を参照してください | AutoSupport テレメトリのコンテナイメージ | `"netapp/trident-autosupport:24.02"` 
+| 「 autosupportImage 」を参照してください | AutoSupport テレメトリのコンテナイメージ | `"netapp/trident-autosupport:24.06"` 
 
 
 | 「 autosupportProxy 」と入力します | AutoSupportを送信するためのプロキシのアドレス/ポート
@@ -83,7 +83,7 @@ KubernetesのNon-Graceful Node Shutdown（NGN）と連携して、ノードに�
 | `logFormat` | Astra Trident のログ形式が使用 [text 、 JSON] | `"text"` 
 
 
-| 「 tridentImage 」のように入力します | インストールする Astra Trident イメージ | `"netapp/trident:24.02"` 
+| 「 tridentImage 」のように入力します | インストールする Astra Trident イメージ | `"netapp/trident:24.06"` 
 
 
 | 「 imageRegistry 」と入力します | 形式の内部レジストリへのパス

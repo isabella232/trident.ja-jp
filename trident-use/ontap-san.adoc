@@ -139,7 +139,7 @@ Astra Tridentでは、 `ontap-san` 以下を含むドライバー：
 * NVMeボリュームのサイズ変更
 * Astra Tridentでライフサイクルを管理できるように、Astra Tridentの外部で作成されたNVMeボリュームをインポートする
 * NVMeネイティブマルチパス
-* Kubernetesノードのグレースフルシャットダウンまたはグレースフルシャットダウン（24.02）
+* Kubernetesノードのグレースフルシャットダウンまたはグレースフルシャットダウン（24.06）
 
 
 Astra Tridentでは次の機能がサポートされません。

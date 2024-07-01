@@ -19,7 +19,54 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 
 
 
-== 24.02の新機能
+== 24.06の新機能
+
+
+
+=== 拡張機能
+
+* **重要**： `limitVolumeSize` ONTAPエコノミードライバでqtree / LUNのサイズが制限されるようになりました。これらのドライバのFlexVolサイズを制御するには、新しいパラメータを使用し  `limitVolumePoolSize` ます。link:https://github.com/NetApp/trident/issues/341["問題#341"]()。
+* 廃止されたigroupを使用している場合に、iSCSIの自己修復機能で正確なLUN IDでSCSIスキャンを開始できるようになりました（link:https://github.com/NetApp/trident/issues/883["問題#883"]）。
+* バックエンドが中断モードの場合でもボリュームのクローン処理とサイズ変更処理を実行できるようになりました。
+* Tridentコントローラのユーザ設定のログ設定をAstra Tridentノードポッドに伝播できるようになりました。
+* ONTAPバージョン9.15.1以降ではなくRESTをデフォルトで使用するためのAstra Tridentのサポートが追加されました。
+* 新しい永続ボリュームのONTAPストレージバックエンドでのカスタムボリューム名とメタデータのサポートが追加されました。
+* NFSマウントオプションがNFSバージョン4.xを使用するように設定されている場合に、（ANF）ドライバがデフォルトでSnapshotディレクトリが自動的に有効になるように拡張されました `azure-netapp-files` 。
+* NFSボリュームに対するBottlerocketのサポートが追加されました。
+* Google Cloud NetApp Volumeのテクニカルプレビューのサポートを追加。
+
+
+
+
+==== Kubernetes
+
+* Astra Trident DaemonSetの起動時にゾンビマウントと残留追跡ファイルをクリーンアップする機能が追加されました（link:https://github.com/NetApp/trident/issues/883["問題#883"]）。
+* LUKSボリュームを動的にインポートするためのPVCアノテーションが追加されました `trident.netapp.io/luksEncryption` （link:https://github.com/NetApp/trident/issues/849["問題#849"]）。
+* ANFドライバにトポロジ対応を追加。
+
+
+
+
+=== の修正
+
+* 古いトランザクションが原因でAstra Tridentのインストールが失敗する問題を修正。
+* kutes()からの警告メッセージを無視するtridentctlを修正しましたlink:https://github.com/NetApp/trident/issues/892["問題#892"]。
+* Astra Tridentコントローラの優先度が（）に変更されました `SecurityContextConstraint` `0`link:https://github.com/NetApp/trident/issues/887["問題#887"]。
+* ONTAPドライバでは、20MiB未満のボリュームサイズを使用できるようになりました（link:https://github.com/NetApp/trident/issues/885["問題[#885"]）。
+* Astra Tridentを修正し、ONTAP-SANドライバのサイズ変更処理中にFlexVolが縮小されないようにしました。
+* NFS v4.1でのANFボリュームのインポートエラーを修正。
+
+
+
+
+=== 非推奨
+
+* EOLのWindows Server 2019のサポートが削除されました。
+
+
+
+
+== 24.02の変更点
 
 
 

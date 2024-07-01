@@ -16,14 +16,14 @@ Tridentオペレータを導入し、Helmを使用してAstra Tridentをイン�
 
 
 
-== Astra Tridentに関する重要な情報24.02
+== Astra Tridentに関する重要な情報24.06
 
 * Astra Tridentに関する次の重要な情報をお読みください。*
 
 .<strong> ：Trident </strong> に関する重要な情報
 [%collapsible%open]
 ====
-* TridentでKubernetes 1.27がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレード
+* Astra TridentでKubernetes 1.29がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレード
 * Astra Tridentは、SAN環境でマルチパス構成を厳密に使用し、推奨される値をに設定します `find_multipaths: no` multipath.confファイル内。
 +
 非マルチパス構成またはを使用 `find_multipaths: yes` または `find_multipaths: smart` multipath.confファイルの値が原因でマウントが失敗します。Tridentはの使用を推奨しています `find_multipaths: no` 21.07リリース以降
@@ -57,7 +57,7 @@ helm repo add netapp-trident https://netapp.github.io/trident-helm-chart
 --
 [listing]
 ----
-helm install <name> netapp-trident/trident-operator --version 100.2402.0 --set imageRegistry=<your-registry> --create-namespace --namespace <trident-namespace>
+helm install <name> netapp-trident/trident-operator --version 100.2406.0 --set imageRegistry=<your-registry> --create-namespace --namespace <trident-namespace>
 ----
 --
 .異なるレジストリ内の画像
@@ -66,7 +66,7 @@ helm install <name> netapp-trident/trident-operator --version 100.2402.0 --set i
 
 [listing]
 ----
-helm install <name> netapp-trident/trident-operator --version 100.2402.0 --set imageRegistry=<your-registry>/sig-storage --set operatorImage=<your-registry>/netapp/trident-operator:24.02.0 --set tridentAutosupportImage=<your-registry>/netapp/trident-autosupport:24.02 --set tridentImage=<your-registry>/netapp/trident:24.02.0 --create-namespace --namespace <trident-namespace>
+helm install <name> netapp-trident/trident-operator --version 100.2406.0 --set imageRegistry=<your-registry>/sig-storage --set operatorImage=<your-registry>/netapp/trident-operator:24.06.0 --set tridentAutosupportImage=<your-registry>/netapp/trident-autosupport:24.06 --set tridentImage=<your-registry>/netapp/trident:24.06.0 --create-namespace --namespace <trident-namespace>
 ----
 --
 ====
@@ -102,7 +102,7 @@ NOTE: すでにTridentの名前空間を作成している場合'--create-namesp
 
 [listing]
 ----
-helm install <name> netapp-trident/trident-operator --version 100.2402.0  --create-namespace --namespace trident --set tridentDebug=true
+helm install <name> netapp-trident/trident-operator --version 100.2406.0  --create-namespace --namespace trident --set tridentDebug=true
 ----
 
 

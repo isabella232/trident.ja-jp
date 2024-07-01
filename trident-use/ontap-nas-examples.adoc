@@ -118,9 +118,7 @@ IPv6フラグを使用してAstra Tridentをインストールした場合は、
 このパラメータはAmazon FSx for ONTAPバックエンドで必須であり、空にすることはできません。 | `smb-share` 
 
 
-| 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー *
-`useREST` は、**テクニカルプレビュー**として提供されています。テスト環境では、本番環境のワークロードでは推奨されません。に設定すると `true`Astra Tridentは、ONTAP REST APIを使用してバックエンドと通信します。この機能にはONTAP 9.11.1以降が必要です。また、使用するONTAP ログインロールにはへのアクセス権が必要です `ontap` アプリケーション：これは事前定義されたによって満たされます `vsadmin` および `cluster-admin` ロール。
-`useREST` は、MetroCluster ではサポートされていません。 | いいえ 
+| 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。 `useREST` に設定する `true`と、Astra TridentはONTAP REST APIを使用してバックエンドと通信します。に設定する `false`と、Astra TridentはONTAP ZAPI呼び出しを使用してバックエンドと通信します。この機能にはONTAP 9.11.1以降が必要です。また、使用するONTAPログインロールには、アプリケーションへのアクセス権が必要です `ontap` 。これは、事前に定義された役割と役割によって実現され `vsadmin` `cluster-admin` ます。Astra Trident 24.06リリースおよびONTAP 9.15.1以降では、が `userREST` デフォルトでに設定されてい `true` ます。ONTAP ZAPI呼び出しを使用するようににに変更してください。 `useREST` `false` | `true` ONTAP 9.15.1以降の場合は、それ以外の場合は `false`。 
 |===
 
 
@@ -170,6 +168,9 @@ IPv6フラグを使用してAstra Tridentをインストールした場合は、
 
 
 | 'ecurityStyle' | 新しいボリュームのセキュリティ形式。NFSのサポート `mixed` および `unix` セキュリティ形式SMBはをサポートします `mixed` および `ntfs` セキュリティ形式 | NFSのデフォルトはです `unix`。SMBのデフォルトはです `ntfs`。 
+
+
+| `nameTemplate` | カスタムボリューム名を作成するためのテンプレート。 | "" 
 |===
 
 NOTE: Trident が Astra で QoS ポリシーグループを使用するには、 ONTAP 9.8 以降が必要です。共有されない QoS ポリシーグループを使用して、各コンスティチュエントに個別にポリシーグループを適用することを推奨します。共有 QoS ポリシーグループにより、すべてのワークロードの合計スループットに対して上限が適用されます。
@@ -382,6 +383,25 @@ clientCertificate: ZXR0ZXJwYXB...ICMgJ3BhcGVyc2
 clientPrivateKey: vciwKIyAgZG...0cnksIGRlc2NyaX
 trustedCACertificate: zcyBbaG...b3Igb3duIGNsYXNz
 storagePrefix: myPrefix_
+----
+====
+.nameTemplateを使用したバックエンド構成の例
+[%collapsible]
+====
+[listing]
+----
+---
+version: 1
+storageDriverName: ontap-nas
+backendName: ontap-nas-backend
+managementLIF: <ip address>
+svm: svm0
+username: <admin>
+password: <password>
+defaults: {
+    "nameTemplate": "{{.volume.Name}}_{{.labels.cluster}}_{{.volume.Namespace}}_{{.volume.RequestName}}"
+},
+"labels": {"cluster": "ClusterA", "PVC": "{{.volume.Namespace}}_{{.volume.RequestName}}"}
 ----
 ====
 

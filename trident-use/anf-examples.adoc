@@ -95,6 +95,9 @@ AKSクラスタで管理IDが有効になっている場合はオプションで
 
 
 | `nasType` | NFSボリュームまたはSMBボリュームの作成を設定オプションはです `nfs`、 `smb` またはnull。nullに設定すると、デフォルトでNFSボリュームが使用されます。 | `nfs` 
+
+
+| `supportedTopologies` | このバックエンドでサポートされているリージョンとゾーンのリストを表します。詳細については、を参照してください link:../trident-use/csi-topology.html["CSI トポロジを使用します"]。 |  
 |===
 
 NOTE: ネットワーク機能の詳細については、を参照してください link:https://docs.microsoft.com/en-us/azure/azure-netapp-files/configure-network-features["Azure NetApp Files ボリュームのネットワーク機能を設定します"^]。
@@ -316,6 +319,32 @@ storage:
   - standard-1
   - standard-2
 
+----
+====
+.サポートされるトポロジ構成
+[%collapsible]
+====
+Astra Tridentを使用すると、リージョンやアベイラビリティゾーンに基づいてワークロード用のボリュームを簡単にプロビジョニングできます。 `supportedTopologies`このバックエンド構成のブロックは、バックエンドごとにリージョンとゾーンのリストを提供するために使用されます。ここで指定するリージョンとゾーンの値は、各Kubernetesクラスタノードのラベルのリージョンとゾーンの値と一致している必要があります。これらのリージョンとゾーンは、ストレージクラスで指定できる許容値のリストです。バックエンドで提供されるリージョンとゾーンのサブセットを含むストレージクラスの場合、Astra Tridentは該当するリージョンとゾーンにボリュームを作成します。詳細については、を参照してください link:../trident-use/csi-topology.html["CSI トポロジを使用します"]。
+
+[listing]
+----
+---
+version: 1
+storageDriverName: azure-netapp-files
+subscriptionID: 9f87c765-4774-fake-ae98-a721add45451
+tenantID: 68e4f836-edc1-fake-bff9-b2d865ee56cf
+clientID: dd043f63-bf8e-fake-8076-8de91e5713aa
+clientSecret: SECRET
+location: eastus
+serviceLevel: Ultra
+capacityPools:
+- application-group-1/account-1/ultra-1
+- application-group-1/account-1/ultra-2
+supportedTopologies:
+- topology.kubernetes.io/region: eastus
+  topology.kubernetes.io/zone: eastus-1
+- topology.kubernetes.io/region: eastus
+  topology.kubernetes.io/zone: eastus-2
 ----
 ====
 

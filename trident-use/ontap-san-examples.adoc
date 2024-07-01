@@ -108,13 +108,10 @@ IPv6フラグを使用してAstra Tridentをインストールした場合は、
 トラブルシューティングを行い、詳細なログダンプが必要な場合を除き、は使用しないでください。 | `null` 
 
 
-| 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー *
-
-`useREST` は、**テクニカルプレビュー**として提供されています。テスト環境では、本番環境のワークロードでは推奨されません。に設定すると `true`Astra Tridentは、ONTAP REST APIを使用してバックエンドと通信します。この機能にはONTAP 9.11.1以降が必要です。また、使用するONTAP ログインロールにはへのアクセス権が必要です `ontap` アプリケーション：これは事前定義されたによって満たされます `vsadmin` および `cluster-admin` ロール。
-
-`useREST` は、MetroCluster ではサポートされていません。
-
-`useREST` はNVMe/TCPに完全修飾されています。 | 「偽」 
+| 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。
+`useREST` に設定する `true`と、Astra TridentはONTAP REST APIを使用してバックエンドと通信します。に設定する `false`と、Astra TridentはONTAP ZAPI呼び出しを使用してバックエンドと通信します。この機能にはONTAP 9.11.1以降が必要です。また、使用するONTAPログインロールには、アプリケーションへのアクセス権が必要です `ontap` 。これは、事前に定義された役割と役割によって実現され `vsadmin` `cluster-admin` ます。Astra Trident 24.06リリースおよびONTAP 9.15.1以降では、が `userREST` デフォルトでに設定されてい `true` ます。ONTAP ZAPI呼び出しを使用するようににに変更してください。
+`useREST` `false`
+`useREST` はNVMe/TCPに完全修飾されています。 | `true` ONTAP 9.15.1以降の場合は、それ以外の場合は `false`。 
 
 
 | `sanType` | を使用して選択 `iscsi` iSCSIの場合または `nvme` （NVMe/TCPの場合）。 | `iscsi` 空白の場合 
@@ -163,6 +160,9 @@ LUKS暗号化はNVMe/TCPではサポートされません。 | ""
 
 
 | 階層ポリシー | 「none」を使用する階層化ポリシー | ONTAP 9.5より前のSVM-DR設定の場合は「snapshot-only」 
+
+
+| `nameTemplate` | カスタムボリューム名を作成するためのテンプレート。 | "" 
 |===
 
 
@@ -251,8 +251,11 @@ username: vsadmin
 password: <password>
 ----
 ====
-.MetroClusterの例
-[#mcc-best%collapsible]
+[[mcc-best]]
+. 例
+
+
+[]
 ====
 スイッチオーバーやスイッチバックの実行中にバックエンド定義を手動で更新する必要がないようにバックエンドを設定できます。 link:../trident-reco/backup.html#svm-replication-and-recovery["SVMのレプリケーションとリカバリ"]。
 
@@ -349,6 +352,25 @@ username: vsadmin
 password: password
 sanType: nvme
 useREST: true
+----
+====
+.nameTemplateを使用したバックエンド構成の例
+[%collapsible]
+====
+[listing]
+----
+---
+version: 1
+storageDriverName: ontap-san
+backendName: ontap-san-backend
+managementLIF: <ip address>
+svm: svm0
+username: <admin>
+password: <password>
+defaults: {
+    "nameTemplate": "{{.volume.Name}}_{{.labels.cluster}}_{{.volume.Namespace}}_{{.volume.RequestName}}"
+},
+"labels": {"cluster": "ClusterA", "PVC": "{{.volume.Namespace}}_{{.volume.RequestName}}"}
 ----
 ====
 

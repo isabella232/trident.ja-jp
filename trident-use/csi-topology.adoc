@@ -58,7 +58,7 @@ kubectl get nodes -o=jsonpath='{range .items[*]}[{.metadata.name}, {.metadata.la
 
 == 手順 1 ：トポロジ対応バックエンドを作成する
 
-Astra Trident ストレージバックエンドは、アベイラビリティゾーンに基づいてボリュームを選択的にプロビジョニングするように設計できます。各バックエンドは、サポートする必要があるゾーンおよびリージョンのリストを表すオプションの「 upportedTopologies 」ブロックを伝送できます。ストレージクラスがそのようなバックエンドを使用する場合、ボリュームは、サポートされているリージョン / ゾーンでスケジュールされているアプリケーションから要求された場合にのみ作成されます。
+Astra Trident ストレージバックエンドは、アベイラビリティゾーンに基づいてボリュームを選択的にプロビジョニングするように設計できます。各バックエンドは、サポートされているゾーンとリージョンのリストを表すオプションのブロックを運ぶことができます `supportedTopologies` 。ストレージクラスがそのようなバックエンドを使用する場合、ボリュームは、サポートされているリージョン / ゾーンでスケジュールされているアプリケーションから要求された場合にのみ作成されます。
 
 バックエンド定義の例を次に示します。
 
@@ -126,15 +126,11 @@ supportedTopologies:
 storage:
 - labels:
     workload: production
-  region: Iowa-DC
-  zone: Iowa-DC-A
   supportedTopologies:
   - topology.kubernetes.io/region: us-central1
     topology.kubernetes.io/zone: us-central1-a
 - labels:
     workload: dev
-  region: Iowa-DC
-  zone: Iowa-DC-B
   supportedTopologies:
   - topology.kubernetes.io/region: us-central1
     topology.kubernetes.io/zone: us-central1-b

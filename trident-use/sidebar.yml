@@ -70,6 +70,8 @@ entries:
     url: "/trident-use/vol-expansion.html"
   - title: ボリュームをインポート
     url: "/trident-use/vol-import.html"
+  - title: ボリューム名をカスタマイズ
+    url: "/trident-use/vol-custom-name.html"
   - title: ネームスペース間でNFSボリュームを共有します
     url: "/trident-use/volume-share.html"
   - title: CSI トポロジを使用します

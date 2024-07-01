@@ -108,8 +108,7 @@ IPv6フラグを使用してAstra Tridentをインストールした場合は、
 このパラメータは、Amazon FSx for ONTAPバックエンドに必要です。 | `smb-share` 
 
 
-| 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。* テクニカルプレビュー *
-`useREST` は、**テクニカルプレビュー**として提供されています。テスト環境では、本番環境のワークロードでは推奨されません。に設定すると `true`Astra Tridentは、ONTAP REST APIを使用してバックエンドと通信します。この機能にはONTAP 9.11.1以降が必要です。また、使用するONTAP ログインロールにはへのアクセス権が必要です `ontap` アプリケーション：これは事前定義されたによって満たされます `vsadmin` および `cluster-admin` ロール。 | 「偽」 
+| 「 useREST` 」 | ONTAP REST API を使用するためのブーリアンパラメータ。 `useREST` に設定する `true`と、Astra TridentはONTAP REST APIを使用してバックエンドと通信します。に設定する `false`と、Astra TridentはONTAP ZAPI呼び出しを使用してバックエンドと通信します。この機能にはONTAP 9.11.1以降が必要です。また、使用するONTAPログインロールには、アプリケーションへのアクセス権が必要です `ontap` 。これは、事前に定義された役割と役割によって実現され `vsadmin` `cluster-admin` ます。Astra Trident 24.06リリースおよびONTAP 9.15.1以降では、が `userREST` デフォルトでに設定されてい `true` ます。ONTAP ZAPI呼び出しを使用するようににに変更してください。 `useREST` `false` | `true` ONTAP 9.15.1以降の場合は、それ以外の場合は `false`。 
 
 
 | `aws` | AWS FSx for ONTAPの構成ファイルでは、次の項目を指定できます。
