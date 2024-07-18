@@ -43,6 +43,7 @@ WARNING: インストーラ zip ファイルに含まれている Linux の trid
 * Astra Trident DaemonSetの起動時にゾンビマウントと残留追跡ファイルをクリーンアップする機能が追加されました（link:https://github.com/NetApp/trident/issues/883["問題#883"]）。
 * LUKSボリュームを動的にインポートするためのPVCアノテーションが追加されました `trident.netapp.io/luksEncryption` （link:https://github.com/NetApp/trident/issues/849["問題#849"]）。
 * ANFドライバにトポロジ対応を追加。
+* Windows Server 2022ノードのサポートが追加されました。
 
 
 

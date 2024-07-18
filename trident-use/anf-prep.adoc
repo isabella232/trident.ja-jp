@@ -96,7 +96,7 @@ Azure NetApp Files を初めてまたは新しい場所で使用する場合は�
 SMBボリュームを作成するには、以下が必要です。
 
 * Active Directoryが設定され、Azure NetApp Files に接続されています。を参照してください link:https://learn.microsoft.com/en-us/azure/azure-netapp-files/create-active-directory-connections["Microsoft：Azure NetApp Files のActive Directory接続を作成および管理します"^]。
-* Linuxコントローラノードと少なくとも1つのWindowsワーカーノードでWindows Server 2019を実行しているKubernetesクラスタ。Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート
+* Linuxコントローラノードと少なくとも1つのWindowsワーカーノードでWindows Server 2022を実行しているKubernetesクラスタ。Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート
 * Azure NetApp Files がActive Directoryに対して認証できるように、Active Directoryクレデンシャルを含むAstra Tridentのシークレットが少なくとも1つ含まれています。シークレットを生成します `smbcreds`：
 +
 [listing]

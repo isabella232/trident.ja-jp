@@ -2039,7 +2039,6 @@
   <block id="b0ee19cc46a4fb3df97c1c676c0a5d57" category="inline-link-macro">Azureポータルを使用してロールを割り当てます</block>
   <block id="993c1a80e778c965961521eeb4afd398" category="list-text">A <block ref="8ad3956583058d3582a7dd1281d1f882" category="inline-link-macro-rx"></block> をサブスクリプションレベルで選択します <block ref="e023f2926fb9af676f2809a760efeb14" prefix="(" category="inline-code"></block>)以下のアクセス許可は、Astra Tridentが必要とするものに限定されます。カスタムロールを作成したあと、 <block ref="af58105ed429db29198b767444ed6d0d" category="inline-link-macro-rx"></block>。</block>
   <block id="77a4a369d552f7d3be163bda86f9113f" category="section-title">SMBボリュームに関するその他の要件</block>
-  <block id="1f43150a13f29c496f07ed4a9750b2ff" category="list-text">Linuxコントローラノードと少なくとも1つのWindowsワーカーノードでWindows Server 2019を実行しているKubernetesクラスタ。Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート</block>
   <block id="7595de66780a622cdd37b4823afebc07" category="inline-link-macro">GitHub: CSIプロキシ</block>
   <block id="c680a0c023a6d45186b9752a07e9938c" category="inline-link-macro">GitHub: Windows向けCSIプロキシ</block>
   <block id="2d6b406e65ac91f2af09f4228e3efe4f" category="list-text">Windowsサービスとして設定されたCSIプロキシ。を設定します<block ref="0f8126c17871ed45f2a848f15d96a1bb" prefix=" " category="inline-code"></block>を参照してください <block ref="3ca23c6eadaac7aa23a492aef5e5d012" category="inline-link-macro-rx"></block> または <block ref="0b56a9ad79a8fef177779e7d3d856994" category="inline-link-macro-rx"></block> Windowsで実行されているKubernetesノードの場合。</block>
@@ -2798,7 +2797,6 @@
   <block id="362997bacf08e019288e372d8ae1f070" category="list-text">OpenShift Container Platform（AMD64およびARM64）でサポートされているRed Hat CoreOS（RHCOS）のバージョン</block>
   <block id="a3460163c4a2854c79a419dda57ac917" category="list-text">RHEL 8+（AMD64およびARM64）</block>
   <block id="f51a58a0cffb9f9953edce6411578b53" category="list-text">Ubuntu 22.04以降（AMD64およびARM64）</block>
-  <block id="1285a056fd837828136d15f7e76d09cc" category="list-text">Windows Server 2019（AMD64）</block>
   <block id="f53514cf8829a41463c245b088ae732e" category="paragraph">WindowsノードでAstra Tridentを実行できるようにするには、次の手順を実行します。</block>
   <block id="c5b5b00ff1b3a892c8694ab932cbf9ca" category="paragraph">強制切り離しの詳細については、を参照してください <block ref="63cac71755fb6ef1f1fea34cf4037121" category="inline-link-macro-rx"></block>。</block>
   <block id="38a0b9f59e6fe23e1617dc0e78498afe" category="section-title">フォースデタッチの詳細</block>
@@ -4196,4 +4194,6 @@ QoS ポリシーグループはバックエンドまたはストレージプー�
   <block id="154898f748dc50cea11a3146dff4d65e" category="paragraph">たとえば、のデフォルト値を変更するには<block ref="ad42f6697b035b7580e4fef93be20b4d" prefix=" " category="inline-code"></block>、次のコマンドを実行し<block ref="8b5806248570dbb13e7d3bc5e6c0ee37" prefix=" " category="inline-code"></block> ます。はインストールするAstra Tridentのバージョンです。<block ref="c59465995fc272118d0b7650dbcd42b5" prefix=" " category="inline-code"></block></block>
   <block id="d588a6cd560d80c03fbbe7c2df56c53d" category="list-text">を使用し<block ref="0562418e6d9a76d0dd22b2f186a2203d" prefix=" " category="inline-code"></block> 、次の例のように環境の名前を指定します<block ref="cfc6108aad8813450ddf86899993aac8" prefix=" " category="inline-code"></block> 。はインストールするAstra Tridentのバージョンです。</block>
   <block id="2dd7e74e47b2fea3bc13eda279fe6caa" category="list-text">を使用する <block ref="701383cb184d92daac13becc67e9c1be" category="inline-link-macro-rx"></block>と、を使用してワンステップでアップグレードできます<block ref="aa057bb2523e090dc6e3052f2e88741e" prefix=" " category="inline-code"></block> 。Helmリポジトリを追加しなかった場合、またはHelmリポジトリを使用してアップグレードできない場合は、次の手順を実行します。</block>
+  <block id="bd97885496639b0f4498d4131198ac36" category="list-text">Windows Server 2022ノードのサポートが追加されました。</block>
+  <block id="f0d0d71ad406bc532f207cda7d40e0bf" category="list-text">Linuxコントローラノードと少なくとも1つのWindowsワーカーノードでWindows Server 2022を実行しているKubernetesクラスタ。Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート</block>
 </blocks>
