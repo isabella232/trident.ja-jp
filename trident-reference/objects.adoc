@@ -213,7 +213,7 @@ excludeStoragePools' パラメータを使用して、 Trident がプロビジ�
 | 属性 | を入力します | 値 | 説明 | 関連するドライバ | Kubernetes のバージョン 
 
 
-| FSstype （英語） | 文字列 | ext4 、 ext3 、 xfs など | ブロックボリュームのファイルシステムのタイプ | solidfire-san-group、ontap/nas、ontap -nas-エコノミー、ontap -nas-flexgroup、ontap -san、ONTAP - SAN -経済性 | すべて 
+| FSstype （英語） | 文字列 | ext4、ext3、xfs | ブロックボリュームのファイルシステムのタイプ | solidfire-san-group、ontap/nas、ontap -nas-エコノミー、ontap -nas-flexgroup、ontap -san、ONTAP - SAN -経済性 | すべて 
 
 
 | allowVolumeExpansion の略 | ブール値 | true false | PVC サイズの拡張のサポートをイネーブルまたはディセーブルにします | ONTAPNAS 、 ONTAPNAS エコノミー、 ONTAP-NAS-flexgroup 、 ONTAPSAN 、 ONTAP-SAN-エコノミー 、 solidfire-san-, gcvs, azure-netapp-files | 1.11 以上 
