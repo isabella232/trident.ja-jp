@@ -4196,4 +4196,5 @@ QoS ポリシーグループはバックエンドまたはストレージプー�
   <block id="2dd7e74e47b2fea3bc13eda279fe6caa" category="list-text">を使用する <block ref="701383cb184d92daac13becc67e9c1be" category="inline-link-macro-rx"></block>と、を使用してワンステップでアップグレードできます<block ref="aa057bb2523e090dc6e3052f2e88741e" prefix=" " category="inline-code"></block> 。Helmリポジトリを追加しなかった場合、またはHelmリポジトリを使用してアップグレードできない場合は、次の手順を実行します。</block>
   <block id="bd97885496639b0f4498d4131198ac36" category="list-text">Windows Server 2022ノードのサポートが追加されました。</block>
   <block id="f0d0d71ad406bc532f207cda7d40e0bf" category="list-text">Linuxコントローラノードと少なくとも1つのWindowsワーカーノードでWindows Server 2022を実行しているKubernetesクラスタ。Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート</block>
+  <block id="de547bcab0e20f54ec4d5e95ba44b0b1" category="list-text">Windows Server 2022</block>
 </blocks>

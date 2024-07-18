@@ -150,6 +150,7 @@ Astra Tridentは特定のオペレーティングシステムを正式にサポ�
 NOTE: NVMe/TCPにはRHEL 9以降が必要です。
 
 * Ubuntu 22.04以降（AMD64およびARM64）
+* Windows Server 2022
 
 
 デフォルトでは、 Astra Trident はコンテナで実行されるため、任意の Linux ワーカーで実行されます。ただし、その場合、使用するバックエンドに応じて、標準の NFS クライアントまたは iSCSI イニシエータを使用して Astra Trident が提供するボリュームをマウントできる必要があります。
