@@ -23,7 +23,7 @@ Astra Tridentをインストールする前に、次の一般的なシステム�
 .<strong> ：Trident </strong> に関する重要な情報
 [%collapsible%open]
 ====
-* Astra TridentでKubernetes 1.29がサポートされるようになりました。Kubernetesをアップグレードする前にAstra Tridentをアップグレードしてください。
+* Astra TridentでKubernetes 1.30がサポートされるようになりました。Kubernetesをアップグレードする前にAstra Tridentをアップグレードしてください。
 * Astra Tridentは、SAN環境でマルチパス構成を厳密に使用し、推奨される値をに設定します `find_multipaths: no` multipath.confファイル内。
 +
 非マルチパス構成またはを使用 `find_multipaths: yes` または `find_multipaths: smart` multipath.confファイルの値が原因でマウントが失敗します。Astra Tridentでは、 `find_multipaths: no` 21.07リリース以降
@@ -38,15 +38,15 @@ Astra Tridentをインストールする前に、次の一般的なシステム�
 Trident Astra は、次のような複数のコンテナエンジンとオーケストレーションツールをサポート
 
 * Anthosオンプレミス（VMware）とAnthos（ベアメタル1.16）
-* Kubernetes 1.24~1.29
-* OpenShift 4.10-4.15
+* Kubernetes 1.24~1.30
+* OpenShift 4.10-4.16
 
 
 Trident オペレータは、次のリリースでサポートされています。
 
 * Anthosオンプレミス（VMware）とAnthos（ベアメタル1.16）
-* Kubernetes 1.24~1.29
-* OpenShift 4.10-4.15
+* Kubernetes 1.24~1.30
+* OpenShift 4.10-4.16
 
 
 Astra Tridentは、Google Kubernetes Engine（GKE）、Amazon Elastic Kubernetes Services（EKS）、Azure Kubernetes Service（AKS）、Mirantis Kubernetes Engine（MKE）、Rancher、VMware Tanzu Portfolioなど、他のフルマネージド/自己管理型Kubernetesソリューションとも連携します。
@@ -83,56 +83,56 @@ Astra Trident を使用するには、次のバックエンドを 1 つ以上サ
 
 
 | Astra Trident  a| 
-1.24 ~ 1.29
+1.24 ~ 1.30
  a| 
 いいえ
 
 
 
 | ボリューム Snapshot  a| 
-1.24 ~ 1.29
+1.24 ~ 1.30
  a| 
 いいえ
 
 
 
 | ボリューム Snapshot からの PVC  a| 
-1.24 ~ 1.29
+1.24 ~ 1.30
  a| 
 いいえ
 
 
 
 | iSCSI PV のサイズ変更  a| 
-1.24 ~ 1.29
+1.24 ~ 1.30
  a| 
 いいえ
 
 
 
 | ONTAP 双方向 CHAP  a| 
-1.24 ~ 1.29
+1.24 ~ 1.30
  a| 
 いいえ
 
 
 
 | 動的エクスポートポリシー  a| 
-1.24 ~ 1.29
+1.24 ~ 1.30
  a| 
 いいえ
 
 
 
 | Trident のオペレータ  a| 
-1.24 ~ 1.29
+1.24 ~ 1.30
  a| 
 いいえ
 
 
 
 | CSI トポロジ  a| 
-1.24 ~ 1.29
+1.24 ~ 1.30
  a| 
 いいえ
 
@@ -192,7 +192,7 @@ link:../trident-reference/ports.html["Astra Trident ポート"]
 | Kubernetesのバージョン | コンテナイメージ 
 
 
-| v1.24.0 、 v1.25.0 、 v1.26.0 、 v1.27.0 、 v1.28.0 、 v1.29.0  a| 
+| v1.24.0、v1.25.0、v1.26.0、v1.27.0、v1.28.0、 v1.29.0、v1.30.0  a| 
 * Docker .io / NetApp / Trident：24.06.0
 * docker.io / netapp/trident-autosupport：24.06
 * registry.k8s.io/sig-storage/csi-provisioner：v4.0.1

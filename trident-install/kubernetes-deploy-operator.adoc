@@ -23,7 +23,7 @@ Tridentオペレータが手動で導入してAstra Tridentをインストール
 .<strong> ：Trident </strong> に関する重要な情報
 [%collapsible%open]
 ====
-* Astra TridentでKubernetes 1.29がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレード
+* Astra TridentでKubernetes 1.30がサポートされるようになりました。Kubernetesをアップグレードする前にTridentをアップグレード
 * Astra Tridentは、SAN環境でマルチパス構成を厳密に使用し、推奨される値をに設定します `find_multipaths: no` multipath.confファイル内。
 +
 非マルチパス構成またはを使用 `find_multipaths: yes` または `find_multipaths: smart` multipath.confファイルの値が原因でマウントが失敗します。Tridentはの使用を推奨しています `find_multipaths: no` 21.07リリース以降
