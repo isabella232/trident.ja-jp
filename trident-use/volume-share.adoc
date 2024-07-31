@@ -171,5 +171,5 @@ Usage:
 ネームスペース間のボリュームアクセスの詳細については、次の資料を参照してください。
 
 * にアクセスします link:https://cloud.netapp.com/blog/astra-blg-sharing-volumes-between-namespaces-say-hello-to-cross-namespace-volume-access["ネームスペース間でのボリュームの共有：ネームスペース間のボリュームアクセスを許可する場合は「Hello」と入力します"^]。
-* のデモをご覧ください link:http://netapp.tv/cloud/details/29594?playlist_id=81&mcid=63262890210074608700682715883688763007["ネットアップTV"^]。
+* のデモをご覧ください link:https://media.netapp.com/page/9071d19d-1438-5ed3-a7aa-ea4d73c28b7f/solutions-products["ネットアップTV"^]。
 
