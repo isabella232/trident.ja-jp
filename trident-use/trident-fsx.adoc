@@ -14,13 +14,26 @@ summary: Astra TridentとAmazon FSx for NetApp ONTAP を使用すると、Amazon
 [role="lead"]
 https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["NetApp ONTAP 対応の Amazon FSX"^] は、NetApp ONTAP ストレージオペレーティングシステムを基盤とするファイルシステムの起動や実行を可能にする、フルマネージドのAWSサービスです。FSX for ONTAP を使用すると、使い慣れたネットアップの機能、パフォーマンス、管理機能を活用しながら、AWSにデータを格納するためのシンプルさ、即応性、セキュリティ、拡張性を活用できます。FSX for ONTAP は、ONTAP ファイルシステムの機能と管理APIをサポートしています。
 
-
-
-== 概要
+Amazon Elastic Kubernetes Service（EKS）で実行されているKubernetesクラスタが、ONTAP によってサポートされるブロックおよびファイルの永続ボリュームをプロビジョニングできるように、Amazon ONTAP ファイルシステム用のAmazon FSXをAstra Tridentに統合することができます。
 
 ファイルシステムは、オンプレミスの ONTAP クラスタに似た、 Amazon FSX のプライマリリソースです。各 SVM 内には、ファイルとフォルダをファイルシステムに格納するデータコンテナである 1 つ以上のボリュームを作成できます。Amazon FSX for NetApp ONTAP を使用すると、 Data ONTAP はクラウド内の管理対象ファイルシステムとして提供されます。新しいファイルシステムのタイプは * NetApp ONTAP * です。
 
 Amazon Elastic Kubernetes Service （ EKS ）で実行されている Astra Trident と Amazon FSX for NetApp ONTAP を使用すると、 ONTAP がサポートするブロックボリュームとファイル永続ボリュームを確実にプロビジョニングできます。
+
+
+
+== 要件
+
+に加えて link:../trident-get-started/requirements.html["Astra Trident の要件"]FSX for ONTAP とAstra Tridentを統合するには、次のものが必要です。
+
+* 既存の Amazon EKS クラスタまたは 'kubectl' がインストールされた自己管理型 Kubernetes クラスタ
+* クラスタのワーカーノードから到達可能な既存のAmazon FSx for NetApp ONTAPファイルシステムおよびStorage Virtual Machine（SVM）。
+* 準備されているワーカーノード link:worker-node-prep.html["NFSまたはiSCSI"]。
++
+
+NOTE: Amazon LinuxおよびUbuntuで必要なノードの準備手順を実行します https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html["Amazon Machine Images の略"^] （ AMIS ） EKS の AMI タイプに応じて異なります。
+
+
 
 
 
@@ -30,7 +43,7 @@ Amazon Elastic Kubernetes Service （ EKS ）で実行されている Astra Trid
 +
 ** SMBボリュームは、を使用してサポートされます `ontap-nas` ドライバーのみ。
 ** SMBボリュームはAstra Trident EKSアドオンではサポートされません。
-** Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポート
+** Astra Tridentは、Windowsノードで実行されているポッドにマウントされたSMBボリュームのみをサポートを参照してください <<SMBボリュームをプロビジョニングする準備をします>> を参照してください。
 
 
 * Astra Trident 24.02より前のバージョンでは、自動バックアップが有効になっているAmazon FSxファイルシステム上に作成されたボリュームはTridentで削除できませんでした。Astra Trident 24.02以降でこの問題を無効にするには、 `fsxFilesystemID`、AWS `apiRegion`、AWS `apikey`およびAWS `secretKey` AWS FSx for ONTAPのバックエンド構成ファイルに保存されます。
@@ -42,103 +55,22 @@ NOTE: Astra TridentにIAMロールを指定する場合は、 `apiRegion`、 `ap
 
 
 
-== FSx for ONTAPドライバの詳細
-
-次のドライバを使用して、Astra TridentをAmazon FSX for NetApp ONTAP と統合できます。
-
-* 「 ONTAP-SAN」 ：プロビジョニングされる各 PV は、 NetApp ONTAP ボリューム用の独自の Amazon FSX 内の LUN です。
-* 「 ONTAP と SAN の経済性」：プロビジョニングされた各 PV は、 NetApp ONTAP ボリュームの Amazon FSX ごとに構成可能な数の LUN を持つ LUN です。
-* 「 ONTAP-NAS' ：プロビジョニングされた各 PV は、 NetApp ONTAP ボリューム用の完全な Amazon FSX です。
-* 「 ONTAP-NAS-エコノミー 」：プロビジョニングされた各 PV は qtree であり、 NetApp ONTAP ボリュームの Amazon FSX ごとに設定可能な数の qtree があります。
-* 「 ONTAP-NAS-flexgroup 」：プロビジョニングされた各 PV は、 NetApp ONTAP FlexGroup ボリューム用の完全な Amazon FSX です。
-
-
-ドライバーの詳細については、を参照してください。 link:../trident-use/ontap-nas.html["NASドライバ"] および link:../trident-use/ontap-san.html["SANドライバ"]。
-
-
-
 == 認証
 
 Astra Tridentは、2種類の認証モードを提供します。
 
-* 証明書ベース： Astra Trident は、 SVM にインストールされている証明書を使用して、 FSX ファイルシステムの SVM と通信します。
-* 認証情報ベース：ファイルシステムには「 fsxadmin 」ユーザを、 SVM には「 vsadmin 」ユーザを使用できます。
+* クレデンシャルベース（推奨）：クレデンシャルをAWS Secrets Managerに安全に格納します。ファイルシステムのユーザ、またはSVM用に設定されているユーザを使用できます `fsxadmin` `vsadmin` 。
 +
 
 WARNING: Astra Tridentは `vsadmin` SVMユーザまたは同じロールを持つ別の名前のユーザ。NetApp ONTAP 対応のAmazon FSXには、が搭載されています `fsxadmin` ONTAP を限定的に交換するユーザ `admin` クラスタユーザ：を使用することを強く推奨します `vsadmin` ネットアップが実現します。
 
+* 証明書ベース： Astra Trident は、 SVM にインストールされている証明書を使用して、 FSX ファイルシステムの SVM と通信します。
 
-
-証明書ベースの方法と証明書ベースの方法を切り替えるために、バックエンドを更新できます。ただし、*クレデンシャルと*証明書を入力しようとすると、バックエンドの作成に失敗します。別の認証方式に切り替えるには、バックエンド設定から既存の方式を削除する必要があります。
 
 認証を有効にする方法の詳細については、使用しているドライバタイプの認証を参照してください。
 
 * link:ontap-nas-prep.html["ONTAP NAS認証"]
 * link:ontap-san-prep.html["ONTAP SAN認証"]
-
-
-
-
-== EKSのクラウドID
-
-Cloud Identityを使用すると、Kubernetesポッドは、明示的なAWSクレデンシャルを指定するのではなく、AWS IAMロールとして認証することでAWSリソースにアクセスできます。
-
-AWSでクラウドIDを利用するには、以下が必要です。
-
-* EKSを使用して導入されるKubernetesクラスタ
-* Astra Tridentをインストール（以下を含む） `cloudProvider` シテイ `"AWS"` および `cloudIdentity` AWS IAMロールの指定
-+
-[role="tabbed-block"]
-====
-.Trident オペレータ
---
-Tridentオペレータを使用してAstra Tridentをインストールするには、 `tridentorchestrator_cr.yaml` をクリックして設定します `cloudProvider` 終了： `"AWS"` をクリックして設定します `cloudIdentity` をAWS IAMロールに割り当てます。
-
-例：
-
-[listing]
-----
-apiVersion: trident.netapp.io/v1
-kind: TridentOrchestrator
-metadata:
-  name: trident
-spec:
-  debug: true
-  namespace: trident
-  imagePullPolicy: IfNotPresent
-  cloudProvider: "AWS"
-  cloudIdentity: "'eks.amazonaws.com/role-arn: arn:aws:iam::123456:role/astratrident-role'"
-----
---
-.Helm
---
-次の環境変数を使用して、* cloud provider *フラグと* cloud identity *フラグの値を設定します。
-
-`export CP="AWS"`
-`export CI="'eks.amazonaws.com/role-arn: arn:aws:iam::123456:role/astratrident-role'"`
-
-次の例では、Astra Tridentとセットをインストールします。 `cloudProvider` 終了： `AWS` 環境変数の使用 `$CP` 環境変数を使用して'cloudIdentity'を設定します `$CI`：
-
-[listing]
-----
-helm install trident trident-operator-100.2406.0.tgz --set cloudProvider=$CP --set cloudIdentity=$CI
-----
---
-.<code>tridentctl</code>
---
-次の環境変数を使用して、* cloud provider *フラグと* cloud identity *フラグの値を設定します。
-
-`export CP="AWS"`
-`export CI="'eks.amazonaws.com/role-arn: arn:aws:iam::123456:role/astratrident-role'"`
-
-次の例では、Astra Tridentをインストールして `cloud-provider` フラグの対象 `$CP`および `cloud-identity` 終了： `$CI`：
-
-[listing]
-----
-tridentctl install --cloud-provider=$CP --cloud-identity="$CI" -n trident
-----
---
-====
 
 
 

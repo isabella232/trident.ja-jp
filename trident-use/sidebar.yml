@@ -40,10 +40,16 @@ entries:
     entries:
     - title: 概要
       url: "/trident-use/trident-fsx.html"
-    - title: Amazon FSX for ONTAP を統合します
-      url: "/trident-use/trident-fsx-prep.html"
-    - title: 設定オプションと例
-      url: "/trident-use/trident-fsx-examples.html"
+    - title: IAMロールとAWSシークレットを作成する
+      url: "/trident-use/trident-fsx-iam-role.html"
+    - title: Astra Trident をインストール
+      url: "/trident-use/trident-fsx-install-trident.html"
+    - title: ストレージバックエンドの設定
+      url: "/trident-use/trident-fsx-storage-backend.html"
+    - title: ストレージクラスとPVCを設定
+      url: "/trident-use/trident-fsx-storageclass-pvc.html"
+    - title: サンプルアプリケーションのデプロイ
+      url: "/trident-use/trident-fsx-deploy-sample.html"
     - title: EKSクラスタでのAstra Trident EKSアドオンの設定
       url: "/trident-use/trident-aws-addon.html"
   - title: kubectl を使用してバックエンドを作成します
